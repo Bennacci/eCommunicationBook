@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Chat Room Page View Controller-->
         <scene sceneID="zb3-hN-J76">
             <objects>
-                <viewController id="p86-dY-E7B" sceneMemberID="viewController">
+                <viewController id="p86-dY-E7B" customClass="ChatRoomPageViewController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T9h-Zu-4l1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,15 +46,67 @@
                                 <rect key="frame" x="0.0" y="160" width="414" height="653"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4SZ-uz-fo3">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatRoomTableViewCell" id="4SZ-uz-fo3" customClass="ChatRoomTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4SZ-uz-fo3" id="DAd-xp-ngc">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stM-O4-uUH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="66.5"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.left.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Np-Wx-PTc">
+                                                            <rect key="frame" x="16" y="8.5" width="50.5" height="50"/>
+                                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="9Np-Wx-PTc" secondAttribute="height" multiplier="1:1" id="Std-hu-ckp"/>
+                                                                <constraint firstAttribute="height" priority="999" constant="50" id="yw2-PV-7cO"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frO-W7-G1G">
+                                                            <rect key="frame" x="82.5" y="8.5" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdN-Ye-TJZ">
+                                                            <rect key="frame" x="82.5" y="37.5" width="37.5" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="9Np-Wx-PTc" firstAttribute="top" secondItem="stM-O4-uUH" secondAttribute="top" constant="8" id="0ce-0m-6q0"/>
+                                                        <constraint firstItem="frO-W7-G1G" firstAttribute="leading" secondItem="9Np-Wx-PTc" secondAttribute="trailing" constant="16" id="0jP-Jb-sbO"/>
+                                                        <constraint firstAttribute="bottom" secondItem="9Np-Wx-PTc" secondAttribute="bottom" constant="8" id="6Hs-pZ-83D"/>
+                                                        <constraint firstItem="frO-W7-G1G" firstAttribute="bottom" secondItem="stM-O4-uUH" secondAttribute="centerY" constant="-4" id="7qI-cP-cL9"/>
+                                                        <constraint firstItem="9Np-Wx-PTc" firstAttribute="leading" secondItem="stM-O4-uUH" secondAttribute="leading" constant="16" id="QBi-W6-azp"/>
+                                                        <constraint firstItem="OdN-Ye-TJZ" firstAttribute="top" secondItem="stM-O4-uUH" secondAttribute="centerY" constant="4" id="YRN-sA-tb7"/>
+                                                        <constraint firstItem="OdN-Ye-TJZ" firstAttribute="leading" secondItem="9Np-Wx-PTc" secondAttribute="trailing" constant="16" id="Z9b-s0-ZQO"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="stM-O4-uUH" secondAttribute="bottom" id="e4b-LL-ssD"/>
+                                                <constraint firstItem="stM-O4-uUH" firstAttribute="top" secondItem="DAd-xp-ngc" secondAttribute="top" id="lnv-1Y-soN"/>
+                                                <constraint firstAttribute="trailing" secondItem="stM-O4-uUH" secondAttribute="trailing" id="qoh-Es-g5h"/>
+                                                <constraint firstItem="stM-O4-uUH" firstAttribute="leading" secondItem="DAd-xp-ngc" secondAttribute="leading" id="ye7-oI-fch"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="message" destination="OdN-Ye-TJZ" id="Lns-QD-bcG"/>
+                                            <outlet property="userID" destination="frO-W7-G1G" id="gQp-vd-6ph"/>
+                                            <outlet property="userImage" destination="9Np-Wx-PTc" id="OfF-5v-9bY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="p86-dY-E7B" id="FPE-FR-Vly"/>
+                                    <outlet property="delegate" destination="p86-dY-E7B" id="HZf-UB-MW5"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -90,6 +142,9 @@
                             </constraints>
                         </view>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="7qZ-lw-3uh" id="uix-BW-5D8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xl3-qX-aE1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -115,6 +170,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bubble.left.fill" catalog="system" width="128" height="110"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>

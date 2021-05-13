@@ -7,8 +7,9 @@ target 'eCommunicationBook' do
 
   # Pods for eCommunicationBook
 
-  #pod 'Firebase/Firestore'
-  #pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
+  pod 'EasyRefresher'
   pod 'Kingfisher', '5.9.0'
   pod 'JGProgressHUD'
   pod 'MJRefresh'

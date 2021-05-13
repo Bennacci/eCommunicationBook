@@ -4,7 +4,7 @@
 //
 //  Created by Wayne Chen on 2020/11/20.
 //
-/*
+
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
@@ -23,36 +23,85 @@ class XXXManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
-        
-        db.collection("articles").order(by: "createdTime", descending: true).getDocuments() { (querySnapshot, error) in
-            
-                if let error = error {
-                    
-                    completion(.failure(error))
-                } else {
-                    
-                    var articles = [Article]()
-                    
-                    for document in querySnapshot!.documents {
-
-                        do {
-                            if let article = try document.data(as: Article.self, decoder: Firestore.Decoder()) {
-                                articles.append(article)
-                            }
-                            
-                        } catch {
-                            
-                            completion(.failure(error))
-//                            completion(.failure(FirebaseError.documentError))
-                        }
-                    }
-                    
-                    completion(.success(articles))
-                }
-        }
-    }
+//    func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
+//
+//        db.collection("chatrooms").order(by: "createdTime", descending: true).getDocuments() { (querySnapshot, error) in
+//
+//                if let error = error {
+//
+//                    completion(.failure(error))
+//                } else {
+//
+//                    var chatRooms = [ChatRoom]()
+//
+//                    for document in querySnapshot!.documents {
+//
+//                        do {
+//                            if let chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
+//                                chatRooms.append(chatRoom)
+//                            }
+//
+//                        } catch {
+//
+//                            completion(.failure(error))
+// //                            completion(.failure(FirebaseError.documentError))
+//                        }
+//                    }
+//
+//                    completion(.success(chatRooms))
+//                }
+//        }
+//    }
     
+      func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
+          
+          db.collection("chatRooms").getDocuments() { (querySnapshot, error) in
+              
+                  if let error = error {
+                      
+                      completion(.failure(error))
+                  } else {
+                      
+                      var chatRooms = [ChatRoom]()
+
+                      for document in querySnapshot!.documents {
+                        print(querySnapshot!.documents[0])
+
+                          do {
+                              if let chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
+                                  chatRooms.append(chatRoom)
+                                print(chatRoom)
+                              }
+                              
+                          } catch {
+                              
+                              completion(.failure(error))
+  //                            completion(.failure(FirebaseError.documentError))
+                          }
+                      }
+                      
+                      completion(.success(chatRooms))
+                  }
+          }
+      }
+  
+  func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
+      
+      let document = db.collection("chatRooms").document()
+      chatRoom.id = document.documentID
+//      chatRoom.createdTime = Date().millisecondsSince1970
+      document.setData(chatRoom.toDict) { error in
+          
+          if let error = error {
+              
+              completion(.failure(error))
+          } else {
+              
+              completion(.success("Success"))
+          }
+      }
+  }
+  
     func publishArticle(article: inout Article, completion: @escaping (Result<String, Error>) -> Void) {
         
         let document = db.collection("articles").document()
@@ -98,4 +147,4 @@ class XXXManager {
         }
     }
 }
-*/
+

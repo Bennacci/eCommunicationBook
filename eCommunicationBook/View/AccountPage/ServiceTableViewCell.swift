@@ -9,6 +9,8 @@ import UIKit
 
 class ServiceTableViewCell: UITableViewCell {
 
+  var identifier = "ServiceTableViewCell"
+  
   @IBOutlet weak var serviceLabel: UILabel!
   
 //  var viewModel: ServiceViewModel?

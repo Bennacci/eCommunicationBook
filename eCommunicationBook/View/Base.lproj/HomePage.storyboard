@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qXg-FC-TFT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="PWu-4z-ADJ">
+            <objects>
+                <navigationController id="qXg-FC-TFT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="LQD-1f-B0y"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GQe-4H-gK1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UbP-Ni-zYn" kind="relationship" relationship="rootViewController" id="ezk-Kd-Gwf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NT2-QL-Ml9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3883" y="929"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GEP-KF-9Xp">
+            <objects>
+                <viewController id="UbP-Ni-zYn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="18i-7Y-sI2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Jce-jz-pfd"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="1Gc-nj-1xi"/>
+                    <navigationItem key="navigationItem" id="wyH-wJ-jee">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="pHZ-GW-CAG">
+                            <rect key="frame" x="207" y="22" width="0.0" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2v-jf-1BF">
+                                    <rect key="frame" x="-24.5" y="-10.5" width="49" height="21"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="I2v-jf-1BF" firstAttribute="centerY" secondItem="pHZ-GW-CAG" secondAttribute="centerY" id="IsF-b4-NrI"/>
+                                <constraint firstItem="I2v-jf-1BF" firstAttribute="centerX" secondItem="pHZ-GW-CAG" secondAttribute="centerX" id="Kbt-oh-cnj"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BOP-vp-a3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3884.057971014493" y="1707.5892857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+    </resources>
+</document>

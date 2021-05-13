@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		6922503B8ADC0F9B96D5D3AF /* Pods_eCommunicationBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9B88A5E13D6C0F367FA6EE /* Pods_eCommunicationBook.framework */; };
+		741FAC85264CD77200D5C34B /* ChatRoomPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC7D264CD77200D5C34B /* ChatRoomPage.storyboard */; };
+		741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC7F264CD77200D5C34B /* AccountPage.storyboard */; };
+		741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC81264CD77200D5C34B /* HomePage.storyboard */; };
+		741FAC88264CD77200D5C34B /* CalendarPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC83264CD77200D5C34B /* CalendarPage.storyboard */; };
+		745147CA264CDE8000172419 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147C9264CDE8000172419 /* ServiceTableViewCell.swift */; };
+		745147CD264CE03200172419 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147CC264CE03100172419 /* ServiceViewModel.swift */; };
+		745147D2264CEF0000172419 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147D1264CEF0000172419 /* Service.swift */; };
+		745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147D4264CF76E00172419 /* AccountPageViewController.swift */; };
 		74C23766264BB5FE001BF47A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23765264BB5FE001BF47A /* AppDelegate.swift */; };
 		74C23768264BB5FE001BF47A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23767264BB5FE001BF47A /* SceneDelegate.swift */; };
 		74C2376A264BB5FE001BF47A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23769264BB5FE001BF47A /* ViewController.swift */; };
@@ -38,6 +46,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		741FAC7E264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChatRoomPage.storyboard; sourceTree = "<group>"; };
+		741FAC80264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AccountPage.storyboard; sourceTree = "<group>"; };
+		741FAC82264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomePage.storyboard; sourceTree = "<group>"; };
+		741FAC84264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CalendarPage.storyboard; sourceTree = "<group>"; };
+		745147C9264CDE8000172419 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
+		745147CC264CE03100172419 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
+		745147D1264CEF0000172419 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		745147D4264CF76E00172419 /* AccountPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewController.swift; sourceTree = "<group>"; };
 		74C23762264BB5FE001BF47A /* eCommunicationBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eCommunicationBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C23765264BB5FE001BF47A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74C23767264BB5FE001BF47A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +100,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		745147CB264CDE9A00172419 /* AccountPage */ = {
+			isa = PBXGroup;
+			children = (
+				745147C9264CDE8000172419 /* ServiceTableViewCell.swift */,
+				741FAC7F264CD77200D5C34B /* AccountPage.storyboard */,
+			);
+			path = AccountPage;
+			sourceTree = "<group>";
+		};
+		745147CE264CE03B00172419 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				745147CC264CE03100172419 /* ServiceViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		745147D6264CF77300172419 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				745147D4264CF76E00172419 /* AccountPageViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		74C23759264BB5FE001BF47A = {
 			isa = PBXGroup;
 			children = (
@@ -107,13 +148,15 @@
 			children = (
 				74E94728264BE09500AFB046 /* Network */,
 				74E94732264BE09500AFB046 /* Util */,
-				74E9472B264BE09500AFB046 /* Model */,
 				74C23765264BB5FE001BF47A /* AppDelegate.swift */,
 				74C23767264BB5FE001BF47A /* SceneDelegate.swift */,
 				74C23769264BB5FE001BF47A /* ViewController.swift */,
 				74E9474D264C087D00AFB046 /* Third Party Wrapper */,
 				74E9473E264C087D00AFB046 /* Extension */,
-				74C2376B264BB5FE001BF47A /* Main.storyboard */,
+				74E9472B264BE09500AFB046 /* Model */,
+				745147CE264CE03B00172419 /* ViewModel */,
+				745147D6264CF77300172419 /* ViewController */,
+				74E94763264CCA3F00AFB046 /* View */,
 				74C2376E264BB5FF001BF47A /* Assets.xcassets */,
 				74C23770264BB5FF001BF47A /* LaunchScreen.storyboard */,
 				74C23773264BB5FF001BF47A /* Info.plist */,
@@ -135,6 +178,7 @@
 			children = (
 				74E9472C264BE09500AFB046 /* Author.swift */,
 				74E9472D264BE09500AFB046 /* Article.swift */,
+				745147D1264CEF0000172419 /* Service.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +219,18 @@
 				74E94750264C087D00AFB046 /* KingFisherWrapper.swift */,
 			);
 			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
+		74E94763264CCA3F00AFB046 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				745147CB264CDE9A00172419 /* AccountPage */,
+				74C2376B264BB5FE001BF47A /* Main.storyboard */,
+				741FAC81264CD77200D5C34B /* HomePage.storyboard */,
+				741FAC83264CD77200D5C34B /* CalendarPage.storyboard */,
+				741FAC7D264CD77200D5C34B /* ChatRoomPage.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9EB83724CFD3F3625223435C /* Pods */ = {
@@ -255,6 +311,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */,
+				741FAC88264CD77200D5C34B /* CalendarPage.storyboard in Resources */,
+				741FAC85264CD77200D5C34B /* ChatRoomPage.storyboard in Resources */,
+				741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */,
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
 				74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */,
 				74C2376D264BB5FE001BF47A /* Main.storyboard in Resources */,
@@ -329,8 +389,11 @@
 			files = (
 				74E94760264C087D00AFB046 /* MJRefreshWrapper.swift in Sources */,
 				74E9475C264C087D00AFB046 /* UICollectionView+Extension.swift in Sources */,
+				745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */,
+				745147CA264CDE8000172419 /* ServiceTableViewCell.swift in Sources */,
 				74E94753264C087D00AFB046 /* Int+Extension.swift in Sources */,
 				74E94759264C087D00AFB046 /* String+Extension.swift in Sources */,
+				745147D2264CEF0000172419 /* Service.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
 				74E94738264BE09500AFB046 /* Article.swift in Sources */,
 				74E94737264BE09500AFB046 /* Author.swift in Sources */,
@@ -343,6 +406,7 @@
 				74E9475A264C087D00AFB046 /* UIStoryboard+Extension.swift in Sources */,
 				74E94752264C087D00AFB046 /* UIColor+Extension.swift in Sources */,
 				74E9473B264BE09500AFB046 /* DateHelper.swift in Sources */,
+				745147CD264CE03200172419 /* ServiceViewModel.swift in Sources */,
 				74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */,
 				74E94735264BE09500AFB046 /* UserManager.swift in Sources */,
 				74E9475D264C087D00AFB046 /* UITableView+Extension.swift in Sources */,
@@ -357,6 +421,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		741FAC7D264CD77200D5C34B /* ChatRoomPage.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				741FAC7E264CD77200D5C34B /* Base */,
+			);
+			name = ChatRoomPage.storyboard;
+			sourceTree = "<group>";
+		};
+		741FAC7F264CD77200D5C34B /* AccountPage.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				741FAC80264CD77200D5C34B /* Base */,
+			);
+			name = AccountPage.storyboard;
+			sourceTree = "<group>";
+		};
+		741FAC81264CD77200D5C34B /* HomePage.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				741FAC82264CD77200D5C34B /* Base */,
+			);
+			name = HomePage.storyboard;
+			sourceTree = "<group>";
+		};
+		741FAC83264CD77200D5C34B /* CalendarPage.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				741FAC84264CD77200D5C34B /* Base */,
+			);
+			name = CalendarPage.storyboard;
+			sourceTree = "<group>";
+		};
 		74C2376B264BB5FE001BF47A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

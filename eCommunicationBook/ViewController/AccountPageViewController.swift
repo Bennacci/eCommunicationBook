@@ -31,7 +31,7 @@ extension AccountPageViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "ServiceTableViewCell",
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier,
                                                    for: indexPath) as? ServiceTableViewCell
       else { fatalError("Unexpected Table View Cell") }
     cell.layoutCell(title: viewModel.services[indexPath.section][indexPath.row])

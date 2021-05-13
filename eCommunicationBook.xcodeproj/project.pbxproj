@@ -16,6 +16,13 @@
 		745147CD264CE03200172419 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147CC264CE03100172419 /* ServiceViewModel.swift */; };
 		745147D2264CEF0000172419 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147D1264CEF0000172419 /* Service.swift */; };
 		745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147D4264CF76E00172419 /* AccountPageViewController.swift */; };
+		745147DE264D381800172419 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147DD264D381800172419 /* ChatRoomViewModel.swift */; };
+		745147E0264D386700172419 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147DF264D386700172419 /* ChatRoom.swift */; };
+		745147E2264D389D00172419 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147E1264D389D00172419 /* Message.swift */; };
+		745147E4264D3CF400172419 /* ChatRoomPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147E3264D3CF400172419 /* ChatRoomPageViewModel.swift */; };
+		745147E6264D3F5E00172419 /* ChatRoomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147E5264D3F5E00172419 /* ChatRoomPageViewController.swift */; };
+		745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147E7264D431000172419 /* ChatRoomTableViewCell.swift */; };
+		745147EC264D56EE00172419 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 745147EA264D510400172419 /* GoogleService-Info.plist */; };
 		74C23766264BB5FE001BF47A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23765264BB5FE001BF47A /* AppDelegate.swift */; };
 		74C23768264BB5FE001BF47A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23767264BB5FE001BF47A /* SceneDelegate.swift */; };
 		74C2376A264BB5FE001BF47A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23769264BB5FE001BF47A /* ViewController.swift */; };
@@ -54,6 +61,13 @@
 		745147CC264CE03100172419 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
 		745147D1264CEF0000172419 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		745147D4264CF76E00172419 /* AccountPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewController.swift; sourceTree = "<group>"; };
+		745147DD264D381800172419 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
+		745147DF264D386700172419 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		745147E1264D389D00172419 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		745147E3264D3CF400172419 /* ChatRoomPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomPageViewModel.swift; sourceTree = "<group>"; };
+		745147E5264D3F5E00172419 /* ChatRoomPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomPageViewController.swift; sourceTree = "<group>"; };
+		745147E7264D431000172419 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
+		745147EA264D510400172419 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74C23762264BB5FE001BF47A /* eCommunicationBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eCommunicationBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C23765264BB5FE001BF47A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74C23767264BB5FE001BF47A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				745147CC264CE03100172419 /* ServiceViewModel.swift */,
+				745147E3264D3CF400172419 /* ChatRoomPageViewModel.swift */,
+				745147DD264D381800172419 /* ChatRoomViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -120,9 +136,19 @@
 		745147D6264CF77300172419 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				745147E5264D3F5E00172419 /* ChatRoomPageViewController.swift */,
 				745147D4264CF76E00172419 /* AccountPageViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		745147E9264D46C100172419 /* ChatRoomPage */ = {
+			isa = PBXGroup;
+			children = (
+				741FAC7D264CD77200D5C34B /* ChatRoomPage.storyboard */,
+				745147E7264D431000172419 /* ChatRoomTableViewCell.swift */,
+			);
+			path = ChatRoomPage;
 			sourceTree = "<group>";
 		};
 		74C23759264BB5FE001BF47A = {
@@ -158,6 +184,7 @@
 				745147D6264CF77300172419 /* ViewController */,
 				74E94763264CCA3F00AFB046 /* View */,
 				74C2376E264BB5FF001BF47A /* Assets.xcassets */,
+				745147EA264D510400172419 /* GoogleService-Info.plist */,
 				74C23770264BB5FF001BF47A /* LaunchScreen.storyboard */,
 				74C23773264BB5FF001BF47A /* Info.plist */,
 			);
@@ -167,8 +194,8 @@
 		74E94728264BE09500AFB046 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				74E94729264BE09500AFB046 /* UserManager.swift */,
 				74E9472A264BE09500AFB046 /* XXXManager.swift */,
+				74E94729264BE09500AFB046 /* UserManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -179,6 +206,8 @@
 				74E9472C264BE09500AFB046 /* Author.swift */,
 				74E9472D264BE09500AFB046 /* Article.swift */,
 				745147D1264CEF0000172419 /* Service.swift */,
+				745147DF264D386700172419 /* ChatRoom.swift */,
+				745147E1264D389D00172419 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,11 +253,11 @@
 		74E94763264CCA3F00AFB046 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				745147E9264D46C100172419 /* ChatRoomPage */,
 				745147CB264CDE9A00172419 /* AccountPage */,
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
 				741FAC81264CD77200D5C34B /* HomePage.storyboard */,
 				741FAC83264CD77200D5C34B /* CalendarPage.storyboard */,
-				741FAC7D264CD77200D5C34B /* ChatRoomPage.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +342,7 @@
 			files = (
 				741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */,
 				741FAC88264CD77200D5C34B /* CalendarPage.storyboard in Resources */,
+				745147EC264D56EE00172419 /* GoogleService-Info.plist in Resources */,
 				741FAC85264CD77200D5C34B /* ChatRoomPage.storyboard in Resources */,
 				741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */,
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
@@ -395,6 +425,7 @@
 				74E94759264C087D00AFB046 /* String+Extension.swift in Sources */,
 				745147D2264CEF0000172419 /* Service.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
+				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
 				74E94738264BE09500AFB046 /* Article.swift in Sources */,
 				74E94737264BE09500AFB046 /* Author.swift in Sources */,
 				74E94756264C087D00AFB046 /* UIImage+Extension.swift in Sources */,
@@ -405,7 +436,9 @@
 				74E9473C264BE09500AFB046 /* Box.swift in Sources */,
 				74E9475A264C087D00AFB046 /* UIStoryboard+Extension.swift in Sources */,
 				74E94752264C087D00AFB046 /* UIColor+Extension.swift in Sources */,
+				745147E0264D386700172419 /* ChatRoom.swift in Sources */,
 				74E9473B264BE09500AFB046 /* DateHelper.swift in Sources */,
+				745147E2264D389D00172419 /* Message.swift in Sources */,
 				745147CD264CE03200172419 /* ServiceViewModel.swift in Sources */,
 				74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */,
 				74E94735264BE09500AFB046 /* UserManager.swift in Sources */,
@@ -413,8 +446,11 @@
 				74C23768264BB5FE001BF47A /* SceneDelegate.swift in Sources */,
 				74E94751264C087D00AFB046 /* UIFont+Extension.swift in Sources */,
 				74E9475B264C087D00AFB046 /* UIScreen+Extension.swift in Sources */,
+				745147E4264D3CF400172419 /* ChatRoomPageViewModel.swift in Sources */,
+				745147DE264D381800172419 /* ChatRoomViewModel.swift in Sources */,
 				74E94736264BE09500AFB046 /* XXXManager.swift in Sources */,
 				74E94757264C087D00AFB046 /* Bundle+Extension.swift in Sources */,
+				745147E6264D3F5E00172419 /* ChatRoomPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

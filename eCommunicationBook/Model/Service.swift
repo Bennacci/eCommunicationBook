@@ -21,7 +21,7 @@ struct AccountService {
     case contactUs
   }
   
-  enum BookingService: CaseIterable{
+  enum BookingService: CaseIterable {
     case leaveReservation
     case courseReservation
     case makeUpReservation

@@ -31,23 +31,23 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalendarChartTableViewCell" id="zAi-KE-Abf" customClass="CalendarChartTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="162.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zAi-KE-Abf" id="zaR-HR-dWV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="162.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hx-Un-HEy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="162.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="課堂表現" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tey-41-lV6">
-                                                            <rect key="frame" x="16" y="8" width="70" height="21.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DD / MM 課堂表現" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tey-41-lV6">
+                                                            <rect key="frame" x="16" y="8" width="141" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QFZ-qu-0gz" customClass="HorizontalBarChartView" customModule="Charts">
-                                                            <rect key="frame" x="0.0" y="37.5" width="414" height="125"/>
+                                                            <rect key="frame" x="0.0" y="37" width="414" height="125"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="125" id="5U9-rV-mpg"/>

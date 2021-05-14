@@ -17,6 +17,7 @@ class AccountPageViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setUptableview()
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
   }
 }
 

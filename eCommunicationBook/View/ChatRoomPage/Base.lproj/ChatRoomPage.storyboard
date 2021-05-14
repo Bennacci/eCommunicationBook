@@ -56,9 +56,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stM-O4-uUH">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="66.5"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.left.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Np-Wx-PTc">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Np-Wx-PTc">
                                                             <rect key="frame" x="16" y="8.5" width="50.5" height="50"/>
-                                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="9Np-Wx-PTc" secondAttribute="height" multiplier="1:1" id="Std-hu-ckp"/>
                                                                 <constraint firstAttribute="height" priority="999" constant="50" id="yw2-PV-7cO"/>
@@ -170,7 +170,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bubble.left.fill" catalog="system" width="128" height="110"/>
+        <image name="bubble.left" catalog="system" width="128" height="110"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>

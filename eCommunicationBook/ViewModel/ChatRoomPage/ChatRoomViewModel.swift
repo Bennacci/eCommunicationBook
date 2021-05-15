@@ -20,7 +20,7 @@ class ChatRoomViewModel {
 
     var id: String {
         get {
-            return chatRoom.id
+          return chatRoom.id
         }
     }
     
@@ -30,9 +30,9 @@ class ChatRoomViewModel {
       }
   }
   
-  var messages: [Message] {
+  var messages: [Message]? {
       get {
-        return chatRoom.messages ?? []
+        return chatRoom.messages
       }
   }
   /*

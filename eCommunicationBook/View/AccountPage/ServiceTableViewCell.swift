@@ -9,7 +9,7 @@ import UIKit
 
 class ServiceTableViewCell: UITableViewCell {
 
-  var identifier = "ServiceTableViewCell"
+//  var identifier = "ServiceTableViewCell"
   
   @IBOutlet weak var serviceLabel: UILabel!
   

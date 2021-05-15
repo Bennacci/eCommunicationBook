@@ -20,8 +20,8 @@ class ChatRoomPageViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.navigationController?.navigationBar.backgroundColor = .yellow
-    self.navigationItem.title = "Publisher"
+    self.navigationController?.navigationBar.backgroundColor = .blue
+    self.navigationItem.title = "Chats"
     
     // Do any additional setup after loading the view.
     viewModel.refreshView = { [weak self] () in
@@ -97,6 +97,9 @@ extension ChatRoomPageViewController: UITableViewDataSource {
 
 extension ChatRoomPageViewController: UITableViewDelegate {
   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      performSegue(withIdentifier: "ConversationPage", sender: nil)
+  }
 //  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //    self.viewModel.onTap(withIndex: indexPath.row)
 //  }

@@ -10,141 +10,173 @@ import Firebase
 import FirebaseFirestoreSwift
 
 enum FirebaseError: Error {
-    case documentError
+  case documentError
 }
 
 enum MasterError: Error {
-    case youKnowNothingError(String)
+  case youKnowNothingError(String)
 }
 
 class XXXManager {
+  
+  static let shared = XXXManager()
+  
+  lazy var db = Firestore.firestore()
+  
+  //    func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
+  //
+  //        db.collection("chatrooms").order(by: "createdTime", descending: true).getDocuments() { (querySnapshot, error) in
+  //
+  //                if let error = error {
+  //
+  //                    completion(.failure(error))
+  //                } else {
+  //
+  //                    var chatRooms = [ChatRoom]()
+  //
+  //                    for document in querySnapshot!.documents {
+  //
+  //                        do {
+  //                            if let chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
+  //                                chatRooms.append(chatRoom)
+  //                            }
+  //
+  //                        } catch {
+  //
+  //                            completion(.failure(error))
+  // //                            completion(.failure(FirebaseError.documentError))
+  //                        }
+  //                    }
+  //
+  //                    completion(.success(chatRooms))
+  //                }
+  //        }
+  //    }
+  
+  func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
     
-    static let shared = XXXManager()
-    
-    lazy var db = Firestore.firestore()
-    
-//    func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
-//
-//        db.collection("chatrooms").order(by: "createdTime", descending: true).getDocuments() { (querySnapshot, error) in
-//
-//                if let error = error {
-//
-//                    completion(.failure(error))
-//                } else {
-//
-//                    var chatRooms = [ChatRoom]()
-//
-//                    for document in querySnapshot!.documents {
-//
-//                        do {
-//                            if let chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
-//                                chatRooms.append(chatRoom)
-//                            }
-//
-//                        } catch {
-//
-//                            completion(.failure(error))
-// //                            completion(.failure(FirebaseError.documentError))
-//                        }
-//                    }
-//
-//                    completion(.success(chatRooms))
-//                }
-//        }
-//    }
-    
-      func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
+    db.collection("chatRooms")
+      .order(by: "createdTime")
+      .whereField("members", arrayContains: "zeroID2")
+      .addSnapshotListener { (documentSnapshot, error) in
+        
+        if let error = error {
+          completion(.failure(error))
+        } else {
           
-          db.collection("chatRooms").getDocuments() { (querySnapshot, error) in
-              
-                  if let error = error {
+          var chatRooms = [ChatRoom]()
+          
+          for document in documentSnapshot!.documents {
+            
+            do {
+              if let chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
+                chatRooms.append(chatRoom)
+                //
+                self.db.collection("chatRooms")
+                  .document("\(chatRoom.id)")
+                  .collection("messages")
+                  .addSnapshotListener { (documentSnapshot, error) in
+                    
+                    if let error = error {
                       
                       completion(.failure(error))
-                  } else {
+                    } else {
                       
-                      var chatRooms = [ChatRoom]()
-
-                      for document in querySnapshot!.documents {
-                        print(querySnapshot!.documents[0])
-
-                          do {
-                              if let chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
-                                  chatRooms.append(chatRoom)
-                                print(chatRoom)
-                              }
-                              
-                          } catch {
-                              
-                              completion(.failure(error))
-  //                            completion(.failure(FirebaseError.documentError))
+                      var messages = [Message]()
+                      
+                      for document in documentSnapshot!.documents {
+                        
+                        do {
+                          if let message = try document.data(as: Message.self, decoder: Firestore.Decoder()) {
+                            messages.append(message)
+                            
                           }
+                        } catch {
+                          completion(.failure(error))
+                        }
                       }
                       
+                      chatRooms[chatRooms.count-1].messages = messages
+//                      print(messages)
+//                      print(chatRooms)
+                      print(chatRooms)
                       completion(.success(chatRooms))
-                  }
-          }
-      }
-  
-  func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
-      
-      let document = db.collection("chatRooms").document()
-      chatRoom.id = document.documentID
-//      chatRoom.createdTime = Date().millisecondsSince1970
-      document.setData(chatRoom.toDict) { error in
-          
-          if let error = error {
+                    }
+                }
+              }
+            } catch {
               
               completion(.failure(error))
-          } else {
-              
-              completion(.success("Success"))
+              // completion(.failure(FirebaseError.documentError))
+            }
           }
-      }
+          
+        }
+    }
   }
   
-    func publishArticle(article: inout Article, completion: @escaping (Result<String, Error>) -> Void) {
+  func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
+    
+    let document = db.collection("chatRooms").document()
+    chatRoom.id = document.documentID
+    //      chatRoom.createdTime = Date().millisecondsSince1970
+    document.setData(chatRoom.toDict) { error in
+      
+      if let error = error {
         
-        let document = db.collection("articles").document()
-        article.id = document.documentID
-        article.createdTime = Date().millisecondsSince1970
-        document.setData(article.toDict) { error in
-            
-            if let error = error {
-                
-                completion(.failure(error))
-            } else {
-                
-                completion(.success("Success"))
-            }
-        }
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
+  
+  
+  
+  func publishArticle(article: inout Article, completion: @escaping (Result<String, Error>) -> Void) {
+    
+    let document = db.collection("articles").document()
+    article.id = document.documentID
+    article.createdTime = Date().millisecondsSince1970
+    document.setData(article.toDict) { error in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
+  
+  func deleteArticle(article: Article, completion: @escaping (Result<String, Error>) -> Void) {
+    
+    if !UserManager.shared.isLogin() {
+      print("who r u?")
+      return
     }
     
-    func deleteArticle(article: Article, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        if !UserManager.shared.isLogin() {
-            print("who r u?")
-            return
-        }
-        
-        if let author = article.author {
-            if author.id == "waynechen323"
-                && article.category.lowercased() != "test"
-                && !article.category.trimmingCharacters(in: .whitespaces).isEmpty {
-                completion(.failure(MasterError.youKnowNothingError("You know nothing!! \(author.name)")))
-                return
-            }
-        }
-        
-        db.collection("articles").document(article.id).delete() { error in
-            
-            if let error = error {
-                
-                completion(.failure(error))
-            } else {
-                
-                completion(.success(article.id))
-            }
-        }
+    if let author = article.author {
+      if author.id == "waynechen323"
+        && article.category.lowercased() != "test"
+        && !article.category.trimmingCharacters(in: .whitespaces).isEmpty {
+        completion(.failure(MasterError.youKnowNothingError("You know nothing!! \(author.name)")))
+        return
+      }
     }
+    
+    db.collection("articles").document(article.id).delete() { error in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success(article.id))
+      }
+    }
+  }
 }
 

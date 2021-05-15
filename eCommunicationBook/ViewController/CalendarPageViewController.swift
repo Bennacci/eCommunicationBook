@@ -36,31 +36,54 @@ class CalendarPageViewController: UIViewController {
     super.viewDidLoad()
     setCalender()
   }
-//  @IBAction func toggleClicked(sender: AnyObject) {
-//    if self.calendar.scope == .month {
-//      //            self.calendar.setScope(.week, animated: self.animationSwitch.isOn)
-//    } else {
-//      //            self.calendar.setScope(.month, animated: self.animationSwitch.isOn)
-//    }
-//  }
+  //  @IBAction func toggleClicked(sender: AnyObject) {
+  //    if self.calendar.scope == .month {
+  //      //            self.calendar.setScope(.week, animated: self.animationSwitch.isOn)
+  //    } else {
+  //      //            self.calendar.setScope(.month, animated: self.animationSwitch.isOn)
+  //    }
+  //  }
 }
 
 extension CalendarPageViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+    return 3
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     //        return [2, 20][section]
-    return 1
+    return [1, 3, 5][section]
+  }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    switch section {
+    case 0:
+      return "MM/DD 課堂表現"
+    case 1:
+      return "作業繳交狀況"
+    default:
+      return "event"
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarChartTableViewCell.identifier,
-                                                   for: indexPath) as? CalendarChartTableViewCell
-      else { fatalError("Unexpected Table View Cell") }
     //      cell.layoutCell(title: viewModel.services[indexPath.section][indexPath.row])
-    return cell
+    if indexPath.section == 0 {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarChartTableViewCell.identifier,
+                                                     for: indexPath) as? CalendarChartTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      return cell
+    } else if indexPath.section == 1 {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarAssignmentTableViewCell.identifier,
+                                                     for: indexPath) as? CalendarAssignmentTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      return cell
+    } else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarEventTableViewCell.identifier,
+                                                     for: indexPath) as? CalendarEventTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      return cell
+    }
     //        if indexPath.section == 0 {
     //            let identifier = ["cell_month", "cell_week"][indexPath.row]
     //            let cell = tableView.dequeueReusableCell(withIdentifier: identifier)!
@@ -82,13 +105,13 @@ extension CalendarPageViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 10
+    return 32
   }
 }
 
 extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate {
-
-  func setCalender(){
+  
+  func setCalender() {
     if UIDevice.current.model.hasPrefix("iPad") {
       self.calendarHeightConstraint.constant = 400
     }
@@ -121,6 +144,7 @@ extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, 
   }
   
   func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    tableView.reloadInputViews()
     print("did select date \(self.dateFormatter.string(from: date))")
     let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
     print("selected dates is \(selectedDates)")

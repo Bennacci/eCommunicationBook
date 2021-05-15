@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqK-GK-UIQ" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="88" width="414" height="300"/>
+                                <rect key="frame" x="8" y="88" width="398" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="y6C-xT-7Wa"/>
@@ -31,23 +31,17 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalendarChartTableViewCell" id="zAi-KE-Abf" customClass="CalendarChartTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="162"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="125.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zAi-KE-Abf" id="zaR-HR-dWV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="125.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hx-Un-HEy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="125.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DD / MM 課堂表現" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tey-41-lV6">
-                                                            <rect key="frame" x="16" y="8" width="141" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QFZ-qu-0gz" customClass="HorizontalBarChartView" customModule="Charts">
-                                                            <rect key="frame" x="0.0" y="37" width="414" height="125"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="125.5"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="125" id="5U9-rV-mpg"/>
@@ -56,12 +50,10 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="tey-41-lV6" firstAttribute="leading" secondItem="3hx-Un-HEy" secondAttribute="leading" constant="16" id="0Qj-og-8g3"/>
+                                                        <constraint firstItem="QFZ-qu-0gz" firstAttribute="top" secondItem="3hx-Un-HEy" secondAttribute="top" id="59f-1O-h1b"/>
                                                         <constraint firstAttribute="trailing" secondItem="QFZ-qu-0gz" secondAttribute="trailing" id="ZQJ-gK-XUV"/>
                                                         <constraint firstAttribute="bottom" secondItem="QFZ-qu-0gz" secondAttribute="bottom" id="jUx-FI-ljW"/>
                                                         <constraint firstItem="QFZ-qu-0gz" firstAttribute="leading" secondItem="3hx-Un-HEy" secondAttribute="leading" id="oDm-wp-Kky"/>
-                                                        <constraint firstItem="tey-41-lV6" firstAttribute="bottom" secondItem="QFZ-qu-0gz" secondAttribute="top" constant="-8" id="rh5-lO-FOv"/>
-                                                        <constraint firstItem="tey-41-lV6" firstAttribute="top" secondItem="3hx-Un-HEy" secondAttribute="top" constant="8" id="xu2-vU-eV9"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -76,6 +68,80 @@
                                             <outlet property="chartView" destination="QFZ-qu-0gz" id="nz9-dM-cix"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarAssignmentTableViewCell" id="w3X-PW-9cz" customClass="CalendarAssignmentTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="153.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w3X-PW-9cz" id="Gml-7n-pqv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPW-y1-SZY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wvv-jd-lXF">
+                                                            <rect key="frame" x="16" y="12" width="22" height="19.5"/>
+                                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="wvv-jd-lXF" secondAttribute="height" multiplier="1:1" id="UpI-2C-PZA"/>
+                                                                <constraint firstAttribute="height" constant="22" id="Zet-gg-C3N"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96Y-bV-vcf">
+                                                            <rect key="frame" x="54" y="11.5" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="96Y-bV-vcf" firstAttribute="leading" secondItem="wvv-jd-lXF" secondAttribute="trailing" constant="16" id="CVu-E4-KZl"/>
+                                                        <constraint firstItem="wvv-jd-lXF" firstAttribute="leading" secondItem="MPW-y1-SZY" secondAttribute="leading" constant="16" id="cV1-RK-k2b"/>
+                                                        <constraint firstItem="wvv-jd-lXF" firstAttribute="centerY" secondItem="MPW-y1-SZY" secondAttribute="centerY" id="l5c-2b-s1h"/>
+                                                        <constraint firstItem="96Y-bV-vcf" firstAttribute="centerY" secondItem="MPW-y1-SZY" secondAttribute="centerY" id="ryg-XS-fer"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="MPW-y1-SZY" secondAttribute="bottom" id="O9c-vM-GKo"/>
+                                                <constraint firstItem="MPW-y1-SZY" firstAttribute="leading" secondItem="Gml-7n-pqv" secondAttribute="leading" id="Ogp-3k-Vfq"/>
+                                                <constraint firstAttribute="trailing" secondItem="MPW-y1-SZY" secondAttribute="trailing" id="gGE-pV-qQK"/>
+                                                <constraint firstItem="MPW-y1-SZY" firstAttribute="top" secondItem="Gml-7n-pqv" secondAttribute="top" id="yAC-bV-CQt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarEventTableViewCell" id="zak-Ff-qrp" customClass="CalendarEventTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="197" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zak-Ff-qrp" id="NKY-2H-Pux">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Feu-mr-7CG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laZ-tk-uCG">
+                                                            <rect key="frame" x="16" y="11.5" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="laZ-tk-uCG" firstAttribute="leading" secondItem="Feu-mr-7CG" secondAttribute="leading" constant="16" id="1OE-kh-lYM"/>
+                                                        <constraint firstItem="laZ-tk-uCG" firstAttribute="centerY" secondItem="Feu-mr-7CG" secondAttribute="centerY" id="QV8-hm-YJI"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Feu-mr-7CG" secondAttribute="bottom" id="YQB-ri-V4y"/>
+                                                <constraint firstItem="Feu-mr-7CG" firstAttribute="top" secondItem="NKY-2H-Pux" secondAttribute="top" id="fjG-qN-Cj8"/>
+                                                <constraint firstAttribute="trailing" secondItem="Feu-mr-7CG" secondAttribute="trailing" id="rhe-Vb-wTw"/>
+                                                <constraint firstItem="Feu-mr-7CG" firstAttribute="leading" secondItem="NKY-2H-Pux" secondAttribute="leading" id="zBa-cg-fcM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="DWX-Po-iHD" id="qpR-SB-Dot"/>
@@ -85,12 +151,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="agR-NY-Mvh" firstAttribute="trailing" secondItem="yqK-GK-UIQ" secondAttribute="trailing" id="4Hz-Ht-WZ9"/>
-                            <constraint firstItem="agR-NY-Mvh" firstAttribute="leading" secondItem="yqK-GK-UIQ" secondAttribute="leading" id="AcQ-xI-cpW"/>
                             <constraint firstItem="yqK-GK-UIQ" firstAttribute="top" secondItem="EWy-vh-RvL" secondAttribute="top" id="Rz8-kQ-mD7"/>
-                            <constraint firstItem="yqK-GK-UIQ" firstAttribute="trailing" secondItem="BY5-HH-42F" secondAttribute="trailing" id="aej-Ng-5An"/>
-                            <constraint firstItem="yqK-GK-UIQ" firstAttribute="leading" secondItem="BY5-HH-42F" secondAttribute="leading" id="bvC-DD-w8i"/>
+                            <constraint firstItem="yqK-GK-UIQ" firstAttribute="trailing" secondItem="BY5-HH-42F" secondAttribute="trailing" constant="-8" id="aej-Ng-5An"/>
+                            <constraint firstItem="yqK-GK-UIQ" firstAttribute="leading" secondItem="BY5-HH-42F" secondAttribute="leading" constant="8" id="bvC-DD-w8i"/>
+                            <constraint firstItem="agR-NY-Mvh" firstAttribute="leading" secondItem="EWy-vh-RvL" secondAttribute="leading" id="gvB-it-3qE"/>
                             <constraint firstItem="agR-NY-Mvh" firstAttribute="top" secondItem="yqK-GK-UIQ" secondAttribute="bottom" constant="16" id="l8X-3F-sVH"/>
+                            <constraint firstItem="EWy-vh-RvL" firstAttribute="trailing" secondItem="agR-NY-Mvh" secondAttribute="trailing" id="m65-ZE-hP7"/>
                             <constraint firstItem="EWy-vh-RvL" firstAttribute="bottom" secondItem="agR-NY-Mvh" secondAttribute="bottom" id="p1K-5r-5qz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EWy-vh-RvL"/>
@@ -148,5 +214,6 @@
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
     </resources>
 </document>

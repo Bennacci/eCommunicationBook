@@ -16,7 +16,7 @@ class ChatRoomTableViewCell: UITableViewCell {
   
   @IBOutlet weak var message: UILabel!
   
-  let identifier = "ChatRoomTableViewCell"
+//  let identifier = "ChatRoomTableViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,7 +36,11 @@ class ChatRoomTableViewCell: UITableViewCell {
   }
   
   func layoutCell() {
-    userID.text = viewModel?.members[0]
-    message.text = viewModel?.messages[0].content
+    var roomName = (viewModel?.members[0])!
+    for index in 1..<(viewModel?.members.count)! {
+      roomName += ", \((viewModel?.members[index])!)"
+    }
+    userID.text = roomName
+    message.text = viewModel?.messages?[0].content
   }
 }

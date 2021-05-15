@@ -23,8 +23,13 @@
 		745147E6264D3F5E00172419 /* ChatRoomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147E5264D3F5E00172419 /* ChatRoomPageViewController.swift */; };
 		745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147E7264D431000172419 /* ChatRoomTableViewCell.swift */; };
 		745147EC264D56EE00172419 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 745147EA264D510400172419 /* GoogleService-Info.plist */; };
+		74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */; };
+		74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */; };
 		749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */; };
 		74A5C8AB264E2C1B00704C39 /* CalendarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5C8AA264E2C1B00704C39 /* CalendarPageViewController.swift */; };
+		74BDBEE0264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEDF264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift */; };
+		74BDBEE2264FD2D70040C0D6 /* UserMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEE1264FD2D70040C0D6 /* UserMessageTableViewCell.swift */; };
+		74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */; };
 		74C23766264BB5FE001BF47A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23765264BB5FE001BF47A /* AppDelegate.swift */; };
 		74C23768264BB5FE001BF47A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23767264BB5FE001BF47A /* SceneDelegate.swift */; };
 		74C2376A264BB5FE001BF47A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23769264BB5FE001BF47A /* ViewController.swift */; };
@@ -70,8 +75,13 @@
 		745147E5264D3F5E00172419 /* ChatRoomPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomPageViewController.swift; sourceTree = "<group>"; };
 		745147E7264D431000172419 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
 		745147EA264D510400172419 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAssignmentTableViewCell.swift; sourceTree = "<group>"; };
+		74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventTableViewCell.swift; sourceTree = "<group>"; };
 		749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChartTableViewCell.swift; sourceTree = "<group>"; };
 		74A5C8AA264E2C1B00704C39 /* CalendarPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageViewController.swift; sourceTree = "<group>"; };
+		74BDBEDF264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerMessageTableViewCell.swift; sourceTree = "<group>"; };
+		74BDBEE1264FD2D70040C0D6 /* UserMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessageTableViewCell.swift; sourceTree = "<group>"; };
+		74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		74C23762264BB5FE001BF47A /* eCommunicationBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eCommunicationBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C23765264BB5FE001BF47A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74C23767264BB5FE001BF47A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +149,7 @@
 		745147D6264CF77300172419 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */,
 				745147E5264D3F5E00172419 /* ChatRoomPageViewController.swift */,
 				74A5C8AA264E2C1B00704C39 /* CalendarPageViewController.swift */,
 				745147D4264CF76E00172419 /* AccountPageViewController.swift */,
@@ -151,6 +162,8 @@
 			children = (
 				745147E7264D431000172419 /* ChatRoomTableViewCell.swift */,
 				741FAC7D264CD77200D5C34B /* ChatRoomPage.storyboard */,
+				74BDBEE1264FD2D70040C0D6 /* UserMessageTableViewCell.swift */,
+				74BDBEDF264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift */,
 			);
 			path = ChatRoomPage;
 			sourceTree = "<group>";
@@ -185,11 +198,11 @@
 		74C23764264BB5FE001BF47A /* eCommunicationBook */ = {
 			isa = PBXGroup;
 			children = (
-				74E94728264BE09500AFB046 /* Network */,
-				74E94732264BE09500AFB046 /* Util */,
 				74C23765264BB5FE001BF47A /* AppDelegate.swift */,
 				74C23767264BB5FE001BF47A /* SceneDelegate.swift */,
 				74C23769264BB5FE001BF47A /* ViewController.swift */,
+				74E94728264BE09500AFB046 /* Network */,
+				74E94732264BE09500AFB046 /* Util */,
 				74E9474D264C087D00AFB046 /* Third Party Wrapper */,
 				74E9473E264C087D00AFB046 /* Extension */,
 				74E9472B264BE09500AFB046 /* Model */,
@@ -271,7 +284,9 @@
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
 				741FAC81264CD77200D5C34B /* HomePage.storyboard */,
 				741FAC83264CD77200D5C34B /* CalendarPage.storyboard */,
+				74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */,
 				749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */,
+				74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -452,7 +467,11 @@
 				74E9473C264BE09500AFB046 /* Box.swift in Sources */,
 				74E9475A264C087D00AFB046 /* UIStoryboard+Extension.swift in Sources */,
 				74E94752264C087D00AFB046 /* UIColor+Extension.swift in Sources */,
+				74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */,
+				74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */,
+				74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */,
 				745147E0264D386700172419 /* ChatRoom.swift in Sources */,
+				74BDBEE2264FD2D70040C0D6 /* UserMessageTableViewCell.swift in Sources */,
 				74E9473B264BE09500AFB046 /* DateHelper.swift in Sources */,
 				745147E2264D389D00172419 /* Message.swift in Sources */,
 				745147CD264CE03200172419 /* ServiceViewModel.swift in Sources */,
@@ -461,6 +480,7 @@
 				74E9475D264C087D00AFB046 /* UITableView+Extension.swift in Sources */,
 				74C23768264BB5FE001BF47A /* SceneDelegate.swift in Sources */,
 				74E94751264C087D00AFB046 /* UIFont+Extension.swift in Sources */,
+				74BDBEE0264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift in Sources */,
 				74E9475B264C087D00AFB046 /* UIScreen+Extension.swift in Sources */,
 				745147E4264D3CF400172419 /* ChatRoomPageViewModel.swift in Sources */,
 				745147DE264D381800172419 /* ChatRoomViewModel.swift in Sources */,

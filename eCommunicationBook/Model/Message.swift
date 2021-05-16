@@ -27,13 +27,13 @@ struct Message: Codable {
             "id": id as Any,
             "content": content as Any,
             "senderID": senderID as Any,
-            "time": createdTime as Any
+            "createdTime": createdTime as Any
         ]
     }
-  static func == (lhs: Message, rhs: Message) -> Bool {
-      return lhs.id == rhs.id &&
-        lhs.content == rhs.content &&
-        lhs.senderID == rhs.senderID &&
-        lhs.createdTime == rhs.createdTime
-  }
+//  static func == (lhs: Message, rhs: Message) -> Bool {
+//      return lhs.id == rhs.id &&
+//        lhs.content == rhs.content &&
+//        lhs.senderID == rhs.senderID &&
+//        lhs.createdTime == rhs.createdTime
+//  }
 }

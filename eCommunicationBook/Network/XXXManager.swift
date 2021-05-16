@@ -21,6 +21,8 @@ class XXXManager {
   
   static let shared = XXXManager()
   
+  lazy var conversationID: String = ""
+  
   lazy var db = Firestore.firestore()
   
   //    func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
@@ -57,7 +59,7 @@ class XXXManager {
     
     db.collection("chatRooms")
       .order(by: "createdTime")
-      .whereField("members", arrayContains: "zeroID2")
+      .whereField("members", arrayContains: UserManager.shared.userID)
       .addSnapshotListener { (documentSnapshot, error) in
         
         if let error = error {
@@ -97,9 +99,8 @@ class XXXManager {
                       }
                       
                       chatRooms[chatRooms.count-1].messages = messages
-//                      print(messages)
-//                      print(chatRooms)
-                      print(chatRooms)
+                      //                      print(messages)
+                      //                      print(chatRooms)
                       completion(.success(chatRooms))
                     }
                 }
@@ -114,6 +115,59 @@ class XXXManager {
         }
     }
   }
+  
+  func fetchConversation(completion: @escaping (Result<[Message], Error>) -> Void) {
+    
+    db.collection("chatRooms")
+      .document(conversationID)
+      .collection("messages")
+      .order(by: "createdTime", descending: true)
+      .addSnapshotListener { (documentSnapshot, error) in
+        
+        if let error = error {
+          
+          completion(.failure(error))
+        } else {
+          
+          var messages = [Message]()
+          
+          for document in documentSnapshot!.documents {
+            
+            do {
+              if let message = try document.data(as: Message.self, decoder: Firestore.Decoder()) {
+                messages.append(message)
+                
+              }
+            } catch {
+              completion(.failure(error))
+            }
+          }
+          print(messages)
+          completion(.success(messages))
+        }
+    }
+  }
+  
+  func sendMessage(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
+    
+    let document = db.collection("chatRooms")
+      .document(conversationID)
+      .collection("messages")
+      .document()
+    message.id = document.documentID
+    message.createdTime = Double(Date().millisecondsSince1970)
+    document.setData(message.toDict) { error in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
+  
   
   func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
     
@@ -134,12 +188,15 @@ class XXXManager {
   
   
   
-  func publishArticle(article: inout Article, completion: @escaping (Result<String, Error>) -> Void) {
+  func publishArticle(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
     
-    let document = db.collection("articles").document()
-    article.id = document.documentID
-    article.createdTime = Date().millisecondsSince1970
-    document.setData(article.toDict) { error in
+    let document = db.collection("chatRooms")
+      .document()
+      .collection("messages")
+      .document()
+    message.id = document.documentID
+    message.createdTime = Double(Date().millisecondsSince1970)
+    document.setData(message.toDict) { error in
       
       if let error = error {
         

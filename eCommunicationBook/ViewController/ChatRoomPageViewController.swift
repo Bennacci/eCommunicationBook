@@ -17,6 +17,8 @@ class ChatRoomPageViewController: UIViewController {
   
   let viewModel = ChatRoomPageViewModel()
   
+  //  let conversationViewModel = ConversationViewModel()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -54,27 +56,27 @@ class ChatRoomPageViewController: UIViewController {
     }
   }
   /*
-  // MARK: - Navigation
-  
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destination.
-    // Pass the selected object to the new view controller.
-    if segue.identifier == "navigateToPublish",
-      let publishViewController = segue.destination as? PublishViewController {
-      
-      publishViewController.delegate = self
-      
-    }
-  }
-  */
+   // MARK: - Navigation
+   
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // Get the new view controller using segue.destination.
+   // Pass the selected object to the new view controller.
+   if segue.identifier == "navigateToPublish",
+   let publishViewController = segue.destination as? PublishViewController {
+   
+   publishViewController.delegate = self
+   
+   }
+   }
+   */
 }
 
 extension ChatRoomPageViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print(self.viewModel.chatRoomViewModel.value.count)
-    return self.viewModel.chatRoomViewModel.value.count
+    
+    return viewModel.chatRoomViewModel.value.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,10 +87,10 @@ extension ChatRoomPageViewController: UITableViewDataSource {
     }
     
     let cellViewModel = self.viewModel.chatRoomViewModel.value[indexPath.row]
-    cellViewModel.onDead = { [weak self] () in
-      print("onDead")
-      self?.viewModel.fetchData()
-    }
+//    cellViewModel.onDead = { [weak self] () in
+//      print("onDead")
+//      self?.viewModel.fetchData()
+//    }
     chatRoomTableViewCell.setup(viewModel: cellViewModel)
     
     return chatRoomTableViewCell
@@ -97,12 +99,10 @@ extension ChatRoomPageViewController: UITableViewDataSource {
 
 extension ChatRoomPageViewController: UITableViewDelegate {
   
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      performSegue(withIdentifier: "ConversationPage", sender: nil)
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "ConversationPage", sender: nil)
+    viewModel.onTap(withIndex: indexPath.row)
   }
-//  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    self.viewModel.onTap(withIndex: indexPath.row)
-//  }
 }
 
 extension ChatRoomPageViewController: RefreshDelegate {

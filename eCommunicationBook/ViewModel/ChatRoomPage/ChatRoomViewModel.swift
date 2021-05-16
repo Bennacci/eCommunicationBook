@@ -12,6 +12,8 @@ class ChatRoomViewModel {
     
     var chatRoom: ChatRoom
     
+    var conversationViewModel = ConversationViewModel()
+  
     var onDead: (() -> Void)?
     
     init(model chatRoom: ChatRoom) {
@@ -35,22 +37,24 @@ class ChatRoomViewModel {
         return chatRoom.messages
       }
   }
-  /*
+
   func onTap() {
-      XXXManager.shared.deleteArticle(article: chatRoom) { [weak self] result in
-          
-          switch result {
-          
-          case .success(let articleId):
-              
-              print(articleId)
-              self?.onDead?()
-              
-          case .failure(let error):
-              
-              print("publishArticle.failure: \(error)")
-          }
-      }
+    
+    XXXManager.shared.conversationID = chatRoom.id
+//    conversationViewModel.setConversations(chatRoom.messages!)
+//      XXXManager.shared.deleteArticle(article: chatRoom) { [weak self] result in
+//
+//          switch result {
+//
+//          case .success(let articleId):
+//
+//              print(articleId)
+//              self?.onDead?()
+//
+//          case .failure(let error):
+//
+//              print("publishArticle.failure: \(error)")
+//          }
+//      }
   }
-  */
 }

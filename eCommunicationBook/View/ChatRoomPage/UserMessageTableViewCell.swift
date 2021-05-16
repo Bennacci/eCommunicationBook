@@ -10,7 +10,9 @@ import UIKit
 
 class UserMessageTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+  @IBOutlet weak var messageContent: UILabel!
+  
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
@@ -21,4 +23,15 @@ class UserMessageTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+  
+  var viewModel: MessageViewModel?
+  
+  func setup(viewModel: MessageViewModel) {
+      self.viewModel = viewModel
+      layoutCell()
+  }
+  
+  func layoutCell() {
+    messageContent.text = viewModel?.content
+  }
 }

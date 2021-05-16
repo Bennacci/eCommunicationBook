@@ -11,7 +11,7 @@ import Foundation
 class ChatRoomPageViewModel {
     
     let chatRoomViewModel = Box([ChatRoomViewModel]())
-    
+
     var refreshView: (()->())?
     
     var scrollToTop: (()->())?
@@ -43,9 +43,9 @@ class ChatRoomPageViewModel {
         self.scrollToTop?()
     }
     
-//    func onTap(withIndex index: Int) {
-//        chatRoomViewModel.value[index].onTap()
-//    }
+    func onTap(withIndex index: Int) {
+        chatRoomViewModel.value[index].onTap()
+    }
     
     func convertChatRoomsToViewModels(from chatRooms: [ChatRoom]) -> [ChatRoomViewModel] {
         var viewModels = [ChatRoomViewModel]()

@@ -9,7 +9,9 @@
 import UIKit
 
 class PartnerMessageTableViewCell: UITableViewCell {
-
+  @IBOutlet weak var userID: UILabel!
+  @IBOutlet weak var messageContent: UILabel!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +22,15 @@ class PartnerMessageTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+  var viewModel: MessageViewModel?
+   
+   func setup(viewModel: MessageViewModel) {
+       self.viewModel = viewModel
+       layoutCell()
+   }
+   
+   func layoutCell() {
+     messageContent.text = viewModel?.content
+    userID.text = viewModel?.senderID
+   }
 }

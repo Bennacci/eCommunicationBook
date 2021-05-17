@@ -11,11 +11,14 @@ target 'eCommunicationBook' do
   pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
   pod 'FSCalendar'
   pod 'Charts'
+  #pod 'CollectionViewPagingLayout'
   pod 'EasyRefresher'
   pod 'Kingfisher', '5.9.0'
   pod 'JGProgressHUD'
   pod 'MJRefresh'
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftLint'
+  
 
 end
+

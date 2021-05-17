@@ -60,10 +60,10 @@
         <!--HomePage-->
         <scene sceneID="o1Z-gL-mGd">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kjJ-oA-kUy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="HomePage" id="vLv-FO-3Zi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="iqL-VR-mbu"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kjJ-oA-kUy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3449" y="699"/>
         </scene>

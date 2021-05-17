@@ -10,7 +10,7 @@ import UIKit
 
 class ConversationViewController: UIViewController {
   
-  weak var delegate: PublishDelegate?
+//  weak var delegate: PublishDelegate?
   
   let viewModel = ConversationViewModel()
   
@@ -45,6 +45,7 @@ class ConversationViewController: UIViewController {
   
   @IBAction func onTapSend(_ sender: Any) {
     viewModel.onTapSend()
+    messageContentTextView.text = nil
   }
 }
 

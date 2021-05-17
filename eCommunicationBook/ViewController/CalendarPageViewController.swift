@@ -16,12 +16,6 @@ class CalendarPageViewController: UIViewController {
   @IBOutlet weak var calendar: FSCalendar!
   //    @IBOutlet weak var animationSwitch: UISwitch!
   
-  fileprivate lazy var dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy/MM/dd"
-    return formatter
-  }()
-  
   fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
     [unowned self] in
     let panGesture = UIPanGestureRecognizer(target: self.calendar,
@@ -144,16 +138,22 @@ extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, 
   }
   
   func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    
     tableView.reloadInputViews()
-    print("did select date \(self.dateFormatter.string(from: date))")
-    let selectedDates = calendar.selectedDates.map({self.dateFormatter.string(from: $0)})
+    
+    print("did select date \(Date.dateFormatterYMD.string(from: date))")
+    
+    let selectedDates = calendar.selectedDates.map({Date.dateFormatterYMD.string(from: $0)})
+    
     print("selected dates is \(selectedDates)")
+    
     if monthPosition == .next || monthPosition == .previous {
+    
       calendar.setCurrentPage(date, animated: true)
     }
   }
   
   func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-    print("\(self.dateFormatter.string(from: calendar.currentPage))")
+    print("\(Date.dateFormatterYMD.string(from: calendar.currentPage))")
   }
 }

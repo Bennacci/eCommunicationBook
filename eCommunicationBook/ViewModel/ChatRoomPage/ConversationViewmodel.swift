@@ -54,10 +54,13 @@ class ConversationViewModel {
   
   func onTapSend() {
 
-    if hasIDInMessage() {
-      print("has author in article...")
-      publish() // MARK: check which function this call is
-      
+    if hasIDInMessage(){
+      print("has sender in message...")
+      if hasContent() {
+        publish() // MARK: check which function this call is
+      } else {
+        print("but no content")
+      }
     } else {
       print("login...")
       UserManager.shared.login() { [weak self] result in
@@ -102,7 +105,9 @@ class ConversationViewModel {
     
     publish(with: &message) // MARK: check which function this call is
   }
-  
+  func hasContent() -> Bool {
+    return message.content != ""
+  }
   func hasIDInMessage() -> Bool {
     return true
 //    return message.senderID != nil

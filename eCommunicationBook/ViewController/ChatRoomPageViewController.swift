@@ -32,7 +32,7 @@ class ChatRoomPageViewController: UIViewController {
       }
     }
     
-    viewModel.chatRoomViewModel.bind { [weak self] articles in
+    viewModel.chatRoomViewModel.bind { [weak self] chatrooms in
       //            self?.tableView.reloadData()
       self?.viewModel.onRefresh()
     }
@@ -111,13 +111,13 @@ extension ChatRoomPageViewController: RefreshDelegate {
   }
 }
 
-extension ChatRoomPageViewController: PublishDelegate {
-  func onPublished() {
-    viewModel.fetchData()
-    viewModel.onScrollToTop()
-  }
-}
-
-protocol PublishDelegate: AnyObject {
-  func onPublished()
-}
+// extension ChatRoomPageViewController: PublishDelegate {
+//  func onPublished() {
+//    viewModel.fetchData()
+//    viewModel.onScrollToTop()
+//  }
+// }
+//
+// protocol PublishDelegate: AnyObject {
+//  func onPublished()
+// }

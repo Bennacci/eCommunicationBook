@@ -14,13 +14,13 @@ enum LoginError: Error {
 class UserManager {
     
     static let shared = UserManager()
-    var userID: String? = "no.00000"
+    var userID: String? = "no.00001"
   
       func login(id: String = "", completion: @escaping (Result<String, Error>) -> Void) {
   
           switch id {
           case "waynechen323":
-              userID = "no.00000"
+              userID = "no.00001"
               completion(.success(userID!))
           // MARK: add your profile here
           default:

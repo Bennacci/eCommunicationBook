@@ -1,23 +1,23 @@
 //
-//  UITableView+Extension.swift
-//  STYLiSH
+//  Message.swift
+//  eCommunicationBook
 //
-//  Created by WU CHIH WEI on 2019/3/2.
-//  Copyright © 2019 WU CHIH WEI. All rights reserved.
+//  Created by Ben Tee on 2021/5/13.
+//  Copyright © 2021 TKY co. All rights reserved.
 //
 
 import UIKit
 
 extension UITableView {
 
-    func lk_registerCellWithNib(identifier: String, bundle: Bundle?) {
+    func registerCellWithNib(identifier: String, bundle: Bundle?) {
 
         let nib = UINib(nibName: identifier, bundle: bundle)
 
         register(nib, forCellReuseIdentifier: identifier)
     }
 
-    func lk_registerHeaderWithNib(identifier: String, bundle: Bundle?) {
+    func registerHeaderWithNib(identifier: String, bundle: Bundle?) {
 
         let nib = UINib(nibName: identifier, bundle: bundle)
 

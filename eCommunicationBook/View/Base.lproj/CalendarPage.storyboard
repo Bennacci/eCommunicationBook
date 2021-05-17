@@ -181,6 +181,14 @@
                                 <constraint firstItem="AKn-kq-O9X" firstAttribute="centerY" secondItem="HPH-Qc-J8s" secondAttribute="centerY" id="Z5U-aU-qwl"/>
                             </constraints>
                         </view>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="PHY-5t-D7F">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="7" maxY="0.0"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VkI-Oe-VIo">
+                                <rect key="frame" x="322" y="11" width="72" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -215,5 +223,6 @@
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>

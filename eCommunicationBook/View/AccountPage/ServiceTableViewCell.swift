@@ -8,21 +8,13 @@
 import UIKit
 
 class ServiceTableViewCell: UITableViewCell {
-
-//  var identifier = "ServiceTableViewCell"
   
+  @IBOutlet weak var serviceIcon: UIImageView!
   @IBOutlet weak var serviceLabel: UILabel!
   
-//  var viewModel: ServiceViewModel?
-//
-//  func setup(viewModel: ServiceViewModel) {
-//      self.viewModel = viewModel
-//      layoutCell(title: view)
-//  }
-  
-  func layoutCell(title: String) {
-    serviceLabel.text = title
-    
+  func layoutCell(accountItem: AccountItem) {
+    serviceLabel.text = accountItem.title
+    serviceIcon.image = accountItem.image
   }
   
   override func awakeFromNib() {
@@ -33,5 +25,4 @@ class ServiceTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         self.backgroundColor = selected ? .red : .clear
     }
-
 }

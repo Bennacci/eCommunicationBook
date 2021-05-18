@@ -49,14 +49,19 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ub1-de-fA6">
+                                        <rect key="frame" x="349" y="133" width="51" height="31"/>
+                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ub1-de-fA6" secondAttribute="bottom" constant="16" id="Gtb-0Z-TdA"/>
                                     <constraint firstItem="LwL-cP-Xqy" firstAttribute="centerY" secondItem="Kpi-ob-G6T" secondAttribute="centerY" constant="-20" id="azR-md-fs7"/>
                                     <constraint firstItem="Kpi-ob-G6T" firstAttribute="centerY" secondItem="IcI-Io-zbU" secondAttribute="centerY" id="eRi-nK-ZfH"/>
                                     <constraint firstAttribute="height" constant="180" id="fSx-7I-IcE"/>
                                     <constraint firstItem="LwL-cP-Xqy" firstAttribute="leading" secondItem="Kpi-ob-G6T" secondAttribute="trailing" constant="16" id="oXY-B1-cQl"/>
                                     <constraint firstItem="Kpi-ob-G6T" firstAttribute="centerX" secondItem="IcI-Io-zbU" secondAttribute="centerX" multiplier="0.5" id="pBz-Zn-hdR"/>
+                                    <constraint firstAttribute="trailing" secondItem="ub1-de-fA6" secondAttribute="trailing" constant="16" id="pMX-ZZ-v5w"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7P-uo-gpv">
@@ -154,6 +159,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="serviceIcon" destination="rhg-lR-jLn" id="EWM-AH-0hV"/>
                                             <outlet property="serviceLabel" destination="XpD-t2-plR" id="kiO-hf-PA3"/>
                                         </connections>
                                     </tableViewCell>

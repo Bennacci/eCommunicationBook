@@ -11,10 +11,20 @@ enum LoginError: Error {
     case idNotExistError(String)
 }
 
+enum UserType {
+  
+  case teacher
+  
+  case parents
+}
+
 class UserManager {
     
     static let shared = UserManager()
+    
     var userID: String? = "no.00000"
+    
+    var userType: UserType = .teacher
   
       func login(id: String = "", completion: @escaping (Result<String, Error>) -> Void) {
   

@@ -55,10 +55,7 @@ extension BannerTableViewCell {
   }
   
   func setBannerView() {
-    print(bannerDatas)
     for index in 0 ..< bannerDatas.count {
-      
-      print(index)
       bannerView.imageArray.append(bannerDatas[index].picture)
       bannerView.sloganArray.append(bannerDatas[index].story)
     }
@@ -92,7 +89,6 @@ class BannerView: UIView, UIScrollViewDelegate {
   var currentLabel = UILabel()
   
   var rightLabel = UILabel()
-  
   
   lazy var scrollView: UIScrollView = {
     

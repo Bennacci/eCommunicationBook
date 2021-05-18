@@ -10,6 +10,7 @@ import UIKit
 
 class ServiceCollectionViewCell: UICollectionViewCell {
 
+  @IBOutlet weak var height: NSLayoutConstraint!
   @IBOutlet weak var serviceIcon: UIImageView!
   @IBOutlet weak var servicename: UILabel!
   override func awakeFromNib() {

@@ -20,6 +20,10 @@ class HomePageViewController: UIViewController {
   
   var hotCell = ServicesTableViewCell()
   
+  var hotCellHeight: CGFloat = 120
+  
+  var recommendedCellHeight: CGFloat = 150
+  
   private let collectionViewSectionInsets = UIEdgeInsets(
     top: 10.0,
     left: 20.0,
@@ -27,6 +31,8 @@ class HomePageViewController: UIViewController {
     right: 20.0)
   
   override func viewDidLoad() {
+    
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
     
     tableView.registerCellWithNib(identifier: ServicesTableViewCell.identifier, bundle: nil)
     
@@ -40,14 +46,33 @@ class HomePageViewController: UIViewController {
 
 extension HomePageViewController: UITableViewDataSource {
   
-  func tableView(_ tableView: UITableView, titleForHeaderInSection
-                              section: Int) -> String? {
-     return "Header \(section)"
-  }
-  
-  
   func numberOfSections(in tableView: UITableView) -> Int {
     return 4
+  }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    switch section {
+    case 0:
+      return ""
+    case 1:
+      return "熱門"
+    case 2:
+      return "為您推薦"
+    default:
+      return "News"
+    }
+  }
+  
+  func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+
+      headerView.backgroundColor = UIColor.clear
+      let myLabel = UILabel()
+      myLabel.frame = CGRect(x: 16, y: headerView.center.y, width: tableView.bounds.size.width, height: 30)
+      myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+      myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+    headerView.addSubview(myLabel)
+    return headerView
   }
   
   func tableView(_ tableView: UITableView,
@@ -56,7 +81,6 @@ extension HomePageViewController: UITableViewDataSource {
     
     return [1, 1, 1, 3][section]
   }
-  
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath == [0, 0] {
@@ -81,29 +105,45 @@ extension HomePageViewController: UITableViewDataSource {
       cell.collectionView.delegate = self
       
       cell.collectionView.dataSource = self
-      
+            
       if indexPath == [1, 0] {
         
         hotCell = cell
         
-        cell.height.constant = 250
-        
-//        cell.collectionView.
+        cell.height.constant = hotCellHeight
         
       } else {
         
-        cell.height.constant = 300
+        cell.height.constant = recommendedCellHeight
         
       }
       
-      //    cell.layoutCell(title: viewModel.services[indexPath.section][indexPath.row])
       return cell
     } else {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
-                                                   for: indexPath) as? NewsTableViewCell
-      else { fatalError("Unexpected Table View Cell") }
+                                                     for: indexPath) as? NewsTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
       return cell
     }
+  }
+}
+
+extension HomePageViewController: UITableViewDelegate {
+  
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    if section == 0 {
+      
+      return CGFloat.leastNormalMagnitude
+      
+    } else {
+      
+      return 35
+    }
+  }
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    
+    return CGFloat.leastNormalMagnitude
   }
 }
 
@@ -124,7 +164,9 @@ extension HomePageViewController: UICollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ServiceCollectionViewCell.identifier,
                                                         for: indexPath) as? ServiceCollectionViewCell
       else { fatalError("Unexpected Table View Cell") }
-    
+    if collectionView == hotCell.collectionView {
+      cell.height.constant = hotCell.bounds.size.height
+    }
     return cell
   }
   
@@ -150,15 +192,15 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
     let size: CGSize
     if collectionView == hotCell.collectionView {
-      size = collectionView.calculateCellsize(view: view,
+      size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
                                               sectionInsets: collectionViewSectionInsets,
                                               itemsPerRow: 2,
-                                              itemsPerColumn: 2)
+                                              itemsPerColumn: 1)
     } else {
-      size = collectionView.calculateCellsize(view: view,
+      size = collectionView.calculateCellsize(viewHeight: recommendedCellHeight,
                                               sectionInsets: collectionViewSectionInsets,
                                               itemsPerRow: 3,
-                                              itemsPerColumn: 1)
+                                              itemsPerColumn: 2)
     }
     
     return size

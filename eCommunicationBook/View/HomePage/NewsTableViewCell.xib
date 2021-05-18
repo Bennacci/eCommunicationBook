@@ -12,15 +12,15 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableViewCell" rowHeight="76" id="KGk-i7-Jjw" customClass="NewsTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="189" height="76"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="189" height="76"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sI8-RH-zKb">
-                        <rect key="frame" x="0.0" y="0.0" width="189" height="75"/>
+                        <rect key="frame" x="0.0" y="0.0" width="189" height="76"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SK9-9B-iQJ">
-                                <rect key="frame" x="16" y="8.5" width="59" height="58"/>
+                                <rect key="frame" x="16" y="8.5" width="60" height="59"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -28,13 +28,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acl-DZ-IN9">
-                                <rect key="frame" x="83" y="8" width="90" height="19.5"/>
+                                <rect key="frame" x="84" y="8" width="39.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7z-ea-h2p">
-                                <rect key="frame" x="83" y="35.5" width="33" height="16"/>
+                                <rect key="frame" x="84" y="35.5" width="33" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -42,15 +42,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="acl-DZ-IN9" secondAttribute="trailing" constant="16" id="BZP-AP-YLC"/>
+                            <constraint firstItem="SK9-9B-iQJ" firstAttribute="top" secondItem="sI8-RH-zKb" secondAttribute="top" constant="8" id="DhS-Dh-UvV"/>
                             <constraint firstItem="G7z-ea-h2p" firstAttribute="top" secondItem="acl-DZ-IN9" secondAttribute="bottom" constant="8" id="N5m-q9-m9g"/>
                             <constraint firstItem="G7z-ea-h2p" firstAttribute="leading" secondItem="SK9-9B-iQJ" secondAttribute="trailing" constant="8" id="NU6-Aw-R5t"/>
                             <constraint firstItem="acl-DZ-IN9" firstAttribute="top" secondItem="SK9-9B-iQJ" secondAttribute="top" id="ZMM-7T-ire"/>
                             <constraint firstItem="SK9-9B-iQJ" firstAttribute="leading" secondItem="sI8-RH-zKb" secondAttribute="leading" constant="16" id="dM3-Iy-rX8"/>
-                            <constraint firstAttribute="bottom" secondItem="SK9-9B-iQJ" secondAttribute="bottom" constant="8" id="hLS-vB-yvr"/>
+                            <constraint firstItem="SK9-9B-iQJ" firstAttribute="centerY" secondItem="sI8-RH-zKb" secondAttribute="centerY" id="gWP-js-XUc"/>
                             <constraint firstItem="acl-DZ-IN9" firstAttribute="leading" secondItem="SK9-9B-iQJ" secondAttribute="trailing" constant="8" id="jcz-04-p8x"/>
-                            <constraint firstAttribute="height" constant="75" id="lPP-Al-fqi"/>
-                            <constraint firstItem="SK9-9B-iQJ" firstAttribute="top" secondItem="sI8-RH-zKb" secondAttribute="top" constant="8" id="qY7-2p-wXl"/>
+                            <constraint firstAttribute="height" priority="999" constant="75" id="lPP-Al-fqi"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -17,22 +17,22 @@ extension UICollectionView {
     register(nib, forCellWithReuseIdentifier: identifier)
   }
   
-  func calculateCellsize(view: UIView,
+  func calculateCellsize(viewHeight: CGFloat,
                          sectionInsets: UIEdgeInsets,
                          itemsPerRow: CGFloat,
                          itemsPerColumn: CGFloat) -> CGSize {
     
     let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
     
-    let availableWidth = view.frame.width - paddingSpace
+    let availableWidth = UIScreen.width - paddingSpace
     
     let widthPerItem = availableWidth / itemsPerRow
     
     let columnPaddingSpace = sectionInsets.top * (itemsPerColumn + 1)
     
-    let availableHeight = view.frame.width - columnPaddingSpace
+    let availableHeight = viewHeight - columnPaddingSpace
     
-    let heightPerItem = availableHeight / itemsPerRow
+    let heightPerItem = availableHeight / itemsPerColumn
     
     return CGSize(width: widthPerItem, height: heightPerItem)
   }

@@ -19,14 +19,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bek-1z-MCZ">
                         <rect key="frame" x="0.0" y="0.0" width="407" height="420"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVX-Dr-M5c">
-                                <rect key="frame" x="16" y="8" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="slj-IJ-2ms">
-                                <rect key="frame" x="0.0" y="37" width="407" height="383"/>
+                                <rect key="frame" x="0.0" y="0.0" width="407" height="420"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4T2-Pr-tFr">
                                     <size key="itemSize" width="128" height="128"/>
@@ -38,13 +32,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="MVX-Dr-M5c" firstAttribute="top" secondItem="Bek-1z-MCZ" secondAttribute="top" priority="250" constant="8" id="8Wp-tf-Gil"/>
                             <constraint firstAttribute="height" constant="420" id="GSc-Gc-QvG"/>
                             <constraint firstItem="slj-IJ-2ms" firstAttribute="leading" secondItem="Bek-1z-MCZ" secondAttribute="leading" id="IEj-ej-u86"/>
-                            <constraint firstItem="slj-IJ-2ms" firstAttribute="top" secondItem="MVX-Dr-M5c" secondAttribute="bottom" constant="8" id="ZBp-8H-4G0"/>
+                            <constraint firstItem="slj-IJ-2ms" firstAttribute="top" secondItem="Bek-1z-MCZ" secondAttribute="top" id="Npd-o8-EXF"/>
                             <constraint firstAttribute="trailing" secondItem="slj-IJ-2ms" secondAttribute="trailing" id="blL-xj-Tq1"/>
                             <constraint firstAttribute="bottom" secondItem="slj-IJ-2ms" secondAttribute="bottom" id="k34-ul-sSb"/>
-                            <constraint firstItem="MVX-Dr-M5c" firstAttribute="leading" secondItem="Bek-1z-MCZ" secondAttribute="leading" constant="16" id="tXi-LC-EBX"/>
                         </constraints>
                     </view>
                 </subviews>

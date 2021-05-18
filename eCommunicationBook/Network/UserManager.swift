@@ -14,7 +14,7 @@ enum LoginError: Error {
 class UserManager {
     
     static let shared = UserManager()
-    var userID: String? = "no.00001"
+    var userID: String? = "no.00000"
   
       func login(id: String = "", completion: @escaping (Result<String, Error>) -> Void) {
   

@@ -12,10 +12,11 @@
 		74025807265264B100BA6BDA /* ServiceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74025805265264B100BA6BDA /* ServiceCollectionViewCell.xib */; };
 		7402580A265267FA00BA6BDA /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74025808265267FA00BA6BDA /* ServicesTableViewCell.swift */; };
 		7402580B265267FA00BA6BDA /* ServicesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74025809265267FA00BA6BDA /* ServicesTableViewCell.xib */; };
-		7402580D26526D3800BA6BDA /* ServiceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402580C26526D3800BA6BDA /* ServiceCollectionViewController.swift */; };
 		7402581226529BD900BA6BDA /* BannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402581026529BD900BA6BDA /* BannerTableViewCell.swift */; };
 		7402581326529BD900BA6BDA /* BannerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7402581126529BD900BA6BDA /* BannerTableViewCell.xib */; };
 		7402581526529E4900BA6BDA /* BannerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402581426529E4900BA6BDA /* BannerData.swift */; };
+		74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74025817265359D400BA6BDA /* NewsTableViewCell.swift */; };
+		7402581A265359D400BA6BDA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74025818265359D400BA6BDA /* NewsTableViewCell.xib */; };
 		741FAC85264CD77200D5C34B /* ChatRoomPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC7D264CD77200D5C34B /* ChatRoomPage.storyboard */; };
 		741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC7F264CD77200D5C34B /* AccountPage.storyboard */; };
 		741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC81264CD77200D5C34B /* HomePage.storyboard */; };
@@ -77,10 +78,11 @@
 		74025805265264B100BA6BDA /* ServiceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceCollectionViewCell.xib; sourceTree = "<group>"; };
 		74025808265267FA00BA6BDA /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTableViewCell.swift; sourceTree = "<group>"; };
 		74025809265267FA00BA6BDA /* ServicesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesTableViewCell.xib; sourceTree = "<group>"; };
-		7402580C26526D3800BA6BDA /* ServiceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCollectionViewController.swift; sourceTree = "<group>"; };
 		7402581026529BD900BA6BDA /* BannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableViewCell.swift; sourceTree = "<group>"; };
 		7402581126529BD900BA6BDA /* BannerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerTableViewCell.xib; sourceTree = "<group>"; };
 		7402581426529E4900BA6BDA /* BannerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerData.swift; sourceTree = "<group>"; };
+		74025817265359D400BA6BDA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		74025818265359D400BA6BDA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		741FAC7E264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChatRoomPage.storyboard; sourceTree = "<group>"; };
 		741FAC80264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AccountPage.storyboard; sourceTree = "<group>"; };
 		741FAC82264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomePage.storyboard; sourceTree = "<group>"; };
@@ -154,6 +156,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		740258162653599900BA6BDA /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				741FAC81264CD77200D5C34B /* HomePage.storyboard */,
+				7402581026529BD900BA6BDA /* BannerTableViewCell.swift */,
+				7402581126529BD900BA6BDA /* BannerTableViewCell.xib */,
+				74025808265267FA00BA6BDA /* ServicesTableViewCell.swift */,
+				74025809265267FA00BA6BDA /* ServicesTableViewCell.xib */,
+				74025804265264B100BA6BDA /* ServiceCollectionViewCell.swift */,
+				74025805265264B100BA6BDA /* ServiceCollectionViewCell.xib */,
+				74025817265359D400BA6BDA /* NewsTableViewCell.swift */,
+				74025818265359D400BA6BDA /* NewsTableViewCell.xib */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
 		745147CB264CDE9A00172419 /* AccountPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,14 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
-				741FAC81264CD77200D5C34B /* HomePage.storyboard */,
-				7402581026529BD900BA6BDA /* BannerTableViewCell.swift */,
-				7402581126529BD900BA6BDA /* BannerTableViewCell.xib */,
-				74025808265267FA00BA6BDA /* ServicesTableViewCell.swift */,
-				74025809265267FA00BA6BDA /* ServicesTableViewCell.xib */,
-				7402580C26526D3800BA6BDA /* ServiceCollectionViewController.swift */,
-				74025804265264B100BA6BDA /* ServiceCollectionViewCell.swift */,
-				74025805265264B100BA6BDA /* ServiceCollectionViewCell.xib */,
+				740258162653599900BA6BDA /* HomePage */,
 				745147E9264D46C100172419 /* ChatRoomPage */,
 				745147CB264CDE9A00172419 /* AccountPage */,
 				741FAC83264CD77200D5C34B /* CalendarPage.storyboard */,
@@ -418,6 +429,7 @@
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
 				7402580B265267FA00BA6BDA /* ServicesTableViewCell.xib in Resources */,
 				74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */,
+				7402581A265359D400BA6BDA /* NewsTableViewCell.xib in Resources */,
 				74C2376D264BB5FE001BF47A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,7 +510,6 @@
 				745147D2264CEF0000172419 /* Service.swift in Sources */,
 				749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
-				7402580D26526D3800BA6BDA /* ServiceCollectionViewController.swift in Sources */,
 				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
 				74E94738264BE09500AFB046 /* Article.swift in Sources */,
 				74E94737264BE09500AFB046 /* Author.swift in Sources */,
@@ -518,6 +529,7 @@
 				7456DC6926500B7800535297 /* ConversationViewmodel.swift in Sources */,
 				74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */,
 				74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */,
+				74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */,
 				74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */,
 				745147E0264D386700172419 /* ChatRoom.swift in Sources */,
 				74BDBEE2264FD2D70040C0D6 /* UserMessageTableViewCell.swift in Sources */,

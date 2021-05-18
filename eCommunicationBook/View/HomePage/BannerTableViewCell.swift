@@ -8,8 +8,14 @@
 
 import UIKit
 
-class BannerTableViewCell: UITableViewCell {
-
+class BannerTableViewCell: UITableViewCell, UIScrollViewDelegate {
+  
+  
+  
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    print("Called")
+  }
+  
   @IBOutlet weak var bannerView: BannerView!
   
   let btnImage = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
@@ -19,73 +25,34 @@ class BannerTableViewCell: UITableViewCell {
                                    BannerData(id: 0002, picture: "https://images.unsplash.com/photo-1503442862980-50ccb3f1d085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80", story: "Good Night")]
   // swiftlint:enable line_length
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-//    bannerView.scrollView.delegate = self
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+    super.awakeFromNib()
+    // Initialization code
+  }
   
-}
-
-
-
-extension BannerTableViewCell {
-
-  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-    bannerView.timer.invalidate()
-  }
-
-  /**
-   * scrollView 滑動坄停止監聽
-   */
-  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    let imageCount = bannerView.imageArray.count
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     
-    if imageCount > 0 {
-    // 向右拖動
-    if bannerView.scrollView.contentOffset.x > bannerView.width {
-      bannerView.currentIndex = (bannerView.currentIndex + 1) % imageCount
-      }
-      
-      // 向左拖動
-    if bannerView.scrollView.contentOffset.x < bannerView.width {
-      bannerView.currentIndex = (bannerView.currentIndex - 1 + imageCount) % imageCount
-      }
-    
-      // 更新小圓點當前位置
-    bannerView.pageControl.currentPage = (bannerView.currentIndex - 1 + imageCount) % imageCount
-    bannerView.reloadImage()
-    }
-      setupTimer()
+    // Configure the view for the selected state
   }
+  
 }
 
 extension BannerTableViewCell {
   
   func setupTimer() {
     bannerView.timer = Timer.scheduledTimer(timeInterval: 4,
-                                                   target: self,
-                                                   selector: #selector(timeChanged),
-                                                   userInfo: nil,
-                                                   repeats: true)
-      RunLoop.current.add(bannerView.timer, forMode: RunLoop.Mode.common)
+                                            target: self,
+                                            selector: #selector(timeChanged),
+                                            userInfo: nil,
+                                            repeats: true)
+    RunLoop.current.add(bannerView.timer, forMode: RunLoop.Mode.common)
   }
-  /**
-   * time 事件
-   */
+  // time 事件
   @objc func timeChanged() {
     bannerView.currentIndex += 1
-// 更新圖片+scrollView
+    // 更新圖片+scrollView
     bannerView.reloadImage()
   }
-  
-  
   
   func setBannerView() {
     print(bannerDatas)
@@ -97,24 +64,8 @@ extension BannerTableViewCell {
     }
     self.addSubview(self.bannerView.scrollView)
     self.addSubview(self.bannerView.pageControl)
-//    self.addSubview(self.bannerView.closeBanner)
     setupTimer()
-//    setButtonFunc()
   }
-  
-//  @objc func hideBanner(_ sender: UIButton) {
-//    UIView.animate(withDuration: 0.6, animations: {
-//      self.lobbyBannerHeight.constant = 0
-//      self.bannerView.scrollView.isHidden = true
-//      self.bannerView.pageControl.isHidden = true
-//      self.bannerView.closeBanner.isHidden = true
-//      self.view.layoutIfNeeded()
-//    })
-//  }
-  
-//  func setButtonFunc() {
-//    self.lobbyBannerView.closeBanner.addTarget(self, action: #selector(hideBanner(_:)), for: .touchUpInside)
-//  }
 }
 
 
@@ -127,7 +78,7 @@ class BannerView: UIView, UIScrollViewDelegate {
   var imageArray = [String]()
   
   var sloganArray = [String]()
-
+  
   var timer = Timer()
   
   var leftImageView = UIImageView()
@@ -142,22 +93,11 @@ class BannerView: UIView, UIScrollViewDelegate {
   
   var rightLabel = UILabel()
   
-  // 關廣告按鈕
-//  lazy var closeBanner: UIButton = {
-//
-//    let button = UIButton()
-//
-//    button.frame = CGRect(x: width - 28, y: scrollView.frame.maxY-142, width: 22, height: 22)
-//
-//    button.setImage(UIImage(named: "Icons_24px_CleanAll"), for: UIControl.State.normal)
-//
-//    return button
-//    }()
   
   lazy var scrollView: UIScrollView = {
     
     let scrollView = UIScrollView()
-
+    
     scrollView.showsHorizontalScrollIndicator = false
     
     scrollView.contentSize = CGSize(width: width * 3, height: 150)
@@ -173,7 +113,7 @@ class BannerView: UIView, UIScrollViewDelegate {
     
     currentImageView.frame = CGRect(x: width * 1, y: 0, width: width, height: 150)
     setLabel(label: currentLabel, index: 1)
-
+    
     leftImageView.frame = CGRect(x: width * 0, y: 0, width: width, height: 150)
     setLabel(label: leftLabel, index: 0)
     
@@ -182,18 +122,18 @@ class BannerView: UIView, UIScrollViewDelegate {
     
     scrollView.addSubview(currentImageView)
     scrollView.addSubview(currentLabel)
-
+    
     scrollView.addSubview(leftImageView)
     scrollView.addSubview(leftLabel)
     
     scrollView.contentMode = .scaleAspectFill
     scrollView.clipsToBounds = true
     
-//    scrollView.delegate = self
+    //    scrollView.delegate = self
     
     return scrollView
   }()
-
+  
   // 下方小圓點
   lazy var pageControl: UIPageControl = {
     
@@ -225,27 +165,27 @@ class BannerView: UIView, UIScrollViewDelegate {
     let imagecount = imageArray.count
     
     if imagecount != 0 {
-        currentIndex = currentIndex % imagecount
-        
-        scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: false)
-        
-        pageControl.currentPage = (currentIndex - 1 + imagecount) % imagecount // 防止越界
-        
-        leftIndex = (currentIndex - 1 + imagecount) % imagecount // 防止越界
-        
-        rightIndex = (currentIndex + 1) % imageArray.count
-        
-        rightImageView.loadImage(imageArray[leftIndex])
+      currentIndex = currentIndex % imagecount
+      
+      scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: false)
+      
+      pageControl.currentPage = (currentIndex - 1 + imagecount) % imagecount // 防止越界
+      
+      leftIndex = (currentIndex - 1 + imagecount) % imagecount // 防止越界
+      
+      rightIndex = (currentIndex + 1) % imageArray.count
+      
+      rightImageView.loadImage(imageArray[leftIndex])
       rightImageView.contentMode = .scaleAspectFill
-        rightLabel.text = sloganArray[leftIndex]
-        
-        currentImageView.loadImage(imageArray[currentIndex])
+      rightLabel.text = sloganArray[leftIndex]
+      
+      currentImageView.loadImage(imageArray[currentIndex])
       currentImageView.contentMode = .scaleAspectFill
-        currentLabel.text = sloganArray[currentIndex]
-        
-        leftImageView.loadImage(imageArray[rightIndex])
+      currentLabel.text = sloganArray[currentIndex]
+      
+      leftImageView.loadImage(imageArray[rightIndex])
       leftImageView.contentMode = .scaleAspectFill
-        leftLabel.text = sloganArray[leftIndex]
+      leftLabel.text = sloganArray[leftIndex]
     }
   }
   

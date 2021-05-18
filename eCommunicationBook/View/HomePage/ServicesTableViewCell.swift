@@ -12,6 +12,7 @@ class ServicesTableViewCell: UITableViewCell {
   @IBOutlet weak var collectionView: UICollectionView!
   
   @IBOutlet weak var height: NSLayoutConstraint!
+  
   override func awakeFromNib() {
         super.awakeFromNib()
       collectionView.registerCellWithNib(identifier: ServiceCollectionViewCell.identifier, bundle: nil)

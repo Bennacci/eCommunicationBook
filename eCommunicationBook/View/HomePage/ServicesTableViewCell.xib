@@ -9,18 +9,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="461" id="KGk-i7-Jjw" customClass="ServicesTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="407" height="461"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="195" id="KGk-i7-Jjw" customClass="ServicesTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="789" height="195"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="407" height="461"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="789" height="195"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bek-1z-MCZ">
-                        <rect key="frame" x="0.0" y="0.0" width="407" height="420"/>
+                        <rect key="frame" x="0.0" y="0.0" width="789" height="195"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="slj-IJ-2ms">
-                                <rect key="frame" x="0.0" y="0.0" width="407" height="420"/>
+                                <rect key="frame" x="0.0" y="0.0" width="789" height="195"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4T2-Pr-tFr">
                                     <size key="itemSize" width="128" height="128"/>
@@ -32,7 +32,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="420" id="GSc-Gc-QvG"/>
+                            <constraint firstAttribute="height" priority="999" constant="420" id="GSc-Gc-QvG"/>
                             <constraint firstItem="slj-IJ-2ms" firstAttribute="leading" secondItem="Bek-1z-MCZ" secondAttribute="leading" id="IEj-ej-u86"/>
                             <constraint firstItem="slj-IJ-2ms" firstAttribute="top" secondItem="Bek-1z-MCZ" secondAttribute="top" id="Npd-o8-EXF"/>
                             <constraint firstAttribute="trailing" secondItem="slj-IJ-2ms" secondAttribute="trailing" id="blL-xj-Tq1"/>
@@ -54,7 +54,7 @@
                 <outlet property="collectionView" destination="slj-IJ-2ms" id="Oer-4k-heX"/>
                 <outlet property="height" destination="GSc-Gc-QvG" id="iYj-Gb-KGY"/>
             </connections>
-            <point key="canvasLocation" x="193.47826086956522" y="282.25446428571428"/>
+            <point key="canvasLocation" x="142.75362318840581" y="90.066964285714278"/>
         </tableViewCell>
     </objects>
 </document>

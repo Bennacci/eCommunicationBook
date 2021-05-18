@@ -9,6 +9,7 @@
 import UIKit
 
 class ServicesTableViewCell: UITableViewCell {
+  
   @IBOutlet weak var collectionView: UICollectionView!
   
   @IBOutlet weak var height: NSLayoutConstraint!

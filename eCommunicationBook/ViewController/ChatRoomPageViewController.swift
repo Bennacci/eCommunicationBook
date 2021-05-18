@@ -23,6 +23,7 @@ class ChatRoomPageViewController: UIViewController {
     super.viewDidLoad()
     
     self.navigationController?.navigationBar.backgroundColor = .blue
+    
     self.navigationItem.title = "Chats"
     
     // Do any additional setup after loading the view.

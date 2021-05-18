@@ -12,24 +12,24 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BannerTableViewCell" rowHeight="254" id="KGk-i7-Jjw" customClass="BannerTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="436" height="254"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="436" height="254"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V10-Xy-r5R" customClass="BannerView" customModule="eCommunicationBook" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="436" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="436" height="254"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="150" id="AxP-86-WcF"/>
+                            <constraint firstAttribute="height" priority="999" constant="150" id="AxP-86-WcF"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="V10-Xy-r5R" secondAttribute="bottom" id="BOD-yr-QiB"/>
-                    <constraint firstItem="V10-Xy-r5R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CXv-mt-RyS"/>
+                    <constraint firstItem="V10-Xy-r5R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0jl-MU-iJR"/>
                     <constraint firstAttribute="trailing" secondItem="V10-Xy-r5R" secondAttribute="trailing" id="XAf-1e-8NR"/>
                     <constraint firstItem="V10-Xy-r5R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pxV-uo-u0c"/>
+                    <constraint firstAttribute="bottom" secondItem="V10-Xy-r5R" secondAttribute="bottom" id="seT-B1-QiS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -10,35 +10,38 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ServiceCollectionViewCell" id="gTV-IL-0wX" customClass="ServiceCollectionViewCell" customModule="eCommunicationBook" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="183" height="219"/>
+            <rect key="frame" x="0.0" y="0.0" width="133" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="183" height="219"/>
+                <rect key="frame" x="0.0" y="0.0" width="133" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibc-tr-d6L">
-                        <rect key="frame" x="0.0" y="0.0" width="183" height="219"/>
+                        <rect key="frame" x="0.0" y="0.0" width="133" height="100"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="tortoise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cUt-mA-LIK">
+                                <rect key="frame" x="30" y="3" width="73" height="68.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cUt-mA-LIK" secondAttribute="height" multiplier="1:1" constant="1" id="ZAr-Hv-0Li"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUf-HJ-BLT">
-                                <rect key="frame" x="70.5" y="190.5" width="42" height="20.5"/>
+                                <rect key="frame" x="45.5" y="71.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="tortoise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cUt-mA-LIK">
-                                <rect key="frame" x="0.0" y="3" width="183" height="179"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="cUt-mA-LIK" secondAttribute="bottom" constant="28" id="Kx7-vZ-TiX"/>
                             <constraint firstItem="qUf-HJ-BLT" firstAttribute="centerX" secondItem="ibc-tr-d6L" secondAttribute="centerX" id="N0D-us-0az"/>
+                            <constraint firstItem="cUt-mA-LIK" firstAttribute="centerX" secondItem="ibc-tr-d6L" secondAttribute="centerX" id="Rfi-zS-agl"/>
                             <constraint firstAttribute="bottom" secondItem="qUf-HJ-BLT" secondAttribute="bottom" constant="8" id="Yfm-VZ-kcG"/>
-                            <constraint firstItem="qUf-HJ-BLT" firstAttribute="top" secondItem="cUt-mA-LIK" secondAttribute="bottom" constant="8" id="ZyD-FL-DA1"/>
                             <constraint firstItem="cUt-mA-LIK" firstAttribute="top" secondItem="ibc-tr-d6L" secondAttribute="top" id="d0z-4p-dGX"/>
-                            <constraint firstItem="cUt-mA-LIK" firstAttribute="leading" secondItem="ibc-tr-d6L" secondAttribute="leading" id="jY8-zz-ooy"/>
-                            <constraint firstAttribute="trailing" secondItem="cUt-mA-LIK" secondAttribute="trailing" id="tDN-jF-YTk"/>
+                            <constraint firstAttribute="height" priority="999" constant="36" id="qdc-Xc-mt4"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="lkBorderWidth">
@@ -61,12 +64,13 @@
                 <constraint firstAttribute="bottom" secondItem="ibc-tr-d6L" secondAttribute="bottom" id="z2L-al-HJe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="183" height="219"/>
+            <size key="customSize" width="133" height="100"/>
             <connections>
+                <outlet property="height" destination="qdc-Xc-mt4" id="obO-cN-UfP"/>
                 <outlet property="serviceIcon" destination="cUt-mA-LIK" id="SKw-sv-Mnb"/>
                 <outlet property="servicename" destination="qUf-HJ-BLT" id="uEI-PZ-xys"/>
             </connections>
-            <point key="canvasLocation" x="228.2608695652174" y="167.07589285714286"/>
+            <point key="canvasLocation" x="192.0289855072464" y="124.55357142857142"/>
         </collectionViewCell>
     </objects>
     <resources>

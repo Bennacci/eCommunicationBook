@@ -20,9 +20,9 @@ class HomePageViewController: UIViewController {
   
   var hotCell = ServicesTableViewCell()
   
-  var hotCellHeight: CGFloat = 120
+  var hotCellHeight: CGFloat = UIScreen.height / 7
   
-  var recommendedCellHeight: CGFloat = 150
+  var recommendedCellHeight: CGFloat = UIScreen.height / 5
   
   private let collectionViewSectionInsets = UIEdgeInsets(
     top: 10.0,
@@ -211,16 +211,20 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,
                       minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 8
+    if collectionView == hotCell.collectionView {
+      return 15
+    } else {
+      return 12
+    }
   }
   
   /// 滑動方向為「垂直」的話即「左右」的間距(預設為重直)
   
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return 8
-  }
+//  func collectionView(_ collectionView: UICollectionView,
+//                      layout collectionViewLayout: UICollectionViewLayout,
+//                      minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//    return 8
+//  }
 }
 
 extension HomePageViewController: UIScrollViewDelegate {

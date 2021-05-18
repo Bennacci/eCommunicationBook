@@ -24,18 +24,18 @@ class AccountPageViewController: UIViewController {
 extension AccountPageViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return viewModel.services.count
+    return viewModel.services.title.count
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.services[section].count
+    return viewModel.services.items[section].count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier,
                                                    for: indexPath) as? ServiceTableViewCell
       else { fatalError("Unexpected Table View Cell") }
-    cell.layoutCell(title: viewModel.services[indexPath.section][indexPath.row])
+      cell.layoutCell(accountItem: viewModel.services.items[indexPath.section][indexPath.row])
       return cell
   }
 }

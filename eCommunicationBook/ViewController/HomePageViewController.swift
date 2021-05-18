@@ -79,7 +79,7 @@ extension HomePageViewController: UITableViewDataSource {
                  
                  numberOfRowsInSection section: Int) -> Int {
     
-    return [1, 1, 1, 3][section]
+    return [1, 1, 1, 5][section]
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

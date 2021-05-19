@@ -25,6 +25,9 @@
                                             <constraint firstAttribute="height" constant="40" id="bKf-xK-LPh"/>
                                         </constraints>
                                         <state key="normal" image="person.2.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="searchUser:" destination="p86-dY-E7B" eventType="touchUpInside" id="ucY-qn-NeJ"/>
+                                        </connections>
                                     </button>
                                     <searchBar contentMode="redraw" text="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Jvn-PG-wrY">
                                         <rect key="frame" x="72" y="14" width="326" height="44"/>
@@ -371,10 +374,10 @@
             </objects>
             <point key="canvasLocation" x="-2171.0144927536235" y="1707.5892857142856"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--No Underline Navigation Controller-->
         <scene sceneID="tbr-jo-aJa">
             <objects>
-                <navigationController id="d38-Sa-bMf" sceneMemberID="viewController">
+                <navigationController id="d38-Sa-bMf" customClass="NoUnderlineNavigationController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="message" catalog="system" selectedImage="message.fill" id="1IK-ca-zWC"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yQw-dy-ls8">

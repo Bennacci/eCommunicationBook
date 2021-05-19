@@ -8,71 +8,61 @@
 
 import UIKit
 
-//class SegueFromRight: UIStoryboardSegue {
-//    override func perform() {
-//
-//        // credits to http://www.appcoda.com/custom-segue-animations/
-//
-//        let firstClassView = self.source.view
-//        let secondClassView = self.destination.view
-//
-//        let screenWidth = UIScreen.width
-//        let screenHeight = UIScreen.height
-//
-//        secondClassView?.frame = CGRect(x: screenWidth, y: 0, width: screenWidth, height: screenHeight)
-//
-//        if let window = UIApplication.shared.keyWindow {
-//
-//            window.insertSubview(secondClassView!, aboveSubview: firstClassView!)
-//
-//            UIView.animate(withDuration: 0.4, animations: { () -> Void in
-//
-//                firstClassView?.frame = (firstClassView?.frame.offsetBy(dx: -screenWidth, dy: 0))!
-//                secondClassView?.frame = (secondClassView?.frame.offsetBy(dx: -screenWidth, dy: 0))!
-//
-//            }, completion: {(_) -> Void in
-//
-//                self.source.navigationController?.pushViewController(self.destination, animated: false)
-////              self.destination.navigationController?.setNavigationBarHidden(true, animated: true)
-//              
-//            })
-//
-//        }
-//
-//    }
-//}
-
 private struct StoryboardCategory {
-
-    static let main = "Main"
-
-    static let lobby = "Lobby"
-
-    static let product = "Product"
-
-    static let trolley = "Trolley"
-
-    static let profile = "Profile"
-
-    static let auth = "Auth"
+  
+  static let newAClass = "NewAClass"
+  
+  static let searchUser = "SearchUser"
+  
+  static let newEvent = "NewEvent"
+  
+  static let setASign = "SetASign"
+  
+  static let writeAttendAndLeave = "WriteAttendAndLeave"
+  
+  static let writeLessonState = "WriteLessonState"
+  
+  static let checkLearingStat = "CheckLearingStat"
+  
+  static let payTimeAnnounce = "PayTimeAnnounce"
+  
+  static let contactUs = "ContactUs"
+  
+  static let leaveReservation = "LeaveReservation"
+  
+  static let courseReservation = "CourseReservation"
+  
+  static let makeUpReservation = "MakeUpReservation"
 }
 
 extension UIStoryboard {
+  
+  static var newAClass: UIStoryboard { return storyboard(name: StoryboardCategory.newAClass) }
+  
+    static var searchUser: UIStoryboard { return storyboard(name: StoryboardCategory.searchUser) }
+  
+  static var newEvent: UIStoryboard { return storyboard(name: StoryboardCategory.newEvent) }
+  
+  static var setASign: UIStoryboard { return storyboard(name: StoryboardCategory.setASign) }
+  
+  static var writeAttendAndLeave: UIStoryboard { return storyboard(name: StoryboardCategory.writeAttendAndLeave) }
+  
+  static var writeLessonState: UIStoryboard { return storyboard(name: StoryboardCategory.writeLessonState) }
+  
+  static var checkLearingStat: UIStoryboard { return storyboard(name: StoryboardCategory.checkLearingStat) }
+  
+  static var payTimeAnnounce: UIStoryboard { return storyboard(name: StoryboardCategory.payTimeAnnounce) }
+  
+  static var contactUs: UIStoryboard { return storyboard(name: StoryboardCategory.contactUs) }
+  
+  static var leaveReservation: UIStoryboard { return storyboard(name: StoryboardCategory.leaveReservation) }
+  
+  static var courseReservation: UIStoryboard { return storyboard(name: StoryboardCategory.courseReservation) }
+  
+  static var makeUpReservation: UIStoryboard { return storyboard(name: StoryboardCategory.makeUpReservation) }
 
-    static var main: UIStoryboard { return stStoryboard(name: StoryboardCategory.main) }
-
-    static var lobby: UIStoryboard { return stStoryboard(name: StoryboardCategory.lobby) }
-
-    static var product: UIStoryboard { return stStoryboard(name: StoryboardCategory.product) }
-
-    static var trolley: UIStoryboard { return stStoryboard(name: StoryboardCategory.trolley) }
-
-    static var profile: UIStoryboard { return stStoryboard(name: StoryboardCategory.profile) }
-
-    static var auth: UIStoryboard { return stStoryboard(name: StoryboardCategory.auth) }
-
-    private static func stStoryboard(name: String) -> UIStoryboard {
-
-        return UIStoryboard(name: name, bundle: nil)
-    }
+  private static func storyboard(name: String) -> UIStoryboard {
+    
+    return UIStoryboard(name: name, bundle: nil)
+  }
 }

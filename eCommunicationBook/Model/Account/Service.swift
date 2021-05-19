@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
+enum UserType: String {
+  
+  case teacher = "teacher"
+  
+  case parents = "parents"
+}
+
 struct ServiceGroup {
 
     let title: [String]
@@ -72,7 +79,7 @@ enum ParentSeviceItem: AccountItem {
   
   var title: String {
     switch self {
-
+      
     case .checkLearingStat: return localizedString("學習狀況")
       
     case .payTimeAnnounce: return localizedString("繳費通知")
@@ -90,6 +97,8 @@ enum ParentSeviceItem: AccountItem {
 
 enum TeacherSeviceItem: AccountItem {
   
+  case newAUser
+  
   case newAClass
   
   case newEvent
@@ -103,7 +112,9 @@ enum TeacherSeviceItem: AccountItem {
   var image: UIImage? {
     
     switch self {
-    
+      
+    case .newAUser: return UIImage.asset(.Bear)
+      
     case .newAClass: return UIImage.asset(.Bear)
       
     case .newEvent: return UIImage.asset(.Bear)
@@ -121,6 +132,8 @@ enum TeacherSeviceItem: AccountItem {
     
     switch self {
     
+    case .newAUser: return localizedString("新增用戶")
+      
     case .newAClass: return localizedString("開課")
       
     case .newEvent: return localizedString("新增活動")

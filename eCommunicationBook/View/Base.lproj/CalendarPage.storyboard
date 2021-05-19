@@ -201,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="-2210.144927536232" y="1707.5892857142856"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--No Underline Navigation Controller-->
         <scene sceneID="GH1-TR-FiW">
             <objects>
-                <navigationController id="eHo-Ci-nGx" sceneMemberID="viewController">
+                <navigationController id="eHo-Ci-nGx" customClass="NoUnderlineNavigationController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" selectedImage="calendar" id="00s-Vw-c1S"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4KP-9X-H5D">

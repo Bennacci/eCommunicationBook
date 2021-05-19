@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--No Underline Navigation Controller-->
         <scene sceneID="PWu-4z-ADJ">
             <objects>
-                <navigationController id="qXg-FC-TFT" sceneMemberID="viewController">
+                <navigationController id="qXg-FC-TFT" customClass="NoUnderlineNavigationController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="LQD-1f-B0y"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GQe-4H-gK1">

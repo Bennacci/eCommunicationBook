@@ -31,8 +31,8 @@ struct Article: Codable {
             "title": title as Any,
             "content": content as Any,
             "createdTime": createdTime as Any,
-            "tag": category as Any
-//            "author": author?.toDict
+            "tag": category as Any,
+            "author": author?.toDict as Any
         ]
     }
 }

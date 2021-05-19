@@ -13,7 +13,7 @@ struct Course: Codable {
   let name: String
   let teacher: [String]
   let student: [String]
-  let courseTime: [Double]
+  let courseTime: [RoutineHour]
   let fee: Int
   let lesson: [Lesson]
   
@@ -34,8 +34,8 @@ struct Course: Codable {
       "teacher": teacher as Any,
       "student": student as Any,
       "courseTime": courseTime as Any,
-      "fee": fee as Any
-//      "lesson": [lesson.toDict
+      "fee": fee as Any,
+      "lesson": lesson as Any
     ]
   }
 }

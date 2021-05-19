@@ -11,12 +11,6 @@ enum LoginError: Error {
     case idNotExistError(String)
 }
 
-enum UserType {
-  
-  case teacher
-  
-  case parents
-}
 
 class UserManager {
     

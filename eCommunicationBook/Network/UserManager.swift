@@ -11,7 +11,6 @@ enum LoginError: Error {
     case idNotExistError(String)
 }
 
-
 class UserManager {
     
     static let shared = UserManager()

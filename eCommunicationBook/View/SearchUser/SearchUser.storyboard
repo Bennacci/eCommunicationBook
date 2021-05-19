@@ -31,15 +31,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qgZ-j8-5aF">
-                                <rect key="frame" x="0.0" y="88" width="414" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="X34-JV-f1G"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Co-tl-Qkr">
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qgZ-j8-5aF">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="X34-JV-f1G"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="XGt-j0-biN" id="nem-F5-6nm"/>
+                                        </connections>
+                                    </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUh-GI-E0L">
+                                        <rect key="frame" x="414" y="0.0" width="0.0" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" id="bKY-WU-lod"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancle"/>
+                                        <connections>
+                                            <action selector="cancleSearching:" destination="XGt-j0-biN" eventType="touchUpInside" id="8Ue-yN-MAK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmW-63-TkX" userLabel="I">
-                                <rect key="frame" x="0.0" y="133" width="414" height="729"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="XGt-j0-biN" id="RNN-yy-y2r"/>
@@ -49,12 +67,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="qgZ-j8-5aF" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="6gs-Bt-uyT"/>
                             <constraint firstItem="BBO-tW-MsE" firstAttribute="trailing" secondItem="nmW-63-TkX" secondAttribute="trailing" id="9OU-zD-wpA"/>
                             <constraint firstItem="nmW-63-TkX" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="9Po-ua-Nh0"/>
-                            <constraint firstItem="qgZ-j8-5aF" firstAttribute="trailing" secondItem="BBO-tW-MsE" secondAttribute="trailing" id="RUm-M5-VgQ"/>
-                            <constraint firstItem="qgZ-j8-5aF" firstAttribute="top" secondItem="BBO-tW-MsE" secondAttribute="top" id="SEx-jO-MaZ"/>
-                            <constraint firstItem="nmW-63-TkX" firstAttribute="top" secondItem="qgZ-j8-5aF" secondAttribute="bottom" id="imK-4H-UEn"/>
+                            <constraint firstItem="nmW-63-TkX" firstAttribute="top" secondItem="7Co-tl-Qkr" secondAttribute="bottom" id="DoT-Ey-iOw"/>
+                            <constraint firstItem="7Co-tl-Qkr" firstAttribute="top" secondItem="BBO-tW-MsE" secondAttribute="top" id="G5n-8U-9Lm"/>
+                            <constraint firstAttribute="trailing" secondItem="7Co-tl-Qkr" secondAttribute="trailing" id="fLY-R6-44X"/>
+                            <constraint firstItem="7Co-tl-Qkr" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="hJP-SQ-iJK"/>
                             <constraint firstItem="BBO-tW-MsE" firstAttribute="bottom" secondItem="nmW-63-TkX" secondAttribute="bottom" id="mi0-ZX-nmd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BBO-tW-MsE"/>
@@ -76,6 +94,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancleButtonWidth" destination="bKY-WU-lod" id="N7h-6W-tNm"/>
+                        <outlet property="searchBar" destination="qgZ-j8-5aF" id="LEU-L6-qx7"/>
                         <outlet property="tableView" destination="nmW-63-TkX" id="Qdu-8O-etA"/>
                     </connections>
                 </viewController>

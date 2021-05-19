@@ -50,7 +50,7 @@ class AccountPageViewController: UIViewController{
 extension AccountPageViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return viewModel.servicesData().title.count
+    return viewModel.servicesData().items.count
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

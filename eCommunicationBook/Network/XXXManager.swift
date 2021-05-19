@@ -59,7 +59,7 @@ class XXXManager {
     
     db.collection("chatRooms")
       .order(by: "createdTime")
-      .whereField("members", arrayContains: UserManager.shared.userID)
+      .whereField("members", arrayContains: UserManager.shared.userID!)
       .addSnapshotListener { (documentSnapshot, error) in
         
         if let error = error {
@@ -77,6 +77,7 @@ class XXXManager {
                 self.db.collection("chatRooms")
                   .document("\(chatRoom.id)")
                   .collection("messages")
+                  .order(by: "createdTime", descending: true)
                   .addSnapshotListener { (documentSnapshot, error) in
                     
                     if let error = error {
@@ -168,6 +169,31 @@ class XXXManager {
     }
   }
   
+    func fetchUser(completion: @escaping (Result<[User], Error>) -> Void) {
+    
+    db.collection("users").getDocuments { (querySnapshot, error) in
+        
+        if let error = error {
+          
+          completion(.failure(error))
+        } else {
+          
+          var users = [User]()
+          
+          for document in querySnapshot!.documents {
+            
+            do {
+              if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                users.append(user)
+              }
+            } catch {
+              completion(.failure(error))
+            }
+          }
+          completion(.success(users))
+        }
+    }
+  }
   
   func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
     

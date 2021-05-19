@@ -47,7 +47,9 @@ class ServiceManager {
       
          items: [
            
-           [TeacherSeviceItem.newAClass,
+          [TeacherSeviceItem.newAUser],
+            
+            [TeacherSeviceItem.newAClass,
             
             TeacherSeviceItem.newEvent,
            

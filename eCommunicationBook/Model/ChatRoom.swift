@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
+//import FirebaseFirestoreSwift
 
 struct ChatRoom: Codable {
     var id: String
@@ -25,9 +25,9 @@ struct ChatRoom: Codable {
     var toDict: [String: Any] {
         return [
             "id": id as Any,
-            "member": members as [Any],
-            "time": createdTime as Any
-//            "messages": messages?.toDict
+            "member": members as Any,
+            "time": createdTime as Any,
+            "messages": messages as Any
         ]
     }
 }

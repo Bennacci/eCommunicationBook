@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aqo-bC-dyW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="iHe-nQ-cim">
+            <objects>
+                <navigationController id="aqo-bC-dyW" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z8c-Tn-30y">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XGt-j0-biN" kind="relationship" relationship="rootViewController" id="nUg-MQ-y9V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Edf-Ae-KAA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-742" y="58"/>
+        </scene>
+        <!--Search User View Controller-->
+        <scene sceneID="3ym-F6-JGV">
+            <objects>
+                <viewController id="XGt-j0-biN" customClass="SearchUserViewController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fqf-7X-2Nz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qgZ-j8-5aF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="X34-JV-f1G"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmW-63-TkX" userLabel="I">
+                                <rect key="frame" x="0.0" y="133" width="414" height="729"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XGt-j0-biN" id="RNN-yy-y2r"/>
+                                    <outlet property="delegate" destination="XGt-j0-biN" id="jb4-im-qsb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qgZ-j8-5aF" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="6gs-Bt-uyT"/>
+                            <constraint firstItem="BBO-tW-MsE" firstAttribute="trailing" secondItem="nmW-63-TkX" secondAttribute="trailing" id="9OU-zD-wpA"/>
+                            <constraint firstItem="nmW-63-TkX" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="9Po-ua-Nh0"/>
+                            <constraint firstItem="qgZ-j8-5aF" firstAttribute="trailing" secondItem="BBO-tW-MsE" secondAttribute="trailing" id="RUm-M5-VgQ"/>
+                            <constraint firstItem="qgZ-j8-5aF" firstAttribute="top" secondItem="BBO-tW-MsE" secondAttribute="top" id="SEx-jO-MaZ"/>
+                            <constraint firstItem="nmW-63-TkX" firstAttribute="top" secondItem="qgZ-j8-5aF" secondAttribute="bottom" id="imK-4H-UEn"/>
+                            <constraint firstItem="BBO-tW-MsE" firstAttribute="bottom" secondItem="nmW-63-TkX" secondAttribute="bottom" id="mi0-ZX-nmd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BBO-tW-MsE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ht9-m8-WOx">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="dng-zk-kiJ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4P9-Z4-9jF">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancle"/>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="4XG-Fb-lPw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lx0-hd-t78">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="nmW-63-TkX" id="Qdu-8O-etA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r1h-X4-oHC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="35" y="58"/>
+        </scene>
+    </scenes>
+</document>

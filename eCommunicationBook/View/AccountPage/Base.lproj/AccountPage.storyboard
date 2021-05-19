@@ -99,7 +99,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="bold"/>
                                 </state>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zG5-Wd-WAA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zG5-Wd-WAA">
                                 <rect key="frame" x="0.0" y="268" width="414" height="545"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -192,8 +192,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="dataSource" destination="Ub1-0l-Bna" id="9HA-qI-MeX"/>
-                                    <outlet property="delegate" destination="Ub1-0l-Bna" id="oQx-wQ-Xmu"/>
+                                    <outlet property="dataSource" destination="Ub1-0l-Bna" id="kA1-7c-Gsj"/>
+                                    <outlet property="delegate" destination="Ub1-0l-Bna" id="1nd-zo-wH2"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -248,10 +248,10 @@
             </objects>
             <point key="canvasLocation" x="-1336.2318840579712" y="1707.5892857142856"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--No Underline Navigation Controller-->
         <scene sceneID="z2E-h4-e01">
             <objects>
-                <navigationController id="4u5-en-rBg" sceneMemberID="viewController">
+                <navigationController id="4u5-en-rBg" customClass="NoUnderlineNavigationController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person.fill" id="gIa-dt-3oE"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="plf-ea-tJF">

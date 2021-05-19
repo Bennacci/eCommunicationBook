@@ -39,10 +39,27 @@
 		746BDE7026523D0B001B1E71 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE6F26523D0B001B1E71 /* Course.swift */; };
 		746BDE7226523D14001B1E71 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE7126523D14001B1E71 /* Lesson.swift */; };
 		746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE73265250EF001B1E71 /* HomePageViewController.swift */; };
+		74857F972654B95800AEF14D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F962654B95800AEF14D /* NavigationController.swift */; };
+		74857F9A2654BBF200AEF14D /* NewAClass.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74857F982654BBF200AEF14D /* NewAClass.storyboard */; };
+		74857F9C2654C7C800AEF14D /* NewAClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F9B2654C7C800AEF14D /* NewAClassViewController.swift */; };
+		74857F9E2654E81A00AEF14D /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F9D2654E81A00AEF14D /* SearchUserViewController.swift */; };
+		74857FA02654E83700AEF14D /* SearchUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74857F9F2654E83700AEF14D /* SearchUser.storyboard */; };
+		74857FA32654E9DB00AEF14D /* WideUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857FA12654E9DB00AEF14D /* WideUserTableViewCell.swift */; };
+		74857FA42654E9DB00AEF14D /* WideUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */; };
 		74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */; };
 		74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */; };
 		749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */; };
+		74A5A76D2654EC690039BC22 /* CircleUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5A76B2654EC690039BC22 /* CircleUserCollectionViewCell.swift */; };
+		74A5A76E2654EC690039BC22 /* CircleUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74A5A76C2654EC690039BC22 /* CircleUserCollectionViewCell.xib */; };
+		74A5A7712654EFDF0039BC22 /* SelecetedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5A76F2654EFDF0039BC22 /* SelecetedUserTableViewCell.swift */; };
+		74A5A7722654EFDF0039BC22 /* SelecetedUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74A5A7702654EFDF0039BC22 /* SelecetedUserTableViewCell.xib */; };
 		74A5C8AB264E2C1B00704C39 /* CalendarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5C8AA264E2C1B00704C39 /* CalendarPageViewController.swift */; };
+		74A7D1152655141D00B445EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7D1142655141D00B445EB /* User.swift */; };
+		74A7D117265518FA00B445EB /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7D116265518FA00B445EB /* DayOfWeek.swift */; };
+		74A7D11926552A6E00B445EB /* RoutineHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7D11826552A6E00B445EB /* RoutineHour.swift */; };
+		74A7D11B26552B2F00B445EB /* StudentPerformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7D11A26552B2F00B445EB /* StudentPerformance.swift */; };
+		74A7D11D2655366300B445EB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7D11C2655366300B445EB /* Event.swift */; };
+		74A7D11F2655383400B445EB /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7D11E2655383400B445EB /* Student.swift */; };
 		74BDBEE0264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEDF264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift */; };
 		74BDBEE2264FD2D70040C0D6 /* UserMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEE1264FD2D70040C0D6 /* UserMessageTableViewCell.swift */; };
 		74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */; };
@@ -107,10 +124,27 @@
 		746BDE6F26523D0B001B1E71 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		746BDE7126523D14001B1E71 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		746BDE73265250EF001B1E71 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		74857F962654B95800AEF14D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		74857F992654BBF200AEF14D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NewAClass.storyboard; sourceTree = "<group>"; };
+		74857F9B2654C7C800AEF14D /* NewAClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAClassViewController.swift; sourceTree = "<group>"; };
+		74857F9D2654E81A00AEF14D /* SearchUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchUserViewController.swift; path = eCommunicationBook/ViewController/SearchUserViewController.swift; sourceTree = SOURCE_ROOT; };
+		74857F9F2654E83700AEF14D /* SearchUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchUser.storyboard; sourceTree = "<group>"; };
+		74857FA12654E9DB00AEF14D /* WideUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideUserTableViewCell.swift; sourceTree = "<group>"; };
+		74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WideUserTableViewCell.xib; sourceTree = "<group>"; };
 		74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAssignmentTableViewCell.swift; sourceTree = "<group>"; };
 		74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventTableViewCell.swift; sourceTree = "<group>"; };
 		749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChartTableViewCell.swift; sourceTree = "<group>"; };
+		74A5A76B2654EC690039BC22 /* CircleUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		74A5A76C2654EC690039BC22 /* CircleUserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleUserCollectionViewCell.xib; sourceTree = "<group>"; };
+		74A5A76F2654EFDF0039BC22 /* SelecetedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelecetedUserTableViewCell.swift; sourceTree = "<group>"; };
+		74A5A7702654EFDF0039BC22 /* SelecetedUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelecetedUserTableViewCell.xib; sourceTree = "<group>"; };
 		74A5C8AA264E2C1B00704C39 /* CalendarPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageViewController.swift; sourceTree = "<group>"; };
+		74A7D1142655141D00B445EB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		74A7D116265518FA00B445EB /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
+		74A7D11826552A6E00B445EB /* RoutineHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineHour.swift; sourceTree = "<group>"; };
+		74A7D11A26552B2F00B445EB /* StudentPerformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentPerformance.swift; sourceTree = "<group>"; };
+		74A7D11C2655366300B445EB /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		74A7D11E2655383400B445EB /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		74BDBEDF264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerMessageTableViewCell.swift; sourceTree = "<group>"; };
 		74BDBEE1264FD2D70040C0D6 /* UserMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessageTableViewCell.swift; sourceTree = "<group>"; };
 		74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +230,7 @@
 		745147CB264CDE9A00172419 /* AccountPage */ = {
 			isa = PBXGroup;
 			children = (
+				74857F982654BBF200AEF14D /* NewAClass.storyboard */,
 				741FAC7F264CD77200D5C34B /* AccountPage.storyboard */,
 				745147C9264CDE8000172419 /* ServiceTableViewCell.swift */,
 			);
@@ -214,11 +249,14 @@
 		745147D6264CF77300172419 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				74857F962654B95800AEF14D /* NavigationController.swift */,
 				746BDE73265250EF001B1E71 /* HomePageViewController.swift */,
 				745147E5264D3F5E00172419 /* ChatRoomPageViewController.swift */,
 				74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */,
 				74A5C8AA264E2C1B00704C39 /* CalendarPageViewController.swift */,
 				745147D4264CF76E00172419 /* AccountPageViewController.swift */,
+				74857F9B2654C7C800AEF14D /* NewAClassViewController.swift */,
+				74857F9D2654E81A00AEF14D /* SearchUserViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -243,6 +281,20 @@
 				7456DC6A2650A1D800535297 /* MessageViewModel.swift */,
 			);
 			path = ChatRoomPage;
+			sourceTree = "<group>";
+		};
+		74A5A7732654F0270039BC22 /* SearchUser */ = {
+			isa = PBXGroup;
+			children = (
+				74857F9F2654E83700AEF14D /* SearchUser.storyboard */,
+				74A5A76F2654EFDF0039BC22 /* SelecetedUserTableViewCell.swift */,
+				74A5A7702654EFDF0039BC22 /* SelecetedUserTableViewCell.xib */,
+				74A5A76B2654EC690039BC22 /* CircleUserCollectionViewCell.swift */,
+				74A5A76C2654EC690039BC22 /* CircleUserCollectionViewCell.xib */,
+				74857FA12654E9DB00AEF14D /* WideUserTableViewCell.swift */,
+				74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */,
+			);
+			path = SearchUser;
 			sourceTree = "<group>";
 		};
 		74C23759264BB5FE001BF47A = {
@@ -299,12 +351,18 @@
 			children = (
 				74E9472C264BE09500AFB046 /* Author.swift */,
 				74E9472D264BE09500AFB046 /* Article.swift */,
+				74A7D1142655141D00B445EB /* User.swift */,
+				74A7D11E2655383400B445EB /* Student.swift */,
+				741D7C4B2653F9D400A7FD0A /* Account */,
 				745147DF264D386700172419 /* ChatRoom.swift */,
 				745147E1264D389D00172419 /* Message.swift */,
+				74A7D116265518FA00B445EB /* DayOfWeek.swift */,
+				74A7D11826552A6E00B445EB /* RoutineHour.swift */,
 				746BDE6F26523D0B001B1E71 /* Course.swift */,
 				746BDE7126523D14001B1E71 /* Lesson.swift */,
+				74A7D11C2655366300B445EB /* Event.swift */,
+				74A7D11A26552B2F00B445EB /* StudentPerformance.swift */,
 				7402581426529E4900BA6BDA /* BannerData.swift */,
-				741D7C4B2653F9D400A7FD0A /* Account */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -352,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
+				74A5A7732654F0270039BC22 /* SearchUser */,
 				740258162653599900BA6BDA /* HomePage */,
 				745147E9264D46C100172419 /* ChatRoomPage */,
 				745147CB264CDE9A00172419 /* AccountPage */,
@@ -441,7 +500,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74857F9A2654BBF200AEF14D /* NewAClass.storyboard in Resources */,
 				741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */,
+				74A5A76E2654EC690039BC22 /* CircleUserCollectionViewCell.xib in Resources */,
 				741FAC88264CD77200D5C34B /* CalendarPage.storyboard in Resources */,
 				745147EC264D56EE00172419 /* GoogleService-Info.plist in Resources */,
 				7402581326529BD900BA6BDA /* BannerTableViewCell.xib in Resources */,
@@ -450,8 +511,11 @@
 				741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */,
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
 				7402580B265267FA00BA6BDA /* ServicesTableViewCell.xib in Resources */,
+				74857FA42654E9DB00AEF14D /* WideUserTableViewCell.xib in Resources */,
 				74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */,
+				74857FA02654E83700AEF14D /* SearchUser.storyboard in Resources */,
 				7402581A265359D400BA6BDA /* NewsTableViewCell.xib in Resources */,
+				74A5A7722654EFDF0039BC22 /* SelecetedUserTableViewCell.xib in Resources */,
 				74C2376D264BB5FE001BF47A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,12 +586,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74A7D117265518FA00B445EB /* DayOfWeek.swift in Sources */,
 				746BDE7226523D14001B1E71 /* Lesson.swift in Sources */,
+				74857F9C2654C7C800AEF14D /* NewAClassViewController.swift in Sources */,
 				74E94760264C087D00AFB046 /* MJRefreshWrapper.swift in Sources */,
 				74E9475C264C087D00AFB046 /* UICollectionView+Extension.swift in Sources */,
 				745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */,
 				745147CA264CDE8000172419 /* ServiceTableViewCell.swift in Sources */,
 				74E94753264C087D00AFB046 /* Int+Extension.swift in Sources */,
+				74A5A7712654EFDF0039BC22 /* SelecetedUserTableViewCell.swift in Sources */,
+				74A7D1152655141D00B445EB /* User.swift in Sources */,
+				74857FA32654E9DB00AEF14D /* WideUserTableViewCell.swift in Sources */,
 				74E94759264C087D00AFB046 /* String+Extension.swift in Sources */,
 				749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
@@ -535,6 +604,8 @@
 				74E94738264BE09500AFB046 /* Article.swift in Sources */,
 				74E94737264BE09500AFB046 /* Author.swift in Sources */,
 				7402581526529E4900BA6BDA /* BannerData.swift in Sources */,
+				74A5A76D2654EC690039BC22 /* CircleUserCollectionViewCell.swift in Sources */,
+				74857F972654B95800AEF14D /* NavigationController.swift in Sources */,
 				7402580A265267FA00BA6BDA /* ServicesTableViewCell.swift in Sources */,
 				746BDE7026523D0B001B1E71 /* Course.swift in Sources */,
 				74E94756264C087D00AFB046 /* UIImage+Extension.swift in Sources */,
@@ -548,6 +619,7 @@
 				74E9475A264C087D00AFB046 /* UIStoryboard+Extension.swift in Sources */,
 				74E94752264C087D00AFB046 /* UIColor+Extension.swift in Sources */,
 				7456DC6926500B7800535297 /* ConversationViewmodel.swift in Sources */,
+				74A7D11F2655383400B445EB /* Student.swift in Sources */,
 				74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */,
 				74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */,
 				74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */,
@@ -555,6 +627,7 @@
 				745147E0264D386700172419 /* ChatRoom.swift in Sources */,
 				74BDBEE2264FD2D70040C0D6 /* UserMessageTableViewCell.swift in Sources */,
 				741D7C4D2653FA0C00A7FD0A /* ServiceManager.swift in Sources */,
+				74A7D11D2655366300B445EB /* Event.swift in Sources */,
 				74E9473B264BE09500AFB046 /* Date+Extension.swift in Sources */,
 				745147E2264D389D00172419 /* Message.swift in Sources */,
 				745147CD264CE03200172419 /* AccountPageViewModel.swift in Sources */,
@@ -563,11 +636,14 @@
 				74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */,
 				74E94735264BE09500AFB046 /* UserManager.swift in Sources */,
 				74E9475D264C087D00AFB046 /* UITableView+Extension.swift in Sources */,
+				74A7D11B26552B2F00B445EB /* StudentPerformance.swift in Sources */,
 				741D7C4A2653F67700A7FD0A /* LocalizedString+Extension.swift in Sources */,
 				74C23768264BB5FE001BF47A /* SceneDelegate.swift in Sources */,
+				74857F9E2654E81A00AEF14D /* SearchUserViewController.swift in Sources */,
 				74E94751264C087D00AFB046 /* UIFont+Extension.swift in Sources */,
 				74BDBEE0264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift in Sources */,
 				74E9475B264C087D00AFB046 /* UIScreen+Extension.swift in Sources */,
+				74A7D11926552A6E00B445EB /* RoutineHour.swift in Sources */,
 				745147E4264D3CF400172419 /* ChatRoomPageViewModel.swift in Sources */,
 				745147DE264D381800172419 /* ChatRoomViewModel.swift in Sources */,
 				7402581226529BD900BA6BDA /* BannerTableViewCell.swift in Sources */,
@@ -611,6 +687,14 @@
 				741FAC84264CD77200D5C34B /* Base */,
 			);
 			name = CalendarPage.storyboard;
+			sourceTree = "<group>";
+		};
+		74857F982654BBF200AEF14D /* NewAClass.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				74857F992654BBF200AEF14D /* Base */,
+			);
+			name = NewAClass.storyboard;
 			sourceTree = "<group>";
 		};
 		74C2376B264BB5FE001BF47A /* Main.storyboard */ = {

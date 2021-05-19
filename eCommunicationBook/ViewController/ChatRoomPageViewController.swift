@@ -13,6 +13,7 @@ import EasyRefresher
 
 class ChatRoomPageViewController: UIViewController {
   
+  
   @IBOutlet weak var tableView: UITableView!
   
   let viewModel = ChatRoomPageViewModel()
@@ -71,6 +72,14 @@ class ChatRoomPageViewController: UIViewController {
    }
    }
    */
+  @IBAction func searchUser(_ sender: Any) {
+    if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
+//             nextVC.modalPresentationStyle = .fullScreen
+//       //      show(nextVC, sender: nil)
+//             present(nextVC, animated: false, completion: nil)
+             self.navigationController?.show(nextVC, sender: nil)
+    } else { return }
+  }
 }
 
 extension ChatRoomPageViewController: UITableViewDataSource {

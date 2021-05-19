@@ -57,8 +57,7 @@ class ServiceManager {
            
            [TeacherSeviceItem.writeAttendAndLeave,
          
-            TeacherSeviceItem.writeLessonState
-           ]
+            TeacherSeviceItem.writeLessonState]
          ]
        )
       return teacherService

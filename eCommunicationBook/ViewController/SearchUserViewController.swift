@@ -12,9 +12,15 @@ class SearchUserViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
+  @IBOutlet weak var searchBar: UISearchBar!
+  
+  @IBOutlet weak var cancleButtonWidth: NSLayoutConstraint!
+
   var selectedCellHeight: CGFloat = 100
   
   var wideUserCellHeight: CGFloat = 50
+  
+  let viewModel = SearchUserPageViewModel()
   
   private let collectionViewSectionInsets = UIEdgeInsets(
     top: 4.0,
@@ -24,23 +30,87 @@ class SearchUserViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    //    searchBar.showsScopeBar = true
     // Do any additional setup after loading the view.
     tableView.registerCellWithNib(identifier: WideUserTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: SelecetedUserTableViewCell.identifier, bundle: nil)
+    
+    viewModel.refreshView = { [weak self] () in
+      DispatchQueue.main.async {
+        self?.tableView.reloadData()
+      }
+    }
+    
+    viewModel.userViewModel.bind { [weak self] users in
+      //            self?.tableView.reloadData()
+      self?.viewModel.onRefresh()
+    }
+    
+    viewModel.fetchData()
+  }
+  @IBAction func cancleSearching(_ sender: Any) {
+    if let viewWithTag = self.view.viewWithTag(100) {
+    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
+    
+      viewWithTag.backgroundColor = UIColor(white: 0, alpha: 0.8)
+      self.cancleButtonWidth.constant = 0
+      },
+    completion: nil)
+        viewWithTag.removeFromSuperview()
+    } else {
+        print("No!")
+    }
+    self.navigationController?.setNavigationBarHidden(false, animated: true)
+    searchBar.endEditing(true)
+  }
+}
+
+extension SearchUserViewController: UISearchBarDelegate {
+  
+  
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    let blackView = UIView()
+    blackView.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: UIScreen.height)
+    blackView.backgroundColor = UIColor(white: 0, alpha: 0)
+    blackView.tag = 100
+    tableView.addSubview(blackView)
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
+
+    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
+    
+      blackView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+      self.cancleButtonWidth.constant = 75
+      },
+    completion: nil)
+    
+    
+  }
+  
+  func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {
+    viewModel.fetchData()
+    print("hi")
   }
 }
 
 extension SearchUserViewController: UITableViewDataSource {
+  
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+    if viewModel.userList.count == 0 {
+      return 1
+    } else {
+      return 2
+    }
   }
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    switch section {
-    case 0:
-      return ""
-    default:
+    if viewModel.userList.count != 0 {
+      switch section {
+      case 0:
+        return ""
+      default:
+        return "推薦"
+      }
+    } else {
       return "推薦"
     }
   }
@@ -48,12 +118,15 @@ extension SearchUserViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView,
                  
                  numberOfRowsInSection section: Int) -> Int {
-    
-    return [1, 5][section]
+    if viewModel.userList.count == 0{
+      return viewModel.userViewModel.value.count
+    } else {
+      return [viewModel.userList.count, viewModel.userViewModel.value.count][section]
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath == [0, 0] {
+    if indexPath == [0, 0] && viewModel.userList.count != 0 {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: SelecetedUserTableViewCell.identifier,
                                                      for: indexPath) as? SelecetedUserTableViewCell
         else { fatalError("Unexpected Table View Cell") }

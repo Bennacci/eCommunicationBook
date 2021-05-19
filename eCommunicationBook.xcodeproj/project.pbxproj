@@ -69,6 +69,8 @@
 		74C2376D264BB5FE001BF47A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74C2376B264BB5FE001BF47A /* Main.storyboard */; };
 		74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74C2376E264BB5FF001BF47A /* Assets.xcassets */; };
 		74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74C23770264BB5FF001BF47A /* LaunchScreen.storyboard */; };
+		74CADD8226554C5A004DA6D0 /* SearchUserPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CADD8126554C5A004DA6D0 /* SearchUserPageViewModel.swift */; };
+		74CADD8426554C81004DA6D0 /* UserVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CADD8326554C81004DA6D0 /* UserVIewModel.swift */; };
 		74E94735264BE09500AFB046 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94729264BE09500AFB046 /* UserManager.swift */; };
 		74E94736264BE09500AFB046 /* XXXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472A264BE09500AFB046 /* XXXManager.swift */; };
 		74E94737264BE09500AFB046 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472C264BE09500AFB046 /* Author.swift */; };
@@ -156,6 +158,8 @@
 		74C2376E264BB5FF001BF47A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74C23771264BB5FF001BF47A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74C23773264BB5FF001BF47A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74CADD8126554C5A004DA6D0 /* SearchUserPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserPageViewModel.swift; sourceTree = "<group>"; };
+		74CADD8326554C81004DA6D0 /* UserVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVIewModel.swift; sourceTree = "<group>"; };
 		74E94729264BE09500AFB046 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		74E9472A264BE09500AFB046 /* XXXManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XXXManager.swift; sourceTree = "<group>"; };
 		74E9472C264BE09500AFB046 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 			children = (
 				745147ED264E06D900172419 /* ChatRoomPage */,
 				741D7C4E26540E7E00A7FD0A /* AccountPage */,
+				74CADD8126554C5A004DA6D0 /* SearchUserPageViewModel.swift */,
+				74CADD8326554C81004DA6D0 /* UserVIewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -597,6 +603,7 @@
 				74A5A7712654EFDF0039BC22 /* SelecetedUserTableViewCell.swift in Sources */,
 				74A7D1152655141D00B445EB /* User.swift in Sources */,
 				74857FA32654E9DB00AEF14D /* WideUserTableViewCell.swift in Sources */,
+				74CADD8426554C81004DA6D0 /* UserVIewModel.swift in Sources */,
 				74E94759264C087D00AFB046 /* String+Extension.swift in Sources */,
 				749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
@@ -612,6 +619,7 @@
 				74C2376A264BB5FE001BF47A /* ViewController.swift in Sources */,
 				74E9473D264BE09500AFB046 /* PaddingableUILabel.swift in Sources */,
 				746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */,
+				74CADD8226554C5A004DA6D0 /* SearchUserPageViewModel.swift in Sources */,
 				74C23766264BB5FE001BF47A /* AppDelegate.swift in Sources */,
 				74A5C8AB264E2C1B00704C39 /* CalendarPageViewController.swift in Sources */,
 				74E94755264C087D00AFB046 /* UIView+Extension.swift in Sources */,

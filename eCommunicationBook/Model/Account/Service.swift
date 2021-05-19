@@ -11,9 +11,9 @@ import UIKit
 
 enum UserType: String {
   
-  case teacher = "teacher"
+  case teacher
   
-  case parents = "parents"
+  case parents
 }
 
 struct ServiceGroup {

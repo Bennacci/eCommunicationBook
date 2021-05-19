@@ -25,7 +25,7 @@
 		741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC81264CD77200D5C34B /* HomePage.storyboard */; };
 		741FAC88264CD77200D5C34B /* CalendarPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC83264CD77200D5C34B /* CalendarPage.storyboard */; };
 		745147CA264CDE8000172419 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147C9264CDE8000172419 /* ServiceTableViewCell.swift */; };
-		745147CD264CE03200172419 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147CC264CE03100172419 /* ServiceViewModel.swift */; };
+		745147CD264CE03200172419 /* AccountPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147CC264CE03100172419 /* AccountPageViewModel.swift */; };
 		745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147D4264CF76E00172419 /* AccountPageViewController.swift */; };
 		745147DE264D381800172419 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147DD264D381800172419 /* ChatRoomViewModel.swift */; };
 		745147E0264D386700172419 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147DF264D386700172419 /* ChatRoom.swift */; };
@@ -93,7 +93,7 @@
 		741FAC82264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomePage.storyboard; sourceTree = "<group>"; };
 		741FAC84264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CalendarPage.storyboard; sourceTree = "<group>"; };
 		745147C9264CDE8000172419 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
-		745147CC264CE03100172419 /* ServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
+		745147CC264CE03100172419 /* AccountPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewModel.swift; sourceTree = "<group>"; };
 		745147D4264CF76E00172419 /* AccountPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewController.swift; sourceTree = "<group>"; };
 		745147DD264D381800172419 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		745147DF264D386700172419 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
@@ -185,11 +185,19 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		741D7C4E26540E7E00A7FD0A /* AccountPage */ = {
+			isa = PBXGroup;
+			children = (
+				745147CC264CE03100172419 /* AccountPageViewModel.swift */,
+			);
+			path = AccountPage;
+			sourceTree = "<group>";
+		};
 		745147CB264CDE9A00172419 /* AccountPage */ = {
 			isa = PBXGroup;
 			children = (
-				745147C9264CDE8000172419 /* ServiceTableViewCell.swift */,
 				741FAC7F264CD77200D5C34B /* AccountPage.storyboard */,
+				745147C9264CDE8000172419 /* ServiceTableViewCell.swift */,
 			);
 			path = AccountPage;
 			sourceTree = "<group>";
@@ -197,8 +205,8 @@
 		745147CE264CE03B00172419 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				745147CC264CE03100172419 /* ServiceViewModel.swift */,
 				745147ED264E06D900172419 /* ChatRoomPage */,
+				741D7C4E26540E7E00A7FD0A /* AccountPage */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -549,7 +557,7 @@
 				741D7C4D2653FA0C00A7FD0A /* ServiceManager.swift in Sources */,
 				74E9473B264BE09500AFB046 /* Date+Extension.swift in Sources */,
 				745147E2264D389D00172419 /* Message.swift in Sources */,
-				745147CD264CE03200172419 /* ServiceViewModel.swift in Sources */,
+				745147CD264CE03200172419 /* AccountPageViewModel.swift in Sources */,
 				741D7C482653D9A200A7FD0A /* Service.swift in Sources */,
 				74025806265264B100BA6BDA /* ServiceCollectionViewCell.swift in Sources */,
 				74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */,

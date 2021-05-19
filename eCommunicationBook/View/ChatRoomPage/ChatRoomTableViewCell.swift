@@ -41,6 +41,8 @@ class ChatRoomTableViewCell: UITableViewCell {
       roomName += ", \((viewModel?.members[index])!)"
     }
     userID.text = roomName
-    message.text = viewModel?.messages?[0].content
+    
+    guard let messageToShow = viewModel?.messages?[0].content else { return }
+    message.text = messageToShow
   }
 }

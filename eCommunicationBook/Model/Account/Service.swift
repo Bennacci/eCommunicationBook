@@ -18,8 +18,7 @@ struct ServiceGroup {
     let items: [[AccountItem]]
 }
 
-
-//enum ServiceSegue: String {
+// enum ServiceSegue: String {
 //
 //    case segueAllOrder = "AllOrder"
 //
@@ -31,17 +30,7 @@ struct ServiceGroup {
 //
 //        }
 //    }
-//}
-
-//  var services: [[String]]{
-//    switch self.clientType {
-//    case .teacher:
-//      return [[Service.newAClass.rawValue], ["線上請假", "課程預約", "補課申請"], ["繳費通知"], ["聯絡我們"]]
-//    default:
-//      return [["學習狀況"], ["線上請假", "課程預約", "補課申請"], ["繳費通知"], ["聯絡我們"]]
-//    }
-//  }
-
+// }
 
 protocol AccountItem {
   
@@ -49,7 +38,6 @@ protocol AccountItem {
   
   var title: String { get }
 }
-
 
 enum ParentSeviceItem: AccountItem {
 
@@ -99,8 +87,6 @@ enum ParentSeviceItem: AccountItem {
     }
   }
 }
-
-
 
 enum TeacherSeviceItem: AccountItem {
   

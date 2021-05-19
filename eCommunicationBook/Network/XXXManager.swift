@@ -100,7 +100,7 @@ class XXXManager {
                       
                       chatRooms[chatRooms.count-1].messages = messages
                       //                      print(messages)
-                      //                      print(chatRooms)
+                                            print(chatRooms)
                       completion(.success(chatRooms))
                     }
                 }

@@ -30,7 +30,7 @@ class UserManager {
   
           switch id {
           case "waynechen323":
-              userID = "no.00001"
+              userID = "no.00000"
               completion(.success(userID!))
           // MARK: add your profile here
           default:

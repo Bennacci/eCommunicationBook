@@ -50,18 +50,37 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ub1-de-fA6">
-                                        <rect key="frame" x="349" y="133" width="51" height="31"/>
+                                        <rect key="frame" x="287" y="138.5" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="toggleUser:" destination="Ub1-0l-Bna" eventType="valueChanged" id="Ehu-b8-m0B"/>
+                                        </connections>
                                     </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFb-a3-juZ">
+                                        <rect key="frame" x="229" y="143" width="50" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6d1-c1-0n9">
+                                        <rect key="frame" x="344" y="143.5" width="62" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ub1-de-fA6" secondAttribute="bottom" constant="16" id="Gtb-0Z-TdA"/>
+                                    <constraint firstAttribute="bottom" secondItem="RFb-a3-juZ" secondAttribute="bottom" constant="16" id="Dsj-oC-pjN"/>
+                                    <constraint firstItem="6d1-c1-0n9" firstAttribute="leading" secondItem="ub1-de-fA6" secondAttribute="trailing" constant="8" id="EXU-lm-N2I"/>
+                                    <constraint firstItem="ub1-de-fA6" firstAttribute="leading" secondItem="RFb-a3-juZ" secondAttribute="trailing" constant="8" id="FdN-XI-kVo"/>
+                                    <constraint firstAttribute="bottom" secondItem="6d1-c1-0n9" secondAttribute="bottom" constant="16" id="Kay-WZ-dow"/>
                                     <constraint firstItem="LwL-cP-Xqy" firstAttribute="centerY" secondItem="Kpi-ob-G6T" secondAttribute="centerY" constant="-20" id="azR-md-fs7"/>
                                     <constraint firstItem="Kpi-ob-G6T" firstAttribute="centerY" secondItem="IcI-Io-zbU" secondAttribute="centerY" id="eRi-nK-ZfH"/>
                                     <constraint firstAttribute="height" constant="180" id="fSx-7I-IcE"/>
+                                    <constraint firstItem="ub1-de-fA6" firstAttribute="centerY" secondItem="6d1-c1-0n9" secondAttribute="centerY" id="nGf-dh-hAX"/>
+                                    <constraint firstAttribute="trailing" secondItem="6d1-c1-0n9" secondAttribute="trailing" constant="8" id="nyn-wu-oWp"/>
                                     <constraint firstItem="LwL-cP-Xqy" firstAttribute="leading" secondItem="Kpi-ob-G6T" secondAttribute="trailing" constant="16" id="oXY-B1-cQl"/>
                                     <constraint firstItem="Kpi-ob-G6T" firstAttribute="centerX" secondItem="IcI-Io-zbU" secondAttribute="centerX" multiplier="0.5" id="pBz-Zn-hdR"/>
-                                    <constraint firstAttribute="trailing" secondItem="ub1-de-fA6" secondAttribute="trailing" constant="16" id="pMX-ZZ-v5w"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7P-uo-gpv">

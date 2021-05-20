@@ -10,7 +10,6 @@
         <!--NewA Thing View Controller-->
         <scene sceneID="9E5-AY-4tV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fxq-vw-ISs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController hidesBottomBarWhenPushed="YES" id="xqT-bc-fJy" customClass="NewAThingViewController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="87h-0y-1dn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -52,6 +51,9 @@
                                 <state key="normal" title="Add">
                                     <color key="titleColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="send:" destination="xqT-bc-fJy" eventType="touchUpInside" id="yS1-YL-TzN"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -59,6 +61,7 @@
                         <outlet property="tableView" destination="7J0-kk-NaS" id="f8n-3N-1uE"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fxq-vw-ISs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="623" y="135"/>
         </scene>

@@ -12,13 +12,16 @@ class NewAThingViewController: UIViewController {
   
   let viewModel = NewAThingViewModel()
   
-  var inputTexts: [[String]] = [["Name", "User Type"], ["Birth Date", "National ID"], ["E-mail", "CellPhone Number", "Contact Number"], ["image"]]
+  var inputTexts: [[String]] = [["Name", "ID", "User Type"], ["Birth Date"], ["E-mail", "CellPhone Number", "Contact Number"], ["image"]]
   var pickerIndexPath: IndexPath?
   var selectedIndexPath: IndexPath?
   var inputDates: [[Date]] = []
   var inputValuse: [[Any]] = []
   
-  var tempUserType: UserType? = nil
+  var tempUserType: UserType?
+  
+  weak var delegate: PublishDelegate?
+
   
   @IBOutlet weak var tableView: UITableView!
   override func viewDidLoad() {
@@ -30,6 +33,12 @@ class NewAThingViewController: UIViewController {
     tableView.registerCellWithNib(identifier: PickerViewTableViewCell.identifier, bundle: nil)
     addInitailValues()
     // Do any additional setup after loading the view.
+    viewModel.onAdded = { [weak self] () in
+        self?.delegate?.onPublished()
+        self?.navigationController?.popViewController(animated: true)
+      //        self?.dismiss(animated: true, completion: nil)
+    }
+    
   }
   
   @IBAction func pop(_ sender: Any) {
@@ -37,6 +46,11 @@ class NewAThingViewController: UIViewController {
     self.navigationController?.popViewController(animated: true)
     
   }
+  
+  @IBAction func send(_ sender: Any) {
+    viewModel.onTapAdd()
+  }
+  
   
   func addInitailValues() {
     for index in 0..<inputTexts.count {
@@ -139,8 +153,11 @@ extension NewAThingViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 12
   }
-  
+//  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//
+//  }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    selectedIndexPath = indexPath
     tableView.beginUpdates()
     if let datePickerIndexPath = pickerIndexPath, datePickerIndexPath.row - 1 == indexPath.row {
       tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
@@ -182,16 +199,31 @@ extension NewAThingViewController: UITextFieldDelegate {
       self.pickerIndexPath = nil
     }
     tableView.endUpdates()
-    
-    guard let info = textField.text else { return }
-    switch selectedIndexPath {
-    case <#pattern#>:
-      
+//    updateViewModel(with: textField)
 
-    default:
-      <#code#>
-    }
-    
+  }
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    updateViewModel(with: textField)
+  }
+  
+  func updateViewModel(with textField: UITextField) {
+   let pointInTable = textField.convert(textField.bounds.origin, to: self.tableView)
+      guard let textFieldIndexPath = self.tableView.indexPathForRow(at: pointInTable) else {return}
+      guard let info = textField.text else { return }
+      switch inputTexts[textFieldIndexPath.section][textFieldIndexPath.row] {
+      case "Name":
+        viewModel.onNameChanged(text: info)
+      case "ID":
+        viewModel.onUserIDChanged(text: info)
+      case "E-mail":
+        viewModel.onEmailChanged(text: info)
+      case "CellPhone Number":
+      viewModel.onCellPhoneNoChanged(text: info)
+      case "Contact Number":
+          viewModel.onHomePhoneNoChanged(text: info)
+      default:
+        return
+      }
   }
 }
 
@@ -202,11 +234,11 @@ extension NewAThingViewController: PickerDelegate {
   }
   
   func didChangeDate(date: Date, indexPath: IndexPath) {
+    viewModel.onBirthDayChanged(day: date)
     inputDates[indexPath.section][indexPath.row] = date
     tableView.reloadRows(at: [indexPath], with: .none)
   }
 }
-
 
 extension NewAThingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
   
@@ -225,8 +257,14 @@ extension NewAThingViewController: UIPickerViewDelegate, UIPickerViewDataSource 
     
     tempUserType = UserType.allCases[row]
     
-    guard let twoLablescell = tableView.cellForRow(at: [pickerIndexPath!.section, pickerIndexPath!.row-1]) as? TwoLablesTableViewCell
+    guard let twoLablescell = tableView.cellForRow(at: [pickerIndexPath!.section, pickerIndexPath!.row-1])
+      as? TwoLablesTableViewCell
       else { fatalError("Unexpected Table View Cell") }
     twoLablescell.secondLabel.text = tempUserType?.rawValue
+    viewModel.onUserTypeChanged(text: tempUserType!.rawValue)
   }
+}
+
+protocol PublishDelegate: AnyObject {
+  func onPublished()
 }

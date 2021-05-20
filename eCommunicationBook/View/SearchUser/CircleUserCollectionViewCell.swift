@@ -16,8 +16,16 @@ class CircleUserCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+  
+  var viewModel: UserViewModel?
+  
+  func setup(viewModel: UserViewModel) {
+      self.viewModel = viewModel
+      layoutCell()
+  }
+  
   func layoutCell() {
+    userName.text = viewModel?.name
     userImage.layer.cornerRadius = userImage.frame.height / 2
     layoutIfNeeded()
   }

@@ -168,7 +168,23 @@ class XXXManager {
       }
     }
   }
-  
+  func addUser(user: inout User, completion: @escaping (Result<String, Error>) -> Void) {
+    
+    let document = db.collection("users")
+      .document()
+    user.id = document.documentID
+    user.createdTime = Double(Date().millisecondsSince1970)
+    document.setData(user.toDict) { error in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
     func fetchUser(completion: @escaping (Result<[User], Error>) -> Void) {
     
     db.collection("users").getDocuments { (querySnapshot, error) in

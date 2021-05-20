@@ -10,6 +10,7 @@ import Foundation
 
 struct User: Codable {
   var id: String
+  var createdTime: Double
   var userID: String
   var name: String
   var image: String?
@@ -24,6 +25,7 @@ struct User: Codable {
   
   enum CodingKeys: String, CodingKey {
     case id
+    case createdTime
     case userID
     case name
     case image
@@ -40,6 +42,7 @@ struct User: Codable {
   var toDict: [String: Any] {
     return [
       "id": id as Any,
+      "createdTime": createdTime as Any,
       "userID": userID as Any,
       "name": name as Any,
       "image": image as Any,

@@ -15,6 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene,
              willConnectTo session: UISceneSession,
              options connectionOptions: UIScene.ConnectionOptions) {
+    
+    let tapGesture = AnyGestureRecognizer(target: window, action:#selector(UIView.endEditing))
+    tapGesture.requiresExclusiveTouchType = false
+    tapGesture.cancelsTouchesInView = false
+    tapGesture.delegate = self //I don't use window as delegate to minimize possible side effects
+    window?.addGestureRecognizer(tapGesture)
+    
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new

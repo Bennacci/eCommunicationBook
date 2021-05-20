@@ -10,9 +10,11 @@ import UIKit
 
 private struct StoryboardCategory {
   
-  static let newAClass = "NewAClass"
+  static let newAThing = "NewAThing"
   
   static let searchUser = "SearchUser"
+  
+  
   
   static let newEvent = "NewEvent"
   
@@ -37,9 +39,12 @@ private struct StoryboardCategory {
 
 extension UIStoryboard {
   
-  static var newAClass: UIStoryboard { return storyboard(name: StoryboardCategory.newAClass) }
+  static var newAThing: UIStoryboard { return storyboard(name: StoryboardCategory.newAThing) }
   
-    static var searchUser: UIStoryboard { return storyboard(name: StoryboardCategory.searchUser) }
+  static var searchUser: UIStoryboard { return storyboard(name: StoryboardCategory.searchUser) }
+  
+  
+  
   
   static var newEvent: UIStoryboard { return storyboard(name: StoryboardCategory.newEvent) }
   

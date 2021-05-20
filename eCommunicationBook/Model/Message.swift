@@ -1,10 +1,10 @@
-//
-//  Message.swift
-//  eCommunicationBook
-//
-//  Created by Ben Tee on 2021/5/13.
-//  Copyright © 2021 TKY co. All rights reserved.
-//
+  //
+  //  Message.swift
+  //  eCommunicationBook
+  //
+  //  Created by Ben Tee on 2021/5/13.
+  //  Copyright © 2021 TKY co. All rights reserved.
+  //
 
 import Foundation
 import FirebaseFirestoreSwift

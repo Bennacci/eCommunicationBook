@@ -211,8 +211,7 @@ class XXXManager {
       }
     }
   }
-  
-  
+
   
   func publishArticle(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
     

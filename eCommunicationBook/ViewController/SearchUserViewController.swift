@@ -84,7 +84,9 @@ extension SearchUserViewController: UISearchBarDelegate {
     },
                                                    completion: nil)
   }
-  
+//  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//    <#code#>
+//  }
   func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {
     //    viewModel.fetchData()
     if searchBar.text != ""{
@@ -99,7 +101,7 @@ extension SearchUserViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
     
-    if tableView == tableView{
+    if tableView == self.tableView {
       if viewModel.userList.count == 0 {
         return 1
       } else {
@@ -111,7 +113,7 @@ extension SearchUserViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    if tableView == tableView {
+    if tableView == self.tableView {
       if viewModel.userList.count != 0 {
         switch section {
         case 0:
@@ -140,7 +142,7 @@ extension SearchUserViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath == [0, 0] && viewModel.userList.count != 0 || tableView == searchTableView {
+    if indexPath == [0, 0] && viewModel.userList.count != 0 && tableView == self.tableView {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: SelecetedUserTableViewCell.identifier,
                                                      for: indexPath) as? SelecetedUserTableViewCell
         else { fatalError("Unexpected Table View Cell") }
@@ -159,7 +161,11 @@ extension SearchUserViewController: UITableViewDataSource {
                                                      for: indexPath) as? WideUserTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       
+      let cellViewModel = self.viewModel.userViewModel.value[indexPath.row]
+      
       cell.height.constant = wideUserCellHeight
+      
+      cell.setup(viewModel: cellViewModel)
       
       cell.layoutCell()
       
@@ -194,17 +200,17 @@ extension SearchUserViewController: UITableViewDelegate {
     return headerView
   }
   
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    
-    if section == 0 {
-      
-      return CGFloat.leastNormalMagnitude
-      
-    } else {
-      
-      return 35
-    }
-  }
+//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//
+////    if section == 0 {
+////
+////      return CGFloat.leastNormalMagnitude
+////
+////    } else {
+////
+////      return 35
+////    }
+//  }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     

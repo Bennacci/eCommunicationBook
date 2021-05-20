@@ -12,6 +12,7 @@ class NewAThingViewModel {
   
   var user: User = User(
     id: "",
+    createdTime: -1,
     userID: "",
     name: "",
     image: nil,
@@ -24,10 +25,6 @@ class NewAThingViewModel {
     dificulty: nil,
     note: nil)
   
-  func onIDChanged(text id: String) {
-    self.user.id = id
-  }
-  
   func onUserIDChanged(text userID: String) {
     self.user.userID = userID
   }
@@ -36,15 +33,15 @@ class NewAThingViewModel {
     self.user.name = name
   }
   
-  func onCellPhoneNoChanged(text cellPhoneNo: Int) {
-    self.user.cellPhoneNo = cellPhoneNo
+  func onCellPhoneNoChanged(text cellPhoneNo: String) {
+    self.user.cellPhoneNo = Int(cellPhoneNo) ?? -1
   }
   
-  func onHomePhoneNoChanged(text homePhoneNo: Int) {
-    self.user.homePhoneNo = homePhoneNo
+  func onHomePhoneNoChanged(text homePhoneNo: String) {
+    self.user.homePhoneNo = Int(homePhoneNo) ?? -1
   }
-  func onBirthDayChanged(text birthDay: Double) {
-    self.user.birthDay = birthDay
+  func onBirthDayChanged(day: Date) {
+    self.user.birthDay = Double(day.millisecondsSince1970)
   }
   func onEmailChanged(text email: String) {
     self.user.email = email
@@ -53,62 +50,26 @@ class NewAThingViewModel {
     self.user.userType = userType
   }
   
+  var onAdded: (() -> Void)?
   
-  var onPublished: (()->())?
+  func onTapAdd() {
+    self.addUser(with: &user)
+  }
   
-//  func onTapPublish() {
-//    
-//    if hasAuthorInArticle() {
-//      print("has author in article...")
-//      publish() // MARK: check which function this call is
-//      
-//    } else {
-//      print("login...")
-//      UserManager.shared.login() { [weak self] result in
-//        // MARK: - put your id into login function
-//        switch result {
-//          
-//        case .success(let author):
-//          
-//          print("login success")
-//          self?.publish(with: author) // MARK: check which function this call is
-//          
-//        case .failure(let error):
-//          
-//          print("login.failure: \(error)")
-//        }
-//        
-//      }
-//    }
-//  }
-//  
-//  func publish(with article: inout Article) {
-//    XXXManager.shared.publishArticle(article: &article) { result in
-//      
-//      switch result {
-//        
-//      case .success:
-//        
-//        print("onTapPublish, success")
-//        self.onPublished?()
-//        
-//      case .failure(let error):
-//        
-//        print("publishArticle.failure: \(error)")
-//      }
-//    }
-//  }
-//  
-//  func publish(with author: Author? = nil) {
-//    
-//    if let author = author {
-//      article.author = author
-//    }
-//    
-//    publish(with: &article) // MARK: check which function this call is
-//  }
-//  
-//  func hasAuthorInArticle() -> Bool {
-//    return article.author != nil
-//  }
+  func addUser (with user: inout User) {
+    XXXManager.shared.addUser(user: &user) { result in
+      
+      switch result {
+        
+      case .success:
+        
+        print("onTapAdd, success")
+        self.onAdded?()
+        
+      case .failure(let error):
+        
+        print("publishArticle.failure: \(error)")
+      }
+    }
+  }
 }

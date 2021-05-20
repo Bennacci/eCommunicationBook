@@ -27,10 +27,16 @@ class WideUserTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+  var viewModel: UserViewModel?
+  
+  func setup(viewModel: UserViewModel) {
+      self.viewModel = viewModel
+      layoutCell()
+  }
+  
   func layoutCell() {
-    userImageW.layer.cornerRadius = userImageW.frame.width / 2
+    userName.text = viewModel?.name
+    userImageW.layer.cornerRadius = userImageW.frame.height / 2
     layoutIfNeeded()
-
   }
 }

@@ -56,12 +56,20 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmW-63-TkX" userLabel="I">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmW-63-TkX" userLabel="Base">
                                 <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="XGt-j0-biN" id="RNN-yy-y2r"/>
                                     <outlet property="delegate" destination="XGt-j0-biN" id="jb4-im-qsb"/>
+                                </connections>
+                            </tableView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="29" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t6z-4K-gwA" userLabel="Search">
+                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XGt-j0-biN" id="C17-M1-qTF"/>
+                                    <outlet property="delegate" destination="XGt-j0-biN" id="nE7-H2-1D0"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -71,6 +79,10 @@
                             <constraint firstItem="nmW-63-TkX" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="9Po-ua-Nh0"/>
                             <constraint firstItem="nmW-63-TkX" firstAttribute="top" secondItem="7Co-tl-Qkr" secondAttribute="bottom" id="DoT-Ey-iOw"/>
                             <constraint firstItem="7Co-tl-Qkr" firstAttribute="top" secondItem="BBO-tW-MsE" secondAttribute="top" id="G5n-8U-9Lm"/>
+                            <constraint firstItem="BBO-tW-MsE" firstAttribute="trailing" secondItem="t6z-4K-gwA" secondAttribute="trailing" id="ILP-Vv-IjH"/>
+                            <constraint firstItem="t6z-4K-gwA" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="RBO-KF-FTQ"/>
+                            <constraint firstItem="BBO-tW-MsE" firstAttribute="bottom" secondItem="t6z-4K-gwA" secondAttribute="bottom" id="SuA-E8-Dvi"/>
+                            <constraint firstItem="t6z-4K-gwA" firstAttribute="top" secondItem="7Co-tl-Qkr" secondAttribute="bottom" id="TGy-Dc-4Qn"/>
                             <constraint firstAttribute="trailing" secondItem="7Co-tl-Qkr" secondAttribute="trailing" id="fLY-R6-44X"/>
                             <constraint firstItem="7Co-tl-Qkr" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="hJP-SQ-iJK"/>
                             <constraint firstItem="BBO-tW-MsE" firstAttribute="bottom" secondItem="nmW-63-TkX" secondAttribute="bottom" id="mi0-ZX-nmd"/>
@@ -96,6 +108,7 @@
                     <connections>
                         <outlet property="cancleButtonWidth" destination="bKY-WU-lod" id="N7h-6W-tNm"/>
                         <outlet property="searchBar" destination="qgZ-j8-5aF" id="LEU-L6-qx7"/>
+                        <outlet property="searchTableView" destination="t6z-4K-gwA" id="MHY-zE-jv5"/>
                         <outlet property="tableView" destination="nmW-63-TkX" id="Qdu-8O-etA"/>
                     </connections>
                 </viewController>

@@ -85,7 +85,7 @@ extension AccountPageViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-    if let nextVC = UIStoryboard.newAClass.instantiateInitialViewController() {
+    if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
       nextVC.modalPresentationStyle = .fullScreen
 //      show(nextVC, sender: nil)
 //      present(nextVC, animated: false, completion: nil)

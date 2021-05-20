@@ -9,96 +9,96 @@
 import Foundation
 
 class UserViewModel {
-    
-    var user: User
-      
-    var onDead: (() -> Void)?
-    
-    init(model user: User) {
-        self.user = user
+  
+  var user: User
+  
+  var onDead: (() -> Void)?
+  
+  init(model user: User) {
+    self.user = user
+  }
+  
+  var id: String {
+    get {
+      return user.id
     }
-
-    var id: String {
-        get {
-          return user.id
-        }
-    }
-    
+  }
+  
   var userID: String {
-      get {
-        return user.userID
-      }
+    get {
+      return user.userID
+    }
   }
   var name: String {
-      get {
-        return user.name
-      }
+    get {
+      return user.name
+    }
   }
-  var image: String {
-      get {
-        return user.image
-      }
+  var image: String? {
+    get {
+      return user.image
+    }
   }
   var cellPhoneNo: Int {
-      get {
-        return user.cellPhoneNo
-      }
+    get {
+      return user.cellPhoneNo
+    }
   }
   var homePhoneNo: Int {
-      get {
-        return user.homePhoneNo
-      }
+    get {
+      return user.homePhoneNo
+    }
   }
   var birthDay: Double {
-      get {
-        return user.birthDay
-      }
+    get {
+      return user.birthDay
+    }
   }
   var email: String {
-      get {
-        return user.email
-      }
+    get {
+      return user.email
+    }
   }
   var userType: UserType.RawValue {
-      get {
-        return user.userType
-      }
+    get {
+      return user.userType
+    }
   }
   var workingHours: [RoutineHour]? {
-      get {
-        return user.workingHours
-      }
+    get {
+      return user.workingHours
+    }
   }
   var dificulty: [Int]? {
-      get {
-        return user.dificulty
-      }
+    get {
+      return user.dificulty
+    }
   }
   var note: [String]? {
-      get {
-        return user.note
-      }
+    get {
+      return user.note
+    }
   }
-
+  
   func onTap() {
-
-//    sendArrays
     
-//    XXXManager.shared.conversationID = chatRoom.id
-//    conversationViewModel.setConversations(chatRoom.messages!)
-//      XXXManager.shared.deleteArticle(article: chatRoom) { [weak self] result in
-//
-//          switch result {
-//
-//          case .success(let articleId):
-//
-//              print(articleId)
-//              self?.onDead?()
-//
-//          case .failure(let error):
-//
-//              print("publishArticle.failure: \(error)")
-//          }
-//      }
+    //    sendArrays
+    
+    //    XXXManager.shared.conversationID = chatRoom.id
+    //    conversationViewModel.setConversations(chatRoom.messages!)
+    //      XXXManager.shared.deleteArticle(article: chatRoom) { [weak self] result in
+    //
+    //          switch result {
+    //
+    //          case .success(let articleId):
+    //
+    //              print(articleId)
+    //              self?.onDead?()
+    //
+    //          case .failure(let error):
+    //
+    //              print("publishArticle.failure: \(error)")
+    //          }
+    //      }
   }
 }

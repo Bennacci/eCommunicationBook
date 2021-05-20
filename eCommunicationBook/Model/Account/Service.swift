@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-enum UserType: String {
-  
+enum UserType: String, CaseIterable {
   case teacher
   
   case parents

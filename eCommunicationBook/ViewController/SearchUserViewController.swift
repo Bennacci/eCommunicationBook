@@ -12,10 +12,12 @@ class SearchUserViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
+  @IBOutlet weak var searchTableView: UITableView!
+  
   @IBOutlet weak var searchBar: UISearchBar!
   
   @IBOutlet weak var cancleButtonWidth: NSLayoutConstraint!
-
+  
   var selectedCellHeight: CGFloat = 100
   
   var wideUserCellHeight: CGFloat = 50
@@ -34,7 +36,6 @@ class SearchUserViewController: UIViewController {
     // Do any additional setup after loading the view.
     tableView.registerCellWithNib(identifier: WideUserTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: SelecetedUserTableViewCell.identifier, bundle: nil)
-    
     viewModel.refreshView = { [weak self] () in
       DispatchQueue.main.async {
         self?.tableView.reloadData()
@@ -50,15 +51,15 @@ class SearchUserViewController: UIViewController {
   }
   @IBAction func cancleSearching(_ sender: Any) {
     if let viewWithTag = self.view.viewWithTag(100) {
-    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
-    
-      viewWithTag.backgroundColor = UIColor(white: 0, alpha: 0.8)
-      self.cancleButtonWidth.constant = 0
+      UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
+        
+        viewWithTag.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        self.cancleButtonWidth.constant = 0
       },
-    completion: nil)
-        viewWithTag.removeFromSuperview()
+                                                     completion: nil)
+      viewWithTag.removeFromSuperview()
     } else {
-        print("No!")
+      print("No!")
     }
     self.navigationController?.setNavigationBarHidden(false, animated: true)
     searchBar.endEditing(true)
@@ -75,50 +76,63 @@ extension SearchUserViewController: UISearchBarDelegate {
     blackView.tag = 100
     tableView.addSubview(blackView)
     self.navigationController?.setNavigationBarHidden(true, animated: true)
-
-    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
     
+    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
+      
       blackView.backgroundColor = UIColor(white: 0, alpha: 0.8)
       self.cancleButtonWidth.constant = 75
-      },
-    completion: nil)
-    
-    
+    },
+                                                   completion: nil)
   }
   
   func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {
-    viewModel.fetchData()
-    print("hi")
+    //    viewModel.fetchData()
+    if searchBar.text != ""{
+      searchTableView.isHidden = false
+    } else {
+      searchTableView.isHidden = true
+    }
   }
 }
 
 extension SearchUserViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    if viewModel.userList.count == 0 {
-      return 1
+    
+    if tableView == tableView{
+      if viewModel.userList.count == 0 {
+        return 1
+      } else {
+        return 2
+      }
     } else {
-      return 2
+      return 1
     }
   }
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    if viewModel.userList.count != 0 {
-      switch section {
-      case 0:
-        return ""
-      default:
+    if tableView == tableView {
+      if viewModel.userList.count != 0 {
+        switch section {
+        case 0:
+          return ""
+        default:
+          return "推薦"
+        }
+      } else {
         return "推薦"
       }
     } else {
-      return "推薦"
+      return "搜尋結果"
     }
+    
   }
   
   func tableView(_ tableView: UITableView,
                  
                  numberOfRowsInSection section: Int) -> Int {
-    if viewModel.userList.count == 0{
+    
+    if viewModel.userList.count == 0 || tableView == searchTableView {
       return viewModel.userViewModel.value.count
     } else {
       return [viewModel.userList.count, viewModel.userViewModel.value.count][section]
@@ -126,7 +140,7 @@ extension SearchUserViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath == [0, 0] && viewModel.userList.count != 0 {
+    if indexPath == [0, 0] && viewModel.userList.count != 0 || tableView == searchTableView {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: SelecetedUserTableViewCell.identifier,
                                                      for: indexPath) as? SelecetedUserTableViewCell
         else { fatalError("Unexpected Table View Cell") }

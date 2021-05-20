@@ -9,18 +9,18 @@
 import Foundation
 
 struct User: Codable {
-  let id: String
-  let userID: String
-  let name: String
-  let image: String
-  let cellPhoneNo: Int
-  let homePhoneNo: Int
-  let birthDay: Double
-  let email: String
-  let userType: UserType.RawValue
-  let workingHours: [RoutineHour]?
-  let dificulty: [Int]?
-  let note: [String]?
+  var id: String
+  var userID: String
+  var name: String
+  var image: String?
+  var cellPhoneNo: Int
+  var homePhoneNo: Int
+  var birthDay: Double
+  var email: String
+  var userType: UserType.RawValue
+  var workingHours: [RoutineHour]?
+  var dificulty: [Int]?
+  var note: [String]?
   
   enum CodingKeys: String, CodingKey {
     case id
@@ -50,7 +50,7 @@ struct User: Codable {
       "userType": userType as Any,
       "workingHours": workingHours as Any,
       "dificulty": dificulty as Any,
-      "note": note as Any,
+      "note": note as Any
     ]
   }
 }

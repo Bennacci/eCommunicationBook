@@ -46,6 +46,10 @@ class SearchUserViewController: UIViewController {
       //            self?.tableView.reloadData()
       self?.viewModel.onRefresh()
     }
+    viewModel.userListViewModel.bind { [weak self] users in
+                  self?.tableView.reloadData()
+      self?.viewModel.onRefresh()
+    }
     
     viewModel.fetchData()
   }
@@ -102,7 +106,7 @@ extension SearchUserViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     
     if tableView == self.tableView {
-      if viewModel.userList.count == 0 {
+      if viewModel.userListViewModel.value.count == 0 {
         return 1
       } else {
         return 2
@@ -114,7 +118,7 @@ extension SearchUserViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     if tableView == self.tableView {
-      if viewModel.userList.count != 0 {
+      if viewModel.userListViewModel.value.count != 0 {
         switch section {
         case 0:
           return ""
@@ -134,15 +138,15 @@ extension SearchUserViewController: UITableViewDataSource {
                  
                  numberOfRowsInSection section: Int) -> Int {
     
-    if viewModel.userList.count == 0 || tableView == searchTableView {
+    if viewModel.userListViewModel.value.count == 0 || tableView == searchTableView {
       return viewModel.userViewModel.value.count
     } else {
-      return [viewModel.userList.count, viewModel.userViewModel.value.count][section]
+      return [1, viewModel.userViewModel.value.count][section]
     }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath == [0, 0] && viewModel.userList.count != 0 && tableView == self.tableView {
+    if indexPath == [0, 0] && viewModel.userListViewModel.value.count != 0 && tableView == self.tableView {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: SelecetedUserTableViewCell.identifier,
                                                      for: indexPath) as? SelecetedUserTableViewCell
         else { fatalError("Unexpected Table View Cell") }
@@ -150,6 +154,8 @@ extension SearchUserViewController: UITableViewDataSource {
       cell.collectionView.delegate = self
       
       cell.collectionView.dataSource = self
+      
+      cell.collectionView.reloadData()
       
       cell.height.constant = selectedCellHeight
       
@@ -178,15 +184,16 @@ extension SearchUserViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let cell = tableView.cellForRow(at: indexPath) as? WideUserTableViewCell else {return}
-    if cell.unCheckIcon.isHidden == true {
-      cell.unCheckIcon.isHidden = false
+    if cell.circleIcon.isHidden == true {
+      cell.circleIcon.isHidden = false
       cell.checkIcon.isHidden = true
+      viewModel.removeUserFromList(user: viewModel.userViewModel.value[indexPath.row])
     } else {
-      cell.unCheckIcon.isHidden = true
+      cell.circleIcon.isHidden = true
       cell.checkIcon.isHidden = false
+      viewModel.addUserToList(user: viewModel.userViewModel.value[indexPath.row])
     }
   }
-  
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
@@ -221,13 +228,20 @@ extension SearchUserViewController: UITableViewDelegate {
 extension SearchUserViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    return 10
+    return self.viewModel.userListViewModel.value.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CircleUserCollectionViewCell.identifier,
                                                         for: indexPath) as? CircleUserCollectionViewCell
       else { fatalError("Unexpected Table View Cell") }
+    
+    let cellViewModel = self.viewModel.userListViewModel.value[indexPath.row]
+    
+//    cell.height.constant = wideUserCellHeight
+    
+    cell.setup(viewModel: cellViewModel)
+    
     cell.layoutCell()
     
     return cell

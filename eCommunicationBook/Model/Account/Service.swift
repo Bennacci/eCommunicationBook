@@ -44,7 +44,10 @@ protocol AccountItem {
   
   var title: String { get }
   
+  var formTitle: String? { get }
+
   var form: [[String]]? { get }
+  
 }
 
 enum ParentSeviceItem: AccountItem {
@@ -95,6 +98,17 @@ enum ParentSeviceItem: AccountItem {
     }
   }
   
+  var formTitle: String? {
+    switch self {
+    case .checkLearingStat,
+         .payTimeAnnounce,
+         .contactUs,
+         .leaveReservation,
+         .courseReservation,
+         .makeUpReservation: return nil
+    }
+  }
+  
   var form: [[String]]? {
     switch self {
     case .checkLearingStat,
@@ -105,6 +119,8 @@ enum ParentSeviceItem: AccountItem {
          .makeUpReservation: return nil
     }
   }
+  
+
 
 }
 
@@ -112,7 +128,7 @@ enum TeacherSeviceItem: AccountItem {
   
   case newAUser
   
-  case newAClass
+  case newACourse
   
   case newEvent
   
@@ -128,7 +144,7 @@ enum TeacherSeviceItem: AccountItem {
       
     case .newAUser: return UIImage.asset(.Bear)
       
-    case .newAClass: return UIImage.asset(.Bear)
+    case .newACourse: return UIImage.asset(.Bear)
       
     case .newEvent: return UIImage.asset(.Bear)
       
@@ -147,7 +163,7 @@ enum TeacherSeviceItem: AccountItem {
     
     case .newAUser: return localizedString("新增用戶")
       
-    case .newAClass: return localizedString("開課")
+    case .newACourse: return localizedString("開課")
       
     case .newEvent: return localizedString("新增活動")
       
@@ -158,6 +174,16 @@ enum TeacherSeviceItem: AccountItem {
     case .writeLessonState: return localizedString("學生上課狀況")
     }
   }
+  var formTitle: String? {
+    switch self {
+    case .newAUser: return "Create User"
+    case .newACourse: return "Create Class"
+    case .newEvent: return "Create Event"
+    case .setASign: return "Create Sign"
+    default:
+      return nil
+    }
+  }
   
   var form: [[String]]? {
     switch self {
@@ -165,6 +191,13 @@ enum TeacherSeviceItem: AccountItem {
                             ["Birth Date"],
                             ["E-mail", "CellPhone Number", "Contact Number"],
                             ["image"]]
+    case .newACourse: return [["Class Name"],
+                              ["Teachers", "Students"],
+                              ["First Lesson Date",
+                               "Class day", "Class time"],
+                              ["Total Lessons Count", "Fee"]]
+    case .newEvent: return [["Title", "Time"], ["Description"]]
+    case .setASign: return [["Title"], ["Starting Time", "Ending Time"], ["Description"]]
     default:
       return nil
     }

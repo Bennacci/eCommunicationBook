@@ -11,6 +11,7 @@ import Foundation
 struct Event: Codable {
   let id: String
   let eventName: String
+  let description: String
   let image: String?
   let time: Double
   let timeInterval: Double
@@ -20,6 +21,7 @@ struct Event: Codable {
   enum CodingKeys: String, CodingKey {
     case id
     case eventName
+    case description
     case image
     case time
     case timeInterval
@@ -29,6 +31,7 @@ struct Event: Codable {
     return [
       "id": id as Any,
       "eventName": eventName as Any,
+      "description": description as Any,
       "image": image as Any,
       "time": time as Any,
       "timeInterval": timeInterval as Any

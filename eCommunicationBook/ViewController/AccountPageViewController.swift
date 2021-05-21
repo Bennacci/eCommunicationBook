@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountPageViewController: UIViewController{
+class AccountPageViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -85,16 +85,19 @@ extension AccountPageViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
+    
     if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
       nextVC.modalPresentationStyle = .fullScreen
-      
-      
-      
+      guard let viewController = nextVC as? NewAThingViewController else {return}
+      let services = ServiceManager.init(userType: UserManager.shared.userType).services
+      let servicesItems = services.items[indexPath.section][indexPath.row]
+      viewController.inputTexts = servicesItems.form ?? [[]]
+      viewController.navigationItem.title = servicesItems.formTitle
 //      show(nextVC, sender: nil)
 //      present(nextVC, animated: false, completion: nil)
-
       self.navigationController?.show(nextVC, sender: nil)
-    } 
+
+    }
   }
   
   private func showNewAThingViewController(){

@@ -15,15 +15,15 @@ class TwoLablesTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
     
-    // Reuser identifier
-    class func reuseIdentifier() -> String {
-        return "DateTableViewCellIdentifier"
-    }
-    
-    // Nib name
-    class func nibName() -> String {
-        return "DateTableViewCell"
-    }
+//    // Reuser identifier
+//    class func reuseIdentifier() -> String {
+//        return "DateTableViewCellIdentifier"
+//    }
+//
+//    // Nib name
+//    class func nibName() -> String {
+//        return "DateTableViewCell"
+//    }
     
     // Cell height
     class func cellHeight() -> CGFloat {

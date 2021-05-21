@@ -8,22 +8,21 @@
 
 import UIKit
 
-
-
 class NewAThingViewController: UIViewController {
   
   let viewModel = NewAThingViewModel()
   
-  var inputTexts: [[String]] = [["Name", "ID", "User Type"], ["Birth Date"], ["E-mail", "CellPhone Number", "Contact Number"], ["image"]]
+  var inputTexts: [[String]] = [[]]
+  
   var pickerIndexPath: IndexPath?
-  var selectedIndexPath: IndexPath?
+    
   var inputDates: [[Date]] = []
+  
   var inputValuse: [[Any]] = []
   
   var tempUserType: UserType?
   
   weak var delegate: PublishDelegate?
-
   
   @IBOutlet weak var tableView: UITableView!
   override func viewDidLoad() {
@@ -31,19 +30,19 @@ class NewAThingViewController: UIViewController {
     self.navigationController?.setNavigationBarHidden(false, animated: true)
     tableView.registerCellWithNib(identifier: TextFieldTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: TwoLablesTableViewCell.identifier, bundle: nil)
+    tableView.registerCellWithNib(identifier: TwoLablesWithButtonTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: DatePickerTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: PickerViewTableViewCell.identifier, bundle: nil)
     addInitailValues()
     // Do any additional setup after loading the view.
     viewModel.onAdded = { [weak self] () in
-        self?.delegate?.onPublished()
-        self?.navigationController?.popViewController(animated: true)
+      self?.delegate?.onPublished()
+      self?.navigationController?.popViewController(animated: true)
       //        self?.dismiss(animated: true, completion: nil)
     }
-    
   }
   
-  @IBAction func pop(_ sender: Any) {
+  @IBAction func cancle(_ sender: Any) {
     print("hi")
     self.navigationController?.popViewController(animated: true)
     
@@ -52,7 +51,6 @@ class NewAThingViewController: UIViewController {
   @IBAction func send(_ sender: Any) {
     viewModel.onTapAdd()
   }
-  
   
   func addInitailValues() {
     for index in 0..<inputTexts.count {
@@ -77,64 +75,69 @@ extension NewAThingViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    if pickerIndexPath == indexPath && inputTexts[indexPath.section][indexPath.row - 1] == "Birth Date"{
-      
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier,
-                                                     for: indexPath) as? DatePickerTableViewCell
-        
-        else { fatalError("Unexpected Table View Cell") }
-      
-      cell.updateCell(date: inputDates[indexPath.section][indexPath.row - 1], indexPath: indexPath)
-      
-      cell.delegate = self
-      
-      return cell
-      
-    } else if pickerIndexPath == indexPath {
-      
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: PickerViewTableViewCell.identifier,
-                                                     for: indexPath) as? PickerViewTableViewCell
-        
-        else { fatalError("Unexpected Table View Cell") }
-      //    cell.updateCell(date: inputDates[indexPath.section][indexPath.row - 1], indexPath: indexPath)
-      cell.updateCell(indexPath: indexPath)
-      
-      cell.pickerView.delegate = self
-      
-      return cell
-      
-    } else if inputTexts[indexPath.section][indexPath.row] == "Birth Date" ||
-      
-      inputTexts[indexPath.section][indexPath.row] == "User Type" {
-      
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: TwoLablesTableViewCell.identifier,
-                                                     for: indexPath) as? TwoLablesTableViewCell
-        
-        else { fatalError("Unexpected Table View Cell") }
-      
-      switch inputTexts[indexPath.section][indexPath.row] {
-        
+    let inputText: String
+    let inputDate: Date
+    if pickerIndexPath == nil {
+      inputText = inputTexts[indexPath.section][indexPath.row]
+      inputDate = inputDates[indexPath.section][indexPath.row]
+    } else {
+      inputText = inputTexts[indexPath.section][indexPath.row - 1]
+      inputDate = inputDates[indexPath.section][indexPath.row - 1]
+    }
+    if pickerIndexPath == indexPath {
+      switch  inputText {
       case "Birth Date":
-        
-        cell.updateText(text: inputTexts[indexPath.section][indexPath.row],
-                        
-                        date: inputDates[indexPath.section][indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier,
+                                                       for: indexPath) as? DatePickerTableViewCell
+          else { fatalError("Unexpected Table View Cell") }
+        cell.updateCell(date: inputDate, indexPath: indexPath)
+        cell.delegate = self
+        return cell
+      case "User Type":
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PickerViewTableViewCell.identifier,
+                                                       for: indexPath) as? PickerViewTableViewCell
+          else { fatalError("Unexpected Table View Cell") }
+        cell.updateCell(indexPath: indexPath)
+        cell.pickerView.delegate = self
         return cell
       default:
-        cell.updateText(text: inputTexts[indexPath.section][indexPath.row],
+        // check bug soon
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier,
+                                                       for: indexPath) as? TextFieldTableViewCell
+          else { fatalError("Unexpected Table View Cell") }
+        cell.textField.placeholder = "點擊輸入"
+        cell.title.text = inputText
+        cell.textField.delegate = self
+        return cell
+      }
+    } else if inputText == "Birth Date" || inputText == "User Type" {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: TwoLablesTableViewCell.identifier,
+                                                     for: indexPath) as? TwoLablesTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      switch inputText {
+      case "Birth Date":
+        cell.updateText(text: inputText,
+                        date: inputDate)
+        return cell
+      default:
+        cell.updateText(text: inputText,
                         type: tempUserType?.rawValue ?? "type")
         return cell
       }
+    } else if inputText == "Teachers" || inputText == "Students"{
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: TwoLablesWithButtonTableViewCell.identifier,
+                                                     for: indexPath) as? TwoLablesWithButtonTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      cell.updateText(text: inputText, numbers: 123)
+        return cell
     } else {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier,
                                                      for: indexPath) as? TextFieldTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       cell.textField.placeholder = "點擊輸入"
-      cell.title.text = inputTexts[indexPath.section][indexPath.row]
+      cell.title.text = inputText
       cell.textField.delegate = self
-      
-      switch inputTexts[indexPath.section][indexPath.row] {
+      switch inputText {
       case "CellPhone Number":
         cell.textField.keyboardType = .numberPad
       case "Contact Number":
@@ -143,7 +146,6 @@ extension NewAThingViewController: UITableViewDataSource {
         cell.textField.keyboardType = .emailAddress
       default:
         cell.textField.keyboardType = .default
-        
       }
       return cell
     }
@@ -155,11 +157,20 @@ extension NewAThingViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 12
   }
-//  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//
-//  }
+  //  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+  //
+  //  }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    selectedIndexPath = indexPath
+    if inputTexts[indexPath.section][indexPath.row] == "Teachers"{
+          if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
+      //             nextVC.modalPresentationStyle = .fullScreen
+      //       //      show(nextVC, sender: nil)
+      //             present(nextVC, animated: false, completion: nil)
+                   self.navigationController?.show(nextVC, sender: nil)
+          } else { return }
+    }
+    if inputTexts[indexPath.section][indexPath.row] == "User Type" ||
+      inputTexts[indexPath.section][indexPath.row] == "Birth Date" {
     tableView.beginUpdates()
     if let datePickerIndexPath = pickerIndexPath, datePickerIndexPath.row - 1 == indexPath.row {
       tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
@@ -174,6 +185,7 @@ extension NewAThingViewController: UITableViewDelegate {
       view.endEditing(true)
     }
     tableView.endUpdates()
+    }
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -201,31 +213,31 @@ extension NewAThingViewController: UITextFieldDelegate {
       self.pickerIndexPath = nil
     }
     tableView.endUpdates()
-//    updateViewModel(with: textField)
-
+    //    updateViewModel(with: textField)
+    
   }
   func textFieldDidEndEditing(_ textField: UITextField) {
     updateViewModel(with: textField)
   }
   
   func updateViewModel(with textField: UITextField) {
-   let pointInTable = textField.convert(textField.bounds.origin, to: self.tableView)
-      guard let textFieldIndexPath = self.tableView.indexPathForRow(at: pointInTable) else {return}
-      guard let info = textField.text else { return }
-      switch inputTexts[textFieldIndexPath.section][textFieldIndexPath.row] {
-      case "Name":
-        viewModel.onNameChanged(text: info)
-      case "ID":
-        viewModel.onUserIDChanged(text: info)
-      case "E-mail":
-        viewModel.onEmailChanged(text: info)
-      case "CellPhone Number":
+    let pointInTable = textField.convert(textField.bounds.origin, to: self.tableView)
+    guard let textFieldIndexPath = self.tableView.indexPathForRow(at: pointInTable) else {return}
+    guard let info = textField.text else { return }
+    switch inputTexts[textFieldIndexPath.section][textFieldIndexPath.row] {
+    case "Name":
+      viewModel.onNameChanged(text: info)
+    case "ID":
+      viewModel.onUserIDChanged(text: info)
+    case "E-mail":
+      viewModel.onEmailChanged(text: info)
+    case "CellPhone Number":
       viewModel.onCellPhoneNoChanged(text: info)
-      case "Contact Number":
-          viewModel.onHomePhoneNoChanged(text: info)
-      default:
-        return
-      }
+    case "Contact Number":
+      viewModel.onHomePhoneNoChanged(text: info)
+    default:
+      return
+    }
   }
 }
 

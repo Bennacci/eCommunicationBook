@@ -9,22 +9,26 @@
 import Foundation
 
 struct Course: Codable {
-  let id: String
-  let name: String
-  let teacher: [String]
-  let student: [String]
-  let courseTime: [RoutineHour]
-  let fee: Int
-  let lesson: [Lesson]
+  var id: String
+  var name: String
+  var teacher: [String]
+  var student: [String]
+  var firstLessonDate: Double
+  var courseTime: [RoutineHour]
+  var fee: Int
+  var lessonsAmount: Int
+  var lessons: [Lesson]?
   
   enum CodingKeys: String, CodingKey {
     case id
     case name
     case teacher
     case student
+    case firstLessonDate
     case courseTime
     case fee
-    case lesson
+    case lessonsAmount
+    case lessons
   }
   
   var toDict: [String: Any] {
@@ -33,9 +37,11 @@ struct Course: Codable {
       "name": name as Any,
       "teacher": teacher as Any,
       "student": student as Any,
+      "firstLessonDate": firstLessonDate as Any,
       "courseTime": courseTime as Any,
       "fee": fee as Any,
-      "lesson": lesson as Any
+      "lessonsAmount": lessonsAmount as Any,
+      "lessons": lessons as Any
     ]
   }
 }

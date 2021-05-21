@@ -8,8 +8,14 @@
 
 import Foundation
 
+// 用protocol 拆成 newthing 系列 VM?
+
 class NewAThingViewModel {
   
+  var searchUserVIewModel = SearchUserPageViewModel()
+  
+  
+// MARK:- new a user
   var user: User = User(
     id: "",
     createdTime: -1,
@@ -22,7 +28,7 @@ class NewAThingViewModel {
     email: "",
     userType: "",
     workingHours: nil,
-    dificulty: nil,
+    difficulty: nil,
     note: nil)
   
   func onUserIDChanged(text userID: String) {
@@ -72,4 +78,39 @@ class NewAThingViewModel {
       }
     }
   }
+  
+  //MARK:- new a class
+
+  var course: Course = Course(
+    id: "",
+    name: "",
+    teacher: [],
+    student: [],
+    firstLessonDate: -1,
+    courseTime: [],
+    fee: -1,
+    lessonsAmount: -1,
+    lessons: nil)
+
+  func onCourseNameChanged(text name: String) {
+    self.course.name = name
+  }
+  
+  func onFirstLessonDateChanged(day: Date) {
+    self.course.firstLessonDate = Double(day.millisecondsSince1970)
+  }
+  
+  func onFeeChanged(text fee: String) {
+    self.course.fee = Int(fee) ?? -1
+  }
+  
+  func onLessonsAmountChanged(text fee: String) {
+    self.course.fee = Int(fee) ?? -1
+  }
+//  func onTeachersChanged(text name: String) {
+//    self.teacher.name = name
+//  }
+  
+  
+  
 }

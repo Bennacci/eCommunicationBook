@@ -20,7 +20,7 @@ struct User: Codable {
   var email: String
   var userType: UserType.RawValue
   var workingHours: [RoutineHour]?
-  var dificulty: [Int]?
+  var difficulty: [Int]?
   var note: [String]?
   
   enum CodingKeys: String, CodingKey {
@@ -35,7 +35,7 @@ struct User: Codable {
     case email
     case userType
     case workingHours
-    case dificulty
+    case difficulty
     case note
   }
   
@@ -52,7 +52,7 @@ struct User: Codable {
       "email": email as Any,
       "userType": userType as Any,
       "workingHours": workingHours as Any,
-      "dificulty": dificulty as Any,
+      "difficulty": difficulty as Any,
       "note": note as Any
     ]
   }

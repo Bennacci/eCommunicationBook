@@ -69,9 +69,9 @@ class UserViewModel {
       return user.workingHours
     }
   }
-  var dificulty: [Int]? {
+  var difficulty: [Int]? {
     get {
-      return user.dificulty
+      return user.difficulty
     }
   }
   var note: [String]? {

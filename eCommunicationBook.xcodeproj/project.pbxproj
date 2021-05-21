@@ -81,6 +81,7 @@
 		74CADD9926564950004DA6D0 /* PickerViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74CADD9726564950004DA6D0 /* PickerViewTableViewCell.xib */; };
 		74CADD9B26568BAF004DA6D0 /* NewAThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */; };
 		74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */; };
+		74D869D7265745F8004D33ED /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D6265745F8004D33ED /* CalendarHelper.swift */; };
 		74E94735264BE09500AFB046 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94729264BE09500AFB046 /* UserManager.swift */; };
 		74E94736264BE09500AFB046 /* XXXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472A264BE09500AFB046 /* XXXManager.swift */; };
 		74E94737264BE09500AFB046 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472C264BE09500AFB046 /* Author.swift */; };
@@ -180,6 +181,7 @@
 		74CADD9726564950004DA6D0 /* PickerViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerViewTableViewCell.xib; sourceTree = "<group>"; };
 		74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAThingViewModel.swift; sourceTree = "<group>"; };
 		74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISceneDelegate+Extension.swift"; sourceTree = "<group>"; };
+		74D869D6265745F8004D33ED /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		74E94729264BE09500AFB046 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		74E9472A264BE09500AFB046 /* XXXManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XXXManager.swift; sourceTree = "<group>"; };
 		74E9472C264BE09500AFB046 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				745147DF264D386700172419 /* ChatRoom.swift */,
 				745147E1264D389D00172419 /* Message.swift */,
 				74A7D116265518FA00B445EB /* DayOfWeek.swift */,
+				74D869D6265745F8004D33ED /* CalendarHelper.swift */,
 				74A7D11826552A6E00B445EB /* RoutineHour.swift */,
 				746BDE6F26523D0B001B1E71 /* Course.swift */,
 				746BDE7126523D14001B1E71 /* Lesson.swift */,
@@ -665,6 +668,7 @@
 				74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */,
 				74E9473D264BE09500AFB046 /* PaddingableUILabel.swift in Sources */,
 				746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */,
+				74D869D7265745F8004D33ED /* CalendarHelper.swift in Sources */,
 				74CADD8226554C5A004DA6D0 /* SearchUserPageViewModel.swift in Sources */,
 				74C23766264BB5FE001BF47A /* AppDelegate.swift in Sources */,
 				74A5C8AB264E2C1B00704C39 /* CalendarPageViewController.swift in Sources */,

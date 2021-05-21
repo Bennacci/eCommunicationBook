@@ -87,10 +87,19 @@ extension AccountPageViewController: UITableViewDelegate {
     
     if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
       nextVC.modalPresentationStyle = .fullScreen
+      
+      
+      
 //      show(nextVC, sender: nil)
 //      present(nextVC, animated: false, completion: nil)
+
       self.navigationController?.show(nextVC, sender: nil)
     } 
+  }
+  
+  private func showNewAThingViewController(){
+    
+    
   }
   
   func isTokenExist() -> Bool {

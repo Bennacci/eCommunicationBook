@@ -11,7 +11,7 @@ import UIKit
 class WideUserTableViewCell: UITableViewCell {
 
   
-  @IBOutlet weak var unCheckIcon: UIImageView!
+  @IBOutlet weak var circleIcon: UIImageView!
   @IBOutlet weak var checkIcon: UIImageView!
   @IBOutlet weak var userImageW: UIImageView!
   @IBOutlet weak var userName: UILabel!

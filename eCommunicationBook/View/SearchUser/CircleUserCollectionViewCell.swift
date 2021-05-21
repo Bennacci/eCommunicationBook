@@ -29,5 +29,4 @@ class CircleUserCollectionViewCell: UICollectionViewCell {
     userImage.layer.cornerRadius = userImage.frame.height / 2
     layoutIfNeeded()
   }
-  
 }

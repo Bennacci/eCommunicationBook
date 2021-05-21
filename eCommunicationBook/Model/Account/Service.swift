@@ -43,6 +43,8 @@ protocol AccountItem {
   var image: UIImage? { get }
   
   var title: String { get }
+  
+  var form: [[String]]? { get }
 }
 
 enum ParentSeviceItem: AccountItem {
@@ -92,6 +94,18 @@ enum ParentSeviceItem: AccountItem {
     case .makeUpReservation: return localizedString("補課申請")
     }
   }
+  
+  var form: [[String]]? {
+    switch self {
+    case .checkLearingStat,
+         .payTimeAnnounce,
+         .contactUs,
+         .leaveReservation,
+         .courseReservation,
+         .makeUpReservation: return nil
+    }
+  }
+
 }
 
 enum TeacherSeviceItem: AccountItem {
@@ -143,5 +157,17 @@ enum TeacherSeviceItem: AccountItem {
       
     case .writeLessonState: return localizedString("學生上課狀況")
     }
+  }
+  
+  var form: [[String]]? {
+    switch self {
+    case .newAUser: return [["Name", "ID", "User Type"],
+                            ["Birth Date"],
+                            ["E-mail", "CellPhone Number", "Contact Number"],
+                            ["image"]]
+    default:
+      return nil
+    }
+  
   }
 }

@@ -95,6 +95,9 @@
                                 <rect key="frame" x="20" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancle"/>
+                                <connections>
+                                    <action selector="popViewController:" destination="XGt-j0-biN" eventType="touchUpInside" id="vIr-Sl-bap"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="4XG-Fb-lPw">
@@ -102,6 +105,9 @@
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="sendAndQuitViewController:" destination="XGt-j0-biN" eventType="touchUpInside" id="X2I-UC-2Jv"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>

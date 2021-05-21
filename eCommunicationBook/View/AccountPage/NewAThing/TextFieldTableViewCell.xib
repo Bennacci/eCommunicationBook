@@ -23,26 +23,18 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cVO-lX-wqs">
-                        <rect key="frame" x="74" y="0.0" width="279" height="169"/>
+                        <rect key="frame" x="0.0" y="0.0" width="353" height="170"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9D5-o0-Sib">
-                        <rect key="frame" x="64" y="169" width="240" height="1"/>
-                        <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="xn7-NM-tjY"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="9D5-o0-Sib" secondAttribute="bottom" id="5ga-tM-dG7"/>
                     <constraint firstItem="fHz-Wc-p8E" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7EL-TF-nAU"/>
-                    <constraint firstItem="cVO-lX-wqs" firstAttribute="leading" secondItem="fHz-Wc-p8E" secondAttribute="trailing" constant="16" id="8Nt-95-f9h"/>
                     <constraint firstItem="cVO-lX-wqs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HaL-mb-ZUY"/>
-                    <constraint firstItem="9D5-o0-Sib" firstAttribute="top" secondItem="cVO-lX-wqs" secondAttribute="bottom" id="P3q-to-zMd"/>
+                    <constraint firstAttribute="bottom" secondItem="cVO-lX-wqs" secondAttribute="bottom" id="W6W-jV-EDp"/>
                     <constraint firstAttribute="trailing" secondItem="cVO-lX-wqs" secondAttribute="trailing" constant="16" id="aId-aK-kmr"/>
                     <constraint firstItem="fHz-Wc-p8E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="qTz-FA-RgM"/>
+                    <constraint firstItem="cVO-lX-wqs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xt5-lK-H6d"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

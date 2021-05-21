@@ -49,7 +49,7 @@ class ServiceManager {
            
           [TeacherSeviceItem.newAUser],
             
-            [TeacherSeviceItem.newAClass,
+            [TeacherSeviceItem.newACourse,
             
             TeacherSeviceItem.newEvent,
            

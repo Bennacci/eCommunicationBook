@@ -18,6 +18,7 @@ class SearchUserViewController: UIViewController {
   
   @IBOutlet weak var cancleButtonWidth: NSLayoutConstraint!
   
+
   var selectedCellHeight: CGFloat = 100
   
   var wideUserCellHeight: CGFloat = 50
@@ -53,6 +54,17 @@ class SearchUserViewController: UIViewController {
     
     viewModel.fetchData()
   }
+  @IBAction func popViewController(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+
+    
+  }
+  @IBAction func sendAndQuitViewController(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+
+  }
+  
+  
   @IBAction func cancleSearching(_ sender: Any) {
     if let viewWithTag = self.view.viewWithTag(100) {
       UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {

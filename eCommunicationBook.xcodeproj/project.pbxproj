@@ -80,6 +80,8 @@
 		74CADD9826564950004DA6D0 /* PickerViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CADD9626564950004DA6D0 /* PickerViewTableViewCell.swift */; };
 		74CADD9926564950004DA6D0 /* PickerViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74CADD9726564950004DA6D0 /* PickerViewTableViewCell.xib */; };
 		74CADD9B26568BAF004DA6D0 /* NewAThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */; };
+		74D3A67B26579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D3A67926579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift */; };
+		74D3A67C26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D3A67A26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib */; };
 		74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */; };
 		74D869D7265745F8004D33ED /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D6265745F8004D33ED /* CalendarHelper.swift */; };
 		74E94735264BE09500AFB046 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94729264BE09500AFB046 /* UserManager.swift */; };
@@ -180,6 +182,8 @@
 		74CADD9626564950004DA6D0 /* PickerViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewTableViewCell.swift; sourceTree = "<group>"; };
 		74CADD9726564950004DA6D0 /* PickerViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerViewTableViewCell.xib; sourceTree = "<group>"; };
 		74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAThingViewModel.swift; sourceTree = "<group>"; };
+		74D3A67926579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLablesWithButtonTableViewCell.swift; sourceTree = "<group>"; };
+		74D3A67A26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoLablesWithButtonTableViewCell.xib; sourceTree = "<group>"; };
 		74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISceneDelegate+Extension.swift"; sourceTree = "<group>"; };
 		74D869D6265745F8004D33ED /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		74E94729264BE09500AFB046 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -280,12 +284,12 @@
 			children = (
 				74857F962654B95800AEF14D /* NavigationController.swift */,
 				746BDE73265250EF001B1E71 /* HomePageViewController.swift */,
+				74857F9D2654E81A00AEF14D /* SearchUserViewController.swift */,
 				745147E5264D3F5E00172419 /* ChatRoomPageViewController.swift */,
 				74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */,
 				74A5C8AA264E2C1B00704C39 /* CalendarPageViewController.swift */,
 				745147D4264CF76E00172419 /* AccountPageViewController.swift */,
 				74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */,
-				74857F9D2654E81A00AEF14D /* SearchUserViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -372,12 +376,14 @@
 				74857F982654BBF200AEF14D /* NewAThing.storyboard */,
 				74CADD862656105E004DA6D0 /* TextFieldTableViewCell.swift */,
 				74CADD872656105E004DA6D0 /* TextFieldTableViewCell.xib */,
-				74CADD93265614EF004DA6D0 /* TwoLablesTableViewCell.xib */,
 				74CADD8E265614E1004DA6D0 /* TwoLablesTableViewCell.swift */,
-				74CADD92265614EF004DA6D0 /* DatePickerTableViewCell.xib */,
+				74CADD93265614EF004DA6D0 /* TwoLablesTableViewCell.xib */,
 				74CADD8F265614E1004DA6D0 /* DatePickerTableViewCell.swift */,
+				74CADD92265614EF004DA6D0 /* DatePickerTableViewCell.xib */,
 				74CADD9626564950004DA6D0 /* PickerViewTableViewCell.swift */,
 				74CADD9726564950004DA6D0 /* PickerViewTableViewCell.xib */,
+				74D3A67926579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift */,
+				74D3A67A26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib */,
 			);
 			path = NewAThing;
 			sourceTree = "<group>";
@@ -548,6 +554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74857F9A2654BBF200AEF14D /* NewAThing.storyboard in Resources */,
+				74D3A67C26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib in Resources */,
 				741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */,
 				74A5A76E2654EC690039BC22 /* CircleUserCollectionViewCell.xib in Resources */,
 				741FAC88264CD77200D5C34B /* CalendarPage.storyboard in Resources */,
@@ -646,6 +653,7 @@
 				745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */,
 				745147CA264CDE8000172419 /* ServiceTableViewCell.swift in Sources */,
 				74E94753264C087D00AFB046 /* Int+Extension.swift in Sources */,
+				74D3A67B26579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift in Sources */,
 				74A5A7712654EFDF0039BC22 /* SelecetedUserTableViewCell.swift in Sources */,
 				74A7D1152655141D00B445EB /* User.swift in Sources */,
 				74857FA32654E9DB00AEF14D /* WideUserTableViewCell.swift in Sources */,

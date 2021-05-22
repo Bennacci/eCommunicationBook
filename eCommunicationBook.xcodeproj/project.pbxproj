@@ -60,6 +60,7 @@
 		74A7D11B26552B2F00B445EB /* StudentPerformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7D11A26552B2F00B445EB /* StudentPerformance.swift */; };
 		74A7D11D2655366300B445EB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7D11C2655366300B445EB /* Event.swift */; };
 		74A7D11F2655383400B445EB /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7D11E2655383400B445EB /* Student.swift */; };
+		74AE58C82658A3FD00BB851B /* NewACourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AE58C72658A3FD00BB851B /* NewACourseViewModel.swift */; };
 		74BDBEE0264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEDF264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift */; };
 		74BDBEE2264FD2D70040C0D6 /* UserMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEE1264FD2D70040C0D6 /* UserMessageTableViewCell.swift */; };
 		74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */; };
@@ -160,6 +161,7 @@
 		74A7D11A26552B2F00B445EB /* StudentPerformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentPerformance.swift; sourceTree = "<group>"; };
 		74A7D11C2655366300B445EB /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		74A7D11E2655383400B445EB /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		74AE58C72658A3FD00BB851B /* NewACourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewACourseViewModel.swift; sourceTree = "<group>"; };
 		74BDBEDF264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerMessageTableViewCell.swift; sourceTree = "<group>"; };
 		74BDBEE1264FD2D70040C0D6 /* UserMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessageTableViewCell.swift; sourceTree = "<group>"; };
 		74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				74CADD8126554C5A004DA6D0 /* SearchUserPageViewModel.swift */,
 				74CADD8326554C81004DA6D0 /* UserVIewModel.swift */,
 				74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */,
+				74AE58C72658A3FD00BB851B /* NewACourseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				74CADD90265614E1004DA6D0 /* TwoLablesTableViewCell.swift in Sources */,
 				741D7C482653D9A200A7FD0A /* Service.swift in Sources */,
 				74025806265264B100BA6BDA /* ServiceCollectionViewCell.swift in Sources */,
+				74AE58C82658A3FD00BB851B /* NewACourseViewModel.swift in Sources */,
 				74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */,
 				74CADD9B26568BAF004DA6D0 /* NewAThingViewModel.swift in Sources */,
 				74E94735264BE09500AFB046 /* UserManager.swift in Sources */,

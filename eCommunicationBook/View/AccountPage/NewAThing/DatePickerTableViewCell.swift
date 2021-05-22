@@ -18,6 +18,7 @@ class DatePickerTableViewCell: UITableViewCell {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var indexPath: IndexPath!
+  
     weak var delegate: PickerDelegate?
     
     // Reuser identifier

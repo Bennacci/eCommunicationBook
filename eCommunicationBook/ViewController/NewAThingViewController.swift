@@ -7,16 +7,35 @@
 //
 
 import UIKit
+//
+//class NewAThingManager {
+//  static let shared = NewAThingManager()
+//
+//  var service = "Create User"
+//
+//  func viewModel() -> NewAThingViewModel{
+//    switch service {
+//    case  "Create User":
+//      return NewAUserViewModel()
+//    default:
+//      return NewACourseViewModel()
+//    }
+//  }
+//  //  private let target: String
+//
+//  //  var viewModel: Any {
+//  //    switch target {
+//  //    case "Create User":
+//  //      return NewAUserViewModel()
+//  //    default:
+//  //      return NewACourseViewModel()
+//  //    }
+//  //  }
+//}
 
 class NewAThingViewController: UIViewController {
   
   let viewModel = NewAThingViewModel()
-  
-  var inputTexts: [[String]] = [[]]
-  
-  var servicesItem = ServiceManager.init(userType: UserManager.shared.userType).services.items[0][0]
-  
-  //  var a = ServiceGroup.init(title: [], items: []).items[0][0]
   
   var pickerMotherIndexPath: IndexPath?
   
@@ -30,12 +49,6 @@ class NewAThingViewController: UIViewController {
   
   var willExpand: Bool = false
   
-  var inputDates: [[Date]] = []
-  
-  //  var inputValuse: [[Any]] = []
-  
-  var tempUserType: UserType?
-  
   weak var delegate: PublishDelegate?
   
   @IBOutlet weak var tableView: UITableView!
@@ -47,14 +60,20 @@ class NewAThingViewController: UIViewController {
     tableView.registerCellWithNib(identifier: TwoLablesWithButtonTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: DatePickerTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: PickerViewTableViewCell.identifier, bundle: nil)
-    addInitailValues()
     // Do any additional setup after loading the view.
+    viewModel.loadInitialValues()
+    
+    viewModel.onDataUpdated = { [weak self] () in
+      self?.tableView.reloadData()
+    }
+    
     viewModel.onAdded = { [weak self] () in
       self?.delegate?.onPublished()
       self?.navigationController?.popViewController(animated: true)
       //        self?.dismiss(animated: true, completion: nil)
     }
   }
+    
   
   @IBAction func cancle(_ sender: Any) {
     print("hi")
@@ -66,49 +85,60 @@ class NewAThingViewController: UIViewController {
     viewModel.onTapAdd()
   }
   
-  func addInitailValues() {
-    inputTexts = servicesItem.form!
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let destinationNavigationController = segue.destination as? UINavigationController,
+      let targetController = destinationNavigationController.topViewController as? SearchUserViewController
+      else { fatalError("Unexpected Table View Cell") }
     
-    for index in 0..<inputTexts.count {
-      let input = Array(repeating: Date(), count: inputTexts[index].count)
-      inputDates.append(input)
-      //      inputValuse.append(input)
-    }
+    targetController.delegate = self.viewModel
+//      if segue.identifier == "navigateToPublish",
+//      let publishViewController = segue.destination as? PublishViewController {
+//
+//      publishViewController.delegate = self
+//
+//    }
   }
 }
 
 extension NewAThingViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
-    return inputTexts.count
+    return viewModel.inputTexts.count
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if willExpand == true  && pickerIndexPath?.section == section {
-      return inputTexts[section].count + 1
+      return viewModel.inputTexts[section].count + 1
     } else {
-      return inputTexts[section].count
+      return viewModel.inputTexts[section].count
     }
   }
-  
+  // swiftlint:disable function_body_length cyclomatic_complexity
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let inputText: String
     let inputDate: Date
+    
     if pickerIndexPath == nil || pickerIndexPath != indexPath {
-      inputText = inputTexts[indexPath.section][indexPath.row]
-      inputDate = inputDates[indexPath.section][indexPath.row]
+      inputText = viewModel.inputTexts[indexPath.section][indexPath.row]
+      inputDate = viewModel.inputDates[indexPath.section][indexPath.row]
     } else {
-      inputText = inputTexts[indexPath.section][indexPath.row - 1]
-      inputDate = inputDates[indexPath.section][indexPath.row - 1]
+      inputText = viewModel.inputTexts[indexPath.section][indexPath.row - 1]
+      inputDate = viewModel.inputDates[indexPath.section][indexPath.row - 1]
     }
+    
     if pickerIndexPath == indexPath {
+      
       switch  inputText {
-      case "Birth Date":
+        
+      case "Birth Date", "First Lesson Date":
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier,
                                                        for: indexPath) as? DatePickerTableViewCell
           else { fatalError("Unexpected Table View Cell") }
         cell.updateCell(date: inputDate, indexPath: indexPath)
         cell.delegate = self
         return cell
+        
       case "User Type":
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PickerViewTableViewCell.identifier,
                                                        for: indexPath) as? PickerViewTableViewCell
@@ -116,6 +146,7 @@ extension NewAThingViewController: UITableViewDataSource {
         cell.updateCell(indexPath: indexPath)
         cell.pickerView.delegate = self
         return cell
+        
       default:
         //         check bug soon
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier,
@@ -124,38 +155,41 @@ extension NewAThingViewController: UITableViewDataSource {
         //        cell.isHidden = true
         return cell
       }
-    } else if inputText == "Birth Date" || inputText == "User Type" {
+      
+    } else if inputText == "Birth Date" || inputText == "User Type" || inputText == "First Lesson Date" {
+      
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TwoLablesTableViewCell.identifier,
                                                      for: indexPath) as? TwoLablesTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       switch inputText {
-      case "Birth Date":
+      case "User Type":
         cell.updateText(text: inputText,
-                        date: inputDate)
+                        type: viewModel.user.userType)
         return cell
       default:
         cell.updateText(text: inputText,
-                        type: tempUserType?.rawValue ?? "type")
+                        date: inputDate)
         return cell
       }
     } else if inputText == "Teachers" || inputText == "Students"{
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TwoLablesWithButtonTableViewCell.identifier,
                                                      for: indexPath) as? TwoLablesWithButtonTableViewCell
         else { fatalError("Unexpected Table View Cell") }
-      cell.updateText(text: inputText, numbers: 123)
+      cell.updateText(text: inputText)
       return cell
     } else {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier,
                                                      for: indexPath) as? TextFieldTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       cell.textField.placeholder = "點擊輸入"
+      
       cell.title.text = inputText
       cell.textField.delegate = self
       switch inputText {
-      case "CellPhone Number":
+      case "CellPhone Number", "Contact Number":
         cell.textField.keyboardType = .numberPad
-      case "Contact Number":
-        cell.textField.keyboardType = .numberPad
+//      case "Contact Number":
+//        cell.textField.keyboardType = .numberPad
       case "E-mail":
         cell.textField.keyboardType = .emailAddress
       default:
@@ -165,6 +199,7 @@ extension NewAThingViewController: UITableViewDataSource {
     }
   }
 }
+  // swiftlint:enable function_body_length cyclomatic_complexity
 
 extension NewAThingViewController: UITableViewDelegate {
   
@@ -176,10 +211,9 @@ extension NewAThingViewController: UITableViewDelegate {
   //  }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-    let inputText = inputTexts[indexPath.section][indexPath.row]
+    let inputText = viewModel.inputTexts[indexPath.section][indexPath.row]
     
-    
-    if inputText == "User Type" || inputText == "Birth Date" {
+    if inputText == "User Type" || inputText == "Birth Date" || inputText == "First Lesson Date" {
       
       if pickerIndexPath != nil && indexPath != pickerMotherIndexPath {
         
@@ -193,7 +227,7 @@ extension NewAThingViewController: UITableViewDelegate {
         
         tableView.insertRows(at: [pickerIndexPath!], with: .fade)
         
-      } else if indexPath == pickerMotherIndexPath {
+      } else if pickerIndexPath != nil && indexPath == pickerMotherIndexPath {
         
         willExpand = false
         
@@ -227,51 +261,25 @@ extension NewAThingViewController: UITableViewDelegate {
     
     tableView.deselectRow(at: indexPath, animated: true)
     
-    if inputText == "Teachers"{
+    if inputText == "Teachers" || inputText == "Students"{
       if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
-        //             nextVC.modalPresentationStyle = .fullScreen
-        //       //      show(nextVC, sender: nil)
-        //             present(nextVC, animated: false, completion: nil)
+
+          guard let targetController = nextVC.children[0] as? SearchUserViewController
+            
+          else { fatalError("Unexpected Table View Cell") }
+        
+          targetController.delegate = self.viewModel
+        if inputText == "Students"{
+          targetController.viewModel.secondTime = true
+        }
         self.navigationController?.show(nextVC, sender: nil)
+        
       } else { return }
     }
-    
-    //    if inputTexts[indexPath.section][indexPath.row] == "User Type" ||
-    //      inputTexts[indexPath.section][indexPath.row] == "Birth Date" {
-    //    tableView.beginUpdates()
-    //
-    //    if let datePickerIndexPath = pickerIndexPath, datePickerIndexPath.row - 1 == indexPath.row {
-    //
-    //      tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
-    //
-    //      self.pickerIndexPath = nil
-    //
-    //    } else {
-    //
-    //      if let datePickerIndexPath = pickerIndexPath {
-    //
-    //        tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
-    //        tableView.endUpdates()
-    //      }
-    //      //            if inputTexts[indexPath.section][indexPath.row] == "User Type" ||
-    //      //              inputTexts[indexPath.section][indexPath.row] == "Birth Date" {
-    //      pickerIndexPath = indexPathToInsertPicker(indexPath: indexPath)
-    //
-    //      tableView.insertRows(at: [pickerIndexPath!], with: .fade)
-    //
-    //      tableView.deselectRow(at: indexPath, animated: true)
-    //
-    //      view.endEditing(true)
-    //      //            } else {
-    //      //              tableView.endUpdates()
-    //      //        }
-    //    }
-    //    tableView.endUpdates()
-    //    //    }
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if pickerIndexPath == indexPath {
+    if indexPath == pickerIndexPath && willExpand == true {
       return DatePickerTableViewCell.cellHeight()
     } else {
       return TwoLablesTableViewCell.cellHeight()
@@ -279,17 +287,15 @@ extension NewAThingViewController: UITableViewDelegate {
   }
   
   func indexPathToInsertPicker(indexPath: IndexPath) -> IndexPath {
-    //    if let datePickerIndexPath = pickerIndexPath, datePickerIndexPath.row < indexPath.row {
-    //      return indexPath
-    //    } else {
+    
     return IndexPath(row: indexPath.row + 1, section: indexPath.section)
-    //    }
+    
   }
 }
 
 extension NewAThingViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    tableView.beginUpdates()
+    //    tableView.beginUpdates()
     
     if pickerIndexPath !=  nil {
       
@@ -300,7 +306,7 @@ extension NewAThingViewController: UITextFieldDelegate {
       pickerIndexPath = nil
     }
     
-    tableView.endUpdates()
+    //    tableView.endUpdates()
     //        updateViewModel(with: textField)
   }
   
@@ -312,7 +318,7 @@ extension NewAThingViewController: UITextFieldDelegate {
     let pointInTable = textField.convert(textField.bounds.origin, to: self.tableView)
     guard let textFieldIndexPath = self.tableView.indexPathForRow(at: pointInTable) else {return}
     guard let info = textField.text else { return }
-    switch inputTexts[textFieldIndexPath.section][textFieldIndexPath.row] {
+    switch viewModel.inputTexts[textFieldIndexPath.section][textFieldIndexPath.row] {
     case "Name":
       viewModel.onNameChanged(text: info)
     case "ID":
@@ -323,6 +329,10 @@ extension NewAThingViewController: UITextFieldDelegate {
       viewModel.onCellPhoneNoChanged(text: info)
     case "Contact Number":
       viewModel.onHomePhoneNoChanged(text: info)
+    case "Class Name":
+      viewModel.onCourseNameChanged(text: info)
+    case "Fee":
+      viewModel.onFeeChanged(text: info)
     default:
       return
     }
@@ -337,10 +347,11 @@ extension NewAThingViewController: PickerDelegate {
   
   func didChangeDate(date: Date, indexPath: IndexPath) {
     viewModel.onBirthDayChanged(day: date)
-    inputDates[indexPath.section][indexPath.row] = date
+    viewModel.inputDates[indexPath.section][indexPath.row] = date
     tableView.reloadRows(at: [indexPath], with: .none)
   }
 }
+  
 
 extension NewAThingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
   
@@ -357,13 +368,7 @@ extension NewAThingViewController: UIPickerViewDelegate, UIPickerViewDataSource 
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     
-    tempUserType = UserType.allCases[row]
-    
-    guard let twoLablescell = tableView.cellForRow(at: [pickerIndexPath!.section, pickerIndexPath!.row-1])
-      as? TwoLablesTableViewCell
-      else { fatalError("Unexpected Table View Cell") }
-    twoLablescell.secondLabel.text = tempUserType?.rawValue
-    viewModel.onUserTypeChanged(text: tempUserType!.rawValue)
+    viewModel.onUserTypeChanged(text: UserType.allCases[row].rawValue)
   }
 }
 

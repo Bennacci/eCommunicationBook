@@ -28,13 +28,24 @@ class WideUserTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
   var viewModel: UserViewModel?
-  
-  func setup(viewModel: UserViewModel) {
+    
+  func setup(list: Box<[UserViewModel]>, viewModel: UserViewModel) {
       self.viewModel = viewModel
-      layoutCell()
+
+    layoutCell(list: list)
   }
   
-  func layoutCell() {
+  func layoutCell(list: Box<[UserViewModel]>) {
+    let arrayCount = list.value.count
+    var evenArray = [UserViewModel]()
+    evenArray = list.value.filter{$0.id != viewModel?.id}
+    if evenArray.count == arrayCount {
+      checkIcon.isHidden = true
+      circleIcon.isHidden = false
+    } else {
+      checkIcon.isHidden = false
+      circleIcon.isHidden = true
+    }
     userName.text = viewModel?.name
     userImageW.layer.cornerRadius = userImageW.frame.height / 2
     layoutIfNeeded()

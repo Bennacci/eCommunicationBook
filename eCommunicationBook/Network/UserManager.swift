@@ -19,6 +19,10 @@ class UserManager {
     
     var userType: UserType = .teacher
   
+    lazy var selectedUsers: [UserViewModel] = []
+  
+    lazy var selectedUsersTwo: [UserViewModel] = []
+
       func login(id: String = "", completion: @escaping (Result<String, Error>) -> Void) {
   
           switch id {

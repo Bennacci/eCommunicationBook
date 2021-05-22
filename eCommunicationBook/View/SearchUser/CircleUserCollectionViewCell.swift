@@ -12,6 +12,7 @@ class CircleUserCollectionViewCell: UICollectionViewCell {
 
   @IBOutlet weak var userName: UILabel!
   @IBOutlet weak var userImage: UIImageView!
+  @IBOutlet weak var button: UIButton!
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,6 +26,8 @@ class CircleUserCollectionViewCell: UICollectionViewCell {
   }
   
   func layoutCell() {
+    userName.isUserInteractionEnabled = false
+    button.isUserInteractionEnabled = false
     userName.text = viewModel?.name
     userImage.layer.cornerRadius = userImage.frame.height / 2
     layoutIfNeeded()

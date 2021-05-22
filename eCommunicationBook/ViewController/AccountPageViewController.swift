@@ -85,13 +85,12 @@ extension AccountPageViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-    
     if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
       nextVC.modalPresentationStyle = .fullScreen
       guard let viewController = nextVC as? NewAThingViewController else {return}
       let services = ServiceManager.init(userType: UserManager.shared.userType).services
       let servicesItem = services.items[indexPath.section][indexPath.row]
-      viewController.servicesItem = servicesItem
+      viewController.viewModel.servicesItem = servicesItem
       viewController.navigationItem.title = servicesItem.formTitle
 //      show(nextVC, sender: nil)
 //      present(nextVC, animated: false, completion: nil)
@@ -100,8 +99,7 @@ extension AccountPageViewController: UITableViewDelegate {
     }
   }
   
-  private func showNewAThingViewController(){
-    
+  private func showNewAThingViewController() {
     
   }
   

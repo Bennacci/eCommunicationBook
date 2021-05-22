@@ -20,6 +20,8 @@ class SearchUserPageViewModel {
   
   var tapUser: (()->())?
   
+  lazy var secondTime = false
+  
   func fetchData() {
     
     XXXManager.shared.fetchUser { [weak self] result in
@@ -37,15 +39,21 @@ class SearchUserPageViewModel {
     }
   }
   
+  func onSendAndQuit() {
+    if secondTime == false {
+      UserManager.shared.selectedUsers = userListViewModel.value
+    } else {
+      UserManager.shared.selectedUsersTwo = userListViewModel.value
+      secondTime = false
+    }
+  }
+  
   func addUserToList(user: UserViewModel) {
     setUserSelected(user)
     //    self.tapUser?()
   }
   
-  
-  
-  
-  func removeUserFromList(user: UserViewModel){
+  func removeUserFromList(user: UserViewModel) {
     
     setUserDeselected(user)
     

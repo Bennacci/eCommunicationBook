@@ -14,11 +14,25 @@ class NewAThingViewController: UIViewController {
   
   var inputTexts: [[String]] = [[]]
   
-  var pickerIndexPath: IndexPath?
-    
+  var servicesItem = ServiceManager.init(userType: UserManager.shared.userType).services.items[0][0]
+  
+  //  var a = ServiceGroup.init(title: [], items: []).items[0][0]
+  
+  var pickerMotherIndexPath: IndexPath?
+  
+  var pickerIndexPath: IndexPath? {
+    didSet {
+      if pickerIndexPath != nil {
+        self.pickerMotherIndexPath = IndexPath(row: pickerIndexPath!.row - 1, section: pickerIndexPath!.section)
+      }
+    }
+  }
+  
+  var willExpand: Bool = false
+  
   var inputDates: [[Date]] = []
   
-  var inputValuse: [[Any]] = []
+  //  var inputValuse: [[Any]] = []
   
   var tempUserType: UserType?
   
@@ -53,10 +67,12 @@ class NewAThingViewController: UIViewController {
   }
   
   func addInitailValues() {
+    inputTexts = servicesItem.form!
+    
     for index in 0..<inputTexts.count {
       let input = Array(repeating: Date(), count: inputTexts[index].count)
       inputDates.append(input)
-      inputValuse.append(input)
+      //      inputValuse.append(input)
     }
   }
 }
@@ -67,7 +83,7 @@ extension NewAThingViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if pickerIndexPath != nil && pickerIndexPath?.section == section {
+    if willExpand == true  && pickerIndexPath?.section == section {
       return inputTexts[section].count + 1
     } else {
       return inputTexts[section].count
@@ -77,7 +93,7 @@ extension NewAThingViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let inputText: String
     let inputDate: Date
-    if pickerIndexPath == nil {
+    if pickerIndexPath == nil || pickerIndexPath != indexPath {
       inputText = inputTexts[indexPath.section][indexPath.row]
       inputDate = inputDates[indexPath.section][indexPath.row]
     } else {
@@ -101,13 +117,11 @@ extension NewAThingViewController: UITableViewDataSource {
         cell.pickerView.delegate = self
         return cell
       default:
-        // check bug soon
+        //         check bug soon
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier,
                                                        for: indexPath) as? TextFieldTableViewCell
           else { fatalError("Unexpected Table View Cell") }
-        cell.textField.placeholder = "點擊輸入"
-        cell.title.text = inputText
-        cell.textField.delegate = self
+        //        cell.isHidden = true
         return cell
       }
     } else if inputText == "Birth Date" || inputText == "User Type" {
@@ -129,7 +143,7 @@ extension NewAThingViewController: UITableViewDataSource {
                                                      for: indexPath) as? TwoLablesWithButtonTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       cell.updateText(text: inputText, numbers: 123)
-        return cell
+      return cell
     } else {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier,
                                                      for: indexPath) as? TextFieldTableViewCell
@@ -161,31 +175,99 @@ extension NewAThingViewController: UITableViewDelegate {
   //
   //  }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if inputTexts[indexPath.section][indexPath.row] == "Teachers"{
-          if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
-      //             nextVC.modalPresentationStyle = .fullScreen
-      //       //      show(nextVC, sender: nil)
-      //             present(nextVC, animated: false, completion: nil)
-                   self.navigationController?.show(nextVC, sender: nil)
-          } else { return }
-    }
-    if inputTexts[indexPath.section][indexPath.row] == "User Type" ||
-      inputTexts[indexPath.section][indexPath.row] == "Birth Date" {
-    tableView.beginUpdates()
-    if let datePickerIndexPath = pickerIndexPath, datePickerIndexPath.row - 1 == indexPath.row {
-      tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
-      self.pickerIndexPath = nil
-    } else {
-      if let datePickerIndexPath = pickerIndexPath {
-        tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
+    
+    let inputText = inputTexts[indexPath.section][indexPath.row]
+    
+    
+    if inputText == "User Type" || inputText == "Birth Date" {
+      
+      if pickerIndexPath != nil && indexPath != pickerMotherIndexPath {
+        
+        willExpand = false
+        
+        tableView.deleteRows(at: [pickerIndexPath!], with: .fade)
+        
+        pickerIndexPath = indexPathToInsertPicker(indexPath: indexPath)
+        
+        willExpand = true
+        
+        tableView.insertRows(at: [pickerIndexPath!], with: .fade)
+        
+      } else if indexPath == pickerMotherIndexPath {
+        
+        willExpand = false
+        
+        tableView.deleteRows(at: [pickerIndexPath!], with: .fade)
+        
+        pickerIndexPath = nil
+        
+        self.pickerIndexPath = nil
+        
+      } else {
+        
+        willExpand = true
+        
+        pickerIndexPath = indexPathToInsertPicker(indexPath: indexPath)
+        
+        tableView.insertRows(at: [pickerIndexPath!], with: .fade)
+        
       }
-      pickerIndexPath = indexPathToInsertPicker(indexPath: indexPath)
-      tableView.insertRows(at: [pickerIndexPath!], with: .fade)
-      tableView.deselectRow(at: indexPath, animated: true)
-      view.endEditing(true)
+      
+    } else {
+      
+      if pickerIndexPath !=  nil {
+        
+        willExpand = false
+        
+        tableView.deleteRows(at: [pickerIndexPath!], with: .fade)
+        
+        pickerIndexPath = nil
+      }
     }
-    tableView.endUpdates()
+    
+    tableView.deselectRow(at: indexPath, animated: true)
+    
+    if inputText == "Teachers"{
+      if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
+        //             nextVC.modalPresentationStyle = .fullScreen
+        //       //      show(nextVC, sender: nil)
+        //             present(nextVC, animated: false, completion: nil)
+        self.navigationController?.show(nextVC, sender: nil)
+      } else { return }
     }
+    
+    //    if inputTexts[indexPath.section][indexPath.row] == "User Type" ||
+    //      inputTexts[indexPath.section][indexPath.row] == "Birth Date" {
+    //    tableView.beginUpdates()
+    //
+    //    if let datePickerIndexPath = pickerIndexPath, datePickerIndexPath.row - 1 == indexPath.row {
+    //
+    //      tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
+    //
+    //      self.pickerIndexPath = nil
+    //
+    //    } else {
+    //
+    //      if let datePickerIndexPath = pickerIndexPath {
+    //
+    //        tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
+    //        tableView.endUpdates()
+    //      }
+    //      //            if inputTexts[indexPath.section][indexPath.row] == "User Type" ||
+    //      //              inputTexts[indexPath.section][indexPath.row] == "Birth Date" {
+    //      pickerIndexPath = indexPathToInsertPicker(indexPath: indexPath)
+    //
+    //      tableView.insertRows(at: [pickerIndexPath!], with: .fade)
+    //
+    //      tableView.deselectRow(at: indexPath, animated: true)
+    //
+    //      view.endEditing(true)
+    //      //            } else {
+    //      //              tableView.endUpdates()
+    //      //        }
+    //    }
+    //    tableView.endUpdates()
+    //    //    }
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -197,25 +279,31 @@ extension NewAThingViewController: UITableViewDelegate {
   }
   
   func indexPathToInsertPicker(indexPath: IndexPath) -> IndexPath {
-    if let datePickerIndexPath = pickerIndexPath, datePickerIndexPath.row < indexPath.row {
-      return indexPath
-    } else {
-      return IndexPath(row: indexPath.row + 1, section: indexPath.section)
-    }
+    //    if let datePickerIndexPath = pickerIndexPath, datePickerIndexPath.row < indexPath.row {
+    //      return indexPath
+    //    } else {
+    return IndexPath(row: indexPath.row + 1, section: indexPath.section)
+    //    }
   }
 }
 
 extension NewAThingViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     tableView.beginUpdates()
-    if let datePickerIndexPath = pickerIndexPath {
-      tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
-      self.pickerIndexPath = nil
-    }
-    tableView.endUpdates()
-    //    updateViewModel(with: textField)
     
+    if pickerIndexPath !=  nil {
+      
+      willExpand = false
+      
+      tableView.deleteRows(at: [pickerIndexPath!], with: .fade)
+      
+      pickerIndexPath = nil
+    }
+    
+    tableView.endUpdates()
+    //        updateViewModel(with: textField)
   }
+  
   func textFieldDidEndEditing(_ textField: UITextField) {
     updateViewModel(with: textField)
   }

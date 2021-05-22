@@ -90,9 +90,9 @@ extension AccountPageViewController: UITableViewDelegate {
       nextVC.modalPresentationStyle = .fullScreen
       guard let viewController = nextVC as? NewAThingViewController else {return}
       let services = ServiceManager.init(userType: UserManager.shared.userType).services
-      let servicesItems = services.items[indexPath.section][indexPath.row]
-      viewController.inputTexts = servicesItems.form ?? [[]]
-      viewController.navigationItem.title = servicesItems.formTitle
+      let servicesItem = services.items[indexPath.section][indexPath.row]
+      viewController.servicesItem = servicesItem
+      viewController.navigationItem.title = servicesItem.formTitle
 //      show(nextVC, sender: nil)
 //      present(nextVC, animated: false, completion: nil)
       self.navigationController?.show(nextVC, sender: nil)

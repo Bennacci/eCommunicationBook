@@ -201,6 +201,13 @@ enum TeacherSeviceItem: AccountItem {
     default:
       return nil
     }
-  
+//    var viewModel: NewAThingViewModel{
+//      switch self {
+//      case .newAUser: return NewAUserModel
+//        
+//      default:
+//        
+//      }
+//    }
   }
 }

@@ -9,10 +9,12 @@
 import UIKit
 
 protocol SearchUserDelegate {
-  func onSearchAndSelected(with users: [UserViewModel])
+  func onSearchAndSelected()
 }
 
 class SearchUserViewController: UIViewController {
+
+  
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -23,12 +25,14 @@ class SearchUserViewController: UIViewController {
   @IBOutlet weak var cancleButtonWidth: NSLayoutConstraint!
   
   var delegate: SearchUserDelegate?
-
+  
   var selectedCellHeight: CGFloat = 100
   
   var wideUserCellHeight: CGFloat = 50
   
   let viewModel = SearchUserPageViewModel()
+  
+//  let newAThingViewModel = NewAThingViewModel()
   
   private let collectionViewSectionInsets = UIEdgeInsets(
     top: 4.0,
@@ -40,6 +44,9 @@ class SearchUserViewController: UIViewController {
     super.viewDidLoad()
     //    searchBar.showsScopeBar = true
     // Do any additional setup after loading the view.
+//    newAThingViewModel.searchUserDelegate = self
+//    self.navigationController?.setNavigationBarHidden(false, animated: true)
+
     tableView.registerCellWithNib(identifier: WideUserTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: SelecetedUserTableViewCell.identifier, bundle: nil)
     viewModel.refreshView = { [weak self] () in
@@ -54,6 +61,7 @@ class SearchUserViewController: UIViewController {
     }
     viewModel.userListViewModel.bind { [weak self] users in
                   self?.tableView.reloadData()
+      
       self?.viewModel.onRefresh()
     }
     
@@ -64,9 +72,17 @@ class SearchUserViewController: UIViewController {
 
     
   }
+  
   @IBAction func sendAndQuitViewController(_ sender: Any) {
     dismiss(animated: true, completion: nil)
-    self.delegate?.onSearchAndSelected(with:  viewModel.userListViewModel.value)
+    
+    viewModel.onSendAndQuit()
+
+    
+    
+    delegate?.onSearchAndSelected()
+//    self.onSearchAndSelected()
+    
   }
   
   
@@ -85,6 +101,9 @@ class SearchUserViewController: UIViewController {
     self.navigationController?.setNavigationBarHidden(false, animated: true)
     searchBar.endEditing(true)
   }
+  
+  
+  
 }
 
 extension SearchUserViewController: UISearchBarDelegate {
@@ -188,10 +207,8 @@ extension SearchUserViewController: UITableViewDataSource {
       
       cell.height.constant = wideUserCellHeight
       
-      cell.setup(viewModel: cellViewModel)
-      
-      cell.layoutCell()
-      
+      cell.setup(list: viewModel.userListViewModel, viewModel: cellViewModel)
+            
       return cell
     }
   }
@@ -202,12 +219,10 @@ extension SearchUserViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let cell = tableView.cellForRow(at: indexPath) as? WideUserTableViewCell else {return}
     if cell.circleIcon.isHidden == true {
-      cell.circleIcon.isHidden = false
-      cell.checkIcon.isHidden = true
+
       viewModel.removeUserFromList(user: viewModel.userViewModel.value[indexPath.row])
     } else {
-      cell.circleIcon.isHidden = true
-      cell.checkIcon.isHidden = false
+      
       viewModel.addUserToList(user: viewModel.userViewModel.value[indexPath.row])
     }
   }
@@ -253,7 +268,7 @@ extension SearchUserViewController: UICollectionViewDataSource {
                                                         for: indexPath) as? CircleUserCollectionViewCell
       else { fatalError("Unexpected Table View Cell") }
     
-    let cellViewModel = self.viewModel.userListViewModel.value[indexPath.row]
+	    let cellViewModel = self.viewModel.userListViewModel.value[indexPath.item]
     
 //    cell.height.constant = wideUserCellHeight
     
@@ -266,7 +281,11 @@ extension SearchUserViewController: UICollectionViewDataSource {
 }
 
 extension SearchUserViewController: UICollectionViewDelegate {
-  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//    guard let cell = collectionView.cellForItem(at: indexPath) as? CircleUserCollectionViewCell else {return}
+    viewModel.removeUserFromList(user: viewModel.userListViewModel.value[indexPath.item])
+
+  }
 }
 // MARK: - 設定 CollectionView Cell 與 Cell 之間的間距、距確 Super View 的距離等等
 extension SearchUserViewController: UICollectionViewDelegateFlowLayout {

@@ -12,6 +12,11 @@ class TextFieldTableViewCell: UITableViewCell {
 
   @IBOutlet var title: UILabel!
   @IBOutlet var textField: UITextField!
+  
+  class func cellHeight() -> CGFloat {
+      return 44.0
+  }
+  
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

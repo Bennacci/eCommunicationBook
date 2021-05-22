@@ -11,9 +11,16 @@ import UIKit
 class TwoLablesWithButtonTableViewCell: UITableViewCell {
 
   
+//  var viewModel: NewAThingViewModel?
+  
   @IBOutlet weak var label: UILabel!
   @IBOutlet weak var secondLabel: UILabel!
   @IBOutlet weak var buttonLikeImage: UIImageView!
+  
+  
+  class func cellHeight() -> CGFloat {
+      return 44.0
+  }
   
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,10 +32,14 @@ class TwoLablesWithButtonTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func updateText(text: String, numbers: Int) {
+    func updateText(text: String) {
         label.text = text
 //      if numbers == 0... -> ""
-        secondLabel.text = String(numbers)
+      if text == "Teachers" {
+        secondLabel.text = String(describing: UserManager.shared.selectedUsers.count)
+      } else {
+        secondLabel.text = String(describing: UserManager.shared.selectedUsersTwo.count)
+      }
     }
 
     

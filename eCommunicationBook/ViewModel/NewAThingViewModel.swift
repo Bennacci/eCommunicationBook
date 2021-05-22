@@ -10,12 +10,13 @@ import Foundation
 
 // 用protocol 拆成 newthing 系列 VM?
 
-class NewAThingViewModel {
+class NewAThingViewModel: SearchUserDelegate {
+
   
-  var searchUserVIewModel = SearchUserPageViewModel()
   
+//  var searchUserVIewModel = SearchUserPageViewModel()
   
-// MARK:- new a user
+// MARK: - new a user
   var user: User = User(
     id: "",
     createdTime: -1,
@@ -79,7 +80,7 @@ class NewAThingViewModel {
     }
   }
   
-  //MARK:- new a class
+// MARK: - new a class
 
   var course: Course = Course(
     id: "",
@@ -107,10 +108,11 @@ class NewAThingViewModel {
   func onLessonsAmountChanged(text fee: String) {
     self.course.fee = Int(fee) ?? -1
   }
+  func onSearchAndSelected(with: [UserViewModel]) {
+    self.course.teacher = with.map({$0.id})
+  }
 //  func onTeachersChanged(text name: String) {
 //    self.teacher.name = name
 //  }
-  
-  
-  
+
 }

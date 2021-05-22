@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SearchUserDelegate {
+  func onSearchAndSelected(with users: [UserViewModel])
+}
+
 class SearchUserViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
@@ -18,6 +22,7 @@ class SearchUserViewController: UIViewController {
   
   @IBOutlet weak var cancleButtonWidth: NSLayoutConstraint!
   
+  var delegate: SearchUserDelegate?
 
   var selectedCellHeight: CGFloat = 100
   
@@ -61,7 +66,7 @@ class SearchUserViewController: UIViewController {
   }
   @IBAction func sendAndQuitViewController(_ sender: Any) {
     dismiss(animated: true, completion: nil)
-
+    self.delegate?.onSearchAndSelected(with:  viewModel.userListViewModel.value)
   }
   
   

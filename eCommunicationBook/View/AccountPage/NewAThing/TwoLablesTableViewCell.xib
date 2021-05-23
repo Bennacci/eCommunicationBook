@@ -16,13 +16,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjm-Jp-dsp">
-                        <rect key="frame" x="15" y="21.5" width="42" height="21"/>
+                        <rect key="frame" x="16" y="21.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nyr-xf-Cim">
-                        <rect key="frame" x="318" y="21.5" width="42" height="21"/>
+                        <rect key="frame" x="317" y="21.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -30,10 +30,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="cjm-Jp-dsp" firstAttribute="centerY" secondItem="l3E-Ux-p3G" secondAttribute="centerY" id="NPz-25-Fsv"/>
-                    <constraint firstItem="cjm-Jp-dsp" firstAttribute="leading" secondItem="l3E-Ux-p3G" secondAttribute="leading" constant="15" id="fbG-Wq-w1I"/>
+                    <constraint firstItem="cjm-Jp-dsp" firstAttribute="leading" secondItem="l3E-Ux-p3G" secondAttribute="leading" constant="16" id="fbG-Wq-w1I"/>
                     <constraint firstItem="Nyr-xf-Cim" firstAttribute="centerY" secondItem="l3E-Ux-p3G" secondAttribute="centerY" id="fk9-hd-7DM"/>
                     <constraint firstItem="Nyr-xf-Cim" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cjm-Jp-dsp" secondAttribute="trailing" constant="5" id="neb-Xh-6t1"/>
-                    <constraint firstAttribute="trailing" secondItem="Nyr-xf-Cim" secondAttribute="trailing" constant="15" id="oH4-8g-03Q"/>
+                    <constraint firstAttribute="trailing" secondItem="Nyr-xf-Cim" secondAttribute="trailing" constant="16" id="oH4-8g-03Q"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

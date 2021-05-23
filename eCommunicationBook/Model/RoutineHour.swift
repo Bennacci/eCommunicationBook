@@ -9,9 +9,9 @@
 import Foundation
 
 struct RoutineHour: Codable {
-  let day: DayOfWeek.RawValue
-  let startingTime: String
-  let timeInterval: Double
+  var day: DayOfWeek.RawValue
+  var startingTime: Int
+  var timeInterval: Int
   
   enum CodingKeys: String, CodingKey {
     case day

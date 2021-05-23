@@ -39,6 +39,8 @@
 		746BDE7026523D0B001B1E71 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE6F26523D0B001B1E71 /* Course.swift */; };
 		746BDE7226523D14001B1E71 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE7126523D14001B1E71 /* Lesson.swift */; };
 		746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE73265250EF001B1E71 /* HomePageViewController.swift */; };
+		7472B29C26594B8B00511468 /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472B29A26594B8B00511468 /* TimeSelectionViewController.swift */; };
+		7472B29F26594BBB00511468 /* TimeSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7472B29E26594BBB00511468 /* TimeSelection.storyboard */; };
 		74857F972654B95800AEF14D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F962654B95800AEF14D /* NavigationController.swift */; };
 		74857F9A2654BBF200AEF14D /* NewAThing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74857F982654BBF200AEF14D /* NewAThing.storyboard */; };
 		74857F9C2654C7C800AEF14D /* NewAThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */; };
@@ -83,6 +85,9 @@
 		74CADD9B26568BAF004DA6D0 /* NewAThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */; };
 		74D3A67B26579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D3A67926579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift */; };
 		74D3A67C26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D3A67A26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib */; };
+		74D4BB6E2659E41A00999556 /* TimeIntervalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D4BB6C2659E41A00999556 /* TimeIntervalTableViewCell.swift */; };
+		74D4BB6F2659E41A00999556 /* TimeIntervalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D4BB6D2659E41A00999556 /* TimeIntervalTableViewCell.xib */; };
+		74D4BB712659E55400999556 /* TimeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */; };
 		74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */; };
 		74D869D7265745F8004D33ED /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D6265745F8004D33ED /* CalendarHelper.swift */; };
 		74E94735264BE09500AFB046 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94729264BE09500AFB046 /* UserManager.swift */; };
@@ -140,6 +145,8 @@
 		746BDE6F26523D0B001B1E71 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		746BDE7126523D14001B1E71 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		746BDE73265250EF001B1E71 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		7472B29A26594B8B00511468 /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewController.swift; sourceTree = "<group>"; };
+		7472B29E26594BBB00511468 /* TimeSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeSelection.storyboard; sourceTree = "<group>"; };
 		74857F962654B95800AEF14D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		74857F992654BBF200AEF14D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NewAThing.storyboard; sourceTree = "<group>"; };
 		74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAThingViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +193,9 @@
 		74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAThingViewModel.swift; sourceTree = "<group>"; };
 		74D3A67926579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLablesWithButtonTableViewCell.swift; sourceTree = "<group>"; };
 		74D3A67A26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoLablesWithButtonTableViewCell.xib; sourceTree = "<group>"; };
+		74D4BB6C2659E41A00999556 /* TimeIntervalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalTableViewCell.swift; sourceTree = "<group>"; };
+		74D4BB6D2659E41A00999556 /* TimeIntervalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeIntervalTableViewCell.xib; sourceTree = "<group>"; };
+		74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewModel.swift; sourceTree = "<group>"; };
 		74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISceneDelegate+Extension.swift"; sourceTree = "<group>"; };
 		74D869D6265745F8004D33ED /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		74E94729264BE09500AFB046 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -278,6 +288,7 @@
 				74CADD8326554C81004DA6D0 /* UserVIewModel.swift */,
 				74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */,
 				74AE58C72658A3FD00BB851B /* NewACourseViewModel.swift */,
+				74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -293,6 +304,7 @@
 				74A5C8AA264E2C1B00704C39 /* CalendarPageViewController.swift */,
 				745147D4264CF76E00172419 /* AccountPageViewController.swift */,
 				74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */,
+				7472B29A26594B8B00511468 /* TimeSelectionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -317,6 +329,16 @@
 				7456DC6A2650A1D800535297 /* MessageViewModel.swift */,
 			);
 			path = ChatRoomPage;
+			sourceTree = "<group>";
+		};
+		7472B2A02659E24700511468 /* TimeSelection */ = {
+			isa = PBXGroup;
+			children = (
+				7472B29E26594BBB00511468 /* TimeSelection.storyboard */,
+				74D4BB6C2659E41A00999556 /* TimeIntervalTableViewCell.swift */,
+				74D4BB6D2659E41A00999556 /* TimeIntervalTableViewCell.xib */,
+			);
+			path = TimeSelection;
 			sourceTree = "<group>";
 		};
 		74A5A7732654F0270039BC22 /* SearchUser */ = {
@@ -466,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
+				7472B2A02659E24700511468 /* TimeSelection */,
 				74A5A7732654F0270039BC22 /* SearchUser */,
 				740258162653599900BA6BDA /* HomePage */,
 				745147E9264D46C100172419 /* ChatRoomPage */,
@@ -556,10 +579,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7472B29F26594BBB00511468 /* TimeSelection.storyboard in Resources */,
 				74857F9A2654BBF200AEF14D /* NewAThing.storyboard in Resources */,
 				74D3A67C26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib in Resources */,
 				741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */,
 				74A5A76E2654EC690039BC22 /* CircleUserCollectionViewCell.xib in Resources */,
+				74D4BB6F2659E41A00999556 /* TimeIntervalTableViewCell.xib in Resources */,
 				741FAC88264CD77200D5C34B /* CalendarPage.storyboard in Resources */,
 				745147EC264D56EE00172419 /* GoogleService-Info.plist in Resources */,
 				7402581326529BD900BA6BDA /* BannerTableViewCell.xib in Resources */,
@@ -667,6 +692,7 @@
 				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
 				74E94738264BE09500AFB046 /* Article.swift in Sources */,
 				74E94737264BE09500AFB046 /* Author.swift in Sources */,
+				7472B29C26594B8B00511468 /* TimeSelectionViewController.swift in Sources */,
 				74CADD91265614E1004DA6D0 /* DatePickerTableViewCell.swift in Sources */,
 				7402581526529E4900BA6BDA /* BannerData.swift in Sources */,
 				74A5A76D2654EC690039BC22 /* CircleUserCollectionViewCell.swift in Sources */,
@@ -711,6 +737,7 @@
 				74A7D11B26552B2F00B445EB /* StudentPerformance.swift in Sources */,
 				741D7C4A2653F67700A7FD0A /* LocalizedString+Extension.swift in Sources */,
 				74C23768264BB5FE001BF47A /* SceneDelegate.swift in Sources */,
+				74D4BB6E2659E41A00999556 /* TimeIntervalTableViewCell.swift in Sources */,
 				74857F9E2654E81A00AEF14D /* SearchUserViewController.swift in Sources */,
 				74E94751264C087D00AFB046 /* UIFont+Extension.swift in Sources */,
 				74BDBEE0264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift in Sources */,
@@ -720,6 +747,7 @@
 				745147DE264D381800172419 /* ChatRoomViewModel.swift in Sources */,
 				7402581226529BD900BA6BDA /* BannerTableViewCell.swift in Sources */,
 				74E94736264BE09500AFB046 /* XXXManager.swift in Sources */,
+				74D4BB712659E55400999556 /* TimeSelectionViewModel.swift in Sources */,
 				74E94757264C087D00AFB046 /* Bundle+Extension.swift in Sources */,
 				7456DC6B2650A1D800535297 /* MessageViewModel.swift in Sources */,
 				745147E6264D3F5E00172419 /* ChatRoomPageViewController.swift in Sources */,

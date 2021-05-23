@@ -193,9 +193,8 @@ enum TeacherSeviceItem: AccountItem {
                             ["image"]]
     case .newACourse: return [["Class Name"],
                               ["Teachers", "Students"],
-                              ["First Lesson Date",
-                               "Class day", "Class time"],
-                              ["Total Lessons Count", "Fee"]]
+                              ["First Lesson Date", "Lesson Schedule", "Total Lessons Count"],
+                              [ "Fee"]]
     case .newEvent: return [["Title", "Time"], ["Description"]]
     case .setASign: return [["Title"], ["Starting Time", "Ending Time"], ["Description"]]
     default:

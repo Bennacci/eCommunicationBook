@@ -86,19 +86,19 @@ class NewAThingViewController: UIViewController {
   }
   
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard let destinationNavigationController = segue.destination as? UINavigationController,
-      let targetController = destinationNavigationController.topViewController as? SearchUserViewController
-      else { fatalError("Unexpected Table View Cell") }
-    
-    targetController.delegate = self.viewModel
-//      if segue.identifier == "navigateToPublish",
-//      let publishViewController = segue.destination as? PublishViewController {
+//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    guard let destinationNavigationController = segue.destination as? UINavigationController,
+//      let targetController = destinationNavigationController.topViewController as? SearchUserViewController
+//      else { fatalError("Unexpected Table View Cell") }
 //
-//      publishViewController.delegate = self
-//
-//    }
-  }
+//    targetController.delegate = self.viewModel
+////      if segue.identifier == "navigateToPublish",
+////      let publishViewController = segue.destination as? PublishViewController {
+////
+////      publishViewController.delegate = self
+////
+////    }
+//  }
 }
 
 extension NewAThingViewController: UITableViewDataSource {
@@ -171,7 +171,7 @@ extension NewAThingViewController: UITableViewDataSource {
                         date: inputDate)
         return cell
       }
-    } else if inputText == "Teachers" || inputText == "Students"{
+    } else if inputText == "Teachers" || inputText == "Students" || inputText == "Lesson Schedule"{
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TwoLablesWithButtonTableViewCell.identifier,
                                                      for: indexPath) as? TwoLablesWithButtonTableViewCell
         else { fatalError("Unexpected Table View Cell") }
@@ -188,8 +188,6 @@ extension NewAThingViewController: UITableViewDataSource {
       switch inputText {
       case "CellPhone Number", "Contact Number":
         cell.textField.keyboardType = .numberPad
-//      case "Contact Number":
-//        cell.textField.keyboardType = .numberPad
       case "E-mail":
         cell.textField.keyboardType = .emailAddress
       default:
@@ -259,7 +257,6 @@ extension NewAThingViewController: UITableViewDelegate {
       }
     }
     
-    tableView.deselectRow(at: indexPath, animated: true)
     
     if inputText == "Teachers" || inputText == "Students"{
       if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
@@ -269,13 +266,32 @@ extension NewAThingViewController: UITableViewDelegate {
           else { fatalError("Unexpected Table View Cell") }
         
           targetController.delegate = self.viewModel
-        if inputText == "Students"{
+          
+        if inputText == "Teachers"{
+          targetController.viewModel.secondTime = false
+        } else {
           targetController.viewModel.secondTime = true
         }
+        
         self.navigationController?.show(nextVC, sender: nil)
         
       } else { return }
+    } else if inputText == "Lesson Schedule"{
+      if let nextVC = UIStoryboard.timeSelection.instantiateInitialViewController() {
+
+          guard let targetController = nextVC.children[0] as? TimeSelectionViewController
+            
+          else { fatalError("Unexpected Table View Cell") }
+        
+//          targetController.delegate = self.viewModel
+          
+        self.navigationController?.show(nextVC, sender: nil)
+        
+      } else { return }
+      
     }
+    tableView.deselectRow(at: indexPath, animated: true)
+
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -305,9 +321,6 @@ extension NewAThingViewController: UITextFieldDelegate {
       
       pickerIndexPath = nil
     }
-    
-    //    tableView.endUpdates()
-    //        updateViewModel(with: textField)
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {

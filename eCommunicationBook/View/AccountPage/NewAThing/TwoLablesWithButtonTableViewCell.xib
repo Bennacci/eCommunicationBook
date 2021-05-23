@@ -39,7 +39,7 @@
                     <constraint firstItem="6fA-cB-1qu" firstAttribute="leading" secondItem="FrO-zh-jyG" secondAttribute="leading" constant="15" id="0Gw-h0-cvf"/>
                     <constraint firstItem="pqm-ZG-pHV" firstAttribute="centerY" secondItem="FrO-zh-jyG" secondAttribute="centerY" id="6Oe-Zm-vte"/>
                     <constraint firstItem="6fA-cB-1qu" firstAttribute="centerY" secondItem="FrO-zh-jyG" secondAttribute="centerY" id="A5B-lk-lIc"/>
-                    <constraint firstItem="pqm-ZG-pHV" firstAttribute="leading" secondItem="gXe-oQ-azl" secondAttribute="trailing" constant="8" id="KK2-gh-rPH"/>
+                    <constraint firstAttribute="trailing" secondItem="gXe-oQ-azl" secondAttribute="trailing" constant="43" id="ISd-2J-eZS"/>
                     <constraint firstItem="gXe-oQ-azl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6fA-cB-1qu" secondAttribute="trailing" constant="5" id="VWT-se-TIE"/>
                     <constraint firstItem="gXe-oQ-azl" firstAttribute="centerY" secondItem="FrO-zh-jyG" secondAttribute="centerY" id="zpY-Ep-Pnc"/>
                     <constraint firstAttribute="trailing" secondItem="pqm-ZG-pHV" secondAttribute="trailing" constant="15" id="zwY-ga-hiv"/>
@@ -48,6 +48,7 @@
             <connections>
                 <outlet property="buttonLikeImage" destination="pqm-ZG-pHV" id="ird-We-gJd"/>
                 <outlet property="label" destination="6fA-cB-1qu" id="DPr-bd-q90"/>
+                <outlet property="seconLabelDisToEdge" destination="ISd-2J-eZS" id="SFz-BE-lfl"/>
                 <outlet property="secondLabel" destination="gXe-oQ-azl" id="64L-N5-awz"/>
             </connections>
             <point key="canvasLocation" x="-6.5" y="-121"/>

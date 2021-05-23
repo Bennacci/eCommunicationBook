@@ -23,7 +23,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="eWd-DO-l2U">
-                        <rect key="frame" x="354" y="44.5" width="85" height="34"/>
+                        <rect key="frame" x="315.5" y="44.5" width="123.5" height="34"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RMX-d1-D7a">
                                 <rect key="frame" x="0.0" y="0.0" width="38" height="34"/>
@@ -47,6 +47,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiX-tJ-SWr">
+                                <rect key="frame" x="87" y="0.0" width="36.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -61,6 +67,8 @@
             <connections>
                 <outlet property="hourTextField" destination="RMX-d1-D7a" id="f3I-dS-6Oe"/>
                 <outlet property="label" destination="xjO-Mp-2LE" id="mGX-pH-47t"/>
+                <outlet property="lableBetweenTextField" destination="a0z-ZA-jEE" id="Fce-y9-swi"/>
+                <outlet property="lableRightToTextField" destination="ZiX-tJ-SWr" id="Zsr-Jw-Rrp"/>
                 <outlet property="minuteTextField" destination="ITg-8K-XWX" id="SDK-1G-px4"/>
             </connections>
             <point key="canvasLocation" x="235.50724637681162" y="116.85267857142857"/>

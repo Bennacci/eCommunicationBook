@@ -38,6 +38,7 @@ class TimeSelectionViewController: UIViewController {
     tableView.registerCellWithNib(identifier: TwoLablesWithButtonTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: PickerViewTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: TimeIntervalTableViewCell.identifier, bundle: nil)
+    tableView.registerCellWithNib(identifier: DatePickerTableViewCell.identifier, bundle: nil)
     
     
     viewModel.onDataUpdated = { [weak self] () in
@@ -69,55 +70,63 @@ extension TimeSelectionViewController: UITableViewDataSource {
         spacedIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
       }
     }
-
+    
     let inputText = viewModel.inputTexts[spacedIndexPath.section][spacedIndexPath.row]
     
     if pickerIndexPath == indexPath {
+      
       guard let cell = tableView.dequeueReusableCell(withIdentifier: PickerViewTableViewCell.identifier,
                                                      for: indexPath) as? PickerViewTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       cell.pickerView.delegate = self
-      cell.pickerView.selectRow(viewModel.routineHouers[indexPath.section].day, inComponent: 0, animated: true)
+      cell.pickerView.selectRow(viewModel.routineHours[indexPath.section].day, inComponent: 0, animated: true)
       return cell
       
-    } else if inputText == "Starting Time"{
+    } else if inputText == "Starting Time" || inputText == "Time Interval"  {
       
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TimeIntervalTableViewCell.identifier,
                                                      for: indexPath) as? TimeIntervalTableViewCell
         else { fatalError("Unexpected Table View Cell") }
+      
       cell.timeSelectionViewModel = viewModel
       
       cell.hourTextField.delegate = self
       
       cell.minuteTextField.delegate = self
       
-      cell.hourTextField.tag = indexPath.section + 1
+      cell.hourTextField.tag = indexPath.section * 10 + indexPath.row + 1
       
-      cell.minuteTextField.tag = -(indexPath.section + 1)
+      cell.minuteTextField.tag = -(indexPath.section * 10 + indexPath.row + 1)
       
       cell.hourTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no
       
       cell.minuteTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no
-
-      cell.updateText(indexPath: spacedIndexPath)
+      
+      if inputText == "Starting Time"{
+      
+        cell.updateText(indexPath: spacedIndexPath)
+      
+      } else {
+      
+        cell.updateIntervalText(indexPath: spacedIndexPath)
+      }
       
       return cell
       
-      
     } else {
+      
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TwoLablesWithButtonTableViewCell.identifier,
                                                      for: indexPath) as? TwoLablesWithButtonTableViewCell
         else { fatalError("Unexpected Table View Cell") }
+     
       cell.timeSelectionViewModel = self.viewModel
-
+      
       cell.updateText(indexPath: spacedIndexPath)
       
       return cell
     }
-    
   }
 }
-
 
 extension TimeSelectionViewController: UITableViewDelegate {
   
@@ -137,7 +146,7 @@ extension TimeSelectionViewController: UITableViewDelegate {
       inputText = viewModel.inputTexts[indexPath.section][indexPath.row - 1]
     }
     
-    if inputText == "Day" {
+    if inputText == "Day"{
       
       if pickerIndexPath != nil && indexPath != pickerMotherIndexPath {
         
@@ -183,6 +192,11 @@ extension TimeSelectionViewController: UITableViewDelegate {
       }
     }
     
+    if inputText == "Delete"{
+      print("")
+      viewModel.onAddorDeleteADay(day: indexPath.section)
+    }
+    
     tableView.deselectRow(at: indexPath, animated: true)
     
   }
@@ -206,8 +220,9 @@ extension TimeSelectionViewController: UIPickerViewDelegate, UIPickerViewDataSou
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    
-    viewModel.onDayChanged(day: row)
+    let pointInTable = pickerView.convert(pickerView.bounds.origin, to: self.tableView)
+    guard let pickerVIewIndexPath = self.tableView.indexPathForRow(at: pointInTable) else {return}
+    viewModel.onDayChanged(index: pickerVIewIndexPath.row, day: row)
   }
 }
 
@@ -227,36 +242,50 @@ extension TimeSelectionViewController: UITextFieldDelegate {
     }
   }
   
-    func textFieldDidEndEditing(_ textField: UITextField) {
-
-      if textField.tag > 0 {
-        
-        viewModel.onStartingTimeChanged(index: textField.tag - 1, hourInput: textField.text ?? "25")
-        
-      } else if textField.tag < 0 {
-      
-        viewModel.onStartingTimeChanged(index: abs(textField.tag) - 1, minuteInput: textField.text ?? "61")
-
-      } else {
-      
-        assert(true) // some other text field ended editing?
-      
-      }
-  }
-
-  
-
-  
-  func textField(_ textField: UITextField,
-                 shouldChangeCharactersIn range: NSRange,
-                 replacementString string: String) -> Bool {
+  func textFieldDidEndEditing(_ textField: UITextField) {
     
-    guard let textFieldText = textField.text,
-      let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-        return false
+    if textField.tag > 0 {
+      
+      if (textField.tag - 1) % 10 == 1 {
+        
+        viewModel.onStartingTimeChanged(index: (textField.tag - 1) / 10, hourInput: textField.text ?? "-1")
+        
+      } else {
+        
+        viewModel.onTimeIntervalChanged(index: (textField.tag - 1) / 10, hourInput: textField.text ?? "-1")
+        
+      }
+    } else if textField.tag < 0 {
+      
+      if (abs(textField.tag) - 1) % 10 == 1 {
+        
+        viewModel.onStartingTimeChanged(index: (abs(textField.tag) - 1) / 10, minuteInput: textField.text ?? "-1")
+        
+      } else {
+        
+        viewModel.onTimeIntervalChanged(index: (abs(textField.tag) - 1) / 10, minuteInput: textField.text ?? "-1")
+        
+      }
+    } else {
+      
+      assert(true) // some other text field ended editing?
+      
     }
-    let substringToReplace = textFieldText[rangeOfTextToReplace]
-    let count = textFieldText.count - substringToReplace.count + string.count
-    return count <= 2
   }
+  
+  
+  
+  
+//  func textField(_ textField: UITextField,
+//                 shouldChangeCharactersIn range: NSRange,
+//                 replacementString string: String) -> Bool {
+//    
+//    guard let textFieldText = textField.text,
+//      let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+//        return false
+//    }
+//    let substringToReplace = textFieldText[rangeOfTextToReplace]
+//    let count = textFieldText.count - substringToReplace.count + string.count
+//    return count <= 2
+//  }
 }

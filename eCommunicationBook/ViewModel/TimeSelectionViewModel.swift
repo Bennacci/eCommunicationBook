@@ -14,65 +14,105 @@ import Foundation
 
 class TimeSelectionViewModel {
   
-//  var dayCount: Int = 1
+  //  var dayCount: Int = 1
+  var inputText: [String] = ["Day", "Starting Time", "Time Interval", "Delete"]
   
-  var inputTexts: [[String]] = [["Day", "Starting Time", "Time Interval"]]
+  var inputTexts: [[String]] = [["Day", "Starting Time", "Time Interval", "Delete"]]
   
-//  var delegate: TimeSelectionDelegate?
+  //  var delegate: TimeSelectionDelegate?
   
-//  func loadInitialValues() {
-//
-//  }
-  var dayIndex: Int = 0
+  //  func loadInitialValues() {
+  //
+  //  }
+//  var dayCount: Int =
   
   var overed = false
   
   var onDataUpdated: (() -> Void)?
   
+  func onAddorDeleteADay(day: Int) {
+    
+    if day == inputTexts.count - 1 {
+      inputTexts.append(self.inputText)
+      routineHours.append(RoutineHour(
+      day: 1,
+      startingTime: 0,
+      timeInterval: 0))
+    } else {
+      inputTexts.remove(at: day)
+      routineHours.remove(at: day)
+    }
+    self.onDataUpdated?()
+//    if dayCountMinusOne == day
+  }
   
-  var routineHouers: [RoutineHour] = [RoutineHour(
+  var routineHours: [RoutineHour] = [RoutineHour(
     day: 1,
-    startingTime: -1,
-    timeInterval: -1)]
+    startingTime: 0,
+    timeInterval: 0)]
   
-  func onDayChanged(day: Int) {
-    self.routineHouers[dayIndex].day = day
-        self.onDataUpdated?()
+  func onDayChanged(index: Int, day: Int) {
+    self.routineHours[index].day = day
+    self.onDataUpdated?()
   }
   
   func onStartingTimeChanged(index: Int, hourInput: String) {
     let hourInt: Int? = Int(hourInput)
-    let startingTime = self.routineHouers[index].startingTime
+    let startingTime = self.routineHours[index].startingTime
     if let hour = hourInt, hour <= 24 {
-      self.routineHouers[index].startingTime = startingTime % 100 + hour * 100
+      self.routineHours[index].startingTime = startingTime % 100 + hour * 100
       overed = false
     } else {
-      self.routineHouers[index].startingTime = startingTime % 100
+      self.routineHours[index].startingTime = startingTime % 100
       overed = true
     }
-//    self.onDataUpdated?()
+    //    self.onDataUpdated?()
   }
   
   func onStartingTimeChanged(index: Int, minuteInput: String) {
     let minuteInt: Int? = Int(minuteInput)
-    let startingHour = self.routineHouers[index].startingTime / 100
+    let startingHour = self.routineHours[index].startingTime / 100
+    
     if let min = minuteInt, min < 60 && overed == false {
-      self.routineHouers[index].startingTime = startingHour * 100 + min
+      if startingHour == 24 {
+        self.routineHours[index].startingTime = min
+      } else {
+        self.routineHours[index].startingTime = startingHour * 100 + min
+      }
     } else {
-      self.routineHouers[index].startingTime = 0
+      self.routineHours[index].startingTime = 0
     }
     self.onDataUpdated?()
   }
   
-  func onTimeIntervalChanged(index: Int, timeInterval: Int) {
-    self.routineHouers[index].timeInterval = timeInterval
+  func onTimeIntervalChanged(index: Int, hourInput: String) {
+    let hourInt: Int? = Int(hourInput)
+    let timeInterval = self.routineHours[index].timeInterval
+    if let hour = hourInt {
+      
+      self.routineHours[index].timeInterval = timeInterval % 60 + hour * 60
+    }
+  }
+  
+  func onTimeIntervalChanged(index: Int, minuteInput: String) {
+    let minInt: Int? = Int(minuteInput)
+    let timeInterval = self.routineHours[index].timeInterval
+    if let min = minInt {
+      if min < 60 {
+        self.routineHours[index].timeInterval = timeInterval - timeInterval % 60 + min
+      } else {
+        self.routineHours[index].timeInterval = timeInterval - timeInterval % 60
+      }
+    }
     self.onDataUpdated?()
   }
   
   
+  
+  
   var onAdded: (() -> Void)?
   
-//  func onTapAdd() {
-////    self.addUser(with: &user)
-//  }
+  //  func onTapAdd() {
+  ////    self.addUser(with: &user)
+  //  }
 }

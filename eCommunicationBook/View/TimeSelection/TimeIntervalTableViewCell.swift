@@ -13,6 +13,8 @@ class TimeIntervalTableViewCell: UITableViewCell {
   @IBOutlet weak var label: UILabel!
   @IBOutlet weak var hourTextField: UITextField!
   @IBOutlet weak var minuteTextField: UITextField!
+  @IBOutlet weak var lableBetweenTextField: UILabel!
+  @IBOutlet weak var lableRightToTextField: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -32,7 +34,9 @@ class TimeIntervalTableViewCell: UITableViewCell {
     
     label.text = timeSelectionViewModel?.inputTexts[indexPath.section][indexPath.row]
     
-    let time = (timeSelectionViewModel?.routineHouers[indexPath.section])!.startingTime
+    lableRightToTextField.isHidden = true
+    
+    let time = (timeSelectionViewModel?.routineHours[indexPath.section])!.startingTime
     
     let hour = time / 100
     
@@ -58,6 +62,36 @@ class TimeIntervalTableViewCell: UITableViewCell {
     }
   }
   
+  func updateIntervalText(indexPath: IndexPath) {
+    
+    label.text = timeSelectionViewModel?.inputTexts[indexPath.section][indexPath.row]
+    lableBetweenTextField.text = "hrs"
+    let time = (timeSelectionViewModel?.routineHours[indexPath.section])!.timeInterval
+    
+    let hour = time / 60
+    
+    let min = time % 60
+    
+    if hour <= 0 {
+      
+      hourTextField.text = "0"
+      
+    } else {
+      
+      hourTextField.text = String(describing: hour)
+    }
+    
+    if min <= 0 || min > 59 {
+      
+      minuteTextField.text = "00"
+      
+    } else {
+      
+      minuteTextField.text = String(describing: min)
+      
+    }
+  }
+  
   func configTextField() {
     hourTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     
@@ -66,7 +100,8 @@ class TimeIntervalTableViewCell: UITableViewCell {
   
   @objc func textFieldDidChange(_ textField: UITextField) {
     if textField == hourTextField {
-      if (textField.text!.count) >= 2 {
+      let volume = Int(textField.text ?? "3") ?? 3
+      if  volume > 2 || (textField.text!.count) >= 2 {
         minuteTextField?.becomeFirstResponder()
       }
     } else if textField == minuteTextField {

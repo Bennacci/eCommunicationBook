@@ -84,6 +84,13 @@ class SearchUserPageViewModel {
   
   func setSearchResult(_ users: [User]) {
     userViewModel.value = convertUserToViewModels(from: users)
+
+    
+    if secondTime == false {
+      userListViewModel.value = UserManager.shared.selectedUsers
+    } else {
+      userListViewModel.value = UserManager.shared.selectedUsersTwo
+    }
   }
   
   

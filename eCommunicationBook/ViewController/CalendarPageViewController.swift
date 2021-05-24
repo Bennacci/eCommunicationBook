@@ -8,13 +8,18 @@
 
 import UIKit
 import FSCalendar
+import EasyRefresher
 
 class CalendarPageViewController: UIViewController {
-  
+
   @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+  
   @IBOutlet weak var tableView: UITableView!
+  
   @IBOutlet weak var calendar: FSCalendar!
   //    @IBOutlet weak var animationSwitch: UISwitch!
+  
+  let viewModel = CalendarPageViewModel()
   
   fileprivate lazy var scopeGesture: UIPanGestureRecognizer = {
     [unowned self] in
@@ -27,26 +32,77 @@ class CalendarPageViewController: UIViewController {
     }()
   
   override func viewDidLoad() {
+    
+    
+    tableView.registerCellWithNib(identifier: ChartTableViewCell.identifier, bundle: nil)
+    tableView.registerCellWithNib(identifier: LableWithVerticalLineTableViewCell.identifier, bundle: nil)
+    tableView.registerCellWithNib(identifier: AssignmentStatusTableViewCell.identifier, bundle: nil)
     super.viewDidLoad()
+    
     setCalender()
+    
+    viewModel.refreshView = { [weak self] () in
+      DispatchQueue.main.async {
+        self?.tableView.reloadData()
+      }
+    }
+    
+    viewModel.dayEventViewModel.bind { [weak self] events in
+      //            self?.tableView.reloadData()
+      self?.viewModel.onRefresh()
+    }
+    
+    viewModel.dayPerformanceViewModel.bind { [weak self] studenperformances in
+      //            self?.tableView.reloadData()
+      self?.viewModel.onRefresh()
+    }
+    
+    viewModel.scrollToTop = { [weak self] () in
+      
+      self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
+    
+    viewModel.fetchData()
+    
+    setupRefresher()
   }
-  //  @IBAction func toggleClicked(sender: AnyObject) {
-  //    if self.calendar.scope == .month {
-  //      //            self.calendar.setScope(.week, animated: self.animationSwitch.isOn)
-  //    } else {
-  //      //            self.calendar.setScope(.month, animated: self.animationSwitch.isOn)
-  //    }
-  //  }
+  
+  func setupRefresher() {
+    self.tableView.refresh.header = RefreshHeader(delegate: self)
+    
+    tableView.refresh.header.addRefreshClosure { [weak self] in
+      self?.viewModel.fetchData()
+      self?.tableView.refresh.header.endRefreshing()
+    }
+    
+  }
 }
 
 extension CalendarPageViewController: UITableViewDataSource {
+  
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
+    
+    return viewModel.dayPerformanceViewModel.value.count * 2 +
+      viewModel.dayEventViewModel.value.count
+     
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        return [2, 20][section]
-    return [1, 3, 5][section]
+    
+    let sectionCount = viewModel.dayPerformanceViewModel.value.count * 2 +
+    viewModel.dayEventViewModel.value.count
+    
+    
+    if section % 2 == 1 && section != sectionCount {
+      return 1
+    } else if section != sectionCount {
+      let assignmentCompletionCount: Int = viewModel.dayPerformanceViewModel.value[section].assignmentCompleted?.count ?? 0
+      let assignmetScoreCount: Int = viewModel.dayPerformanceViewModel.value[section].testGrade?.count ?? 0
+//      let performanceCount = viewModel.dayPerformanceViewModel.value[section].
+      return assignmentCompletionCount + assignmetScoreCount
+    } else {
+      return  viewModel.dayEventViewModel.value.count
+    }
   }
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -63,18 +119,18 @@ extension CalendarPageViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     //      cell.layoutCell(title: viewModel.services[indexPath.section][indexPath.row])
     if indexPath.section == 0 {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarChartTableViewCell.identifier,
-                                                     for: indexPath) as? CalendarChartTableViewCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier,
+                                                     for: indexPath) as? ChartTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       return cell
     } else if indexPath.section == 1 {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarAssignmentTableViewCell.identifier,
-                                                     for: indexPath) as? CalendarAssignmentTableViewCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: AssignmentStatusTableViewCell.identifier,
+                                                     for: indexPath) as? AssignmentStatusTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       return cell
     } else {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarEventTableViewCell.identifier,
-                                                     for: indexPath) as? CalendarEventTableViewCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
+                                                     for: indexPath) as? LableWithVerticalLineTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       return cell
     }
@@ -98,6 +154,15 @@ extension CalendarPageViewController: UITableViewDelegate {
     }
   }
   
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//    if indexPath == pickerIndexPath && willExpand == true {
+      return LableWithVerticalLineTableViewCell.cellHeight()
+//    } else {
+//      return TwoLablesTableViewCell.cellHeight()
+//    }
+  }
+  
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 32
   }
@@ -106,6 +171,9 @@ extension CalendarPageViewController: UITableViewDelegate {
 extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate {
   
   func setCalender() {
+
+    viewModel.onCalendarTaped(day: Date())
+
     if UIDevice.current.model.hasPrefix("iPad") {
       self.calendarHeightConstraint.constant = 400
     }
@@ -148,12 +216,18 @@ extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, 
     print("selected dates is \(selectedDates)")
     
     if monthPosition == .next || monthPosition == .previous {
-    
+      
       calendar.setCurrentPage(date, animated: true)
     }
   }
   
   func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
     print("\(Date.dateFormatterYMD.string(from: calendar.currentPage))")
+  }
+}
+
+extension CalendarPageViewController: RefreshDelegate {
+  func refresherDidRefresh(_ refresher: Refresher) {
+    print("refresherDidRefresh")
   }
 }

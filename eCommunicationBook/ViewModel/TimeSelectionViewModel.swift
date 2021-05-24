@@ -7,9 +7,10 @@
 //
 
 import Foundation
-//protocol TimeSelectionDelegate {
-//  func didSelectTime()
-//}
+
+protocol TimeSelectionDelegate {
+  func didSelectTime(for thing: String)
+}
 
 
 class TimeSelectionViewModel {
@@ -19,16 +20,31 @@ class TimeSelectionViewModel {
   
   var inputTexts: [[String]] = [["Day", "Starting Time", "Time Interval", "Delete"]]
   
-  //  var delegate: TimeSelectionDelegate?
+  var inputTextsForEvent = ["Starting Time", "Time Interval"]
+  
+  
+  
+  var delegate: TimeSelectionDelegate?
   
   //  func loadInitialValues() {
   //
   //  }
 //  var dayCount: Int =
+  var forEvent = false
   
   var overed = false
   
   var onDataUpdated: (() -> Void)?
+  
+  func loadInitialValues() {
+    for _ in 0 ..< routineHours.count {
+      inputTexts.append(inputText)
+    }
+  }
+  
+  func onSendAndQuit() {
+    UserManager.shared.selectedDays = routineHours
+  }
   
   func onAddorDeleteADay(day: Int) {
     
@@ -89,7 +105,6 @@ class TimeSelectionViewModel {
     let hourInt: Int? = Int(hourInput)
     let timeInterval = self.routineHours[index].timeInterval
     if let hour = hourInt {
-      
       self.routineHours[index].timeInterval = timeInterval % 60 + hour * 60
     }
   }

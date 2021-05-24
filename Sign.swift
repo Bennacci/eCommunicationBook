@@ -1,14 +1,14 @@
 //
-//  Event.swift
-//  eCommunicationBook
+//  Sign.swift
+//  
 //
-//  Created by Ben Tee on 2021/5/19.
-//  Copyright © 2021 TKY co. All rights reserved.
+//  Created by Ben Tee on 2021/5/24.
 //
 
 import Foundation
 
-struct Event: Codable {
+struct Sign: Codable {
+  
   var id: String
   var eventName: String
   var description: String
@@ -17,8 +17,6 @@ struct Event: Codable {
   var time: Int
   var timeInterval: Int
 
-
- 
   enum CodingKeys: String, CodingKey {
     case id
     case eventName

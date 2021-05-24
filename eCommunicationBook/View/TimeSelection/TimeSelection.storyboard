@@ -54,11 +54,14 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="45H-Ac-4mr">
                                 <rect key="frame" x="20" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancle"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="popViewController:" destination="4oN-WJ-pvz" eventType="touchUpInside" id="VkA-z2-qhO"/>
+                                    <action selector="cancel:" destination="4oN-WJ-pvz" eventType="touchUpInside" id="Cam-ud-Gmb"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <action selector="pop:" destination="4oN-WJ-pvz" id="rPd-Zl-akh"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="wIA-bO-MEJ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fec-V9-CpX">
@@ -66,7 +69,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <action selector="sendAndQuitViewController:" destination="4oN-WJ-pvz" eventType="touchUpInside" id="z4C-ht-icI"/>
+                                    <action selector="add:" destination="4oN-WJ-pvz" eventType="touchUpInside" id="lNS-N6-y0I"/>
                                 </connections>
                             </button>
                         </barButtonItem>

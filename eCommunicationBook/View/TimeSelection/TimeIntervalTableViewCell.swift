@@ -31,8 +31,15 @@ class TimeIntervalTableViewCell: UITableViewCell {
   }
   
   func updateText(indexPath: IndexPath) {
+  
+    if timeSelectionViewModel?.forEvent == true {
+  
+      label.text = timeSelectionViewModel?.inputTextsForEvent[indexPath.row]
     
-    label.text = timeSelectionViewModel?.inputTexts[indexPath.section][indexPath.row]
+    } else {
+    
+      label.text = timeSelectionViewModel?.inputTexts[indexPath.section][indexPath.row]
+    }
     
     lableRightToTextField.isHidden = true
     
@@ -64,8 +71,17 @@ class TimeIntervalTableViewCell: UITableViewCell {
   
   func updateIntervalText(indexPath: IndexPath) {
     
-    label.text = timeSelectionViewModel?.inputTexts[indexPath.section][indexPath.row]
+    if timeSelectionViewModel?.forEvent == true {
+   
+      label.text = timeSelectionViewModel?.inputTextsForEvent[indexPath.row]
+    
+    } else {
+    
+      label.text = timeSelectionViewModel?.inputTexts[indexPath.section][indexPath.row]
+    }
+        
     lableBetweenTextField.text = "hrs"
+    
     let time = (timeSelectionViewModel?.routineHours[indexPath.section])!.timeInterval
     
     let hour = time / 60

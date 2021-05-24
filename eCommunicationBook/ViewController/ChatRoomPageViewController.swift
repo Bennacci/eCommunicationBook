@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestoreSwift
 import EasyRefresher
 
 class ChatRoomPageViewController: UIViewController {

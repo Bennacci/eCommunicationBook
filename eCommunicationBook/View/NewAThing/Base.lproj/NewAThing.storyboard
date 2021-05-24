@@ -38,9 +38,9 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rq5-Qd-y4R">
                                 <rect key="frame" x="20" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancle"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="cancle:" destination="xqT-bc-fJy" eventType="touchUpInside" id="30J-G9-fkg"/>
+                                    <action selector="cancel:" destination="xqT-bc-fJy" eventType="touchUpInside" id="OsR-gn-Z1e"/>
                                 </connections>
                             </button>
                         </barButtonItem>

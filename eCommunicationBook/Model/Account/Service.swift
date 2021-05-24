@@ -195,8 +195,8 @@ enum TeacherSeviceItem: AccountItem {
                               ["Teachers", "Students"],
                               ["First Lesson Date", "Lesson Schedule", "Total Lessons Count"],
                               [ "Fee"]]
-    case .newEvent: return [["Title", "Time"], ["Description"]]
-    case .setASign: return [["Title"], ["Starting Time", "Ending Time"], ["Description"]]
+    case .newEvent: return [["Title"], ["Date", "Time"], ["Description"]]
+    case .setASign: return [["Title"], ["Date", "Time"], ["Description"]]
     default:
       return nil
     }

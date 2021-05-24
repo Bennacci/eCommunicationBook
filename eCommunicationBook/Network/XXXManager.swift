@@ -185,6 +185,60 @@ class XXXManager {
       }
     }
   }
+  
+  func addCourse(course: inout Course, completion: @escaping (Result<String, Error>) -> Void) {
+    
+    let document = db.collection("Course")
+      .document()
+    course.id = document.documentID
+//    course.createdTime = Double(Date().millisecondsSince1970)
+    document.setData(course.toDict) { error in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
+
+    func addEvent(event: inout Event, completion: @escaping (Result<String, Error>) -> Void) {
+      
+      let document = db.collection("Event")
+        .document()
+      event.id = document.documentID
+  //    course.createdTime = Double(Date().millisecondsSince1970)
+      document.setData(event.toDict) { error in
+        
+        if let error = error {
+          
+          completion(.failure(error))
+        } else {
+          
+          completion(.success("Success"))
+        }
+      }
+    }
+    func addSign(sign: inout Event, completion: @escaping (Result<String, Error>) -> Void) {
+      
+      let document = db.collection("Sign")
+        .document()
+      sign.id = document.documentID
+  //    course.createdTime = Double(Date().millisecondsSince1970)
+      document.setData(sign.toDict) { error in
+        
+        if let error = error {
+          
+          completion(.failure(error))
+        } else {
+          
+          completion(.success("Success"))
+        }
+      }
+    }
+  
     func fetchUser(completion: @escaping (Result<[User], Error>) -> Void) {
     
     db.collection("users").getDocuments { (querySnapshot, error) in
@@ -211,6 +265,58 @@ class XXXManager {
     }
   }
   
+    func fetchEvents(completion: @escaping (Result<[Event], Error>) -> Void) {
+    
+    db.collection("Events").getDocuments { (querySnapshot, error) in
+        
+        if let error = error {
+          
+          completion(.failure(error))
+        } else {
+          
+          var events = [Event]()
+          
+          for document in querySnapshot!.documents {
+            
+            do {
+              if let event = try document.data(as: Event.self, decoder: Firestore.Decoder()) {
+                events.append(event)
+              }
+            } catch {
+              completion(.failure(error))
+            }
+          }
+          completion(.success(events))
+        }
+    }
+  }
+  
+    func fetchStudentPerformances(completion: @escaping (Result<[StudentPerformance], Error>) -> Void) {
+    
+    db.collection("StudentPerformances").getDocuments { (querySnapshot, error) in
+        
+        if let error = error {
+          
+          completion(.failure(error))
+        } else {
+          
+          var studentPerformances = [StudentPerformance]()
+          
+          for document in querySnapshot!.documents {
+            
+            do {
+              if let studentPerformance = try document.data(as: StudentPerformance.self, decoder: Firestore.Decoder()) {
+                studentPerformances.append(studentPerformance)
+              }
+            } catch {
+              completion(.failure(error))
+            }
+          }
+          completion(.success(studentPerformances))
+        }
+    }
+  }
+  
   func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
     
     let document = db.collection("chatRooms").document()
@@ -227,7 +333,6 @@ class XXXManager {
       }
     }
   }
-
   
   func publishArticle(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
     

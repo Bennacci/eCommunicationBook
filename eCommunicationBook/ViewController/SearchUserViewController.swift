@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SearchUserDelegate {
-  func onSearchAndSelected()
+  func onSearchAndSelected(secondTime: Bool)
 }
 
 class SearchUserViewController: UIViewController {
@@ -22,7 +22,7 @@ class SearchUserViewController: UIViewController {
   
   @IBOutlet weak var searchBar: UISearchBar!
   
-  @IBOutlet weak var cancleButtonWidth: NSLayoutConstraint!
+  @IBOutlet weak var cancelButtonWidth: NSLayoutConstraint!
   
   var delegate: SearchUserDelegate?
   
@@ -80,18 +80,18 @@ class SearchUserViewController: UIViewController {
 
     
     
-    delegate?.onSearchAndSelected()
+    delegate?.onSearchAndSelected(secondTime: viewModel.secondTime)
 //    self.onSearchAndSelected()
     
   }
   
   
-  @IBAction func cancleSearching(_ sender: Any) {
+  @IBAction func cancelSearching(_ sender: Any) {
     if let viewWithTag = self.view.viewWithTag(100) {
       UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
         
         viewWithTag.backgroundColor = UIColor(white: 0, alpha: 0.8)
-        self.cancleButtonWidth.constant = 0
+        self.cancelButtonWidth.constant = 0
       },
                                                      completion: nil)
       viewWithTag.removeFromSuperview()
@@ -120,7 +120,7 @@ extension SearchUserViewController: UISearchBarDelegate {
     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
       
       blackView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-      self.cancleButtonWidth.constant = 75
+      self.cancelButtonWidth.constant = 75
     },
                                                    completion: nil)
   }

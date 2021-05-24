@@ -38,7 +38,7 @@ struct Course: Codable {
       "teacher": teacher as Any,
       "student": student as Any,
       "firstLessonDate": firstLessonDate as Any,
-      "courseTime": courseTime as Any,
+      "courseTime": courseTime.map({$0.toDict}) as Any,
       "fee": fee as Any,
       "lessonsAmount": lessonsAmount as Any,
       "lessons": lessons as Any

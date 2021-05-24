@@ -17,17 +17,23 @@ enum ClassPerformance: Int {
 }
 
 struct StudentPerformance: Codable {
-  let id: String
-  let attendTime: Double
-  let leftTime: Double
-  let performance: [ClassPerformance.RawValue]
-  let testGrade: [Int]?
-  let assignmentCompleted: [Bool]?
-  let assignmentScore: [Int]?
-  let note: String?
+  var id: String
+  var courseName: String
+  var date: Double
+  var courseTime: RoutineHour
+  var attendTime: Double
+  var leftTime: Double
+  var performance: [ClassPerformance.RawValue]
+  var testGrade: [Int]?
+  var assignmentCompleted: [Bool]?
+  var assignmentScore: [Int]?
+  var note: String?
 
   enum CodingKeys: String, CodingKey {
     case id
+    case courseName
+    case date
+    case courseTime
     case attendTime
     case leftTime
     case performance
@@ -40,6 +46,10 @@ struct StudentPerformance: Codable {
   var toDict: [String: Any] {
     return [
       "id": id as Any,
+      "courserName": courseName as Any,
+      "date": date as Any,
+      "courseTime": courseTime.toDict as Any,
+      "attendTime": attendTime as Any,
       "attendTime": attendTime as Any,
       "leftTime": leftTime as Any,
       "performance": performance as Any,

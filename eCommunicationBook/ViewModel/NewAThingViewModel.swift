@@ -18,9 +18,11 @@ import Foundation
 //  var servicesItem: AccountItem { get set }
 //
 //  func loadInitialValues()
-//}
+// }
 
 class NewAThingViewModel: SearchUserDelegate {
+  
+  let eventViewModel = Box([EventViewModel]())
   
   var inputTexts: [[String]] = [[]]
   
@@ -29,16 +31,20 @@ class NewAThingViewModel: SearchUserDelegate {
   var servicesItem = ServiceManager.init(userType: UserManager.shared.userType).services.items[0][0]
   
   func loadInitialValues() {
-    inputTexts = servicesItem.form!
+    
+    guard let form = servicesItem.form else {return}
+    
+    inputTexts = form
     
     for index in 0..<inputTexts.count {
       let input = Array(repeating: Date(), count: inputTexts[index].count)
       inputDates.append(input)
       //      inputValuse.append(input)
     }
+    self.onFirstLessonDateChanged(day: Date())
   }
   
-//  var searchUserDelegate: SearchUserDelegate?
+  //  var searchUserDelegate: SearchUserDelegate?
   
   var onDataUpdated: (() -> Void)?
   
@@ -89,8 +95,19 @@ class NewAThingViewModel: SearchUserDelegate {
   
   var onAdded: (() -> Void)?
   
-  func onTapAdd() {
-    self.addUser(with: &user)
+  func onTapAdd(thing: String) {
+    if thing == "Create User"{
+      self.addUser(with: &user)
+    } else if thing == "Create Class"{
+      self.addCourse(with: &course)
+    } else if thing == "Create Event"{
+      self.addEvent(with: &event)
+    } else if thing == "Create Sign"{
+      self.addSign(with: &event)
+    }
+    UserManager.shared.selectedUsers = []
+    UserManager.shared.selectedUsersTwo = []
+    UserManager.shared.selectedDays = nil
   }
   
   func addUser (with user: inout User) {
@@ -132,26 +149,106 @@ class NewAThingViewModel: SearchUserDelegate {
   }
   
   func onFeeChanged(text fee: String) {
-    self.course.fee = Int(fee) ?? -1
+    self.course.fee = Int(fee) ?? -99
+  }
+  func onCourseTimeChanged(time: [RoutineHour]) {
+    self.course.courseTime = time
   }
   
   func onLessonsAmountChanged(text lessonsAmount: String) {
     self.course.lessonsAmount = Int(lessonsAmount) ?? -1
   }
   
-  func onSearchAndSelected() {
-    
-    
-    
-    self.course.teacher = UserManager.shared.selectedUsers.map({$0.id})
-    
-    
-    //      with
-    print(self.course.teacher)
+  func onSearchAndSelected(secondTime: Bool) {
+    if secondTime == false {
+      guard let selectedUsers = UserManager.shared.selectedUsers else {return}
+      self.course.teacher = selectedUsers.map({$0.id})
+    } else {
+      guard let selectedUsersTwo = UserManager.shared.selectedUsersTwo else {return}
+      self.course.student = selectedUsersTwo.map({$0.id})
+    }
     onDataUpdated!()
   }
+  
+  func addCourse (with course: inout Course) {
+    XXXManager.shared.addCourse(course: &course) { result in
+      
+      switch result {
+        
+      case .success:
+        
+        print("onTapAdd, success")
+        self.onAdded?()
+        
+      case .failure(let error):
+        
+        print("publishArticle.failure: \(error)")
+      }
+    }
+  }
+  
   //  func onTeachersChanged(text name: String) {
   //    self.teacher.name = name
   //  }
+  
+  var event: Event = Event(id: "",
+                           eventName: "",
+                           description: "",
+                           image: nil,
+                           date: -1,
+                           time: 0,
+                           timeInterval: 0)
+  
+  func onEventNameChanged(text eventName: String) {
+    self.event.eventName = eventName
+  }
+  
+  func onEventDiscriptionChanged(text description: String) {
+    self.event.description = description
+  }
+  
+  func onEventDateChanged(day: Date) {
+    self.event.date = Double(day.millisecondsSince1970)
+  }
+  
+  func onEventTimeChanged(time: RoutineHour) {
+    
+    self.event.time = time.startingTime
+    
+    self.event.timeInterval = time.timeInterval
+  }
+  func addEvent (with event: inout Event) {
+    XXXManager.shared.addEvent(event: &event) { result in
+      
+      switch result {
+        
+      case .success:
+        
+        print("onTapAdd, success")
+        self.onAdded?()
+        
+      case .failure(let error):
+        
+        print("publishArticle.failure: \(error)")
+      }
+    }
+  }
+  
+  func addSign (with sign: inout Event) {
+    XXXManager.shared.addSign(sign: &sign) { result in
+      
+      switch result {
+        
+      case .success:
+        
+        print("onTapAdd, success")
+        self.onAdded?()
+        
+      case .failure(let error):
+        
+        print("publishArticle.failure: \(error)")
+      }
+    }
+  }
   
 }

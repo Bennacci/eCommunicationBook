@@ -20,7 +20,7 @@ class SearchUserPageViewModel {
   
   var tapUser: (()->())?
   
-  lazy var secondTime = false
+  var secondTime = false
   
   func fetchData() {
     
@@ -44,7 +44,6 @@ class SearchUserPageViewModel {
       UserManager.shared.selectedUsers = userListViewModel.value
     } else {
       UserManager.shared.selectedUsersTwo = userListViewModel.value
-      secondTime = false
     }
   }
   
@@ -87,9 +86,9 @@ class SearchUserPageViewModel {
 
     
     if secondTime == false {
-      userListViewModel.value = UserManager.shared.selectedUsers
+      userListViewModel.value = UserManager.shared.selectedUsers ?? []
     } else {
-      userListViewModel.value = UserManager.shared.selectedUsersTwo
+      userListViewModel.value = UserManager.shared.selectedUsersTwo ?? []
     }
   }
   

@@ -21,9 +21,13 @@ class ConversationViewController: UIViewController {
   @IBOutlet weak var messageContentTextView: UITextView!
   
   override func viewDidLoad() {
+    
     super.viewDidLoad()
+    
     self.navigationController?.navigationBar.backgroundColor = UIColor(white: 0.0, alpha: 0)
-    conversationTableView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi));
+    
+    conversationTableView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
+    
     self.tabBarController?.tabBar.isHidden = true
     //      self.navigationController?.setNavigationBarHidden(true, animated: true)
     //      self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.width, height: 0)
@@ -97,10 +101,9 @@ extension ConversationViewController: UITableViewDataSource {
   }
 }
 
-
 extension ConversationViewController: UITextViewDelegate {
   
-  func setUpTextView(){
+  func setUpTextView() {
     messageContentTextView.delegate = self
     messageContentTextView.text = "type message..."
     messageContentTextView.textColor = .lightGray

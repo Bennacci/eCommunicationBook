@@ -60,6 +60,7 @@ class NewAThingViewController: UIViewController {
     tableView.registerCellWithNib(identifier: TwoLablesWithButtonTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: DatePickerTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: PickerViewTableViewCell.identifier, bundle: nil)
+    
     // Do any additional setup after loading the view.
     viewModel.loadInitialValues()
     
@@ -73,32 +74,16 @@ class NewAThingViewController: UIViewController {
       //        self?.dismiss(animated: true, completion: nil)
     }
   }
-    
   
-  @IBAction func cancle(_ sender: Any) {
+  @IBAction func cancel(_ sender: Any) {
     print("hi")
     self.navigationController?.popViewController(animated: true)
     
   }
   
   @IBAction func send(_ sender: Any) {
-    viewModel.onTapAdd()
+    viewModel.onTapAdd(thing: self.navigationItem.title!)
   }
-  
-  
-//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    guard let destinationNavigationController = segue.destination as? UINavigationController,
-//      let targetController = destinationNavigationController.topViewController as? SearchUserViewController
-//      else { fatalError("Unexpected Table View Cell") }
-//
-//    targetController.delegate = self.viewModel
-////      if segue.identifier == "navigateToPublish",
-////      let publishViewController = segue.destination as? PublishViewController {
-////
-////      publishViewController.delegate = self
-////
-////    }
-//  }
 }
 
 extension NewAThingViewController: UITableViewDataSource {
@@ -131,7 +116,7 @@ extension NewAThingViewController: UITableViewDataSource {
       
       switch  inputText {
         
-      case "Birth Date", "First Lesson Date":
+      case "Birth Date", "First Lesson Date", "Date":
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DatePickerTableViewCell.identifier,
                                                        for: indexPath) as? DatePickerTableViewCell
           else { fatalError("Unexpected Table View Cell") }
@@ -156,13 +141,14 @@ extension NewAThingViewController: UITableViewDataSource {
         return cell
       }
       
-    } else if inputText == "Birth Date" || inputText == "User Type" || inputText == "First Lesson Date" {
+    } else if inputText == "Birth Date" || inputText == "User Type" || inputText == "First Lesson Date" || inputText == "Date" {
       
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TwoLablesTableViewCell.identifier,
                                                      for: indexPath) as? TwoLablesTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       switch inputText {
       case "User Type":
+        
         cell.updateText(text: inputText,
                         type: viewModel.user.userType)
         return cell
@@ -171,7 +157,7 @@ extension NewAThingViewController: UITableViewDataSource {
                         date: inputDate)
         return cell
       }
-    } else if inputText == "Teachers" || inputText == "Students" || inputText == "Lesson Schedule"{
+    } else if inputText == "Teachers" || inputText == "Students" || inputText == "Lesson Schedule" || inputText == "Time" {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TwoLablesWithButtonTableViewCell.identifier,
                                                      for: indexPath) as? TwoLablesWithButtonTableViewCell
         else { fatalError("Unexpected Table View Cell") }
@@ -197,7 +183,7 @@ extension NewAThingViewController: UITableViewDataSource {
     }
   }
 }
-  // swiftlint:enable function_body_length cyclomatic_complexity
+// swiftlint:enable function_body_length cyclomatic_complexity
 
 extension NewAThingViewController: UITableViewDelegate {
   
@@ -211,7 +197,7 @@ extension NewAThingViewController: UITableViewDelegate {
     
     let inputText = viewModel.inputTexts[indexPath.section][indexPath.row]
     
-    if inputText == "User Type" || inputText == "Birth Date" || inputText == "First Lesson Date" {
+    if inputText == "User Type" || inputText == "Birth Date" || inputText == "First Lesson Date" || inputText == "Date" {
       
       if pickerIndexPath != nil && indexPath != pickerMotherIndexPath {
         
@@ -257,41 +243,57 @@ extension NewAThingViewController: UITableViewDelegate {
       }
     }
     
-    
     if inputText == "Teachers" || inputText == "Students"{
       if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
-
-          guard let targetController = nextVC.children[0] as? SearchUserViewController
-            
+        
+        guard let targetController = nextVC.children[0] as? SearchUserViewController
+          
           else { fatalError("Unexpected Table View Cell") }
         
-          targetController.delegate = self.viewModel
-          
+        targetController.delegate = self.viewModel
+        
         if inputText == "Teachers"{
+          
           targetController.viewModel.secondTime = false
+          
         } else {
+          
           targetController.viewModel.secondTime = true
         }
         
         self.navigationController?.show(nextVC, sender: nil)
         
       } else { return }
-    } else if inputText == "Lesson Schedule"{
+      
+    } else if inputText == "Lesson Schedule" || inputText == "Time"{
+      
       if let nextVC = UIStoryboard.timeSelection.instantiateInitialViewController() {
-
-          guard let targetController = nextVC.children[0] as? TimeSelectionViewController
-            
+        
+        guard let targetController = nextVC.children[0] as? TimeSelectionViewController
+          
           else { fatalError("Unexpected Table View Cell") }
         
-//          targetController.delegate = self.viewModel
+        if inputText == "Time" {
+        
+          targetController.viewModel.forEvent = true
+        }
+        
+        targetController.viewModel.delegate = self
+        
+        if UserManager.shared.selectedDays != nil {
           
+          targetController.viewModel.routineHours = UserManager.shared.selectedDays!
+          
+          targetController.viewModel.loadInitialValues()
+        }
+        
         self.navigationController?.show(nextVC, sender: nil)
         
       } else { return }
       
     }
     tableView.deselectRow(at: indexPath, animated: true)
-
+    
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -344,27 +346,61 @@ extension NewAThingViewController: UITextFieldDelegate {
       viewModel.onHomePhoneNoChanged(text: info)
     case "Class Name":
       viewModel.onCourseNameChanged(text: info)
+    case "Total Lessons Count":
+      viewModel.onLessonsAmountChanged(text: info)
     case "Fee":
       viewModel.onFeeChanged(text: info)
+    case "Title":
+      viewModel.onEventNameChanged(text: info)
+    case "Description":
+      viewModel.onEventDiscriptionChanged(text: info)
     default:
       return
     }
   }
 }
+extension NewAThingViewController: TimeSelectionDelegate {
+  
+  func didSelectTime(for thing: String) {
+    if thing == "Course"{
+      viewModel.onCourseTimeChanged(time: UserManager.shared.selectedDays ?? [])
+    } else {
+      guard let selectedDays = UserManager.shared.selectedDays else {return}
+      viewModel.onEventTimeChanged(time: selectedDays[0])
+    }
+    tableView.reloadData()
+  }
+}
 
 extension NewAThingViewController: PickerDelegate {
+  
   func didChangeData(type: UserType, indexPath: IndexPath) {
     
     tableView.reloadRows(at: [indexPath], with: .none)
   }
   
   func didChangeDate(date: Date, indexPath: IndexPath) {
-    viewModel.onBirthDayChanged(day: date)
-    viewModel.inputDates[indexPath.section][indexPath.row] = date
-    tableView.reloadRows(at: [indexPath], with: .none)
+    
+    switch viewModel.inputTexts[indexPath.section][indexPath.row] {
+    case "Birth Date":
+      viewModel.onBirthDayChanged(day: date)
+      viewModel.inputDates[indexPath.section][indexPath.row] = date
+      tableView.reloadRows(at: [indexPath], with: .none)
+    case "First Lesson Date":
+      viewModel.onFirstLessonDateChanged(day: date)
+      viewModel.inputDates[indexPath.section][indexPath.row] = date
+      tableView.reloadRows(at: [indexPath], with: .none)
+    case "Date":
+      viewModel.onEventDateChanged(day: date)
+      viewModel.inputDates[indexPath.section][indexPath.row] = date
+      tableView.reloadRows(at: [indexPath], with: .none)
+
+    default:
+      return
+    }
   }
 }
-  
+
 
 extension NewAThingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
   

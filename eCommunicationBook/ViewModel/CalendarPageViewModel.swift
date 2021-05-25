@@ -32,7 +32,9 @@ class CalendarPageViewModel {
     self.scrollToTop?()
   }
   
-  func onCalendarTaped(day: Date) {
+  // GCD and tapped in future
+  
+  func onCalendarTapped(day: Date) {
     
     let time = Double(day.millisecondsSince1970)
     
@@ -42,15 +44,21 @@ class CalendarPageViewModel {
       
         $0.date >= time &&
         
-        $0.date <= time + secondsPerDay - 1
+        $0.date <= time + secondsPerDay * 1000 - 1
+      
+
     
     })
+    
     dayPerformanceViewModel.value = studentPerformancesViewModel.value.filter({
       
         $0.date >= time &&
         
-        $0.date <= time + secondsPerDay - 1
+        $0.date <= time + secondsPerDay * 1000 - 1
     })
+//    print(day)
+//    print("123")
+//    print(dayEventViewModel)
   }
   
   func fetchData() {
@@ -62,7 +70,7 @@ class CalendarPageViewModel {
       case .success(let events):
         
         self?.setEvents(events)
-        
+                
       case .failure(let error):
         
         print("fetchData.failure: \(error)")
@@ -77,6 +85,8 @@ class CalendarPageViewModel {
         
         self?.setStudentPerformances(studentPerformances)
         
+//        self?.onCalendarTapped(day: Date())
+
       case .failure(let error):
         
         print("fetchData.failure: \(error)")

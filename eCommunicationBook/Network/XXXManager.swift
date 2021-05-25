@@ -188,7 +188,7 @@ class XXXManager {
   
   func addCourse(course: inout Course, completion: @escaping (Result<String, Error>) -> Void) {
     
-    let document = db.collection("Course")
+    let document = db.collection("Courses")
       .document()
     course.id = document.documentID
 //    course.createdTime = Double(Date().millisecondsSince1970)
@@ -197,6 +197,7 @@ class XXXManager {
       if let error = error {
         
         completion(.failure(error))
+        
       } else {
         
         completion(.success("Success"))
@@ -206,7 +207,7 @@ class XXXManager {
 
     func addEvent(event: inout Event, completion: @escaping (Result<String, Error>) -> Void) {
       
-      let document = db.collection("Event")
+      let document = db.collection("Events")
         .document()
       event.id = document.documentID
   //    course.createdTime = Double(Date().millisecondsSince1970)

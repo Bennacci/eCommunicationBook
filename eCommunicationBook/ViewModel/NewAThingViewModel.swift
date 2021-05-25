@@ -50,6 +50,25 @@ class NewAThingViewModel: SearchUserDelegate {
   
   //  var searchUserVIewModel = SearchUserPageViewModel()
   
+  var onAdded: (() -> Void)?
+  
+  func onTapAdd(thing: String) {
+    if thing == "Children Informations"{
+      self.addStudent(with: &student)
+    } else if thing == "Create User" {
+      self.addUser(with: &user)
+    } else if thing == "Create Class"{
+      self.addCourse(with: &course)
+    } else if thing == "Create Event"{
+      self.addEvent(with: &event)
+    } else if thing == "Create Sign"{
+      self.addSign(with: &event)
+    }
+    UserManager.shared.selectedUsers = []
+    UserManager.shared.selectedStudents = []
+    UserManager.shared.selectedDays = nil
+  }
+  
   // MARK: - new a user
   var user: User = User(
     id: "",
@@ -90,24 +109,6 @@ class NewAThingViewModel: SearchUserDelegate {
   func onUserTypeChanged(text userType: String) {
     self.user.userType = userType
     self.onDataUpdated?()
-  }
-  
-  
-  var onAdded: (() -> Void)?
-  
-  func onTapAdd(thing: String) {
-    if thing == "Create User"{
-      self.addUser(with: &user)
-    } else if thing == "Create Class"{
-      self.addCourse(with: &course)
-    } else if thing == "Create Event"{
-      self.addEvent(with: &event)
-    } else if thing == "Create Sign"{
-      self.addSign(with: &event)
-    }
-    UserManager.shared.selectedUsers = []
-    UserManager.shared.selectedUsersTwo = []
-    UserManager.shared.selectedDays = nil
   }
   
   func addUser (with user: inout User) {
@@ -159,12 +160,12 @@ class NewAThingViewModel: SearchUserDelegate {
     self.course.lessonsAmount = Int(lessonsAmount) ?? -1
   }
   
-  func onSearchAndSelected(secondTime: Bool) {
-    if secondTime == false {
+  func onSearchAndSelected(forStudent: Bool) {
+    if forStudent == false {
       guard let selectedUsers = UserManager.shared.selectedUsers else {return}
       self.course.teacher = selectedUsers.map({$0.id})
     } else {
-      guard let selectedUsersTwo = UserManager.shared.selectedUsersTwo else {return}
+      guard let selectedUsersTwo = UserManager.shared.selectedStudents else {return}
       self.course.student = selectedUsersTwo.map({$0.id})
     }
     onDataUpdated!()
@@ -187,10 +188,7 @@ class NewAThingViewModel: SearchUserDelegate {
     }
   }
   
-  //  func onTeachersChanged(text name: String) {
-  //    self.teacher.name = name
-  //  }
-  
+   // MARK: - new a Event and sign
   var event: Event = Event(id: "",
                            eventName: "",
                            description: "",
@@ -250,5 +248,53 @@ class NewAThingViewModel: SearchUserDelegate {
       }
     }
   }
+
+  // MARK: - new a Student
+  var student: Student = Student(id: "",
+                                 parents: [],
+                                 name: "",
+                                 image: nil,
+                                 nationalID: "",
+                                 grade: 0,
+                                 birthDay: -1,
+                                 emergencyContactPerson: "",
+                                 emergencyContactNo: -1)
   
+  func onStudentNameChanged(text name: String) {
+    self.student.name = name
+  }
+  
+  func onStudentNationalIDChanged(text nationalID: String) {
+    self.student.nationalID = nationalID
+  }
+  
+  func onStudentGradeChanged(text grade: String) {
+    self.student.grade = Int(grade) ?? -1
+  }
+  func onStudentBirthDayChanged(day: Date) {
+    self.student.birthDay = Double(day.millisecondsSince1970)
+  }
+  func onStudentContactPersonChanged(text person: String) {
+    self.student.emergencyContactPerson = person
+  }
+  func onStudentContactNoChanged(text contactNo: String) {
+    self.student.emergencyContactNo = Int(contactNo) ?? -1
+  }
+  
+  func addStudent (with student: inout Student) {
+    XXXManager.shared.addStudent(student: &student) { result in
+      
+      switch result {
+        
+      case .success:
+        
+        print("onTapAdd, success")
+        self.onAdded?()
+        
+      case .failure(let error):
+        
+        print("publishArticle.failure: \(error)")
+      }
+    }
+  }
 }

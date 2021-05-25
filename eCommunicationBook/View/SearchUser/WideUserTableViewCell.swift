@@ -27,18 +27,42 @@ class WideUserTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-  var viewModel: UserViewModel?
-    
-  func setup(list: Box<[UserViewModel]>, viewModel: UserViewModel) {
-      self.viewModel = viewModel
+  
+//  var viewModel: UserViewModel?
+//
+//  func setup(list: Box<[UserViewModel]>, viewModel: UserViewModel) {
+//      self.viewModel = viewModel
+//
+//    layoutCell(list: list)
+//  }
+//
+//  func layoutCell(list: Box<[UserViewModel]>) {
+//    let arrayCount = list.value.count
+//    var evenArray = [UserViewModel]()
+//    evenArray = list.value.filter{$0.id != viewModel?.id}
+//    if evenArray.count == arrayCount {
+//      checkIcon.isHidden = true
+//      circleIcon.isHidden = false
+//    } else {
+//      checkIcon.isHidden = false
+//      circleIcon.isHidden = true
+//    }
+//    userName.text = viewModel?.name
+//    userImageW.layer.cornerRadius = userImageW.frame.height / 2
+//    layoutIfNeeded()
+//  }
+//
+  var material: SearchUserPageMaterial?
+  func setup(list: [SearchUserPageMaterial], viewModel: SearchUserPageMaterial) {
+      self.material = viewModel
 
     layoutCell(list: list)
   }
   
-  func layoutCell(list: Box<[UserViewModel]>) {
-    let arrayCount = list.value.count
-    var evenArray = [UserViewModel]()
-    evenArray = list.value.filter{$0.id != viewModel?.id}
+  func layoutCell(list: [SearchUserPageMaterial]) {
+    let arrayCount = list.count
+    var evenArray = [SearchUserPageMaterial]()
+    evenArray = list.filter { $0.id != material?.id }
     if evenArray.count == arrayCount {
       checkIcon.isHidden = true
       circleIcon.isHidden = false
@@ -46,7 +70,7 @@ class WideUserTableViewCell: UITableViewCell {
       checkIcon.isHidden = false
       circleIcon.isHidden = true
     }
-    userName.text = viewModel?.name
+    userName.text = material?.name
     userImageW.layer.cornerRadius = userImageW.frame.height / 2
     layoutIfNeeded()
   }

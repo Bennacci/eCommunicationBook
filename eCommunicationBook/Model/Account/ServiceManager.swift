@@ -41,23 +41,26 @@ class ServiceManager {
       
       let teacherService = ServiceGroup(
        
-         title: [localizedString("增加事項："),
-           
-                 localizedString("學生紀錄：")],
+         title: [localizedString("學生紀錄："),
+                 localizedString("增加事項："),
+                 localizedString("系統：")],
       
          items: [
            
-          [TeacherSeviceItem.newAUser],
+              [TeacherSeviceItem.writeAttendAndLeave,
             
+               TeacherSeviceItem.writeLessonState],
+          
+              
             [TeacherSeviceItem.newACourse,
             
             TeacherSeviceItem.newEvent,
            
             TeacherSeviceItem.setASign],
            
-           [TeacherSeviceItem.writeAttendAndLeave,
-         
-            TeacherSeviceItem.writeLessonState]
+          [TeacherSeviceItem.newAStudent,
+
+          TeacherSeviceItem.newAUser]
          ]
        )
       return teacherService
@@ -81,7 +84,9 @@ class ServiceManager {
         
            ParentSeviceItem.makeUpReservation],
           
-          [ParentSeviceItem.contactUs]
+          [ParentSeviceItem.newAStudent,
+           
+            ParentSeviceItem.contactUs]
         ]
       )
       return parentService

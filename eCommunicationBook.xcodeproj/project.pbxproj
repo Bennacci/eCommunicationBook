@@ -57,6 +57,8 @@
 		74857FA02654E83700AEF14D /* SearchUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74857F9F2654E83700AEF14D /* SearchUser.storyboard */; };
 		74857FA32654E9DB00AEF14D /* WideUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857FA12654E9DB00AEF14D /* WideUserTableViewCell.swift */; };
 		74857FA42654E9DB00AEF14D /* WideUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */; };
+		748CC919265CEB4100919F1E /* SearchStudentPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */; };
+		748CC91B265CEB7200919F1E /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC91A265CEB7200919F1E /* StudentViewModel.swift */; };
 		74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */; };
 		74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */; };
 		749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */; };
@@ -172,6 +174,8 @@
 		74857F9F2654E83700AEF14D /* SearchUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchUser.storyboard; sourceTree = "<group>"; };
 		74857FA12654E9DB00AEF14D /* WideUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideUserTableViewCell.swift; sourceTree = "<group>"; };
 		74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WideUserTableViewCell.xib; sourceTree = "<group>"; };
+		748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStudentPageViewModel.swift; sourceTree = "<group>"; };
+		748CC91A265CEB7200919F1E /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
 		74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAssignmentTableViewCell.swift; sourceTree = "<group>"; };
 		74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventTableViewCell.swift; sourceTree = "<group>"; };
 		749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChartTableViewCell.swift; sourceTree = "<group>"; };
@@ -302,7 +306,9 @@
 				745147ED264E06D900172419 /* ChatRoomPage */,
 				741D7C4E26540E7E00A7FD0A /* AccountPage */,
 				74CADD8126554C5A004DA6D0 /* SearchUserPageViewModel.swift */,
+				748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */,
 				74CADD8326554C81004DA6D0 /* UserVIewModel.swift */,
+				748CC91A265CEB7200919F1E /* StudentViewModel.swift */,
 				74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */,
 				74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */,
 				74AE58C72658A3FD00BB851B /* NewACourseViewModel.swift */,
@@ -359,6 +365,20 @@
 				74D4BB6D2659E41A00999556 /* TimeIntervalTableViewCell.xib */,
 			);
 			path = TimeSelection;
+			sourceTree = "<group>";
+		};
+		748CC91C265D2ACE00919F1E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				741FAC83264CD77200D5C34B /* CalendarPage.storyboard */,
+				74715CCC265B74A400570A23 /* ChartTableViewCell.swift */,
+				74715CCD265B74A400570A23 /* ChartTableViewCell.xib */,
+				74715CD0265B761400570A23 /* LableWithVerticalLineTableViewCell.swift */,
+				74715CD1265B761400570A23 /* LableWithVerticalLineTableViewCell.xib */,
+				74715CD4265B774200570A23 /* AssignmentStatusTableViewCell.swift */,
+				74715CD5265B774200570A23 /* AssignmentStatusTableViewCell.xib */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		74A5A7732654F0270039BC22 /* SearchUser */ = {
@@ -508,13 +528,7 @@
 			isa = PBXGroup;
 			children = (
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
-				741FAC83264CD77200D5C34B /* CalendarPage.storyboard */,
-				74715CCC265B74A400570A23 /* ChartTableViewCell.swift */,
-				74715CCD265B74A400570A23 /* ChartTableViewCell.xib */,
-				74715CD0265B761400570A23 /* LableWithVerticalLineTableViewCell.swift */,
-				74715CD1265B761400570A23 /* LableWithVerticalLineTableViewCell.xib */,
-				74715CD4265B774200570A23 /* AssignmentStatusTableViewCell.swift */,
-				74715CD5265B774200570A23 /* AssignmentStatusTableViewCell.xib */,
+				748CC91C265D2ACE00919F1E /* Calendar */,
 				7472B2A02659E24700511468 /* TimeSelection */,
 				74A5A7732654F0270039BC22 /* SearchUser */,
 				740258162653599900BA6BDA /* HomePage */,
@@ -718,6 +732,7 @@
 				74857FA32654E9DB00AEF14D /* WideUserTableViewCell.swift in Sources */,
 				74CADD8426554C81004DA6D0 /* UserVIewModel.swift in Sources */,
 				74E94759264C087D00AFB046 /* String+Extension.swift in Sources */,
+				748CC919265CEB4100919F1E /* SearchStudentPageViewModel.swift in Sources */,
 				749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
 				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
@@ -758,6 +773,7 @@
 				741D7C4D2653FA0C00A7FD0A /* ServiceManager.swift in Sources */,
 				74A7D11D2655366300B445EB /* Event.swift in Sources */,
 				74E9473B264BE09500AFB046 /* Date+Extension.swift in Sources */,
+				748CC91B265CEB7200919F1E /* StudentViewModel.swift in Sources */,
 				745147E2264D389D00172419 /* Message.swift in Sources */,
 				745147CD264CE03200172419 /* AccountPageViewModel.swift in Sources */,
 				74CADD90265614E1004DA6D0 /* TwoLablesTableViewCell.swift in Sources */,

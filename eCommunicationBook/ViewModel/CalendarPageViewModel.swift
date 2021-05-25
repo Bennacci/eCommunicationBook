@@ -46,8 +46,6 @@ class CalendarPageViewModel {
         
         $0.date <= time + secondsPerDay * 1000 - 1
       
-
-    
     })
     
     dayPerformanceViewModel.value = studentPerformancesViewModel.value.filter({

@@ -97,6 +97,8 @@ extension AccountPageViewController: UITableViewDelegate {
       self.navigationController?.show(nextVC, sender: nil)
 
     }
+    tableView.deselectRow(at: indexPath, animated: true)
+
   }
   
   private func showNewAThingViewController() {

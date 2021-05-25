@@ -16,12 +16,12 @@ enum UserType: String, CaseIterable {
 }
 
 struct ServiceGroup {
-
-    let title: [String]
-
-//    let action: ServiceSegue?
-
-    let items: [[AccountItem]]
+  
+  let title: [String]
+  
+  //    let action: ServiceSegue?
+  
+  let items: [[AccountItem]]
 }
 
 // enum ServiceSegue: String {
@@ -45,18 +45,16 @@ protocol AccountItem {
   var title: String { get }
   
   var formTitle: String? { get }
-
+  
   var form: [[String]]? { get }
   
 }
 
 enum ParentSeviceItem: AccountItem {
-
+  
   case checkLearingStat
   
   case payTimeAnnounce
-  
-  case contactUs
   
   case leaveReservation
   
@@ -64,20 +62,26 @@ enum ParentSeviceItem: AccountItem {
   
   case makeUpReservation
   
+  case newAStudent
+  
+  case contactUs
+  
   var image: UIImage? {
     switch self {
-
+      
     case .checkLearingStat: return UIImage.asset(.Bear)
       
     case .payTimeAnnounce: return UIImage.asset(.Bear)
-      
-    case .contactUs: return UIImage.asset(.Bear)
       
     case .leaveReservation: return UIImage.asset(.Bear)
       
     case .courseReservation: return UIImage.asset(.Bear)
       
     case .makeUpReservation: return UIImage.asset(.Bear)
+      
+    case .newAStudent: return UIImage.asset(.Bear)
+      
+    case .contactUs: return UIImage.asset(.Bear)
     }
   }
   
@@ -88,98 +92,136 @@ enum ParentSeviceItem: AccountItem {
       
     case .payTimeAnnounce: return localizedString("繳費通知")
       
-    case .contactUs: return localizedString("聯絡我們")
-      
     case .leaveReservation: return localizedString("線上請假")
       
     case .courseReservation: return localizedString("課程預約")
       
     case .makeUpReservation: return localizedString("補課申請")
+      
+    case .newAStudent: return localizedString("新增孩童資料")
+      
+    case .contactUs: return localizedString("聯絡我們")
+      
     }
   }
   
   var formTitle: String? {
     switch self {
+    case .newAStudent: return "Children Informations"
+      
     case .checkLearingStat,
+         
          .payTimeAnnounce,
-         .contactUs,
+         
          .leaveReservation,
+         
          .courseReservation,
-         .makeUpReservation: return nil
+         
+         .makeUpReservation,
+         
+         .contactUs: return nil
     }
   }
   
   var form: [[String]]? {
     switch self {
+    case .newAStudent: return [["Name", "National ID"],
+                               ["Birth Date"],
+                               ["Grade"],
+                               ["Emergency Contact Person", "Contact Number"],
+                               ["image"]]
+      
     case .checkLearingStat,
+         
          .payTimeAnnounce,
-         .contactUs,
+         
          .leaveReservation,
+         
          .courseReservation,
-         .makeUpReservation: return nil
+         
+         .makeUpReservation,
+         
+         .contactUs: return nil
     }
   }
-  
-
-
 }
 
 enum TeacherSeviceItem: AccountItem {
   
-  case newAUser
+  case writeAttendAndLeave
   
-  case newACourse
+  case writeLessonState
   
   case newEvent
   
   case setASign
   
-  case writeAttendAndLeave
+  case newACourse
   
-  case writeLessonState
+  case newAStudent
+  
+  case newAUser
+  
+  
   //
   var image: UIImage? {
     
     switch self {
       
-    case .newAUser: return UIImage.asset(.Bear)
+    case .writeAttendAndLeave: return UIImage.asset(.Bear)
       
-    case .newACourse: return UIImage.asset(.Bear)
+    case .writeLessonState: return UIImage.asset(.Bear)
       
     case .newEvent: return UIImage.asset(.Bear)
       
     case .setASign: return UIImage.asset(.Bear)
       
-    case .writeAttendAndLeave: return UIImage.asset(.Bear)
+    case .newACourse: return UIImage.asset(.Bear)
       
-    case .writeLessonState: return UIImage.asset(.Bear)
-    //
+    case .newAStudent : return UIImage.asset(.Bear)
+      
+    case .newAUser: return UIImage.asset(.Bear)
+      
     }
   }
   
   var title: String {
     
     switch self {
-    
-    case .newAUser: return localizedString("新增用戶")
       
-    case .newACourse: return localizedString("開課")
+    case .writeAttendAndLeave: return localizedString("出離席紀錄")
+      
+    case .writeLessonState: return localizedString("學生上課狀況")
       
     case .newEvent: return localizedString("新增活動")
       
     case .setASign: return localizedString("新增公告")
       
-    case .writeAttendAndLeave: return localizedString("出離席紀錄")
+    case .newACourse: return localizedString("開課")
       
-    case .writeLessonState: return localizedString("學生上課狀況")
+    case .newAStudent : return localizedString("新增孩童資料")
+      
+    case .newAUser: return localizedString("新增用戶")
+      
+      
+      
     }
   }
   var formTitle: String? {
     switch self {
-    case .newAUser: return "Create User"
-    case .newACourse: return "Create Class"
+      
+      
+      
     case .newEvent: return "Create Event"
+      
     case .setASign: return "Create Sign"
+      
+    case .newACourse: return "Create Class"
+      
+    case .newAStudent: return "Children Informations"
+      
+    case .newAUser: return "Create User"
+      
     default:
       return nil
     }
@@ -187,26 +229,37 @@ enum TeacherSeviceItem: AccountItem {
   
   var form: [[String]]? {
     switch self {
-    case .newAUser: return [["Name", "ID", "User Type"],
-                            ["Birth Date"],
-                            ["E-mail", "CellPhone Number", "Contact Number"],
-                            ["image"]]
+      
+    case .newEvent: return [["Title"], ["Date", "Time"], ["Description"]]
+      
+    case .setASign: return [["Title"], ["Date", "Time"], ["Description"]]
+      
     case .newACourse: return [["Class Name"],
                               ["Teachers", "Students"],
                               ["First Lesson Date", "Lesson Schedule", "Total Lessons Count"],
                               [ "Fee"]]
-    case .newEvent: return [["Title"], ["Date", "Time"], ["Description"]]
-    case .setASign: return [["Title"], ["Date", "Time"], ["Description"]]
+      
+    case .newAStudent: return [["Name", "National ID"],
+                               ["Birth Date"],
+                               ["Grade"],
+                               ["Emergency Contact Person", "Contact Number"],
+                               ["image"]]
+      
+    case .newAUser: return [["Name", "ID", "User Type"],
+                            ["Birth Date"],
+                            ["E-mail", "CellPhone Number", "Contact Number"],
+                            ["image"]]
+      
     default:
       return nil
     }
-//    var viewModel: NewAThingViewModel{
-//      switch self {
-//      case .newAUser: return NewAUserModel
-//        
-//      default:
-//        
-//      }
-//    }
+    //    var viewModel: NewAThingViewModel{
+    //      switch self {
+    //      case .newAUser: return NewAUserModel
+    //
+    //      default:
+    //
+    //      }
+    //    }
   }
 }

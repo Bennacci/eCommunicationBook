@@ -9,12 +9,16 @@
 import UIKit
 
 protocol SearchUserDelegate {
-  func onSearchAndSelected(secondTime: Bool)
+  func onSearchAndSelected(forStudent: Bool)
+}
+
+protocol SearchUserPageMaterial {
+  var id: String {get}
+  var name: String {get}
+  var image: String? {get}
 }
 
 class SearchUserViewController: UIViewController {
-
-  
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -26,13 +30,15 @@ class SearchUserViewController: UIViewController {
   
   var delegate: SearchUserDelegate?
   
+  var listCount = 0
+
   var selectedCellHeight: CGFloat = 100
   
   var wideUserCellHeight: CGFloat = 50
   
   let viewModel = SearchUserPageViewModel()
   
-//  let newAThingViewModel = NewAThingViewModel()
+  //  let newAThingViewModel = NewAThingViewModel()
   
   private let collectionViewSectionInsets = UIEdgeInsets(
     top: 4.0,
@@ -44,9 +50,9 @@ class SearchUserViewController: UIViewController {
     super.viewDidLoad()
     //    searchBar.showsScopeBar = true
     // Do any additional setup after loading the view.
-//    newAThingViewModel.searchUserDelegate = self
-//    self.navigationController?.setNavigationBarHidden(false, animated: true)
-
+    //    newAThingViewModel.searchUserDelegate = self
+    //    self.navigationController?.setNavigationBarHidden(false, animated: true)
+    
     tableView.registerCellWithNib(identifier: WideUserTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: SelecetedUserTableViewCell.identifier, bundle: nil)
     viewModel.refreshView = { [weak self] () in
@@ -60,16 +66,28 @@ class SearchUserViewController: UIViewController {
       self?.viewModel.onRefresh()
     }
     viewModel.userListViewModel.bind { [weak self] users in
-                  self?.tableView.reloadData()
+      self?.tableView.reloadData()
       
       self?.viewModel.onRefresh()
+      self?.calculateViewModleListCout()
     }
-    
+    viewModel.studentViewModel.bind { [weak self] users in
+      //            self?.tableView.reloadData()
+      self?.viewModel.onRefresh()
+    }
+    viewModel.studentListViewModel.bind { [weak self] users in
+      self?.tableView.reloadData()
+      
+      self?.viewModel.onRefresh()
+      
+      self?.calculateViewModleListCout()
+    }
     viewModel.fetchData()
+    
   }
   @IBAction func popViewController(_ sender: Any) {
     dismiss(animated: true, completion: nil)
-
+    
     
   }
   
@@ -77,11 +95,9 @@ class SearchUserViewController: UIViewController {
     dismiss(animated: true, completion: nil)
     
     viewModel.onSendAndQuit()
-
     
-    
-    delegate?.onSearchAndSelected(secondTime: viewModel.secondTime)
-//    self.onSearchAndSelected()
+    delegate?.onSearchAndSelected(forStudent: viewModel.forStudent)
+    //    self.onSearchAndSelected()
     
   }
   
@@ -102,7 +118,17 @@ class SearchUserViewController: UIViewController {
     searchBar.endEditing(true)
   }
   
-  
+  func calculateViewModleListCout() {
+    
+    if viewModel.forStudent == false {
+    
+      listCount = viewModel.userListViewModel.value.count
+    
+    } else {
+    
+      listCount = viewModel.studentListViewModel.value.count
+    }
+  }
   
 }
 
@@ -124,9 +150,9 @@ extension SearchUserViewController: UISearchBarDelegate {
     },
                                                    completion: nil)
   }
-//  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//    <#code#>
-//  }
+  //  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+  //    <#code#>
+  //  }
   func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {
     //    viewModel.fetchData()
     if searchBar.text != ""{
@@ -142,7 +168,8 @@ extension SearchUserViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     
     if tableView == self.tableView {
-      if viewModel.userListViewModel.value.count == 0 {
+            
+      if listCount == 0 {
         return 1
       } else {
         return 2
@@ -154,7 +181,8 @@ extension SearchUserViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     if tableView == self.tableView {
-      if viewModel.userListViewModel.value.count != 0 {
+      
+      if listCount != 0 {
         switch section {
         case 0:
           return ""
@@ -170,19 +198,25 @@ extension SearchUserViewController: UITableViewDataSource {
     
   }
   
-  func tableView(_ tableView: UITableView,
-                 
-                 numberOfRowsInSection section: Int) -> Int {
-    
-    if viewModel.userListViewModel.value.count == 0 || tableView == searchTableView {
-      return viewModel.userViewModel.value.count
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+    if listCount == 0 || tableView == searchTableView {
+      if viewModel.forStudent == false {
+        return viewModel.userViewModel.value.count
+      } else {
+        return viewModel.studentViewModel.value.count
+      }
     } else {
-      return [1, viewModel.userViewModel.value.count][section]
+      if viewModel.forStudent == false {
+        return [1, viewModel.userViewModel.value.count][section]
+      } else {
+        return [1, viewModel.studentViewModel.value.count][section]
+      }
     }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath == [0, 0] && viewModel.userListViewModel.value.count != 0 && tableView == self.tableView {
+    if indexPath == [0, 0] && listCount != 0 && tableView == self.tableView {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: SelecetedUserTableViewCell.identifier,
                                                      for: indexPath) as? SelecetedUserTableViewCell
         else { fatalError("Unexpected Table View Cell") }
@@ -203,12 +237,20 @@ extension SearchUserViewController: UITableViewDataSource {
                                                      for: indexPath) as? WideUserTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       
-      let cellViewModel = self.viewModel.userViewModel.value[indexPath.row]
+      if viewModel.forStudent == false {
+        
+        let cellViewModel = self.viewModel.userViewModel.value[indexPath.row]
+        
+        cell.setup(list: viewModel.userListViewModel.value, viewModel: cellViewModel)
+        
+      } else {
+        let cellViewModel = self.viewModel.studentViewModel.value[indexPath.row]
+        
+        cell.setup(list: viewModel.studentListViewModel.value, viewModel: cellViewModel)
+      }
       
       cell.height.constant = wideUserCellHeight
       
-      cell.setup(list: viewModel.userListViewModel, viewModel: cellViewModel)
-            
       return cell
     }
   }
@@ -219,11 +261,13 @@ extension SearchUserViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let cell = tableView.cellForRow(at: indexPath) as? WideUserTableViewCell else {return}
     if cell.circleIcon.isHidden == true {
-
-      viewModel.removeUserFromList(user: viewModel.userViewModel.value[indexPath.row])
-    } else {
+      //      viewModel.removeUserFromList(user: viewModel.userViewModel.value[indexPath.row])
       
-      viewModel.addUserToList(user: viewModel.userViewModel.value[indexPath.row])
+      viewModel.removeSelectedFromList(index: indexPath.row)
+    } else {
+      viewModel.addSelectedToList(index: indexPath.row)
+      
+      //      viewModel.addUserToList(user: viewModel.userViewModel.value[indexPath.row])
     }
   }
   
@@ -239,17 +283,17 @@ extension SearchUserViewController: UITableViewDelegate {
     return headerView
   }
   
-//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//
-////    if section == 0 {
-////
-////      return CGFloat.leastNormalMagnitude
-////
-////    } else {
-////
-////      return 35
-////    }
-//  }
+  //  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  //
+  ////    if section == 0 {
+  ////
+  ////      return CGFloat.leastNormalMagnitude
+  ////
+  ////    } else {
+  ////
+  ////      return 35
+  ////    }
+  //  }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     
@@ -259,8 +303,7 @@ extension SearchUserViewController: UITableViewDelegate {
 
 extension SearchUserViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
-    return self.viewModel.userListViewModel.value.count
+    return listCount
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -268,23 +311,27 @@ extension SearchUserViewController: UICollectionViewDataSource {
                                                         for: indexPath) as? CircleUserCollectionViewCell
       else { fatalError("Unexpected Table View Cell") }
     
-	    let cellViewModel = self.viewModel.userListViewModel.value[indexPath.item]
-    
-//    cell.height.constant = wideUserCellHeight
+    var cellViewModel: SearchUserPageMaterial
+    if viewModel.forStudent == false {
+      cellViewModel = viewModel.userListViewModel.value[indexPath.item]
+    } else {
+      cellViewModel = viewModel.studentListViewModel.value[indexPath.item]
+    }
     
     cell.setup(viewModel: cellViewModel)
     
     cell.layoutCell()
-    
+    //    cell.height.constant = wideUserCellHeight
     return cell
   }
 }
 
 extension SearchUserViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    guard let cell = collectionView.cellForItem(at: indexPath) as? CircleUserCollectionViewCell else {return}
-    viewModel.removeUserFromList(user: viewModel.userListViewModel.value[indexPath.item])
-
+    //    guard let cell = collectionView.cellForItem(at: indexPath) as? CircleUserCollectionViewCell else {return}
+    //    viewModel.removeUserFromList(user: viewModel.userListViewModel.value[indexPath.item])
+    viewModel.removeSelectedFromList(collectionIndex: indexPath.item)
+    
   }
 }
 // MARK: - 設定 CollectionView Cell 與 Cell 之間的間距、距確 Super View 的距離等等

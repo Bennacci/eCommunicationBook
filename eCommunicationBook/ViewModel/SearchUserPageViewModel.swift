@@ -14,48 +14,60 @@ class SearchUserPageViewModel {
   
   let userListViewModel = Box([UserViewModel]())
   
+  let studentViewModel =  Box([StudentViewModel]())
+  
+  let studentListViewModel =  Box([StudentViewModel]())
+    
   var refreshView: (()->())?
   
   var scrollToTop: (()->())?
   
   var tapUser: (()->())?
   
-  var secondTime = false
+  var forStudent = false
   
   func fetchData() {
     
-    XXXManager.shared.fetchUser { [weak self] result in
+    if forStudent == false {
       
-      switch result {
+      XXXManager.shared.fetchUser { [weak self] result in
         
-      case .success(let users):
+        switch result {
+          
+        case .success(let users):
+          
+          self?.setSearchResult(users)
+          
+        case .failure(let error):
+          
+          print("fetchData.failure: \(error)")
+        }
+      }
+      
+    } else {
+      
+      XXXManager.shared.fetchStudents { [weak self] result in
         
-        self?.setSearchResult(users)
-        
-      case .failure(let error):
-        
-        print("fetchData.failure: \(error)")
+        switch result {
+          
+        case .success(let students):
+          
+          self?.setSearchResult(students)
+          
+        case .failure(let error):
+          
+          print("fetchData.failure: \(error)")
+        }
       }
     }
   }
   
   func onSendAndQuit() {
-    if secondTime == false {
+    if forStudent == false {
       UserManager.shared.selectedUsers = userListViewModel.value
     } else {
-      UserManager.shared.selectedUsersTwo = userListViewModel.value
+      UserManager.shared.selectedStudents = studentListViewModel.value
     }
-  }
-  
-  func addUserToList(user: UserViewModel) {
-    setUserSelected(user)
-    //    self.tapUser?()
-  }
-  
-  func removeUserFromList(user: UserViewModel) {
-    
-    setUserDeselected(user)
-    
   }
   
   func onRefresh() {
@@ -64,9 +76,56 @@ class SearchUserPageViewModel {
   }
   
   func onScrollToTop() {
-    
     self.scrollToTop?()
   }
+
+  
+//  func addUserToList(user: UserViewModel) {
+//    setUserSelected(user)
+//    //    self.tapUser?()
+//  }
+//
+//  func removeUserFromList(user: UserViewModel) {
+//    setUserDeselected(user)
+//  }
+  
+  func addSelectedToList(index: Int) {
+    if forStudent == false {
+      setUserSelected(userViewModel.value[index])
+    } else {
+      setStudentSelected(studentViewModel.value[index])
+    }
+    //    self.tapUser?()
+  }
+  
+  func removeSelectedFromList(index: Int) {
+    if forStudent == false {
+      setUserDeselected(userViewModel.value[index])
+    } else {
+      setStudentDeselected(studentViewModel.value[index])
+    }
+  }
+  
+  func removeSelectedFromList(collectionIndex: Int) {
+    if forStudent == false {
+      setUserDeselected(userListViewModel.value[collectionIndex])
+    } else {
+      setStudentDeselected(studentListViewModel.value[collectionIndex])
+    }
+  }
+//
+//  func addStudentToList(student: StudentViewModel) {
+//    setStudentSelected(student)
+//    //    self.tapUser?()
+//  }
+//
+//  func removeStudentFromList(student: StudentViewModel) {
+//    setStudentDeselected(student)
+//  }
+  
+  
+  
+  
   
   func onTap(withIndex index: Int) {
     //        chatRoomViewModel.value[index].onTap()
@@ -81,22 +140,37 @@ class SearchUserPageViewModel {
     return viewModels
   }
   
-  func setSearchResult(_ users: [User]) {
-    userViewModel.value = convertUserToViewModels(from: users)
-
-    
-    if secondTime == false {
-      userListViewModel.value = UserManager.shared.selectedUsers ?? []
-    } else {
-      userListViewModel.value = UserManager.shared.selectedUsersTwo ?? []
+  func convertStudentToViewModels(from students: [Student]) -> [StudentViewModel] {
+    var viewModels = [StudentViewModel]()
+    for student in students {
+      let viewModel = StudentViewModel(model: student)
+      viewModels.append(viewModel)
     }
+    return viewModels
+  }
+  
+  
+  func setSearchResult(_ users: [User]) {
+    
+    userViewModel.value = convertUserToViewModels(from: users)
+    
+    userListViewModel.value = UserManager.shared.selectedUsers ?? []
+
+  }
+  
+  
+  func setSearchResult(_ students: [Student]) {
+    
+    studentViewModel.value = convertStudentToViewModels(from: students)
+    
+    studentListViewModel.value = UserManager.shared.selectedStudents ?? []
+    
   }
   
   
   func addUserToViewModels(with user: UserViewModel) -> [UserViewModel] {
     var viewModels = userListViewModel.value
     viewModels.append(user)
-    
     return viewModels
   }
   
@@ -114,4 +188,31 @@ class SearchUserPageViewModel {
   func setUserDeselected(_ user: UserViewModel) {
     userListViewModel.value = removeUsefromViewModels(with: user)
   }
+  
+  
+  func addStudentToViewModels(with student: StudentViewModel) -> [StudentViewModel] {
+    var viewModels = studentListViewModel.value
+    viewModels.append(student)
+    return viewModels
+  }
+  
+  func setStudentSelected(_ student: StudentViewModel) {
+    studentListViewModel.value = addStudentToViewModels(with: student)
+  }
+  
+  func removeStudentfromViewModels(with student: StudentViewModel) -> [StudentViewModel] {
+    let oldViewModels = studentListViewModel.value
+    var newViewModels = [StudentViewModel]()
+    newViewModels = oldViewModels.filter({$0.id != student.id})
+    return newViewModels
+  }
+  
+  func setStudentDeselected(_ student: StudentViewModel) {
+    studentListViewModel.value = removeStudentfromViewModels(with: student)
+  }
+  
+  
+  
+  
+  
 }

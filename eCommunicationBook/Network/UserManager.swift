@@ -21,7 +21,7 @@ class UserManager {
   
   lazy var selectedUsers: [UserViewModel]? = nil
   
-  lazy var selectedUsersTwo: [UserViewModel]? = nil
+  lazy var selectedStudents: [StudentViewModel]? = nil
   
   lazy var selectedDays: [RoutineHour]? = nil
   

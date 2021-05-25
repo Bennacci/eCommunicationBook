@@ -39,6 +39,8 @@ class CalendarPageViewController: UIViewController {
     tableView.registerCellWithNib(identifier: AssignmentStatusTableViewCell.identifier, bundle: nil)
     super.viewDidLoad()
     
+    viewModel.fetchData()
+
     setCalender()
     
     viewModel.refreshView = { [weak self] () in
@@ -62,7 +64,6 @@ class CalendarPageViewController: UIViewController {
       self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
-    viewModel.fetchData()
     
     setupRefresher()
   }
@@ -81,34 +82,39 @@ class CalendarPageViewController: UIViewController {
 extension CalendarPageViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    
-    return viewModel.dayPerformanceViewModel.value.count * 2 +
-      viewModel.dayEventViewModel.value.count
+    return viewModel.dayEventViewModel.value.count
+//    return viewModel.dayPerformanceViewModel.value.count * 2 +
+//      viewModel.dayEventViewModel.value.count
      
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
+    
+    
+    
     let sectionCount = viewModel.dayPerformanceViewModel.value.count * 2 +
     viewModel.dayEventViewModel.value.count
     
+    return 1
     
-    if section % 2 == 1 && section != sectionCount {
-      return 1
-    } else if section != sectionCount {
-      let assignmentCompletionCount: Int = viewModel.dayPerformanceViewModel.value[section].assignmentCompleted?.count ?? 0
-      let assignmetScoreCount: Int = viewModel.dayPerformanceViewModel.value[section].testGrade?.count ?? 0
-//      let performanceCount = viewModel.dayPerformanceViewModel.value[section].
-      return assignmentCompletionCount + assignmetScoreCount
-    } else {
-      return  viewModel.dayEventViewModel.value.count
-    }
+//    if section % 2 == 1 && section != sectionCount {
+//      return 1
+//    } else if section != sectionCount {
+//      let assignmentCompletionCount: Int = viewModel.dayPerformanceViewModel.value[section].assignmentCompleted?.count ?? 0
+//      let assignmetScoreCount: Int = viewModel.dayPerformanceViewModel.value[section].testGrade?.count ?? 0
+////      let performanceCount = viewModel.dayPerformanceViewModel.value[section].
+//      return assignmentCompletionCount + assignmetScoreCount
+//    } else {
+//      return  viewModel.dayEventViewModel.value.count
+//    }
   }
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case 0:
-      return "MM/DD 課堂表現"
+      return "event"
+//      "MM/DD 課堂表現"
     case 1:
       return "作業繳交狀況"
     default:
@@ -118,7 +124,7 @@ extension CalendarPageViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     //      cell.layoutCell(title: viewModel.services[indexPath.section][indexPath.row])
-    if indexPath.section == 0 {
+    if indexPath.section == 2 {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier,
                                                      for: indexPath) as? ChartTableViewCell
         else { fatalError("Unexpected Table View Cell") }
@@ -172,8 +178,6 @@ extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, 
   
   func setCalender() {
 
-    viewModel.onCalendarTaped(day: Date())
-
     if UIDevice.current.model.hasPrefix("iPad") {
       self.calendarHeightConstraint.constant = 400
     }
@@ -210,6 +214,8 @@ extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, 
     tableView.reloadInputViews()
     
     print("did select date \(Date.dateFormatterYMD.string(from: date))")
+    
+    viewModel.onCalendarTapped(day: date)
     
     let selectedDates = calendar.selectedDates.map({Date.dateFormatterYMD.string(from: $0)})
     

@@ -93,7 +93,7 @@ class TwoLablesWithButtonTableViewCell: UITableViewCell {
     } else if text == "Teachers" {
       secondLabel.text = "\(UserManager.shared.selectedUsers?.count ?? 0) 人"
     } else {
-      secondLabel.text = "\(UserManager.shared.selectedUsersTwo?.count ?? 0) 人"
+      secondLabel.text = "\(UserManager.shared.selectedStudents?.count ?? 0) 人"
     }
   }
 }

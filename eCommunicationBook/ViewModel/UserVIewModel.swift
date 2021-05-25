@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserViewModel {
+class UserViewModel: SearchUserPageMaterial {
   
   var user: User
   

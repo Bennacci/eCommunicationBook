@@ -172,7 +172,7 @@ extension NewAThingViewController: UITableViewDataSource {
       cell.title.text = inputText
       cell.textField.delegate = self
       switch inputText {
-      case "CellPhone Number", "Contact Number":
+      case "CellPhone Number", "Contact Number", "Grade":
         cell.textField.keyboardType = .numberPad
       case "E-mail":
         cell.textField.keyboardType = .emailAddress
@@ -244,6 +244,7 @@ extension NewAThingViewController: UITableViewDelegate {
     }
     
     if inputText == "Teachers" || inputText == "Students"{
+      
       if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
         
         guard let targetController = nextVC.children[0] as? SearchUserViewController
@@ -254,11 +255,11 @@ extension NewAThingViewController: UITableViewDelegate {
         
         if inputText == "Teachers"{
           
-          targetController.viewModel.secondTime = false
+          targetController.viewModel.forStudent = false
           
         } else {
           
-          targetController.viewModel.secondTime = true
+          targetController.viewModel.forStudent = true
         }
         
         self.navigationController?.show(nextVC, sender: nil)
@@ -274,7 +275,7 @@ extension NewAThingViewController: UITableViewDelegate {
           else { fatalError("Unexpected Table View Cell") }
         
         if inputText == "Time" {
-        
+          
           targetController.viewModel.forEvent = true
         }
         
@@ -336,6 +337,14 @@ extension NewAThingViewController: UITextFieldDelegate {
     switch viewModel.inputTexts[textFieldIndexPath.section][textFieldIndexPath.row] {
     case "Name":
       viewModel.onNameChanged(text: info)
+      viewModel.onStudentNameChanged(text: info)
+    case "National ID":
+      viewModel.onStudentNationalIDChanged(text: info)
+    case "Grade":
+      viewModel.onStudentGradeChanged(text: info)
+
+    case "Emergency Contact Person":
+      viewModel.onStudentContactPersonChanged(text: info)
     case "ID":
       viewModel.onUserIDChanged(text: info)
     case "E-mail":
@@ -344,6 +353,7 @@ extension NewAThingViewController: UITextFieldDelegate {
       viewModel.onCellPhoneNoChanged(text: info)
     case "Contact Number":
       viewModel.onHomePhoneNoChanged(text: info)
+      viewModel.onStudentContactNoChanged(text: info)
     case "Class Name":
       viewModel.onCourseNameChanged(text: info)
     case "Total Lessons Count":
@@ -384,6 +394,7 @@ extension NewAThingViewController: PickerDelegate {
     switch viewModel.inputTexts[indexPath.section][indexPath.row] {
     case "Birth Date":
       viewModel.onBirthDayChanged(day: date)
+      viewModel.onStudentBirthDayChanged(day: date)
       viewModel.inputDates[indexPath.section][indexPath.row] = date
       tableView.reloadRows(at: [indexPath], with: .none)
     case "First Lesson Date":
@@ -394,7 +405,7 @@ extension NewAThingViewController: PickerDelegate {
       viewModel.onEventDateChanged(day: date)
       viewModel.inputDates[indexPath.section][indexPath.row] = date
       tableView.reloadRows(at: [indexPath], with: .none)
-
+      
     default:
       return
     }

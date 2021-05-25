@@ -9,15 +9,15 @@
 import Foundation
 
 struct Student: Codable {
-  let id: String
-  let parents: [String]
-  let name: String
-  let image: String?
-  let nationalID: String
-  let grade: Int
-  let birthDay: Double
-  let emergencyContactPaerson: String
-  let emergencyContactNo: Int
+  var id: String
+  var parents: [String]
+  var name: String
+  var image: String?
+  var nationalID: String
+  var grade: Int
+  var birthDay: Double
+  var emergencyContactPerson: String
+  var emergencyContactNo: Int
   
   enum CodingKeys: String, CodingKey {
     case id
@@ -27,7 +27,7 @@ struct Student: Codable {
     case nationalID
     case grade
     case birthDay
-    case emergencyContactPaerson
+    case emergencyContactPerson
     case emergencyContactNo
     
   }
@@ -41,7 +41,7 @@ struct Student: Codable {
       "nationalID": nationalID as Any,
       "grade": grade as Any,
       "birthDay": birthDay as Any,
-      "emergencyContactPaerson": emergencyContactPaerson as Any,
+      "emergencyContactPerson": emergencyContactPerson as Any,
       "emergencyContactNo": emergencyContactNo as Any
     ]
   }

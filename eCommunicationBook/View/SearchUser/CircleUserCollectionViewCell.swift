@@ -18,9 +18,9 @@ class CircleUserCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
   
-  var viewModel: UserViewModel?
+  var viewModel: SearchUserPageMaterial?
   
-  func setup(viewModel: UserViewModel) {
+  func setup(viewModel: SearchUserPageMaterial) {
       self.viewModel = viewModel
       layoutCell()
   }

@@ -9,7 +9,7 @@
 import Foundation
 
 struct RoutineHour: Codable {
-  var day: DayOfWeek.RawValue
+  var day: Int
   var startingTime: Int
   var timeInterval: Int
   

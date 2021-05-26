@@ -39,12 +39,16 @@ class CalendarHelper {
    Convert a date to a enumeration member
    */
   func day(from date: Date) -> DayOfWeek {
-    let formatter: DateFormatter = DateFormatter()
-    formatter.dateFormat = "e"
+//    let formatter: DateFormatter = DateFormatter()
+//    formatter.dateFormat = "e"
+//
+//    let dayNumber: Int = Int(formatter.string(from: date))!
     
-    let dayNumber: Int = Int(formatter.string(from: date))!
+    let calendar = Calendar.current
+    let weekday =  calendar.component(.weekday, from: date)
     
-    return DayOfWeek(rawValue: dayNumber)!
+    
+    return DayOfWeek(rawValue: weekday)!
   }
   /**
    Calculate the `TimeInterval` between days contained
@@ -67,6 +71,41 @@ class CalendarHelper {
     
     return pattern
   }
+  
+  
+  func nextDate(baseDate: Date, daySet: IndexSet) -> Double {
+  // Put your weekday indexes in an `IndexSet`
+  let weekdaySet = daySet
+//    IndexSet([1, 2, 4, 7]) // Sun, Mon, Wed and Sat
+  // Get the current calendar and the weekday from today
+  let calendar = Calendar.current
+  var weekday =  calendar.component(.weekday, from: baseDate)
+
+  // Calculate the next index
+  if let nextWeekday = weekdaySet.integerGreaterThan(weekday) {
+      weekday = nextWeekday
+  } else {
+      weekday = weekdaySet.first!
+  }
+
+  // Get the next day matching this weekday
+  let components = DateComponents(weekday: weekday)
+    let nextDate = calendar.nextDate(after: baseDate, matching: components, matchingPolicy: .nextTime)
+    guard let nextDateDouble = nextDate?.timeIntervalSince1970 else { return -1 }
+    return nextDateDouble
+  }
+//
+//  func nextDay(date: Date, daysSet: [Int]) -> Date {
+//
+//
+//    let day: DayOfWeek = self.day(from: date)
+//
+//    guard let restDays = daysSet.filter({ $0 > day.rawValue })
+//      else {
+//        return days.first!
+//    }
+//    return days.first!
+//  }
   
   func nextDay(from days: [DayOfWeek]) -> DayOfWeek {
     let today: DayOfWeek = day(from: Date())

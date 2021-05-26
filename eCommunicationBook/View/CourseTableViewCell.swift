@@ -10,7 +10,13 @@ import UIKit
 
 class CourseTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+  var viewModel: CourseViewModel?
+  
+  @IBOutlet weak var labelCourseName: UILabel!
+  
+  @IBOutlet weak var imageViewCourse: UIImageView!
+  
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
@@ -21,4 +27,13 @@ class CourseTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+  func setup(viewModel: CourseViewModel) {
+      self.viewModel = viewModel
+      layoutCell()
+  }
+  
+  func layoutCell() {
+    labelCourseName.text = viewModel?.name
+//    imageViewCourse.image = view
+  }
 }

@@ -75,6 +75,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imageViewCourse" destination="vtx-s1-CSA" id="xU7-Gu-aQz"/>
+                <outlet property="labelCourseName" destination="wIf-le-27p" id="lMv-xY-3at"/>
+            </connections>
             <point key="canvasLocation" x="112.31884057971016" y="187.16517857142856"/>
         </tableViewCell>
     </objects>

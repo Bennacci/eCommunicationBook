@@ -36,6 +36,27 @@ extension UICollectionView {
     
     return CGSize(width: widthPerItem, height: heightPerItem)
   }
+  
+  func calculateCellsize(viewHeight: CGFloat,
+                         viewWidth: CGFloat,
+                         sectionInsets: UIEdgeInsets,
+                         itemsPerRow: CGFloat,
+                         itemsPerColumn: CGFloat) -> CGSize {
+    
+    let paddingSpace = sectionInsets.left
+    
+    let availableWidth = viewWidth - paddingSpace
+    
+    let widthPerItem = availableWidth / itemsPerRow
+    
+    let columnPaddingSpace = sectionInsets.top * (itemsPerColumn + 1)
+    
+    let availableHeight = viewHeight - columnPaddingSpace
+    
+    let heightPerItem = availableHeight / itemsPerColumn
+    
+    return CGSize(width: widthPerItem, height: heightPerItem)
+  }
 }
 
 extension UICollectionViewCell {

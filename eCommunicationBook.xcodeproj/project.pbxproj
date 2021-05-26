@@ -59,8 +59,16 @@
 		74857FA42654E9DB00AEF14D /* WideUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */; };
 		748CC919265CEB4100919F1E /* SearchStudentPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */; };
 		748CC91B265CEB7200919F1E /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC91A265CEB7200919F1E /* StudentViewModel.swift */; };
+		748CC91E265DEADC00919F1E /* TCommunicationBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 748CC91D265DEADC00919F1E /* TCommunicationBook.storyboard */; };
+		748CC920265DEB6000919F1E /* TCommunicationBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC91F265DEB6000919F1E /* TCommunicationBookViewController.swift */; };
+		748CC923265DEC1800919F1E /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC921265DEC1800919F1E /* CourseTableViewCell.swift */; };
+		748CC924265DEC1800919F1E /* CourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 748CC922265DEC1800919F1E /* CourseTableViewCell.xib */; };
 		74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */; };
 		74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */; };
+		7499630D265DEEC700F081EC /* LessonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7499630B265DEEC700F081EC /* LessonCollectionViewCell.swift */; };
+		7499630E265DEEC700F081EC /* LessonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7499630C265DEEC700F081EC /* LessonCollectionViewCell.xib */; };
+		74996311265DF0B100F081EC /* LessonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7499630F265DF0B100F081EC /* LessonsTableViewCell.swift */; };
+		74996312265DF0B100F081EC /* LessonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74996310265DF0B100F081EC /* LessonsTableViewCell.xib */; };
 		749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */; };
 		74A5A76D2654EC690039BC22 /* CircleUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5A76B2654EC690039BC22 /* CircleUserCollectionViewCell.swift */; };
 		74A5A76E2654EC690039BC22 /* CircleUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74A5A76C2654EC690039BC22 /* CircleUserCollectionViewCell.xib */; };
@@ -176,8 +184,16 @@
 		74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WideUserTableViewCell.xib; sourceTree = "<group>"; };
 		748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStudentPageViewModel.swift; sourceTree = "<group>"; };
 		748CC91A265CEB7200919F1E /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
+		748CC91D265DEADC00919F1E /* TCommunicationBook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TCommunicationBook.storyboard; sourceTree = "<group>"; };
+		748CC91F265DEB6000919F1E /* TCommunicationBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCommunicationBookViewController.swift; sourceTree = "<group>"; };
+		748CC921265DEC1800919F1E /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		748CC922265DEC1800919F1E /* CourseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseTableViewCell.xib; sourceTree = "<group>"; };
 		74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAssignmentTableViewCell.swift; sourceTree = "<group>"; };
 		74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventTableViewCell.swift; sourceTree = "<group>"; };
+		7499630B265DEEC700F081EC /* LessonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCollectionViewCell.swift; sourceTree = "<group>"; };
+		7499630C265DEEC700F081EC /* LessonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonCollectionViewCell.xib; sourceTree = "<group>"; };
+		7499630F265DF0B100F081EC /* LessonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsTableViewCell.swift; sourceTree = "<group>"; };
+		74996310265DF0B100F081EC /* LessonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonsTableViewCell.xib; sourceTree = "<group>"; };
 		749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChartTableViewCell.swift; sourceTree = "<group>"; };
 		74A5A76B2654EC690039BC22 /* CircleUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		74A5A76C2654EC690039BC22 /* CircleUserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleUserCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -331,6 +347,7 @@
 				745147D4264CF76E00172419 /* AccountPageViewController.swift */,
 				74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */,
 				7472B29A26594B8B00511468 /* TimeSelectionViewController.swift */,
+				748CC91F265DEB6000919F1E /* TCommunicationBookViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -528,6 +545,13 @@
 			isa = PBXGroup;
 			children = (
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
+				748CC91D265DEADC00919F1E /* TCommunicationBook.storyboard */,
+				748CC921265DEC1800919F1E /* CourseTableViewCell.swift */,
+				748CC922265DEC1800919F1E /* CourseTableViewCell.xib */,
+				7499630F265DF0B100F081EC /* LessonsTableViewCell.swift */,
+				74996310265DF0B100F081EC /* LessonsTableViewCell.xib */,
+				7499630B265DEEC700F081EC /* LessonCollectionViewCell.swift */,
+				7499630C265DEEC700F081EC /* LessonCollectionViewCell.xib */,
 				748CC91C265D2ACE00919F1E /* Calendar */,
 				7472B2A02659E24700511468 /* TimeSelection */,
 				74A5A7732654F0270039BC22 /* SearchUser */,
@@ -633,17 +657,21 @@
 				74025807265264B100BA6BDA /* ServiceCollectionViewCell.xib in Resources */,
 				741FAC85264CD77200D5C34B /* ChatRoomPage.storyboard in Resources */,
 				741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */,
+				74996312265DF0B100F081EC /* LessonsTableViewCell.xib in Resources */,
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
+				748CC924265DEC1800919F1E /* CourseTableViewCell.xib in Resources */,
 				7402580B265267FA00BA6BDA /* ServicesTableViewCell.xib in Resources */,
 				74715CCF265B74A400570A23 /* ChartTableViewCell.xib in Resources */,
 				74857FA42654E9DB00AEF14D /* WideUserTableViewCell.xib in Resources */,
 				74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */,
 				74CADD94265614EF004DA6D0 /* DatePickerTableViewCell.xib in Resources */,
+				748CC91E265DEADC00919F1E /* TCommunicationBook.storyboard in Resources */,
 				74857FA02654E83700AEF14D /* SearchUser.storyboard in Resources */,
 				74CADD95265614EF004DA6D0 /* TwoLablesTableViewCell.xib in Resources */,
 				74715CD3265B761400570A23 /* LableWithVerticalLineTableViewCell.xib in Resources */,
 				7402581A265359D400BA6BDA /* NewsTableViewCell.xib in Resources */,
 				74CADD9926564950004DA6D0 /* PickerViewTableViewCell.xib in Resources */,
+				7499630E265DEEC700F081EC /* LessonCollectionViewCell.xib in Resources */,
 				74CADD892656105E004DA6D0 /* TextFieldTableViewCell.xib in Resources */,
 				74A5A7722654EFDF0039BC22 /* SelecetedUserTableViewCell.xib in Resources */,
 				74C2376D264BB5FE001BF47A /* Main.storyboard in Resources */,
@@ -738,9 +766,11 @@
 				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
 				74E94738264BE09500AFB046 /* Article.swift in Sources */,
 				74E94737264BE09500AFB046 /* Author.swift in Sources */,
+				7499630D265DEEC700F081EC /* LessonCollectionViewCell.swift in Sources */,
 				7472B29C26594B8B00511468 /* TimeSelectionViewController.swift in Sources */,
 				74CADD91265614E1004DA6D0 /* DatePickerTableViewCell.swift in Sources */,
 				7402581526529E4900BA6BDA /* BannerData.swift in Sources */,
+				74996311265DF0B100F081EC /* LessonsTableViewCell.swift in Sources */,
 				74A5A76D2654EC690039BC22 /* CircleUserCollectionViewCell.swift in Sources */,
 				74715CC9265B6C5F00570A23 /* EventViewModel.swift in Sources */,
 				74857F972654B95800AEF14D /* NavigationController.swift in Sources */,
@@ -751,6 +781,7 @@
 				74C2376A264BB5FE001BF47A /* ViewController.swift in Sources */,
 				74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */,
 				74E9473D264BE09500AFB046 /* PaddingableUILabel.swift in Sources */,
+				748CC920265DEB6000919F1E /* TCommunicationBookViewController.swift in Sources */,
 				746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */,
 				74D869D7265745F8004D33ED /* CalendarHelper.swift in Sources */,
 				74CADD8226554C5A004DA6D0 /* SearchUserPageViewModel.swift in Sources */,
@@ -758,6 +789,7 @@
 				74A5C8AB264E2C1B00704C39 /* CalendarPageViewController.swift in Sources */,
 				74E94755264C087D00AFB046 /* UIView+Extension.swift in Sources */,
 				74E9473C264BE09500AFB046 /* Box.swift in Sources */,
+				748CC923265DEC1800919F1E /* CourseTableViewCell.swift in Sources */,
 				74E9475A264C087D00AFB046 /* UIStoryboard+Extension.swift in Sources */,
 				74E94752264C087D00AFB046 /* UIColor+Extension.swift in Sources */,
 				7456DC6926500B7800535297 /* ConversationViewmodel.swift in Sources */,

@@ -164,6 +164,8 @@ class XXXManager {
       .document()
     course.id = document.documentID
     //    course.createdTime = Double(Date().millisecondsSince1970)
+    print(course.toDict)
+    print(course)
     document.setData(course.toDict) { error in
       
       if let error = error {
@@ -228,6 +230,32 @@ class XXXManager {
       } else {
         
         completion(.success("Success"))
+      }
+    }
+  }
+  
+  func fetchCourses(completion: @escaping (Result<[Course], Error>) -> Void) {
+    
+    db.collection("Courses").getDocuments { (querySnapshot, error) in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        var courses = [Course]()
+        
+        for document in querySnapshot!.documents {
+          
+          do {
+            if let course = try document.data(as: Course.self, decoder: Firestore.Decoder()) {
+              courses.append(course)
+            }
+          } catch {
+            completion(.failure(error))
+          }
+        }
+        completion(.success(courses))
       }
     }
   }

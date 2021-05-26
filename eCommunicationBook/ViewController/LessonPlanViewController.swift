@@ -8,9 +8,11 @@
 
 import UIKit
 
-class TCommunicationBookViewController: UIViewController {
+class LessonPlanViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  
+  var viewModel = LessonPlanViewModel()
   
   var hotCellHeight: CGFloat = UIScreen.height / 5
   //
@@ -29,6 +31,14 @@ class TCommunicationBookViewController: UIViewController {
     
     tableView.registerCellWithNib(identifier: CourseTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: LessonsTableViewCell.identifier, bundle: nil)
+    
+    viewModel.fetchData()
+    
+    viewModel.courseViewModel.bind { [weak self] users in
+                  self?.tableView.reloadData()
+//      self?.viewModel.onRefresh()
+    }
+    
   }
   
   @IBAction func popViewController(_ sender: Any) {
@@ -50,7 +60,7 @@ class TCommunicationBookViewController: UIViewController {
 }
 
 
-extension TCommunicationBookViewController: UITableViewDataSource {
+extension LessonPlanViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -72,9 +82,9 @@ extension TCommunicationBookViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView,numberOfRowsInSection section: Int) -> Int {
     
     if pickedCourseIndexPath != nil {
-      return 4 + 1
+      return viewModel.courseViewModel.value.count + 1
     } else {
-      return 4
+      return viewModel.courseViewModel.value.count
     }
   }
   
@@ -92,19 +102,14 @@ extension TCommunicationBookViewController: UITableViewDataSource {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: CourseTableViewCell.identifier,
                                                      for: indexPath) as? CourseTableViewCell
         else { fatalError("Unexpected Table View Cell") }
-      
-      //      bannerCell = cell
-      //
-      //      cell.setBannerView()
-      //
-      //      cell.bannerView.scrollView.delegate = self
-      //
+      cell.setup(viewModel:  self.viewModel.courseViewModel.value[indexPath.row])
+
       return cell
     }
   }
 }
 
-extension TCommunicationBookViewController: UITableViewDelegate {
+extension LessonPlanViewController: UITableViewDelegate {
   
   //  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
   //
@@ -112,6 +117,10 @@ extension TCommunicationBookViewController: UITableViewDelegate {
   //  }
   //
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    
+    
+    
     tableView.beginUpdates()
     if let pickedCourseIndexPath = pickedCourseIndexPath, pickedCourseIndexPath.row - 1 == indexPath.row {
       tableView.deleteRows(at: [pickedCourseIndexPath], with: .fade)
@@ -123,11 +132,13 @@ extension TCommunicationBookViewController: UITableViewDelegate {
           self.pickedCourseIndexPath = nil
         } else {
           self.pickedCourseIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
+          viewModel.setLessonViewModel(index: indexPath.row)
           tableView.insertRows(at: [self.pickedCourseIndexPath!], with: .fade)
           tableView.deselectRow(at: indexPath, animated: true)
         }
       } else {
       pickedCourseIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
+      viewModel.setLessonViewModel(index: indexPath.row)
       tableView.insertRows(at: [pickedCourseIndexPath!], with: .fade)
       tableView.deselectRow(at: indexPath, animated: true)
       }
@@ -167,11 +178,11 @@ extension TCommunicationBookViewController: UITableViewDelegate {
   
 }
 
-extension TCommunicationBookViewController: UICollectionViewDataSource {
+extension LessonPlanViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
     
-    return 15
+    return viewModel.lessonViewModel.value.count
     
     
   }
@@ -183,19 +194,22 @@ extension TCommunicationBookViewController: UICollectionViewDataSource {
     //    if collectionView == hotCell.collectionView {
     //      cell.height.constant = hotCell.bounds.size.height
     //    }
-    cell.layOutCell(indexPath: indexPath)
+    cell.setUp(viewModel: self.viewModel.lessonViewModel.value[indexPath.item])
+    
     return cell
   }
   
 }
 
 
-extension TCommunicationBookViewController: UICollectionViewDelegate {
-  
+extension LessonPlanViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "LessonPlanDetail", sender: nil)
+  }
 }
 
 
-extension TCommunicationBookViewController: UICollectionViewDelegateFlowLayout {
+extension LessonPlanViewController: UICollectionViewDelegateFlowLayout {
   
   ///  Collection View distance to Super View
   

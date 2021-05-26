@@ -174,7 +174,7 @@ extension HomePageViewController: UICollectionViewDataSource {
 extension HomePageViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-    if let nextVC = UIStoryboard.tCommunicationBook.instantiateInitialViewController() {
+    if let nextVC = UIStoryboard.lessonPlan.instantiateInitialViewController() {
       
 //      guard let targetController = nextVC.children[0] as? SearchUserViewController
 //

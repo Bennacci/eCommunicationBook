@@ -12,19 +12,32 @@ class LessonCollectionViewCell: UICollectionViewCell {
 
   @IBOutlet weak var imageView: UIImageView!
   
+  @IBOutlet weak var labelTecherName: UILabel!
+  
+  @IBOutlet weak var labelCourseTime: UILabel!
+  
+  var viewModel: LessonViewModel?
   
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+  func setUp(viewModel: LessonViewModel){
+    self.viewModel = viewModel
+    layOutCell()
+  }
   
-  func layOutCell(indexPath: IndexPath) {
+  
+  func layOutCell() {
+    if let time = viewModel?.time {
+      labelCourseTime.text = Date(timeIntervalSince1970: time).convertToString(dateformat: .dateWithTime)
+    }
+    labelTecherName.text = viewModel?.teacher
     var imageTitle = ""
-    if indexPath.item < 9 {
-      imageTitle = "0\(indexPath.item+1).square.fill"
+    if viewModel!.number < 9 {
+      imageTitle = "0\(viewModel!.number + 1).square.fill"
     } else {
-      imageTitle = "\(indexPath.item+1).square.fill"
+      imageTitle = "\(viewModel!.number + 1).square.fill"
     }
     let imageCofig = UIImage.SymbolConfiguration(weight: .bold)
     let image = UIImage(systemName: imageTitle, withConfiguration: imageCofig)

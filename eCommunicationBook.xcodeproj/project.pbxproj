@@ -24,6 +24,18 @@
 		741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC7F264CD77200D5C34B /* AccountPage.storyboard */; };
 		741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC81264CD77200D5C34B /* HomePage.storyboard */; };
 		741FAC88264CD77200D5C34B /* CalendarPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC83264CD77200D5C34B /* CalendarPage.storyboard */; };
+		7435E85F265E2D5B00941729 /* StackCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E854265E2D5B00941729 /* StackCollectionViewLayout.swift */; };
+		7435E868265E311400941729 /* ItemSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E867265E311400941729 /* ItemSize.swift */; };
+		7435E86A265E35A000941729 /* LessonPlanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E869265E35A000941729 /* LessonPlanDetailViewController.swift */; };
+		7435E86D265E363100941729 /* AddRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E86B265E363100941729 /* AddRowTableViewCell.swift */; };
+		7435E86E265E363100941729 /* AddRowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7435E86C265E363100941729 /* AddRowTableViewCell.xib */; };
+		7435E871265E382000941729 /* LessonPlanDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E86F265E382000941729 /* LessonPlanDetailTableViewCell.swift */; };
+		7435E872265E382000941729 /* LessonPlanDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7435E870265E382000941729 /* LessonPlanDetailTableViewCell.xib */; };
+		7435E874265E3C7900941729 /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E873265E3C7900941729 /* SaveButtonView.swift */; };
+		7435E876265E41DD00941729 /* LessonPlanDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E875265E41DD00941729 /* LessonPlanDetailViewModel.swift */; };
+		7435E878265E432A00941729 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E877265E432A00941729 /* LessonViewModel.swift */; };
+		7435E87A265E489A00941729 /* CourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E879265E489A00941729 /* CourseViewModel.swift */; };
+		7435E87C265E4A7500941729 /* LessonPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E87B265E4A7500941729 /* LessonPlanViewModel.swift */; };
 		745147CA264CDE8000172419 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147C9264CDE8000172419 /* ServiceTableViewCell.swift */; };
 		745147CD264CE03200172419 /* AccountPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147CC264CE03100172419 /* AccountPageViewModel.swift */; };
 		745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147D4264CF76E00172419 /* AccountPageViewController.swift */; };
@@ -59,8 +71,8 @@
 		74857FA42654E9DB00AEF14D /* WideUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */; };
 		748CC919265CEB4100919F1E /* SearchStudentPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */; };
 		748CC91B265CEB7200919F1E /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC91A265CEB7200919F1E /* StudentViewModel.swift */; };
-		748CC91E265DEADC00919F1E /* TCommunicationBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 748CC91D265DEADC00919F1E /* TCommunicationBook.storyboard */; };
-		748CC920265DEB6000919F1E /* TCommunicationBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC91F265DEB6000919F1E /* TCommunicationBookViewController.swift */; };
+		748CC91E265DEADC00919F1E /* LessonPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 748CC91D265DEADC00919F1E /* LessonPlan.storyboard */; };
+		748CC920265DEB6000919F1E /* LessonPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC91F265DEB6000919F1E /* LessonPlanViewController.swift */; };
 		748CC923265DEC1800919F1E /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC921265DEC1800919F1E /* CourseTableViewCell.swift */; };
 		748CC924265DEC1800919F1E /* CourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 748CC922265DEC1800919F1E /* CourseTableViewCell.xib */; };
 		74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */; };
@@ -149,6 +161,18 @@
 		741FAC80264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AccountPage.storyboard; sourceTree = "<group>"; };
 		741FAC82264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomePage.storyboard; sourceTree = "<group>"; };
 		741FAC84264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CalendarPage.storyboard; sourceTree = "<group>"; };
+		7435E854265E2D5B00941729 /* StackCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCollectionViewLayout.swift; sourceTree = "<group>"; };
+		7435E867265E311400941729 /* ItemSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSize.swift; sourceTree = "<group>"; };
+		7435E869265E35A000941729 /* LessonPlanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDetailViewController.swift; sourceTree = "<group>"; };
+		7435E86B265E363100941729 /* AddRowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRowTableViewCell.swift; sourceTree = "<group>"; };
+		7435E86C265E363100941729 /* AddRowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRowTableViewCell.xib; sourceTree = "<group>"; };
+		7435E86F265E382000941729 /* LessonPlanDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDetailTableViewCell.swift; sourceTree = "<group>"; };
+		7435E870265E382000941729 /* LessonPlanDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonPlanDetailTableViewCell.xib; sourceTree = "<group>"; };
+		7435E873265E3C7900941729 /* SaveButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
+		7435E875265E41DD00941729 /* LessonPlanDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDetailViewModel.swift; sourceTree = "<group>"; };
+		7435E877265E432A00941729 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
+		7435E879265E489A00941729 /* CourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseViewModel.swift; sourceTree = "<group>"; };
+		7435E87B265E4A7500941729 /* LessonPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanViewModel.swift; sourceTree = "<group>"; };
 		745147C9264CDE8000172419 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		745147CC264CE03100172419 /* AccountPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewModel.swift; sourceTree = "<group>"; };
 		745147D4264CF76E00172419 /* AccountPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewController.swift; sourceTree = "<group>"; };
@@ -184,8 +208,8 @@
 		74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WideUserTableViewCell.xib; sourceTree = "<group>"; };
 		748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStudentPageViewModel.swift; sourceTree = "<group>"; };
 		748CC91A265CEB7200919F1E /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
-		748CC91D265DEADC00919F1E /* TCommunicationBook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TCommunicationBook.storyboard; sourceTree = "<group>"; };
-		748CC91F265DEB6000919F1E /* TCommunicationBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCommunicationBookViewController.swift; sourceTree = "<group>"; };
+		748CC91D265DEADC00919F1E /* LessonPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LessonPlan.storyboard; sourceTree = "<group>"; };
+		748CC91F265DEB6000919F1E /* LessonPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanViewController.swift; sourceTree = "<group>"; };
 		748CC921265DEC1800919F1E /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		748CC922265DEC1800919F1E /* CourseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseTableViewCell.xib; sourceTree = "<group>"; };
 		74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAssignmentTableViewCell.swift; sourceTree = "<group>"; };
@@ -307,6 +331,15 @@
 			path = AccountPage;
 			sourceTree = "<group>";
 		};
+		7435E853265E2D5B00941729 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7435E867265E311400941729 /* ItemSize.swift */,
+				7435E854265E2D5B00941729 /* StackCollectionViewLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		745147CB264CDE9A00172419 /* AccountPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +357,8 @@
 				74CADD8126554C5A004DA6D0 /* SearchUserPageViewModel.swift */,
 				748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */,
 				74CADD8326554C81004DA6D0 /* UserVIewModel.swift */,
+				7435E879265E489A00941729 /* CourseViewModel.swift */,
+				7435E877265E432A00941729 /* LessonViewModel.swift */,
 				748CC91A265CEB7200919F1E /* StudentViewModel.swift */,
 				74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */,
 				74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */,
@@ -331,6 +366,8 @@
 				74715CC6265B698600570A23 /* CalendarPageViewModel.swift */,
 				74715CC8265B6C5F00570A23 /* EventViewModel.swift */,
 				74715CCA265B6D6100570A23 /* StudentPerformanceViewModel.swift */,
+				7435E87B265E4A7500941729 /* LessonPlanViewModel.swift */,
+				7435E875265E41DD00941729 /* LessonPlanDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -347,7 +384,8 @@
 				745147D4264CF76E00172419 /* AccountPageViewController.swift */,
 				74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */,
 				7472B29A26594B8B00511468 /* TimeSelectionViewController.swift */,
-				748CC91F265DEB6000919F1E /* TCommunicationBookViewController.swift */,
+				748CC91F265DEB6000919F1E /* LessonPlanViewController.swift */,
+				7435E869265E35A000941729 /* LessonPlanDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -488,9 +526,9 @@
 				74A7D11E2655383400B445EB /* Student.swift */,
 				741D7C4B2653F9D400A7FD0A /* Account */,
 				745147DF264D386700172419 /* ChatRoom.swift */,
+				74D869D6265745F8004D33ED /* CalendarHelper.swift */,
 				745147E1264D389D00172419 /* Message.swift */,
 				74A7D116265518FA00B445EB /* DayOfWeek.swift */,
-				74D869D6265745F8004D33ED /* CalendarHelper.swift */,
 				74A7D11826552A6E00B445EB /* RoutineHour.swift */,
 				746BDE6F26523D0B001B1E71 /* Course.swift */,
 				746BDE7126523D14001B1E71 /* Lesson.swift */,
@@ -544,14 +582,20 @@
 		74E94763264CCA3F00AFB046 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7435E853265E2D5B00941729 /* Layout */,
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
-				748CC91D265DEADC00919F1E /* TCommunicationBook.storyboard */,
+				748CC91D265DEADC00919F1E /* LessonPlan.storyboard */,
 				748CC921265DEC1800919F1E /* CourseTableViewCell.swift */,
 				748CC922265DEC1800919F1E /* CourseTableViewCell.xib */,
 				7499630F265DF0B100F081EC /* LessonsTableViewCell.swift */,
 				74996310265DF0B100F081EC /* LessonsTableViewCell.xib */,
 				7499630B265DEEC700F081EC /* LessonCollectionViewCell.swift */,
 				7499630C265DEEC700F081EC /* LessonCollectionViewCell.xib */,
+				7435E86B265E363100941729 /* AddRowTableViewCell.swift */,
+				7435E86C265E363100941729 /* AddRowTableViewCell.xib */,
+				7435E86F265E382000941729 /* LessonPlanDetailTableViewCell.swift */,
+				7435E870265E382000941729 /* LessonPlanDetailTableViewCell.xib */,
+				7435E873265E3C7900941729 /* SaveButtonView.swift */,
 				748CC91C265D2ACE00919F1E /* Calendar */,
 				7472B2A02659E24700511468 /* TimeSelection */,
 				74A5A7732654F0270039BC22 /* SearchUser */,
@@ -656,6 +700,7 @@
 				7402581326529BD900BA6BDA /* BannerTableViewCell.xib in Resources */,
 				74025807265264B100BA6BDA /* ServiceCollectionViewCell.xib in Resources */,
 				741FAC85264CD77200D5C34B /* ChatRoomPage.storyboard in Resources */,
+				7435E86E265E363100941729 /* AddRowTableViewCell.xib in Resources */,
 				741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */,
 				74996312265DF0B100F081EC /* LessonsTableViewCell.xib in Resources */,
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
@@ -665,7 +710,7 @@
 				74857FA42654E9DB00AEF14D /* WideUserTableViewCell.xib in Resources */,
 				74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */,
 				74CADD94265614EF004DA6D0 /* DatePickerTableViewCell.xib in Resources */,
-				748CC91E265DEADC00919F1E /* TCommunicationBook.storyboard in Resources */,
+				748CC91E265DEADC00919F1E /* LessonPlan.storyboard in Resources */,
 				74857FA02654E83700AEF14D /* SearchUser.storyboard in Resources */,
 				74CADD95265614EF004DA6D0 /* TwoLablesTableViewCell.xib in Resources */,
 				74715CD3265B761400570A23 /* LableWithVerticalLineTableViewCell.xib in Resources */,
@@ -675,6 +720,7 @@
 				74CADD892656105E004DA6D0 /* TextFieldTableViewCell.xib in Resources */,
 				74A5A7722654EFDF0039BC22 /* SelecetedUserTableViewCell.xib in Resources */,
 				74C2376D264BB5FE001BF47A /* Main.storyboard in Resources */,
+				7435E872265E382000941729 /* LessonPlanDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +799,8 @@
 				745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */,
 				745147CA264CDE8000172419 /* ServiceTableViewCell.swift in Sources */,
 				74E94753264C087D00AFB046 /* Int+Extension.swift in Sources */,
+				7435E876265E41DD00941729 /* LessonPlanDetailViewModel.swift in Sources */,
+				7435E85F265E2D5B00941729 /* StackCollectionViewLayout.swift in Sources */,
 				74715CCB265B6D6100570A23 /* StudentPerformanceViewModel.swift in Sources */,
 				74D3A67B26579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift in Sources */,
 				74A5A7712654EFDF0039BC22 /* SelecetedUserTableViewCell.swift in Sources */,
@@ -764,6 +812,7 @@
 				749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
 				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
+				7435E86D265E363100941729 /* AddRowTableViewCell.swift in Sources */,
 				74E94738264BE09500AFB046 /* Article.swift in Sources */,
 				74E94737264BE09500AFB046 /* Author.swift in Sources */,
 				7499630D265DEEC700F081EC /* LessonCollectionViewCell.swift in Sources */,
@@ -781,10 +830,12 @@
 				74C2376A264BB5FE001BF47A /* ViewController.swift in Sources */,
 				74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */,
 				74E9473D264BE09500AFB046 /* PaddingableUILabel.swift in Sources */,
-				748CC920265DEB6000919F1E /* TCommunicationBookViewController.swift in Sources */,
+				748CC920265DEB6000919F1E /* LessonPlanViewController.swift in Sources */,
 				746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */,
+				7435E874265E3C7900941729 /* SaveButtonView.swift in Sources */,
 				74D869D7265745F8004D33ED /* CalendarHelper.swift in Sources */,
 				74CADD8226554C5A004DA6D0 /* SearchUserPageViewModel.swift in Sources */,
+				7435E871265E382000941729 /* LessonPlanDetailTableViewCell.swift in Sources */,
 				74C23766264BB5FE001BF47A /* AppDelegate.swift in Sources */,
 				74A5C8AB264E2C1B00704C39 /* CalendarPageViewController.swift in Sources */,
 				74E94755264C087D00AFB046 /* UIView+Extension.swift in Sources */,
@@ -796,6 +847,8 @@
 				74A7D11F2655383400B445EB /* Student.swift in Sources */,
 				74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */,
 				74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */,
+				7435E87A265E489A00941729 /* CourseViewModel.swift in Sources */,
+				7435E86A265E35A000941729 /* LessonPlanDetailViewController.swift in Sources */,
 				74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */,
 				74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */,
 				74715CCE265B74A400570A23 /* ChartTableViewCell.swift in Sources */,
@@ -803,6 +856,7 @@
 				745147E0264D386700172419 /* ChatRoom.swift in Sources */,
 				74BDBEE2264FD2D70040C0D6 /* UserMessageTableViewCell.swift in Sources */,
 				741D7C4D2653FA0C00A7FD0A /* ServiceManager.swift in Sources */,
+				7435E868265E311400941729 /* ItemSize.swift in Sources */,
 				74A7D11D2655366300B445EB /* Event.swift in Sources */,
 				74E9473B264BE09500AFB046 /* Date+Extension.swift in Sources */,
 				748CC91B265CEB7200919F1E /* StudentViewModel.swift in Sources */,
@@ -823,12 +877,14 @@
 				74857F9E2654E81A00AEF14D /* SearchUserViewController.swift in Sources */,
 				74E94751264C087D00AFB046 /* UIFont+Extension.swift in Sources */,
 				74BDBEE0264FD1D20040C0D6 /* PartnerMessageTableViewCell.swift in Sources */,
+				7435E878265E432A00941729 /* LessonViewModel.swift in Sources */,
 				74E9475B264C087D00AFB046 /* UIScreen+Extension.swift in Sources */,
 				74A7D11926552A6E00B445EB /* RoutineHour.swift in Sources */,
 				745147E4264D3CF400172419 /* ChatRoomPageViewModel.swift in Sources */,
 				745147DE264D381800172419 /* ChatRoomViewModel.swift in Sources */,
 				74715CD2265B761400570A23 /* LableWithVerticalLineTableViewCell.swift in Sources */,
 				74715CC7265B698600570A23 /* CalendarPageViewModel.swift in Sources */,
+				7435E87C265E4A7500941729 /* LessonPlanViewModel.swift in Sources */,
 				7402581226529BD900BA6BDA /* BannerTableViewCell.swift in Sources */,
 				74E94736264BE09500AFB046 /* XXXManager.swift in Sources */,
 				74D4BB712659E55400999556 /* TimeSelectionViewModel.swift in Sources */,

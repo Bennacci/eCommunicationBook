@@ -172,7 +172,31 @@ extension HomePageViewController: UICollectionViewDataSource {
 }
 
 extension HomePageViewController: UICollectionViewDelegate {
-  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    if let nextVC = UIStoryboard.tCommunicationBook.instantiateInitialViewController() {
+      
+//      guard let targetController = nextVC.children[0] as? SearchUserViewController
+//
+//        else { fatalError("Unexpected Table View Cell") }
+      
+//      targetController.delegate = self.viewModel
+      
+//      if inputText == "Teachers"{
+//
+//        targetController.viewModel.forStudent = false
+//
+//      } else {
+//
+//        targetController.viewModel.forStudent = true
+//      }
+      nextVC.modalPresentationStyle = .fullScreen
+      self.navigationController?.show(nextVC, sender: nil)
+      
+    } else { return }
+    
+    
+  }
 }
 // MARK: - 設定 CollectionView Cell 與 Cell 之間的間距、距確 Super View 的距離等等
 extension HomePageViewController: UICollectionViewDelegateFlowLayout {

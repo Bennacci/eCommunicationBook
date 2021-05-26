@@ -167,7 +167,6 @@ class SearchUserPageViewModel {
     
   }
   
-  
   func addUserToViewModels(with user: UserViewModel) -> [UserViewModel] {
     var viewModels = userListViewModel.value
     viewModels.append(user)
@@ -188,7 +187,6 @@ class SearchUserPageViewModel {
   func setUserDeselected(_ user: UserViewModel) {
     userListViewModel.value = removeUsefromViewModels(with: user)
   }
-  
   
   func addStudentToViewModels(with student: StudentViewModel) -> [StudentViewModel] {
     var viewModels = studentListViewModel.value

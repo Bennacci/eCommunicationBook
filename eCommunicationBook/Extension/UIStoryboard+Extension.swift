@@ -16,6 +16,9 @@ private struct StoryboardCategory {
   
   static let timeSelection = "TimeSelection"
   
+  static let tCommunicationBook = "TCommunicationBook"
+  
+  
   
   static let newEvent = "NewEvent"
   
@@ -46,6 +49,9 @@ extension UIStoryboard {
   
   static var timeSelection: UIStoryboard { return storyboard(name: StoryboardCategory.timeSelection) }
 
+  static var tCommunicationBook: UIStoryboard { return storyboard(name: StoryboardCategory.tCommunicationBook) }
+
+  
   
   
   static var newEvent: UIStoryboard { return storyboard(name: StoryboardCategory.newEvent) }

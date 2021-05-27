@@ -16,6 +16,8 @@ class LessonCollectionViewCell: UICollectionViewCell {
   
   @IBOutlet weak var labelCourseTime: UILabel!
   
+  @IBOutlet weak var buttonEdit: UIButton!
+  
   var viewModel: LessonViewModel?
   
   override func awakeFromNib() {
@@ -34,6 +36,8 @@ class LessonCollectionViewCell: UICollectionViewCell {
     }
     labelTecherName.text = viewModel?.teacher
     var imageTitle = ""
+    
+    print(viewModel?.number)
     if viewModel!.number < 9 {
       imageTitle = "0\(viewModel!.number + 1).square.fill"
     } else {

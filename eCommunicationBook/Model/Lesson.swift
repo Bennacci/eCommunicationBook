@@ -9,6 +9,7 @@
 import Foundation
 
 struct Lesson: Codable {
+  var id: String
   var number: Int
   var teacher: String
   var time: Double
@@ -18,6 +19,7 @@ struct Lesson: Codable {
   var assignments: [String]?
  
   enum CodingKeys: String, CodingKey {
+    case id
     case number
     case teacher
     case time
@@ -29,6 +31,7 @@ struct Lesson: Codable {
   
   var toDict: [String: Any] {
     return [
+      "id": id as Any,
       "number": number as Any,
       "teacher": teacher as Any,
       "time": time as Any,

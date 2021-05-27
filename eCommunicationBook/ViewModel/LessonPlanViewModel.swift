@@ -49,9 +49,13 @@ class LessonPlanViewModel {
   
   
   func setSearchResult(_ courses: [Course]) {
-    if let uID = UserManager.shared.userID {
-    courseViewModel.value = convertCoursesToViewModels(from: courses).filter { $0.teacher.contains(uID) }
-    }
+    print(courses)
+//    if let uID = UserManager.shared.userID {
+////    courseViewModel.value = convertCoursesToViewModels(from: courses).filter { $0.teacher.contains(uID) }
+//
+//    }
+    courseViewModel.value = convertCoursesToViewModels(from: courses)
+
   }
   
   
@@ -66,11 +70,14 @@ class LessonPlanViewModel {
   }
   
   func setLessonViewModel(index: Int) {
+    print("index:\(index)")
     if let lessons = courseViewModel.value[index].lessons {
     lessonViewModel.value = convertLessonsToViewModels(from: lessons)
+      print(lessons)
+
     }
+    XXXManager.shared.courseID = courseViewModel.value[index].id
   }
-  
 }
 
 

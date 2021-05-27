@@ -20,7 +20,7 @@ class SaveButtonView: UIView {
                        height: 50)
     btn.layer.cornerRadius = 25
     let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
-    let btnImage = UIImage(systemName: "plus", withConfiguration: boldConfig)
+    let btnImage = UIImage(systemName: "icloud.and.arrow.up.fill", withConfiguration: boldConfig)
     btn.setImage(btnImage, for: .normal)
     btn.tintColor = .white
     btn.imageView?.contentMode = .scaleAspectFill

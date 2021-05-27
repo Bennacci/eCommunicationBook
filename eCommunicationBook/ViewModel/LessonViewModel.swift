@@ -8,9 +8,10 @@
 
 import Foundation
 
-class LessonViewModel{
+class LessonViewModel {
   var lesson: Lesson
-  init(model lesson: Lesson){
+   
+  init(model lesson: Lesson) {
     self.lesson = lesson
   }
   var number: Int {
@@ -50,4 +51,6 @@ class LessonViewModel{
       return lesson.assignments
     }
   }
+  
+  
 }

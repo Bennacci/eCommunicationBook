@@ -173,10 +173,25 @@ class NewAThingViewModel: SearchUserDelegate {
   
   func addCourse (with course: inout Course) {
     
+    XXXManager.shared.addCourse(course: &course) { result in
+      
+      switch result {
+        
+      case .success:
+        
+        print("onTapAdd, success")
+        self.onAdded?()
+      case .failure(let error):
+        
+        print("publishArticle.failure: \(error)")
+      }
+
+    }
+    
     var lessons: [Lesson] = []
     
     var lessonTime = course.firstLessonDate
-    var day : DayOfWeek
+    var day: DayOfWeek
     let days = course.courseTime.map({$0.day})
     
     for index in  0 ..< course.lessonsAmount {
@@ -184,10 +199,10 @@ class NewAThingViewModel: SearchUserDelegate {
       day = CalendarHelper.shared.day(from: Date(timeIntervalSince1970: lessonTime))
       let courseTime = course.courseTime.filter({$0.day == day.rawValue}).first ?? course.courseTime[0]
       
-      lessonTime += Double(courseTime.startingTime / 100 * 60 * 60 * 1000)
-      lessonTime += Double(courseTime.startingTime % 100 * 60 * 1000)
+      lessonTime += Double(courseTime.startingTime / 100 * 60 * 60)
+      lessonTime += Double(courseTime.startingTime % 100 * 60)
       
-      let lesson = Lesson(number: index, teacher: "", time: lessonTime, timeInterval: course.courseTime[0].timeInterval, todaysLesson: nil, tests: nil, assignments: nil)
+      let lesson = Lesson(id: "", number: index, teacher: "", time: lessonTime, timeInterval: course.courseTime[0].timeInterval, todaysLesson: nil, tests: nil, assignments: nil)
       
       let nextLessonTime = CalendarHelper.shared.nextDate(baseDate: Date(milliseconds: course.firstLessonDate), daySet: IndexSet(days))
       
@@ -197,8 +212,11 @@ class NewAThingViewModel: SearchUserDelegate {
       
     }
     course.lessons = lessons
+    
         
-    XXXManager.shared.addCourse(course: &course) { result in
+
+    
+    XXXManager.shared.addLesson(course: &course) { result in
       
       switch result {
         

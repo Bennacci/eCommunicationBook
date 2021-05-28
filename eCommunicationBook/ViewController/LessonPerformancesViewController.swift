@@ -35,9 +35,17 @@ class LessonPerformancesViewController: UIViewController{
     
     viewModel.studentLessonRecordsViewModel.bind { [weak self] _ in
       self?.collectionView.reloadData()
+      
     }
+     setCollectionViewStack()
   }
-
+  @IBAction func back(_ sender: Any) {
+    guard let nav = navigationController, let _ = nav.topViewController else {
+         return
+     }
+     nav.popViewController(animated: true)
+  }
+  
     @objc func sliderValueChanged(sender: UISlider) {
   //      let buttonTag = sender.tag
       print(sender.tag)
@@ -59,7 +67,17 @@ class LessonPerformancesViewController: UIViewController{
         
       }
   
-  
+  func setCollectionViewStack() {
+    let verticalSnapCollectionFlowLayout = StackCollectionViewLayout()
+//    verticalSnapCollectionFlowLayout.collectionViewContentSize = CGSize(width: UIScreen.width - 30, height: UIScreen.height - 50)
+    // Use custom properties that are available for each layout
+//    verticalSnapCollectionFlowLayout.minLineSpacing = 30
+//    verticalSnapCollectionFlowLayout.spacingMultiplier = 8
+
+    collectionView.collectionViewLayout = verticalSnapCollectionFlowLayout
+    collectionView.setCollectionViewLayout(verticalSnapCollectionFlowLayout, animated: true)
+
+  }
 }
 
 extension LessonPerformancesViewController: UICollectionViewDataSource {
@@ -97,38 +115,38 @@ extension LessonPerformancesViewController: UICollectionViewDelegate {
 
 }
 
-extension LessonPerformancesViewController: UICollectionViewDelegateFlowLayout {
-  ///  Collection View distance to Super View
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      insetForSectionAt section: Int) -> UIEdgeInsets {
-    return collectionViewSectionInsets
-  }
-  
-  /// CollectionViewCell  height / width
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      sizeForItemAt indexPath: IndexPath) -> CGSize {
-    var size: CGSize
-    size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
-                                            viewWidth: UIScreen.width,
-                                            sectionInsets: collectionViewSectionInsets,
-                                            itemsPerRow: 1,
-                                            itemsPerColumn: 1)
-    return size
-  }
-  
-  /// 滑動方向為「垂直」的話即「上下」的間距(預設為重直)
-  
-  func collectionView(_ collectionView: UICollectionView,
-                      layout collectionViewLayout: UICollectionViewLayout,
-                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 0
-    
-  }
-  
-}
+//extension LessonPerformancesViewController: UICollectionViewDelegateFlowLayout {
+//  ///  Collection View distance to Super View
+//
+//  func collectionView(_ collectionView: UICollectionView,
+//                      layout collectionViewLayout: UICollectionViewLayout,
+//                      insetForSectionAt section: Int) -> UIEdgeInsets {
+//    return collectionViewSectionInsets
+//  }
+//
+//  /// CollectionViewCell  height / width
+//  func collectionView(_ collectionView: UICollectionView,
+//                      layout collectionViewLayout: UICollectionViewLayout,
+//                      sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    var size: CGSize
+//    size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
+//                                            viewWidth: UIScreen.width,
+//                                            sectionInsets: collectionViewSectionInsets,
+//                                            itemsPerRow: 1,
+//                                            itemsPerColumn: 1)
+//    return size
+//  }
+//
+//  /// 滑動方向為「垂直」的話即「上下」的間距(預設為重直)
+//
+//  func collectionView(_ collectionView: UICollectionView,
+//                      layout collectionViewLayout: UICollectionViewLayout,
+//                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//    return 0
+//
+//  }
+//
+//}
 
 extension LessonPerformancesViewController: UITableViewDataSource {
   

@@ -22,21 +22,21 @@ open class StackCollectionViewLayout: UICollectionViewLayout {
 //    }
     
     public var itemDescription: (landscape: ItemSize, portrait: ItemSize) =
-        (landscape: .verticalAspectFit(spacing: 24, aspect: 0.666666666666667),
-         portrait: .horizontalAspectFit(spacing: 24, aspect: 0.666666666666667)) { // 0,666666666666667 aspect ratio
+      (landscape: .verticalAspectFit(spacing: 12, aspect: 0.4),
+         portrait: .horizontalAspectFit(spacing: 12, aspect: 0.5)) { // 0,666666666666667 aspect ratio
         didSet {
             invalidateLayout()
         }
     }
     
-    public var spacing: CGFloat = 12 {
-        didSet{
+    public var spacing: CGFloat = 6 {
+        didSet {
             invalidateLayout()
         }
     }
     
     public var maximumVisibleItems: Int = 5 {
-        didSet{
+        didSet {
             invalidateLayout()
         }
     }

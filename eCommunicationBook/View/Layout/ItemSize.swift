@@ -16,7 +16,7 @@ public enum ItemSize {
 
 public extension ItemSize {
     func size(in collectionView: UICollectionView) -> CGSize {
-        let multiplier: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 4.0 : 2.0
+        let multiplier: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 3.0 : 2.0
 
         switch self {
         case .fixed(let size):

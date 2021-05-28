@@ -40,7 +40,6 @@ class LessonPlanDetailTableViewCell: UITableViewCell {
         textField.text = lesson?.todaysLesson![indexPath.row]
       case 1:
         textField.text = lesson?.assignments![indexPath.row]
-
       default:
         textField.text = lesson?.tests![indexPath.row]
 

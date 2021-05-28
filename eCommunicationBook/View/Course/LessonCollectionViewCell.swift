@@ -24,7 +24,7 @@ class LessonCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-  func setUp(viewModel: LessonViewModel){
+  func setUp(viewModel: LessonViewModel) {
     self.viewModel = viewModel
     layOutCell()
   }
@@ -35,6 +35,7 @@ class LessonCollectionViewCell: UICollectionViewCell {
       labelCourseTime.text = Date(timeIntervalSince1970: time).convertToString(dateformat: .dateWithTime)
     }
     labelTecherName.text = viewModel?.teacher
+    
     var imageTitle = ""
     
     print(viewModel?.number)

@@ -37,8 +37,11 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
     viewModel.fetchData()
 
     viewModel.courseViewModel.bind { [weak self] users in
-                  self?.tableView.reloadData()
-//      self?.viewModel.onRefresh()
+      self?.pickedCourseIndexPath = nil
+                  DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                  }
+      //      self?.viewModel.onRefresh()
     }
   }
   func onSaved() {
@@ -71,15 +74,21 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
     if segue.identifier == "lessonPlanDetail",
       let lessonPlanDetailViewController = segue.destination as? LessonPlanDetailViewController {
       if let button = sender as? UIButton {
+        lessonPlanDetailViewController.navigationItem.title =
+        "Lesson \( self.viewModel.lessonViewModel.value[button.tag].number)"
         lessonPlanDetailViewController.delegate = self
+        lessonPlanDetailViewController.viewModel.course =
+          self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course
+        if button.tag > 0 {
+        lessonPlanDetailViewController.viewModel.previousLesson =
+          self.viewModel.lessonViewModel.value[button.tag - 1].lesson
+        }
         lessonPlanDetailViewController.viewModel.lesson =
           self.viewModel.lessonViewModel.value[button.tag].lesson
       }
     }
   }
-  
 }
-
 
 extension LessonPlanViewController: UITableViewDataSource {
   
@@ -133,7 +142,8 @@ extension LessonPlanViewController: UITableViewDataSource {
       
       var index: Int
       
-      if let pickedCourseIndexPath = pickedCourseIndexPath, pickedCourseIndexPath.row < indexPath.row {
+      if let pickedCourseIndexPath = pickedCourseIndexPath,
+        pickedCourseIndexPath.row <= indexPath.row {
           
             index = indexPath.row - 1
         

@@ -16,13 +16,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="tap to edit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ud0-kc-N9v">
-                        <rect key="frame" x="40" y="5" width="264" height="34"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="tap to edit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ud0-kc-N9v">
+                        <rect key="frame" x="40" y="0.0" width="264" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="oIf-Td-rlc"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoY-fE-vNW">
-                        <rect key="frame" x="20" y="11.5" width="12" height="21"/>
+                        <rect key="frame" x="20" y="12" width="12" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -32,6 +35,8 @@
                     <constraint firstItem="Ud0-kc-N9v" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2nH-eA-ocL"/>
                     <constraint firstItem="Ud0-kc-N9v" firstAttribute="leading" secondItem="uoY-fE-vNW" secondAttribute="trailing" constant="8" id="AR4-sk-oNy"/>
                     <constraint firstItem="uoY-fE-vNW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="K3M-IP-8Zy"/>
+                    <constraint firstAttribute="bottom" secondItem="Ud0-kc-N9v" secondAttribute="bottom" id="OMw-wz-oZ8"/>
+                    <constraint firstItem="Ud0-kc-N9v" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Xli-ma-lZH"/>
                     <constraint firstItem="uoY-fE-vNW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xqx-CE-OIf"/>
                     <constraint firstAttribute="trailing" secondItem="Ud0-kc-N9v" secondAttribute="trailing" constant="16" id="jSP-dz-t29"/>
                 </constraints>
@@ -42,7 +47,7 @@
                 <outlet property="labelIndex" destination="uoY-fE-vNW" id="VUQ-Sc-mbV"/>
                 <outlet property="textField" destination="Ud0-kc-N9v" id="W8V-y6-Vmz"/>
             </connections>
-            <point key="canvasLocation" x="152" y="179"/>
+            <point key="canvasLocation" x="150.72463768115944" y="178.79464285714286"/>
         </tableViewCell>
     </objects>
 </document>

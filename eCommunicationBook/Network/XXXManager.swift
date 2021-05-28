@@ -322,7 +322,7 @@ class XXXManager {
     
     db.collection("Courses")
       //      .order(by: "name ")
-      .whereField("teacher", arrayContains: UserManager.shared.userID!)
+      .whereField("teachers", arrayContains: UserManager.shared.userID!)
       .getDocuments { (querySnapshot, error) in
         
         if let error = error {
@@ -339,7 +339,7 @@ class XXXManager {
                 self.db.collection("Courses")
                   .document("\(course.id)")
                   .collection("Lessons")
-                  //                  .order(by: "createdTime", descending: true)
+                  .order(by: "number", descending: false)
                   .getDocuments { (querySnapshot, error) in
                     
                     if let error = error {
@@ -493,7 +493,7 @@ class XXXManager {
       }
     }
     
-    func fetchStudentPerformances(completion: @escaping (Result<[StudentPerformance], Error>) -> Void) {
+    func fetchStudentPerformances(completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
       
       db.collection("StudentPerformances").getDocuments { (querySnapshot, error) in
         
@@ -502,12 +502,12 @@ class XXXManager {
           completion(.failure(error))
         } else {
           
-          var studentPerformances = [StudentPerformance]()
+          var studentPerformances = [StudentLessonRecord]()
           
           for document in querySnapshot!.documents {
             
             do {
-              if let studentPerformance = try document.data(as: StudentPerformance.self, decoder: Firestore.Decoder()) {
+              if let studentPerformance = try document.data(as: StudentLessonRecord.self, decoder: Firestore.Decoder()) {
                 studentPerformances.append(studentPerformance)
               }
             } catch {

@@ -54,7 +54,7 @@
                             <constraint firstAttribute="width" constant="55" id="bGv-ow-ZSU"/>
                             <constraint firstAttribute="height" constant="30" id="yMl-MK-VJc"/>
                         </constraints>
-                        <state key="normal" title="Edit">
+                        <state key="normal" title="Write">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <userDefinedRuntimeAttributes>

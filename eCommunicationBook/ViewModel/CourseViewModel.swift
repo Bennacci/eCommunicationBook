@@ -25,14 +25,14 @@ class CourseViewModel {
       return course.name
     }
   }
-  var teacher: [String] {
+  var teachers: [String] {
     get {
-      return course.teacher
+      return course.teachers
     }
   }
-  var student: [String] {
+  var students: [String] {
     get {
-      return course.student
+      return course.students
     }
   }
   var firstLessonDate: Double {

@@ -12,7 +12,7 @@ class CalendarPageViewModel {
   
   let eventViewModel = Box([EventViewModel]())
   
-  let studentPerformancesViewModel = Box([StudentPerformanceViewModel]())
+  let studentPerformancesViewModel = Box([StudentLessonRecordViewModel]())
   
   var refreshView: (() -> Void)?
   
@@ -20,7 +20,7 @@ class CalendarPageViewModel {
   
   var dayEventViewModel = Box([EventViewModel]())
   
-  var dayPerformanceViewModel = Box([StudentPerformanceViewModel]())
+  var dayPerformanceViewModel = Box([StudentLessonRecordViewModel]())
   
   func onRefresh() {
     // maybe do something
@@ -50,9 +50,9 @@ class CalendarPageViewModel {
     
     dayPerformanceViewModel.value = studentPerformancesViewModel.value.filter({
       
-        $0.date >= time &&
+        $0.time >= time &&
         
-        $0.date <= time + secondsPerDay * 1000 - 1
+        $0.time <= time + secondsPerDay * 1000 - 1
     })
 //    print(day)
 //    print("123")
@@ -105,16 +105,16 @@ class CalendarPageViewModel {
     eventViewModel.value = convertEventsToViewModels(from: events)
   }
   
-  func convertStudenPerformancesToViewModels(from performances: [StudentPerformance]) -> [StudentPerformanceViewModel] {
-    var viewModels = [StudentPerformanceViewModel]()
+  func convertStudenPerformancesToViewModels(from performances: [StudentLessonRecord]) -> [StudentLessonRecordViewModel] {
+    var viewModels = [StudentLessonRecordViewModel]()
     for performance in performances {
-      let viewModel = StudentPerformanceViewModel(model: performance)
+      let viewModel = StudentLessonRecordViewModel(model: performance)
       viewModels.append(viewModel)
     }
     return viewModels
   }
   
-  func setStudentPerformances(_ performances: [StudentPerformance]) {
+  func setStudentPerformances(_ performances: [StudentLessonRecord]) {
     studentPerformancesViewModel.value = convertStudenPerformancesToViewModels(from: performances)
   }
 }

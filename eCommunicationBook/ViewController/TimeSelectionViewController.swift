@@ -49,7 +49,11 @@ class TimeSelectionViewController: UIViewController {
   }
   
   @IBAction func cancel(_ sender: Any) {
-    dismiss(animated: true, completion: nil)
+    guard let nav = navigationController, let _ = nav.topViewController else {
+         return
+     }
+     nav.popViewController(animated: true)
+//    dismiss(animated: true, completion: nil)
   }
   
   @IBAction func add(_ sender: Any) {

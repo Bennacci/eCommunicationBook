@@ -23,10 +23,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="o9r-i7-N5C">
-                        <rect key="frame" x="175" y="37" width="204" height="31"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="200" id="2kX-ED-Okr"/>
-                        </constraints>
+                        <rect key="frame" x="219.5" y="37" width="159.5" height="31"/>
                     </slider>
                 </subviews>
                 <constraints>
@@ -36,6 +33,9 @@
                     <constraint firstItem="o9r-i7-N5C" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wm1-eT-57g"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="o9r-i7-N5C" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="centerX" constant="25" id="BQb-ak-9He"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="labelSlideTitle" destination="nUo-gD-uUM" id="gdg-pa-CEf"/>

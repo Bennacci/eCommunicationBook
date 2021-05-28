@@ -8,78 +8,107 @@
 
 import Foundation
 
-class StudentPerformanceViewModel {
+class StudentLessonRecordViewModel {
   
-  var studentPerformance: StudentPerformance
+  var studentLessonRecord: StudentLessonRecord
   
-  init(model studentPerformance: StudentPerformance) {
+  init(model studentLessonRecord: StudentLessonRecord) {
   
-    self.studentPerformance = studentPerformance
+    self.studentLessonRecord = studentLessonRecord
   }
 
-  
   var id: String {
     get {
-      return studentPerformance.id
+      return studentLessonRecord.id
     }
   }
-  var date: Double {
-    get{
-      return studentPerformance.date
+  
+  var studentID: String {
+    get {
+      return studentLessonRecord.studentID
     }
   }
+  
   var courseName: String {
     get {
-      return studentPerformance.courseName
+      return studentLessonRecord.courseName
     }
   }
+  
 
-  var courseTime: RoutineHour {
+  var time: Double {
     get {
-      return studentPerformance.courseTime
+      return studentLessonRecord.time
     }
   }
   
-  var attendTime: Double {
+  var timeInterval: Int {
     get {
-      return studentPerformance.attendTime
+      return studentLessonRecord.timeInterval
     }
   }
   
-  var leftTime: Double {
+  var todaysLesson: [String]? {
     get {
-      return studentPerformance.leftTime
+      return studentLessonRecord.todaysLesson
     }
   }
   
-  var performance: [ClassPerformance.RawValue] {
+  
+  var tests: [String]? {
     get {
-      return studentPerformance.performance
+      return studentLessonRecord.tests
     }
   }
   
-  var testGrade: [Int]? {
+  var assignments: [String]? {
     get {
-      return studentPerformance.testGrade
+      return studentLessonRecord.assignments
+    }
+  }
+  
+  
+  
+  var performances: [ClassPerformance.RawValue] {
+    get {
+      return studentLessonRecord.performances
+    }
+  }
+  
+  var previousTests: [String]?{
+    get {
+      return studentLessonRecord.previousTests
+    }
+  }
+  
+  var previousAssignments: [String]? {
+    get {
+      return studentLessonRecord.previousAssignments
+    }
+  }
+  
+  var testGrade: [String]? {
+    get {
+      return studentLessonRecord.testGrade
     }
   }
   
   var assignmentCompleted: [Bool]? {
     get {
-      return studentPerformance.assignmentCompleted
+      return studentLessonRecord.assignmentCompleted
     }
   }
   
 
   var assignmentScore: [Int]? {
     get {
-      return studentPerformance.assignmentScore
+      return studentLessonRecord.assignmentScore
     }
   }
   
   var note: String? {
     get {
-      return studentPerformance.note
+      return studentLessonRecord.note
     }
   }
 }

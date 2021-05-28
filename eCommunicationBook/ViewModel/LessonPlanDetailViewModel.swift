@@ -11,6 +11,26 @@ import Foundation
 
 
 class LessonPlanDetailViewModel {
+
+  var course: Course = Course(
+    id: "",
+    name: "",
+    teachers: [],
+    students: [],
+    firstLessonDate: -1,
+    courseTime: [],
+    fee: -1,
+    lessonsAmount: -1,
+    lessons: nil)
+  
+  var previousLesson: Lesson = Lesson(
+    id: "",
+    number: -1,
+    teacher: "",
+    time: -1, timeInterval: -1,
+    todaysLesson: nil,
+    tests: nil,
+    assignments: nil)
   
   var lesson: Lesson = Lesson(
     id: "",

@@ -15,7 +15,6 @@ protocol SavedLessonDelegate {
 class LessonPlanDetailViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var labelLessonTitle: UILabel!
   @IBOutlet weak var textFieldDate: UITextField!
   @IBOutlet weak var textFieldTeacher: UITextField!
   
@@ -51,13 +50,26 @@ class LessonPlanDetailViewController: UIViewController {
     layOutView()
   }
   
+//  override func viewWillAppear(_ animated: Bool) {
+//      super.viewWillAppear(animated)
+//      navigationController?.navigationBar.isHidden = true
+//  }
+//
+//  override func viewWillDisappear(_ animated: Bool) {
+//      super.viewWillDisappear(animated)
+//      navigationController?.navigationBar.isHidden = false
+//  }
+  
   func layOutView() {
-    labelLessonTitle.text = "Lesson \(viewModel.lesson.number)"
     addSaveButton()
   }
   
   @IBAction func cancelButtonPressed(_ sender: Any) {
-    self.dismiss(animated: true, completion: nil)
+//    self.dismiss(animated: true, completion: nil)
+    guard let nav = navigationController, let _ = nav.topViewController else {
+        return
+    }
+    nav.popViewController(animated: true)
   }
   
   func addSaveButton() {
@@ -66,6 +78,26 @@ class LessonPlanDetailViewController: UIViewController {
   
   @objc func saveLessonPlanDetail(_ sender: UIButton) {
     viewModel.onSave()
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the new view controller using segue.destination.
+    // Pass the selected object to the new view controller.
+    if segue.identifier == "lessonPerformances",
+      let lPViewController = segue.destination as? LessonPerformancesViewController {
+      if let button = sender as? UIButton {
+        lPViewController.navigationItem.title = "Students Performances"
+        
+//        lessonPlanDetailViewController.delegate = self
+        
+        lPViewController.viewModel.course = self.viewModel.course
+        
+        lPViewController.viewModel.currentLesson = self.viewModel.lesson
+        
+        lPViewController.viewModel.previousLesson = self.viewModel.previousLesson
+        
+      }
+    }
   }
 }
 

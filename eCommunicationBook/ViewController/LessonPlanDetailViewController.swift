@@ -65,11 +65,28 @@ class LessonPlanDetailViewController: UIViewController {
   }
   
   @IBAction func cancelButtonPressed(_ sender: Any) {
-//    self.dismiss(animated: true, completion: nil)
-    guard let nav = navigationController, let _ = nav.topViewController else {
-        return
-    }
-    nav.popViewController(animated: true)
+
+    let controller = UIAlertController(title: "Stop Writing?",
+                                       message: "If you go back now you'll lose any changes you've made.",
+                                       preferredStyle: .alert)
+    let discardAction = UIAlertAction(title: "Discard",
+                                      style: .default) { _ in self.popViewController()}
+    controller.addAction(discardAction)
+    let saveAction = UIAlertAction(title: "Save Draft",
+                                   style: .default) {_ in self.viewModel.onSave(); self.popViewController()}
+    controller.addAction(saveAction)
+    let cancleAction = UIAlertAction(title: "Cancle",
+                                     style: .destructive,
+                                     handler: nil)
+    controller.addAction(cancleAction)
+    present(controller, animated: true, completion: nil)
+  }
+  
+  func popViewController() {
+        guard let nav = navigationController, nav.topViewController != nil else {
+            return
+        }
+        nav.popViewController(animated: true)
   }
   
   func addSaveButton() {
@@ -85,7 +102,7 @@ class LessonPlanDetailViewController: UIViewController {
     // Pass the selected object to the new view controller.
     if segue.identifier == "lessonPerformances",
       let lPViewController = segue.destination as? LessonPerformancesViewController {
-      if let button = sender as? UIButton {
+      if sender as? UIButton != nil {
         lPViewController.navigationItem.title = "Students Performances"
         
 //        lessonPlanDetailViewController.delegate = self
@@ -100,7 +117,6 @@ class LessonPlanDetailViewController: UIViewController {
     }
   }
 }
-
 
 extension LessonPlanDetailViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -159,16 +175,17 @@ extension LessonPlanDetailViewController: UITableViewDataSource {
     }
   }
 
-
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    if let _ = tableView.cellForRow(at: indexPath) as? AddRowTableViewCell {
+    if tableView.cellForRow(at: indexPath) as? AddRowTableViewCell != nil {
       return false
     } else {
       return true
     }
   }
   
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView,
+                 commit editingStyle: UITableViewCell.EditingStyle,
+                 forRowAt indexPath: IndexPath) {
       if editingStyle == .delete {
           viewModel.onDelColumn(indexPath: indexPath)
       }

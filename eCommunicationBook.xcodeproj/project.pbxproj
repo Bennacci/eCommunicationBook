@@ -142,7 +142,7 @@
 		74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9474E264C087D00AFB046 /* JGProgressHUDWrapper.swift */; };
 		74E94760264C087D00AFB046 /* MJRefreshWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9474F264C087D00AFB046 /* MJRefreshWrapper.swift */; };
 		74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94750264C087D00AFB046 /* KingFisherWrapper.swift */; };
-		74F2DE72265FD87A00F6F0AB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE71265FD87A00F6F0AB /* File.swift */; };
+		74F2DE72265FD87A00F6F0AB /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE71265FD87A00F6F0AB /* UIAlertAction+Extension.swift */; };
 		74F2DE75265FE73A00F6F0AB /* LPMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE73265FE73A00F6F0AB /* LPMainCollectionViewCell.swift */; };
 		74F2DE76265FE73A00F6F0AB /* LPMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F2DE74265FE73A00F6F0AB /* LPMainCollectionViewCell.xib */; };
 		74F2DE79265FE8DE00F6F0AB /* LPSlideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE77265FE8DE00F6F0AB /* LPSlideTableViewCell.swift */; };
@@ -294,7 +294,7 @@
 		74E9474E264C087D00AFB046 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		74E9474F264C087D00AFB046 /* MJRefreshWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJRefreshWrapper.swift; sourceTree = "<group>"; };
 		74E94750264C087D00AFB046 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
-		74F2DE71265FD87A00F6F0AB /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		74F2DE71265FD87A00F6F0AB /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
 		74F2DE73265FE73A00F6F0AB /* LPMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		74F2DE74265FE73A00F6F0AB /* LPMainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LPMainCollectionViewCell.xib; sourceTree = "<group>"; };
 		74F2DE77265FE8DE00F6F0AB /* LPSlideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPSlideTableViewCell.swift; sourceTree = "<group>"; };
@@ -593,7 +593,7 @@
 				74E9474A264C087D00AFB046 /* UICollectionView+Extension.swift */,
 				74E9474B264C087D00AFB046 /* UITableView+Extension.swift */,
 				74E94745264C087D00AFB046 /* Bundle+Extension.swift */,
-				74F2DE71265FD87A00F6F0AB /* File.swift */,
+				74F2DE71265FD87A00F6F0AB /* UIAlertAction+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -943,7 +943,7 @@
 				74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */,
 				74CADD9B26568BAF004DA6D0 /* NewAThingViewModel.swift in Sources */,
 				74E94735264BE09500AFB046 /* UserManager.swift in Sources */,
-				74F2DE72265FD87A00F6F0AB /* File.swift in Sources */,
+				74F2DE72265FD87A00F6F0AB /* UIAlertAction+Extension.swift in Sources */,
 				74E9475D264C087D00AFB046 /* UITableView+Extension.swift in Sources */,
 				74A7D11B26552B2F00B445EB /* StudentLessonRecord.swift in Sources */,
 				741D7C4A2653F67700A7FD0A /* LocalizedString+Extension.swift in Sources */,

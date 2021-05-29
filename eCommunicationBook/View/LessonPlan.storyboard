@@ -148,6 +148,9 @@
                                 <state key="normal" image="xmark" catalog="system">
                                     <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="aE3-Ia-m01" eventType="touchUpInside" id="uZN-Gf-ohA"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nhD-yx-y1A">
@@ -209,7 +212,7 @@
                                     <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="back:" destination="ERQ-Aq-Gp7" eventType="touchUpInside" id="vyR-vc-7ZM"/>
+                                    <action selector="backButtonPressed:" destination="ERQ-Aq-Gp7" eventType="touchUpInside" id="guD-M7-ZZQ"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -218,6 +221,9 @@
                                 <rect key="frame" x="360" y="7" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="ERQ-Aq-Gp7" eventType="touchUpInside" id="c0L-Mu-c6q"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>

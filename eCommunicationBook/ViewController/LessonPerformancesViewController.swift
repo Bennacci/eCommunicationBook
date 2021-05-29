@@ -9,12 +9,11 @@
 import Foundation
 import UIKit
 
-class LessonPerformancesViewController: UIViewController{
+class LessonPerformancesViewController: UIViewController {
+  
   @IBOutlet weak var collectionView: UICollectionView!
   
-  
   var viewModel = LessonPerformancesViewModel()
-  
   
   var hotCellHeight: CGFloat = UIScreen.height / 1.1
 
@@ -23,8 +22,6 @@ class LessonPerformancesViewController: UIViewController{
     left: 0.0,
     bottom: 0.0,
     right: 0.0)
-  
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,15 +32,28 @@ class LessonPerformancesViewController: UIViewController{
     
     viewModel.studentLessonRecordsViewModel.bind { [weak self] _ in
       self?.collectionView.reloadData()
-      
     }
+    
+    viewModel.onSaved = { [weak self] () in
+      self?.dismiss(animated: true, completion: nil)
+    }
+    
      setCollectionViewStack()
   }
-  @IBAction func back(_ sender: Any) {
-    guard let nav = navigationController, let _ = nav.topViewController else {
-         return
-     }
-     nav.popViewController(animated: true)
+  
+  @IBAction func saveButtonPressed(_ sender: Any) {
+    viewModel.onSave()
+  }
+  
+  @IBAction func backButtonPressed(_ sender: Any) {
+    popViewController()
+  }
+
+  func popViewController() {
+        guard let nav = navigationController, nav.topViewController != nil else {
+            return
+        }
+        nav.popViewController(animated: true)
   }
   
     @objc func sliderValueChanged(sender: UISlider) {
@@ -63,17 +73,10 @@ class LessonPerformancesViewController: UIViewController{
             sender.isSelected = false
             viewModel.onAssignmentsStatusToggle(index: sender.tag)
         }
-        
-        
       }
   
   func setCollectionViewStack() {
     let verticalSnapCollectionFlowLayout = StackCollectionViewLayout()
-//    verticalSnapCollectionFlowLayout.collectionViewContentSize = CGSize(width: UIScreen.width - 30, height: UIScreen.height - 50)
-    // Use custom properties that are available for each layout
-//    verticalSnapCollectionFlowLayout.minLineSpacing = 30
-//    verticalSnapCollectionFlowLayout.spacingMultiplier = 8
-
     collectionView.collectionViewLayout = verticalSnapCollectionFlowLayout
     collectionView.setCollectionViewLayout(verticalSnapCollectionFlowLayout, animated: true)
 
@@ -89,79 +92,41 @@ extension LessonPerformancesViewController: UICollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LPMainCollectionViewCell.identifier,
                                                         for: indexPath) as? LPMainCollectionViewCell
       else { fatalError("Unexpected Table View Cell") }
-    cell.setUp(viewModel: self.viewModel, indexPath: indexPath)
+    print(indexPath.item)
+    cell.setUp(viewModel: self.viewModel.studentLessonRecordsViewModel.value[indexPath.item], indexPath: indexPath)
+    cell.tableView.tag = indexPath.item
+    cell.tableView.reloadData()
     cell.tableView.dataSource = self
     cell.tableView.delegate = self
-    
     return cell
   }
-  
-  
 }
 
 extension LessonPerformancesViewController: UICollectionViewDelegate {
+  
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-////    guard let cell = collectionView.cellForItem(at: IndexPath(item: viewModel.performancesItem.count - 1, section: 0)) as? LPMainCollectionViewCell else { return }
-//      for cell in collectionView.visibleCells {
-//          let indexPath = collectionView.indexPath(for: cell)
-//          print(indexPath)
-//      }
-    let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
-    let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-    let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint)
-    guard let desItem = visibleIndexPath?.item else { return }
-    viewModel.onMainCollectionViewScrolled(destination: desItem)
+    if let _ = scrollView as? UICollectionView {
+
+    var cellsIndex: [Int] = []
+    for cell in collectionView.visibleCells {
+      if let indexPath = collectionView.indexPath(for: cell) {
+      cellsIndex.append(indexPath.item)
+        print(indexPath)
+    }
+    }
+    guard let cellIndexMin = cellsIndex.min() else { return }
+    print(cellIndexMin)
+    viewModel.onMainCollectionViewScrolled(destination: cellIndexMin)
+    } else {
+      viewModel.onMainCollectionViewInnerScrolled()
+    }
   }
-
 }
-
-//extension LessonPerformancesViewController: UICollectionViewDelegateFlowLayout {
-//  ///  Collection View distance to Super View
-//
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      insetForSectionAt section: Int) -> UIEdgeInsets {
-//    return collectionViewSectionInsets
-//  }
-//
-//  /// CollectionViewCell  height / width
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    var size: CGSize
-//    size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
-//                                            viewWidth: UIScreen.width,
-//                                            sectionInsets: collectionViewSectionInsets,
-//                                            itemsPerRow: 1,
-//                                            itemsPerColumn: 1)
-//    return size
-//  }
-//
-//  /// 滑動方向為「垂直」的話即「上下」的間距(預設為重直)
-//
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//    return 0
-//
-//  }
-//
-//}
 
 extension LessonPerformancesViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return viewModel.sectionTitles[section]
-    //    switch section {
-//    case 0:
-//      return "Lesson Performances"
-//    case 1:
-//      return "Homework status"
-//    case 2:
-//      return "Tests status"
-//    default:
-//      return "Communication Corner"
-//    }
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -182,15 +147,17 @@ extension LessonPerformancesViewController: UITableViewDataSource {
     }
   }
   
-  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    let section = tableView.tag
+    
     switch viewModel.sectionTitles[indexPath.section] {
       
     case "Lesson Performances":
       guard let cell = tableView.dequeueReusableCell(withIdentifier: LPSlideTableViewCell.identifier,
                                                      for: indexPath) as? LPSlideTableViewCell
         else { fatalError("Unexpected Table View Cell") }
-      cell.setUp(viewModel: self.viewModel, indexPath: indexPath)
+      cell.setUp(viewModel: self.viewModel.studentLessonRecordsViewModel.value[section], indexPath: indexPath)
       cell.slider.addTarget(self, action: #selector(sliderValueChanged(sender:)), for: .touchUpInside)
       cell.slider.tag = indexPath.row
       return cell
@@ -198,7 +165,7 @@ extension LessonPerformancesViewController: UITableViewDataSource {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: LPHomeWorkTableViewCell.identifier,
                                                      for: indexPath) as? LPHomeWorkTableViewCell
         else { fatalError("Unexpected Table View Cell") }
-      cell.setUp(viewModel: self.viewModel, indexPath: indexPath)
+      cell.setUp(viewModel: self.viewModel.studentLessonRecordsViewModel.value[section], indexPath: indexPath)
       
       cell.checkButton.addTarget(self, action: #selector(buttonStatusChanged(sender:)), for: .touchUpInside)
       cell.checkButton.tag = indexPath.row
@@ -210,7 +177,7 @@ extension LessonPerformancesViewController: UITableViewDataSource {
         else { fatalError("Unexpected Table View Cell") }
       cell.textFieldScore.tag = indexPath.row
       cell.textFieldScore.delegate = self
-      cell.setUp(viewModel: self.viewModel, indexPath: indexPath)
+      cell.setUp(viewModel: self.viewModel.studentLessonRecordsViewModel.value[section], indexPath: indexPath)
 
       return cell
     case "Comunication Corner":
@@ -218,6 +185,7 @@ extension LessonPerformancesViewController: UITableViewDataSource {
                                                      for: indexPath) as? LPCommunicationCornerTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       cell.textViewCommunicationCorner.delegate = self
+      cell.setUp(viewModel: self.viewModel.studentLessonRecordsViewModel.value[section])
       return cell
       
     default:
@@ -228,19 +196,12 @@ extension LessonPerformancesViewController: UITableViewDataSource {
       return cell
       
     }
-    
-
-
   }
-  
-  
-  
 }
 
 extension LessonPerformancesViewController: UITableViewDelegate {
   
 }
-
 
 extension LessonPerformancesViewController: UITextViewDelegate {
   

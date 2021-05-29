@@ -17,6 +17,8 @@
 		7402581526529E4900BA6BDA /* BannerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402581426529E4900BA6BDA /* BannerData.swift */; };
 		74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74025817265359D400BA6BDA /* NewsTableViewCell.swift */; };
 		7402581A265359D400BA6BDA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74025818265359D400BA6BDA /* NewsTableViewCell.xib */; };
+		7412B7B62662253500C91CA2 /* ScanStudentQR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7412B7B52662253500C91CA2 /* ScanStudentQR.storyboard */; };
+		7412B7B82662260200C91CA2 /* ScanStudentQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7412B7B72662260200C91CA2 /* ScanStudentQRCodeViewController.swift */; };
 		741D7C482653D9A200A7FD0A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741D7C472653D9A200A7FD0A /* Service.swift */; };
 		741D7C4A2653F67700A7FD0A /* LocalizedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741D7C492653F67700A7FD0A /* LocalizedString+Extension.swift */; };
 		741D7C4D2653FA0C00A7FD0A /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741D7C4C2653FA0C00A7FD0A /* ServiceManager.swift */; };
@@ -167,6 +169,8 @@
 		7402581426529E4900BA6BDA /* BannerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerData.swift; sourceTree = "<group>"; };
 		74025817265359D400BA6BDA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		74025818265359D400BA6BDA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		7412B7B52662253500C91CA2 /* ScanStudentQR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanStudentQR.storyboard; sourceTree = "<group>"; };
+		7412B7B72662260200C91CA2 /* ScanStudentQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStudentQRCodeViewController.swift; sourceTree = "<group>"; };
 		741D7C472653D9A200A7FD0A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		741D7C492653F67700A7FD0A /* LocalizedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedString+Extension.swift"; sourceTree = "<group>"; };
 		741D7C4C2653FA0C00A7FD0A /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
@@ -414,6 +418,7 @@
 				748CC91F265DEB6000919F1E /* LessonPlanViewController.swift */,
 				7435E869265E35A000941729 /* LessonPlanDetailViewController.swift */,
 				74F2DE84265FEBE900F6F0AB /* LessonPerformancesViewController.swift */,
+				7412B7B72662260200C91CA2 /* ScanStudentQRCodeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -613,10 +618,8 @@
 			children = (
 				7435E853265E2D5B00941729 /* Layout */,
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
-				748CC91D265DEADC00919F1E /* LessonPlan.storyboard */,
-				74F2DE86265FECC400F6F0AB /* Course */,
-				74F2DE87265FECE700F6F0AB /* Lesson */,
-				74F2DE7F265FEA4700F6F0AB /* LessonPerformances */,
+				7412B7B52662253500C91CA2 /* ScanStudentQR.storyboard */,
+				74F2DE922661F0D400F6F0AB /* LessonPlan */,
 				748CC91C265D2ACE00919F1E /* Calendar */,
 				7472B2A02659E24700511468 /* TimeSelection */,
 				74A5A7732654F0270039BC22 /* SearchUser */,
@@ -671,6 +674,17 @@
 				7435E873265E3C7900941729 /* SaveButtonView.swift */,
 			);
 			path = Lesson;
+			sourceTree = "<group>";
+		};
+		74F2DE922661F0D400F6F0AB /* LessonPlan */ = {
+			isa = PBXGroup;
+			children = (
+				748CC91D265DEADC00919F1E /* LessonPlan.storyboard */,
+				74F2DE86265FECC400F6F0AB /* Course */,
+				74F2DE87265FECE700F6F0AB /* Lesson */,
+				74F2DE7F265FEA4700F6F0AB /* LessonPerformances */,
+			);
+			path = LessonPlan;
 			sourceTree = "<group>";
 		};
 		9EB83724CFD3F3625223435C /* Pods */ = {
@@ -781,6 +795,7 @@
 				74CADD95265614EF004DA6D0 /* TwoLablesTableViewCell.xib in Resources */,
 				74715CD3265B761400570A23 /* LableWithVerticalLineTableViewCell.xib in Resources */,
 				7402581A265359D400BA6BDA /* NewsTableViewCell.xib in Resources */,
+				7412B7B62662253500C91CA2 /* ScanStudentQR.storyboard in Resources */,
 				74CADD9926564950004DA6D0 /* PickerViewTableViewCell.xib in Resources */,
 				7499630E265DEEC700F081EC /* LessonCollectionViewCell.xib in Resources */,
 				74CADD892656105E004DA6D0 /* TextFieldTableViewCell.xib in Resources */,
@@ -901,6 +916,7 @@
 				74C2376A264BB5FE001BF47A /* ViewController.swift in Sources */,
 				74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */,
 				74F2DE7D265FE9FD00F6F0AB /* LPHomeWorkTableViewCell.swift in Sources */,
+				7412B7B82662260200C91CA2 /* ScanStudentQRCodeViewController.swift in Sources */,
 				74E9473D264BE09500AFB046 /* PaddingableUILabel.swift in Sources */,
 				748CC920265DEB6000919F1E /* LessonPlanViewController.swift in Sources */,
 				746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */,

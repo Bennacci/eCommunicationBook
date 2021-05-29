@@ -126,7 +126,6 @@ class XXXManager {
     }
   }
   
-  
   func sendMessage(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
     
     let document = db.collection("ChatRooms")
@@ -199,9 +198,7 @@ class XXXManager {
         .collection("Lessons")
         .document()
       
-      
       lessons![index].id = document.documentID
-      
       
       document.setData(lessons![index].toDict) { error in
         
@@ -216,8 +213,6 @@ class XXXManager {
       }
     }
   }
-  
-  
   
   func addEvent(event: inout Event, completion: @escaping (Result<String, Error>) -> Void) {
     
@@ -318,6 +313,24 @@ class XXXManager {
     }
   }
   
+  func saveStudentLessonRecord(studentLessonRecord: inout StudentLessonRecord,
+                               completion: @escaping (Result<String, Error>) -> Void) {
+    
+    let document = db.collection("StudentLessonRecords")
+      .document()
+    
+    document.setData(studentLessonRecord.toDict) { error in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
+  
   func fetchCourses(completion: @escaping (Result<[Course], Error>) -> Void) {
     
     db.collection("Courses")
@@ -405,7 +418,6 @@ class XXXManager {
       }
     }
     
-    
     func fetchTeachers(completion: @escaping (Result<[User], Error>) -> Void) {
       
       db.collection("User")
@@ -465,7 +477,6 @@ class XXXManager {
           }
       }
     }
-    
     
     func fetchEvents(completion: @escaping (Result<[Event], Error>) -> Void) {
       

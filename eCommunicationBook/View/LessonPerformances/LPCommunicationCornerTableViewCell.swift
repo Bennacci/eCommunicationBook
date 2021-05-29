@@ -11,18 +11,32 @@ import UIKit
 class LPCommunicationCornerTableViewCell: UITableViewCell {
   
   @IBOutlet weak var textViewCommunicationCorner: UITextView!
-  
+  var viewModel: StudentLessonRecordViewModel?
     override func awakeFromNib() {
         super.awakeFromNib()
-      textViewCommunicationCorner.text = "type message..."
-      textViewCommunicationCorner.textColor = .lightGray
+
 
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
+    func setUp(viewModel: StudentLessonRecordViewModel) {
+      self.viewModel = viewModel
+      layOutCell()
+    }
+
+
+    func layOutCell() {
+      guard let note = viewModel?.note else { return }
+      if note != ""{
+        textViewCommunicationCorner.text = note
+        textViewCommunicationCorner.textColor = .black
+      } else {
+        textViewCommunicationCorner.text = "type message..."
+        textViewCommunicationCorner.textColor = .lightGray
+      }
+    }
 }

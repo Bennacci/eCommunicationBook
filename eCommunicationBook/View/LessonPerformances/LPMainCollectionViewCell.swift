@@ -10,7 +10,7 @@ import UIKit
 
 class LPMainCollectionViewCell: UICollectionViewCell {
 
-  var viewModel: LessonPerformancesViewModel?
+  var viewModel: StudentLessonRecordViewModel?
   
   @IBOutlet weak var labelStudentName: UILabel!
   @IBOutlet weak var tableView: UITableView!
@@ -22,15 +22,15 @@ class LPMainCollectionViewCell: UICollectionViewCell {
     tableView.registerCellWithNib(identifier: LPCommunicationCornerTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: LPTestScoreTableViewCell.identifier, bundle: nil)
   }
-  func setUp(viewModel: LessonPerformancesViewModel, indexPath: IndexPath) {
+  func setUp(viewModel: StudentLessonRecordViewModel, indexPath: IndexPath) {
     self.viewModel = viewModel
     layOutCell(indexPath: indexPath)
   }
   
   
   func layOutCell(indexPath: IndexPath) {
-
-    labelStudentName.text = viewModel?.studentLessonRecordsViewModel.value[indexPath.row].studentID
+    print(viewModel?.studentID)
+    labelStudentName.text = viewModel?.studentID
     
   }
 }

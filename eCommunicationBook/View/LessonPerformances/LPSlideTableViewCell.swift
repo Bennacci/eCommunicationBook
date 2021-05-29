@@ -10,7 +10,7 @@ import UIKit
 
 class LPSlideTableViewCell: UITableViewCell {
 
-  var viewModel: LessonPerformancesViewModel?
+  var viewModel: StudentLessonRecordViewModel?
   
   @IBOutlet weak var slider: UISlider!
   
@@ -29,7 +29,7 @@ class LPSlideTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-  func setUp(viewModel: LessonPerformancesViewModel, indexPath: IndexPath) {
+  func setUp(viewModel: StudentLessonRecordViewModel, indexPath: IndexPath) {
     self.viewModel = viewModel
     layOutCell(indexPath: indexPath)
   }
@@ -37,7 +37,9 @@ class LPSlideTableViewCell: UITableViewCell {
   
   @IBOutlet weak var view: UIView!
   func layOutCell(indexPath: IndexPath) {
-
+    guard let
+      performances = viewModel?.performances else { return }
+    slider.value = Float(performances[indexPath.row])
     labelSlideTitle.text = viewModel?.performancesItem[indexPath.row]
     
   }

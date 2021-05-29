@@ -16,7 +16,7 @@ class StudentLessonRecordViewModel {
   
     self.studentLessonRecord = studentLessonRecord
   }
-
+  var performancesItem = ["Concentration", "Attidtude", "Participant"]
   var id: String {
     get {
       return studentLessonRecord.id

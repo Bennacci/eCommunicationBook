@@ -10,14 +10,10 @@ import UIKit
 
 class LPHomeWorkTableViewCell: UITableViewCell {
 
-  var viewModel: LessonPerformancesViewModel?
+  var viewModel: StudentLessonRecordViewModel?
   
   @IBOutlet weak var labelHomeworkTitle: UILabel!
   @IBOutlet weak var checkButton: UIButton!
-  
-  @IBOutlet weak var checkedSquare: UIImageView!
-  
-  @IBOutlet weak var noCheckSquare: UIImageView!
   
   override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,14 +26,20 @@ class LPHomeWorkTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
   
-    func setUp(viewModel: LessonPerformancesViewModel, indexPath: IndexPath) {
+    func setUp(viewModel: StudentLessonRecordViewModel, indexPath: IndexPath) {
       self.viewModel = viewModel
       layOutCell(indexPath: indexPath)
     }
 
 
     func layOutCell(indexPath: IndexPath) {
-      guard let assignments = viewModel?.previousLesson.assignments else { return }
+      guard let assignmentCompleted = viewModel?.assignmentCompleted else { return }
+      if assignmentCompleted[indexPath.row] {
+        checkButton.isSelected = true
+      } else {
+        checkButton.isSelected = false
+      }
+      guard let assignments = viewModel?.previousAssignments else { return }
       labelHomeworkTitle.text =
       "\(indexPath.row + 1). \(assignments[indexPath.row])"
 

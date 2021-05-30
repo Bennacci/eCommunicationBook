@@ -13,6 +13,8 @@ import CoreLocation
 
 class ScanStudentQRCodeViewController: UIViewController {
   
+  var viewModel = ScanStudentQRCodeViewModel()
+  
   @IBOutlet weak var middleConstraintTimeIn: NSLayoutConstraint!
   @IBOutlet weak var middleConstraintTimeOut: NSLayoutConstraint!
   @IBOutlet weak var heightConstraintTimeIn: NSLayoutConstraint!
@@ -25,17 +27,41 @@ class ScanStudentQRCodeViewController: UIViewController {
   let captureSession = AVCaptureSession()
   var videoPreviewLayer: AVCaptureVideoPreviewLayer?
   var qrCodeFrameView: UIView?
-  
   let locationManager = CLLocationManager()
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    viewModel.writeTimeIn(with: &viewModel.studentExistance)
     //    self.tabBarController?.tabBar.layer.zPosition = -1
+    viewModel.wroteInSuccess = {
+      LKProgressHUD.showSuccess(text: "Time In Success")
+
+    }
+    viewModel.wroteOutSuccess = {
+      
+      LKProgressHUD.showSuccess(text: "Time Out Success")
+    }
+
     startDetectingQRCode()
     startDetectingCurrentLocation()
     addBlurMask()
+//    prepareWindow()
   }
+  
+  
+//   func prepareWindow() {
+//    let appDelegate  = UIApplication.shared.delegate as? AppDelegate
+//    let viewController = appDelegate?.window!.rootViewController as? ScanStudentQRCodeViewController
+//
+//
+////          let appdelegate = UIApplication.shared.delegate as? AppDelegate
+//
+////          let root = appdelegate?.window?.rootViewController as? STTabBarViewController
+//
+////          root?.selectedIndex = 0
+//
+//  }
   
   //  override func viewDidDisappear(_ animated: Bool) {
   //    self.tabBarController?.tabBar.layer.zPosition = 0
@@ -44,6 +70,7 @@ class ScanStudentQRCodeViewController: UIViewController {
   
   @IBAction func timeInButtonPress(_ sender: Any) {
     
+    viewModel.timeIn = true
     UIView.animate(withDuration: 0.5, animations: { () -> Void in
       self.middleConstraintTimeIn.isActive = true
       self.middleConstraintTimeOut.isActive = false
@@ -57,6 +84,7 @@ class ScanStudentQRCodeViewController: UIViewController {
   
   @IBAction func timeOutButtonPress(_ sender: Any) {
     
+    viewModel.timeIn = false
     UIView.animate(withDuration: 0.5, animations: { () -> Void in
       self.middleConstraintTimeIn.isActive = false
       self.middleConstraintTimeOut.isActive = true
@@ -105,40 +133,17 @@ class ScanStudentQRCodeViewController: UIViewController {
              width: UIScreen.width - distanceToEdge - 3,
              height: UIScreen.width - distanceToEdge - 3),
                                         cornerRadius: 15.0)
-
-    
-    
-//    let mask = CAShapeLayer()
-//    var path = UIBezierPath()
-//    mask.fillColor = UIColor.black.cgColor
-//    path.move(to: CGPoint(x: 100, y: 100))
-//    path.addLine(to: CGPoint(x: 300, y: 100))
-//    path.addLine(to: CGPoint(x: 100, y: 600))
-//    path.addLine(to: CGPoint(x: 300, y: 600))
-//    path.close()
-//    mask.path = path.cgPath
-//    squareInLinePath.layer.mask = mask
-    
-    
-
     
     let shapeLayer = CAShapeLayer()
     
     shapeLayer.path = squareInLinePath.cgPath
-//     Change the fill color
     shapeLayer.fillColor = UIColor.clear.cgColor
-//     You can change the stroke color
     shapeLayer.strokeColor = UIColor.gray.cgColor
-//     You can change the line width
     shapeLayer.lineWidth = 4.0
     
-//    view.layer.addSublayer(shapeLayer)
-    
-
     
     let mask = CAShapeLayer()
     let path = UIBezierPath()
-//    mask.fillColor = UIColor.black.cgColor
     let height = UIScreen.height
     let width = UIScreen.width
     let y1Point = (UIScreen.height + UIScreen.width - 350)/2
@@ -164,8 +169,6 @@ class ScanStudentQRCodeViewController: UIViewController {
     path.close()
     mask.path = path.cgPath
     shapeLayer.mask = mask
-    
-    
     
     view.layer.addSublayer(shapeLayer)
     
@@ -259,6 +262,8 @@ extension ScanStudentQRCodeViewController: AVCaptureMetadataOutputObjectsDelegat
         
         if metadataObj.stringValue != nil {
           labelStudentName.text = metadataObj.stringValue
+          guard let value: String = metadataObj.stringValue else {return}
+          viewModel.onScanedAQRCode(info: value)
         }
       }
     } else {return}
@@ -274,7 +279,7 @@ extension ScanStudentQRCodeViewController: CLLocationManagerDelegate {
       guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
       
       labelLocaiton.text = "locations = \(locValue.latitude) \(locValue.longitude)"
-      
+      viewModel.onCurrentLocationChanged(latitude: locValue.latitude, longitude: locValue.longitude)
     }
   }
   

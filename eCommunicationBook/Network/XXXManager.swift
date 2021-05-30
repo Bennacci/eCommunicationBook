@@ -330,6 +330,54 @@ class XXXManager {
       }
     }
   }
+    
+  func writeTimeIn(studentExistance: inout StudentExistance,
+                               completion: @escaping (Result<String, Error>) -> Void) {
+    
+    let document = db
+      .collection("StudentExistances")
+      .document()
+      .collection("TimeIns")
+      .document()
+    studentExistance.id = document.documentID
+    studentExistance.time = Double(Date().millisecondsSince1970)
+    studentExistance.scanTeacherName = UserManager.shared.userID!
+    document.setData(studentExistance.toDict) { error in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
+  
+  func writeTimeOut(studentExistance: inout StudentExistance,
+                                completion: @escaping (Result<String, Error>) -> Void) {
+
+     let document = db
+       .collection("StudentExistances")
+       .document()
+       .collection("TimeOuts")
+       .document()
+      studentExistance.id = document.documentID
+      studentExistance.time = Double(Date().millisecondsSince1970)
+      studentExistance.scanTeacherName = UserManager.shared.userID!
+
+     document.setData(studentExistance.toDict) { error in
+       
+       if let error = error {
+         
+         completion(.failure(error))
+       } else {
+         
+         completion(.success("Success"))
+       }
+     }
+   }
+   
   
   func fetchCourses(completion: @escaping (Result<[Course], Error>) -> Void) {
     

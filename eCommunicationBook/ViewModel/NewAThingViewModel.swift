@@ -146,7 +146,8 @@ class NewAThingViewModel: SearchUserDelegate {
   }
   
   func onFirstLessonDateChanged(day: Date) {
-    self.course.firstLessonDate = Double(day.millisecondsSince1970)
+    guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: day)) else { return }
+    self.course.firstLessonDate = Double(date.millisecondsSince1970)
   }
   
   func onFeeChanged(text fee: String) {
@@ -180,41 +181,62 @@ class NewAThingViewModel: SearchUserDelegate {
       case .success:
         
         print("onTapAdd, success")
-        self.onAdded?()
       case .failure(let error):
         
         print("publishArticle.failure: \(error)")
       }
-
     }
+    
+    self.addLesson(with: &course)
+  }
+  
+  func addLesson (with course: inout Course) {
     
     var lessons: [Lesson] = []
     
     var lessonTime = course.firstLessonDate
-    var day: DayOfWeek
-    let days = course.courseTime.map({$0.day})
+    
+    var lessonTimes: [RoutineHour] = []
+    for index in 0 ..< course.lessonsAmount {
+      lessonTimes.append(course.courseTime[index % course.courseTime.count])
+    }
     
     for index in  0 ..< course.lessonsAmount {
       
-      day = CalendarHelper.shared.day(from: Date(timeIntervalSince1970: lessonTime))
-      let courseTime = course.courseTime.filter({$0.day == day.rawValue}).first ?? course.courseTime[0]
+      var lesson = Lesson(id: "",
+                          number: -1,
+                          teacher: "",
+                          time: 0,
+                          timeInterval: -1,
+                          todaysLesson: nil,
+                          tests: nil,
+                          assignments: nil)
       
-      lessonTime += Double(courseTime.startingTime / 100 * 60 * 60)
-      lessonTime += Double(courseTime.startingTime % 100 * 60)
+      lesson.number = index + 1
+      lesson.teacher = course.teachers[index % course.teachers.count]
       
-      let lesson = Lesson(id: "", number: index, teacher: "", time: lessonTime, timeInterval: course.courseTime[0].timeInterval, todaysLesson: nil, tests: nil, assignments: nil)
+      if index != 0 {
+        let today = lessonTimes[index].day
+        let previousDay = lessonTimes[index - 1].day
+        if today - previousDay > 0 {
+          lesson.time = lessonTime + Double(today - previousDay) * CalendarHelper.shared.secondsPerDay * 1000
+        } else {
+          lesson.time = lessonTime + Double(today - previousDay + 7) * CalendarHelper.shared.secondsPerDay * 1000
+        }
+        lessonTime = lesson.time
+      } else {
+        lesson.time = lessonTime
+      }
       
-      let nextLessonTime = CalendarHelper.shared.nextDate(baseDate: Date(milliseconds: course.firstLessonDate), daySet: IndexSet(days))
+      lesson.time += Double(lessonTimes[index].startingTime / 100 * 60 * 60 * 1000)
+      lesson.time += Double(lessonTimes[index].startingTime % 100 * 60 * 1000)
       
+      lesson.timeInterval = lessonTimes[index].timeInterval
+      print(lesson)
       lessons.append(lesson)
-      
-      lessonTime = nextLessonTime
       
     }
     course.lessons = lessons
-    
-        
-
     
     XXXManager.shared.addLesson(course: &course) { result in
       
@@ -232,7 +254,7 @@ class NewAThingViewModel: SearchUserDelegate {
     }
   }
   
-   // MARK: - new a Event and sign
+  // MARK: - new a Event and sign
   var event: Event = Event(id: "",
                            eventName: "",
                            description: "",
@@ -292,7 +314,7 @@ class NewAThingViewModel: SearchUserDelegate {
       }
     }
   }
-
+  
   // MARK: - new a Student
   var student: Student = Student(id: "",
                                  parents: [],

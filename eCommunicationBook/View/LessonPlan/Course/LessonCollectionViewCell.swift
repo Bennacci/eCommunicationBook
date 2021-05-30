@@ -32,17 +32,17 @@ class LessonCollectionViewCell: UICollectionViewCell {
   
   func layOutCell() {
     if let time = viewModel?.time {
-      labelCourseTime.text = Date(timeIntervalSince1970: time).convertToString(dateformat: .dateWithTime)
+      labelCourseTime.text = Date(milliseconds: time).convertToString(dateformat: .dateYMD)
     }
     labelTecherName.text = viewModel?.teacher
     
     var imageTitle = ""
     
     print(viewModel?.number)
-    if viewModel!.number < 9 {
-      imageTitle = "0\(viewModel!.number + 1).square.fill"
+    if viewModel!.number < 10 {
+      imageTitle = "0\(viewModel!.number).square.fill"
     } else {
-      imageTitle = "\(viewModel!.number + 1).square.fill"
+      imageTitle = "\(viewModel!.number).square.fill"
     }
     let imageCofig = UIImage.SymbolConfiguration(weight: .bold)
     let image = UIImage(systemName: imageTitle, withConfiguration: imageCofig)

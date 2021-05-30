@@ -38,7 +38,6 @@ class ScanStudentQRCodeViewController: UIViewController {
 
     }
     viewModel.wroteOutSuccess = {
-      
       LKProgressHUD.showSuccess(text: "Time Out Success")
     }
 

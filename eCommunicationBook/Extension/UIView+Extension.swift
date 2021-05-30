@@ -12,7 +12,7 @@ import UIKit
 extension UIView {
 
     // Border Color
-    @IBInspectable var btBorderColor: UIColor? {
+    @IBInspectable var bTBorderColor: UIColor? {
         get {
 
             guard let borderColor = layer.borderColor else {

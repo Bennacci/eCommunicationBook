@@ -101,7 +101,7 @@
 		74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BDBEE3264FDC480040C0D6 /* ConversationViewController.swift */; };
 		74C23766264BB5FE001BF47A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23765264BB5FE001BF47A /* AppDelegate.swift */; };
 		74C23768264BB5FE001BF47A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23767264BB5FE001BF47A /* SceneDelegate.swift */; };
-		74C2376A264BB5FE001BF47A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23769264BB5FE001BF47A /* ViewController.swift */; };
+		74C2376A264BB5FE001BF47A /* BTBaseViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C23769264BB5FE001BF47A /* BTBaseViewController+Extension.swift */; };
 		74C2376D264BB5FE001BF47A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74C2376B264BB5FE001BF47A /* Main.storyboard */; };
 		74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74C2376E264BB5FF001BF47A /* Assets.xcassets */; };
 		74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74C23770264BB5FF001BF47A /* LaunchScreen.storyboard */; };
@@ -123,6 +123,8 @@
 		74D4BB712659E55400999556 /* TimeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */; };
 		74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */; };
 		74D869D7265745F8004D33ED /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D6265745F8004D33ED /* CalendarHelper.swift */; };
+		74E541F4266322CA004276F9 /* ScanStudentQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E541F3266322CA004276F9 /* ScanStudentQRCodeViewModel.swift */; };
+		74E541F62663243D004276F9 /* StudentExistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E541F52663243D004276F9 /* StudentExistance.swift */; };
 		74E94735264BE09500AFB046 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94729264BE09500AFB046 /* UserManager.swift */; };
 		74E94736264BE09500AFB046 /* XXXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472A264BE09500AFB046 /* XXXManager.swift */; };
 		74E94737264BE09500AFB046 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472C264BE09500AFB046 /* Author.swift */; };
@@ -254,7 +256,7 @@
 		74C23762264BB5FE001BF47A /* eCommunicationBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eCommunicationBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C23765264BB5FE001BF47A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74C23767264BB5FE001BF47A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		74C23769264BB5FE001BF47A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		74C23769264BB5FE001BF47A /* BTBaseViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BTBaseViewController+Extension.swift"; sourceTree = "<group>"; };
 		74C2376C264BB5FE001BF47A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		74C2376E264BB5FF001BF47A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74C23771264BB5FF001BF47A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -277,6 +279,8 @@
 		74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewModel.swift; sourceTree = "<group>"; };
 		74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISceneDelegate+Extension.swift"; sourceTree = "<group>"; };
 		74D869D6265745F8004D33ED /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		74E541F3266322CA004276F9 /* ScanStudentQRCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStudentQRCodeViewModel.swift; sourceTree = "<group>"; };
+		74E541F52663243D004276F9 /* StudentExistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentExistance.swift; sourceTree = "<group>"; };
 		74E94729264BE09500AFB046 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		74E9472A264BE09500AFB046 /* XXXManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XXXManager.swift; sourceTree = "<group>"; };
 		74E9472C264BE09500AFB046 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
@@ -399,6 +403,7 @@
 				7435E87B265E4A7500941729 /* LessonPlanViewModel.swift */,
 				7435E875265E41DD00941729 /* LessonPlanDetailViewModel.swift */,
 				74F2DE8826607B6B00F6F0AB /* LessonPerformancesViewModel.swift */,
+				74E541F3266322CA004276F9 /* ScanStudentQRCodeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -506,7 +511,6 @@
 			children = (
 				74C23765264BB5FE001BF47A /* AppDelegate.swift */,
 				74C23767264BB5FE001BF47A /* SceneDelegate.swift */,
-				74C23769264BB5FE001BF47A /* ViewController.swift */,
 				74E94728264BE09500AFB046 /* Network */,
 				74E94732264BE09500AFB046 /* Util */,
 				74E9474D264C087D00AFB046 /* Third Party Wrapper */,
@@ -568,6 +572,7 @@
 				74A7D11C2655366300B445EB /* Event.swift */,
 				74A7D11A26552B2F00B445EB /* StudentLessonRecord.swift */,
 				7402581426529E4900BA6BDA /* BannerData.swift */,
+				74E541F52663243D004276F9 /* StudentExistance.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -584,6 +589,7 @@
 		74E9473E264C087D00AFB046 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				74C23769264BB5FE001BF47A /* BTBaseViewController+Extension.swift */,
 				74E94749264C087D00AFB046 /* UIScreen+Extension.swift */,
 				74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */,
 				74E94731264BE09500AFB046 /* Date+Extension.swift */,
@@ -913,10 +919,11 @@
 				7402580A265267FA00BA6BDA /* ServicesTableViewCell.swift in Sources */,
 				746BDE7026523D0B001B1E71 /* Course.swift in Sources */,
 				74E94756264C087D00AFB046 /* UIImage+Extension.swift in Sources */,
-				74C2376A264BB5FE001BF47A /* ViewController.swift in Sources */,
+				74C2376A264BB5FE001BF47A /* BTBaseViewController+Extension.swift in Sources */,
 				74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */,
 				74F2DE7D265FE9FD00F6F0AB /* LPHomeWorkTableViewCell.swift in Sources */,
 				7412B7B82662260200C91CA2 /* ScanStudentQRCodeViewController.swift in Sources */,
+				74E541F62663243D004276F9 /* StudentExistance.swift in Sources */,
 				74E9473D264BE09500AFB046 /* PaddingableUILabel.swift in Sources */,
 				748CC920265DEB6000919F1E /* LessonPlanViewController.swift in Sources */,
 				746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */,
@@ -939,6 +946,7 @@
 				74F2DE8C26609F1C00F6F0AB /* LPTestScoreTableViewCell.swift in Sources */,
 				7435E86A265E35A000941729 /* LessonPlanDetailViewController.swift in Sources */,
 				74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */,
+				74E541F4266322CA004276F9 /* ScanStudentQRCodeViewModel.swift in Sources */,
 				74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */,
 				74715CCE265B74A400570A23 /* ChartTableViewCell.swift in Sources */,
 				74715CD6265B774200570A23 /* AssignmentStatusTableViewCell.swift in Sources */,

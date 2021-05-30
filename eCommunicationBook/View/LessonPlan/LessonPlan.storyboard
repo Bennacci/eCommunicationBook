@@ -86,14 +86,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0i4-wy-EQn">
-                                <rect key="frame" x="16" y="104" width="41" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="104" width="44" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBs-FN-9ON">
-                                <rect key="frame" x="16" y="133" width="71" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="133" width="75.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -105,37 +105,49 @@
                                     <outlet property="delegate" destination="aE3-Ia-m01" id="9j1-vr-qIY"/>
                                 </connections>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4jB-d3-pAi">
-                                <rect key="frame" x="65" y="97.5" width="120" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="T5P-BA-stM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YHQ-yv-h9M">
-                                <rect key="frame" x="95" y="126.5" width="120" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="3vE-Bg-212"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoZ-lt-aYM">
+                                <rect key="frame" x="207" y="104" width="46.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YYYY/MM/DD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lz-Uo-Fd5">
+                                <rect key="frame" x="68" y="104" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="teacherName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdq-Lv-ubi">
+                                <rect key="frame" x="99.5" y="133" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00 - 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxb-5j-S4U">
+                                <rect key="frame" x="261.5" y="104" width="109" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="4jB-d3-pAi" firstAttribute="centerY" secondItem="0i4-wy-EQn" secondAttribute="centerY" id="0us-po-6nN"/>
+                            <constraint firstItem="2lz-Uo-Fd5" firstAttribute="centerY" secondItem="0i4-wy-EQn" secondAttribute="centerY" id="8lt-M6-Q7s"/>
                             <constraint firstItem="0i4-wy-EQn" firstAttribute="leading" secondItem="vEX-1C-ghs" secondAttribute="leading" constant="16" id="As8-OX-MnH"/>
                             <constraint firstItem="tmF-vT-RmR" firstAttribute="top" secondItem="VBs-FN-9ON" secondAttribute="bottom" constant="8" id="BJg-MG-vbd"/>
+                            <constraint firstItem="YoZ-lt-aYM" firstAttribute="leading" secondItem="vEX-1C-ghs" secondAttribute="centerX" id="Cjd-7T-56N"/>
+                            <constraint firstItem="YoZ-lt-aYM" firstAttribute="centerY" secondItem="0i4-wy-EQn" secondAttribute="centerY" id="Dfa-xO-HWt"/>
                             <constraint firstItem="vEX-1C-ghs" firstAttribute="bottom" secondItem="tmF-vT-RmR" secondAttribute="bottom" id="MuT-mJ-awb"/>
                             <constraint firstItem="0i4-wy-EQn" firstAttribute="top" secondItem="vEX-1C-ghs" secondAttribute="top" constant="16" id="T8U-Ei-ai6"/>
-                            <constraint firstItem="4jB-d3-pAi" firstAttribute="leading" secondItem="0i4-wy-EQn" secondAttribute="trailing" constant="8" id="Tks-oz-y1j"/>
                             <constraint firstItem="VBs-FN-9ON" firstAttribute="top" secondItem="0i4-wy-EQn" secondAttribute="bottom" constant="8" id="Vxi-p2-l8R"/>
                             <constraint firstItem="vEX-1C-ghs" firstAttribute="trailing" secondItem="tmF-vT-RmR" secondAttribute="trailing" id="WpJ-z5-QdB"/>
-                            <constraint firstItem="YHQ-yv-h9M" firstAttribute="leading" secondItem="VBs-FN-9ON" secondAttribute="trailing" constant="8" id="Xtd-Df-QrF"/>
+                            <constraint firstItem="2lz-Uo-Fd5" firstAttribute="leading" secondItem="0i4-wy-EQn" secondAttribute="trailing" constant="8" id="XGa-rN-nYN"/>
                             <constraint firstItem="tmF-vT-RmR" firstAttribute="leading" secondItem="vEX-1C-ghs" secondAttribute="leading" id="ZKB-Tf-5wE"/>
-                            <constraint firstItem="YHQ-yv-h9M" firstAttribute="centerY" secondItem="VBs-FN-9ON" secondAttribute="centerY" id="od9-R3-ITA"/>
+                            <constraint firstItem="Oxb-5j-S4U" firstAttribute="centerY" secondItem="YoZ-lt-aYM" secondAttribute="centerY" id="aAV-HJ-5Sv"/>
+                            <constraint firstItem="gdq-Lv-ubi" firstAttribute="centerY" secondItem="VBs-FN-9ON" secondAttribute="centerY" id="o6B-E8-m1V"/>
+                            <constraint firstItem="gdq-Lv-ubi" firstAttribute="leading" secondItem="VBs-FN-9ON" secondAttribute="trailing" constant="8" id="pYK-cV-uqZ"/>
                             <constraint firstItem="VBs-FN-9ON" firstAttribute="leading" secondItem="vEX-1C-ghs" secondAttribute="leading" constant="16" id="tQs-nR-zjo"/>
+                            <constraint firstItem="Oxb-5j-S4U" firstAttribute="leading" secondItem="YoZ-lt-aYM" secondAttribute="trailing" constant="8" id="uIe-Ow-95G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vEX-1C-ghs"/>
                     </view>
@@ -165,9 +177,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="labelDate" destination="2lz-Uo-Fd5" id="n0i-UL-fj2"/>
+                        <outlet property="labelTeacher" destination="gdq-Lv-ubi" id="Bq3-2F-Dzd"/>
+                        <outlet property="labelTime" destination="Oxb-5j-S4U" id="3Ir-1b-EIf"/>
                         <outlet property="tableView" destination="tmF-vT-RmR" id="obB-D2-0Ef"/>
-                        <outlet property="textFieldDate" destination="4jB-d3-pAi" id="SnS-Zq-fuX"/>
-                        <outlet property="textFieldTeacher" destination="YHQ-yv-h9M" id="EVf-61-kkW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmw-ib-5ji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -54,7 +54,7 @@ class ConversationViewModel {
   
   func onTapSend() {
 
-    if hasIDInMessage(){
+    if hasIDInMessage() {
       print("has sender in message...")
       if hasContent() {
         publish() // MARK: check which function this call is

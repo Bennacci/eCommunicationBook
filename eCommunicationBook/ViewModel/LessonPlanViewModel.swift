@@ -16,7 +16,6 @@ class LessonPlanViewModel {
   
   var refreshView: (()->())?
 
-  
   func fetchData() {
     XXXManager.shared.fetchCourses { [weak self] result in
       
@@ -57,8 +56,6 @@ class LessonPlanViewModel {
     courseViewModel.value = convertCoursesToViewModels(from: courses)
 
   }
-  
-  
   
   func convertLessonsToViewModels(from lessons: [Lesson]) -> [LessonViewModel] {
     var viewModels = [LessonViewModel]()

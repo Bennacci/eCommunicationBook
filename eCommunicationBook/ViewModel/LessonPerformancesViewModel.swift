@@ -169,7 +169,7 @@ class LessonPerformancesViewModel {
        studentLessonRecord.assignmentCompleted = assignments.map({ _ in false })
      }
     if let tests = previousLesson.tests {
-      studentLessonRecord.tests = tests
+      studentLessonRecord.previousTests = tests
       studentLessonRecord.testGrade = tests.map({ _ in "" })
      }
     

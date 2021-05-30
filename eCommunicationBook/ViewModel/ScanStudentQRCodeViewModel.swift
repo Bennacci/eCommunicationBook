@@ -57,8 +57,13 @@ class ScanStudentQRCodeViewModel {
   //  var wroteOutFailure: (() -> Void)?
   
   func writeTimeIn(with studentExistance: inout StudentExistance) {
+  
+    LKProgressHUD.show()
+
     XXXManager.shared.writeTimeIn(studentExistance: &studentExistance) { result in
-      
+     
+      LKProgressHUD.dismiss()
+
       switch result {
         
       case .success:
@@ -77,8 +82,12 @@ class ScanStudentQRCodeViewModel {
   }
   func writeTimeOut(with studentExistance: inout StudentExistance) {
     
+    LKProgressHUD.show()
+
     XXXManager.shared.writeTimeOut(studentExistance: &studentExistance) { result in
       
+      LKProgressHUD.dismiss()
+
       switch result {
         
       case .success:

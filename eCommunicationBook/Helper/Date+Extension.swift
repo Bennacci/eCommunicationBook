@@ -11,10 +11,12 @@ import Foundation
 /// Date Format type
 enum DateFormatType: String {
     /// Time
-    case time = "HH:mm:ss"
-    
+    case time = "HH:mm"
+    case timeHr = "HH"
+    case timeMin = "mm"
+
     /// Date with hours
-    case dateWithTime = "dd-MMM-yyyy  H:mm"
+    case dateWithTime = "yyyy-MMM-dd H:mm"
     
     /// Date
     case date = "dd-MMM-yyyy"

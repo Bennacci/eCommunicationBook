@@ -27,7 +27,7 @@ class LessonPlanDetailTableViewCell: UITableViewCell {
   
   func setUp(lesson: Lesson, indexPath: IndexPath){
       self.lesson = lesson
-    layOutCell(indexPath: indexPath)
+      layOutCell(indexPath: indexPath)
     }
     
     

@@ -15,8 +15,10 @@ protocol SavedLessonDelegate {
 class LessonPlanDetailViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var textFieldDate: UITextField!
-  @IBOutlet weak var textFieldTeacher: UITextField!
+  @IBOutlet weak var labelDate: UILabel!
+  @IBOutlet weak var labelTime: UILabel!
+  @IBOutlet weak var labelTeacher: UILabel!
+
   
   var viewModel = LessonPlanDetailViewModel()
   
@@ -61,6 +63,32 @@ class LessonPlanDetailViewController: UIViewController {
 //  }
   
   func layOutView() {
+    
+    let calendar = Calendar.current
+    let date = Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .dateYMD)
+    let startTime = Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .time)
+    let endDate = calendar.date(byAdding: .minute, value: viewModel.lesson.timeInterval, to: Date(milliseconds: viewModel.lesson.time))
+    let endTime = endDate!.convertToString(dateformat: .time)
+    
+    
+////    let date = Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .dateYMD)
+//    var timeHr = Int(Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .timeHr))!
+//    var timeMin = Int(Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .timeMin))!
+//    let time = "\(timeHr):\(timeMin)"
+//    let timeIntervalHr = viewModel.lesson.timeInterval / 60
+//    let timeIntervalMin = viewModel.lesson.timeInterval % 60
+//
+//    timeMin = (timeMin + timeIntervalMin) % 60
+//
+//    if timeMin + timeIntervalHr >= 60 {
+//      timeHr += timeIntervalHr + 1
+//    } else {
+//      timeHr += timeIntervalHr
+//    }
+    
+    labelDate.text = date
+    labelTime.text = startTime + " - " + endTime
+    labelTeacher.text = viewModel.lesson.teacher
     addSaveButton()
   }
   

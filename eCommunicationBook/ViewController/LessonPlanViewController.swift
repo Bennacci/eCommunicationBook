@@ -82,6 +82,9 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
         if button.tag > 0 {
         lessonPlanDetailViewController.viewModel.previousLesson =
           self.viewModel.lessonViewModel.value[button.tag - 1].lesson
+          
+          lessonPlanDetailViewController.viewModel.lesson =
+            self.viewModel.lessonViewModel.value[button.tag].lesson
         }
         lessonPlanDetailViewController.viewModel.lesson =
           self.viewModel.lessonViewModel.value[button.tag].lesson

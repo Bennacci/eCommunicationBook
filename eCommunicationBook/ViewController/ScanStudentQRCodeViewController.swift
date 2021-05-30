@@ -32,7 +32,6 @@ class ScanStudentQRCodeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewModel.writeTimeIn(with: &viewModel.studentExistance)
     //    self.tabBarController?.tabBar.layer.zPosition = -1
     viewModel.wroteInSuccess = {
       LKProgressHUD.showSuccess(text: "Time In Success")
@@ -49,24 +48,7 @@ class ScanStudentQRCodeViewController: UIViewController {
 //    prepareWindow()
   }
   
-  
-//   func prepareWindow() {
-//    let appDelegate  = UIApplication.shared.delegate as? AppDelegate
-//    let viewController = appDelegate?.window!.rootViewController as? ScanStudentQRCodeViewController
-//
-//
-////          let appdelegate = UIApplication.shared.delegate as? AppDelegate
-//
-////          let root = appdelegate?.window?.rootViewController as? STTabBarViewController
-//
-////          root?.selectedIndex = 0
-//
-//  }
-  
-  //  override func viewDidDisappear(_ animated: Bool) {
-  //    self.tabBarController?.tabBar.layer.zPosition = 0
-  ////
-  //  }
+
   
   @IBAction func timeInButtonPress(_ sender: Any) {
     

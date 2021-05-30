@@ -10,7 +10,11 @@ import Foundation
 
 class ScanStudentQRCodeViewModel {
   
-  var timeIn: Bool = true
+  var timeIn: Bool = true {
+    didSet {
+      studentExistance.studentName = ""
+    }
+  }
   
   var studentExistance = StudentExistance(
     id: "",

@@ -336,7 +336,7 @@ class XXXManager {
     
     let document = db
       .collection("StudentExistances")
-      .document()
+      .document("timeIns2021")
       .collection("TimeIns")
       .document()
     studentExistance.id = document.documentID
@@ -356,10 +356,10 @@ class XXXManager {
   
   func writeTimeOut(studentExistance: inout StudentExistance,
                                 completion: @escaping (Result<String, Error>) -> Void) {
-
+    
      let document = db
        .collection("StudentExistances")
-       .document()
+       .document("timeOuts2021")
        .collection("TimeOuts")
        .document()
       studentExistance.id = document.documentID

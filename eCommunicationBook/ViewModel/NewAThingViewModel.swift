@@ -259,7 +259,7 @@ class NewAThingViewModel: SearchUserDelegate {
                            eventName: "",
                            description: "",
                            image: nil,
-                           date: -1,
+                           date: Double(Date().millisecondsSince1970),
                            time: 0,
                            timeInterval: 0)
   
@@ -268,10 +268,12 @@ class NewAThingViewModel: SearchUserDelegate {
   }
   
   func onEventDiscriptionChanged(text description: String) {
+    
     self.event.description = description
   }
   
   func onEventDateChanged(day: Date) {
+    
     self.event.date = Double(day.millisecondsSince1970)
   }
   
@@ -281,6 +283,7 @@ class NewAThingViewModel: SearchUserDelegate {
     
     self.event.timeInterval = time.timeInterval
   }
+  
   func addEvent (with event: inout Event) {
     XXXManager.shared.addEvent(event: &event) { result in
       

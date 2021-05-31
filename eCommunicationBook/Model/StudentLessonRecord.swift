@@ -55,7 +55,7 @@ struct StudentLessonRecord: Codable {
     return [
       "id": id as Any,
       "studentID": studentID as Any,
-      "courserName": courseName as Any,
+      "courseName": courseName as Any,
       "time": time as Any,
       "timeInterval": timeInterval as Any,
       "todaysLesson": todaysLesson as Any,

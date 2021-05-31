@@ -11,7 +11,7 @@ import FSCalendar
 import EasyRefresher
 
 class CalendarPageViewController: UIViewController {
-
+  
   @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
   
   @IBOutlet weak var tableView: UITableView!
@@ -32,16 +32,17 @@ class CalendarPageViewController: UIViewController {
     }()
   
   override func viewDidLoad() {
-    
-    
-    tableView.registerCellWithNib(identifier: ChartTableViewCell.identifier, bundle: nil)
-    tableView.registerCellWithNib(identifier: LableWithVerticalLineTableViewCell.identifier, bundle: nil)
-    tableView.registerCellWithNib(identifier: AssignmentStatusTableViewCell.identifier, bundle: nil)
     super.viewDidLoad()
     
+    tableView.registerCellWithNib(identifier: ChartTableViewCell.identifier, bundle: nil)
+    
+    tableView.registerCellWithNib(identifier: LableWithVerticalLineTableViewCell.identifier, bundle: nil)
+    
+    tableView.registerCellWithNib(identifier: AssignmentStatusTableViewCell.identifier, bundle: nil)
+    
     viewModel.fetchData()
-
-    setCalender()
+    
+    setCalendar()
     
     viewModel.refreshView = { [weak self] () in
       DispatchQueue.main.async {
@@ -49,21 +50,20 @@ class CalendarPageViewController: UIViewController {
       }
     }
     
-    viewModel.dayEventViewModel.bind { [weak self] events in
-      //            self?.tableView.reloadData()
-      self?.viewModel.onRefresh()
-    }
-    
-    viewModel.dayPerformanceViewModel.bind { [weak self] studenperformances in
-      //            self?.tableView.reloadData()
-      self?.viewModel.onRefresh()
+      viewModel.eventViewModel.bind { [weak self] _ in
+
+      guard let date = Calendar.current.date(from:
+        Calendar.current.dateComponents([.year, .month, .day],
+                                        from: Date())) else {return}
+
+      self?.viewModel.onCalendarTapped(day: date)
+
     }
     
     viewModel.scrollToTop = { [weak self] () in
       
       self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
-    
     
     setupRefresher()
   }
@@ -72,7 +72,7 @@ class CalendarPageViewController: UIViewController {
     self.tableView.refresh.header = RefreshHeader(delegate: self)
     
     tableView.refresh.header.addRefreshClosure { [weak self] in
-      self?.viewModel.fetchData()
+      //      self?.viewModel.fetchData()
       self?.tableView.refresh.header.endRefreshing()
     }
     
@@ -82,72 +82,63 @@ class CalendarPageViewController: UIViewController {
 extension CalendarPageViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return viewModel.dayEventViewModel.value.count
-//    return viewModel.dayPerformanceViewModel.value.count * 2 +
-//      viewModel.dayEventViewModel.value.count
-     
+    print(viewModel.dayEventViewModel.value.count +
+      viewModel.dayLessonRecordViewModel.value.count +
+      viewModel.dayStudentTimeInViemModel.value.count)
+    return viewModel.dayEventViewModel.value.count +
+      viewModel.dayLessonRecordViewModel.value.count +
+      viewModel.dayStudentTimeInViemModel.value.count
+    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
+    let title = viewModel.titles[section]
     
+    switch title {
+    case "Events":
+      return viewModel.dayEventViewModel.value.count
+    case "Communication Book":
+      return viewModel.dayLessonRecordViewModel.value.count
+    case "Student Attendance and Leave":
+      return 1
+    default:
+      return 0
+    }
     
-    
-    let sectionCount = viewModel.dayPerformanceViewModel.value.count * 2 +
-    viewModel.dayEventViewModel.value.count
-    
-    return 1
-    
-//    if section % 2 == 1 && section != sectionCount {
-//      return 1
-//    } else if section != sectionCount {
-//      let assignmentCompletionCount: Int = viewModel.dayPerformanceViewModel.value[section].assignmentCompleted?.count ?? 0
-//      let assignmetScoreCount: Int = viewModel.dayPerformanceViewModel.value[section].testGrade?.count ?? 0
-////      let performanceCount = viewModel.dayPerformanceViewModel.value[section].
-//      return assignmentCompletionCount + assignmetScoreCount
-//    } else {
-//      return  viewModel.dayEventViewModel.value.count
-//    }
   }
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    switch section {
-    case 0:
-      return "event"
-//      "MM/DD 課堂表現"
-    case 1:
-      return "作業繳交狀況"
-    default:
-      return "event"
-    }
+    return viewModel.titles[section]
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     //      cell.layoutCell(title: viewModel.services[indexPath.section][indexPath.row])
-    if indexPath.section == 2 {
+    
+    let title = viewModel.titles[indexPath.section]
+    
+    switch title {
+    case "Events":
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
+                                                     for: indexPath) as? LableWithVerticalLineTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      return cell
+    case "Communication Book":
       guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier,
                                                      for: indexPath) as? ChartTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       return cell
-    } else if indexPath.section == 1 {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: AssignmentStatusTableViewCell.identifier,
-                                                     for: indexPath) as? AssignmentStatusTableViewCell
-        else { fatalError("Unexpected Table View Cell") }
-      return cell
-    } else {
+    default:
       guard let cell = tableView.dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
                                                      for: indexPath) as? LableWithVerticalLineTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       return cell
     }
-    //        if indexPath.section == 0 {
-    //            let identifier = ["cell_month", "cell_week"][indexPath.row]
-    //            let cell = tableView.dequeueReusableCell(withIdentifier: identifier)!
-    //            return cell
-    //        } else {
-    //            let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-    //            return cell
-    //        }
+    //      guard let cell = tableView.dequeueReusableCell(withIdentifier: AssignmentStatusTableViewCell.identifier,
+    //                                                     for: indexPath) as? AssignmentStatusTableViewCell
+    //        else { fatalError("Unexpected Table View Cell") }
+    //      return cell
+    
   }
 }
 
@@ -162,11 +153,11 @@ extension CalendarPageViewController: UITableViewDelegate {
   
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//    if indexPath == pickerIndexPath && willExpand == true {
-      return LableWithVerticalLineTableViewCell.cellHeight()
-//    } else {
-//      return TwoLablesTableViewCell.cellHeight()
-//    }
+    //    if indexPath == pickerIndexPath && willExpand == true {
+    return LableWithVerticalLineTableViewCell.cellHeight()
+    //    } else {
+    //      return TwoLablesTableViewCell.cellHeight()
+    //    }
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -176,8 +167,8 @@ extension CalendarPageViewController: UITableViewDelegate {
 
 extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate {
   
-  func setCalender() {
-
+  func setCalendar() {
+    
     if UIDevice.current.model.hasPrefix("iPad") {
       self.calendarHeightConstraint.constant = 400
     }

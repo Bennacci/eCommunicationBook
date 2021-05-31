@@ -11,9 +11,14 @@ import Charts
 
 class ChartTableViewCell: UITableViewCell {
 
+  var viewModel: StudentLessonRecordViewModel?
+
+  
      override func awakeFromNib() {
+      
             super.awakeFromNib()
-                customizeChart(dataPoints: players, values: score.map { Double($0)})
+      
+
             // Initialization code
         }
 
@@ -25,14 +30,14 @@ class ChartTableViewCell: UITableViewCell {
 
   @IBOutlet var chartView: HorizontalBarChartView!
         
-        let players = ["參與", "合作", "學習"]
+        let players = ["Concentration", "Attitude", "學習"]
         let performance = ["",
                            "Poor",
                            "",
                            "Normal",
                            "",
                            "Excellent"]
-        let score = [5, 4, 5]
+//        let score = [5, 4, 5]
         
     //    override func viewDidLoad() {
     //      super.viewDidLoad()
@@ -65,7 +70,7 @@ class ChartTableViewCell: UITableViewCell {
           xAxis.labelPosition = .bottom
           xAxis.labelFont = .systemFont(ofSize: 15)
           xAxis.drawGridLinesEnabled = false
-          xAxis.valueFormatter = IndexAxisValueFormatter(values: players)
+          xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
           xAxis.granularity = 1
           
           let leftAxis = chartView.leftAxis
@@ -85,5 +90,20 @@ class ChartTableViewCell: UITableViewCell {
           let legend = chartView.legend
           legend.enabled = false
         }
+        
+  
+  
+  func setUp(viewModel: StudentLessonRecordViewModel) {
+    self.viewModel = viewModel
+    layOutCell()
+  }
+  
+  
+  func layOutCell() {
+    guard let performaceItems = viewModel?.performancesItem else {return}
     
+    guard let score = viewModel?.performances else {return}
+    
+    customizeChart(dataPoints: performaceItems, values: score.map { Double($0)})
+  }
 }

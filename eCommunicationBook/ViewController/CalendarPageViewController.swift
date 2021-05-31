@@ -40,6 +40,9 @@ class CalendarPageViewController: UIViewController {
     
     tableView.registerCellWithNib(identifier: AssignmentStatusTableViewCell.identifier, bundle: nil)
     
+    tableView.registerCellWithNib(identifier: TodaysLesoonTableViewCell.identifier, bundle: nil)
+    
+    
     viewModel.fetchData()
     
     setCalendar()
@@ -50,14 +53,14 @@ class CalendarPageViewController: UIViewController {
       }
     }
     
-      viewModel.eventViewModel.bind { [weak self] _ in
-
+    viewModel.eventViewModel.bind { [weak self] _ in
+      
       guard let date = Calendar.current.date(from:
         Calendar.current.dateComponents([.year, .month, .day],
                                         from: Date())) else {return}
-
+      
       self?.viewModel.onCalendarTapped(day: date)
-
+      
     }
     
     viewModel.scrollToTop = { [weak self] () in
@@ -82,12 +85,13 @@ class CalendarPageViewController: UIViewController {
 extension CalendarPageViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    print(viewModel.dayEventViewModel.value.count +
-      viewModel.dayLessonRecordViewModel.value.count +
-      viewModel.dayStudentTimeInViemModel.value.count)
-    return viewModel.dayEventViewModel.value.count +
-      viewModel.dayLessonRecordViewModel.value.count +
-      viewModel.dayStudentTimeInViemModel.value.count
+    var count = viewModel.dayEventViewModel.value.count
+    if viewModel.dayLessonRecordViewModel.value.count != 0 {
+      count += 1
+    }
+    
+    
+    return count + viewModel.dayStudentTimeInViemModel.value.count
     
   }
   
@@ -99,7 +103,7 @@ extension CalendarPageViewController: UITableViewDataSource {
     case "Events":
       return viewModel.dayEventViewModel.value.count
     case "Communication Book":
-      return viewModel.dayLessonRecordViewModel.value.count
+      return viewModel.comunicationSectionTitles.count
     case "Student Attendance and Leave":
       return 1
     default:
@@ -122,23 +126,36 @@ extension CalendarPageViewController: UITableViewDataSource {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
                                                      for: indexPath) as? LableWithVerticalLineTableViewCell
         else { fatalError("Unexpected Table View Cell") }
+      cell.setUp(viewModel: viewModel.dayEventViewModel.value[indexPath.row])
       return cell
+      
     case "Communication Book":
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier,
-                                                     for: indexPath) as? ChartTableViewCell
-        else { fatalError("Unexpected Table View Cell") }
-      return cell
+      
+      let title = viewModel.comunicationSectionTitles[indexPath.row]
+
+      if title == "Lesson Performances"{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier,
+                                                       for: indexPath) as? ChartTableViewCell
+          else { fatalError("Unexpected Table View Cell") }
+        cell.setUp(viewModel: viewModel.dayLessonRecordViewModel.value[0])
+        return cell
+
+      } else {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysLesoonTableViewCell.identifier,
+                                                       for: indexPath) as? TodaysLesoonTableViewCell
+          else { fatalError("Unexpected Table View Cell") }
+        cell.setUp(viewModel: viewModel.dayLessonRecordViewModel.value[0], title: title)
+        return cell
+      }
+      
     default:
       guard let cell = tableView.dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
                                                      for: indexPath) as? LableWithVerticalLineTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       return cell
     }
-    //      guard let cell = tableView.dequeueReusableCell(withIdentifier: AssignmentStatusTableViewCell.identifier,
-    //                                                     for: indexPath) as? AssignmentStatusTableViewCell
-    //        else { fatalError("Unexpected Table View Cell") }
-    //      return cell
-    
+
   }
 }
 
@@ -151,14 +168,14 @@ extension CalendarPageViewController: UITableViewDelegate {
     }
   }
   
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //    if indexPath == pickerIndexPath && willExpand == true {
-    return LableWithVerticalLineTableViewCell.cellHeight()
-    //    } else {
-    //      return TwoLablesTableViewCell.cellHeight()
-    //    }
-  }
+  //
+  //  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  //    //    if indexPath == pickerIndexPath && willExpand == true {
+  //    return LableWithVerticalLineTableViewCell.cellHeight()
+  //    //    } else {
+  //    //      return TwoLablesTableViewCell.cellHeight()
+  //    //    }
+  //  }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 32
@@ -220,7 +237,7 @@ extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, 
   
   func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
     print("\(Date.dateFormatterYMD.string(from: calendar.currentPage))")
-  }
+  } 
 }
 
 extension CalendarPageViewController: RefreshDelegate {

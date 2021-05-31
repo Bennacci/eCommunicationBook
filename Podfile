@@ -12,6 +12,7 @@ target 'eCommunicationBook' do
   pod 'FirebaseStorage'
   pod 'FSCalendar'
   pod 'Charts'
+  pod 'ChameleonFramework'
   #pod 'CollectionViewPagingLayout'
   pod 'EasyRefresher'
   pod 'Kingfisher', '5.9.0'

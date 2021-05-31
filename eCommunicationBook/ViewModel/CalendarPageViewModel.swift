@@ -14,20 +14,22 @@ class CalendarPageViewModel {
   
   var comunicationSectionTitles: [String] = []
   
+  var lessonImageIndex = 0
+  
   let eventViewModel = Box([EventViewModel]())
   
   let lessonRecordViewModel = Box([StudentLessonRecordViewModel]())
   
   let studentTimeInViemModel = Box([StudentExistanceViewModel]())
-
+  
   let studentTimeOutViemModel = Box([StudentExistanceViewModel]())
-
+  
   var refreshView: (() -> Void)?
   
   var scrollToTop: (() -> Void)?
   
   var tap: (() -> Void)?
-    
+  
   var yearMonth = Calendar.current.dateComponents([.year, .month], from: Date())
   
   var dayEventViewModel = Box([EventViewModel]())
@@ -35,7 +37,7 @@ class CalendarPageViewModel {
   var dayLessonRecordViewModel = Box([StudentLessonRecordViewModel]())
   
   let dayStudentTimeInViemModel = Box([StudentExistanceViewModel]())
-
+  
   let dayStudentTimeOutViemModel = Box([StudentExistanceViewModel]())
   
   func onRefresh() {
@@ -65,7 +67,7 @@ class CalendarPageViewModel {
     
     dayEventViewModel.value = eventViewModel.value.filter({
       
-        $0.date >= time &&
+      $0.date >= time &&
         
         $0.date <= time + secondsPerDay * 1000 - 1
       
@@ -73,21 +75,21 @@ class CalendarPageViewModel {
     
     dayLessonRecordViewModel.value = lessonRecordViewModel.value.filter({
       
-        $0.time >= time &&
+      $0.time >= time &&
         
         $0.time <= time + secondsPerDay * 1000 - 1
     })
     
     dayStudentTimeInViemModel.value = studentTimeInViemModel.value.filter({
       
-        $0.time >= time &&
+      $0.time >= time &&
         
         $0.time <= time + secondsPerDay * 1000 - 1
     })
     
     dayStudentTimeOutViemModel.value = studentTimeOutViemModel.value.filter({
       
-        $0.time >= time &&
+      $0.time >= time &&
         
         $0.time <= time + secondsPerDay * 1000 - 1
     })
@@ -99,29 +101,31 @@ class CalendarPageViewModel {
   
   func setComunicationSectionTitle() {
     
+    lessonImageIndex = 0
+    
     comunicationSectionTitles = [ "Today's Lesson", "Lesson Performances"]
     if dayLessonRecordViewModel.value.count != 0 {
-    if dayLessonRecordViewModel.value[0].assignments != nil {
-      comunicationSectionTitles.append("Homework")
+      if dayLessonRecordViewModel.value[0].assignments != nil {
+        comunicationSectionTitles.append("Homework")
+      }
+      
+      if dayLessonRecordViewModel.value[0].tests != nil {
+        comunicationSectionTitles.append("Tests")
+      }
+      
+      if dayLessonRecordViewModel.value[0].assignmentScore != nil {
+        comunicationSectionTitles.append("Homework Score")
+      }
+      
+      if dayLessonRecordViewModel.value[0].testGrade != nil {
+        comunicationSectionTitles.append("Tests Score")
+      }
+      if dayLessonRecordViewModel.value[0].imageTitles != nil {
+        comunicationSectionTitles.append("Student Images")
+      }
     }
     
-    if dayLessonRecordViewModel.value[0].tests != nil {
-      comunicationSectionTitles.append("Tests")
-    }
-    
-    if dayLessonRecordViewModel.value[0].assignmentScore != nil {
-      comunicationSectionTitles.append("Homework Score")
-    }
-    
-    if dayLessonRecordViewModel.value[0].testGrade != nil {
-      comunicationSectionTitles.append("Tests Score")
-    }
-    }
     comunicationSectionTitles.append("Communication Corner")
-    
-//    comunicationSectionTitles.append("Upload a image")
-
-    
   }
   
   
@@ -146,7 +150,7 @@ class CalendarPageViewModel {
   func fetchData() {
     //
     fetchExistances(date: nil)
-
+    
     XXXManager.shared.fetchEvents { [weak self] result in
       
       switch result {
@@ -160,19 +164,19 @@ class CalendarPageViewModel {
         print("fetchData.failure: \(error)")
       }
     }
-
+    
     XXXManager.shared.fetchStudentLessonRecord { [weak self] result in
-
+      
       switch result {
-
+        
       case .success(let studentLessonRecords):
-
+        
         self?.setStudentLessonRecords(studentLessonRecords)
         
-//        self?.onCallendarTap()
-
+        //        self?.onCallendarTap()
+        
       case .failure(let error):
-
+        
         print("fetchData.failure: \(error)")
       }
     }
@@ -189,35 +193,35 @@ class CalendarPageViewModel {
     }
     
     XXXManager.shared.fetchStudentExistances(date: selectedDate, timeIn: true) { [weak self] result in
-
-          switch result {
-
-          case .success(let studentExistances):
-
-            self?.setStudentExistances(studentExistances, timeIn: true)
-
-//            self?.onCallendarTap()
-
-          case .failure(let error):
-
-            print("fetchData.failure: \(error)")
-          }
-        }
+      
+      switch result {
+        
+      case .success(let studentExistances):
+        
+        self?.setStudentExistances(studentExistances, timeIn: true)
+        
+        //            self?.onCallendarTap()
+        
+      case .failure(let error):
+        
+        print("fetchData.failure: \(error)")
+      }
+    }
     XXXManager.shared.fetchStudentExistances(date: selectedDate, timeIn: false) { [weak self] result in
-
-          switch result {
-
-          case .success(let studentExistances):
-
-            self?.setStudentExistances(studentExistances, timeIn: false)
-
-//            self?.onCallendarTap()
-
-          case .failure(let error):
-
-            print("fetchData.failure: \(error)")
-          }
-        }
+      
+      switch result {
+        
+      case .success(let studentExistances):
+        
+        self?.setStudentExistances(studentExistances, timeIn: false)
+        
+        //            self?.onCallendarTap()
+        
+      case .failure(let error):
+        
+        print("fetchData.failure: \(error)")
+      }
+    }
     
   }
   

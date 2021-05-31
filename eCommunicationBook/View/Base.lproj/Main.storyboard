@@ -14,7 +14,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.19376453757286072" green="0.50850099325180054" blue="0.85232251882553101" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="vLv-FO-3Zi" kind="relationship" relationship="viewControllers" id="47m-eL-CoG"/>
@@ -60,10 +60,10 @@
         <!--HomePage-->
         <scene sceneID="o1Z-gL-mGd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kjJ-oA-kUy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="HomePage" id="vLv-FO-3Zi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="iqL-VR-mbu"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kjJ-oA-kUy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3449" y="699"/>
         </scene>

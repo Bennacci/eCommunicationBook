@@ -40,53 +40,59 @@ class ServiceManager {
     case .teacher:
       
       let teacherService = ServiceGroup(
-       
-         title: [localizedString("學生紀錄："),
-                 localizedString("增加事項："),
-                 localizedString("系統：")],
-      
-         items: [
-           
-              [TeacherSeviceItem.writeAttendAndLeave,
-            
-               TeacherSeviceItem.writeLessonState],
+        
+        title: [localizedString("學生紀錄："),
+                localizedString("增加事項："),
+                localizedString("系統：")],
+        
+        items: [
           
-              
-            [TeacherSeviceItem.newACourse,
-            
-            TeacherSeviceItem.newEvent,
+          [TeacherSeviceItem.writeStudentLessonRecord,
            
-            TeacherSeviceItem.setASign],
+           TeacherSeviceItem.writeLessonPlan,
            
+           TeacherSeviceItem.writeStudentTimeInAndOut],
+          
+          
+          [TeacherSeviceItem.newACourse,
+           
+           TeacherSeviceItem.newEvent,
+           
+           TeacherSeviceItem.setASign],
+          
           [TeacherSeviceItem.newAStudent,
-
-          TeacherSeviceItem.newAUser]
-         ]
-       )
+           
+           TeacherSeviceItem.newAUser]
+        ]
+      )
       return teacherService
       
     default:
       
       let parentService = ServiceGroup(
         
-        title: [localizedString("學習"),
+        title: [localizedString("Learning"),
                 
-                localizedString("課程"),
-          
-                localizedString("校方")],
+                localizedString("Lessons"),
+                
+                localizedString("extras")],
         items: [
           
-          [ParentSeviceItem.checkLearingStat],
+          [ParentSeviceItem.signCommunicationBook,
+           
+           ParentSeviceItem.checkStudentTimeInAndOut,
+           
+           ParentSeviceItem.checkLearingStat],
           
           [ParentSeviceItem.courseReservation,
-          
+           
            ParentSeviceItem.leaveReservation,
-        
+           
            ParentSeviceItem.makeUpReservation],
           
           [ParentSeviceItem.newAStudent,
            
-            ParentSeviceItem.contactUs]
+           ParentSeviceItem.contactUs]
         ]
       )
       return parentService

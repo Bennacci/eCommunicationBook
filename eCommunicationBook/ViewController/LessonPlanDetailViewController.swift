@@ -90,7 +90,7 @@ class LessonPlanDetailViewController: UIViewController {
     labelDate.text = date
     labelTime.text = startTime + " - " + endTime
     labelTeacher.text = viewModel.lesson.teacher
-    addSaveButton()
+//    addSaveButton()
   }
   
   @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -118,9 +118,9 @@ class LessonPlanDetailViewController: UIViewController {
         nav.popViewController(animated: true)
   }
   
-  func addSaveButton() {
-    self.view.addSubview(publishBV)
-  }
+//  func addSaveButton() {
+//    self.view.addSubview(publishBV)
+//  }
   
   @objc func saveLessonPlanDetail(_ sender: UIButton) {
     viewModel.onSave()
@@ -158,10 +158,21 @@ extension LessonPlanDetailViewController: UITableViewDataSource {
       return "Test"
     }
   }
-  
+  func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!
+  {
+    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+    let myLabel = UILabel()
+      myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 4, width: tableView.bounds.size.width, height: 30)
+      myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+      myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+    headerView.addSubview(myLabel)
+    headerView.backgroundColor = UIColor.clear
+    return headerView
+  }
   func numberOfSections(in tableView: UITableView) -> Int {
     return 3
   }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:

@@ -44,6 +44,8 @@ class CalendarPageViewController: UIViewController {
     
     tableView.registerCellWithNib(identifier: StudentExistancesTableViewCell.identifier, bundle: nil)
     
+    tableView.registerCellWithNib(identifier: StudentImagesTableViewCell.identifier, bundle: nil)
+    
     viewModel.fetchData()
     
     setCalendar()
@@ -133,6 +135,17 @@ extension CalendarPageViewController: UITableViewDataSource {
                                                        for: indexPath) as? ChartTableViewCell
           else { fatalError("Unexpected Table View Cell") }
         cell.setUp(viewModel: viewModel.dayLessonRecordViewModel.value[0])
+        return cell
+        
+      } else if title == "Student Images" {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentImagesTableViewCell.identifier,
+                                                       for: indexPath) as? StudentImagesTableViewCell
+          else { fatalError("Unexpected Table View Cell") }
+        
+        cell.setUp(viewModel: viewModel.dayLessonRecordViewModel.value[0], 
+                   index: indexPath.row - viewModel.comunicationSectionTitles.count + 2)
+        
         return cell
         
       } else {

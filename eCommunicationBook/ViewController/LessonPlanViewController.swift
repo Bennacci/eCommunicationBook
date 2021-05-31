@@ -99,18 +99,18 @@ extension LessonPlanViewController: UITableViewDataSource {
     return 1
   }
   
-  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    switch section {
-    case 0:
-      return "Hello"
-    case 1:
-      return "熱門"
-    case 2:
-      return "為您推薦"
-    default:
-      return "News"
-    }
-  }
+//  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    switch section {
+//    case 0:
+//      return "Hello"
+//    case 1:
+//      return "熱門"
+//    case 2:
+//      return "為您推薦"
+//    default:
+//      return "News"
+//    }
+//  }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
@@ -199,17 +199,17 @@ extension LessonPlanViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
   }
   
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-    
-    headerView.backgroundColor = UIColor.clear
-    let myLabel = UILabel()
-    myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 3, width: tableView.bounds.size.width, height: 30)
-    myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-    myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-    headerView.addSubview(myLabel)
-    return headerView
-  }
+//  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+//    
+//    headerView.backgroundColor = UIColor.clear
+//    let myLabel = UILabel()
+//    myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 3, width: tableView.bounds.size.width, height: 30)
+//    myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+//    myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+//    headerView.addSubview(myLabel)
+//    return headerView
+//  }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     

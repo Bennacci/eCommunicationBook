@@ -59,11 +59,6 @@
                                     <constraint firstAttribute="width" constant="100" id="0gF-I7-USZ"/>
                                     <constraint firstAttribute="height" constant="2.5" id="fEu-Nc-eRH"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kY7-MW-3J5">
                                 <rect key="frame" x="0.0" y="811" width="414" height="1"/>

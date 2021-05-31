@@ -43,17 +43,6 @@
                             <constraint firstItem="cUt-mA-LIK" firstAttribute="top" secondItem="ibc-tr-d6L" secondAttribute="top" id="d0z-4p-dGX"/>
                             <constraint firstAttribute="height" priority="999" constant="36" id="qdc-Xc-mt4"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="lkBorderWidth">
-                                <real key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="lkBorderColor">
-                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
-                                <real key="value" value="3"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>

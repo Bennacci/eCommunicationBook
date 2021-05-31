@@ -10,17 +10,32 @@ import Foundation
 
 class CalendarPageViewModel {
   
+  var titles: [String] = []
+  
+  
   let eventViewModel = Box([EventViewModel]())
   
-  let studentPerformancesViewModel = Box([StudentLessonRecordViewModel]())
+  let lessonRecordViewModel = Box([StudentLessonRecordViewModel]())
   
+  let studentTimeInViemModel = Box([StudentExistanceViewModel]())
+
+  let studentTimeOutViemModel = Box([StudentExistanceViewModel]())
+
   var refreshView: (() -> Void)?
   
   var scrollToTop: (() -> Void)?
   
+  var tap: (() -> Void)?
+    
+  var yearMonth = Calendar.current.dateComponents([.year, .month], from: Date())
+  
   var dayEventViewModel = Box([EventViewModel]())
   
-  var dayPerformanceViewModel = Box([StudentLessonRecordViewModel]())
+  var dayLessonRecordViewModel = Box([StudentLessonRecordViewModel]())
+  
+  let dayStudentTimeInViemModel = Box([StudentExistanceViewModel]())
+
+  let dayStudentTimeOutViemModel = Box([StudentExistanceViewModel]())
   
   func onRefresh() {
     // maybe do something
@@ -36,6 +51,13 @@ class CalendarPageViewModel {
   
   func onCalendarTapped(day: Date) {
     
+    let tappedYearMonth = Calendar.current.dateComponents([.year, .month], from: day)
+    
+    if tappedYearMonth != yearMonth {
+      yearMonth = tappedYearMonth
+      fetchExistances(date: day)
+    }
+    
     let time = Double(day.millisecondsSince1970)
     
     let secondsPerDay = Double(CalendarHelper.shared.secondsPerDay)
@@ -48,19 +70,53 @@ class CalendarPageViewModel {
       
     })
     
-    dayPerformanceViewModel.value = studentPerformancesViewModel.value.filter({
+    dayLessonRecordViewModel.value = lessonRecordViewModel.value.filter({
       
         $0.time >= time &&
         
         $0.time <= time + secondsPerDay * 1000 - 1
     })
-//    print(day)
-//    print("123")
-//    print(dayEventViewModel)
+    
+    dayStudentTimeInViemModel.value = studentTimeInViemModel.value.filter({
+      
+        $0.time >= time &&
+        
+        $0.time <= time + secondsPerDay * 1000 - 1
+    })
+    
+    dayStudentTimeOutViemModel.value = studentTimeOutViemModel.value.filter({
+      
+        $0.time >= time &&
+        
+        $0.time <= time + secondsPerDay * 1000 - 1
+    })
+    setTitle()
+    onRefresh()
   }
+  
+  
+  func setTitle() {
+    
+    titles = []
+    
+    if dayEventViewModel.value.count != 0 {
+      titles.append("Events")
+    }
+    
+    if dayLessonRecordViewModel.value.count != 0 {
+      titles.append("Communication Book")
+    }
+    
+    if dayStudentTimeInViemModel.value.count != 0 {
+      titles.append("Student Attendance and Leave")
+    }
+  }
+  
   
   func fetchData() {
     //
+    fetchExistances(date: nil)
+
     XXXManager.shared.fetchEvents { [weak self] result in
       
       switch result {
@@ -68,28 +124,71 @@ class CalendarPageViewModel {
       case .success(let events):
         
         self?.setEvents(events)
-                
+        
       case .failure(let error):
         
+        print("fetchData.failure: \(error)")
+      }
+    }
+
+    XXXManager.shared.fetchStudentLessonRecord { [weak self] result in
+
+      switch result {
+
+      case .success(let studentLessonRecords):
+
+        self?.setStudentLessonRecords(studentLessonRecords)
+        
+//        self?.onCallendarTap()
+
+      case .failure(let error):
+
         print("fetchData.failure: \(error)")
       }
     }
     
-    XXXManager.shared.fetchStudentPerformances { [weak self] result in
-      
-      switch result {
-        
-      case .success(let studentPerformances):
-        
-        self?.setStudentPerformances(studentPerformances)
-        
-//        self?.onCalendarTapped(day: Date())
-
-      case .failure(let error):
-        
-        print("fetchData.failure: \(error)")
-      }
+  }
+  
+  
+  func fetchExistances(date: Date?) {
+    
+    var selectedDate = Date()
+    
+    if let date = date {
+      selectedDate = date
     }
+    
+    XXXManager.shared.fetchStudentExistances(date: selectedDate, timeIn: true) { [weak self] result in
+
+          switch result {
+
+          case .success(let studentExistances):
+
+            self?.setStudentExistances(studentExistances, timeIn: true)
+
+//            self?.onCallendarTap()
+
+          case .failure(let error):
+
+            print("fetchData.failure: \(error)")
+          }
+        }
+    XXXManager.shared.fetchStudentExistances(date: selectedDate, timeIn: false) { [weak self] result in
+
+          switch result {
+
+          case .success(let studentExistances):
+
+            self?.setStudentExistances(studentExistances, timeIn: false)
+
+//            self?.onCallendarTap()
+
+          case .failure(let error):
+
+            print("fetchData.failure: \(error)")
+          }
+        }
+    
   }
   
   func convertEventsToViewModels(from events: [Event]) -> [EventViewModel] {
@@ -105,16 +204,33 @@ class CalendarPageViewModel {
     eventViewModel.value = convertEventsToViewModels(from: events)
   }
   
-  func convertStudenPerformancesToViewModels(from performances: [StudentLessonRecord]) -> [StudentLessonRecordViewModel] {
+  func convertStudenLessonRecordsToViewModels(from records: [StudentLessonRecord]) -> [StudentLessonRecordViewModel] {
     var viewModels = [StudentLessonRecordViewModel]()
-    for performance in performances {
-      let viewModel = StudentLessonRecordViewModel(model: performance)
+    for record in records {
+      let viewModel = StudentLessonRecordViewModel(model: record)
       viewModels.append(viewModel)
     }
     return viewModels
   }
   
-  func setStudentPerformances(_ performances: [StudentLessonRecord]) {
-    studentPerformancesViewModel.value = convertStudenPerformancesToViewModels(from: performances)
+  func setStudentLessonRecords(_ records: [StudentLessonRecord]) {
+    lessonRecordViewModel.value = convertStudenLessonRecordsToViewModels(from: records)
+  }
+  
+  func convertStudentExistancesToViewModels(from records: [StudentExistance]) -> [StudentExistanceViewModel] {
+    var viewModels = [StudentExistanceViewModel]()
+    for record in records {
+      let viewModel = StudentExistanceViewModel(model: record)
+      viewModels.append(viewModel)
+    }
+    return viewModels
+  }
+  
+  func setStudentExistances(_ records: [StudentExistance], timeIn: Bool) {
+    if timeIn == true {
+      studentTimeInViemModel.value = convertStudentExistancesToViewModels(from: records)
+    } else {
+      studentTimeOutViemModel.value = convertStudentExistancesToViewModels(from: records)
+    }
   }
 }

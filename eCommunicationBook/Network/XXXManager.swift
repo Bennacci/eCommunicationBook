@@ -332,12 +332,14 @@ class XXXManager {
   }
     
   func writeTimeIn(studentExistance: inout StudentExistance,
-                               completion: @escaping (Result<String, Error>) -> Void) {
+                   completion: @escaping (Result<String, Error>) -> Void) {
     
+    let year = Date().convertToString(dateformat: .year)
+    let month = Date().convertToString(dateformat: .month)
     let document = db
-      .collection("StudentExistances")
-      .document("timeIns2021")
-      .collection("TimeIns")
+      .collection("StudentTimeIns")
+      .document(year)
+      .collection(month)
       .document()
     studentExistance.id = document.documentID
     studentExistance.time = Double(Date().millisecondsSince1970)
@@ -355,13 +357,14 @@ class XXXManager {
   }
   
   func writeTimeOut(studentExistance: inout StudentExistance,
-                                completion: @escaping (Result<String, Error>) -> Void) {
-    
-     let document = db
-       .collection("StudentExistances")
-       .document("timeOuts2021")
-       .collection("TimeOuts")
-       .document()
+                    completion: @escaping (Result<String, Error>) -> Void) {
+    let year = Date().convertToString(dateformat: .year)
+    let month = Date().convertToString(dateformat: .month)
+    let document = db
+      .collection("StudentTimeOuts")
+      .document(year)
+      .collection(month)
+      .document()
       studentExistance.id = document.documentID
       studentExistance.time = Double(Date().millisecondsSince1970)
       studentExistance.scanTeacherName = UserManager.shared.userID!
@@ -551,29 +554,76 @@ class XXXManager {
         }
       }
     }
+  
+  func fetchStudentExistances(date: Date, timeIn: Bool, completion: @escaping (Result<[StudentExistance], Error>) -> Void) {
     
-    func fetchStudentPerformances(completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
+    let year = date.convertToString(dateformat: .year)
+    let month = date.convertToString(dateformat: .month)
+    
+    var collectionName = ""
+    
+    if timeIn == true {
+    
+      collectionName = "StudentTimeIns"
+    
+    } else {
+    
+      collectionName = "StudentTimeOuts"
+    }
+    
+    db.collection(collectionName)
+      .document(year)
+      .collection(month)
+      .getDocuments { (querySnapshot, error) in
       
-      db.collection("StudentPerformances").getDocuments { (querySnapshot, error) in
+      if let error = error {
+        
+        completion(.failure(error))
+        
+      } else {
+        
+        var studentExistances = [StudentExistance]()
+        
+        for document in querySnapshot!.documents {
+          
+          do {
+            
+            if let studentExistance = try document.data(as: StudentExistance.self, decoder: Firestore.Decoder()) {
+              
+              studentExistances.append(studentExistance)
+            }
+          } catch {
+            completion(.failure(error))
+          }
+        }
+        completion(.success(studentExistances))
+      }
+    }
+  }
+      
+    func fetchStudentLessonRecord(completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
+      
+      db.collection("StudentLessonRecords")
+        .getDocuments { (querySnapshot, error) in
         
         if let error = error {
           
           completion(.failure(error))
         } else {
           
-          var studentPerformances = [StudentLessonRecord]()
+          var studentLessonRecords = [StudentLessonRecord]()
           
           for document in querySnapshot!.documents {
             
             do {
-              if let studentPerformance = try document.data(as: StudentLessonRecord.self, decoder: Firestore.Decoder()) {
-                studentPerformances.append(studentPerformance)
+              if let studentLessonRecord = try document.data(as: StudentLessonRecord.self, decoder: Firestore.Decoder()) {
+                studentLessonRecords.append(studentLessonRecord)
               }
             } catch {
               completion(.failure(error))
             }
           }
-          completion(.success(studentPerformances))
+          completion(.success(studentLessonRecords))
         }
       }
     }

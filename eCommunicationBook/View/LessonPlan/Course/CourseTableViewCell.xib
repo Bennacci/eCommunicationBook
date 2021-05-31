@@ -21,11 +21,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bear" translatesAutoresizingMaskIntoConstraints="NO" id="vtx-s1-CSA">
                                 <rect key="frame" x="0.0" y="0.0" width="287" height="140"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8V-1s-tlb">
                                 <rect key="frame" x="0.0" y="0.0" width="58" height="29"/>
@@ -58,11 +53,6 @@
                             <constraint firstItem="n8V-1s-tlb" firstAttribute="leading" secondItem="9tT-jO-aif" secondAttribute="leading" id="wvh-K8-tND"/>
                             <constraint firstItem="n8V-1s-tlb" firstAttribute="trailing" secondItem="wIf-le-27p" secondAttribute="trailing" constant="8" id="y09-Zb-TWI"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
-                                <real key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -50,6 +50,8 @@
 		745147EC264D56EE00172419 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 745147EA264D510400172419 /* GoogleService-Info.plist */; };
 		7456DC6926500B7800535297 /* ConversationViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7456DC6826500B7800535297 /* ConversationViewmodel.swift */; };
 		7456DC6B2650A1D800535297 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7456DC6A2650A1D800535297 /* MessageViewModel.swift */; };
+		74622E142664C9E70012D60D /* StudentExistancesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74622E122664C9E70012D60D /* StudentExistancesTableViewCell.swift */; };
+		74622E152664C9E70012D60D /* StudentExistancesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74622E132664C9E70012D60D /* StudentExistancesTableViewCell.xib */; };
 		746BDE7026523D0B001B1E71 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE6F26523D0B001B1E71 /* Course.swift */; };
 		746BDE7226523D14001B1E71 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE7126523D14001B1E71 /* Lesson.swift */; };
 		746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE73265250EF001B1E71 /* HomePageViewController.swift */; };
@@ -203,6 +205,8 @@
 		745147EA264D510400172419 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7456DC6826500B7800535297 /* ConversationViewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewmodel.swift; sourceTree = "<group>"; };
 		7456DC6A2650A1D800535297 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		74622E122664C9E70012D60D /* StudentExistancesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentExistancesTableViewCell.swift; sourceTree = "<group>"; };
+		74622E132664C9E70012D60D /* StudentExistancesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentExistancesTableViewCell.xib; sourceTree = "<group>"; };
 		746BDE6F26523D0B001B1E71 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		746BDE7126523D14001B1E71 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		746BDE73265250EF001B1E71 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
@@ -470,6 +474,8 @@
 				74715CD5265B774200570A23 /* AssignmentStatusTableViewCell.xib */,
 				74C2B3962664ACB5007855B5 /* TodaysLesoonTableViewCell.swift */,
 				74C2B3972664ACB5007855B5 /* TodaysLesoonTableViewCell.xib */,
+				74622E122664C9E70012D60D /* StudentExistancesTableViewCell.swift */,
+				74622E132664C9E70012D60D /* StudentExistancesTableViewCell.xib */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -786,6 +792,7 @@
 				74996312265DF0B100F081EC /* LessonsTableViewCell.xib in Resources */,
 				74C2B3992664ACB5007855B5 /* TodaysLesoonTableViewCell.xib in Resources */,
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
+				74622E152664C9E70012D60D /* StudentExistancesTableViewCell.xib in Resources */,
 				748CC924265DEC1800919F1E /* CourseTableViewCell.xib in Resources */,
 				74F2DE8D26609F1C00F6F0AB /* LPTestScoreTableViewCell.xib in Resources */,
 				7402580B265267FA00BA6BDA /* ServicesTableViewCell.xib in Resources */,
@@ -935,6 +942,7 @@
 				748CC923265DEC1800919F1E /* CourseTableViewCell.swift in Sources */,
 				74E9475A264C087D00AFB046 /* UIStoryboard+Extension.swift in Sources */,
 				74E94752264C087D00AFB046 /* UIColor+Extension.swift in Sources */,
+				74622E142664C9E70012D60D /* StudentExistancesTableViewCell.swift in Sources */,
 				7456DC6926500B7800535297 /* ConversationViewmodel.swift in Sources */,
 				74A7D11F2655383400B445EB /* Student.swift in Sources */,
 				74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */,

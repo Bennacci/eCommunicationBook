@@ -35,7 +35,6 @@ class StudentLessonRecordViewModel {
     }
   }
   
-
   var time: Double {
     get {
       return studentLessonRecord.time
@@ -53,7 +52,6 @@ class StudentLessonRecordViewModel {
       return studentLessonRecord.todaysLesson
     }
   }
-  
   
   var tests: [String]? {
     get {
@@ -75,7 +73,7 @@ class StudentLessonRecordViewModel {
     }
   }
   
-  var previousTests: [String]?{
+  var previousTests: [String]? {
     get {
       return studentLessonRecord.previousTests
     }

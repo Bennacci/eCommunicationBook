@@ -49,6 +49,7 @@ class LessonPlanDetailViewController: UIViewController {
       self?.dismiss(animated: true, completion: nil)
       self?.delegate?.onSaved()
     }
+    
     layOutView()
   }
   

@@ -21,6 +21,8 @@ class LPMainCollectionViewCell: UICollectionViewCell {
     tableView.registerCellWithNib(identifier: LPHomeWorkTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: LPCommunicationCornerTableViewCell.identifier, bundle: nil)
     tableView.registerCellWithNib(identifier: LPTestScoreTableViewCell.identifier, bundle: nil)
+    tableView.registerCellWithNib(identifier: AddRowTableViewCell.identifier, bundle: nil)
+    tableView.registerCellWithNib(identifier: UploadImageTableViewCell.identifier, bundle: nil)
   }
   func setUp(viewModel: StudentLessonRecordViewModel, indexPath: IndexPath) {
     self.viewModel = viewModel

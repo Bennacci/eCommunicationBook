@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class LessonPerformancesViewModel {
   
@@ -16,6 +17,46 @@ class LessonPerformancesViewModel {
   
   var onSaved: (() -> Void)?
 
+  var refreshView: (() -> Void)?
+
+  func onRefresh() {
+    // maybe do something
+    self.refreshView?()
+  }
+  
+  func uploadImage(with image: UIImage) {
+    
+    XXXManager.shared.uploadPickerImage(pickerImage: image) { result in
+      
+      switch result {
+        
+      case .success(let imageUrl):
+        
+        self.onImageUploaded(url: imageUrl)
+        print("Publish Image Succeeded")
+
+      case .failure(let error):
+        
+        print("publishArticle.failure: \(error)")
+      }
+    }
+  }
+  func onImageUploaded(url: String) {
+    if studentLessonRecord.images == nil {
+      studentLessonRecord.images = []
+      studentLessonRecord.imageTitles = []
+    }
+    studentLessonRecord.images?.append(url)
+    studentLessonRecord.imageTitles?.append("")
+    onRefresh()
+  }
+  
+  func onDeleteImage(index: Int){
+    studentLessonRecord.images?.remove(at: index)
+    studentLessonRecord.imageTitles?.remove(at: index)
+    onRefresh()
+  }
+  
   func onSave() {
     
     self.studentLessonRecordsViewModel.value[studentIndex] =
@@ -91,7 +132,9 @@ class LessonPerformancesViewModel {
     testGrade: nil,
     assignmentCompleted: nil,
     assignmentScore: nil,
-    note: nil)
+    note: nil,
+    images: nil,
+    imageTitles: nil)
 
   func onMainCollectionViewInnerScrolled() {
     self.studentLessonRecordsViewModel.value[studentIndex] =
@@ -133,7 +176,11 @@ class LessonPerformancesViewModel {
       
   }
   func onChangeContent(index: Int, text: String) {
-    studentLessonRecord.testGrade?[index] = text
+    if index > 100 {
+      studentLessonRecord.imageTitles?[index / 100] = text
+    } else {
+      studentLessonRecord.testGrade?[index % 100] = text
+    }
   }
   func onCommunicationCorneChanged(text: String) {
     studentLessonRecord.note = text
@@ -151,7 +198,7 @@ class LessonPerformancesViewModel {
     
     sectionTitles.append("Comunication Corner")
     
-//    sectionTitles.append("Upload Image")
+    sectionTitles.append("Upload Image")
 
     studentLessonRecord.courseName = course.name
     studentLessonRecord.time = currentLesson.time

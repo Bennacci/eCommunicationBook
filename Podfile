@@ -9,6 +9,7 @@ target 'eCommunicationBook' do
 
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
+  pod 'FirebaseStorage'
   pod 'FSCalendar'
   pod 'Charts'
   #pod 'CollectionViewPagingLayout'

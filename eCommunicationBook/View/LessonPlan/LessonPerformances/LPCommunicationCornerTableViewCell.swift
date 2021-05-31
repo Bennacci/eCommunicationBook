@@ -30,9 +30,9 @@ class LPCommunicationCornerTableViewCell: UITableViewCell {
 
 
     func layOutCell() {
-      guard let note = viewModel?.note else { return }
-      if note != ""{
-        textViewCommunicationCorner.text = note
+//      guard let note = viewModel?.note else { return }
+      if viewModel?.note != nil {
+        textViewCommunicationCorner.text = viewModel?.note
         textViewCommunicationCorner.textColor = .black
       } else {
         textViewCommunicationCorner.text = "type message..."

@@ -12,6 +12,7 @@ class CalendarPageViewModel {
   
   var titles: [String] = []
   
+  var comunicationSectionTitles: [String] = []
   
   let eventViewModel = Box([EventViewModel]())
   
@@ -91,8 +92,34 @@ class CalendarPageViewModel {
         $0.time <= time + secondsPerDay * 1000 - 1
     })
     setTitle()
+    setComunicationSectionTitle()
     onRefresh()
   }
+  
+  
+  func setComunicationSectionTitle() {
+    
+    comunicationSectionTitles = [ "Today's Lesson", "Lesson Performances"]
+    if dayLessonRecordViewModel.value.count != 0 {
+    if dayLessonRecordViewModel.value[0].assignments != nil {
+      comunicationSectionTitles.append("Homework")
+    }
+    
+    if dayLessonRecordViewModel.value[0].tests != nil {
+      comunicationSectionTitles.append("Tests")
+    }
+    
+    if dayLessonRecordViewModel.value[0].assignmentScore != nil {
+      comunicationSectionTitles.append("Homework Score")
+    }
+    
+    if dayLessonRecordViewModel.value[0].testGrade != nil {
+      comunicationSectionTitles.append("Tests Score")
+    }
+    }
+    comunicationSectionTitles.append("Communication Corner")
+  }
+  
   
   
   func setTitle() {
@@ -111,7 +138,6 @@ class CalendarPageViewModel {
       titles.append("Student Attendance and Leave")
     }
   }
-  
   
   func fetchData() {
     //

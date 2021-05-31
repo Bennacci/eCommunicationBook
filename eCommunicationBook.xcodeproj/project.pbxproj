@@ -77,13 +77,10 @@
 		748CC920265DEB6000919F1E /* LessonPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC91F265DEB6000919F1E /* LessonPlanViewController.swift */; };
 		748CC923265DEC1800919F1E /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC921265DEC1800919F1E /* CourseTableViewCell.swift */; };
 		748CC924265DEC1800919F1E /* CourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 748CC922265DEC1800919F1E /* CourseTableViewCell.xib */; };
-		74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */; };
-		74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */; };
 		7499630D265DEEC700F081EC /* LessonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7499630B265DEEC700F081EC /* LessonCollectionViewCell.swift */; };
 		7499630E265DEEC700F081EC /* LessonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7499630C265DEEC700F081EC /* LessonCollectionViewCell.xib */; };
 		74996311265DF0B100F081EC /* LessonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7499630F265DF0B100F081EC /* LessonsTableViewCell.swift */; };
 		74996312265DF0B100F081EC /* LessonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74996310265DF0B100F081EC /* LessonsTableViewCell.xib */; };
-		749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */; };
 		74A5A76D2654EC690039BC22 /* CircleUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5A76B2654EC690039BC22 /* CircleUserCollectionViewCell.swift */; };
 		74A5A76E2654EC690039BC22 /* CircleUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74A5A76C2654EC690039BC22 /* CircleUserCollectionViewCell.xib */; };
 		74A5A7712654EFDF0039BC22 /* SelecetedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5A76F2654EFDF0039BC22 /* SelecetedUserTableViewCell.swift */; };
@@ -104,6 +101,8 @@
 		74C2376D264BB5FE001BF47A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74C2376B264BB5FE001BF47A /* Main.storyboard */; };
 		74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74C2376E264BB5FF001BF47A /* Assets.xcassets */; };
 		74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74C23770264BB5FF001BF47A /* LaunchScreen.storyboard */; };
+		74C2B3982664ACB5007855B5 /* TodaysLesoonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2B3962664ACB5007855B5 /* TodaysLesoonTableViewCell.swift */; };
+		74C2B3992664ACB5007855B5 /* TodaysLesoonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74C2B3972664ACB5007855B5 /* TodaysLesoonTableViewCell.xib */; };
 		74CADD8226554C5A004DA6D0 /* SearchUserPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CADD8126554C5A004DA6D0 /* SearchUserPageViewModel.swift */; };
 		74CADD8426554C81004DA6D0 /* UserVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CADD8326554C81004DA6D0 /* UserVIewModel.swift */; };
 		74CADD882656105E004DA6D0 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CADD862656105E004DA6D0 /* TextFieldTableViewCell.swift */; };
@@ -231,13 +230,10 @@
 		748CC91F265DEB6000919F1E /* LessonPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanViewController.swift; sourceTree = "<group>"; };
 		748CC921265DEC1800919F1E /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		748CC922265DEC1800919F1E /* CourseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseTableViewCell.xib; sourceTree = "<group>"; };
-		74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAssignmentTableViewCell.swift; sourceTree = "<group>"; };
-		74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventTableViewCell.swift; sourceTree = "<group>"; };
 		7499630B265DEEC700F081EC /* LessonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCollectionViewCell.swift; sourceTree = "<group>"; };
 		7499630C265DEEC700F081EC /* LessonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonCollectionViewCell.xib; sourceTree = "<group>"; };
 		7499630F265DF0B100F081EC /* LessonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsTableViewCell.swift; sourceTree = "<group>"; };
 		74996310265DF0B100F081EC /* LessonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonsTableViewCell.xib; sourceTree = "<group>"; };
-		749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarChartTableViewCell.swift; sourceTree = "<group>"; };
 		74A5A76B2654EC690039BC22 /* CircleUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		74A5A76C2654EC690039BC22 /* CircleUserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleUserCollectionViewCell.xib; sourceTree = "<group>"; };
 		74A5A76F2654EFDF0039BC22 /* SelecetedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelecetedUserTableViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +256,8 @@
 		74C2376E264BB5FF001BF47A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74C23771264BB5FF001BF47A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74C23773264BB5FF001BF47A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74C2B3962664ACB5007855B5 /* TodaysLesoonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysLesoonTableViewCell.swift; sourceTree = "<group>"; };
+		74C2B3972664ACB5007855B5 /* TodaysLesoonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodaysLesoonTableViewCell.xib; sourceTree = "<group>"; };
 		74CADD8126554C5A004DA6D0 /* SearchUserPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserPageViewModel.swift; sourceTree = "<group>"; };
 		74CADD8326554C81004DA6D0 /* UserVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVIewModel.swift; sourceTree = "<group>"; };
 		74CADD862656105E004DA6D0 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -470,6 +468,8 @@
 				74715CD1265B761400570A23 /* LableWithVerticalLineTableViewCell.xib */,
 				74715CD4265B774200570A23 /* AssignmentStatusTableViewCell.swift */,
 				74715CD5265B774200570A23 /* AssignmentStatusTableViewCell.xib */,
+				74C2B3962664ACB5007855B5 /* TodaysLesoonTableViewCell.swift */,
+				74C2B3972664ACB5007855B5 /* TodaysLesoonTableViewCell.xib */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -633,9 +633,6 @@
 				745147E9264D46C100172419 /* ChatRoomPage */,
 				74CADD8526561019004DA6D0 /* NewAThing */,
 				745147CB264CDE9A00172419 /* AccountPage */,
-				74995315264E8B1000CA6861 /* CalendarEventTableViewCell.swift */,
-				749BF046264E713900F760A4 /* CalendarChartTableViewCell.swift */,
-				74995313264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -787,6 +784,7 @@
 				7435E86E265E363100941729 /* AddRowTableViewCell.xib in Resources */,
 				741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */,
 				74996312265DF0B100F081EC /* LessonsTableViewCell.xib in Resources */,
+				74C2B3992664ACB5007855B5 /* TodaysLesoonTableViewCell.xib in Resources */,
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
 				748CC924265DEC1800919F1E /* CourseTableViewCell.xib in Resources */,
 				74F2DE8D26609F1C00F6F0AB /* LPTestScoreTableViewCell.xib in Resources */,
@@ -899,7 +897,6 @@
 				74CADD8426554C81004DA6D0 /* UserVIewModel.swift in Sources */,
 				74E94759264C087D00AFB046 /* String+Extension.swift in Sources */,
 				748CC919265CEB4100919F1E /* SearchStudentPageViewModel.swift in Sources */,
-				749BF047264E713900F760A4 /* CalendarChartTableViewCell.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
 				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
 				74F2DE8926607B6B00F6F0AB /* LessonPerformancesViewModel.swift in Sources */,
@@ -940,7 +937,6 @@
 				74E94752264C087D00AFB046 /* UIColor+Extension.swift in Sources */,
 				7456DC6926500B7800535297 /* ConversationViewmodel.swift in Sources */,
 				74A7D11F2655383400B445EB /* Student.swift in Sources */,
-				74995314264E866F00CA6861 /* CalendarAssignmentTableViewCell.swift in Sources */,
 				74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */,
 				7435E87A265E489A00941729 /* CourseViewModel.swift in Sources */,
 				74F2DE8C26609F1C00F6F0AB /* LPTestScoreTableViewCell.swift in Sources */,
@@ -948,7 +944,6 @@
 				7435E86A265E35A000941729 /* LessonPlanDetailViewController.swift in Sources */,
 				74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */,
 				74E541F4266322CA004276F9 /* ScanStudentQRCodeViewModel.swift in Sources */,
-				74995316264E8B1000CA6861 /* CalendarEventTableViewCell.swift in Sources */,
 				74715CCE265B74A400570A23 /* ChartTableViewCell.swift in Sources */,
 				74715CD6265B774200570A23 /* AssignmentStatusTableViewCell.swift in Sources */,
 				745147E0264D386700172419 /* ChatRoom.swift in Sources */,
@@ -972,6 +967,7 @@
 				74A7D11B26552B2F00B445EB /* StudentLessonRecord.swift in Sources */,
 				741D7C4A2653F67700A7FD0A /* LocalizedString+Extension.swift in Sources */,
 				74C23768264BB5FE001BF47A /* SceneDelegate.swift in Sources */,
+				74C2B3982664ACB5007855B5 /* TodaysLesoonTableViewCell.swift in Sources */,
 				74D4BB6E2659E41A00999556 /* TimeIntervalTableViewCell.swift in Sources */,
 				74857F9E2654E81A00AEF14D /* SearchUserViewController.swift in Sources */,
 				74E94751264C087D00AFB046 /* UIFont+Extension.swift in Sources */,

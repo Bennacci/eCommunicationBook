@@ -173,7 +173,7 @@ class LessonPerformancesViewModel {
       studentLessonRecord.testGrade = tests.map({ _ in "" })
      }
     
-    studentLessonRecord.note = ""
+//    studentLessonRecord.note = ""
 
     studentLessonRecordsViewModel.value = scaleViewModels(with: self.course)
     

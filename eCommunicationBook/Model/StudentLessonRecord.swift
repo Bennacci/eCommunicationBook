@@ -32,6 +32,8 @@ struct StudentLessonRecord: Codable {
   var assignmentCompleted: [Bool]?
   var assignmentScore: [Int]?
   var note: String?
+  var images: [String]?
+  var imageTitles: [String]?
 
   enum CodingKeys: String, CodingKey {
     case id
@@ -49,6 +51,8 @@ struct StudentLessonRecord: Codable {
     case assignmentCompleted
     case assignmentScore
     case note
+    case images
+    case imageTitles
   }
   
   var toDict: [String: Any] {
@@ -67,7 +71,9 @@ struct StudentLessonRecord: Codable {
       "testGrade": testGrade as Any,
       "assignmentCompleted": assignmentCompleted as Any,
       "assignmentScore": assignmentScore as Any,
-      "note": note as Any
+      "note": note as Any,
+      "images": images as Any,
+      "imageTitles": imageTitles as Any
     ]
   }
 }

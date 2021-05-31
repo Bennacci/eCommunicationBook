@@ -147,6 +147,9 @@
 		74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9474E264C087D00AFB046 /* JGProgressHUDWrapper.swift */; };
 		74E94760264C087D00AFB046 /* MJRefreshWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9474F264C087D00AFB046 /* MJRefreshWrapper.swift */; };
 		74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94750264C087D00AFB046 /* KingFisherWrapper.swift */; };
+		74F074272664E74000CC0009 /* UIViewControllerWithImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F074262664E74000CC0009 /* UIViewControllerWithImagePicker.swift */; };
+		74F0742A2664EC5E00CC0009 /* UploadImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F074282664EC5E00CC0009 /* UploadImageTableViewCell.swift */; };
+		74F0742B2664EC5E00CC0009 /* UploadImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F074292664EC5E00CC0009 /* UploadImageTableViewCell.xib */; };
 		74F2DE72265FD87A00F6F0AB /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE71265FD87A00F6F0AB /* UIAlertAction+Extension.swift */; };
 		74F2DE75265FE73A00F6F0AB /* LPMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE73265FE73A00F6F0AB /* LPMainCollectionViewCell.swift */; };
 		74F2DE76265FE73A00F6F0AB /* LPMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F2DE74265FE73A00F6F0AB /* LPMainCollectionViewCell.xib */; };
@@ -304,6 +307,9 @@
 		74E9474E264C087D00AFB046 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		74E9474F264C087D00AFB046 /* MJRefreshWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJRefreshWrapper.swift; sourceTree = "<group>"; };
 		74E94750264C087D00AFB046 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
+		74F074262664E74000CC0009 /* UIViewControllerWithImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerWithImagePicker.swift; sourceTree = "<group>"; };
+		74F074282664EC5E00CC0009 /* UploadImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageTableViewCell.swift; sourceTree = "<group>"; };
+		74F074292664EC5E00CC0009 /* UploadImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageTableViewCell.xib; sourceTree = "<group>"; };
 		74F2DE71265FD87A00F6F0AB /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
 		74F2DE73265FE73A00F6F0AB /* LPMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		74F2DE74265FE73A00F6F0AB /* LPMainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LPMainCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -413,6 +419,7 @@
 		745147D6264CF77300172419 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				74F074262664E74000CC0009 /* UIViewControllerWithImagePicker.swift */,
 				74857F962654B95800AEF14D /* NavigationController.swift */,
 				746BDE73265250EF001B1E71 /* HomePageViewController.swift */,
 				74857F9D2654E81A00AEF14D /* SearchUserViewController.swift */,
@@ -656,6 +663,8 @@
 				74F2DE8B26609F1C00F6F0AB /* LPTestScoreTableViewCell.xib */,
 				74F2DE80265FEAF400F6F0AB /* LPCommunicationCornerTableViewCell.swift */,
 				74F2DE81265FEAF400F6F0AB /* LPCommunicationCornerTableViewCell.xib */,
+				74F074282664EC5E00CC0009 /* UploadImageTableViewCell.swift */,
+				74F074292664EC5E00CC0009 /* UploadImageTableViewCell.xib */,
 			);
 			path = LessonPerformances;
 			sourceTree = "<group>";
@@ -802,6 +811,7 @@
 				74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */,
 				74CADD94265614EF004DA6D0 /* DatePickerTableViewCell.xib in Resources */,
 				748CC91E265DEADC00919F1E /* LessonPlan.storyboard in Resources */,
+				74F0742B2664EC5E00CC0009 /* UploadImageTableViewCell.xib in Resources */,
 				74857FA02654E83700AEF14D /* SearchUser.storyboard in Resources */,
 				74CADD95265614EF004DA6D0 /* TwoLablesTableViewCell.xib in Resources */,
 				74715CD3265B761400570A23 /* LableWithVerticalLineTableViewCell.xib in Resources */,
@@ -930,6 +940,7 @@
 				74E541F62663243D004276F9 /* StudentExistance.swift in Sources */,
 				74E9473D264BE09500AFB046 /* PaddingableUILabel.swift in Sources */,
 				748CC920265DEB6000919F1E /* LessonPlanViewController.swift in Sources */,
+				74F0742A2664EC5E00CC0009 /* UploadImageTableViewCell.swift in Sources */,
 				746BDE74265250EF001B1E71 /* HomePageViewController.swift in Sources */,
 				7435E874265E3C7900941729 /* SaveButtonView.swift in Sources */,
 				74D869D7265745F8004D33ED /* CalendarHelper.swift in Sources */,
@@ -951,6 +962,7 @@
 				74E541F82663B603004276F9 /* StudentExistanceViewModel.swift in Sources */,
 				7435E86A265E35A000941729 /* LessonPlanDetailViewController.swift in Sources */,
 				74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */,
+				74F074272664E74000CC0009 /* UIViewControllerWithImagePicker.swift in Sources */,
 				74E541F4266322CA004276F9 /* ScanStudentQRCodeViewModel.swift in Sources */,
 				74715CCE265B74A400570A23 /* ChartTableViewCell.swift in Sources */,
 				74715CD6265B774200570A23 /* AssignmentStatusTableViewCell.swift in Sources */,

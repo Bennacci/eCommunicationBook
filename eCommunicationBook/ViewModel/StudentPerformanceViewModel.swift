@@ -109,4 +109,15 @@ class StudentLessonRecordViewModel {
       return studentLessonRecord.note
     }
   }
+  
+  var images: [String]? {
+    get {
+      return studentLessonRecord.images
+    }
+  }
+  var imageTitles: [String]? {
+    get {
+      return studentLessonRecord.imageTitles
+    }
+  }
 }

@@ -10,7 +10,8 @@ import UIKit
 
 class AddRowTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+  @IBOutlet weak var label: UILabel!
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
@@ -20,5 +21,7 @@ class AddRowTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+  func prepareForUploadImage(){
+    label.text = "Tap to Upload"
+  }
 }

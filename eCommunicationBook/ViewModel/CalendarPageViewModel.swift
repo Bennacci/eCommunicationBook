@@ -118,6 +118,10 @@ class CalendarPageViewModel {
     }
     }
     comunicationSectionTitles.append("Communication Corner")
+    
+//    comunicationSectionTitles.append("Upload a image")
+
+    
   }
   
   

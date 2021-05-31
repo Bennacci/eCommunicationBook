@@ -151,6 +151,8 @@ class LessonPerformancesViewModel {
     
     sectionTitles.append("Comunication Corner")
     
+//    sectionTitles.append("Upload Image")
+
     studentLessonRecord.courseName = course.name
     studentLessonRecord.time = currentLesson.time
     studentLessonRecord.timeInterval = currentLesson.timeInterval

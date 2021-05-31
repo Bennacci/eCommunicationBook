@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentExistancesTableViewCell" rowHeight="342" id="KGk-i7-Jjw" customClass="StudentExistancesTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="421" height="342"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="421" height="342"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cSJ-c0-vkx">
+                        <rect key="frame" x="40" y="35.5" width="341" height="270"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="270" id="Jrg-gf-7k8"/>
+                        </constraints>
+                    </mapView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FkQ-Ei-N4o">
+                        <rect key="frame" x="375" y="6.5" width="30" height="29"/>
+                        <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="VCz-ZH-ix5"/>
+                            <constraint firstAttribute="height" constant="30" id="dN5-Fr-yjJ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Attandance and Leave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCn-bk-m7u">
+                        <rect key="frame" x="24" y="8" width="235" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqS-dm-IYh">
+                        <rect key="frame" x="40" y="313.5" width="42" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mCn-bk-m7u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="0gY-QJ-qXE"/>
+                    <constraint firstAttribute="trailing" secondItem="cSJ-c0-vkx" secondAttribute="trailing" constant="40" id="26v-ev-1im"/>
+                    <constraint firstAttribute="trailing" secondItem="FkQ-Ei-N4o" secondAttribute="trailing" constant="16" id="4E0-QY-JdH"/>
+                    <constraint firstItem="cSJ-c0-vkx" firstAttribute="top" secondItem="mCn-bk-m7u" secondAttribute="bottom" constant="8" id="Blp-ms-ez2"/>
+                    <constraint firstItem="OqS-dm-IYh" firstAttribute="top" secondItem="cSJ-c0-vkx" secondAttribute="bottom" constant="8" id="Cek-oC-Skr"/>
+                    <constraint firstItem="mCn-bk-m7u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Ewr-oz-y43"/>
+                    <constraint firstItem="OqS-dm-IYh" firstAttribute="leading" secondItem="cSJ-c0-vkx" secondAttribute="leading" id="HtV-ok-SUJ"/>
+                    <constraint firstAttribute="bottom" secondItem="OqS-dm-IYh" secondAttribute="bottom" constant="8" id="PQL-nr-8uq"/>
+                    <constraint firstItem="FkQ-Ei-N4o" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="Wqq-rR-bek"/>
+                    <constraint firstItem="cSJ-c0-vkx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="n3n-4a-miw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imageViewLocated" destination="FkQ-Ei-N4o" id="WCi-QB-gKW"/>
+                <outlet property="labelAttandance" destination="OqS-dm-IYh" id="DKH-lL-er2"/>
+                <outlet property="labelExistanceStat" destination="mCn-bk-m7u" id="NrA-oI-2Xs"/>
+                <outlet property="mapView" destination="cSJ-c0-vkx" id="w5F-Qr-TwS"/>
+            </connections>
+            <point key="canvasLocation" x="210.86956521739131" y="212.27678571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="location.fill" catalog="system" width="128" height="115"/>
+    </resources>
+</document>

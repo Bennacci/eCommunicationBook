@@ -30,6 +30,10 @@ class ScanStudentQRCodeViewController: UIViewController {
   let locationManager = CLLocationManager()
   
   
+  @IBAction func tapLeaveButton(_ sender: Any) {
+    navigationController?.popViewController(animated: true)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     //    self.tabBarController?.tabBar.layer.zPosition = -1

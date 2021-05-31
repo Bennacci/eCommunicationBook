@@ -51,7 +51,7 @@ class LessonPerformancesViewModel {
     onRefresh()
   }
   
-  func onDeleteImage(index: Int){
+  func onDeleteImage(index: Int) {
     studentLessonRecord.images?.remove(at: index)
     studentLessonRecord.imageTitles?.remove(at: index)
     onRefresh()

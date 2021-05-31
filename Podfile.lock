@@ -218,6 +218,9 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
@@ -303,6 +306,7 @@ PODS:
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
+  - ChameleonFramework
   - Charts
   - EasyRefresher
   - Firebase/Firestore
@@ -319,6 +323,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
+    - ChameleonFramework
     - Charts
     - EasyRefresher
     - Firebase
@@ -345,6 +350,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   EasyRefresher: 169daf095d7b032b0b9b505a0ed776d560fd1662
   Firebase: c121feb35e4126c0b355e3313fa9b487d47319fd
@@ -368,6 +374,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 36923d44ec4930a0f7b138ef000a2138474c2f8f
+PODFILE CHECKSUM: e1e80de025c9cf16bfe87a13a90b7a488424aa03
 
 COCOAPODS: 1.10.1

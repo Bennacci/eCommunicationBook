@@ -28,7 +28,7 @@
                     </tableView>
                 </subviews>
             </view>
-            <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.56465393304824829" green="0.45339596271514893" blue="0.35711643099784851" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="xt3-3K-RHG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="FhQ-1O-JNX"/>
                 <constraint firstAttribute="trailing" secondItem="6OA-Ga-xQw" secondAttribute="trailing" constant="8" id="ImQ-aL-DDY"/>
@@ -39,6 +39,11 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="338" height="525"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="labelStudentName" destination="xt3-3K-RHG" id="7CN-9k-2rC"/>
                 <outlet property="tableView" destination="6OA-Ga-xQw" id="naj-sk-Yax"/>

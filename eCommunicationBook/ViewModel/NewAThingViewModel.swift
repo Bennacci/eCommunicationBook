@@ -164,10 +164,10 @@ class NewAThingViewModel: SearchUserDelegate {
   func onSearchAndSelected(forStudent: Bool) {
     if forStudent == false {
       guard let selectedUsers = UserManager.shared.selectedUsers else {return}
-      self.course.teachers = selectedUsers.map({$0.userID})
+      self.course.teachers = selectedUsers.map({$0.name + "\n" + $0.userID})
     } else {
       guard let selectedUsersTwo = UserManager.shared.selectedStudents else {return}
-      self.course.students = selectedUsersTwo.map({$0.id})
+      self.course.students = selectedUsersTwo.map({$0.name + "\n" + $0.id})
     }
     onDataUpdated!()
   }

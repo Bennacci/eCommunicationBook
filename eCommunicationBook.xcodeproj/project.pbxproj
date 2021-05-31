@@ -73,7 +73,6 @@
 		74857FA02654E83700AEF14D /* SearchUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74857F9F2654E83700AEF14D /* SearchUser.storyboard */; };
 		74857FA32654E9DB00AEF14D /* WideUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857FA12654E9DB00AEF14D /* WideUserTableViewCell.swift */; };
 		74857FA42654E9DB00AEF14D /* WideUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */; };
-		748CC919265CEB4100919F1E /* SearchStudentPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */; };
 		748CC91B265CEB7200919F1E /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC91A265CEB7200919F1E /* StudentViewModel.swift */; };
 		748CC91E265DEADC00919F1E /* LessonPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 748CC91D265DEADC00919F1E /* LessonPlan.storyboard */; };
 		748CC920265DEB6000919F1E /* LessonPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748CC91F265DEB6000919F1E /* LessonPlanViewController.swift */; };
@@ -150,6 +149,9 @@
 		74F074272664E74000CC0009 /* UIViewControllerWithImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F074262664E74000CC0009 /* UIViewControllerWithImagePicker.swift */; };
 		74F0742A2664EC5E00CC0009 /* UploadImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F074282664EC5E00CC0009 /* UploadImageTableViewCell.swift */; };
 		74F0742B2664EC5E00CC0009 /* UploadImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F074292664EC5E00CC0009 /* UploadImageTableViewCell.xib */; };
+		74F0742E2665194100CC0009 /* StudentImagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F0742C2665194100CC0009 /* StudentImagesTableViewCell.swift */; };
+		74F0742F2665194100CC0009 /* StudentImagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F0742D2665194100CC0009 /* StudentImagesTableViewCell.xib */; };
+		74F07431266544A600CC0009 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F07430266544A600CC0009 /* HomePageViewModel.swift */; };
 		74F2DE72265FD87A00F6F0AB /* UIAlertAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE71265FD87A00F6F0AB /* UIAlertAction+Extension.swift */; };
 		74F2DE75265FE73A00F6F0AB /* LPMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE73265FE73A00F6F0AB /* LPMainCollectionViewCell.swift */; };
 		74F2DE76265FE73A00F6F0AB /* LPMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F2DE74265FE73A00F6F0AB /* LPMainCollectionViewCell.xib */; };
@@ -231,7 +233,6 @@
 		74857F9F2654E83700AEF14D /* SearchUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchUser.storyboard; sourceTree = "<group>"; };
 		74857FA12654E9DB00AEF14D /* WideUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideUserTableViewCell.swift; sourceTree = "<group>"; };
 		74857FA22654E9DB00AEF14D /* WideUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WideUserTableViewCell.xib; sourceTree = "<group>"; };
-		748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStudentPageViewModel.swift; sourceTree = "<group>"; };
 		748CC91A265CEB7200919F1E /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
 		748CC91D265DEADC00919F1E /* LessonPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LessonPlan.storyboard; sourceTree = "<group>"; };
 		748CC91F265DEB6000919F1E /* LessonPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +311,9 @@
 		74F074262664E74000CC0009 /* UIViewControllerWithImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerWithImagePicker.swift; sourceTree = "<group>"; };
 		74F074282664EC5E00CC0009 /* UploadImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageTableViewCell.swift; sourceTree = "<group>"; };
 		74F074292664EC5E00CC0009 /* UploadImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageTableViewCell.xib; sourceTree = "<group>"; };
+		74F0742C2665194100CC0009 /* StudentImagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentImagesTableViewCell.swift; sourceTree = "<group>"; };
+		74F0742D2665194100CC0009 /* StudentImagesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentImagesTableViewCell.xib; sourceTree = "<group>"; };
+		74F07430266544A600CC0009 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		74F2DE71265FD87A00F6F0AB /* UIAlertAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extension.swift"; sourceTree = "<group>"; };
 		74F2DE73265FE73A00F6F0AB /* LPMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		74F2DE74265FE73A00F6F0AB /* LPMainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LPMainCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -397,7 +401,6 @@
 				745147ED264E06D900172419 /* ChatRoomPage */,
 				741D7C4E26540E7E00A7FD0A /* AccountPage */,
 				74CADD8126554C5A004DA6D0 /* SearchUserPageViewModel.swift */,
-				748CC918265CEB4100919F1E /* SearchStudentPageViewModel.swift */,
 				74CADD8326554C81004DA6D0 /* UserVIewModel.swift */,
 				7435E879265E489A00941729 /* CourseViewModel.swift */,
 				7435E877265E432A00941729 /* LessonViewModel.swift */,
@@ -412,6 +415,7 @@
 				74F2DE8826607B6B00F6F0AB /* LessonPerformancesViewModel.swift */,
 				74E541F3266322CA004276F9 /* ScanStudentQRCodeViewModel.swift */,
 				74E541F72663B603004276F9 /* StudentExistanceViewModel.swift */,
+				74F07430266544A600CC0009 /* HomePageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -483,6 +487,8 @@
 				74C2B3972664ACB5007855B5 /* TodaysLesoonTableViewCell.xib */,
 				74622E122664C9E70012D60D /* StudentExistancesTableViewCell.swift */,
 				74622E132664C9E70012D60D /* StudentExistancesTableViewCell.xib */,
+				74F0742C2665194100CC0009 /* StudentImagesTableViewCell.swift */,
+				74F0742D2665194100CC0009 /* StudentImagesTableViewCell.xib */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -798,6 +804,7 @@
 				741FAC85264CD77200D5C34B /* ChatRoomPage.storyboard in Resources */,
 				7435E86E265E363100941729 /* AddRowTableViewCell.xib in Resources */,
 				741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */,
+				74F0742F2665194100CC0009 /* StudentImagesTableViewCell.xib in Resources */,
 				74996312265DF0B100F081EC /* LessonsTableViewCell.xib in Resources */,
 				74C2B3992664ACB5007855B5 /* TodaysLesoonTableViewCell.xib in Resources */,
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
@@ -912,8 +919,8 @@
 				74A7D1152655141D00B445EB /* User.swift in Sources */,
 				74857FA32654E9DB00AEF14D /* WideUserTableViewCell.swift in Sources */,
 				74CADD8426554C81004DA6D0 /* UserVIewModel.swift in Sources */,
+				74F0742E2665194100CC0009 /* StudentImagesTableViewCell.swift in Sources */,
 				74E94759264C087D00AFB046 /* String+Extension.swift in Sources */,
-				748CC919265CEB4100919F1E /* SearchStudentPageViewModel.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
 				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
 				74F2DE8926607B6B00F6F0AB /* LessonPerformancesViewModel.swift in Sources */,
@@ -962,6 +969,7 @@
 				74E541F82663B603004276F9 /* StudentExistanceViewModel.swift in Sources */,
 				7435E86A265E35A000941729 /* LessonPlanDetailViewController.swift in Sources */,
 				74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */,
+				74F07431266544A600CC0009 /* HomePageViewModel.swift in Sources */,
 				74F074272664E74000CC0009 /* UIViewControllerWithImagePicker.swift in Sources */,
 				74E541F4266322CA004276F9 /* ScanStudentQRCodeViewModel.swift in Sources */,
 				74715CCE265B74A400570A23 /* ChartTableViewCell.swift in Sources */,

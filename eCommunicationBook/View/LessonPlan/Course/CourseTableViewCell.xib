@@ -21,19 +21,31 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bear" translatesAutoresizingMaskIntoConstraints="NO" id="vtx-s1-CSA">
                                 <rect key="frame" x="0.0" y="0.0" width="287" height="140"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="bTBorderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bTBorderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8V-1s-tlb">
-                                <rect key="frame" x="0.0" y="0.0" width="58" height="29"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="76" height="32"/>
+                                <color key="backgroundColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIf-le-27p">
-                                <rect key="frame" x="8" y="4" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="12" y="4" width="52" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="241-oJ-25Z">
                                 <rect key="frame" x="259" y="8" width="20" height="22"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="info.circle.fill" catalog="system"/>
                             </button>
                         </subviews>
@@ -49,9 +61,9 @@
                             <constraint firstAttribute="bottom" secondItem="vtx-s1-CSA" secondAttribute="bottom" id="ZmR-a6-6de"/>
                             <constraint firstAttribute="trailing" secondItem="241-oJ-25Z" secondAttribute="trailing" constant="8" id="kUo-P3-aiY"/>
                             <constraint firstAttribute="trailing" secondItem="vtx-s1-CSA" secondAttribute="trailing" id="lKv-ms-8WF"/>
-                            <constraint firstItem="wIf-le-27p" firstAttribute="leading" secondItem="9tT-jO-aif" secondAttribute="leading" constant="8" id="tl3-Dh-TFj"/>
+                            <constraint firstItem="wIf-le-27p" firstAttribute="leading" secondItem="9tT-jO-aif" secondAttribute="leading" constant="12" id="tl3-Dh-TFj"/>
                             <constraint firstItem="n8V-1s-tlb" firstAttribute="leading" secondItem="9tT-jO-aif" secondAttribute="leading" id="wvh-K8-tND"/>
-                            <constraint firstItem="n8V-1s-tlb" firstAttribute="trailing" secondItem="wIf-le-27p" secondAttribute="trailing" constant="8" id="y09-Zb-TWI"/>
+                            <constraint firstItem="n8V-1s-tlb" firstAttribute="trailing" secondItem="wIf-le-27p" secondAttribute="trailing" constant="12" id="y09-Zb-TWI"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -31,9 +31,10 @@ class CourseTableViewCell: UITableViewCell {
       self.viewModel = viewModel
       layoutCell()
   }
-  
+  // swiftlint:disable line_length
   func layoutCell() {
     labelCourseName.text = viewModel?.name
-//    imageViewCourse.image = view
+    imageViewCourse.loadImage("https://firebasestorage.googleapis.com/v0/b/ecommunicationbook.appspot.com/o/StudentLessonRecordImages%2F2B331657-0F3B-4EB9-96DA-EA60B1A2FB7B.jpg?alt=media&token=05ecb4a2-db75-4bc2-bf32-43e87e70c81f")
   }
+    // swiftlint:enable line_length
 }

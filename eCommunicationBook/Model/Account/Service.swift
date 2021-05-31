@@ -52,6 +52,10 @@ protocol AccountItem {
 
 enum ParentSeviceItem: AccountItem {
   
+  case signCommunicationBook
+  
+  case checkStudentTimeInAndOut
+  
   case checkLearingStat
   
   case payTimeAnnounce
@@ -68,39 +72,47 @@ enum ParentSeviceItem: AccountItem {
   
   var image: UIImage? {
     switch self {
+    
+    case .signCommunicationBook: return UIImage.asset(.CommunicationBook)
       
-    case .checkLearingStat: return UIImage.asset(.Bear)
+    case .checkStudentTimeInAndOut: return UIImage.asset(.Location)
       
-    case .payTimeAnnounce: return UIImage.asset(.Bear)
+    case .checkLearingStat: return UIImage.asset(.Performances)
       
-    case .leaveReservation: return UIImage.asset(.Bear)
+    case .payTimeAnnounce: return UIImage.asset(.Pay)
       
-    case .courseReservation: return UIImage.asset(.Bear)
+    case .leaveReservation: return UIImage.asset(.Event)
       
-    case .makeUpReservation: return UIImage.asset(.Bear)
+    case .courseReservation: return UIImage.asset(.Event)
       
-    case .newAStudent: return UIImage.asset(.Bear)
+    case .makeUpReservation: return UIImage.asset(.Event)
       
-    case .contactUs: return UIImage.asset(.Bear)
+    case .newAStudent: return UIImage.asset(.Children)
+      
+    case .contactUs: return UIImage.asset(.ContactUs)
     }
   }
   
   var title: String {
     switch self {
+    
+    case .signCommunicationBook: return localizedString("Sign CommunicationBook")
+    
+    case .checkStudentTimeInAndOut: return localizedString("Student Time In and Out")
       
-    case .checkLearingStat: return localizedString("學習狀況")
+    case .checkLearingStat: return localizedString("Learning Status")
       
-    case .payTimeAnnounce: return localizedString("繳費通知")
+    case .payTimeAnnounce: return localizedString("Payment Notice")
       
-    case .leaveReservation: return localizedString("線上請假")
+    case .leaveReservation: return localizedString("Leave Reservation")
       
-    case .courseReservation: return localizedString("課程預約")
+    case .courseReservation: return localizedString("Lesson Reservation")
       
-    case .makeUpReservation: return localizedString("補課申請")
+    case .makeUpReservation: return localizedString("Make Up Lesson Reservation")
       
-    case .newAStudent: return localizedString("新增孩童資料")
+    case .newAStudent: return localizedString("Create Student Information")
       
-    case .contactUs: return localizedString("聯絡我們")
+    case .contactUs: return localizedString("Contact Us")
       
     }
   }
@@ -109,7 +121,11 @@ enum ParentSeviceItem: AccountItem {
     switch self {
     case .newAStudent: return "Children Informations"
       
-    case .checkLearingStat,
+    case .signCommunicationBook,
+         
+         .checkStudentTimeInAndOut,
+     
+         .checkLearingStat,
          
          .payTimeAnnounce,
          
@@ -131,7 +147,11 @@ enum ParentSeviceItem: AccountItem {
                                ["Emergency Contact Person", "Contact Number"],
                                ["image"]]
       
-    case .checkLearingStat,
+    case .signCommunicationBook,
+         
+         .checkStudentTimeInAndOut,
+     
+         .checkLearingStat,
          
          .payTimeAnnounce,
          
@@ -148,9 +168,11 @@ enum ParentSeviceItem: AccountItem {
 
 enum TeacherSeviceItem: AccountItem {
   
-  case writeAttendAndLeave
+  case writeStudentTimeInAndOut
   
-  case writeLessonState
+  case writeLessonPlan
+  
+  case writeStudentLessonRecord
   
   case newEvent
   
@@ -168,19 +190,21 @@ enum TeacherSeviceItem: AccountItem {
     
     switch self {
       
-    case .writeAttendAndLeave: return UIImage.asset(.Bear)
+    case .writeStudentTimeInAndOut: return UIImage.asset(.Location)
+    
+    case .writeLessonPlan:  return UIImage.asset(.LessonPlan)
+    
+    case .writeStudentLessonRecord: return UIImage.asset(.CommunicationBook)
       
-    case .writeLessonState: return UIImage.asset(.Bear)
+    case .newEvent: return UIImage.asset(.Event)
       
-    case .newEvent: return UIImage.asset(.Bear)
+    case .setASign: return UIImage.asset(.Sign)
       
-    case .setASign: return UIImage.asset(.Bear)
+    case .newACourse: return UIImage.asset(.CreateCourse)
       
-    case .newACourse: return UIImage.asset(.Bear)
+    case .newAStudent : return UIImage.asset(.Children)
       
-    case .newAStudent : return UIImage.asset(.Bear)
-      
-    case .newAUser: return UIImage.asset(.Bear)
+    case .newAUser: return UIImage.asset(.Users)
       
     }
   }
@@ -189,19 +213,21 @@ enum TeacherSeviceItem: AccountItem {
     
     switch self {
       
-    case .writeAttendAndLeave: return localizedString("出離席紀錄")
+    case .writeStudentTimeInAndOut: return localizedString("Student Time In / Out")
+    
+    case .writeLessonPlan: return localizedString("Lesson Plan")
       
-    case .writeLessonState: return localizedString("學生上課狀況")
+    case .writeStudentLessonRecord: return localizedString("Communication Book")
       
-    case .newEvent: return localizedString("新增活動")
+    case .newEvent: return localizedString("New Event")
       
-    case .setASign: return localizedString("新增公告")
+    case .setASign: return localizedString("New Sign")
       
-    case .newACourse: return localizedString("開課")
+    case .newACourse: return localizedString("New Course")
       
-    case .newAStudent : return localizedString("新增孩童資料")
+    case .newAStudent : return localizedString("New Student")
       
-    case .newAUser: return localizedString("新增用戶")
+    case .newAUser: return localizedString("Create User")
       
       
       

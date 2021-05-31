@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="231" id="KGk-i7-Jjw" customClass="StudentImagesTableViewCell" customModule="eCommunicationBook" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="336" height="231"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="336" height="231"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xc8-lt-WA0">
+                        <rect key="frame" x="20" y="33" width="296" height="190"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="190" id="ypY-YC-VAt"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dP-Ma-2It">
+                        <rect key="frame" x="24" y="8" width="42" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="xc8-lt-WA0" secondAttribute="bottom" constant="8" id="2Ra-f8-Klk"/>
+                    <constraint firstItem="5dP-Ma-2It" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="P9C-1d-Vo4"/>
+                    <constraint firstItem="xc8-lt-WA0" firstAttribute="top" secondItem="5dP-Ma-2It" secondAttribute="bottom" constant="8" id="PUw-08-Jxx"/>
+                    <constraint firstItem="xc8-lt-WA0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="VP3-nV-A73"/>
+                    <constraint firstAttribute="trailing" secondItem="xc8-lt-WA0" secondAttribute="trailing" constant="20" id="aIT-TB-TcA"/>
+                    <constraint firstItem="5dP-Ma-2It" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="jmo-R5-Wk9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imageViewStudentImage" destination="xc8-lt-WA0" id="gUh-qO-Qi7"/>
+                <outlet property="labelImageTitle" destination="5dP-Ma-2It" id="jfo-CL-7IF"/>
+            </connections>
+            <point key="canvasLocation" x="143.47826086956522" y="177.12053571428569"/>
+        </tableViewCell>
+    </objects>
+</document>

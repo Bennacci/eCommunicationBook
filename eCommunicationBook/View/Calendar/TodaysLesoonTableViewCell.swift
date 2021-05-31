@@ -11,27 +11,34 @@ import UIKit
 class TodaysLesoonTableViewCell: UITableViewCell {
   
   var viewModel: StudentLessonRecordViewModel?
+  
   @IBOutlet weak var labelContentsTitle: UILabel!
+  
   @IBOutlet weak var labelContents: UILabel!
+  
   @IBOutlet weak var labelContentMarks: UILabel!
+  
   override func awakeFromNib() {
+  
     super.awakeFromNib()
-    // Initialization code
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
     
+    super.setSelected(selected, animated: animated)
     // Configure the view for the selected state
   }
+  
   func setUp(viewModel: StudentLessonRecordViewModel, title: String) {
+  
     self.viewModel = viewModel
+    
     layOutCell(title: title)
   }
   
   // swiftlint:disable cyclomatic_complexity
   // swiftlint:disable function_body_length
-
+  
   func layOutCell(title: String) {
     
     var stringRepresentation = ""
@@ -68,6 +75,7 @@ class TodaysLesoonTableViewCell: UITableViewCell {
       }
       
     case "Homework Score":
+     
       guard let assignmets = viewModel?.previousAssignments else { return }
       
       for index in 0 ..< assignmets.count {
@@ -78,14 +86,19 @@ class TodaysLesoonTableViewCell: UITableViewCell {
       guard let assignmetsCompleted = viewModel?.assignmentCompleted else { return }
       
       for index in 0 ..< assignmetsCompleted.count {
+      
         if assignmetsCompleted[index] == true {
+        
           stringRepresentationMarks += ("☑︎" + "\n")
+        
         } else {
+        
           stringRepresentationMarks += ("□" + "\n")
         }
       }
       
     case "Tests Score":
+   
       guard let previousTests = viewModel?.previousTests else { return }
       
       for index in 0 ..< previousTests.count {
@@ -101,24 +114,36 @@ class TodaysLesoonTableViewCell: UITableViewCell {
       
     case "Communication Corner":
       
-      guard let note = viewModel?.note else { return }
-      stringRepresentation = note
+      if let note = viewModel?.note {
+  
+        stringRepresentation = note
+      }
       
     default:
+  
       return
-      
     }
+    
     if stringRepresentation.count >= 2 {
+      
       stringRepresentation.removeLast()
+     
       stringRepresentation.removeLast()
     }
+    
     if title == "Homework Score" || title == "Tests Score"{
+     
       stringRepresentationMarks.removeLast()
+    
       stringRepresentationMarks.removeLast()
+      
       labelContentMarks.isHidden = false
     }
+    
     labelContentsTitle.text = title
+   
     labelContents.text = stringRepresentation
+    
     labelContentMarks.text = stringRepresentationMarks
   }
   // swiftlint:enable cyclomatic_complexity

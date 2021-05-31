@@ -20,6 +20,8 @@ class HomePageViewController: UIViewController {
   
   var hotCell = ServicesTableViewCell()
   
+  var viewModel = HomePageViewModel()
+  
   var hotCellHeight: CGFloat = UIScreen.height / 7
   
   var recommendedCellHeight: CGFloat = UIScreen.height / 5
@@ -55,11 +57,11 @@ extension HomePageViewController: UITableViewDataSource {
     case 0:
       return ""
     case 1:
-      return "熱門"
+      return "Popular features"
     case 2:
-      return "為您推薦"
+      return "Recommanded for you"
     default:
-      return "News"
+      return "New events"
     }
   }
   
@@ -151,11 +153,11 @@ extension HomePageViewController: UICollectionViewDataSource {
     
     if collectionView == hotCell.collectionView {
       
-      return 5
+      return viewModel.servicesData().items[0].count
       
     } else {
       
-      return 10
+      return viewModel.servicesData().items[1].count + viewModel.servicesData().items[2].count
     }
   }
   
@@ -165,6 +167,10 @@ extension HomePageViewController: UICollectionViewDataSource {
       else { fatalError("Unexpected Table View Cell") }
     if collectionView == hotCell.collectionView {
       cell.height.constant = hotCell.bounds.size.height
+      cell.setUp(viewModel: viewModel.servicesData(), indexPath: indexPath, hot: true)
+
+    } else {
+    cell.setUp(viewModel: viewModel.servicesData(), indexPath: indexPath, hot: false)
     }
     return cell
   }
@@ -173,49 +179,26 @@ extension HomePageViewController: UICollectionViewDataSource {
 
 extension HomePageViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if collectionView == hotCell.collectionView {
     switch indexPath.item {
     case 0:
           if let nextVC = UIStoryboard.lessonPlan.instantiateInitialViewController() {
             
-      //      guard let targetController = nextVC.children[0] as? SearchUserViewController
-      //
-      //        else { fatalError("Unexpected Table View Cell") }
-            
-      //      targetController.delegate = self.viewModel
-            
-      //      if inputText == "Teachers"{
-      //
-      //        targetController.viewModel.forStudent = false
-      //
-      //      } else {
-      //
-      //        targetController.viewModel.forStudent = true
-      //      }
             nextVC.modalPresentationStyle = .fullScreen
+            self.navigationController?.show(nextVC, sender: nil)
+            
+          } else { return }
+    case 2:
+          if let nextVC = UIStoryboard.scanStudentQR.instantiateInitialViewController() {
+            
+            nextVC.modalPresentationStyle = .fullScreen
+            
             self.navigationController?.show(nextVC, sender: nil)
             
           } else { return }
     default:
-          if let nextVC = UIStoryboard.scanStudentQR.instantiateInitialViewController() {
-            
-      //      guard let targetController = nextVC.children[0] as? SearchUserViewController
-      //
-      //        else { fatalError("Unexpected Table View Cell") }
-            
-      //      targetController.delegate = self.viewModel
-            
-      //      if inputText == "Teachers"{
-      //
-      //        targetController.viewModel.forStudent = false
-      //
-      //      } else {
-      //
-      //        targetController.viewModel.forStudent = true
-      //      }
-            nextVC.modalPresentationStyle = .fullScreen
-            self.navigationController?.show(nextVC, sender: nil)
-            
-          } else { return }
+      return
+      }
     }
   }
 }

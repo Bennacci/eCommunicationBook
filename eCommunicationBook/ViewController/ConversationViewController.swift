@@ -69,7 +69,7 @@ extension ConversationViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    if viewModel.messageViewModel.value[indexPath.row].senderID == UserManager.shared.userID {
+    if viewModel.messageViewModel.value[indexPath.row].senderID == UserManager.shared.user.id {
       
       let cell = tableView.dequeueReusableCell(withIdentifier: UserMessageTableViewCell.identifier, for: indexPath)
       

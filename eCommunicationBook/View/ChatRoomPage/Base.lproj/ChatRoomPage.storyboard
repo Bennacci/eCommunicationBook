@@ -66,6 +66,11 @@
                                                                 <constraint firstAttribute="width" secondItem="9Np-Wx-PTc" secondAttribute="height" multiplier="1:1" id="Std-hu-ckp"/>
                                                                 <constraint firstAttribute="height" priority="999" constant="50" id="yw2-PV-7cO"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
+                                                                    <real key="value" value="25"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frO-W7-G1G">
                                                             <rect key="frame" x="82.5" y="8.5" width="42" height="21"/>
@@ -172,6 +177,7 @@
                                             <constraint firstAttribute="height" constant="30" id="meQ-LO-vEA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="paperplane" catalog="system"/>
                                         <connections>
                                             <action selector="onTapSend:" destination="BBc-tn-fSp" eventType="touchUpInside" id="hXv-Nf-6zY"/>
@@ -186,6 +192,17 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="bTBorderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bTBorderColor">
+                                                <color key="value" red="0.15868747234344482" green="0.21822044253349304" blue="0.30320093035697937" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -218,12 +235,18 @@
                                                                 <constraint firstAttribute="width" secondItem="gHW-YJ-Lff" secondAttribute="height" multiplier="1:1" id="KW4-fd-FDZ"/>
                                                                 <constraint firstAttribute="height" constant="30" id="q19-Sc-4CX"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
+                                                                    <real key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfx-LU-awX">
                                                             <rect key="frame" x="58" y="34" width="305.5" height="109.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ske-eY-Wbq">
                                                                     <rect key="frame" x="4" y="4" width="297.5" height="101.5"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <string key="text">qewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;ne</string>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -237,6 +260,11 @@
                                                                 <constraint firstAttribute="bottom" secondItem="ske-eY-Wbq" secondAttribute="bottom" constant="4" id="Xcw-Ib-npu"/>
                                                                 <constraint firstItem="ske-eY-Wbq" firstAttribute="leading" secondItem="yfx-LU-awX" secondAttribute="leading" constant="4" id="sBm-zH-yva"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvI-ny-otG">
                                                             <rect key="frame" x="58" y="8" width="50" height="22"/>
@@ -269,6 +297,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imageVIewPartner" destination="gHW-YJ-Lff" id="KCK-BP-SHL"/>
                                             <outlet property="messageContent" destination="ske-eY-Wbq" id="HgL-Dd-RC6"/>
                                             <outlet property="userID" destination="tvI-ny-otG" id="a7k-4j-Ogm"/>
                                         </connections>
@@ -288,19 +317,25 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6n-QS-ufw">
                                                                     <rect key="frame" x="4" y="4" width="315" height="101.5"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <string key="text">qewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;neqewthq3uinjnadvp;jisji9gjeiq;ne</string>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.92120724919999997" green="0.84832113980000001" blue="0.62377804520000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="E6n-QS-ufw" firstAttribute="top" secondItem="vLC-Kz-hP0" secondAttribute="top" constant="4" id="3Nv-pV-IOm"/>
                                                                 <constraint firstItem="E6n-QS-ufw" firstAttribute="leading" secondItem="vLC-Kz-hP0" secondAttribute="leading" constant="4" id="6ga-1K-XA6"/>
                                                                 <constraint firstAttribute="trailing" secondItem="E6n-QS-ufw" secondAttribute="trailing" constant="4" id="MXn-qM-n5P"/>
                                                                 <constraint firstAttribute="bottom" secondItem="E6n-QS-ufw" secondAttribute="bottom" constant="4" id="SMy-md-hrM"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

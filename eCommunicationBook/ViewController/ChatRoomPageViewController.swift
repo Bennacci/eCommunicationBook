@@ -99,7 +99,7 @@ extension ChatRoomPageViewController: UITableViewDataSource {
 //      print("onDead")
 //      self?.viewModel.fetchData()
 //    }
-    chatRoomTableViewCell.setup(viewModel: cellViewModel)
+    chatRoomTableViewCell.setup(viewModel: cellViewModel, index: indexPath.row)
     
     return chatRoomTableViewCell
   }

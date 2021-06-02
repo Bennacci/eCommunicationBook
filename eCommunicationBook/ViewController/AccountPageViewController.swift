@@ -16,13 +16,13 @@ class AccountPageViewController: UIViewController {
 
     if sender.isOn {
 
-      UserManager.shared.userType = .teacher
+      UserManager.shared.user.userType = "teacher"
 
       tableView.reloadData()
 
     } else {
 
-      UserManager.shared.userType = .parents
+      UserManager.shared.user.userType = "parent"
 
       tableView.reloadData()
     }
@@ -88,7 +88,7 @@ extension AccountPageViewController: UITableViewDelegate {
     if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
       nextVC.modalPresentationStyle = .fullScreen
       guard let viewController = nextVC as? NewAThingViewController else {return}
-      let services = ServiceManager.init(userType: UserManager.shared.userType).services
+      let services = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
       let servicesItem = services.items[indexPath.section][indexPath.row]
       viewController.viewModel.servicesItem = servicesItem
       viewController.navigationItem.title = servicesItem.formTitle

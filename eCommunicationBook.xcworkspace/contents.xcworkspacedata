@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Sign.swift">
+      location = "group:/Users/bentee/Desktop/eCommunicationBook/eCommunicationBook/Model/Sign.swift">
    </FileRef>
    <FileRef
       location = "group:eCommunicationBook.xcodeproj">

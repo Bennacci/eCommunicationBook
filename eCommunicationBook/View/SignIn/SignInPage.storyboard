@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6UX-Gr-eCi">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign In Page View Controller-->
+        <scene sceneID="KqI-od-mpL">
+            <objects>
+                <viewController id="6UX-Gr-eCi" customClass="SignInPageViewController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BV7-O3-5Qi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aeM-wP-5RP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eCommunicationBook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsk-pB-46V">
+                                        <rect key="frame" x="47" y="209.5" width="320.5" height="37"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Children" translatesAutoresizingMaskIntoConstraints="NO" id="NAm-KT-jsx">
+                                        <rect key="frame" x="157" y="328" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="FEw-x7-thw"/>
+                                            <constraint firstAttribute="width" constant="100" id="LeS-Kt-DCL"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="MinionYellow"/>
+                                <constraints>
+                                    <constraint firstItem="NAm-KT-jsx" firstAttribute="centerY" secondItem="aeM-wP-5RP" secondAttribute="centerY" constant="-70" id="PGO-AM-nj0"/>
+                                    <constraint firstItem="Nsk-pB-46V" firstAttribute="centerY" secondItem="aeM-wP-5RP" secondAttribute="centerY" constant="-220" id="pFs-zv-ve2"/>
+                                    <constraint firstItem="Nsk-pB-46V" firstAttribute="centerX" secondItem="aeM-wP-5RP" secondAttribute="centerX" id="rx0-1A-VoN"/>
+                                    <constraint firstItem="NAm-KT-jsx" firstAttribute="centerX" secondItem="aeM-wP-5RP" secondAttribute="centerX" id="v7a-iK-FCe"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nmd-hD-PO7">
+                                <rect key="frame" x="450" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello!  Are you a Parent or a Teacher?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0l-Lg-epR">
+                                        <rect key="frame" x="38.5" y="170.5" width="337.5" height="55"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6us-UG-Cbq">
+                                        <rect key="frame" x="0.0" y="238" width="414" height="420"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="420" id="hTE-7q-QUs"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zbv-2g-AFS">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="6UX-Gr-eCi" id="kes-er-Ceh"/>
+                                            <outlet property="delegate" destination="6UX-Gr-eCi" id="JAq-ce-c4C"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" name="MinionYellow"/>
+                                <constraints>
+                                    <constraint firstItem="6us-UG-Cbq" firstAttribute="centerX" secondItem="Nmd-hD-PO7" secondAttribute="centerX" id="4UK-yA-hTd"/>
+                                    <constraint firstItem="A0l-Lg-epR" firstAttribute="centerY" secondItem="Nmd-hD-PO7" secondAttribute="centerY" constant="-250" id="6Ie-TS-78T"/>
+                                    <constraint firstItem="6us-UG-Cbq" firstAttribute="leading" secondItem="Nmd-hD-PO7" secondAttribute="leading" id="6MV-i8-FME"/>
+                                    <constraint firstAttribute="trailing" secondItem="6us-UG-Cbq" secondAttribute="trailing" id="Mev-90-6xz"/>
+                                    <constraint firstItem="6us-UG-Cbq" firstAttribute="centerY" secondItem="Nmd-hD-PO7" secondAttribute="centerY" id="N2Z-Hg-vwX"/>
+                                    <constraint firstItem="A0l-Lg-epR" firstAttribute="centerX" secondItem="Nmd-hD-PO7" secondAttribute="centerX" id="Teq-dG-ZJ3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Nmd-hD-PO7" firstAttribute="centerX" secondItem="UwK-Tt-jRU" secondAttribute="centerX" constant="450" id="8L4-gJ-lgt"/>
+                            <constraint firstItem="aeM-wP-5RP" firstAttribute="height" secondItem="BV7-O3-5Qi" secondAttribute="height" id="BqB-Kq-m5E"/>
+                            <constraint firstItem="Nmd-hD-PO7" firstAttribute="centerY" secondItem="BV7-O3-5Qi" secondAttribute="centerY" id="NTq-il-vgv"/>
+                            <constraint firstItem="Nmd-hD-PO7" firstAttribute="width" secondItem="BV7-O3-5Qi" secondAttribute="width" id="XHg-Nd-6DT"/>
+                            <constraint firstItem="aeM-wP-5RP" firstAttribute="centerY" secondItem="BV7-O3-5Qi" secondAttribute="centerY" id="eP6-z7-1YT"/>
+                            <constraint firstItem="aeM-wP-5RP" firstAttribute="width" secondItem="BV7-O3-5Qi" secondAttribute="width" id="g2z-SD-7mJ"/>
+                            <constraint firstItem="aeM-wP-5RP" firstAttribute="centerX" secondItem="UwK-Tt-jRU" secondAttribute="centerX" id="ugn-2A-peC"/>
+                            <constraint firstItem="Nmd-hD-PO7" firstAttribute="height" secondItem="BV7-O3-5Qi" secondAttribute="height" id="vXJ-M6-d4V"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UwK-Tt-jRU"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="6us-UG-Cbq" id="I9W-fP-sgq"/>
+                        <outlet property="middleConViewAppleSign" destination="ugn-2A-peC" id="xzE-V9-fKp"/>
+                        <outlet property="middleConViewChooseRole" destination="8L4-gJ-lgt" id="YGv-KF-m1J"/>
+                        <outlet property="viewAppleSignIn" destination="aeM-wP-5RP" id="TSG-oL-fuq"/>
+                        <outlet property="viewChoseRole" destination="Nmd-hD-PO7" id="PKy-Vt-rVj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ySZ-RL-3VU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="108.69565217391305" y="110.49107142857143"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Children" width="944" height="932"/>
+        <namedColor name="MinionYellow">
+            <color red="0.99215686274509807" green="0.90980392156862744" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -19,7 +19,7 @@ class ConversationViewModel {
   var message: Message = Message(
     id: "",
     content: "",
-    senderID: UserManager.shared.userID ?? "",
+    senderID: UserManager.shared.user.id,
     createdTime: -1
   )
   

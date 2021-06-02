@@ -15,6 +15,7 @@ enum FirebaseError: Error {
 
 enum MasterError: Error {
   case youKnowNothingError(String)
+  case noMatchData(String)
 }
 
 class XXXManager {
@@ -31,9 +32,11 @@ class XXXManager {
   
   func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
     
+    
+    
     db.collection("ChatRooms")
-      .order(by: "createdTime")
-      .whereField("members", arrayContains: UserManager.shared.userID!)
+      //      .order(by: "createdTime")
+      .whereField("members", arrayContains: UserManager.shared.user.id)
       .addSnapshotListener { (documentSnapshot, error) in
         
         if let error = error {
@@ -45,42 +48,39 @@ class XXXManager {
           for document in documentSnapshot!.documents {
             
             do {
-              if let chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
-                chatRooms.append(chatRoom)
-                //
-                for index in 0 ..< chatRooms.count {
-                  
-                  self.db.collection("ChatRooms")
-                    .document("\(chatRoom.id)")
-                    .collection("Messages")
-                    .order(by: "createdTime", descending: true)
-                    .addSnapshotListener { (documentSnapshot, error) in
+              if var chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
+                
+                self.db.collection("ChatRooms")
+                  .document("\(chatRoom.id)")
+                  .collection("Messages")
+                  .order(by: "createdTime", descending: true)
+                  .getDocuments { (documentSnapshot, error) in
+                    
+                    if let error = error {
                       
-                      if let error = error {
+                      completion(.failure(error))
+                    } else {
+                      
+                      var messages = [Message]()
+                      
+                      for document in documentSnapshot!.documents {
                         
-                        completion(.failure(error))
-                      } else {
-                        
-                        var messages = [Message]()
-                        
-                        for document in documentSnapshot!.documents {
-                          
-                          do {
-                            if let message = try document.data(as: Message.self, decoder: Firestore.Decoder()) {
-                              messages.append(message)
-                              
-                            }
-                          } catch {
-                            completion(.failure(error))
+                        do {
+                          if let message = try document.data(as: Message.self, decoder: Firestore.Decoder()) {
+                            messages.append(message)
+                            
                           }
+                        } catch {
+                          completion(.failure(error))
                         }
-                        
-                        chatRooms[index].messages = messages
                       }
-                      //                      print(messages)
-                      print(chatRooms)
+                      
+                      chatRoom.messages = messages
+                      
+                      chatRooms.append(chatRoom)
+                      
                       completion(.success(chatRooms))
-                  }
+                    }
                 }
               }
             } catch {
@@ -89,7 +89,6 @@ class XXXManager {
               // completion(.failure(FirebaseError.documentError))
             }
           }
-          
         }
     }
   }
@@ -149,9 +148,10 @@ class XXXManager {
   func addUser(user: inout User, completion: @escaping (Result<String, Error>) -> Void) {
     
     let document = db.collection("Users")
-      .document()
-    user.id = document.documentID
+      .document(user.id)
+    
     user.createdTime = Double(Date().millisecondsSince1970)
+    
     document.setData(user.toDict) { error in
       
       if let error = error {
@@ -255,7 +255,7 @@ class XXXManager {
     let document = db.collection("Students")
       .document()
     student.id = document.documentID
-    student.parents.append(UserManager.shared.userID!)
+    student.parents.append(UserManager.shared.user.id)
     //    course.createdTime = Double(Date().millisecondsSince1970)
     document.setData(student.toDict) { error in
       
@@ -330,7 +330,7 @@ class XXXManager {
       }
     }
   }
-    
+  
   func writeTimeIn(studentExistance: inout StudentExistance,
                    completion: @escaping (Result<String, Error>) -> Void) {
     
@@ -343,7 +343,7 @@ class XXXManager {
       .document()
     studentExistance.id = document.documentID
     studentExistance.time = Double(Date().millisecondsSince1970)
-    studentExistance.scanTeacherName = UserManager.shared.userID!
+    studentExistance.scanTeacherName = UserManager.shared.user.id
     document.setData(studentExistance.toDict) { error in
       
       if let error = error {
@@ -365,22 +365,22 @@ class XXXManager {
       .document(year)
       .collection(month)
       .document()
-      studentExistance.id = document.documentID
-      studentExistance.time = Double(Date().millisecondsSince1970)
-      studentExistance.scanTeacherName = UserManager.shared.userID!
-
-     document.setData(studentExistance.toDict) { error in
-       
-       if let error = error {
-         
-         completion(.failure(error))
-       } else {
-         
-         completion(.success("Success"))
-       }
-     }
-   }
-   
+    studentExistance.id = document.documentID
+    studentExistance.time = Double(Date().millisecondsSince1970)
+    studentExistance.scanTeacherName = UserManager.shared.user.id
+    
+    document.setData(studentExistance.toDict) { error in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
+  
   func uploadPickerImage(pickerImage: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
     
     let uuid = UUID().uuidString
@@ -402,11 +402,11 @@ class XXXManager {
       imageRef.downloadURL { url, error in
         
         if let url = url {
-        
+          
           completion(.success(url.absoluteString))
-
+          
         } else if let error = error {
-
+          
           completion(.failure(error))
         }
       }
@@ -422,7 +422,7 @@ class XXXManager {
     
     db.collection("Courses")
       //      .order(by: "name ")
-      .whereField("teachers", arrayContains: UserManager.shared.userID!)
+      .whereField("teachers", arrayContains: UserManager.shared.user.id)
       .getDocuments { (querySnapshot, error) in
         
         if let error = error {
@@ -467,129 +467,151 @@ class XXXManager {
                       
                       completion(.success(courses))
                     }
-                  }
                 }
-              } catch {
+              }
+            } catch {
+              
+              completion(.failure(error))
+              // completion(.failure(FirebaseError.documentError))
+            }
+          }
+        }
+    }
+  }
+  
+  func identifyUser(uid: String, completion: @escaping (Result<User, Error>) -> Void) {
+    
+    db.collection("Users").document(uid).getDocument { (querySnapshot, error) in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+        print(error)
+      } else if querySnapshot?.data() == nil {
+        completion(.failure(MasterError.noMatchData("User not found")))
+      } else {
+        do {
+          if let user = try querySnapshot?.data(as: User.self, decoder: Firestore.Decoder()) {
+            completion(.success(user))
+          }
+        } catch {
+          completion(.failure(error))
+        }
+      }
+    }
+  }
+  
+  func fetchUsers(completion: @escaping (Result<[User], Error>) -> Void) {
+    
+    db.collection("Users").getDocuments { (querySnapshot, error) in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        var users = [User]()
+        
+        for document in querySnapshot!.documents {
+          
+          do {
+            if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+              users.append(user)
+            }
+          } catch {
+            completion(.failure(error))
+          }
+        }
+        completion(.success(users))
+      }
+    }
+  }
+  
+  func fetchTeachers(completion: @escaping (Result<[User], Error>) -> Void) {
+    
+    db.collection("User")
+      .whereField("userType", isEqualTo: "teacher")
+      .order(by: "name", descending: true)
+      .addSnapshotListener { (documentSnapshot, error) in
+        
+        if let error = error {
+          
+          completion(.failure(error))
+        } else {
+          
+          var teachers = [User]()
+          
+          for document in documentSnapshot!.documents {
+            
+            do {
+              if let teacher = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                teachers.append(teacher)
                 
-                completion(.failure(error))
-                // completion(.failure(FirebaseError.documentError))
               }
+            } catch {
+              completion(.failure(error))
             }
           }
+          print(teachers)
+          completion(.success(teachers))
         }
     }
+  }
+  
+  func fetchStudents(completion: @escaping (Result<[Student], Error>) -> Void) {
     
-    func fetchUser(completion: @escaping (Result<[User], Error>) -> Void) {
-      
-      db.collection("Users").getDocuments { (querySnapshot, error) in
+    db.collection("Students")
+      .order(by: "grade", descending: true)
+      .addSnapshotListener { (documentSnapshot, error) in
         
         if let error = error {
           
           completion(.failure(error))
         } else {
           
-          var users = [User]()
+          var students = [Student]()
           
-          for document in querySnapshot!.documents {
+          for document in documentSnapshot!.documents {
             
             do {
-              if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                users.append(user)
+              if let student = try document.data(as: Student.self, decoder: Firestore.Decoder()) {
+                students.append(student)
+                
               }
             } catch {
               completion(.failure(error))
             }
           }
-          completion(.success(users))
+          completion(.success(students))
         }
-      }
     }
+  }
+  
+  func fetchEvents(completion: @escaping (Result<[Event], Error>) -> Void) {
     
-    func fetchTeachers(completion: @escaping (Result<[User], Error>) -> Void) {
+    db.collection("Events").getDocuments { (querySnapshot, error) in
       
-      db.collection("User")
-        .whereField("userType", isEqualTo: "teacher")
-        .order(by: "name", descending: true)
-        .addSnapshotListener { (documentSnapshot, error) in
-          
-          if let error = error {
-            
-            completion(.failure(error))
-          } else {
-            
-            var teachers = [User]()
-            
-            for document in documentSnapshot!.documents {
-              
-              do {
-                if let teacher = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                  teachers.append(teacher)
-                  
-                }
-              } catch {
-                completion(.failure(error))
-              }
-            }
-            print(teachers)
-            completion(.success(teachers))
-          }
-      }
-    }
-    
-    func fetchStudents(completion: @escaping (Result<[Student], Error>) -> Void) {
-      
-      db.collection("Students")
-        .order(by: "grade", descending: true)
-        .addSnapshotListener { (documentSnapshot, error) in
-          
-          if let error = error {
-            
-            completion(.failure(error))
-          } else {
-            
-            var students = [Student]()
-            
-            for document in documentSnapshot!.documents {
-              
-              do {
-                if let student = try document.data(as: Student.self, decoder: Firestore.Decoder()) {
-                  students.append(student)
-                  
-                }
-              } catch {
-                completion(.failure(error))
-              }
-            }
-            completion(.success(students))
-          }
-      }
-    }
-    
-    func fetchEvents(completion: @escaping (Result<[Event], Error>) -> Void) {
-      
-      db.collection("Events").getDocuments { (querySnapshot, error) in
+      if let error = error {
         
-        if let error = error {
+        completion(.failure(error))
+      } else {
+        
+        var events = [Event]()
+        
+        for document in querySnapshot!.documents {
           
-          completion(.failure(error))
-        } else {
-          
-          var events = [Event]()
-          
-          for document in querySnapshot!.documents {
-            
-            do {
-              if let event = try document.data(as: Event.self, decoder: Firestore.Decoder()) {
-                events.append(event)
-              }
-            } catch {
-              completion(.failure(error))
+          do {
+            if let event = try document.data(as: Event.self, decoder: Firestore.Decoder()) {
+              events.append(event)
             }
+          } catch {
+            completion(.failure(error))
           }
-          completion(.success(events))
         }
+        completion(.success(events))
       }
     }
+  }
   
   func fetchStudentExistances(date: Date, timeIn: Bool, completion: @escaping (Result<[StudentExistance], Error>) -> Void) {
     
@@ -599,11 +621,11 @@ class XXXManager {
     var collectionName = ""
     
     if timeIn == true {
-    
+      
       collectionName = "StudentTimeIns"
-    
+      
     } else {
-    
+      
       collectionName = "StudentTimeOuts"
     }
     
@@ -611,36 +633,36 @@ class XXXManager {
       .document(year)
       .collection(month)
       .getDocuments { (querySnapshot, error) in
-      
-      if let error = error {
         
-        completion(.failure(error))
-        
-      } else {
-        
-        var studentExistances = [StudentExistance]()
-        
-        for document in querySnapshot!.documents {
+        if let error = error {
           
-          do {
+          completion(.failure(error))
+          
+        } else {
+          
+          var studentExistances = [StudentExistance]()
+          
+          for document in querySnapshot!.documents {
             
-            if let studentExistance = try document.data(as: StudentExistance.self, decoder: Firestore.Decoder()) {
+            do {
               
-              studentExistances.append(studentExistance)
+              if let studentExistance = try document.data(as: StudentExistance.self, decoder: Firestore.Decoder()) {
+                
+                studentExistances.append(studentExistance)
+              }
+            } catch {
+              completion(.failure(error))
             }
-          } catch {
-            completion(.failure(error))
           }
+          completion(.success(studentExistances))
         }
-        completion(.success(studentExistances))
-      }
     }
   }
-      
-    func fetchStudentLessonRecord(completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
-      
-      db.collection("StudentLessonRecords")
-        .getDocuments { (querySnapshot, error) in
+  
+  func fetchStudentLessonRecord(completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
+    
+    db.collection("StudentLessonRecords")
+      .getDocuments { (querySnapshot, error) in
         
         if let error = error {
           
@@ -661,77 +683,77 @@ class XXXManager {
           }
           completion(.success(studentLessonRecords))
         }
-      }
     }
+  }
+  
+  func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
     
-    func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
+    let document = db.collection("ChatRooms").document()
+    chatRoom.id = document.documentID
+    //      chatRoom.createdTime = Date().millisecondsSince1970
+    document.setData(chatRoom.toDict) { error in
       
-      let document = db.collection("ChatRooms").document()
-      chatRoom.id = document.documentID
-      //      chatRoom.createdTime = Date().millisecondsSince1970
-      document.setData(chatRoom.toDict) { error in
+      if let error = error {
         
-        if let error = error {
-          
-          completion(.failure(error))
-        } else {
-          
-          completion(.success("Success"))
-        }
-      }
-    }
-    
-    
-    
-    
-    
-    
-    func publishArticle(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
-      
-      let document = db.collection("ChatRooms")
-        .document()
-        .collection("Messages")
-        .document()
-      message.id = document.documentID
-      message.createdTime = Double(Date().millisecondsSince1970)
-      document.setData(message.toDict) { error in
+        completion(.failure(error))
+      } else {
         
-        if let error = error {
-          
-          completion(.failure(error))
-        } else {
-          
-          completion(.success("Success"))
-        }
+        completion(.success("Success"))
       }
     }
+  }
+  
+  
+  
+  
+  
+  
+  func publishArticle(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
     
-    func deleteArticle(article: Article, completion: @escaping (Result<String, Error>) -> Void) {
+    let document = db.collection("ChatRooms")
+      .document()
+      .collection("Messages")
+      .document()
+    message.id = document.documentID
+    message.createdTime = Double(Date().millisecondsSince1970)
+    document.setData(message.toDict) { error in
       
-      if !UserManager.shared.isLogin() {
-        print("who r u?")
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
+  
+  func deleteArticle(article: Article, completion: @escaping (Result<String, Error>) -> Void) {
+    
+    if !UserManager.shared.isLogin() {
+      print("who r u?")
+      return
+    }
+    
+    if let author = article.author {
+      if author.id == "waynechen323"
+        && article.category.lowercased() != "test"
+        && !article.category.trimmingCharacters(in: .whitespaces).isEmpty {
+        completion(.failure(MasterError.youKnowNothingError("You know nothing!! \(author.name)")))
         return
       }
+    }
+    
+    db.collection("articles").document(article.id).delete { error in
       
-      if let author = article.author {
-        if author.id == "waynechen323"
-          && article.category.lowercased() != "test"
-          && !article.category.trimmingCharacters(in: .whitespaces).isEmpty {
-          completion(.failure(MasterError.youKnowNothingError("You know nothing!! \(author.name)")))
-          return
-        }
-      }
-      
-      db.collection("articles").document(article.id).delete() { error in
+      if let error = error {
         
-        if let error = error {
-          
-          completion(.failure(error))
-        } else {
-          
-          completion(.success(article.id))
-        }
+        completion(.failure(error))
+      } else {
+        
+        completion(.success(article.id))
       }
     }
+  }
 }
 

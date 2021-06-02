@@ -150,7 +150,7 @@ extension NewAThingViewController: UITableViewDataSource {
       case "User Type":
         
         cell.updateText(text: inputText,
-                        type: viewModel.user.userType)
+                        type: viewModel.user.userType!)
         return cell
       default:
         cell.updateText(text: inputText,

@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import ChameleonFramework
 
 class ChartTableViewCell: UITableViewCell {
 
@@ -55,7 +56,7 @@ class ChartTableViewCell: UITableViewCell {
           let chartDataSet = BarChartDataSet(entries: dataEntries, label: "")
           let chartData = BarChartData(dataSet: chartDataSet)
           
-          chartDataSet.colors = [.red, .green, .blue]
+          chartDataSet.colors = [UIColor.flatYellow(), UIColor.flatYellowColorDark(), UIColor.flatLime()]
           chartDataSet.valueColors = [.clear, .clear, .clear]
           //    chartDataSet.valueFont = *font you want*
           

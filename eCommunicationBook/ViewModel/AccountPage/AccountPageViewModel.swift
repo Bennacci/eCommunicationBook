@@ -10,7 +10,7 @@ import Foundation
 struct AccountPageViewModel {
   
   func servicesData() -> ServiceGroup {
-    let services = ServiceManager.init(userType: UserManager.shared.userType).services
+    let services = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
     return services
   }
 }

@@ -18,7 +18,7 @@ struct User: Codable {
   var homePhoneNo: Int
   var birthDay: Double
   var email: String
-  var userType: UserType.RawValue
+  var userType: UserType.RawValue?
   var workingHours: [RoutineHour]?
   var difficulty: [Int]?
   var note: [String]?

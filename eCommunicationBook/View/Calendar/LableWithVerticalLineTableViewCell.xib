@@ -27,6 +27,7 @@
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="2" id="2El-8e-SOb"/>
+                            <constraint firstAttribute="height" constant="28" id="2Ft-sA-klp"/>
                         </constraints>
                     </view>
                 </subviews>

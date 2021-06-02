@@ -109,6 +109,18 @@ extension CalendarPageViewController: UITableViewDataSource {
     
   }
   
+  func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!
+  {
+    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+    let myLabel = UILabel()
+      myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 4, width: tableView.bounds.size.width, height: 30)
+      myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+      myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+    headerView.addSubview(myLabel)
+    headerView.backgroundColor = UIColor.clear
+    return headerView
+  }
+  
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return viewModel.titles[section]
   }

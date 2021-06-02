@@ -15,9 +15,23 @@ class UserManager {
   
   static let shared = UserManager()
   
-  var userID: String? = "no.00000"
+  var user = User(id: "",
+                  createdTime: -1,
+                  userID: "",
+                  name: "",
+                  image: nil,
+                  cellPhoneNo: -1,
+                  homePhoneNo: -1,
+                  birthDay: -1,
+                  email: "",
+                  userType: nil,
+                  workingHours: nil,
+                  difficulty: nil,
+                  note: nil)
   
-  var userType: UserType = .teacher
+//  var userID: String? = "John"
+  
+//  var userType: UserType = .teacher
   
   lazy var selectedUsers: [UserViewModel]? = nil
   
@@ -29,8 +43,8 @@ class UserManager {
     
     switch id {
     case "waynechen323":
-      userID = "no.00000"
-      completion(.success(userID!))
+//      userID = "John"
+      completion(.success(user.id))
     // MARK: add your profile here
     default:
       completion(.failure(LoginError.idNotExistError("You have to add \(id) info in local data source")))
@@ -38,7 +52,7 @@ class UserManager {
   }
   
   func isLogin() -> Bool {
-    return userID != nil
+    return user.id != ""
   }
   
   //    var author: Author?

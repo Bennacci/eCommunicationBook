@@ -10,6 +10,10 @@ import UIKit
 
 private struct StoryboardCategory {
   
+  static let main = "Main"
+
+  static let signInPage = "SignInPage"
+  
   static let newAThing = "NewAThing"
   
   static let searchUser = "SearchUser"
@@ -20,6 +24,7 @@ private struct StoryboardCategory {
   
   static let scanStudentQR = "ScanStudentQR"
 
+  
   
   
   static let newEvent = "NewEvent"
@@ -44,6 +49,11 @@ private struct StoryboardCategory {
 }
 
 extension UIStoryboard {
+  
+  
+  static var main: UIStoryboard { return storyboard(name: StoryboardCategory.main) }
+  
+  static var signInPage: UIStoryboard { return storyboard(name: StoryboardCategory.signInPage) }
   
   static var newAThing: UIStoryboard { return storyboard(name: StoryboardCategory.newAThing) }
   

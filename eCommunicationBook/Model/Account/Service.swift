@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 enum UserType: String, CaseIterable {
-  case teacher
   
-  case parents
+    case parents
+  
+    case teacher
 }
 
 struct ServiceGroup {

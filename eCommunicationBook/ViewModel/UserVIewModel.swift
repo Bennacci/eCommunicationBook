@@ -59,7 +59,7 @@ class UserViewModel: SearchUserPageMaterial {
       return user.email
     }
   }
-  var userType: UserType.RawValue {
+  var userType: UserType.RawValue? {
     get {
       return user.userType
     }

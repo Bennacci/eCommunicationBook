@@ -30,7 +30,7 @@ class SearchUserPageViewModel {
     
     if forStudent == false {
       
-      XXXManager.shared.fetchUser { [weak self] result in
+      XXXManager.shared.fetchUsers { [weak self] result in
         
         switch result {
           

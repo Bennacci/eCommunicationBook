@@ -34,20 +34,43 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p55-do-Ia2" userLabel="TimeInView">
                                 <rect key="frame" x="0.0" y="696" width="414" height="200"/>
-                                <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place student's name tag in the square to time in student." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ii9-AT-Tmb">
+                                        <rect key="frame" x="45" y="30" width="324" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.13346317410469055" green="0.18231484293937683" blue="0.25190103054046631" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Ii9-AT-Tmb" secondAttribute="trailing" constant="45" id="2vS-fk-SDj"/>
+                                    <constraint firstItem="Ii9-AT-Tmb" firstAttribute="leading" secondItem="p55-do-Ia2" secondAttribute="leading" constant="45" id="9fb-4S-8lS"/>
                                     <constraint firstAttribute="height" constant="200" id="s7y-wF-uKW"/>
+                                    <constraint firstItem="Ii9-AT-Tmb" firstAttribute="top" secondItem="p55-do-Ia2" secondAttribute="top" constant="30" id="vAL-yk-Ydv"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZw-DS-acL" userLabel="TimeOutView">
                                 <rect key="frame" x="0.0" y="896" width="414" height="0.0"/>
-                                <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place student's name tag in the square to time out student." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVC-Ko-cBt">
+                                        <rect key="frame" x="45" y="30" width="324" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.67455112934112549" green="0.15692374110221863" blue="0.10914970934391022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="nVC-Ko-cBt" firstAttribute="top" secondItem="UZw-DS-acL" secondAttribute="top" constant="30" id="6kq-YE-4eM"/>
                                     <constraint firstAttribute="height" id="Utc-8x-Oyy"/>
+                                    <constraint firstAttribute="trailing" secondItem="nVC-Ko-cBt" secondAttribute="trailing" constant="45" id="dAr-0Q-klA"/>
+                                    <constraint firstItem="nVC-Ko-cBt" firstAttribute="leading" secondItem="UZw-DS-acL" secondAttribute="leading" constant="45" id="zNv-Ns-kYQ"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1Y-xd-xmg">
                                 <rect key="frame" x="20" y="64" width="30.5" height="29"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="xmark" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>
@@ -71,7 +94,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdX-a4-MDW">
-                                <rect key="frame" x="186" y="750.5" width="42" height="20.5"/>
+                                <rect key="frame" x="186" y="601.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -114,7 +137,6 @@
                             <constraint firstItem="kY7-MW-3J5" firstAttribute="leading" secondItem="M76-rM-dPg" secondAttribute="leading" id="72O-9Y-hcE"/>
                             <constraint firstItem="vQZ-z8-Vrm" firstAttribute="trailing" secondItem="Xqo-HD-zsO" secondAttribute="trailing" id="9QJ-YF-eal"/>
                             <constraint firstItem="vQZ-z8-Vrm" firstAttribute="trailing" secondItem="3mg-xh-Ogp" secondAttribute="trailing" id="Br2-J7-I9J"/>
-                            <constraint firstItem="kY7-MW-3J5" firstAttribute="top" secondItem="HdX-a4-MDW" secondAttribute="bottom" constant="40" id="HCv-mr-ub4"/>
                             <constraint firstItem="C1Y-xd-xmg" firstAttribute="top" secondItem="vQZ-z8-Vrm" secondAttribute="top" constant="20" id="P5k-rB-FUe"/>
                             <constraint firstItem="Xqo-HD-zsO" firstAttribute="leading" secondItem="vQZ-z8-Vrm" secondAttribute="leading" id="ROH-YA-UO3"/>
                             <constraint firstItem="vQZ-z8-Vrm" firstAttribute="trailing" secondItem="a6j-ni-d2H" secondAttribute="trailing" id="Rf3-PI-gcS"/>
@@ -126,6 +148,7 @@
                             <constraint firstAttribute="top" secondItem="3mg-xh-Ogp" secondAttribute="top" id="iQX-ru-KVe"/>
                             <constraint firstAttribute="trailing" secondItem="UZw-DS-acL" secondAttribute="trailing" id="jGm-gD-htf"/>
                             <constraint firstAttribute="bottom" secondItem="UZw-DS-acL" secondAttribute="bottom" id="kDk-ii-T5X"/>
+                            <constraint firstItem="vQZ-z8-Vrm" firstAttribute="bottom" secondItem="HdX-a4-MDW" secondAttribute="bottom" constant="240" id="lEc-Uz-qfV"/>
                             <constraint firstAttribute="bottom" secondItem="Xqo-HD-zsO" secondAttribute="bottom" id="lRv-5m-717"/>
                             <constraint firstItem="uRD-31-bmO" firstAttribute="centerX" secondItem="ALl-sK-qXO" secondAttribute="centerX" id="mnZ-xR-rGh"/>
                             <constraint firstItem="Xqo-HD-zsO" firstAttribute="top" secondItem="M76-rM-dPg" secondAttribute="top" id="nTj-Wl-rTG"/>

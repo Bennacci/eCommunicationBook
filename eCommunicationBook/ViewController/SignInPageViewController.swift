@@ -29,6 +29,7 @@ class SignInPageViewController: UIViewController {
   
   @IBOutlet weak var middleConViewChooseRole: NSLayoutConstraint!
   
+
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -60,6 +61,10 @@ class SignInPageViewController: UIViewController {
       }
     }
     
+  @IBAction func tempSkip(_ sender: Any) {
+  
+    shiftToViewChoseRole()
+  }
     
     private func configureViews() {
       view.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9529411765, alpha: 1)
@@ -80,7 +85,6 @@ class SignInPageViewController: UIViewController {
     }
     
     
-    
     func shiftToViewChoseRole() {
       UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
         self.middleConViewAppleSign.constant = -450
@@ -88,7 +92,6 @@ class SignInPageViewController: UIViewController {
       },
                                                      completion: nil)
     }
-    
     
     func setupAppleButton() {
       viewAppleSignIn.addSubview(appleButton)
@@ -241,6 +244,10 @@ class SignInPageViewController: UIViewController {
     
     @objc func connected(sender: UIButton) {
       UserManager.shared.user.userType = UserType.allCases[sender.tag].rawValue
-      viewModel.updateUserType()
+      if UserManager.shared.user.id != ""{
+        viewModel.updateUserType()
+      } else {
+        viewModel.onGotUserData!()
+      }
     }
 }

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +31,7 @@
                             <constraint firstAttribute="height" constant="30" id="dN5-Fr-yjJ"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Attandance and Leave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCn-bk-m7u">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Attendance and Leave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCn-bk-m7u">
                         <rect key="frame" x="24" y="8" width="235" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -43,6 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" name="MinionYellow"/>
                 <constraints>
                     <constraint firstItem="mCn-bk-m7u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="0gY-QJ-qXE"/>
                     <constraint firstAttribute="trailing" secondItem="cSJ-c0-vkx" secondAttribute="trailing" constant="40" id="26v-ev-1im"/>
@@ -55,6 +57,11 @@
                     <constraint firstItem="FkQ-Ei-N4o" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="Wqq-rR-bek"/>
                     <constraint firstItem="cSJ-c0-vkx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="n3n-4a-miw"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
+                        <real key="value" value="25"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
@@ -68,5 +75,8 @@
     </objects>
     <resources>
         <image name="location.fill" catalog="system" width="128" height="115"/>
+        <namedColor name="MinionYellow">
+            <color red="0.99215686274509807" green="0.90980392156862744" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

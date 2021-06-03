@@ -192,7 +192,7 @@ class CalendarPageViewModel {
       selectedDate = date
     }
     
-    XXXManager.shared.fetchStudentExistances(date: selectedDate, timeIn: true) { [weak self] result in
+    XXXManager.shared.fetchStudentExistances(studentIndex: 0, date: selectedDate, timeIn: true) { [weak self] result in
       
       switch result {
         
@@ -207,7 +207,8 @@ class CalendarPageViewModel {
         print("fetchData.failure: \(error)")
       }
     }
-    XXXManager.shared.fetchStudentExistances(date: selectedDate, timeIn: false) { [weak self] result in
+    
+    XXXManager.shared.fetchStudentExistances(studentIndex: 0, date: selectedDate, timeIn: false) { [weak self] result in
       
       switch result {
         
@@ -222,7 +223,6 @@ class CalendarPageViewModel {
         print("fetchData.failure: \(error)")
       }
     }
-    
   }
   
   func convertEventsToViewModels(from events: [Event]) -> [EventViewModel] {

@@ -33,7 +33,7 @@ class StudentExistancesTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
-  func setUp(timeInViewModel: StudentExistanceViewModel, timeOutViewModel: StudentExistanceViewModel?) {
+  func setUp(forCalendar: Bool, timeInViewModel: StudentExistanceViewModel, timeOutViewModel: StudentExistanceViewModel?) {
     
     self.timeInViewModel = timeInViewModel
     
@@ -42,10 +42,10 @@ class StudentExistancesTableViewCell: UITableViewCell {
       self.timeOutViewModel = timeOutViewModel
     }
     
-    layOutCell()
+    layOutCell(forCalendar: forCalendar)
   }
   
-  func layOutCell() {
+  func layOutCell(forCalendar: Bool) {
     
     if let latitude = timeInViewModel?.latitude,
       
@@ -76,9 +76,11 @@ class StudentExistancesTableViewCell: UITableViewCell {
     labelAttandance.text = "Time in: " + attendTime
     
     guard let studentName = timeInViewModel?.studentName else {return}
-    
-    labelExistanceStat.text = "\(studentName) is still at school."
-    
+    if forCalendar == true {
+      labelExistanceStat.text = "\(studentName) is still at school."
+    } else {
+      labelExistanceStat.text = Date(milliseconds: time).convertToString(dateformat: .day)
+    }
     if timeOutViewModel != nil {
       
       guard let time = timeInViewModel?.time else {return}
@@ -91,5 +93,4 @@ class StudentExistancesTableViewCell: UITableViewCell {
       imageViewLocated.tintColor = .gray
     }
   }
-  
 }

@@ -178,7 +178,7 @@ extension CalendarPageViewController: UITableViewDataSource {
       if viewModel.dayStudentTimeOutViemModel.value.count > 0 {
         timeOutViewModel = viewModel.dayStudentTimeOutViemModel.value[0]
       }
-      cell.setUp(timeInViewModel: viewModel.dayStudentTimeInViemModel.value[0],
+      cell.setUp(forCalendar: true, timeInViewModel: viewModel.dayStudentTimeInViemModel.value[0],
                  timeOutViewModel: timeOutViewModel)
       return cell
       

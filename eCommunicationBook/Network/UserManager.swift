@@ -26,12 +26,16 @@ class UserManager {
                   email: "",
                   userType: nil,
                   workingHours: nil,
+                  student: nil,
                   difficulty: nil,
-                  note: nil)
+                  note: nil) {
+                    didSet {
+                      updateStudents()
+                    }
+    
+  }
   
-//  var userID: String? = "John"
-  
-//  var userType: UserType = .teacher
+  lazy var students: [Student]? = nil
   
   lazy var selectedUsers: [UserViewModel]? = nil
   
@@ -83,4 +87,25 @@ class UserManager {
   //    func isLogin() -> Bool {
   //        return author != nil
   //    }
+  
+  func updateStudents(){
+    XXXManager.shared.fetchUserStudents { [weak self] result in
+      
+      switch result {
+        
+      case .success(let students):
+        
+        self?.setSearchStudentResult(with: students)
+        
+      case .failure(let error):
+        
+        print("fetchData.failure: \(error)")
+      }
+    }
+  }
+  
+  func setSearchStudentResult(with students: [Student]) {
+    
+    self.students = students
+  }
 }

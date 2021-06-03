@@ -24,7 +24,8 @@ private struct StoryboardCategory {
   
   static let scanStudentQR = "ScanStudentQR"
 
-  
+  static let studentTimeInAndOut = "StudentTimeInAndOut"
+
   
   
   static let newEvent = "NewEvent"
@@ -65,6 +66,8 @@ extension UIStoryboard {
 
   static var scanStudentQR: UIStoryboard { return storyboard(name: StoryboardCategory.scanStudentQR) }
 
+  static var studentTimeInAndOut: UIStoryboard { return storyboard(name: StoryboardCategory.studentTimeInAndOut) }
+  
   
   
   static var newEvent: UIStoryboard { return storyboard(name: StoryboardCategory.newEvent) }

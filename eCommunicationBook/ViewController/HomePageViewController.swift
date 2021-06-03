@@ -180,26 +180,40 @@ extension HomePageViewController: UICollectionViewDataSource {
 extension HomePageViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if collectionView == hotCell.collectionView {
-    switch indexPath.item {
-    case 0:
-          if let nextVC = UIStoryboard.lessonPlan.instantiateInitialViewController() {
-            
-            nextVC.modalPresentationStyle = .fullScreen
-            self.navigationController?.show(nextVC, sender: nil)
-            
-          } else { return }
-    case 2:
-          if let nextVC = UIStoryboard.scanStudentQR.instantiateInitialViewController() {
-            
-            nextVC.modalPresentationStyle = .fullScreen
-            
-            self.navigationController?.show(nextVC, sender: nil)
-            
-          } else { return }
-    default:
-      return
+      let title = viewModel.servicesData().items[0][indexPath.item].title
+      
+      switch title {
+      case "Communication Book":
+        if let nextVC = UIStoryboard.lessonPlan.instantiateInitialViewController() {
+          
+          nextVC.modalPresentationStyle = .fullScreen
+          self.navigationController?.show(nextVC, sender: nil)
+          
+        } else { return }
+      case "Student Time In / Out":
+        if let nextVC = UIStoryboard.scanStudentQR.instantiateInitialViewController() {
+          
+          nextVC.modalPresentationStyle = .fullScreen
+          
+          self.navigationController?.show(nextVC, sender: nil)
+          
+        } else { return }
+      case "Where's my children":
+        if let nextVC = UIStoryboard.studentTimeInAndOut.instantiateInitialViewController() {
+          
+          nextVC.modalPresentationStyle = .fullScreen
+          
+          self.navigationController?.show(nextVC, sender: nil)
+          
+        } else { return }
+        
+      default:
+        return
       }
+    
     }
+    
+
   }
 }
 // MARK: - 設定 CollectionView Cell 與 Cell 之間的間距、距確 Super View 的距離等等

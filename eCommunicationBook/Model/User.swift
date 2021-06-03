@@ -20,6 +20,7 @@ struct User: Codable {
   var email: String
   var userType: UserType.RawValue?
   var workingHours: [RoutineHour]?
+  var student: [Student]?
   var difficulty: [Int]?
   var note: [String]?
   
@@ -35,25 +36,46 @@ struct User: Codable {
     case email
     case userType
     case workingHours
+    case student
     case difficulty
     case note
   }
   
   var toDict: [String: Any] {
-    return [
-      "id": id as Any,
-      "createdTime": createdTime as Any,
-      "userID": userID as Any,
-      "name": name as Any,
-      "image": image as Any,
-      "cellPhoneNo": cellPhoneNo as Any,
-      "homePhoneNo": homePhoneNo as Any,
-      "birthDay": birthDay as Any,
-      "email": email as Any,
-      "userType": userType as Any,
-      "workingHours": workingHours as Any,
-      "difficulty": difficulty as Any,
-      "note": note as Any
-    ]
+    if let student = student {
+      return [
+        "id": id as Any,
+        "createdTime": createdTime as Any,
+        "userID": userID as Any,
+        "name": name as Any,
+        "image": image as Any,
+        "cellPhoneNo": cellPhoneNo as Any,
+        "homePhoneNo": homePhoneNo as Any,
+        "birthDay": birthDay as Any,
+        "email": email as Any,
+        "userType": userType as Any,
+        "workingHours": workingHours as Any,
+        "student": student.map({$0.toDict}) as Any,
+        "difficulty": difficulty as Any,
+        "note": note as Any
+      ]
+    } else {
+      return [
+        "id": id as Any,
+        "createdTime": createdTime as Any,
+        "userID": userID as Any,
+        "name": name as Any,
+        "image": image as Any,
+        "cellPhoneNo": cellPhoneNo as Any,
+        "homePhoneNo": homePhoneNo as Any,
+        "birthDay": birthDay as Any,
+        "email": email as Any,
+        "userType": userType as Any,
+        "workingHours": workingHours as Any,
+        "student": student as Any,
+        "difficulty": difficulty as Any,
+        "note": note as Any
+      ]
+    }
   }
 }

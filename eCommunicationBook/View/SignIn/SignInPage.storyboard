@@ -32,9 +32,18 @@
                                             <constraint firstAttribute="width" constant="100" id="LeS-Kt-DCL"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdF-Ir-0j0">
+                                        <rect key="frame" x="192" y="826" width="30" height="30"/>
+                                        <state key="normal" title="skip"/>
+                                        <connections>
+                                            <action selector="tempSkip:" destination="6UX-Gr-eCi" eventType="touchUpInside" id="OWs-DP-3dH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="MinionYellow"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="gdF-Ir-0j0" secondAttribute="bottom" constant="40" id="Hj0-08-e60"/>
+                                    <constraint firstItem="gdF-Ir-0j0" firstAttribute="centerX" secondItem="aeM-wP-5RP" secondAttribute="centerX" id="Hp1-Ct-JW7"/>
                                     <constraint firstItem="NAm-KT-jsx" firstAttribute="centerY" secondItem="aeM-wP-5RP" secondAttribute="centerY" constant="-70" id="PGO-AM-nj0"/>
                                     <constraint firstItem="Nsk-pB-46V" firstAttribute="centerY" secondItem="aeM-wP-5RP" secondAttribute="centerY" constant="-220" id="pFs-zv-ve2"/>
                                     <constraint firstItem="Nsk-pB-46V" firstAttribute="centerX" secondItem="aeM-wP-5RP" secondAttribute="centerX" id="rx0-1A-VoN"/>

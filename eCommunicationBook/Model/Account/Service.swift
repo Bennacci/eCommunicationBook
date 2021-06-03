@@ -99,7 +99,7 @@ enum ParentSeviceItem: AccountItem {
     
     case .signCommunicationBook: return localizedString("Sign CommunicationBook")
     
-    case .checkStudentTimeInAndOut: return localizedString("Student Time In and Out")
+    case .checkStudentTimeInAndOut: return localizedString("Where's my children")
       
     case .checkLearingStat: return localizedString("Learning Status")
       

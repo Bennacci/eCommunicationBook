@@ -82,6 +82,7 @@ class NewAThingViewModel: SearchUserDelegate {
     email: "",
     userType: "",
     workingHours: nil,
+    student: nil,
     difficulty: nil,
     note: nil)
   

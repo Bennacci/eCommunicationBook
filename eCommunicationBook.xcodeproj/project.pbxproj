@@ -54,6 +54,10 @@
 		745147EC264D56EE00172419 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 745147EA264D510400172419 /* GoogleService-Info.plist */; };
 		7456DC6926500B7800535297 /* ConversationViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7456DC6826500B7800535297 /* ConversationViewmodel.swift */; };
 		7456DC6B2650A1D800535297 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7456DC6A2650A1D800535297 /* MessageViewModel.swift */; };
+		7460807E2667E49C005FC35C /* StudentTimeInAndOut.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7460807D2667E49C005FC35C /* StudentTimeInAndOut.storyboard */; };
+		746080802667EFE1005FC35C /* StudentTimeInAndOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7460807F2667EFE1005FC35C /* StudentTimeInAndOutViewController.swift */; };
+		746080822667F136005FC35C /* studentExistanceViewModelFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746080812667F136005FC35C /* studentExistanceViewModelFile.swift */; };
+		746080842667F304005FC35C /* StudentTimeInAndOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746080832667F304005FC35C /* StudentTimeInAndOutViewModel.swift */; };
 		74622E142664C9E70012D60D /* StudentExistancesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74622E122664C9E70012D60D /* StudentExistancesTableViewCell.swift */; };
 		74622E152664C9E70012D60D /* StudentExistancesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74622E132664C9E70012D60D /* StudentExistancesTableViewCell.xib */; };
 		746BDE7026523D0B001B1E71 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746BDE6F26523D0B001B1E71 /* Course.swift */; };
@@ -222,6 +226,10 @@
 		745147EA264D510400172419 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7456DC6826500B7800535297 /* ConversationViewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewmodel.swift; sourceTree = "<group>"; };
 		7456DC6A2650A1D800535297 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		7460807D2667E49C005FC35C /* StudentTimeInAndOut.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudentTimeInAndOut.storyboard; sourceTree = "<group>"; };
+		7460807F2667EFE1005FC35C /* StudentTimeInAndOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTimeInAndOutViewController.swift; sourceTree = "<group>"; };
+		746080812667F136005FC35C /* studentExistanceViewModelFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = studentExistanceViewModelFile.swift; sourceTree = "<group>"; };
+		746080832667F304005FC35C /* StudentTimeInAndOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTimeInAndOutViewModel.swift; sourceTree = "<group>"; };
 		74622E122664C9E70012D60D /* StudentExistancesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentExistancesTableViewCell.swift; sourceTree = "<group>"; };
 		74622E132664C9E70012D60D /* StudentExistancesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentExistancesTableViewCell.xib; sourceTree = "<group>"; };
 		746BDE6F26523D0B001B1E71 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -438,6 +446,7 @@
 				74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */,
 				74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */,
 				74715CC6265B698600570A23 /* CalendarPageViewModel.swift */,
+				746080812667F136005FC35C /* studentExistanceViewModelFile.swift */,
 				74715CC8265B6C5F00570A23 /* EventViewModel.swift */,
 				74715CCA265B6D6100570A23 /* StudentPerformanceViewModel.swift */,
 				7435E87B265E4A7500941729 /* LessonPlanViewModel.swift */,
@@ -447,6 +456,7 @@
 				74E541F72663B603004276F9 /* StudentExistanceViewModel.swift */,
 				74F07430266544A600CC0009 /* HomePageViewModel.swift */,
 				74E9DE9F266752C700E2FD52 /* SignInPageViewModel.swift */,
+				746080832667F304005FC35C /* StudentTimeInAndOutViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -469,6 +479,7 @@
 				7435E869265E35A000941729 /* LessonPlanDetailViewController.swift */,
 				74F2DE84265FEBE900F6F0AB /* LessonPerformancesViewController.swift */,
 				7412B7B72662260200C91CA2 /* ScanStudentQRCodeViewController.swift */,
+				7460807F2667EFE1005FC35C /* StudentTimeInAndOutViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -680,6 +691,7 @@
 				74C2376B264BB5FE001BF47A /* Main.storyboard */,
 				743DCD2F2667914400946718 /* SignIn */,
 				7412B7B52662253500C91CA2 /* ScanStudentQR.storyboard */,
+				7460807D2667E49C005FC35C /* StudentTimeInAndOut.storyboard */,
 				74F2DE922661F0D400F6F0AB /* LessonPlan */,
 				748CC91C265D2ACE00919F1E /* Calendar */,
 				7472B2A02659E24700511468 /* TimeSelection */,
@@ -826,6 +838,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				743DCD312667918600946718 /* parentLottie.json in Resources */,
+				7460807E2667E49C005FC35C /* StudentTimeInAndOut.storyboard in Resources */,
 				7472B29F26594BBB00511468 /* TimeSelection.storyboard in Resources */,
 				74F2DE76265FE73A00F6F0AB /* LPMainCollectionViewCell.xib in Resources */,
 				74857F9A2654BBF200AEF14D /* NewAThing.storyboard in Resources */,
@@ -976,6 +989,7 @@
 				74996311265DF0B100F081EC /* LessonsTableViewCell.swift in Sources */,
 				74A5A76D2654EC690039BC22 /* CircleUserCollectionViewCell.swift in Sources */,
 				74715CC9265B6C5F00570A23 /* EventViewModel.swift in Sources */,
+				746080802667EFE1005FC35C /* StudentTimeInAndOutViewController.swift in Sources */,
 				74857F972654B95800AEF14D /* NavigationController.swift in Sources */,
 				74CADD9826564950004DA6D0 /* PickerViewTableViewCell.swift in Sources */,
 				7402580A265267FA00BA6BDA /* ServicesTableViewCell.swift in Sources */,
@@ -1033,6 +1047,8 @@
 				74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */,
 				74CADD9B26568BAF004DA6D0 /* NewAThingViewModel.swift in Sources */,
 				74E94735264BE09500AFB046 /* UserManager.swift in Sources */,
+				746080842667F304005FC35C /* StudentTimeInAndOutViewModel.swift in Sources */,
+				746080822667F136005FC35C /* studentExistanceViewModelFile.swift in Sources */,
 				74F2DE72265FD87A00F6F0AB /* UIAlertAction+Extension.swift in Sources */,
 				74E9475D264C087D00AFB046 /* UITableView+Extension.swift in Sources */,
 				74A7D11B26552B2F00B445EB /* StudentLessonRecord.swift in Sources */,

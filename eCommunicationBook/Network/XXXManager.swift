@@ -4,6 +4,7 @@
 //
 //  Created by Wayne Chen on 2020/11/20.
 //
+// swiftlint: disable file_length
 
 import Foundation
 import Firebase
@@ -414,10 +415,6 @@ class XXXManager {
   }
   
   
-  
-  
-  
-  
   func fetchCourses(completion: @escaping (Result<[Course], Error>) -> Void) {
     
     db.collection("Courses")
@@ -558,6 +555,36 @@ class XXXManager {
     }
   }
   
+  func fetchUserStudents(completion: @escaping (Result<[Student], Error>) -> Void) {
+    
+    db.collection("Students")
+      .order(by: "grade", descending: true)
+      .whereField("parents", arrayContains: UserManager.shared.user.id)
+      .getDocuments { (querySnapshot, error) in
+        
+        if let error = error {
+          
+          completion(.failure(error))
+        } else {
+          
+          var students = [Student]()
+          
+          for document in querySnapshot!.documents {
+            
+            do {
+              if let student = try document.data(as: Student.self, decoder: Firestore.Decoder()) {
+                students.append(student)
+                
+              }
+            } catch {
+              completion(.failure(error))
+            }
+          }
+          completion(.success(students))
+        }
+    }
+  }
+  
   func fetchStudents(completion: @escaping (Result<[Student], Error>) -> Void) {
     
     db.collection("Students")
@@ -613,7 +640,10 @@ class XXXManager {
     }
   }
   
-  func fetchStudentExistances(date: Date, timeIn: Bool, completion: @escaping (Result<[StudentExistance], Error>) -> Void) {
+  func fetchStudentExistances(studentIndex: Int,
+                              date: Date,
+                              timeIn: Bool,
+                              completion: @escaping (Result<[StudentExistance], Error>) -> Void) {
     
     let year = date.convertToString(dateformat: .year)
     let month = date.convertToString(dateformat: .month)
@@ -629,9 +659,14 @@ class XXXManager {
       collectionName = "StudentTimeOuts"
     }
     
+    guard let student = UserManager.shared.user.student?[studentIndex] else {
+      return completion(.failure(MasterError.noMatchData("No Student")))
+    }
+    
     db.collection(collectionName)
       .document(year)
       .collection(month)
+      .whereField("studentID", isEqualTo: student)
       .getDocuments { (querySnapshot, error) in
         
         if let error = error {
@@ -658,6 +693,7 @@ class XXXManager {
         }
     }
   }
+  
   
   func fetchStudentLessonRecord(completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
     
@@ -702,11 +738,6 @@ class XXXManager {
       }
     }
   }
-  
-  
-  
-  
-  
   
   func publishArticle(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
     
@@ -757,3 +788,4 @@ class XXXManager {
   }
 }
 
+// swiftlint: enable file_length

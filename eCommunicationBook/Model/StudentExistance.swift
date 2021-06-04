@@ -16,6 +16,8 @@ struct StudentExistance: Codable {
   var time: Double
   var latitude: Double
   var longitude: Double
+  var courseName: String
+  var courseLesson: Int
   var scanTeacherName: String
   
   enum CodingKeys: String, CodingKey {
@@ -25,6 +27,8 @@ struct StudentExistance: Codable {
     case time
     case latitude
     case longitude
+    case courseName
+    case courseLesson
     case scanTeacherName
   }
   
@@ -36,6 +40,8 @@ struct StudentExistance: Codable {
       "time": time as Any,
       "latitude": latitude as Any,
       "longitude": longitude as Any,
+      "courseName": courseName as Any,
+      "courseLesson": courseLesson as Any,
       "scanTeacherName": scanTeacherName as Any
     ]
   }

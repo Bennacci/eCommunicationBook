@@ -191,14 +191,16 @@ extension HomePageViewController: UICollectionViewDelegate {
           
         } else { return }
       case "Student Time In / Out":
-        if let nextVC = UIStoryboard.scanStudentQR.instantiateInitialViewController() {
+        if let nextVC = UIStoryboard.scanStudentQR.instantiateInitialViewController() as? ScanStudentQRCodeViewController {
           
           nextVC.modalPresentationStyle = .fullScreen
+          
+          nextVC.hideDropDown = false
           
           self.navigationController?.show(nextVC, sender: nil)
           
         } else { return }
-      case "Where's my children":
+      case "Attendance":
         if let nextVC = UIStoryboard.studentTimeInAndOut.instantiateInitialViewController() {
           
           nextVC.modalPresentationStyle = .fullScreen

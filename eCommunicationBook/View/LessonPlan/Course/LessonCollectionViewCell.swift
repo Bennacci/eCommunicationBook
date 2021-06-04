@@ -18,6 +18,8 @@ class LessonCollectionViewCell: UICollectionViewCell {
   
   @IBOutlet weak var buttonEdit: UIButton!
   
+  @IBOutlet weak var buttonScan: UIButton!
+  
   var viewModel: LessonViewModel?
   
   override func awakeFromNib() {

@@ -16,26 +16,35 @@ class StudentTimeInAndOutViewModel {
   
   let studentTimeOutViemModel = Box([StudentExistanceViewModel]())
   
+  var cellDateDic = ["" : 0]
+  
   var selectedDate = Date()
   
   var selectedStudent = 0
   
   var yearMonth = Calendar.current.dateComponents([.year, .month], from: Date())
   
-//  func onCalendarTapped(day: Date) {
-//
-//    let tappedYearMonth = Calendar.current.dateComponents([.year, .month], from: day)
-//
-//    if tappedYearMonth != yearMonth {
-//      yearMonth = tappedYearMonth
-//      fetchExistances(studentIndex: nil, date: day)
-//    }
-//  }
-  
-  var existancesFetched: (()->Void)?
+  var existancesFetched: (() -> Void)?
   
   let group: DispatchGroup = DispatchGroup()
   
+  func refreshCellDateDic(){
+    
+    cellDateDic.removeAll()
+
+    var indexpathRow = 0
+    
+    for index in 0 ..< studentTimeInViemModel.value.count {
+
+      let time = studentTimeInViemModel.value[index].time
+
+      let key = Date(milliseconds: time).convertToString(dateformat: .day)
+
+      cellDateDic[key] = indexpathRow
+
+      indexpathRow += 1
+    }
+  }
   
   func fetchExistances(studentIndex: Int?, date: Date?) {
 

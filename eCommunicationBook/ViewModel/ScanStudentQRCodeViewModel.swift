@@ -10,6 +10,12 @@ import Foundation
 
 class ScanStudentQRCodeViewModel {
   
+  var courseViewModel = Box([CourseViewModel]())
+  
+  var lessonList = [String]()
+  
+  var lessonListChanged: (()->Void)?
+  
   var timeIn: Bool = true {
     didSet {
       studentExistance.studentName = ""
@@ -23,6 +29,8 @@ class ScanStudentQRCodeViewModel {
     time: -1,
     latitude: -1,
     longitude: -1,
+    courseName: "",
+    courseLesson: 0,
     scanTeacherName: "")
   
   func onScanedAQRCode(info: String) {
@@ -42,6 +50,26 @@ class ScanStudentQRCodeViewModel {
       }
     }
   }
+  
+  func onCourseNameChanged(index: Int) {
+    studentExistance.courseName = courseViewModel.value[index].name
+    setLessonList(index: index)
+  }
+  
+  func setLessonList(index: Int?) {
+    lessonList.removeAll()
+    if let index = index {
+    for index in 0 ..< courseViewModel.value[index].lessonsAmount {
+      lessonList.append(String(index + 1))
+      }
+    }
+    self.lessonListChanged?()
+  }
+  
+  func onCourseLessonChanged(index: Int) {
+    studentExistance.courseLesson = index + 1
+  }
+  
   
   func onCurrentLocationChanged(latitude: Double, longitude: Double) {
     studentExistance.latitude = latitude
@@ -105,4 +133,42 @@ class ScanStudentQRCodeViewModel {
       }
     }
   }
+  
+    
+  func fetchCourse() {
+    XXXManager.shared.fetchCourses { [weak self] result in
+      
+      switch result {
+        
+      case .success(let courses):
+        
+        self?.setSearchResult(courses)
+        
+      case .failure(let error):
+        
+        print("fetchData.failure: \(error)")
+      }
+    }
+  }
+  
+    func convertCoursesToViewModels(from courses: [Course]) -> [CourseViewModel] {
+      var viewModels = [CourseViewModel]()
+      for course in courses {
+        let viewModel = CourseViewModel(model: course)
+        viewModels.append(viewModel)
+      }
+      return viewModels
+    }
+    
+    
+    func setSearchResult(_ courses: [Course]) {
+      print(courses)
+  //    if let uID = UserManager.shared.userID {
+  ////    courseViewModel.value = convertCoursesToViewModels(from: courses).filter { $0.teacher.contains(uID) }
+  //
+  //    }
+      courseViewModel.value = convertCoursesToViewModels(from: courses)
+
+    }
+    
 }

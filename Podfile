@@ -13,6 +13,7 @@ target 'eCommunicationBook' do
   pod 'FSCalendar'
   pod 'lottie-ios'
   pod 'Charts'
+  pod 'SwiftyMenu', '~> 0.6.5'
   pod 'ChameleonFramework'
   pod 'FirebaseAuth'
   pod 'CollectionViewPagingLayout'

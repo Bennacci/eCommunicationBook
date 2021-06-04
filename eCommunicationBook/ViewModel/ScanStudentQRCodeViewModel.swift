@@ -35,6 +35,12 @@ class ScanStudentQRCodeViewModel {
   
   func onScanedAQRCode(info: String) {
     
+    if studentExistance.courseName == "" || studentExistance.courseLesson == 0 {
+      LKProgressHUD.showFailure(text: "Please select course name and lesson")
+      return
+    }
+    
+    
     let lines = info.components(separatedBy: "\n")
     
 //    let qrCodeInfo = info.split(whereSeparator: \.isNewline)
@@ -43,6 +49,7 @@ class ScanStudentQRCodeViewModel {
         studentExistance.studentName = lines[0]
         studentExistance.studentID = lines[1]
         if timeIn == true {
+          writeAttendance(with: &studentExistance)
           writeTimeIn(with: &studentExistance)
         } else {
           writeTimeOut(with: &studentExistance)
@@ -83,6 +90,29 @@ class ScanStudentQRCodeViewModel {
   var wroteOutSuccess: (() -> Void)?
   
   //  var wroteOutFailure: (() -> Void)?
+
+  func writeAttendance(with studentExistance: inout StudentExistance) {
+  
+    LKProgressHUD.show()
+
+    XXXManager.shared.writeAttendance(studentExistance: &studentExistance) { result in
+     
+      LKProgressHUD.dismiss()
+
+      switch result {
+        
+      case .success:
+        
+        print("onTapPublish, success")
+        
+      case .failure(let error):
+        
+        print("publishArticle.failure: \(error)")
+        
+        //        self.wroteInFailure?()
+      }
+    }
+  }
   
   func writeTimeIn(with studentExistance: inout StudentExistance) {
   

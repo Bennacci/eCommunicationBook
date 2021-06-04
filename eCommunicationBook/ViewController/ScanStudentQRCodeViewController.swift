@@ -45,6 +45,8 @@ class ScanStudentQRCodeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
+
   viewModel.wroteInSuccess = {
       LKProgressHUD.showSuccess(text: "Time In Success")
       
@@ -64,12 +66,18 @@ class ScanStudentQRCodeViewController: UIViewController {
       self.dropDownLesson.items = self.viewModel.lessonList
     }
     
-    viewModel.fetchCourse()
+    if hideDropDown == false {
+      viewModel.fetchCourse()
+    }
     
     startDetectingQRCode()
     startDetectingCurrentLocation()
     addBlurMask()
     //    prepareWindow()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    self.navigationController?.setNavigationBarHidden(false, animated: true)
   }
   
   @IBAction func timeInButtonPress(_ sender: Any) {

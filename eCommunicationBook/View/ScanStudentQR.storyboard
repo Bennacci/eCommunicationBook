@@ -129,18 +129,18 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qO-fw-ZGI" customClass="SwiftyMenu" customModule="SwiftyMenu">
-                                <rect key="frame" x="72" y="56" width="220" height="45"/>
+                                <rect key="frame" x="112" y="56" width="180" height="38"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="A2P-Yo-VwW"/>
-                                    <constraint firstAttribute="width" constant="220" id="qk2-dA-DA7"/>
+                                    <constraint firstAttribute="width" constant="180" id="qk2-dA-DA7"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="heightConstraint" destination="A2P-Yo-VwW" id="LvP-45-PUY"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmr-Jj-yMN" customClass="SwiftyMenu" customModule="SwiftyMenu">
-                                <rect key="frame" x="308" y="56" width="90" height="45"/>
+                                <rect key="frame" x="308" y="56" width="90" height="38"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="6Fn-kX-7FP"/>
@@ -175,7 +175,6 @@
                             <constraint firstAttribute="bottom" secondItem="UZw-DS-acL" secondAttribute="bottom" id="kDk-ii-T5X"/>
                             <constraint firstItem="vQZ-z8-Vrm" firstAttribute="bottom" secondItem="HdX-a4-MDW" secondAttribute="bottom" constant="240" id="lEc-Uz-qfV"/>
                             <constraint firstAttribute="bottom" secondItem="Xqo-HD-zsO" secondAttribute="bottom" id="lRv-5m-717"/>
-                            <constraint firstItem="1qO-fw-ZGI" firstAttribute="leading" secondItem="C1Y-xd-xmg" secondAttribute="trailing" constant="21.5" id="ldv-5M-3mT"/>
                             <constraint firstItem="uRD-31-bmO" firstAttribute="centerX" secondItem="ALl-sK-qXO" secondAttribute="centerX" id="mnZ-xR-rGh"/>
                             <constraint firstItem="Xqo-HD-zsO" firstAttribute="top" secondItem="M76-rM-dPg" secondAttribute="top" id="nTj-Wl-rTG"/>
                             <constraint firstItem="HdX-a4-MDW" firstAttribute="centerX" secondItem="M76-rM-dPg" secondAttribute="centerX" id="nuI-Jm-s0m"/>

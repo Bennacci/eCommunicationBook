@@ -22,6 +22,8 @@ enum DateFormatType: String {
     case date = "dd-MMM-yyyy"
     
     case dateYMD = "yyyy-MMM-dd"
+    case dateMD = "MMM-dd"
+
     case year = "yyyy"
     case month = "MMM"
     case day = "dd"

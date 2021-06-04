@@ -11,8 +11,9 @@ import UIKit
 class LessonPlanViewController: UIViewController, SavedLessonDelegate {
 
   
-  
   @IBOutlet weak var tableView: UITableView!
+  
+  
   
   var viewModel = LessonPlanViewModel()
   
@@ -269,6 +270,8 @@ extension LessonPlanViewController: UICollectionViewDataSource {
     nextVC.viewModel.studentExistance.courseLesson = sender.tag
     nextVC.viewModel.studentExistance.courseName =
       self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.name
+      + ":"
+      + "\(viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.lessonsAmount)"
       nextVC.hideDropDown = true
     self.navigationController?.show(nextVC, sender: nil)
     }

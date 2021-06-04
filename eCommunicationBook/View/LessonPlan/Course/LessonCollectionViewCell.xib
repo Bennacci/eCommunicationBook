@@ -72,8 +72,9 @@
                             <constraint firstAttribute="height" constant="30" id="rDE-9g-mVW"/>
                         </constraints>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <state key="normal" image="ScanQRCode">
+                        <state key="normal" image="qrcode.viewfinder" catalog="system">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
@@ -108,6 +109,6 @@
     </objects>
     <resources>
         <image name="01.square.fill" catalog="system" width="128" height="114"/>
-        <image name="ScanQRCode" width="512" height="512"/>
+        <image name="qrcode.viewfinder" catalog="system" width="128" height="114"/>
     </resources>
 </document>

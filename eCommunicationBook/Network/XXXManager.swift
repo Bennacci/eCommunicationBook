@@ -333,6 +333,77 @@ class XXXManager {
     }
   }
   
+  func fetchAttendance(courseName: String, completion: @escaping (Result<[[StudentExistance]], Error>) -> Void) {
+    
+    let courseInfo = courseName.components(separatedBy: ":")
+    let name = courseInfo[0]
+    let lessonCount = courseInfo[1]
+    var studentAttendancess = [[StudentExistance]]()
+    
+    for index in 0 ... Int(lessonCount)! {
+      
+      db.collection("StudentAttendances")
+        .document(name)
+        .collection("\(index)")
+        .getDocuments()
+          { (querySnapshot, error) in
+            
+            if let error = error {
+              
+              completion(.failure(error))
+
+            } else {
+              
+              var studentAttendances = [StudentExistance]()
+              
+              for document in querySnapshot!.documents {
+                
+                do {
+
+                  if let studentAttendance = try document.data(as: StudentExistance.self, decoder: Firestore.Decoder()) {
+
+                    studentAttendances.append(studentAttendance)
+                  }
+
+                } catch {
+
+                  completion(.failure(error))
+                }
+              }
+
+              studentAttendancess.append(studentAttendances)
+            }
+      }
+    }
+
+    completion(.success(studentAttendancess))
+  }
+  
+  
+  
+  func writeAttendance(studentExistance: inout StudentExistance,
+                       completion: @escaping (Result<String, Error>) -> Void) {
+    
+    let document = db
+      .collection("StudentAttendances")
+      .document(studentExistance.courseName)
+      .collection("\(studentExistance.courseLesson)")
+      .document()
+    studentExistance.id = document.documentID
+    studentExistance.time = Double(Date().millisecondsSince1970)
+    studentExistance.scanTeacherName = UserManager.shared.user.id
+    document.setData(studentExistance.toDict) { error in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        completion(.success("Success"))
+      }
+    }
+  }
+  
   func writeTimeIn(studentExistance: inout StudentExistance,
                    completion: @escaping (Result<String, Error>) -> Void) {
     
@@ -559,7 +630,7 @@ class XXXManager {
   func fetchUserStudents(completion: @escaping (Result<[Student], Error>) -> Void) {
     
     db.collection("Students")
-//      .order(by: "grade", descending: true)
+      //      .order(by: "grade", descending: true)
       .whereField("parents", arrayContains: UserManager.shared.user.id)
       .getDocuments { (querySnapshot, error) in
         
@@ -668,6 +739,7 @@ class XXXManager {
       .document(year)
       .collection(month)
       .whereField("studentID", isEqualTo: student.id)
+      .order(by: "time", descending: true)
       .getDocuments { (querySnapshot, error) in
         
         if let error = error {

@@ -15,7 +15,7 @@ class UserManager {
   
   static let shared = UserManager()
   
-  var user = User(id: "",
+  var user = User(id: "ZTBCw5SJ1cgvO9DswRx11ZUE3At1",
                   createdTime: -1,
                   userID: "",
                   name: "",
@@ -88,7 +88,7 @@ class UserManager {
   //        return author != nil
   //    }
   
-  func updateStudents(){
+  func updateStudents() {
     XXXManager.shared.fetchUserStudents { [weak self] result in
       
       switch result {

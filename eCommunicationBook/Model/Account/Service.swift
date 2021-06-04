@@ -97,9 +97,9 @@ enum ParentSeviceItem: AccountItem {
   var title: String {
     switch self {
     
-    case .signCommunicationBook: return localizedString("Sign CommunicationBook")
+    case .signCommunicationBook: return localizedString("Communication Book")
     
-    case .checkStudentTimeInAndOut: return localizedString("Where's my children")
+    case .checkStudentTimeInAndOut: return localizedString("Attendance")
       
     case .checkLearingStat: return localizedString("Learning Status")
       

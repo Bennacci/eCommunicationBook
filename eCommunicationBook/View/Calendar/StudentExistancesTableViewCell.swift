@@ -17,10 +17,12 @@ class StudentExistancesTableViewCell: UITableViewCell {
   
   @IBOutlet weak var mapView: MKMapView!
   
-  @IBOutlet weak var labelExistanceStat: UILabel!
+  @IBOutlet weak var mapViewHeight: NSLayoutConstraint!
+  @IBOutlet weak var labelCellTitle: UILabel!
   
-  @IBOutlet weak var labelAttandance: UILabel!
+  @IBOutlet weak var labelCellContent: UILabel!
   
+  @IBOutlet weak var labelCellCourseName: UILabel!
   @IBOutlet weak var imageViewLocated: UIImageView!
   
   override func awakeFromNib() {
@@ -73,24 +75,31 @@ class StudentExistancesTableViewCell: UITableViewCell {
     
     let attendTime = Date(milliseconds: time).convertToString(dateformat: .time)
     
-    labelAttandance.text = "Time in: " + attendTime
+    labelCellContent.text = "Time in: " + attendTime
     
-    guard let studentName = timeInViewModel?.studentName else {return}
-    if forCalendar == true {
-      labelExistanceStat.text = "\(studentName) is still at school."
-    } else {
-      labelExistanceStat.text = Date(milliseconds: time).convertToString(dateformat: .day)
+    labelCellTitle.text = Date(milliseconds: time).convertToString(dateformat: .day)
+
+    if forCalendar == false {
+    
+      labelCellTitle.font = UIFont.boldSystemFont(ofSize: 20.0)
+      
+      guard let courseName = timeInViewModel?.courseName else {return}
+      labelCellCourseName.isHidden = false
+      labelCellCourseName.font = UIFont.boldSystemFont(ofSize: 20.0)
+      labelCellCourseName.text =  "Class: \(courseName)"
     }
+    
     if timeOutViewModel != nil {
       
-      guard let time = timeInViewModel?.time else {return}
-      labelExistanceStat.text = "\(studentName) has left school."
-      
+      mapViewHeight.constant = 0
+
+      guard let time = timeOutViewModel?.time else {return}
+            
       let leaveTime = Date(milliseconds: time).convertToString(dateformat: .time)
       
-      labelAttandance.text = "Time in: " + attendTime + "\n" + "Time out: " + leaveTime
+      labelCellContent.text = "Time in: " + attendTime + "\n" + "Time out: " + leaveTime
       
-      imageViewLocated.tintColor = .gray
+      imageViewLocated.isHidden = true
     }
   }
 }

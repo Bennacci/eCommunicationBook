@@ -10,10 +10,18 @@ import UIKit
 import AVFoundation
 import MapKit
 import CoreLocation
+import SwiftyMenu
+import SnapKit
 
 class ScanStudentQRCodeViewController: UIViewController {
   
   var viewModel = ScanStudentQRCodeViewModel()
+  
+  var hideDropDown = false
+  
+  @IBOutlet weak var dropDownCourse: SwiftyMenu!
+  
+  @IBOutlet weak var dropDownLesson: SwiftyMenu!
   
   @IBOutlet weak var middleConstraintTimeIn: NSLayoutConstraint!
   @IBOutlet weak var middleConstraintTimeOut: NSLayoutConstraint!
@@ -36,22 +44,33 @@ class ScanStudentQRCodeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    //    self.tabBarController?.tabBar.layer.zPosition = -1
-    viewModel.wroteInSuccess = {
-      LKProgressHUD.showSuccess(text: "Time In Success")
 
+  viewModel.wroteInSuccess = {
+      LKProgressHUD.showSuccess(text: "Time In Success")
+      
     }
     viewModel.wroteOutSuccess = {
       LKProgressHUD.showSuccess(text: "Time Out Success")
     }
-
+    
+    viewModel.courseViewModel.bind { [weak self] _ in
+      
+      self?.setDropDown()
+      
+    }
+    
+    viewModel.lessonListChanged = {
+      print(self.viewModel.lessonList)
+      self.dropDownLesson.items = self.viewModel.lessonList
+    }
+    
+    viewModel.fetchCourse()
+    
     startDetectingQRCode()
     startDetectingCurrentLocation()
     addBlurMask()
-//    prepareWindow()
+    //    prepareWindow()
   }
-  
-
   
   @IBAction func timeInButtonPress(_ sender: Any) {
     
@@ -155,10 +174,85 @@ class ScanStudentQRCodeViewController: UIViewController {
     mask.path = path.cgPath
     shapeLayer.mask = mask
     
-    view.layer.addSublayer(shapeLayer)
+    qrCodeView.layer.addSublayer(shapeLayer)
     
     qrCodeMaskView.layer.mask = maskLayer
   }
+  func setDropDown() {
+    
+    if hideDropDown == true {
+      dropDownCourse.isHidden = true
+      dropDownLesson.isHidden = true
+      return
+    }
+    // Setup component
+    dropDownCourse.delegate = self
+    dropDownLesson.delegate = self
+    
+    dropDownCourse.items = self.viewModel.courseViewModel.value.map({$0.name})
+    dropDownLesson.items = self.viewModel.lessonList
+
+    //        dropDown2.items = dropDownOptionsDataSource
+    if viewModel.studentExistance.courseName == "" {
+      dropDownCourse.placeHolderText = "Please Select Course"
+    } else {
+      dropDownCourse.placeHolderText = self.viewModel.studentExistance.courseName
+    }
+    
+    if viewModel.studentExistance.courseLesson == 0 {
+      dropDownLesson.placeHolderText = "Please Select Lesson"
+    } else {
+      dropDownLesson.placeHolderText = String(self.viewModel.studentExistance.courseLesson)
+    }
+    
+    dropDownCourse.separatorCharacters = " & "
+    //    print(dropDown2.selectedIndecis)
+    
+    // Support CallBacks
+    dropDownCourse.didExpand = {
+      print("SwiftyMenu Expanded!")
+    }
+    
+    dropDownCourse.didCollapse = {
+      print("SwiftyMenu Collapsed!")
+    }
+    
+    dropDownCourse.didSelectItem = { _, item, index in
+      print("\(item) at index: \(index)")
+    }
+    
+    modDropdow(dropDown: dropDownCourse)
+    modDropdow(dropDown: dropDownLesson)
+  }
+  
+  func modDropdow(dropDown: SwiftyMenu) {
+    // Custom Behavior
+    dropDown.scrollingEnabled = true
+    dropDown.isMultiSelect = false
+    dropDown.hideOptionsWhenSelect = false
+    
+    // Custom UI
+    dropDown.rowHeight = 38
+    dropDown.listHeight = 340
+    dropDown.borderWidth = 0.8
+  
+    // Custom Colors
+    dropDown.borderColor = .black
+    dropDown.itemTextColor = .black
+    dropDown.placeHolderColor = .lightGray
+    
+    dropDown.borderColor = .black
+    dropDown.itemTextColor = .black
+    dropDown.placeHolderColor = .lightGray
+
+    // Custom Animation
+    dropDown.expandingAnimationStyle = .spring(level: .low)
+    dropDown.expandingDuration = 0.5
+    dropDown.collapsingAnimationStyle = .linear
+    dropDown.collapsingDuration = 0.5
+  }
+  
+  
   
   func startDetectingQRCode() {
     
@@ -277,76 +371,46 @@ extension ScanStudentQRCodeViewController: CLLocationManagerDelegate {
   func geocode(latitude: Double, longitude: Double, completion: @escaping (CLPlacemark?, Error?) -> ())  {
     CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { completion($0?.first, $1) }
   }
-  
-  //  // Below Mehtod will print error if not able to update location.
-  //  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-  //      print("Error Location")
-  //  }
-  //
-  //
-  //  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-  //
-  //      //Access the last object from locations to get perfect current location
-  //      if let location = locations.last {
-  //
-  //          let myLocation = CLLocationCoordinate2DMake(location.coordinate.latitude,location.coordinate.longitude)
-  //
-  //          geocode(latitude: myLocation.latitude, longitude: myLocation.longitude) { placemark, error in
-  //              guard let placemark = placemark, error == nil else { return }
-  //              // you should always update your UI in the main thread
-  //              DispatchQueue.main.async {
-  //                  //  update UI here
-  //                  print("address1:", placemark.thoroughfare ?? "")
-  //                  print("address2:", placemark.subThoroughfare ?? "")
-  //                  print("city:",     placemark.locality ?? "")
-  //                  print("state:",    placemark.administrativeArea ?? "")
-  //                  print("zip code:", placemark.postalCode ?? "")
-  //                  print("country:",  placemark.country ?? "")
-  //              }
-  //          }
-  //      }
-  //      manager.stopUpdatingLocation()
-  //  }
 }
 
+// MARK: - SwiftMenuDelegate
 
-
-
-
-extension AppDelegate: CLLocationManagerDelegate {
-  
-  func geocode(latitude: Double, longitude: Double, completion: @escaping (CLPlacemark?, Error?) -> ())  {
-    CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { completion($0?.first, $1) }
-  }
-  
-  // Below Mehtod will print error if not able to update location.
-  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    print("Error Location")
-  }
-  
-  
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    
-    //Access the last object from locations to get perfect current location
-    if let location = locations.last {
-      
-      let myLocation = CLLocationCoordinate2DMake(location.coordinate.latitude,location.coordinate.longitude)
-      
-      geocode(latitude: myLocation.latitude, longitude: myLocation.longitude) { placemark, error in
-        guard let placemark = placemark, error == nil else { return }
-        // you should always update your UI in the main thread
-        DispatchQueue.main.async {
-          //  update UI here
-          print("address1:", placemark.thoroughfare ?? "")
-          print("address2:", placemark.subThoroughfare ?? "")
-          print("city:",     placemark.locality ?? "")
-          print("state:",    placemark.administrativeArea ?? "")
-          print("zip code:", placemark.postalCode ?? "")
-          print("country:",  placemark.country ?? "")
-        }
-      }
+extension ScanStudentQRCodeViewController: SwiftyMenuDelegate {
+  func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
+    if swiftyMenu == dropDownCourse {
+      viewModel.onCourseNameChanged(index: index)
+      print("Selected item: \(item), at index: \(index)")
+    } else {
+      viewModel.onCourseLessonChanged(index: index)
     }
-    manager.stopUpdatingLocation()
     
+  }
+  
+  func swiftyMenu(willExpand swiftyMenu: SwiftyMenu) {
+    print("SwiftyMenu willExpand.")
+  }
+  
+  func swiftyMenu(didExpand swiftyMenu: SwiftyMenu) {
+    print("SwiftyMenu didExpand.")
+  }
+  
+  func swiftyMenu(willCollapse swiftyMenu: SwiftyMenu) {
+    print("SwiftyMenu willCollapse.")
+  }
+  
+  func swiftyMenu(didCollapse swiftyMenu: SwiftyMenu) {
+    print("SwiftyMenu didCollapse.")
+  }
+  
+}
+
+// String extension to conform SwiftyMenuDisplayable for defult behavior
+extension String: SwiftyMenuDisplayable {
+  public var displayableValue: String {
+    return self
+  }
+  
+  public var retrievableValue: Any {
+    return self
   }
 }

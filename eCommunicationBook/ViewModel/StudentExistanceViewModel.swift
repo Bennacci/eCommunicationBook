@@ -53,7 +53,11 @@ var id: String {
       return studentExistance.longitude
     }
   }
-    
+  var courseName: String {
+    get {
+      return studentExistance.courseName
+    }
+  }
   var scanTeacherName: String {
     get {
       return studentExistance.scanTeacherName

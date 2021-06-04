@@ -175,10 +175,13 @@ extension CalendarPageViewController: UITableViewDataSource {
         else { fatalError("Unexpected Table View Cell") }
       
       var timeOutViewModel: StudentExistanceViewModel?
-      if viewModel.dayStudentTimeOutViemModel.value.count > 0 {
-        timeOutViewModel = viewModel.dayStudentTimeOutViemModel.value[0]
+      if viewModel.dayStudentTimeInViemModel.value.count - viewModel.dayStudentTimeOutViemModel.value.count == 1 {
+        if indexPath.row > 1 {
+          timeOutViewModel = viewModel.dayStudentTimeOutViemModel.value[indexPath.row - 1]
+        }
       }
-      cell.setUp(forCalendar: true, timeInViewModel: viewModel.dayStudentTimeInViemModel.value[0],
+      cell.setUp(forCalendar: false,
+                 timeInViewModel: viewModel.dayStudentTimeInViemModel.value[indexPath.row],
                  timeOutViewModel: timeOutViewModel)
       return cell
       

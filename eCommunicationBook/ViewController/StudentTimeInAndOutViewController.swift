@@ -35,19 +35,20 @@ class StudentTimeInAndOutViewController: UIViewController {
     super.viewDidLoad()
     
     tableView.registerCellWithNib(identifier: StudentExistancesTableViewCell.identifier, bundle: nil)
-    
+    tableView.registerCellWithNib(identifier: StudentTimeInTimeOutTableViewCell.identifier, bundle: nil)
     viewModel.fetchExistances(studentIndex: nil, date: nil)
     
     viewModel.existancesFetched = { [weak self] () in
       DispatchQueue.main.async {
         self?.tableView.reloadData()
+        self?.viewModel.refreshCellDateDic()
       }
     }
   }
   
   @IBAction func tapBackButton(_ sender: Any) {
     navigationController?.popViewController(animated: true)
-
+    
   }
   
   @IBAction func tapButtonExpand(_ sender: Any) {
@@ -86,6 +87,12 @@ class StudentTimeInAndOutViewController: UIViewController {
   
   @IBAction func changeDate(_ sender: UIDatePicker) {
     viewModel.fetchExistances(studentIndex: nil, date: sender.date)
+    
+    guard let row = viewModel.cellDateDic[sender.date.convertToString(dateformat: .day)] else { return }
+    
+    let indexPath = IndexPath(row: row, section: 0)
+    
+    tableView.scrollToRow(at: indexPath, at: .top, animated: true)
   }
 }
 
@@ -106,7 +113,7 @@ extension StudentTimeInAndOutViewController: UITableViewDataSource {
     let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
     let myLabel = UILabel()
     myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 4, width: tableView.bounds.size.width, height: 30)
-    myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+    myLabel.font = UIFont.boldSystemFont(ofSize: 22)
     myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
     headerView.addSubview(myLabel)
     headerView.backgroundColor = UIColor.clear
@@ -116,19 +123,38 @@ extension StudentTimeInAndOutViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return viewModel.selectedDate.convertToString(dateformat: .month)
   }
+
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentExistancesTableViewCell.identifier,
-                                                   for: indexPath) as? StudentExistancesTableViewCell
-      else { fatalError("Unexpected Table View Cell") }
-    
+
     var timeOutViewModel: StudentExistanceViewModel?
-    if viewModel.studentTimeOutViemModel.value.count > 0 {
-      timeOutViewModel = viewModel.studentTimeOutViemModel.value[indexPath.row]
+
+    // assume every students time out every day
+    
+    if viewModel.studentTimeInViemModel.value.count - viewModel.studentTimeOutViemModel.value.count == 1 {
+      if indexPath.row > 1 {
+        timeOutViewModel = viewModel.studentTimeOutViemModel.value[indexPath.row - 1]
+      }
     }
-    cell.setUp(forCalendar: false, timeInViewModel: viewModel.studentTimeInViemModel.value[indexPath.row],
-               timeOutViewModel: timeOutViewModel)
-    return cell
+    
+    if viewModel.studentTimeInViemModel.value.count - viewModel.studentTimeOutViemModel.value.count != 0 && indexPath.row == 0 {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentExistancesTableViewCell.identifier,
+                                                     for: indexPath) as? StudentExistancesTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      cell.setUp(forCalendar: false,
+                 timeInViewModel: viewModel.studentTimeInViemModel.value[indexPath.row],
+                 timeOutViewModel: timeOutViewModel)
+      return cell
+    } else {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentTimeInTimeOutTableViewCell.identifier,
+                                                     for: indexPath) as? StudentTimeInTimeOutTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      
+      cell.setUp(timeInViewModel: viewModel.studentTimeInViemModel.value[indexPath.row],
+                 timeOutViewModel: timeOutViewModel)
+      return cell
+      
+    }
   }
 }
 

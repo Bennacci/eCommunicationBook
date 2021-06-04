@@ -321,7 +321,10 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (1.2.12)
+  - SnapKit (5.0.1)
   - SwiftLint (0.43.1)
+  - SwiftyMenu (0.6.5):
+    - SnapKit (~> 5.0.1)
 
 DEPENDENCIES:
   - ChameleonFramework
@@ -339,6 +342,7 @@ DEPENDENCIES:
   - lottie-ios
   - MJRefresh
   - SwiftLint
+  - SwiftyMenu (~> 0.6.5)
 
 SPEC REPOS:
   trunk:
@@ -369,7 +373,9 @@ SPEC REPOS:
     - MJRefresh
     - nanopb
     - PromisesObjC
+    - SnapKit
     - SwiftLint
+    - SwiftyMenu
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -399,8 +405,10 @@ SPEC CHECKSUMS:
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  SwiftyMenu: 9f38e9a22fb9c01b889d33cc362ffc12de042dd2
 
-PODFILE CHECKSUM: 41ef24f09f60eaa82029203028cd50491061313f
+PODFILE CHECKSUM: 9a3be16061b50cb8d9085f7eba9b348f8450d2db
 
 COCOAPODS: 1.10.1

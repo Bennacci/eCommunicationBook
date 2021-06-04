@@ -247,18 +247,31 @@ extension LessonPlanViewController: UICollectionViewDataSource {
     //    if collectionView == hotCell.collectionView {
     //      cell.height.constant = hotCell.bounds.size.height
     //    }
-    cell.buttonEdit.addTarget(self, action: #selector(connected(sender:)), for: .touchUpInside)
+    cell.buttonEdit.addTarget(self, action: #selector(directToLessonPlan(sender:)), for: .touchUpInside)
     cell.buttonEdit.tag = indexPath.item
-
+    cell.buttonScan.addTarget(self, action: #selector(directToScanQR(sender:)), for: .touchUpInside)
+    cell.buttonScan.tag = indexPath.item
     cell.setUp(viewModel: self.viewModel.lessonViewModel.value[indexPath.item])
     
     return cell
   }
-  @objc func connected(sender: UIButton) {
+  @objc func directToLessonPlan(sender: UIButton) {
 //      let buttonTag = sender.tag
     print(sender.tag)
     performSegue(withIdentifier: "lessonPlanDetail", sender: sender)
 
+  }
+  
+  @objc func directToScanQR(sender: UIButton) {
+    
+    if let nextVC = UIStoryboard.scanStudentQR.instantiateInitialViewController() as? ScanStudentQRCodeViewController {
+    nextVC.modalPresentationStyle = .fullScreen
+    nextVC.viewModel.studentExistance.courseLesson = sender.tag
+    nextVC.viewModel.studentExistance.courseName =
+      self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.name
+      nextVC.hideDropDown = true
+    self.navigationController?.show(nextVC, sender: nil)
+    }
   }
 }
 

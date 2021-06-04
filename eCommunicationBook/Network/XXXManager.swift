@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 import FirebaseStorage
+
 enum FirebaseError: Error {
   case documentError
 }
@@ -558,7 +559,7 @@ class XXXManager {
   func fetchUserStudents(completion: @escaping (Result<[Student], Error>) -> Void) {
     
     db.collection("Students")
-      .order(by: "grade", descending: true)
+//      .order(by: "grade", descending: true)
       .whereField("parents", arrayContains: UserManager.shared.user.id)
       .getDocuments { (querySnapshot, error) in
         
@@ -659,14 +660,14 @@ class XXXManager {
       collectionName = "StudentTimeOuts"
     }
     
-    guard let student = UserManager.shared.user.student?[studentIndex] else {
+    guard let student = UserManager.shared.students?[studentIndex] else {
       return completion(.failure(MasterError.noMatchData("No Student")))
     }
     
     db.collection(collectionName)
       .document(year)
       .collection(month)
-      .whereField("studentID", isEqualTo: student)
+      .whereField("studentID", isEqualTo: student.id)
       .getDocuments { (querySnapshot, error) in
         
         if let error = error {

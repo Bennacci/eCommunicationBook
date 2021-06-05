@@ -71,7 +71,6 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
     
   }
   
-  
   func setDropDown() {
     
     // Setup component
@@ -133,23 +132,24 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
       -> Bool in
       guard let firstRowValue = firstRow[colIndex] as? String,
         let secondRowValue = secondRow[colIndex] as? String else {return true}
-      if colIndex == 0 || colIndex == 1 {
+      if colIndex != rows[0].count - 1 {
         // 首例、姓名使用字典排序法
         if asc {
           return firstRowValue < secondRowValue
         }
         return firstRowValue > secondRowValue
-      } else if colIndex == 2 || colIndex == 3 {
-        // 中间两列使用数字排序
-        if asc {
-          return Int(firstRowValue)! < Int(secondRowValue)!
-        }
-        return Int(firstRowValue)! > Int(secondRowValue)!
       }
+//      else if colIndex == 2 || colIndex == 3 {
+//        // 中间两列使用数字排序
+//        if asc {
+//          return Int(firstRowValue)! < Int(secondRowValue)!
+//        }
+//        return Int(firstRowValue)! > Int(secondRowValue)!
+//      }
       // 最后一列数据先去掉百分号，再转成数字比较
-      let firstRowValuePercent = Int(firstRowValue.substring(to:
+      let firstRowValuePercent = Double(firstRowValue.substring(to:
         firstRowValue.index(before: firstRowValue.endIndex)))!
-      let secondRowValuePercent = Int(secondRowValue.substring(to:
+      let secondRowValuePercent = Double(secondRowValue.substring(to:
         secondRowValue.index(before: secondRowValue.endIndex)))!
       if asc {
         return firstRowValuePercent < secondRowValuePercent
@@ -171,10 +171,10 @@ extension AttendanceSheetViewController: SwiftyMenuDelegate {
   }
   
   func swiftyMenu(willExpand swiftyMenu: SwiftyMenu) {
-    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, animations: {
-      self.dropDownCourseWidth.constant = 180
-
-    },completion: nil)
+//    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, animations: {
+//      self.dropDownCourseWidth.constant = 180
+//
+//    },completion: nil)
     
 
     print("SwiftyMenu willExpand.")
@@ -186,9 +186,9 @@ extension AttendanceSheetViewController: SwiftyMenuDelegate {
   
   func swiftyMenu(willCollapse swiftyMenu: SwiftyMenu) {
     print("SwiftyMenu willCollapse.")
-       UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, animations: {
-      self.dropDownCourseWidth.constant = 90
-    },completion: nil)
+//       UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, animations: {
+//      self.dropDownCourseWidth.constant = 38
+//    },completion: nil)
 
 
   }

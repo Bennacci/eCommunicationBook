@@ -41,25 +41,31 @@ class ScanStudentQRCodeViewModel {
     }
     
     
-    let lines = info.components(separatedBy: "\n")
+    let lines = info.components(separatedBy: ":")
     
 //    let qrCodeInfo = info.split(whereSeparator: \.isNewline)
     if lines.count >= 2 {
       if  studentExistance.studentName != lines[0] {
         studentExistance.studentName = lines[0]
         studentExistance.studentID = lines[1]
+//        LKProgressHUD.showFailure(text: "1")
+
         if timeIn == true {
           writeAttendance(with: &studentExistance)
           writeTimeIn(with: &studentExistance)
+//          LKProgressHUD.showFailure(text: "2")
+
         } else {
           writeTimeOut(with: &studentExistance)
+//          LKProgressHUD.showFailure(text: "3")
+
         }
       }
     }
   }
   
   func onCourseNameChanged(index: Int) {
-    studentExistance.courseName = courseViewModel.value[index].name
+    studentExistance.courseName = courseViewModel.value[index].name + ":" + "\(courseViewModel.value[index].lessonsAmount)"
     setLessonList(index: index)
   }
   
@@ -193,10 +199,7 @@ class ScanStudentQRCodeViewModel {
     
     func setSearchResult(_ courses: [Course]) {
       print(courses)
-  //    if let uID = UserManager.shared.userID {
-  ////    courseViewModel.value = convertCoursesToViewModels(from: courses).filter { $0.teacher.contains(uID) }
-  //
-  //    }
+
       courseViewModel.value = convertCoursesToViewModels(from: courses)
 
     }

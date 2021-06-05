@@ -209,6 +209,14 @@ extension HomePageViewController: UICollectionViewDelegate {
           
         } else { return }
         
+      case "Lesson Plan":
+        if let nextVC = UIStoryboard.attendanceSheet.instantiateInitialViewController() {
+          
+          nextVC.modalPresentationStyle = .fullScreen
+          
+          self.navigationController?.show(nextVC, sender: nil)
+          
+        } else { return }
       default:
         return
       }

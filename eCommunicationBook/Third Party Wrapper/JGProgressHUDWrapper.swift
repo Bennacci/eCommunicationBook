@@ -24,8 +24,14 @@ class LKProgressHUD {
     let hud = JGProgressHUD(style: .dark)
 
     var view: UIView {
-
-        return AppDelegate.shared.window!.rootViewController!.view
+      
+      if var topController = AppDelegate.shared.window?.rootViewController {
+        while let presentedViewController = topController.presentedViewController {
+        topController = presentedViewController
+        }
+        return topController.view
+      }
+      return AppDelegate.shared.window!.rootViewController!.view
     }
 
     static func show(type: HUDType) {

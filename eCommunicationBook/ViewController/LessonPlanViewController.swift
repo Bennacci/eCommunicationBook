@@ -267,12 +267,13 @@ extension LessonPlanViewController: UICollectionViewDataSource {
     
     if let nextVC = UIStoryboard.scanStudentQR.instantiateInitialViewController() as? ScanStudentQRCodeViewController {
     nextVC.modalPresentationStyle = .fullScreen
-    nextVC.viewModel.studentExistance.courseLesson = sender.tag
+    nextVC.viewModel.studentExistance.courseLesson = sender.tag + 1
     nextVC.viewModel.studentExistance.courseName =
       self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.name
       + ":"
       + "\(viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.lessonsAmount)"
       nextVC.hideDropDown = true
+      
     self.navigationController?.show(nextVC, sender: nil)
     }
   }

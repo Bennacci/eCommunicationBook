@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AttendanceViewControllerViewModel {
+class AttendanceSheetViewModel {
   
   var courseViewModel = Box([CourseViewModel]())
   
@@ -20,10 +20,11 @@ class AttendanceViewControllerViewModel {
   
   var columns = ["编号", "客户", "消费金额", "消费次数", "满意度"]
   //  var row = ["No.01","✅",  "☑️  ","🅻⃝", "❌", "60%"]
-
+  var contentSet: (() -> Void)?
+  
   var rows = [[String]]()
   
-    func setAttendanceSheet() {
+    func setAttendanceSheetContent() {
       columns = ["name"]
       guard let selectedCourseIndex = selectedCourseIndex else { return }
       let lessonAmount = courseViewModel.value[selectedCourseIndex].lessonsAmount
@@ -42,13 +43,13 @@ class AttendanceViewControllerViewModel {
       
       nameIndexDic.removeAll()
       
-      for studentIndex in 0 ... studentAttendancesViewModel.value[0].count {
+      for studentIndex in 0 ..< studentAttendancesViewModel.value[0].count {
         let name = studentAttendancesViewModel.value[0][studentIndex].studentName
         rows.append([name])
         nameIndexDic[name] = studentIndex
       }
       
-      for lessonIndex in 1 ... studentAttendancesViewModel.value.count {
+      for lessonIndex in 1 ..< studentAttendancesViewModel.value.count {
         
         for studentIndex in 0 ..< studentAttendancesViewModel.value[lessonIndex].count {
         
@@ -79,8 +80,18 @@ class AttendanceViewControllerViewModel {
           }
         }
         let rateString = "\((rate / Double(rows[index].count - 1) * 100).rounded())%"
+        
+        
+        for _ in 0 ..< columns.count - rows[index].count - 1 {
+          rows[index].append("")
+        }
+        
         rows[index].append(rateString)
       }
+      
+
+      
+      self.contentSet?()
     }
   
   func onCourseNameChanged(index: Int) {
@@ -151,10 +162,10 @@ class AttendanceViewControllerViewModel {
     
     var viewModelss = [[StudentExistanceViewModel]]()
     
-    var viewModels = [StudentExistanceViewModel]()
-    
     for records in recordss {
       
+      var viewModels = [StudentExistanceViewModel]()
+
       for record in records {
         
         let viewModel = StudentExistanceViewModel(model: record)

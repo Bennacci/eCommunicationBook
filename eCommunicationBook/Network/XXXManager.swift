@@ -335,48 +335,52 @@ class XXXManager {
   
   func fetchAttendance(courseName: String, completion: @escaping (Result<[[StudentExistance]], Error>) -> Void) {
     
+    let semaphore = DispatchSemaphore(value: 0)
+    let dispatchQ = DispatchQueue(label: "myQueue", qos: .userInitiated)
+
     let courseInfo = courseName.components(separatedBy: ":")
-    let name = courseInfo[0]
+//        let name = courseInfo[0]
     let lessonCount = courseInfo[1]
     var studentAttendancess = [[StudentExistance]]()
     
+    
     for index in 0 ... Int(lessonCount)! {
-      
-      db.collection("StudentAttendances")
-        .document(name)
-        .collection("\(index)")
-        .getDocuments()
-          { (querySnapshot, error) in
             
+      dispatchQ.async {
+
+        self.db.collection("StudentAttendances")
+          .document(courseName)
+          .collection("\(index)")
+          .getDocuments { (querySnapshot, error) in
+
             if let error = error {
-              
               completion(.failure(error))
-
+              semaphore.signal()
             } else {
-              
               var studentAttendances = [StudentExistance]()
-              
               for document in querySnapshot!.documents {
-                
                 do {
-
                   if let studentAttendance = try document.data(as: StudentExistance.self, decoder: Firestore.Decoder()) {
-
                     studentAttendances.append(studentAttendance)
                   }
-
                 } catch {
-
                   completion(.failure(error))
+                  semaphore.signal()
                 }
               }
-
               studentAttendancess.append(studentAttendances)
+              semaphore.signal()
             }
+        }
+        semaphore.wait()
       }
     }
+    dispatchQ.async {
 
-    completion(.success(studentAttendancess))
+      completion(.success(studentAttendancess))
+
+
+    }
   }
   
   

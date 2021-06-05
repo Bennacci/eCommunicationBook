@@ -31,23 +31,31 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HzJ-0s-ZG9" customClass="SwiftyMenu" customModule="SwiftyMenu">
-                                <rect key="frame" x="218" y="56" width="180" height="38"/>
+                                <rect key="frame" x="248" y="60" width="150" height="38"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="3XR-0Y-2Ef"/>
+                                    <constraint firstAttribute="width" constant="150" id="3XR-0Y-2Ef"/>
                                     <constraint firstAttribute="height" constant="38" id="NVC-7D-RXZ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="heightConstraint" destination="NVC-7D-RXZ" id="csl-J2-K4A"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attendance Sheet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42y-0s-LhZ">
+                                <rect key="frame" x="66.5" y="66.5" width="161" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jf9-po-diy" firstAttribute="leading" secondItem="0ab-VU-mf5" secondAttribute="leading" constant="20" id="3XN-0a-hrt"/>
                             <constraint firstItem="0ab-VU-mf5" firstAttribute="trailing" secondItem="HzJ-0s-ZG9" secondAttribute="trailing" constant="16" id="9oh-mC-cRn"/>
+                            <constraint firstItem="42y-0s-LhZ" firstAttribute="centerY" secondItem="jf9-po-diy" secondAttribute="centerY" id="IpU-9U-h8Z"/>
+                            <constraint firstItem="42y-0s-LhZ" firstAttribute="leading" secondItem="jf9-po-diy" secondAttribute="trailing" constant="16" id="Itu-59-aTK"/>
                             <constraint firstItem="jf9-po-diy" firstAttribute="top" secondItem="0ab-VU-mf5" secondAttribute="top" constant="20" id="QK7-UJ-eiH"/>
-                            <constraint firstItem="HzJ-0s-ZG9" firstAttribute="top" secondItem="0ab-VU-mf5" secondAttribute="top" constant="12" id="U5b-bO-M2L"/>
+                            <constraint firstItem="HzJ-0s-ZG9" firstAttribute="top" secondItem="0ab-VU-mf5" secondAttribute="top" constant="16" id="U5b-bO-M2L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0ab-VU-mf5"/>
                     </view>

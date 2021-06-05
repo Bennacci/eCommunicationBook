@@ -47,6 +47,7 @@ class ScanStudentQRCodeViewController: UIViewController {
 
     self.navigationController?.setNavigationBarHidden(true, animated: true)
 
+
   viewModel.wroteInSuccess = {
       LKProgressHUD.showSuccess(text: "Time In Success")
       
@@ -62,7 +63,6 @@ class ScanStudentQRCodeViewController: UIViewController {
     }
     
     viewModel.lessonListChanged = {
-      print(self.viewModel.lessonList)
       self.dropDownLesson.items = self.viewModel.lessonList
     }
     

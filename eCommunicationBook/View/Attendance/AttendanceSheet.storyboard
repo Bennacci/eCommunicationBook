@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Attendance View Controller-->
+        <!--Attendance Sheet View Controller-->
         <scene sceneID="crS-RL-gxM">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="5Wo-2N-cJf" customClass="AttendanceViewController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="5Wo-2N-cJf" customClass="AttendanceSheetViewController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VWT-hB-di2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,11 +22,16 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapLeaveButton:" destination="5Wo-2N-cJf" eventType="touchUpInside" id="a5X-ca-Shv"/>
+                                    <action selector="tapLeaveButton:" destination="5Wo-2N-cJf" eventType="touchUpInside" id="ziL-x2-d8A"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJO-dL-6Fa">
+                                <rect key="frame" x="0.0" y="115" width="414" height="781"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HzJ-0s-ZG9" customClass="SwiftyMenu" customModule="SwiftyMenu">
-                                <rect key="frame" x="112" y="56" width="180" height="38"/>
+                                <rect key="frame" x="218" y="56" width="180" height="38"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="3XR-0Y-2Ef"/>
@@ -36,31 +41,13 @@
                                     <outlet property="heightConstraint" destination="NVC-7D-RXZ" id="csl-J2-K4A"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ay7-Rz-Cqz" customClass="SwiftyMenu" customModule="SwiftyMenu">
-                                <rect key="frame" x="308" y="56" width="90" height="38"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="IK3-oJ-Dm5"/>
-                                    <constraint firstAttribute="width" constant="90" id="hSI-0b-mjB"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="heightConstraint" destination="IK3-oJ-Dm5" id="gbW-P8-eKI"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJO-dL-6Fa">
-                                <rect key="frame" x="0.0" y="115" width="414" height="781"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jf9-po-diy" firstAttribute="leading" secondItem="0ab-VU-mf5" secondAttribute="leading" constant="20" id="3XN-0a-hrt"/>
-                            <constraint firstItem="ay7-Rz-Cqz" firstAttribute="top" secondItem="0ab-VU-mf5" secondAttribute="top" constant="12" id="MO9-GA-eSs"/>
+                            <constraint firstItem="0ab-VU-mf5" firstAttribute="trailing" secondItem="HzJ-0s-ZG9" secondAttribute="trailing" constant="16" id="9oh-mC-cRn"/>
                             <constraint firstItem="jf9-po-diy" firstAttribute="top" secondItem="0ab-VU-mf5" secondAttribute="top" constant="20" id="QK7-UJ-eiH"/>
-                            <constraint firstItem="0ab-VU-mf5" firstAttribute="trailing" secondItem="ay7-Rz-Cqz" secondAttribute="trailing" constant="16" id="QWQ-gg-R7j"/>
                             <constraint firstItem="HzJ-0s-ZG9" firstAttribute="top" secondItem="0ab-VU-mf5" secondAttribute="top" constant="12" id="U5b-bO-M2L"/>
-                            <constraint firstItem="ay7-Rz-Cqz" firstAttribute="leading" secondItem="HzJ-0s-ZG9" secondAttribute="trailing" constant="16" id="lDx-gq-w7W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0ab-VU-mf5"/>
                     </view>
@@ -68,7 +55,8 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dropDownCourse" destination="HzJ-0s-ZG9" id="gkF-Tv-1VB"/>
-                        <outlet property="dropDownLesson" destination="ay7-Rz-Cqz" id="pzR-cK-fgE"/>
+                        <outlet property="dropDownCourseWidth" destination="3XR-0Y-2Ef" id="PcS-P8-Mqf"/>
+                        <outlet property="gridView" destination="GJO-dL-6Fa" id="DTO-pf-QE0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOK-TX-cWm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

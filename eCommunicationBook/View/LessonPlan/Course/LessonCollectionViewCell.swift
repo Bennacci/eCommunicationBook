@@ -36,8 +36,12 @@ class LessonCollectionViewCell: UICollectionViewCell {
     if let time = viewModel?.time {
       labelCourseTime.text = Date(milliseconds: time).convertToString(dateformat: .dateYMD)
     }
-    labelTecherName.text = viewModel?.teacher
     
+    if let techaerName = viewModel?.teacher.components(separatedBy: ":") {
+      labelTecherName.text = techaerName[0]
+    } else {
+      labelTecherName.text = viewModel?.teacher
+    }
     var imageTitle = ""
     
     print(viewModel?.number)

@@ -32,9 +32,9 @@ class LPMainCollectionViewCell: UICollectionViewCell {
   
   func layOutCell(indexPath: IndexPath) {
 
-    let splits = viewModel?.studentID.components(separatedBy: ":")
-    guard let name = splits?[0] else {return}
-    labelStudentName.text = name
+//    let splits = viewModel?.studentID.components(separatedBy: ":")
+//    guard let name = splits?[0] else {return}
+    labelStudentName.text = viewModel?.studentName
     
   }
 }

@@ -74,9 +74,9 @@ enum ParentSeviceItem: AccountItem {
   var image: UIImage? {
     switch self {
     
-    case .signCommunicationBook: return UIImage.asset(.CommunicationBook)
+    case .signCommunicationBook: return UIImage(systemName: "doc.append")
       
-    case .checkStudentTimeInAndOut: return UIImage.asset(.Location)
+    case .checkStudentTimeInAndOut: return UIImage(systemName: "person.crop.square")
       
     case .checkLearingStat: return UIImage.asset(.Performances)
       
@@ -170,9 +170,11 @@ enum ParentSeviceItem: AccountItem {
 enum TeacherSeviceItem: AccountItem {
   
   case writeStudentTimeInAndOut
+ 
+  case attendanceSheet
   
   case writeLessonPlan
-  
+
   case writeStudentLessonRecord
   
   case newEvent
@@ -191,13 +193,15 @@ enum TeacherSeviceItem: AccountItem {
     
     switch self {
       
-    case .writeStudentTimeInAndOut: return UIImage.asset(.Location)
-    
-    case .writeLessonPlan:  return UIImage.asset(.LessonPlan)
-    
-    case .writeStudentLessonRecord: return UIImage.asset(.CommunicationBook)
+    case .attendanceSheet: return UIImage(systemName: "timer")
       
-    case .newEvent: return UIImage.asset(.Event)
+    case .writeStudentTimeInAndOut: return UIImage(systemName: "qrcode.viewfinder")
+      
+    case .writeLessonPlan:  return UIImage(systemName: "square.and.pencil")
+    
+    case .writeStudentLessonRecord: return UIImage(systemName: "book")
+      
+    case .newEvent: return UIImage(systemName: "calendar.badge.plus")
       
     case .setASign: return UIImage.asset(.Sign)
       
@@ -205,7 +209,7 @@ enum TeacherSeviceItem: AccountItem {
       
     case .newAStudent : return UIImage.asset(.Children)
       
-    case .newAUser: return UIImage.asset(.Users)
+    case .newAUser: return UIImage(systemName: "person.crop.badge.plus")
       
     }
   }
@@ -214,6 +218,8 @@ enum TeacherSeviceItem: AccountItem {
     
     switch self {
       
+    case .attendanceSheet: return localizedString("Attendance Sheet")
+
     case .writeStudentTimeInAndOut: return localizedString("Student Time In / Out")
     
     case .writeLessonPlan: return localizedString("Lesson Plan")

@@ -42,6 +42,7 @@ class UserTypeCollectionViewCell: UICollectionViewCell {
   
   private func setupViews() {
     
+    addShadow(to: cardViewContainer)
     addShadow(to: cardBackgroundView)
     addShadow(to: continueButtonBackGroundView)
     clipsToBounds = false
@@ -55,7 +56,7 @@ class UserTypeCollectionViewCell: UICollectionViewCell {
   func addShadow(to view: UIView) {
     view.layer.cornerRadius = 15
     view.layer.shadowOffset = .init(width: 0, height: 0.5)
-    view.layer.shadowOpacity = 0.7
+    view.layer.shadowOpacity = 0.15
     view.layer.shadowRadius = 7
   }
   

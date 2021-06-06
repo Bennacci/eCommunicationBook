@@ -40,7 +40,7 @@ class BannerTableViewCell: UITableViewCell, UIScrollViewDelegate {
 extension BannerTableViewCell {
   
   func setupTimer() {
-    bannerView.timer = Timer.scheduledTimer(timeInterval: 4,
+    bannerView.timer = Timer.scheduledTimer(timeInterval: 10,
                                             target: self,
                                             selector: #selector(timeChanged),
                                             userInfo: nil,

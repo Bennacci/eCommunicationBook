@@ -117,10 +117,12 @@ class LessonPerformancesViewModel {
     tests: nil,
     assignments: nil)
   
-  var studentLessonRecord: StudentLessonRecord = StudentLessonRecord(
+  var studentLessonRecord: StudentLessonRecord = StudentLessonRecord (
     id: "",
     studentID: "",
+    studentName: "",
     courseName: "",
+    courseLesson: 0,
     time: -1,
     timeInterval: -1,
     todaysLesson: nil,
@@ -199,8 +201,10 @@ class LessonPerformancesViewModel {
     sectionTitles.append("Comunication Corner")
     
     sectionTitles.append("Upload Image")
-
-    studentLessonRecord.courseName = course.name
+    
+    
+    studentLessonRecord.courseLesson = currentLesson.number
+    studentLessonRecord.courseName = course.name + ":" + "\(course.lessonsAmount)"
     studentLessonRecord.time = currentLesson.time
     studentLessonRecord.timeInterval = currentLesson.timeInterval
     studentLessonRecord.todaysLesson = currentLesson.todaysLesson
@@ -235,8 +239,14 @@ class LessonPerformancesViewModel {
     
     for student in course.students {
       
-      studentLessonRecord.studentID = student
+          let info = student.components(separatedBy: ":")
+          let name = info[0]
+          let identity = info[1]
       
+      studentLessonRecord.studentID = identity
+      
+      studentLessonRecord.studentName = name
+
       let viewModel = StudentLessonRecordViewModel(model: studentLessonRecord)
       
       viewModels.append(viewModel)

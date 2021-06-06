@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,6 +65,22 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eT-wU-DVY">
+                        <rect key="frame" x="336" y="77" width="80" height="30"/>
+                        <color key="backgroundColor" name="CyanProcess"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="Zzh-ca-sL8"/>
+                            <constraint firstAttribute="height" constant="30" id="ime-YD-xBK"/>
+                        </constraints>
+                        <state key="normal" title="Inspect">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9Q-li-BlP">
                         <rect key="frame" x="315" y="77" width="30" height="30"/>
                         <color key="backgroundColor" red="0.23018704349999999" green="0.77713233230000001" blue="0.31589496140000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -93,12 +110,15 @@
                 <constraint firstItem="sYP-wl-zBb" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="FOo-Zy-zkD"/>
                 <constraint firstItem="sYP-wl-zBb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="K77-Nx-UIN"/>
                 <constraint firstItem="u2N-BT-ahc" firstAttribute="centerY" secondItem="sYP-wl-zBb" secondAttribute="centerY" id="Loi-Cr-dRT"/>
+                <constraint firstItem="0eT-wU-DVY" firstAttribute="centerY" secondItem="sYP-wl-zBb" secondAttribute="centerY" id="Y0f-vy-vkX"/>
                 <constraint firstItem="Rdc-tP-inb" firstAttribute="leading" secondItem="sYP-wl-zBb" secondAttribute="trailing" constant="8" id="cpU-V0-3hC"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="0eT-wU-DVY" secondAttribute="trailing" constant="8" id="lEK-bd-y5V"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="424" height="234"/>
             <connections>
                 <outlet property="buttonEdit" destination="u2N-BT-ahc" id="pLb-rn-4l4"/>
+                <outlet property="buttonInspect" destination="0eT-wU-DVY" id="kpX-YQ-Osf"/>
                 <outlet property="buttonScan" destination="Z9Q-li-BlP" id="qTd-GH-t9U"/>
                 <outlet property="imageView" destination="sYP-wl-zBb" id="51D-pa-VFa"/>
                 <outlet property="labelCourseTime" destination="wbE-EA-da3" id="AxV-gY-bDU"/>
@@ -110,5 +130,8 @@
     <resources>
         <image name="01.square.fill" catalog="system" width="128" height="114"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="114"/>
+        <namedColor name="CyanProcess">
+            <color red="0.35686274509803922" green="0.75294117647058822" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

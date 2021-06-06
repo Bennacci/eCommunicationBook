@@ -779,6 +779,34 @@ class XXXManager {
         }
     }
   }
+  func fetchStudentLessonRecord(courseName: String, courseLesson: Int, completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
+    
+    db.collection("StudentLessonRecords")
+    .whereField("courseName", isEqualTo: courseName)
+    .whereField("courseLesson", isEqualTo: courseLesson)
+    .getDocuments { (querySnapshot, error) in
+        
+        if let error = error {
+          
+          completion(.failure(error))
+        } else {
+          
+          var studentLessonRecords = [StudentLessonRecord]()
+          
+          for document in querySnapshot!.documents {
+            
+            do {
+              if let studentLessonRecord = try document.data(as: StudentLessonRecord.self, decoder: Firestore.Decoder()) {
+                studentLessonRecords.append(studentLessonRecord)
+              }
+            } catch {
+              completion(.failure(error))
+            }
+          }
+          completion(.success(studentLessonRecords))
+        }
+    }
+  }
   
   func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
     

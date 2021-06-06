@@ -20,6 +20,8 @@ class LessonCollectionViewCell: UICollectionViewCell {
   
   @IBOutlet weak var buttonScan: UIButton!
   
+  @IBOutlet weak var buttonInspect: UIButton!
+  
   var viewModel: LessonViewModel?
   
   override func awakeFromNib() {
@@ -37,6 +39,24 @@ class LessonCollectionViewCell: UICollectionViewCell {
       labelCourseTime.text = Date(milliseconds: time).convertToString(dateformat: .dateYMD)
     }
     
+    if let time = viewModel?.time,
+      time + CalendarHelper.shared.secondsPerDay / 2 >= Date().millisecondsSince1970 &&
+      time - CalendarHelper.shared.secondsPerDay / 2 <= Date().millisecondsSince1970 {
+      buttonScan.isHidden = false
+    } else {
+      buttonScan.isHidden = true
+    }
+    
+    if let time = viewModel?.time, time + CalendarHelper.shared.secondsPerDay * 3 <= Date().millisecondsSince1970 {
+      buttonEdit.isHidden = true
+      buttonInspect.isHidden = false
+    } else {
+      buttonEdit.isHidden = false
+      buttonInspect.isHidden = true
+
+    }
+    
+    
     if let techaerName = viewModel?.teacher.components(separatedBy: ":") {
       labelTecherName.text = techaerName[0]
     } else {
@@ -44,7 +64,6 @@ class LessonCollectionViewCell: UICollectionViewCell {
     }
     var imageTitle = ""
     
-    print(viewModel?.number)
     if viewModel!.number < 10 {
       imageTitle = "0\(viewModel!.number).square.fill"
     } else {

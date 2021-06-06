@@ -17,6 +17,7 @@ class LessonPlanViewModel {
   var refreshView: (()->())?
 
   func fetchData() {
+    
     XXXManager.shared.fetchCourses { [weak self] result in
       
       switch result {

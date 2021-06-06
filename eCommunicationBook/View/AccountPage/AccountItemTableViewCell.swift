@@ -38,6 +38,8 @@ class AccountItemTableViewCell: UITableViewCell {
     var content = ""
     if title == "Display name" {
       content = UserManager.shared.user.name
+    } else if title == "Set profile icon" {
+      content = "Selct photo for your profile."
     } else if title == "Local number" {
       content = "\(UserManager.shared.user.homePhoneNo)"
     } else if title == "Cell phone number" {

@@ -100,7 +100,7 @@ extension LessonPerformancesViewController: UICollectionViewDataSource {
                                                         for: indexPath) as? LPMainCollectionViewCell
       else { fatalError("Unexpected Table View Cell") }
     print(indexPath.item)
-    cell.setUp(viewModel: self.viewModel.studentLessonRecordsViewModel.value[indexPath.item], indexPath: indexPath)
+    cell.setUp(viewModel: self.viewModel.studentLessonRecordsViewModel.value[indexPath.item])
     cell.tableView.tag = indexPath.item
     cell.tableView.reloadData()
     cell.tableView.dataSource = self

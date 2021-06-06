@@ -148,6 +148,8 @@
 		74E541F4266322CA004276F9 /* ScanStudentQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E541F3266322CA004276F9 /* ScanStudentQRCodeViewModel.swift */; };
 		74E541F62663243D004276F9 /* StudentExistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E541F52663243D004276F9 /* StudentExistance.swift */; };
 		74E541F82663B603004276F9 /* StudentExistanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E541F72663B603004276F9 /* StudentExistanceViewModel.swift */; };
+		74E8E4B8266CE73A00D6E444 /* LessonPerformancesReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E4B7266CE73A00D6E444 /* LessonPerformancesReviewViewController.swift */; };
+		74E8E4BA266CEC9200D6E444 /* LessonPerformancesReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E4B9266CEC9200D6E444 /* LessonPerformancesReviewViewModel.swift */; };
 		74E94735264BE09500AFB046 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94729264BE09500AFB046 /* UserManager.swift */; };
 		74E94736264BE09500AFB046 /* XXXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472A264BE09500AFB046 /* XXXManager.swift */; };
 		74E94737264BE09500AFB046 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472C264BE09500AFB046 /* Author.swift */; };
@@ -335,6 +337,8 @@
 		74E541F3266322CA004276F9 /* ScanStudentQRCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStudentQRCodeViewModel.swift; sourceTree = "<group>"; };
 		74E541F52663243D004276F9 /* StudentExistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentExistance.swift; sourceTree = "<group>"; };
 		74E541F72663B603004276F9 /* StudentExistanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentExistanceViewModel.swift; sourceTree = "<group>"; };
+		74E8E4B7266CE73A00D6E444 /* LessonPerformancesReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPerformancesReviewViewController.swift; sourceTree = "<group>"; };
+		74E8E4B9266CEC9200D6E444 /* LessonPerformancesReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPerformancesReviewViewModel.swift; sourceTree = "<group>"; };
 		74E94729264BE09500AFB046 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		74E9472A264BE09500AFB046 /* XXXManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XXXManager.swift; sourceTree = "<group>"; };
 		74E9472C264BE09500AFB046 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
@@ -488,6 +492,7 @@
 				746080832667F304005FC35C /* StudentTimeInAndOutViewModel.swift */,
 				74A33201266A2B780034EDAD /* AttendanceSheetViewModel.swift */,
 				740E1C68266C9AC500491281 /* AccountEditContentViewModel.swift */,
+				74E8E4B9266CEC9200D6E444 /* LessonPerformancesReviewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				7460807F2667EFE1005FC35C /* StudentTimeInAndOutViewController.swift */,
 				74A33202266A2B780034EDAD /* AttendanceSheetViewController.swift */,
 				74D7AE05266C8C960038585B /* AccountEditContentViewController.swift */,
+				74E8E4B7266CE73A00D6E444 /* LessonPerformancesReviewViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1033,6 +1039,7 @@
 				74F0742E2665194100CC0009 /* StudentImagesTableViewCell.swift in Sources */,
 				74E94759264C087D00AFB046 /* String+Extension.swift in Sources */,
 				74E94761264C087D00AFB046 /* KingFisherWrapper.swift in Sources */,
+				74E8E4B8266CE73A00D6E444 /* LessonPerformancesReviewViewController.swift in Sources */,
 				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
 				74F2DE8926607B6B00F6F0AB /* LessonPerformancesViewModel.swift in Sources */,
 				7435E86D265E363100941729 /* AddRowTableViewCell.swift in Sources */,
@@ -1083,6 +1090,7 @@
 				74BDBEE4264FDC480040C0D6 /* ConversationViewController.swift in Sources */,
 				7435E87A265E489A00941729 /* CourseViewModel.swift in Sources */,
 				74F2DE8C26609F1C00F6F0AB /* LPTestScoreTableViewCell.swift in Sources */,
+				74E8E4BA266CEC9200D6E444 /* LessonPerformancesReviewViewModel.swift in Sources */,
 				74E541F82663B603004276F9 /* StudentExistanceViewModel.swift in Sources */,
 				7435E86A265E35A000941729 /* LessonPlanDetailViewController.swift in Sources */,
 				74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */,

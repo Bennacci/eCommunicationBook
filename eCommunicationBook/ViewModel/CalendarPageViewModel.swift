@@ -113,7 +113,7 @@ class CalendarPageViewModel {
         comunicationSectionTitles.append("Tests")
       }
       
-      if dayLessonRecordViewModel.value[0].assignmentScore != nil {
+      if dayLessonRecordViewModel.value[0].assignmentCompleted != nil {
         comunicationSectionTitles.append("Homework Score")
       }
       
@@ -123,9 +123,13 @@ class CalendarPageViewModel {
       if dayLessonRecordViewModel.value[0].imageTitles != nil {
         comunicationSectionTitles.append("Student Images")
       }
+      if dayLessonRecordViewModel.value[0].note != nil {
+        comunicationSectionTitles.append("Communication Corner")
+      }
+      
     }
     
-    comunicationSectionTitles.append("Communication Corner")
+//    comunicationSectionTitles.append("Communication Corner") why???? check so
   }
   
   

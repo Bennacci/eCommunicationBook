@@ -124,19 +124,22 @@ class TodaysLesoonTableViewCell: UITableViewCell {
       return
     }
     
-    if stringRepresentation.suffix(2) == "\n" {
+    if stringRepresentation.suffix(1) == "\n" {
       
       stringRepresentation.removeLast()
       
-      stringRepresentation.removeLast()
+//      stringRepresentation.removeLast()
     }
     
     if title == "Homework Score" || title == "Tests Score" {
       
-      stringRepresentationMarks.removeLast()
-      
-      stringRepresentationMarks.removeLast()
-      
+      if stringRepresentationMarks.suffix(1) == "\n" {
+        
+        stringRepresentationMarks.removeLast()
+        
+//        stringRepresentationMarks.removeLast()
+      }
+
       labelContentMarks.isHidden = false
       
     }

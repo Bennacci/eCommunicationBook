@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1K1-k4-eP8">
-                        <rect key="frame" x="16" y="8" width="356" height="50"/>
+                        <rect key="frame" x="0.0" y="8" width="388" height="50"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XBT-pZ-s2g">
-                                <rect key="frame" x="8" y="2" width="42" height="46"/>
+                                <rect key="frame" x="16" y="2" width="42" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxO-Ai-aID">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="23"/>
@@ -40,14 +40,14 @@
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DYf-Ib-Wsk">
-                                <rect key="frame" x="325" y="15" width="15" height="20"/>
+                                <rect key="frame" x="357" y="15" width="15" height="20"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="XBT-pZ-s2g" firstAttribute="leading" secondItem="1K1-k4-eP8" secondAttribute="leading" constant="8" id="3sj-hp-BAm"/>
+                            <constraint firstItem="XBT-pZ-s2g" firstAttribute="leading" secondItem="1K1-k4-eP8" secondAttribute="leading" constant="16" id="3sj-hp-BAm"/>
                             <constraint firstAttribute="height" constant="50" id="Iwa-fT-uuB"/>
                             <constraint firstItem="XBT-pZ-s2g" firstAttribute="top" secondItem="1K1-k4-eP8" secondAttribute="top" constant="2" id="O1a-mQ-kmb"/>
                             <constraint firstAttribute="trailing" secondItem="DYf-Ib-Wsk" secondAttribute="trailing" constant="16" id="dft-e5-Tud"/>
@@ -58,8 +58,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="1K1-k4-eP8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="6Qw-0A-Sml"/>
-                    <constraint firstItem="1K1-k4-eP8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Es6-Re-a0F"/>
-                    <constraint firstAttribute="trailing" secondItem="1K1-k4-eP8" secondAttribute="trailing" constant="16" id="aj7-XL-egh"/>
+                    <constraint firstItem="1K1-k4-eP8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Es6-Re-a0F"/>
+                    <constraint firstAttribute="trailing" secondItem="1K1-k4-eP8" secondAttribute="trailing" id="aj7-XL-egh"/>
                     <constraint firstAttribute="bottom" secondItem="1K1-k4-eP8" secondAttribute="bottom" constant="8" id="icL-2e-ZL3"/>
                 </constraints>
             </tableViewCellContentView>

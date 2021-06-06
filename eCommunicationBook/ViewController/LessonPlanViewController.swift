@@ -9,7 +9,7 @@
 import UIKit
 
 class LessonPlanViewController: UIViewController, SavedLessonDelegate {
-
+  
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -36,12 +36,12 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
     tableView.registerCellWithNib(identifier: LessonsTableViewCell.identifier, bundle: nil)
     
     viewModel.fetchData()
-
+    
     viewModel.courseViewModel.bind { [weak self] users in
       self?.pickedCourseIndexPath = nil
-                  DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                  }
+      DispatchQueue.main.async {
+        self?.tableView.reloadData()
+      }
       //      self?.viewModel.onRefresh()
     }
   }
@@ -62,11 +62,6 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
   @IBAction func sendAndQuitViewController(_ sender: Any) {
     dismiss(animated: true, completion: nil)
     
-    //    viewModel.onSendAndQuit()
-    
-    //    delegate?.onSearchAndSelected(forStudent: viewModel.forStudent)
-    //    self.onSearchAndSelected()
-    
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,8 +76,8 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
         lessonPlanDetailViewController.viewModel.course =
           self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course
         if button.tag > 0 {
-        lessonPlanDetailViewController.viewModel.previousLesson =
-          self.viewModel.lessonViewModel.value[button.tag - 1].lesson
+          lessonPlanDetailViewController.viewModel.previousLesson =
+            self.viewModel.lessonViewModel.value[button.tag - 1].lesson
           
           lessonPlanDetailViewController.viewModel.lesson =
             self.viewModel.lessonViewModel.value[button.tag].lesson
@@ -90,9 +85,17 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
         lessonPlanDetailViewController.viewModel.lesson =
           self.viewModel.lessonViewModel.value[button.tag].lesson
       }
+    } else if segue.identifier == "lessonPerformancesReview",
+      let lessonPerformancesReviewViewController = segue.destination as? LessonPerformancesReviewViewController {
+      lessonPerformancesReviewViewController.viewModel.courseName = self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.name
+      if let button = sender as? UIButton {
+        lessonPerformancesReviewViewController.viewModel.courseLesson =
+          self.viewModel.lessonViewModel.value[button.tag].lesson.number
+      }
     }
   }
 }
+
 
 extension LessonPlanViewController: UITableViewDataSource {
   
@@ -100,18 +103,18 @@ extension LessonPlanViewController: UITableViewDataSource {
     return 1
   }
   
-//  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//    switch section {
-//    case 0:
-//      return "Hello"
-//    case 1:
-//      return "熱門"
-//    case 2:
-//      return "為您推薦"
-//    default:
-//      return "News"
-//    }
-//  }
+  //  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  //    switch section {
+  //    case 0:
+  //      return "Hello"
+  //    case 1:
+  //      return "熱門"
+  //    case 2:
+  //      return "為您推薦"
+  //    default:
+  //      return "News"
+  //    }
+  //  }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
@@ -127,7 +130,7 @@ extension LessonPlanViewController: UITableViewDataSource {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: LessonsTableViewCell.identifier,
                                                      for: indexPath) as? LessonsTableViewCell
         else { fatalError("Unexpected Table View Cell") }
-
+      
       cell.collectionView.dataSource = self
       
       cell.collectionView.delegate = self
@@ -148,17 +151,17 @@ extension LessonPlanViewController: UITableViewDataSource {
       
       if let pickedCourseIndexPath = pickedCourseIndexPath,
         pickedCourseIndexPath.row <= indexPath.row {
-          
-            index = indexPath.row - 1
         
-        } else {
+        index = indexPath.row - 1
         
-            index = indexPath.row
+      } else {
         
-        }
+        index = indexPath.row
+        
+      }
       
-          cell.setup(viewModel: self.viewModel.courseViewModel.value[index])
-
+      cell.setup(viewModel: self.viewModel.courseViewModel.value[index])
+      
       return cell
     }
   }
@@ -189,10 +192,10 @@ extension LessonPlanViewController: UITableViewDelegate {
             tableView.deselectRow(at: indexPath, animated: true)
           }
         } else {
-        pickedCourseIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
-        viewModel.setLessonViewModel(index: pickedCourseIndexPath!.row - 1)
-        tableView.insertRows(at: [pickedCourseIndexPath!], with: .fade)
-        tableView.deselectRow(at: indexPath, animated: true)
+          pickedCourseIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
+          viewModel.setLessonViewModel(index: pickedCourseIndexPath!.row - 1)
+          tableView.insertRows(at: [pickedCourseIndexPath!], with: .fade)
+          tableView.deselectRow(at: indexPath, animated: true)
         }
       }
       tableView.endUpdates()
@@ -200,17 +203,17 @@ extension LessonPlanViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
   }
   
-//  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-//    
-//    headerView.backgroundColor = UIColor.clear
-//    let myLabel = UILabel()
-//    myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 3, width: tableView.bounds.size.width, height: 30)
-//    myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-//    myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-//    headerView.addSubview(myLabel)
-//    return headerView
-//  }
+  //  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+  //    let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+  //
+  //    headerView.backgroundColor = UIColor.clear
+  //    let myLabel = UILabel()
+  //    myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 3, width: tableView.bounds.size.width, height: 30)
+  //    myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+  //    myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+  //    headerView.addSubview(myLabel)
+  //    return headerView
+  //  }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     
@@ -252,29 +255,37 @@ extension LessonPlanViewController: UICollectionViewDataSource {
     cell.buttonEdit.tag = indexPath.item
     cell.buttonScan.addTarget(self, action: #selector(directToScanQR(sender:)), for: .touchUpInside)
     cell.buttonScan.tag = indexPath.item
+    cell.buttonInspect.tag = indexPath.item
+    cell.buttonInspect.addTarget(self, action: #selector(directToLessonPerformancesReview(sender:)), for: .touchUpInside)
     cell.setUp(viewModel: self.viewModel.lessonViewModel.value[indexPath.item])
     
     return cell
   }
   @objc func directToLessonPlan(sender: UIButton) {
-//      let buttonTag = sender.tag
+    //      let buttonTag = sender.tag
     print(sender.tag)
     performSegue(withIdentifier: "lessonPlanDetail", sender: sender)
-
+    
+  }
+  @objc func directToLessonPerformancesReview(sender: UIButton) {
+    //      let buttonTag = sender.tag
+    print(sender.tag)
+    performSegue(withIdentifier: "lessonPerformancesReview", sender: sender)
+    
   }
   
   @objc func directToScanQR(sender: UIButton) {
     
     if let nextVC = UIStoryboard.scanStudentQR.instantiateInitialViewController() as? ScanStudentQRCodeViewController {
-    nextVC.modalPresentationStyle = .fullScreen
-    nextVC.viewModel.studentExistance.courseLesson = sender.tag + 1
-    nextVC.viewModel.studentExistance.courseName =
-      self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.name
-      + ":"
-      + "\(viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.lessonsAmount)"
+      nextVC.modalPresentationStyle = .fullScreen
+      nextVC.viewModel.studentExistance.courseLesson = sender.tag + 1
+      nextVC.viewModel.studentExistance.courseName =
+        self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.name
+        + ":"
+        + "\(viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.lessonsAmount)"
       nextVC.hideDropDown = true
       
-    self.navigationController?.show(nextVC, sender: nil)
+      self.navigationController?.show(nextVC, sender: nil)
     }
   }
 }

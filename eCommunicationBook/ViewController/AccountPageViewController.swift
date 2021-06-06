@@ -59,6 +59,7 @@ class AccountPageViewController: UIViewControllerWithImagePicker {
       accountEditContentViewController.delegate = self
       if let indexPath = sender as? IndexPath {
         accountEditContentViewController.viewModel.editContentPageTitle = viewModel.accountPageItem()[indexPath.section][indexPath.row]
+        accountEditContentViewController.viewModel.textFieldTag = indexPath.section * 10 + indexPath.row
       }
     }
   }
@@ -95,7 +96,7 @@ extension AccountPageViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView()
-    headerView.backgroundColor = .clear
+    headerView.backgroundColor = .lightGray
     return headerView
   }
   

@@ -15,7 +15,7 @@ protocol UpdateViewDelegate {
 class AccountEditContentViewController: UIViewController {
   
   var viewModel = AccountEditContentViewModel()
-  
+    
   @IBOutlet weak var labelEditContentPageTitle: UILabel!
   
   @IBOutlet weak var textFieldContent: UITextField!
@@ -36,15 +36,12 @@ class AccountEditContentViewController: UIViewController {
     
     setUpView()
     
-    
-    
   }
   
   func leavePage() {
     delegate?.onUpdateView()
     self.navigationController?.popViewController(animated: true)
   }
-  
   
   @IBAction func tapSaveButton(_ sender: Any) {
     viewModel.ontapSave()
@@ -53,8 +50,9 @@ class AccountEditContentViewController: UIViewController {
   @objc func textFieldDidChange(_ textField: UITextField) {
     if let info = textField.text {
       viewModel.onContentChanged(with: info)
-      
-      labelContentLength.text = viewModel.contentLength
+      if textField.tag == 0 {
+        labelContentLength.text = viewModel.contentLength
+      }
     }
   }
   
@@ -64,7 +62,7 @@ class AccountEditContentViewController: UIViewController {
       UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
         self.heightConButtonSave.constant =  25 + keyboardSize.height
         
-      },completion: nil)
+      }, completion: nil)
       
     }
   }
@@ -72,15 +70,22 @@ class AccountEditContentViewController: UIViewController {
   @objc func keyboardWillHide(notification: NSNotification) {
     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
       self.heightConButtonSave.constant = 45
-    },completion: nil)  }
+    }, completion: nil)  }
   
   func setUpView() {
     
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(keyboardWillShow),
+                                           name: UIResponder.keyboardWillShowNotification,
+                                           object: nil)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(keyboardWillHide),
+                                           name: UIResponder.keyboardWillHideNotification,
+                                           object: nil)
     
     labelEditContentPageTitle.text = viewModel.editContentPageTitle
     
+    textFieldContent.tag = viewModel.textFieldTag
     
     textFieldContent.delegate = self
     
@@ -92,8 +97,7 @@ class AccountEditContentViewController: UIViewController {
     } else {
       textFieldContent.text = viewModel.content
     }
-    
-    
+
     switch viewModel.editContentPageTitle {
     case "Local number", "Cell phone number":
       textFieldContent.keyboardType = .numberPad
@@ -115,13 +119,16 @@ extension AccountEditContentViewController: UITextFieldDelegate {
     }
   }
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    guard let textFieldText = textField.text,
-      let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-        return false
+    if textField.tag == 0 {
+      guard let textFieldText = textField.text,
+        let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+          return false
+      }
+      let substringToReplace = textFieldText[rangeOfTextToReplace]
+      let count = textFieldText.count - substringToReplace.count + string.count
+      return count <= 20
     }
-    let substringToReplace = textFieldText[rangeOfTextToReplace]
-    let count = textFieldText.count - substringToReplace.count + string.count
-    return count <= 20
+    return true
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {

@@ -10,6 +10,8 @@ import Foundation
 
 class AccountEditContentViewModel {
   
+  var textFieldTag = -1
+
   var editContentPageTitle = ""
   
   var content = ""

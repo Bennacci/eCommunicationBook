@@ -203,13 +203,13 @@ enum TeacherSeviceItem: AccountItem {
       
     case .newEvent: return UIImage(systemName: "calendar.badge.plus")
       
-    case .setASign: return UIImage.asset(.Sign)
+    case .setASign: return UIImage(systemName: "calendar.badge.plus")
       
-    case .newACourse: return UIImage.asset(.CreateCourse)
+    case .newACourse: return UIImage(systemName: "calendar.badge.plus")
       
-    case .newAStudent : return UIImage.asset(.Children)
+    case .newAStudent : return UIImage(systemName: "person.crop.circle.badge.plus")
       
-    case .newAUser: return UIImage(systemName: "person.crop.badge.plus")
+    case .newAUser: return UIImage(systemName: "person.crop.circle.badge.plus")
       
     }
   }

@@ -17,6 +17,7 @@ class StudentLessonRecordViewModel {
     self.studentLessonRecord = studentLessonRecord
   }
   var performancesItem = ["Concentration", "Attidtude", "Participant"]
+  
   var id: String {
     get {
       return studentLessonRecord.id
@@ -29,9 +30,21 @@ class StudentLessonRecordViewModel {
     }
   }
   
+  var studentName: String {
+    get {
+      return studentLessonRecord.studentName
+    }
+  }
+  
   var courseName: String {
     get {
       return studentLessonRecord.courseName
+    }
+  }
+  
+  var courseLesson: Int {
+    get {
+      return studentLessonRecord.courseLesson
     }
   }
   

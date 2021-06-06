@@ -8,63 +8,87 @@
 
 import UIKit
 
-class AccountPageViewController: UIViewController {
+class AccountPageViewController: UIViewControllerWithImagePicker {
+
+  @IBOutlet weak var labelUserName: UILabel!
+  
+  @IBOutlet weak var labelUserType: UILabel!
   
   @IBOutlet weak var tableView: UITableView!
   
-  @IBAction func toggleUser(_ sender: UISwitch) {
-
-    if sender.isOn {
-
-      UserManager.shared.user.userType = "teacher"
-
-      tableView.reloadData()
-
-    } else {
-
-      UserManager.shared.user.userType = "parent"
-
-      tableView.reloadData()
-    }
-  }
+  @IBOutlet weak var imageViewAccountIcon: UIImageView!
   
   let viewModel = AccountPageViewModel()
-  
+    
   override func viewDidLoad() {
-
+    
     super.viewDidLoad()
 
-    setUptableview()
+    tableView.registerCellWithNib(identifier: AccountItemTableViewCell.identifier, bundle: nil)
 
-    self.navigationController?.setNavigationBarHidden(true, animated: true)
+    imagePicker.delegate = self
 
+    viewModel.onImageUploaded = {
+      self.loadIconImage()
+    }
+    loadViewContent()
+    loadIconImage()
+  }
+  
+  func loadViewContent() {
+    var name = "User"
+    
+    if UserManager.shared.user.name != "" {
+      name = UserManager.shared.user.name
+    }
+    labelUserName.text = name
+    labelUserType.text = UserManager.shared.user.userType
+  }
+  
+  func loadIconImage() {
+    imageViewAccountIcon.loadImage(UserManager.shared.user.image, placeHolder: UIImage(systemName: "person.crop.circle"))
   }
   
   override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-
+//    self.navigationController?.setNavigationBarHidden(true, animated: true)
+    
   }
-
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "accountEditContent",
+      let accountEditContentViewController = segue.destination as? AccountEditContentViewController {
+      accountEditContentViewController.delegate = self
+      if let indexPath = sender as? IndexPath {
+        accountEditContentViewController.viewModel.editContentPageTitle = viewModel.accountPageItem()[indexPath.section][indexPath.row]
+      }
+    }
+  }
 }
 
 extension AccountPageViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return viewModel.servicesData().items.count
+    return viewModel.accountPageItem().count
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.servicesData().items[section].count
+    return viewModel.accountPageItem()[section].count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier,
-                                                   for: indexPath) as? ServiceTableViewCell
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountItemTableViewCell.identifier,
+                                                   for: indexPath) as? AccountItemTableViewCell
       else { fatalError("Unexpected Table View Cell") }
-    cell.layoutCell(accountItem: viewModel.servicesData().items[indexPath.section][indexPath.row])
+    cell.setUp(viewModel: viewModel.accountPageItem(), indexPath: indexPath)
     return cell
   }
+  
+}
 
+extension AccountPageViewController: UpdateViewDelegate {
+  func onUpdateView() {
+    loadViewContent()
+    tableView.reloadData()
+  }
 }
 
 extension AccountPageViewController: UITableViewDelegate {
@@ -79,26 +103,20 @@ extension AccountPageViewController: UITableViewDelegate {
     return 12
   }
   
-  func setUptableview() {
-    self.tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
-  }
+  //  func setUptableview() {
+  //    self.tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+  //  }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-    if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
-      nextVC.modalPresentationStyle = .fullScreen
-      guard let viewController = nextVC as? NewAThingViewController else {return}
-      let services = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
-      let servicesItem = services.items[indexPath.section][indexPath.row]
-      viewController.viewModel.servicesItem = servicesItem
-      viewController.navigationItem.title = servicesItem.formTitle
-//      show(nextVC, sender: nil)
-//      present(nextVC, animated: false, completion: nil)
-      self.navigationController?.show(nextVC, sender: nil)
-
+    //
+    switch viewModel.accountPageItem()[indexPath.section][indexPath.row]{
+    case "Set profile icon":
+      showUploadMenu()
+    default:
+      performSegue(withIdentifier: "accountEditContent", sender: indexPath)
     }
     tableView.deselectRow(at: indexPath, animated: true)
-
+    
   }
   
   private func showNewAThingViewController() {
@@ -106,18 +124,32 @@ extension AccountPageViewController: UITableViewDelegate {
   }
   
   func isTokenExist() -> Bool {
-      guard UserManager.shared.isLogin() != false else {
-          
-//          if let nextVC = UIStoryboard.auth.instantiateInitialViewController() {
-//
-//              nextVC.modalPresentationStyle = .overCurrentContext
-//
-//              present(nextVC, animated: false, completion: nil)
-//          }
-          
-          return false
-      }
+    guard UserManager.shared.isLogin() != false else {
       
-      return true
+      //          if let nextVC = UIStoryboard.auth.instantiateInitialViewController() {
+      //
+      //              nextVC.modalPresentationStyle = .overCurrentContext
+      //
+      //              present(nextVC, animated: false, completion: nil)
+      //          }
+      
+      return false
+    }
+    
+    return true
   }
 }
+
+
+
+extension AccountPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+  func imagePickerController(_ picker: UIImagePickerController,
+                             didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+      viewModel.uploadImage(with: image)
+    }
+    dismiss(animated: true, completion: nil)
+  }
+}
+

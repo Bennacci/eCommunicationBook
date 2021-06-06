@@ -51,7 +51,9 @@ class ServiceManager {
            
            TeacherSeviceItem.writeLessonPlan,
            
-           TeacherSeviceItem.writeStudentTimeInAndOut],
+           TeacherSeviceItem.writeStudentTimeInAndOut,
+          
+           TeacherSeviceItem.attendanceSheet],
           
           
           [TeacherSeviceItem.newACourse,

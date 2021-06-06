@@ -17,6 +17,7 @@
 		7402581526529E4900BA6BDA /* BannerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402581426529E4900BA6BDA /* BannerData.swift */; };
 		74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74025817265359D400BA6BDA /* NewsTableViewCell.swift */; };
 		7402581A265359D400BA6BDA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74025818265359D400BA6BDA /* NewsTableViewCell.xib */; };
+		740E1C69266C9AC500491281 /* AccountEditContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740E1C68266C9AC500491281 /* AccountEditContentViewModel.swift */; };
 		7412B7B62662253500C91CA2 /* ScanStudentQR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7412B7B52662253500C91CA2 /* ScanStudentQR.storyboard */; };
 		7412B7B82662260200C91CA2 /* ScanStudentQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7412B7B72662260200C91CA2 /* ScanStudentQRCodeViewController.swift */; };
 		741D7C482653D9A200A7FD0A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741D7C472653D9A200A7FD0A /* Service.swift */; };
@@ -26,6 +27,10 @@
 		741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC7F264CD77200D5C34B /* AccountPage.storyboard */; };
 		741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC81264CD77200D5C34B /* HomePage.storyboard */; };
 		741FAC88264CD77200D5C34B /* CalendarPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741FAC83264CD77200D5C34B /* CalendarPage.storyboard */; };
+		742451DF266BCF1D00CBF99F /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742451DD266BCF1D00CBF99F /* ServiceTableViewCell.swift */; };
+		742451E0266BCF1D00CBF99F /* ServiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 742451DE266BCF1D00CBF99F /* ServiceTableViewCell.xib */; };
+		742451E3266C7AC500CBF99F /* AccountItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742451E1266C7AC500CBF99F /* AccountItemTableViewCell.swift */; };
+		742451E4266C7AC500CBF99F /* AccountItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 742451E2266C7AC500CBF99F /* AccountItemTableViewCell.xib */; };
 		742877A72666619100CF95E3 /* SignInPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 742877A62666619100CF95E3 /* SignInPage.storyboard */; };
 		742877A9266661CB00CF95E3 /* SignInPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742877A8266661CB00CF95E3 /* SignInPageViewController.swift */; };
 		7435E85F265E2D5B00941729 /* StackCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435E854265E2D5B00941729 /* StackCollectionViewLayout.swift */; };
@@ -44,7 +49,6 @@
 		7437879A266927A900586751 /* StudentTimeInTimeOutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74378798266927A900586751 /* StudentTimeInTimeOutTableViewCell.xib */; };
 		743DCD312667918600946718 /* parentLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 743DCD302667918600946718 /* parentLottie.json */; };
 		743DCD332667922A00946718 /* teacherLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 743DCD322667922A00946718 /* teacherLottie.json */; };
-		745147CA264CDE8000172419 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147C9264CDE8000172419 /* ServiceTableViewCell.swift */; };
 		745147CD264CE03200172419 /* AccountPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147CC264CE03100172419 /* AccountPageViewModel.swift */; };
 		745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147D4264CF76E00172419 /* AccountPageViewController.swift */; };
 		745147DE264D381800172419 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745147DD264D381800172419 /* ChatRoomViewModel.swift */; };
@@ -138,6 +142,7 @@
 		74D4BB6E2659E41A00999556 /* TimeIntervalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D4BB6C2659E41A00999556 /* TimeIntervalTableViewCell.swift */; };
 		74D4BB6F2659E41A00999556 /* TimeIntervalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D4BB6D2659E41A00999556 /* TimeIntervalTableViewCell.xib */; };
 		74D4BB712659E55400999556 /* TimeSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */; };
+		74D7AE06266C8C960038585B /* AccountEditContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D7AE05266C8C960038585B /* AccountEditContentViewController.swift */; };
 		74D869D52656A9DA004D33ED /* UISceneDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */; };
 		74D869D7265745F8004D33ED /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D869D6265745F8004D33ED /* CalendarHelper.swift */; };
 		74E541F4266322CA004276F9 /* ScanStudentQRCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E541F3266322CA004276F9 /* ScanStudentQRCodeViewModel.swift */; };
@@ -197,6 +202,7 @@
 		7402581426529E4900BA6BDA /* BannerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerData.swift; sourceTree = "<group>"; };
 		74025817265359D400BA6BDA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		74025818265359D400BA6BDA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		740E1C68266C9AC500491281 /* AccountEditContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountEditContentViewModel.swift; sourceTree = "<group>"; };
 		7412B7B52662253500C91CA2 /* ScanStudentQR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanStudentQR.storyboard; sourceTree = "<group>"; };
 		7412B7B72662260200C91CA2 /* ScanStudentQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStudentQRCodeViewController.swift; sourceTree = "<group>"; };
 		741D7C472653D9A200A7FD0A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -206,6 +212,10 @@
 		741FAC80264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AccountPage.storyboard; sourceTree = "<group>"; };
 		741FAC82264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomePage.storyboard; sourceTree = "<group>"; };
 		741FAC84264CD77200D5C34B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CalendarPage.storyboard; sourceTree = "<group>"; };
+		742451DD266BCF1D00CBF99F /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
+		742451DE266BCF1D00CBF99F /* ServiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceTableViewCell.xib; sourceTree = "<group>"; };
+		742451E1266C7AC500CBF99F /* AccountItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItemTableViewCell.swift; sourceTree = "<group>"; };
+		742451E2266C7AC500CBF99F /* AccountItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountItemTableViewCell.xib; sourceTree = "<group>"; };
 		742877A62666619100CF95E3 /* SignInPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInPage.storyboard; sourceTree = "<group>"; };
 		742877A8266661CB00CF95E3 /* SignInPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPageViewController.swift; sourceTree = "<group>"; };
 		7435E854265E2D5B00941729 /* StackCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -224,7 +234,6 @@
 		74378798266927A900586751 /* StudentTimeInTimeOutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentTimeInTimeOutTableViewCell.xib; sourceTree = "<group>"; };
 		743DCD302667918600946718 /* parentLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = parentLottie.json; sourceTree = "<group>"; };
 		743DCD322667922A00946718 /* teacherLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teacherLottie.json; sourceTree = "<group>"; };
-		745147C9264CDE8000172419 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		745147CC264CE03100172419 /* AccountPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewModel.swift; sourceTree = "<group>"; };
 		745147D4264CF76E00172419 /* AccountPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewController.swift; sourceTree = "<group>"; };
 		745147DD264D381800172419 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
@@ -320,6 +329,7 @@
 		74D4BB6C2659E41A00999556 /* TimeIntervalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalTableViewCell.swift; sourceTree = "<group>"; };
 		74D4BB6D2659E41A00999556 /* TimeIntervalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeIntervalTableViewCell.xib; sourceTree = "<group>"; };
 		74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewModel.swift; sourceTree = "<group>"; };
+		74D7AE05266C8C960038585B /* AccountEditContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditContentViewController.swift; sourceTree = "<group>"; };
 		74D869D42656A9DA004D33ED /* UISceneDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISceneDelegate+Extension.swift"; sourceTree = "<group>"; };
 		74D869D6265745F8004D33ED /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		74E541F3266322CA004276F9 /* ScanStudentQRCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStudentQRCodeViewModel.swift; sourceTree = "<group>"; };
@@ -398,6 +408,8 @@
 				74025805265264B100BA6BDA /* ServiceCollectionViewCell.xib */,
 				74025817265359D400BA6BDA /* NewsTableViewCell.swift */,
 				74025818265359D400BA6BDA /* NewsTableViewCell.xib */,
+				742451DD266BCF1D00CBF99F /* ServiceTableViewCell.swift */,
+				742451DE266BCF1D00CBF99F /* ServiceTableViewCell.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -444,7 +456,8 @@
 			isa = PBXGroup;
 			children = (
 				741FAC7F264CD77200D5C34B /* AccountPage.storyboard */,
-				745147C9264CDE8000172419 /* ServiceTableViewCell.swift */,
+				742451E1266C7AC500CBF99F /* AccountItemTableViewCell.swift */,
+				742451E2266C7AC500CBF99F /* AccountItemTableViewCell.xib */,
 			);
 			path = AccountPage;
 			sourceTree = "<group>";
@@ -474,6 +487,7 @@
 				74E9DE9F266752C700E2FD52 /* SignInPageViewModel.swift */,
 				746080832667F304005FC35C /* StudentTimeInAndOutViewModel.swift */,
 				74A33201266A2B780034EDAD /* AttendanceSheetViewModel.swift */,
+				740E1C68266C9AC500491281 /* AccountEditContentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -498,6 +512,7 @@
 				7412B7B72662260200C91CA2 /* ScanStudentQRCodeViewController.swift */,
 				7460807F2667EFE1005FC35C /* StudentTimeInAndOutViewController.swift */,
 				74A33202266A2B780034EDAD /* AttendanceSheetViewController.swift */,
+				74D7AE05266C8C960038585B /* AccountEditContentViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -881,6 +896,7 @@
 				7460807E2667E49C005FC35C /* StudentTimeInAndOut.storyboard in Resources */,
 				7472B29F26594BBB00511468 /* TimeSelection.storyboard in Resources */,
 				74F2DE76265FE73A00F6F0AB /* LPMainCollectionViewCell.xib in Resources */,
+				742451E4266C7AC500CBF99F /* AccountItemTableViewCell.xib in Resources */,
 				74857F9A2654BBF200AEF14D /* NewAThing.storyboard in Resources */,
 				74D3A67C26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib in Resources */,
 				741FAC86264CD77200D5C34B /* AccountPage.storyboard in Resources */,
@@ -892,6 +908,7 @@
 				745147EC264D56EE00172419 /* GoogleService-Info.plist in Resources */,
 				7402581326529BD900BA6BDA /* BannerTableViewCell.xib in Resources */,
 				74025807265264B100BA6BDA /* ServiceCollectionViewCell.xib in Resources */,
+				742451E0266BCF1D00CBF99F /* ServiceTableViewCell.xib in Resources */,
 				741FAC85264CD77200D5C34B /* ChatRoomPage.storyboard in Resources */,
 				7435E86E265E363100941729 /* AddRowTableViewCell.xib in Resources */,
 				741FAC87264CD77200D5C34B /* HomePage.storyboard in Resources */,
@@ -1003,7 +1020,6 @@
 				74E94760264C087D00AFB046 /* MJRefreshWrapper.swift in Sources */,
 				74E9475C264C087D00AFB046 /* UICollectionView+Extension.swift in Sources */,
 				745147D5264CF76E00172419 /* AccountPageViewController.swift in Sources */,
-				745147CA264CDE8000172419 /* ServiceTableViewCell.swift in Sources */,
 				74E94753264C087D00AFB046 /* Int+Extension.swift in Sources */,
 				7435E876265E41DD00941729 /* LessonPlanDetailViewModel.swift in Sources */,
 				7435E85F265E2D5B00941729 /* StackCollectionViewLayout.swift in Sources */,
@@ -1028,6 +1044,7 @@
 				74F2DE85265FEBE900F6F0AB /* LessonPerformancesViewController.swift in Sources */,
 				74CADD91265614E1004DA6D0 /* DatePickerTableViewCell.swift in Sources */,
 				7402581526529E4900BA6BDA /* BannerData.swift in Sources */,
+				742451DF266BCF1D00CBF99F /* ServiceTableViewCell.swift in Sources */,
 				74996311265DF0B100F081EC /* LessonsTableViewCell.swift in Sources */,
 				74A5A76D2654EC690039BC22 /* CircleUserCollectionViewCell.swift in Sources */,
 				74715CC9265B6C5F00570A23 /* EventViewModel.swift in Sources */,
@@ -1070,6 +1087,7 @@
 				7435E86A265E35A000941729 /* LessonPlanDetailViewController.swift in Sources */,
 				74025819265359D400BA6BDA /* NewsTableViewCell.swift in Sources */,
 				74F07431266544A600CC0009 /* HomePageViewModel.swift in Sources */,
+				74D7AE06266C8C960038585B /* AccountEditContentViewController.swift in Sources */,
 				74F074272664E74000CC0009 /* UIViewControllerWithImagePicker.swift in Sources */,
 				74E541F4266322CA004276F9 /* ScanStudentQRCodeViewModel.swift in Sources */,
 				74715CCE265B74A400570A23 /* ChartTableViewCell.swift in Sources */,
@@ -1084,6 +1102,7 @@
 				748CC91B265CEB7200919F1E /* StudentViewModel.swift in Sources */,
 				745147E2264D389D00172419 /* Message.swift in Sources */,
 				74F2DE79265FE8DE00F6F0AB /* LPSlideTableViewCell.swift in Sources */,
+				742451E3266C7AC500CBF99F /* AccountItemTableViewCell.swift in Sources */,
 				745147CD264CE03200172419 /* AccountPageViewModel.swift in Sources */,
 				74CADD90265614E1004DA6D0 /* TwoLablesTableViewCell.swift in Sources */,
 				74A331FE266A2B6F0034EDAD /* UICollectionGridViewLayout.swift in Sources */,
@@ -1096,6 +1115,7 @@
 				746080842667F304005FC35C /* StudentTimeInAndOutViewModel.swift in Sources */,
 				746080822667F136005FC35C /* studentExistanceViewModelFile.swift in Sources */,
 				74F2DE72265FD87A00F6F0AB /* UIAlertAction+Extension.swift in Sources */,
+				740E1C69266C9AC500491281 /* AccountEditContentViewModel.swift in Sources */,
 				74E9475D264C087D00AFB046 /* UITableView+Extension.swift in Sources */,
 				74378799266927A900586751 /* StudentTimeInTimeOutTableViewCell.swift in Sources */,
 				74A7D11B26552B2F00B445EB /* StudentLessonRecord.swift in Sources */,

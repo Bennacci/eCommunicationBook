@@ -22,21 +22,23 @@ class HomePageViewController: UIViewController {
   
   var viewModel = HomePageViewModel()
   
-  var hotCellHeight: CGFloat = UIScreen.height / 7
+  var hotCellHeight: CGFloat = UIScreen.height / 2.8
   
-  var recommendedCellHeight: CGFloat = UIScreen.height / 5
+  var recommendedCellHeight: CGFloat = UIScreen.height / 2
   
   private let collectionViewSectionInsets = UIEdgeInsets(
     top: 10.0,
-    left: 20.0,
+    left: 10.0,
     bottom: 10.0,
-    right: 20.0)
+    right: 10.0)
   
   override func viewDidLoad() {
     
     self.navigationController?.setNavigationBarHidden(true, animated: true)
     
     tableView.registerCellWithNib(identifier: ServicesTableViewCell.identifier, bundle: nil)
+    
+    tableView.registerCellWithNib(identifier: ServiceTableViewCell.identifier, bundle: nil)
     
     tableView.registerCellWithNib(identifier: BannerTableViewCell.identifier, bundle: nil)
     
@@ -69,7 +71,9 @@ extension HomePageViewController: UITableViewDataSource {
                  
                  numberOfRowsInSection section: Int) -> Int {
     
-    return [1, 1, 1, 5][section]
+    let sectionThreeRowCount = viewModel.servicesData().items[1].count + viewModel.servicesData().items[2].count
+    
+    return [1, 1, sectionThreeRowCount, 5][section]
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,7 +90,7 @@ extension HomePageViewController: UITableViewDataSource {
       
       return cell
       
-    } else if indexPath == [1, 0] || indexPath == [2, 0] {
+    } else if indexPath.section == 1 {
       
       guard let cell = tableView.dequeueReusableCell(withIdentifier: ServicesTableViewCell.identifier,
                                                      for: indexPath) as? ServicesTableViewCell
@@ -96,19 +100,31 @@ extension HomePageViewController: UITableViewDataSource {
       
       cell.collectionView.dataSource = self
             
-      if indexPath == [1, 0] {
+//      if indexPath == [1, 0] {
         
         hotCell = cell
         
         cell.height.constant = hotCellHeight
         
-      } else {
-        
-        cell.height.constant = recommendedCellHeight
-        
-      }
+//      }
+//      else {
+//
+//        cell.height.constant = recommendedCellHeight
+//
+//      }
       
       return cell
+    } else if indexPath.section == 2 {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier,
+                                                     for: indexPath) as? ServiceTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      cell.setUp(viewModel: viewModel.servicesData(), indexPath: indexPath)
+      
+//      cell.height.constant = recommendedCellHeight
+
+      
+      return cell
+    
     } else {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
                                                      for: indexPath) as? NewsTableViewCell
@@ -146,6 +162,25 @@ extension HomePageViewController: UITableViewDelegate {
     
     return CGFloat.leastNormalMagnitude
   }
+  
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
+      if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
+        nextVC.modalPresentationStyle = .fullScreen
+        guard let viewController = nextVC as? NewAThingViewController else {return}
+        let services = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
+        let servicesItem = services.items[indexPath.section - 1][indexPath.row]
+        viewController.viewModel.servicesItem = servicesItem
+        viewController.navigationItem.title = servicesItem.formTitle
+  //      show(nextVC, sender: nil)
+  //      present(nextVC, animated: false, completion: nil)
+        self.navigationController?.show(nextVC, sender: nil)
+
+      }
+      tableView.deselectRow(at: indexPath, animated: true)
+
+    }
+  
 }
 
 extension HomePageViewController: UICollectionViewDataSource {
@@ -209,7 +244,7 @@ extension HomePageViewController: UICollectionViewDelegate {
           
         } else { return }
         
-      case "Lesson Plan":
+      case "Attendance Sheet":
         if let nextVC = UIStoryboard.attendanceSheet.instantiateInitialViewController() {
           
           nextVC.modalPresentationStyle = .fullScreen
@@ -246,12 +281,12 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
       size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
                                               sectionInsets: collectionViewSectionInsets,
                                               itemsPerRow: 2,
-                                              itemsPerColumn: 1)
+                                              itemsPerColumn: 2)
     } else {
       size = collectionView.calculateCellsize(viewHeight: recommendedCellHeight,
                                               sectionInsets: collectionViewSectionInsets,
-                                              itemsPerRow: 3,
-                                              itemsPerColumn: 2)
+                                              itemsPerRow: 1,
+                                              itemsPerColumn: 5)
     }
     
     return size

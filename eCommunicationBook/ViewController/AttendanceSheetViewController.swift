@@ -24,6 +24,8 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
+
     viewModel.fetchCourse()
     
     viewModel.courseViewModel.bind { [weak self] _ in
@@ -46,7 +48,10 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
     }
     
   }
-  
+  override func viewDidDisappear(_ animated: Bool) {
+    self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+  }
   @IBAction func tapLeaveButton(_ sender: Any) {
     navigationController?.popViewController(animated: true)
   }

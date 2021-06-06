@@ -19,7 +19,9 @@ enum ClassPerformance: Int {
 struct StudentLessonRecord: Codable {
   var id: String
   var studentID: String
+  var studentName: String
   var courseName: String
+  var courseLesson: Int
   var time: Double
   var timeInterval: Int
   var todaysLesson: [String]?
@@ -38,7 +40,9 @@ struct StudentLessonRecord: Codable {
   enum CodingKeys: String, CodingKey {
     case id
     case studentID
+    case studentName
     case courseName
+    case courseLesson
     case time
     case timeInterval
     case todaysLesson
@@ -59,7 +63,9 @@ struct StudentLessonRecord: Codable {
     return [
       "id": id as Any,
       "studentID": studentID as Any,
+      "studentName": studentName as Any,
       "courseName": courseName as Any,
+      "courseLesson": courseLesson as Any,
       "time": time as Any,
       "timeInterval": timeInterval as Any,
       "todaysLesson": todaysLesson as Any,

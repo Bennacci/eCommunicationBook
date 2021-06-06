@@ -152,7 +152,9 @@ class XXXManager {
     let document = db.collection("Users")
       .document(user.id)
     
-    user.createdTime = Double(Date().millisecondsSince1970)
+    if user.createdTime == -1 {
+      user.createdTime = Double(Date().millisecondsSince1970)
+    }
     
     document.setData(user.toDict) { error in
       
@@ -271,38 +273,13 @@ class XXXManager {
     }
   }
   
-  //  func fetchCourses(completion: @escaping (Result<[Course], Error>) -> Void) {
-  //
-  //    db.collection("Courses").getDocuments { (querySnapshot, error) in
-  //
-  //      if let error = error {
-  //
-  //        completion(.failure(error))
-  //      } else {
-  //
-  //        var courses = [Course]()
-  //
-  //        for document in querySnapshot!.documents {
-  //
-  //          do {
-  //            if let course = try document.data(as: Course.self, decoder: Firestore.Decoder()) {
-  //              courses.append(course)
-  //            }
-  //          } catch {
-  //            completion(.failure(error))
-  //          }
-  //        }
-  //        completion(.success(courses))
-  //      }
-  //    }
-  //  }
   func saveLesson(lesson: inout Lesson, completion: @escaping (Result<String, Error>) -> Void) {
     
     let document = db.collection("Courses")
       .document(courseID)
       .collection("Lessons")
       .document(lesson.id)
-    
+    lesson.id = document.documentID
     document.setData(lesson.toDict) { error in
       
       if let error = error {
@@ -320,8 +297,12 @@ class XXXManager {
     
     let document = db.collection("StudentLessonRecords")
       .document()
-    
+    studentLessonRecord.id = document.documentID
     document.setData(studentLessonRecord.toDict) { error in
+      
+      
+
+      
       
       if let error = error {
         

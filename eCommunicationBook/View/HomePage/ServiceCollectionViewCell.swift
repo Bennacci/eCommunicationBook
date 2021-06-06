@@ -39,7 +39,7 @@ class ServiceCollectionViewCell: UICollectionViewCell {
       serviceIcon.image = self.viewModel?.items[0][indexPath.item].image
 
     } else {
-      viewServiceBackground.backgroundColor = UIColor.flatMint()
+//      viewServiceBackground.backgroundColor = UIColor.flatMint()
       if let count = self.viewModel?.items[1].count {
         
         if count > indexPath.item {

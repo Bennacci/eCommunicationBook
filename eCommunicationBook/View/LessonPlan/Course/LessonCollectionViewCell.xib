@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,7 +55,7 @@
                             <constraint firstAttribute="width" constant="55" id="bGv-ow-ZSU"/>
                             <constraint firstAttribute="height" constant="30" id="yMl-MK-VJc"/>
                         </constraints>
-                        <state key="normal" title="Write">
+                        <state key="normal" title="Edit">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <userDefinedRuntimeAttributes>
@@ -67,12 +66,12 @@
                     </button>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eT-wU-DVY">
                         <rect key="frame" x="336" y="77" width="80" height="30"/>
-                        <color key="backgroundColor" name="CyanProcess"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="Zzh-ca-sL8"/>
                             <constraint firstAttribute="height" constant="30" id="ime-YD-xBK"/>
                         </constraints>
-                        <state key="normal" title="Inspect">
+                        <state key="normal" title="Done">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <userDefinedRuntimeAttributes>
@@ -130,8 +129,5 @@
     <resources>
         <image name="01.square.fill" catalog="system" width="128" height="114"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="114"/>
-        <namedColor name="CyanProcess">
-            <color red="0.35686274509803922" green="0.75294117647058822" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

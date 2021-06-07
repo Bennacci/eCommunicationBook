@@ -31,60 +31,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Co-tl-Qkr">
-                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
-                                <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qgZ-j8-5aF">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="X34-JV-f1G"/>
-                                        </constraints>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="XGt-j0-biN" id="nem-F5-6nm"/>
-                                        </connections>
-                                    </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUh-GI-E0L">
-                                        <rect key="frame" x="414" y="0.0" width="0.0" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" id="bKY-WU-lod"/>
-                                        </constraints>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelSearching:" destination="XGt-j0-biN" eventType="touchUpInside" id="8Ue-yN-MAK"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmW-63-TkX" userLabel="Base">
-                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="XGt-j0-biN" id="RNN-yy-y2r"/>
                                     <outlet property="delegate" destination="XGt-j0-biN" id="jb4-im-qsb"/>
                                 </connections>
                             </tableView>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="29" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t6z-4K-gwA" userLabel="Search">
-                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="XGt-j0-biN" id="C17-M1-qTF"/>
-                                    <outlet property="delegate" destination="XGt-j0-biN" id="nE7-H2-1D0"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="nmW-63-TkX" firstAttribute="top" secondItem="BBO-tW-MsE" secondAttribute="top" id="7fQ-zp-ZjF"/>
                             <constraint firstItem="BBO-tW-MsE" firstAttribute="trailing" secondItem="nmW-63-TkX" secondAttribute="trailing" id="9OU-zD-wpA"/>
                             <constraint firstItem="nmW-63-TkX" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="9Po-ua-Nh0"/>
-                            <constraint firstItem="nmW-63-TkX" firstAttribute="top" secondItem="7Co-tl-Qkr" secondAttribute="bottom" id="DoT-Ey-iOw"/>
-                            <constraint firstItem="7Co-tl-Qkr" firstAttribute="top" secondItem="BBO-tW-MsE" secondAttribute="top" id="G5n-8U-9Lm"/>
-                            <constraint firstItem="BBO-tW-MsE" firstAttribute="trailing" secondItem="t6z-4K-gwA" secondAttribute="trailing" id="ILP-Vv-IjH"/>
-                            <constraint firstItem="t6z-4K-gwA" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="RBO-KF-FTQ"/>
-                            <constraint firstItem="BBO-tW-MsE" firstAttribute="bottom" secondItem="t6z-4K-gwA" secondAttribute="bottom" id="SuA-E8-Dvi"/>
-                            <constraint firstItem="t6z-4K-gwA" firstAttribute="top" secondItem="7Co-tl-Qkr" secondAttribute="bottom" id="TGy-Dc-4Qn"/>
-                            <constraint firstAttribute="trailing" secondItem="7Co-tl-Qkr" secondAttribute="trailing" id="fLY-R6-44X"/>
-                            <constraint firstItem="7Co-tl-Qkr" firstAttribute="leading" secondItem="BBO-tW-MsE" secondAttribute="leading" id="hJP-SQ-iJK"/>
                             <constraint firstItem="BBO-tW-MsE" firstAttribute="bottom" secondItem="nmW-63-TkX" secondAttribute="bottom" id="mi0-ZX-nmd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BBO-tW-MsE"/>
@@ -119,6 +79,42 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1h-X4-oHC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <stackView opaque="NO" contentMode="scaleToFill" id="7Co-tl-Qkr">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qgZ-j8-5aF">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="X34-JV-f1G"/>
+                            </constraints>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="XGt-j0-biN" id="nem-F5-6nm"/>
+                            </connections>
+                        </searchBar>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUh-GI-E0L">
+                            <rect key="frame" x="414" y="0.0" width="0.0" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" id="bKY-WU-lod"/>
+                            </constraints>
+                            <state key="normal" title="Cancel"/>
+                            <connections>
+                                <action selector="cancelSearching:" destination="XGt-j0-biN" eventType="touchUpInside" id="8Ue-yN-MAK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="Kzo-uv-hlB"/>
+                </stackView>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="29" sectionFooterHeight="28" id="t6z-4K-gwA" userLabel="Search">
+                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="XGt-j0-biN" id="C17-M1-qTF"/>
+                        <outlet property="delegate" destination="XGt-j0-biN" id="nE7-H2-1D0"/>
+                    </connections>
+                </tableView>
             </objects>
             <point key="canvasLocation" x="35" y="58"/>
         </scene>

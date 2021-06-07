@@ -17,7 +17,8 @@ enum DateFormatType: String {
 
     /// Date with hours
     case dateWithTime = "yyyy-MMM-dd H:mm"
-    
+    case dateWithTimeWithOutYear = "MMM-dd H:mm"
+
     /// Date
     case date = "dd-MMM-yyyy"
     

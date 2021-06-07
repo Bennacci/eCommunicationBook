@@ -39,7 +39,7 @@ class XXXManager {
     db.collection("ChatRooms")
       //      .order(by: "createdTime")
       .whereField("members", arrayContains: UserManager.shared.user.id)
-      .addSnapshotListener { (documentSnapshot, error) in
+      .getDocuments { (querySnapshot, error) in
         
         if let error = error {
           completion(.failure(error))
@@ -47,7 +47,9 @@ class XXXManager {
           
           var chatRooms = [ChatRoom]()
           
-          for document in documentSnapshot!.documents {
+          chatRooms.removeAll()
+          
+          for document in querySnapshot!.documents {
             
             do {
               if var chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
@@ -56,16 +58,20 @@ class XXXManager {
                   .document("\(chatRoom.id)")
                   .collection("Messages")
                   .order(by: "createdTime", descending: true)
-                  .getDocuments { (documentSnapshot, error) in
+                  .getDocuments { (querySnapshot, error) in
                     
                     if let error = error {
+                        completion(.failure(error))
+                    } else if querySnapshot?.isEmpty == true {
+                        chatRooms.append(chatRoom)
                       
-                      completion(.failure(error))
+                        completion(.success(chatRooms))
+
                     } else {
                       
                       var messages = [Message]()
                       
-                      for document in documentSnapshot!.documents {
+                      for document in querySnapshot!.documents {
                         
                         do {
                           if let message = try document.data(as: Message.self, decoder: Firestore.Decoder()) {
@@ -716,14 +722,14 @@ class XXXManager {
       collectionName = "StudentTimeOuts"
     }
     
-    guard let student = UserManager.shared.students?[studentIndex] else {
+    guard let student = UserManager.shared.students else {
       return completion(.failure(MasterError.noMatchData("No Student")))
     }
     
     db.collection(collectionName)
       .document(year)
       .collection(month)
-      .whereField("studentID", isEqualTo: student.id)
+      .whereField("studentID", isEqualTo: student[studentIndex].id)
       .order(by: "time", descending: true)
       .getDocuments { (querySnapshot, error) in
         

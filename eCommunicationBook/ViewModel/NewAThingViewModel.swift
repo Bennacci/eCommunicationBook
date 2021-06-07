@@ -140,7 +140,8 @@ class NewAThingViewModel: SearchUserDelegate {
     courseTime: [],
     fee: -1,
     lessonsAmount: -1,
-    lessons: [])
+    lessons: [],
+    image: "")
   
   func onCourseNameChanged(text name: String) {
     self.course.name = name

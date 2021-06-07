@@ -34,6 +34,14 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23"/>
                                 </state>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tez-nm-kzb">
+                                <rect key="frame" x="51" y="4" width="27" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="checkmark.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23"/>
+                                </state>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bae-U2-Ev7">
                                 <rect key="frame" x="22" y="85" width="38" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -41,14 +49,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="UIk-uG-edB" firstAttribute="centerX" secondItem="Jaj-X7-AQH" secondAttribute="centerX" id="Dq4-eX-oLb"/>
                             <constraint firstAttribute="trailing" secondItem="UlB-LI-em9" secondAttribute="trailing" constant="4" id="J9E-xn-ozG"/>
+                            <constraint firstItem="tez-nm-kzb" firstAttribute="top" secondItem="Jaj-X7-AQH" secondAttribute="top" constant="4" id="KxO-DE-16d"/>
                             <constraint firstAttribute="bottom" secondItem="bae-U2-Ev7" secondAttribute="bottom" id="d2A-m3-9d0"/>
                             <constraint firstItem="UIk-uG-edB" firstAttribute="top" secondItem="Jaj-X7-AQH" secondAttribute="top" constant="8" id="jNj-EB-Xr1"/>
                             <constraint firstItem="bae-U2-Ev7" firstAttribute="centerX" secondItem="Jaj-X7-AQH" secondAttribute="centerX" id="jTB-EE-lJi"/>
                             <constraint firstItem="UlB-LI-em9" firstAttribute="top" secondItem="Jaj-X7-AQH" secondAttribute="top" constant="4" id="muZ-Vb-Vsh"/>
+                            <constraint firstAttribute="trailing" secondItem="tez-nm-kzb" secondAttribute="trailing" constant="4" id="tKi-XP-YFc"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -63,6 +73,7 @@
             <size key="customSize" width="82" height="103"/>
             <connections>
                 <outlet property="button" destination="UlB-LI-em9" id="tnb-Cw-V2X"/>
+                <outlet property="buttonChecked" destination="tez-nm-kzb" id="G1e-7e-oh2"/>
                 <outlet property="userImage" destination="UIk-uG-edB" id="7s3-5i-Mvo"/>
                 <outlet property="userName" destination="bae-U2-Ev7" id="wla-te-lnM"/>
             </connections>
@@ -71,6 +82,7 @@
     </objects>
     <resources>
         <image name="Bear" width="716" height="1072"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

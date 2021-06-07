@@ -21,6 +21,7 @@ class StudentTimeInAndOutViewController: UIViewController {
   @IBOutlet weak var heightConMenu: NSLayoutConstraint!
   
   @IBOutlet weak var blackView: UIView!
+  
   var menuExpanded = false
   
   var selectedCellHeight: CGFloat = 100
@@ -38,12 +39,16 @@ class StudentTimeInAndOutViewController: UIViewController {
     tableView.registerCellWithNib(identifier: StudentTimeInTimeOutTableViewCell.identifier, bundle: nil)
     viewModel.fetchExistances(studentIndex: nil, date: nil)
     
+    collectionView.registerCellWithNib(identifier: CircleUserCollectionViewCell.identifier, bundle: nil)
+    
     viewModel.existancesFetched = { [weak self] () in
       DispatchQueue.main.async {
         self?.tableView.reloadData()
         self?.viewModel.refreshCellDateDic()
       }
     }
+    
+    viewModel.setStudentViewModel()
   }
   
   @IBAction func tapBackButton(_ sender: Any) {
@@ -123,34 +128,33 @@ extension StudentTimeInAndOutViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return viewModel.selectedDate.convertToString(dateformat: .month)
   }
-
+  
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+    
     var timeOutViewModel: StudentExistanceViewModel?
-
+    
     // assume every students time out every day
     
-    if viewModel.studentTimeInViemModel.value.count - viewModel.studentTimeOutViemModel.value.count == 1 {
-      if indexPath.row > 1 {
-        timeOutViewModel = viewModel.studentTimeOutViemModel.value[indexPath.row - 1]
-      }
-    }
-    
-    if viewModel.studentTimeInViemModel.value.count - viewModel.studentTimeOutViemModel.value.count != 0 && indexPath.row == 0 {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentExistancesTableViewCell.identifier,
-                                                     for: indexPath) as? StudentExistancesTableViewCell
-        else { fatalError("Unexpected Table View Cell") }
-      cell.setUp(forCalendar: false,
-                 timeInViewModel: viewModel.studentTimeInViemModel.value[indexPath.row],
-                 timeOutViewModel: timeOutViewModel)
-      return cell
-    } else {
+    if indexPath.row !=  viewModel.studentTimeOutViemModel.value.count {
+      
+      timeOutViewModel = viewModel.studentTimeOutViemModel.value[indexPath.row]
+      
       guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentTimeInTimeOutTableViewCell.identifier,
                                                      for: indexPath) as? StudentTimeInTimeOutTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       
       cell.setUp(timeInViewModel: viewModel.studentTimeInViemModel.value[indexPath.row],
+                 timeOutViewModel: timeOutViewModel)
+      return cell
+      
+    } else {
+      
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentExistancesTableViewCell.identifier,
+                                                     for: indexPath) as? StudentExistancesTableViewCell
+        else { fatalError("Unexpected Table View Cell") }
+      cell.setUp(forCalendar: false,
+                 timeInViewModel: viewModel.studentTimeInViemModel.value[indexPath.row],
                  timeOutViewModel: timeOutViewModel)
       return cell
       
@@ -180,7 +184,7 @@ extension StudentTimeInAndOutViewController: UITableViewDelegate {
 
 extension StudentTimeInAndOutViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if let count = UserManager.shared.user.student?.count {
+    if let count = UserManager.shared.students?.count {
       return count
     } else {
       return 0
@@ -191,12 +195,18 @@ extension StudentTimeInAndOutViewController: UICollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CircleUserCollectionViewCell.identifier,
                                                         for: indexPath) as? CircleUserCollectionViewCell
       else { fatalError("Unexpected Table View Cell") }
-    
+    if viewModel.studentViewModel.value.count == 0 {
+      return cell
+    }
     let cellViewModel = viewModel.studentViewModel.value[indexPath.item]
+    cell.tag = indexPath.item
+    var checked = false
+    if viewModel.selectedStudent == indexPath.item {
+      checked = true
+    }
     
-    cell.setup(viewModel: cellViewModel)
+    cell.setUpStudent(viewModel: cellViewModel, checked: checked)
     
-    cell.layoutCell()
     //    cell.height.constant = wideUserCellHeight
     return cell
   }
@@ -204,7 +214,7 @@ extension StudentTimeInAndOutViewController: UICollectionViewDataSource {
 
 extension StudentTimeInAndOutViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+
     viewModel.fetchExistances(studentIndex: indexPath.item, date: nil)
   }
 }

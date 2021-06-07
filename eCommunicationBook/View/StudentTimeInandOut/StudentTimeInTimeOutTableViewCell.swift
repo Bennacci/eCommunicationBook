@@ -48,10 +48,12 @@ class StudentTimeInTimeOutTableViewCell: UITableViewCell {
     
     labelTimeInTime.text = Date(milliseconds: timeInTime).convertToString(dateformat: .time)
     
-    guard let courseName = timeInViewModel?.courseName else {return}
-    labelCourseName.text =  "Class: \(courseName)"
+    guard let courseName = timeInViewModel?.courseName.components(separatedBy: ":") else {return}
+    
+    labelCourseName.text =  "Class: \(courseName[0])"
     
     guard let timeOutTime = timeOutViewModel?.time else {return}
     labelTimeOutTime.text = Date(milliseconds: timeOutTime).convertToString(dateformat: .time)
+    print(Date(milliseconds: timeOutTime).convertToString(dateformat: .time))
   }
 }

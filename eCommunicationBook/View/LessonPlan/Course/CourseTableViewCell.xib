@@ -19,8 +19,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tT-jO-aif">
                         <rect key="frame" x="16" y="8" width="287" height="140"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bear" translatesAutoresizingMaskIntoConstraints="NO" id="vtx-s1-CSA">
-                                <rect key="frame" x="0.0" y="0.0" width="287" height="140"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vtx-s1-CSA">
+                                <rect key="frame" x="0.0" y="1" width="287" height="136.5"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
                                         <real key="value" value="6"/>
@@ -85,7 +85,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Bear" width="716" height="1072"/>
+        <image name="icloud.fill" catalog="system" width="128" height="88"/>
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

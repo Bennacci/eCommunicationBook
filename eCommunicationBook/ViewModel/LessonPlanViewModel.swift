@@ -14,7 +14,7 @@ class LessonPlanViewModel {
   
   var lessonViewModel = Box([LessonViewModel]())
   
-  var refreshView: (()->())?
+  var refreshView: (() -> Void)?
 
   func fetchData() {
     

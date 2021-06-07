@@ -14,5 +14,4 @@ class HomePageViewModel {
       let services = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
     return services
   }
-  
 }

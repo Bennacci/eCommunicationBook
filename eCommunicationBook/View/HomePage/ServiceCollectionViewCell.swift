@@ -38,6 +38,22 @@ class ServiceCollectionViewCell: UICollectionViewCell {
       servicename.text = self.viewModel?.items[0][indexPath.item].title
       serviceIcon.image = self.viewModel?.items[0][indexPath.item].image
 
+      switch self.viewModel?.items[0][indexPath.item].title {
+      case "Communication Book":
+        viewServiceBackground.backgroundColor = UIColor.AndroidGreen
+      case "Lesson Plan":
+        viewServiceBackground.backgroundColor = UIColor.MinionYellow
+      case "Student Time In / Out":
+        viewServiceBackground.backgroundColor = UIColor.Pumpkin
+      case "Attendance Sheet":
+        viewServiceBackground.backgroundColor = UIColor.CyanProcess
+      case "Time In / Out":
+        viewServiceBackground.backgroundColor = UIColor.CyanProcess
+      default:
+        viewServiceBackground.backgroundColor = .gray
+
+      }
+      
     } else {
 //      viewServiceBackground.backgroundColor = UIColor.flatMint()
       if let count = self.viewModel?.items[1].count {

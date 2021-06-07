@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StudentViewModel: SearchUserPageMaterial{
+class StudentViewModel: SearchUserPageMaterial {
   var student: Student
   
   init(model student: Student) {
@@ -68,6 +68,4 @@ class StudentViewModel: SearchUserPageMaterial{
       return student.emergencyContactNo
     }
   }
-  
-  
 }

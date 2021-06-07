@@ -34,7 +34,7 @@ class HomePageViewController: UIViewController {
   
   override func viewDidLoad() {
     
-    self.navigationController?.setNavigationBarHidden(true, animated: true)
+//    self.navigationController?.setNavigationBarHidden(true, animated: true)
     
     tableView.registerCellWithNib(identifier: ServicesTableViewCell.identifier, bundle: nil)
     
@@ -124,8 +124,6 @@ extension HomePageViewController: UITableViewDataSource {
       cell.setUp(viewModel: viewModel.servicesData(), indexPath: indexPath)
       
 //      cell.height.constant = recommendedCellHeight
-
-      
       return cell
     
     } else {
@@ -240,7 +238,7 @@ extension HomePageViewController: UICollectionViewDelegate {
           self.navigationController?.show(nextVC, sender: nil)
           
         } else { return }
-      case "Attendance":
+      case "Time In / Out":
         if let nextVC = UIStoryboard.studentTimeInAndOut.instantiateInitialViewController() {
           
           nextVC.modalPresentationStyle = .fullScreen
@@ -260,10 +258,7 @@ extension HomePageViewController: UICollectionViewDelegate {
       default:
         return
       }
-    
     }
-    
-
   }
 }
 // MARK: - 設定 CollectionView Cell 與 Cell 之間的間距、距確 Super View 的距離等等

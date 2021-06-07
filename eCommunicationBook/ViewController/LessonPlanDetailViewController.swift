@@ -68,11 +68,13 @@ class LessonPlanDetailViewController: UIViewController {
     let calendar = Calendar.current
     let date = Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .dateYMD)
     let startTime = Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .time)
-    let endDate = calendar.date(byAdding: .minute, value: viewModel.lesson.timeInterval, to: Date(milliseconds: viewModel.lesson.time))
+    let endDate = calendar.date(byAdding: .minute,
+                                value: viewModel.lesson.timeInterval,
+                                to: Date(milliseconds: viewModel.lesson.time))
     let endTime = endDate!.convertToString(dateformat: .time)
     
     
-////    let date = Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .dateYMD)
+//    let date = Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .dateYMD)
 //    var timeHr = Int(Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .timeHr))!
 //    var timeMin = Int(Date(milliseconds: viewModel.lesson.time).convertToString(dateformat: .timeMin))!
 //    let time = "\(timeHr):\(timeMin)"
@@ -158,8 +160,7 @@ extension LessonPlanDetailViewController: UITableViewDataSource {
       return "Test"
     }
   }
-  func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!
-  {
+  func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
     let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
     let myLabel = UILabel()
       myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 4, width: tableView.bounds.size.width, height: 30)
@@ -231,6 +232,7 @@ extension LessonPlanDetailViewController: UITableViewDataSource {
       }
   }
 }
+
 extension LessonPlanDetailViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     viewModel.onModColumn(indexPath: indexPath)

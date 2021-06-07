@@ -59,10 +59,7 @@ class ConversationViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     viewModel.fetchUserData()
   }
-  
 }
-
-
 
 extension ConversationViewController: UITableViewDelegate {
   

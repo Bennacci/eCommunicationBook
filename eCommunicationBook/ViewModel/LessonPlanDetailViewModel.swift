@@ -56,9 +56,9 @@ class LessonPlanDetailViewModel {
   //  func onDeleteColumn(indexPath: IndexPath){
   //    viewModel?.deleteColumn(indexPath: indexPath)
   //  }
-  var lessonChanged: (()->Void)?
+  var lessonChanged: (() -> Void)?
   
-  var onSaved: (()->Void)?
+  var onSaved: (() -> Void)?
   
   func onSave() {
     self.save(with: &lesson)

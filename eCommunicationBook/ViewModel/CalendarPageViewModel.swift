@@ -98,7 +98,6 @@ class CalendarPageViewModel {
     onRefresh()
   }
   
-  
   func setComunicationSectionTitle() {
     
     lessonImageIndex = 0
@@ -184,9 +183,7 @@ class CalendarPageViewModel {
         print("fetchData.failure: \(error)")
       }
     }
-    
   }
-  
   
   func fetchExistances(date: Date?) {
     

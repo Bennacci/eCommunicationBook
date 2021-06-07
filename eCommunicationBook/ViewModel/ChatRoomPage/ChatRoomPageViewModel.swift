@@ -12,9 +12,9 @@ class ChatRoomPageViewModel {
     
     let chatRoomViewModel = Box([ChatRoomViewModel]())
 
-    var refreshView: (()->())?
+    var refreshView: (() -> Void)?
     
-    var scrollToTop: (()->())?
+    var scrollToTop: (() -> Void)?
     
     func fetchData() {
         

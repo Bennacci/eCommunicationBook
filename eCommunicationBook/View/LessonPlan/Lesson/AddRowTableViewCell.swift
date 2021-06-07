@@ -21,7 +21,7 @@ class AddRowTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-  func prepareForUploadImage(){
+  func prepareForUploadImage() {
     label.text = "Tap to Upload"
   }
 }

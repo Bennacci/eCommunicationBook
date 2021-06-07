@@ -730,7 +730,7 @@ class XXXManager {
       .document(year)
       .collection(month)
       .whereField("studentID", isEqualTo: student[studentIndex].id)
-      .order(by: "time", descending: true)
+      .order(by: "time", descending: false)
       .getDocuments { (querySnapshot, error) in
         
         if let error = error {

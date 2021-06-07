@@ -61,21 +61,21 @@ class SearchUserViewController: UIViewController {
       }
     }
     
-    viewModel.userViewModel.bind { [weak self] users in
+    viewModel.userViewModel.bind { [weak self] _ in
       //            self?.tableView.reloadData()
       self?.viewModel.onRefresh()
     }
-    viewModel.userListViewModel.bind { [weak self] users in
+    viewModel.userListViewModel.bind { [weak self] _ in
       self?.tableView.reloadData()
       
       self?.viewModel.onRefresh()
       self?.calculateViewModleListCout()
     }
-    viewModel.studentViewModel.bind { [weak self] users in
+    viewModel.studentViewModel.bind { [weak self] _ in
       //            self?.tableView.reloadData()
       self?.viewModel.onRefresh()
     }
-    viewModel.studentListViewModel.bind { [weak self] users in
+    viewModel.studentListViewModel.bind { [weak self] _ in
       self?.tableView.reloadData()
       
       self?.viewModel.onRefresh()
@@ -87,8 +87,6 @@ class SearchUserViewController: UIViewController {
   }
   @IBAction func popViewController(_ sender: Any) {
     dismiss(animated: true, completion: nil)
-    
-    
   }
   
   @IBAction func sendAndQuitViewController(_ sender: Any) {
@@ -100,7 +98,6 @@ class SearchUserViewController: UIViewController {
     //    self.onSearchAndSelected()
     
   }
-  
   
   @IBAction func cancelSearching(_ sender: Any) {
     if let viewWithTag = self.view.viewWithTag(100) {
@@ -133,7 +130,6 @@ class SearchUserViewController: UIViewController {
 }
 
 extension SearchUserViewController: UISearchBarDelegate {
-  
   
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     let blackView = UIView()

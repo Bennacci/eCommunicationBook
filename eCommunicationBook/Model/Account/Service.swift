@@ -80,17 +80,17 @@ enum ParentSeviceItem: AccountItem {
       
     case .checkLearingStat: return UIImage.asset(.Performances)
       
-    case .payTimeAnnounce: return UIImage.asset(.Pay)
+    case .payTimeAnnounce: return UIImage(systemName: "alarm")
       
-    case .leaveReservation: return UIImage.asset(.Event)
+    case .leaveReservation: return UIImage(systemName: "calendar.circle")
       
-    case .courseReservation: return UIImage.asset(.Event)
+    case .courseReservation: return UIImage(systemName: "calendar.circle")
       
-    case .makeUpReservation: return UIImage.asset(.Event)
+    case .makeUpReservation: return UIImage(systemName: "calendar.circle")
       
-    case .newAStudent: return UIImage.asset(.Children)
+    case .newAStudent: return UIImage(systemName: "person.crop.circle.badge.plus")
       
-    case .contactUs: return UIImage.asset(.ContactUs)
+    case .contactUs: return UIImage(systemName: "envelope.circle")
     }
   }
   
@@ -99,7 +99,7 @@ enum ParentSeviceItem: AccountItem {
     
     case .signCommunicationBook: return localizedString("Communication Book")
     
-    case .checkStudentTimeInAndOut: return localizedString("Attendance")
+    case .checkStudentTimeInAndOut: return localizedString("Time In / Out")
       
     case .checkLearingStat: return localizedString("Learning Status")
       

@@ -50,7 +50,6 @@ class LessonPerformancesReviewViewController: UIViewControllerWithImagePicker {
     nav.popViewController(animated: true)
   }
   
-  
   func setCollectionViewStack() {
     let verticalSnapCollectionFlowLayout = StackCollectionViewLayout()
     collectionView.collectionViewLayout = verticalSnapCollectionFlowLayout
@@ -156,9 +155,7 @@ extension LessonPerformancesReviewViewController: UITableViewDataSource {
         return cell
       }
     
-    
   }
-
 }
 
 extension LessonPerformancesReviewViewController: UITableViewDelegate {

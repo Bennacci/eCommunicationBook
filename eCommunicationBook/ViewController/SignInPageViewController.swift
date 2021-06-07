@@ -41,7 +41,6 @@ class SignInPageViewController: UIViewController {
     
     setupAppleButton()
     
-    
     viewModel.onGotUserData = {
       
       if let nextVC = UIStoryboard.main.instantiateInitialViewController() {
@@ -82,9 +81,6 @@ class SignInPageViewController: UIViewController {
 
   }
   
-  
-  
-  
   @IBAction func tempSkip(_ sender: Any) {
     
     shiftToViewChoseRole()
@@ -107,7 +103,6 @@ class SignInPageViewController: UIViewController {
     collectionView.clipsToBounds = false
     collectionView.backgroundColor = .clear
   }
-  
   
   func shiftToViewChoseRole() {
     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, animations: {
@@ -230,7 +225,6 @@ extension SignInPageViewController: ASAuthorizationControllerDelegate {
         UserManager.shared.user.userID = user.displayName ?? ""
         
         self.viewModel.signInUser()
-        
         
       }
     }

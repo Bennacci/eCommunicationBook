@@ -51,7 +51,6 @@ class SignInPageViewModel {
     }
   }
   
-  
   func createUser() {
     XXXManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
       

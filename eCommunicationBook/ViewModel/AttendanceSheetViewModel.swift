@@ -81,15 +81,12 @@ class AttendanceSheetViewModel {
         }
         let rateString = "\((rate / Double(rows[index].count - 1) * 100).rounded())%"
         
-        
         for _ in 0 ..< columns.count - rows[index].count - 1 {
           rows[index].append("")
         }
         
         rows[index].append(rateString)
       }
-      
-
       
       self.contentSet?()
     }
@@ -101,7 +98,6 @@ class AttendanceSheetViewModel {
     let courseInfo = name + ":" + count
     fetchAttendace(courseName: courseInfo)
   }
-  
   
   func fetchCourse() {
     XXXManager.shared.fetchCourses { [weak self] result in
@@ -128,7 +124,6 @@ class AttendanceSheetViewModel {
     return viewModels
   }
   
-  
   func setSearchResult(_ courses: [Course]) {
     print(courses)
     //    if let uID = UserManager.shared.userID { 
@@ -138,8 +133,6 @@ class AttendanceSheetViewModel {
     courseViewModel.value = convertCoursesToViewModels(from: courses)
     
   }
-  
-  
   
   func fetchAttendace(courseName: String) {
     
@@ -183,4 +176,3 @@ class AttendanceSheetViewModel {
     studentAttendancesViewModel.value = convertStudentExistancesToViewModels(from: records)
   }
 }
-

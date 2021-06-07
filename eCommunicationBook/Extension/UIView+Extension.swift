@@ -14,16 +14,17 @@ extension UIView {
   // Border Color
   @IBInspectable var bTBorderColor: UIColor? {
     get {
-      
-      guard let borderColor = layer.borderColor else {
-        
+        if let color = layer.borderColor {
+            return UIColor(cgColor: color)
+        }
         return nil
-      }
-      
-      return UIColor(cgColor: borderColor)
     }
     set {
-      layer.borderColor = newValue?.cgColor
+        if let color = newValue {
+            layer.borderColor = color.cgColor
+        } else {
+            layer.borderColor = nil
+        }
     }
   }
   
@@ -46,20 +47,47 @@ extension UIView {
       layer.cornerRadius = newValue
     }
   }
-  @IBInspectable var bTshadowColor: UIColor? {
-    get {
-      return UIColor(cgColor: self.layer.shadowColor!)
-    }
-    set {
-      self.layer.shadowColor = newValue?.cgColor
-    }
+
+  @IBInspectable var bTShadowRadius: CGFloat {
+      get {
+          return layer.shadowRadius
+      }
+      set {
+          layer.shadowRadius = newValue
+      }
   }
-  @IBInspectable var bTshadowOpacity: Float {
+  
+  @IBInspectable var bTShadowOffset: CGSize {
+      get {
+          return layer.shadowOffset
+      }
+      set {
+          layer.shadowOffset = newValue
+      }
+  }
+  
+  @IBInspectable var bTShadowOpacity: Float {
     get {
       return self.layer.shadowOpacity
     }
     set {
       self.layer.shadowOpacity = newValue
+    }
+  }
+  
+  @IBInspectable var bTShadowColor: UIColor? {
+    get {
+        if let color = layer.shadowColor {
+            return UIColor(cgColor: color)
+        }
+        return nil
+    }
+    set {
+        if let color = newValue {
+            layer.shadowColor = color.cgColor
+        } else {
+            layer.shadowColor = nil
+        }
     }
   }
   

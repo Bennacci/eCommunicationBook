@@ -16,7 +16,7 @@ class ConversationViewModel {
   
   let messageViewModel = Box([MessageViewModel]())
   
-  var refreshView: (()->Void)?
+  var refreshView: (() -> Void)?
   
   //  var scrollToTop: (()->())?
   

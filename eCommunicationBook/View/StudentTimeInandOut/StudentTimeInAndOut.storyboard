@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Student Time In And Out View Controller-->
+        <!--Time In and Time Out-->
         <scene sceneID="4hc-Uk-uvT">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="DP4-f8-e4E" customClass="StudentTimeInAndOutViewController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="3WS-n8-TJC">
-                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="DP4-f8-e4E" id="rka-Ck-NT4"/>
@@ -28,10 +28,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.4883882705479452" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwx-l4-jGa">
-                                <rect key="frame" x="115" y="70" width="214" height="48"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwx-l4-jGa">
+                                <rect key="frame" x="115" y="114" width="214" height="48"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time in &amp; Time out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYa-w8-Hu9">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time in &amp; Time out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYa-w8-Hu9">
                                         <rect key="frame" x="18" y="10.5" width="178" height="27"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,8 +57,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXZ-FO-KcI">
-                                <rect key="frame" x="20" y="70" width="48" height="48"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXZ-FO-KcI">
+                                <rect key="frame" x="20" y="114" width="48" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUu-I2-FVg">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -105,15 +105,15 @@
                                 <rect key="frame" x="0.0" y="856" width="414" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZX-nf-H83">
-                                        <rect key="frame" x="24" y="139" width="366" height="86"/>
+                                        <rect key="frame" x="24" y="139" width="366" height="126"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1ia-xU-02E">
-                                                <rect key="frame" x="16" y="8" width="334" height="70"/>
+                                                <rect key="frame" x="16" y="8" width="334" height="110"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="Eiy-mx-Cdr"/>
+                                                    <constraint firstAttribute="height" constant="110" id="Eiy-mx-Cdr"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lyO-f2-2ZC">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lyO-f2-2ZC">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -230,7 +230,6 @@
                             <constraint firstItem="wfr-M6-72Q" firstAttribute="leading" secondItem="Fxb-98-ZcN" secondAttribute="leading" id="Cne-dA-L1G"/>
                             <constraint firstItem="YXZ-FO-KcI" firstAttribute="centerY" secondItem="Qwx-l4-jGa" secondAttribute="centerY" id="FDd-zl-5Ss"/>
                             <constraint firstItem="xDG-SX-59X" firstAttribute="leading" secondItem="Fxb-98-ZcN" secondAttribute="leading" id="Ipp-4b-r9d"/>
-                            <constraint firstItem="3WS-n8-TJC" firstAttribute="top" secondItem="Qwx-l4-jGa" secondAttribute="bottom" constant="20" id="R92-2S-cce"/>
                             <constraint firstItem="3WS-n8-TJC" firstAttribute="trailing" secondItem="Fxb-98-ZcN" secondAttribute="trailing" id="S2L-fj-P4d"/>
                             <constraint firstAttribute="bottom" secondItem="3WS-n8-TJC" secondAttribute="bottom" id="Ts6-Ky-Pi9"/>
                             <constraint firstItem="xDG-SX-59X" firstAttribute="top" secondItem="HZf-Hg-FVG" secondAttribute="top" id="Twq-aB-avz"/>
@@ -239,6 +238,7 @@
                             <constraint firstItem="Qwx-l4-jGa" firstAttribute="top" secondItem="Fxb-98-ZcN" secondAttribute="top" constant="26" id="cWJ-Gs-k9O"/>
                             <constraint firstItem="YXZ-FO-KcI" firstAttribute="leading" secondItem="Fxb-98-ZcN" secondAttribute="leading" constant="20" id="nBW-7S-CSs"/>
                             <constraint firstItem="Bp4-rV-TBP" firstAttribute="centerX" secondItem="wfr-M6-72Q" secondAttribute="centerX" id="nDg-w4-bWY"/>
+                            <constraint firstItem="3WS-n8-TJC" firstAttribute="top" secondItem="Fxb-98-ZcN" secondAttribute="top" id="poE-Fw-bNd"/>
                             <constraint firstItem="3WS-n8-TJC" firstAttribute="leading" secondItem="Fxb-98-ZcN" secondAttribute="leading" id="r2l-35-1Er"/>
                             <constraint firstItem="Fxb-98-ZcN" firstAttribute="trailing" secondItem="wfr-M6-72Q" secondAttribute="trailing" id="rKb-Tm-kdL"/>
                             <constraint firstItem="YXZ-FO-KcI" firstAttribute="height" secondItem="Qwx-l4-jGa" secondAttribute="height" id="wT4-G7-KdN"/>
@@ -246,6 +246,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fxb-98-ZcN"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Time In and Time Out" id="nQW-3g-Yll"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="blackView" destination="xDG-SX-59X" id="GUh-pY-jNe"/>
                         <outlet property="buttonExpand" destination="pQS-1G-JD9" id="Qn3-Yy-Euw"/>

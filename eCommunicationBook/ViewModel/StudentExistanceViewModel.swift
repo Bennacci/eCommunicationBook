@@ -12,7 +12,7 @@ class StudentExistanceViewModel {
 
 var studentExistance: StudentExistance
 
-//var onDead: (() -> Void)?
+// var onDead: (() -> Void)?
 
 init(model studentExistance: StudentExistance) {
   self.studentExistance = studentExistance
@@ -64,5 +64,3 @@ var id: String {
     }
   }
 }
-
-

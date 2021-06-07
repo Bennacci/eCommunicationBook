@@ -10,7 +10,7 @@ import Foundation
 
 class CourseViewModel {
   var course: Course
-  init(model course: Course){
+  init(model course: Course) {
     self.course = course
   }
   
@@ -61,5 +61,10 @@ class CourseViewModel {
     }
   }
   
+  var image: String? {
+    get {
+      return course.image
+    }
+  }
   
 }

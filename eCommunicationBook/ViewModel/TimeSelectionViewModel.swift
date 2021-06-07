@@ -12,7 +12,6 @@ protocol TimeSelectionDelegate {
   func didSelectTime(for thing: String)
 }
 
-
 class TimeSelectionViewModel {
   
   //  var dayCount: Int = 1
@@ -21,8 +20,6 @@ class TimeSelectionViewModel {
   var inputTexts: [[String]] = [["Day", "Starting Time", "Time Interval", "Delete"]]
   
   var inputTextsForEvent = ["Starting Time", "Time Interval"]
-  
-  
   
   var delegate: TimeSelectionDelegate?
   
@@ -121,9 +118,6 @@ class TimeSelectionViewModel {
     }
     self.onDataUpdated?()
   }
-  
-  
-  
   
   var onAdded: (() -> Void)?
   

@@ -18,11 +18,11 @@ class SearchUserPageViewModel {
   
   let studentListViewModel =  Box([StudentViewModel]())
     
-  var refreshView: (()->())?
+  var refreshView: (() -> Void)?
   
-  var scrollToTop: (()->())?
+  var scrollToTop: (() -> Void)?
   
-  var tapUser: (()->())?
+  var tapUser: (() -> Void)?
   
   var forStudent = false
   

@@ -28,6 +28,8 @@ class StudentTimeInAndOutViewModel {
   
   let group: DispatchGroup = DispatchGroup()
   
+
+  
   func refreshCellDateDic() {
     
     cellDateDic.removeAll()
@@ -72,7 +74,10 @@ class StudentTimeInAndOutViewModel {
     group.enter()
     queue1.async(group: group) {
       
-      XXXManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent, date: self.selectedDate, timeIn: true) { [weak self] result in
+      XXXManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent,
+                                               date: self.selectedDate,
+                                               timeIn: true)
+      { [weak self] result in
         switch result {
           
         case .success(let studentExistances):
@@ -93,7 +98,10 @@ class StudentTimeInAndOutViewModel {
     
     queue2.async(group: group) {
       
-      XXXManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent, date: self.selectedDate, timeIn: false) { [weak self] result in
+      XXXManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent,
+                                               date: self.selectedDate,
+                                               timeIn: false)
+      { [weak self] result in
         
         switch result {
           
@@ -132,7 +140,6 @@ class StudentTimeInAndOutViewModel {
 //
 //  }
   
-  
   func convertStudentExistancesToViewModels(from records: [StudentExistance]) -> [StudentExistanceViewModel] {
     var viewModels = [StudentExistanceViewModel]()
     for record in records {
@@ -148,5 +155,18 @@ class StudentTimeInAndOutViewModel {
     } else {
       studentTimeOutViemModel.value = convertStudentExistancesToViewModels(from: records)
     }
+  }
+  
+  func convertStudentToViewModels(from records: [Student]) -> [StudentViewModel] {
+    var viewModels = [StudentViewModel]()
+    for record in records {
+      let viewModel = StudentViewModel(model: record)
+      viewModels.append(viewModel)
+    }
+    return viewModels
+  }
+  func setStudentViewModel() {
+    guard let students = UserManager.shared.students else { return }
+      studentViewModel.value = convertStudentToViewModels(from: students)
   }
 }

@@ -46,7 +46,8 @@ class AccountPageViewController: UIViewControllerWithImagePicker {
   }
   
   func loadIconImage() {
-    imageViewAccountIcon.loadImage(UserManager.shared.user.image, placeHolder: UIImage(systemName: "person.crop.circle"))
+    imageViewAccountIcon.loadImage(UserManager.shared.user.image,
+                                   placeHolder: UIImage(systemName: "person.crop.circle"))
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +59,8 @@ class AccountPageViewController: UIViewControllerWithImagePicker {
       let accountEditContentViewController = segue.destination as? AccountEditContentViewController {
       accountEditContentViewController.delegate = self
       if let indexPath = sender as? IndexPath {
-        accountEditContentViewController.viewModel.editContentPageTitle = viewModel.accountPageItem()[indexPath.section][indexPath.row]
+        accountEditContentViewController.viewModel.editContentPageTitle =
+          viewModel.accountPageItem()[indexPath.section][indexPath.row]
         accountEditContentViewController.viewModel.textFieldTag = indexPath.section * 10 + indexPath.row
       }
     }
@@ -96,7 +98,7 @@ extension AccountPageViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView()
-    headerView.backgroundColor = .lightGray
+    headerView.backgroundColor = .systemGray6
     return headerView
   }
   
@@ -141,8 +143,6 @@ extension AccountPageViewController: UITableViewDelegate {
   }
 }
 
-
-
 extension AccountPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   func imagePickerController(_ picker: UIImagePickerController,
@@ -153,4 +153,3 @@ extension AccountPageViewController: UIImagePickerControllerDelegate, UINavigati
     dismiss(animated: true, completion: nil)
   }
 }
-

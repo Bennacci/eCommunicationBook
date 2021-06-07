@@ -13,8 +13,6 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   
-  
-  
   var viewModel = LessonPlanViewModel()
   
   var hotCellHeight: CGFloat = UIScreen.height / 5
@@ -87,7 +85,8 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
       }
     } else if segue.identifier == "lessonPerformancesReview",
       let lessonPerformancesReviewViewController = segue.destination as? LessonPerformancesReviewViewController {
-      lessonPerformancesReviewViewController.viewModel.courseName = self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.name
+      lessonPerformancesReviewViewController.viewModel.courseName =
+        self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.name
       if let button = sender as? UIButton {
         lessonPerformancesReviewViewController.viewModel.courseLesson =
           self.viewModel.lessonViewModel.value[button.tag].lesson.number
@@ -95,7 +94,6 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
     }
   }
 }
-
 
 extension LessonPlanViewController: UITableViewDataSource {
   
@@ -238,10 +236,7 @@ extension LessonPlanViewController: UITableViewDelegate {
 extension LessonPlanViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    
     return viewModel.lessonViewModel.value.count
-    
-    
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -256,7 +251,8 @@ extension LessonPlanViewController: UICollectionViewDataSource {
     cell.buttonScan.addTarget(self, action: #selector(directToScanQR(sender:)), for: .touchUpInside)
     cell.buttonScan.tag = indexPath.item
     cell.buttonInspect.tag = indexPath.item
-    cell.buttonInspect.addTarget(self, action: #selector(directToLessonPerformancesReview(sender:)), for: .touchUpInside)
+    cell.buttonInspect.addTarget(self, action: #selector(directToLessonPerformancesReview(sender:)),
+                                 for: .touchUpInside)
     cell.setUp(viewModel: self.viewModel.lessonViewModel.value[indexPath.item])
     
     return cell
@@ -290,12 +286,10 @@ extension LessonPlanViewController: UICollectionViewDataSource {
   }
 }
 
-
 extension LessonPlanViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
   }
 }
-
 
 extension LessonPlanViewController: UICollectionViewDelegateFlowLayout {
   

@@ -14,7 +14,7 @@ class ScanStudentQRCodeViewModel {
   
   var lessonList = [String]()
   
-  var lessonListChanged: (()->Void)?
+  var lessonListChanged: (() -> Void)?
   
   var timeIn: Bool = true {
     didSet {
@@ -39,8 +39,7 @@ class ScanStudentQRCodeViewModel {
       LKProgressHUD.showFailure(text: "Please select course name and lesson")
       return
     }
-    
-    
+
     let lines = info.components(separatedBy: ":")
     
 //    let qrCodeInfo = info.split(whereSeparator: \.isNewline)
@@ -65,7 +64,8 @@ class ScanStudentQRCodeViewModel {
   }
   
   func onCourseNameChanged(index: Int) {
-    studentExistance.courseName = courseViewModel.value[index].name + ":" + "\(courseViewModel.value[index].lessonsAmount)"
+    studentExistance.courseName =
+      courseViewModel.value[index].name + ":" + "\(courseViewModel.value[index].lessonsAmount)"
     setLessonList(index: index)
   }
   
@@ -82,7 +82,6 @@ class ScanStudentQRCodeViewModel {
   func onCourseLessonChanged(index: Int) {
     studentExistance.courseLesson = index + 1
   }
-  
   
   func onCurrentLocationChanged(latitude: Double, longitude: Double) {
     studentExistance.latitude = latitude
@@ -170,7 +169,6 @@ class ScanStudentQRCodeViewModel {
     }
   }
   
-    
   func fetchCourse() {
     XXXManager.shared.fetchCourses { [weak self] result in
       
@@ -196,12 +194,9 @@ class ScanStudentQRCodeViewModel {
       return viewModels
     }
     
-    
     func setSearchResult(_ courses: [Course]) {
       print(courses)
 
       courseViewModel.value = convertCoursesToViewModels(from: courses)
-
     }
-    
 }

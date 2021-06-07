@@ -118,7 +118,8 @@ extension AccountEditContentViewController: UITextFieldDelegate {
       textField.textColor = .black
     }
   }
-  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+                 replacementString string: String) -> Bool {
     if textField.tag == 0 {
       guard let textFieldText = textField.text,
         let rangeOfTextToReplace = Range(range, in: textFieldText) else {
@@ -140,4 +141,3 @@ extension AccountEditContentViewController: UITextFieldDelegate {
     }
   }
 }
-

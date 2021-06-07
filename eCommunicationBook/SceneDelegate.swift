@@ -59,17 +59,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let firebaseAuth = Auth.auth()
     
     do {
+      
       try firebaseAuth.signOut()
+      
     } catch let signOutError as NSError {
-      print ("Error signing out: %@", signOutError)
+      
+      print("Error signing out: %@", signOutError)
     }
     
     var storyBoard: UIStoryboard?
     
-    if let user = firebaseAuth.currentUser {
+    if firebaseAuth.currentUser != nil {
           
       storyBoard = .main
-      
       
     } else {
       

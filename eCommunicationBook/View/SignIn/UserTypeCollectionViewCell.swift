@@ -124,7 +124,6 @@ extension UserTypeCollectionViewCell: TransformableView {
 //    quantityControllerContainer.isHidden = !(-0.5 < progress && progress < 0.5)
   }
   
-  
   // MARK: Private functions
   
   private func transformPriceTagView(progress: CGFloat) {

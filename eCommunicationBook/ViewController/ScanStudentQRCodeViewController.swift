@@ -47,7 +47,6 @@ class ScanStudentQRCodeViewController: UIViewController {
 
     self.navigationController?.setNavigationBarHidden(true, animated: true)
 
-
   viewModel.wroteInSuccess = {
       LKProgressHUD.showSuccess(text: "Time In Success")
       
@@ -138,7 +137,6 @@ class ScanStudentQRCodeViewController: UIViewController {
     midSquareleLayer.borderWidth = 1
     maskLayer.addSublayer(midSquareleLayer)
     
-    
     let squareInLinePath = UIBezierPath(roundedRect:
       CGRect(x: (distanceToEdge + 3) / 2,
              y: (UIScreen.height - 200 - (UIScreen.width - (distanceToEdge + 3))) / 2,
@@ -152,7 +150,6 @@ class ScanStudentQRCodeViewController: UIViewController {
     shapeLayer.fillColor = UIColor.clear.cgColor
     shapeLayer.strokeColor = UIColor.gray.cgColor
     shapeLayer.lineWidth = 4.0
-    
     
     let mask = CAShapeLayer()
     let path = UIBezierPath()
@@ -260,8 +257,6 @@ class ScanStudentQRCodeViewController: UIViewController {
     dropDown.collapsingDuration = 0.5
   }
   
-  
-  
   func startDetectingQRCode() {
     
     labelStudentName.text = "No QR code detected"
@@ -357,7 +352,6 @@ extension ScanStudentQRCodeViewController: AVCaptureMetadataOutputObjectsDelegat
   }
 }
 
-
 extension ScanStudentQRCodeViewController: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -376,7 +370,7 @@ extension ScanStudentQRCodeViewController: CLLocationManagerDelegate {
     
   }
   
-  func geocode(latitude: Double, longitude: Double, completion: @escaping (CLPlacemark?, Error?) -> ())  {
+  func geocode(latitude: Double, longitude: Double, completion: @escaping (CLPlacemark?, Error?) -> ()) {
     CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { completion($0?.first, $1) }
   }
 }

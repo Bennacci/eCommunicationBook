@@ -20,9 +20,9 @@ class BannerTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
   let btnImage = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
   // swiftlint:disable line_length
-  var bannerDatas: [BannerData] = [BannerData(id: 0000, picture: "https://images.unsplash.com/photo-1543519820-59db1a975c8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1367&q=80", story: "Good Morning"),
-                                   BannerData(id: 0001, picture: "https://images.unsplash.com/photo-1620369382852-f43cc7127f29?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80", story: "Good Evening"),
-                                   BannerData(id: 0002, picture: "https://images.unsplash.com/photo-1503442862980-50ccb3f1d085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80", story: "Good Night")]
+  var bannerDatas: [BannerData] = [BannerData(id: 0000, picture: "https://firebasestorage.googleapis.com/v0/b/ecommunicationbook.appspot.com/o/BannerImage%2FmessageImage_1623065314066.jpg?alt=media&token=23179fbe-791c-42ce-a220-453a588a1e3f", story: "2020 Sumer Camp"),
+                                   BannerData(id: 0001, picture: "https://firebasestorage.googleapis.com/v0/b/ecommunicationbook.appspot.com/o/BannerImage%2FmessageImage_1623065406533.jpg?alt=media&token=0584ffcb-39f5-4090-910b-6727f52b2562", story: "Summer camp open for registration"),
+                                   BannerData(id: 0002, picture: "https://firebasestorage.googleapis.com/v0/b/ecommunicationbook.appspot.com/o/BannerImage%2FmessageImage_1623065453171.jpg?alt=media&token=4a5d86ca-2ff1-40e4-aa77-6e4e4fee3d68", story: "2020 Halloween")]
   // swiftlint:enable line_length
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -96,21 +96,21 @@ class BannerView: UIView, UIScrollViewDelegate {
     
     scrollView.showsHorizontalScrollIndicator = false
     
-    scrollView.contentSize = CGSize(width: width * 3, height: 150)
+    scrollView.contentSize = CGSize(width: width * 3, height: 180)
     
     scrollView.contentOffset = CGPoint(x: width, y: 0)
     
     scrollView.isPagingEnabled = true
     
-    scrollView.frame = CGRect(x: 0, y: 0, width: width, height: 150)
+    scrollView.frame = CGRect(x: 0, y: 0, width: width, height: 180)
     
-    rightImageView.frame = CGRect(x: width * 2, y: 0, width: width, height: 150)
+    rightImageView.frame = CGRect(x: width * 2, y: 0, width: width, height: 180)
     setLabel(label: rightLabel, index: 2)
     
-    currentImageView.frame = CGRect(x: width * 1, y: 0, width: width, height: 150)
+    currentImageView.frame = CGRect(x: width * 1, y: 0, width: width, height: 180)
     setLabel(label: currentLabel, index: 1)
     
-    leftImageView.frame = CGRect(x: width * 0, y: 0, width: width, height: 150)
+    leftImageView.frame = CGRect(x: width * 0, y: 0, width: width, height: 180)
     setLabel(label: leftLabel, index: 0)
     
     scrollView.addSubview(rightImageView)
@@ -187,11 +187,11 @@ class BannerView: UIView, UIScrollViewDelegate {
   
   func setLabel(label: UILabel, index: CGFloat) {
     
-    label.frame = CGRect(x: width * index + 21, y: 70, width: width, height: 70)
+    label.frame = CGRect(x: width * index + 21, y: 120, width: width, height: 30)
+        
+    label.font = UIFont.boldSystemFont(ofSize: 22.0)
     
-    label.font = UIFont(name: label.font.fontName, size: 22)
-    
-    label.textColor = UIColor.B1
+    label.textColor = .white
     
     label.textAlignment = .left
     
@@ -202,14 +202,14 @@ class BannerView: UIView, UIScrollViewDelegate {
   
   func setShadowForLabel(label: UILabel) {
     
-    label.layer.shadowColor = UIColor.white.cgColor
+    label.layer.shadowColor = UIColor.black.cgColor
     
-    label.layer.shadowRadius = 5.0
+    label.layer.shadowRadius = 2.0
     
     label.layer.shadowOpacity = 1.0
     
-    label.layer.shadowOffset = CGSize(width: 2, height: 2)
+    label.layer.shadowOffset = CGSize(width: 0, height: 0)
     
-    label.layer.masksToBounds = false
+    label.layer.masksToBounds = true
   }
 }

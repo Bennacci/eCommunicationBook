@@ -36,21 +36,19 @@ class ChatRoomTableViewCell: UITableViewCell {
   }
   
   func layoutCell(index: Int) {
-    var roomName = "chat room"
+    var roomName = "chat"
     if let members = viewModel?.members {
       let membersExceptUser = members.filter({$0 != UserManager.shared.user.id})
       
       
       for member in membersExceptUser {
         
-        
-        
         XXXManager.shared.identifyUser(uid: member) { [weak self] result in
           
           switch result {
             
           case .success(let user):
-            if roomName == "chat room" {
+            if roomName == "chat" {
               roomName = ""
             } else {
               roomName += ", "
@@ -75,14 +73,7 @@ class ChatRoomTableViewCell: UITableViewCell {
     
     
     userID.text = roomName
-    
-    //    if index == 0 {
-    //      userImage.loadImage("https://images.unsplash.com/photo-1621873982312-1f83e89a2f21?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80")
-    //    } else {
-    //      userImage.loadImage("https://images.unsplash.com/photo-1611867967135-0faab97d1530?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2852&q=80")
-    //    }
-    
-    
+
     userImage.contentMode = .scaleAspectFill
     userImage.layoutIfNeeded()
     

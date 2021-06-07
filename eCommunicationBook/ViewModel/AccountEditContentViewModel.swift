@@ -18,7 +18,7 @@ class AccountEditContentViewModel {
   
   var contentLength = ""
   
-  var onContentSaved: (()->Void)?
+  var onContentSaved: (() -> Void)?
   
   func setUpContent() {
     if editContentPageTitle == "Display name" {
@@ -37,7 +37,7 @@ class AccountEditContentViewModel {
     contentLength = "\(info.count)" + "/ 20"
   }
   
-  func ontapSave(){
+  func ontapSave() {
     if editContentPageTitle == "Display name" {
       UserManager.shared.user.name = content
     } else if editContentPageTitle == "Local number" {
@@ -57,7 +57,6 @@ class AccountEditContentViewModel {
         self?.onContentSaved?()
         
       case .failure(let error):
-        
         
         print("fetchData.failure: \(error)")
       }

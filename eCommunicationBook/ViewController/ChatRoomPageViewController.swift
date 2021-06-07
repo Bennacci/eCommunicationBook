@@ -32,7 +32,7 @@ class ChatRoomPageViewController: UIViewController {
       }
     }
     
-    viewModel.chatRoomViewModel.bind { [weak self] chatrooms in
+    viewModel.chatRoomViewModel.bind { [weak self] _ in
       //            self?.tableView.reloadData()
       self?.viewModel.onRefresh()
     }
@@ -41,7 +41,6 @@ class ChatRoomPageViewController: UIViewController {
       
       self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
-    
     
     setupRefresher()
   }
@@ -69,7 +68,8 @@ class ChatRoomPageViewController: UIViewController {
     if segue.identifier == "ConversationPage",
       let conversationViewController = segue.destination as? ConversationViewController {
       if let indexPath = sender as? IndexPath {
-        let otherUser =  viewModel.chatRoomViewModel.value[indexPath.row].members.filter({$0 != UserManager.shared.user.id})
+        let otherUser =
+          viewModel.chatRoomViewModel.value[indexPath.row].members.filter({$0 != UserManager.shared.user.id})
         if otherUser.count > 0 {
           conversationViewController.viewModel.otherUserID = otherUser[0]
         }

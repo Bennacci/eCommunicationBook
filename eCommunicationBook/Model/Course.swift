@@ -18,6 +18,7 @@ struct Course: Codable {
   var fee: Int
   var lessonsAmount: Int
   var lessons: [Lesson]?
+  var image: String?
   
   enum CodingKeys: String, CodingKey {
     case id
@@ -29,6 +30,7 @@ struct Course: Codable {
     case fee
     case lessonsAmount
     case lessons
+    case image
   }
   
   var toDict: [String: Any] {
@@ -41,7 +43,8 @@ struct Course: Codable {
       "courseTime": courseTime.map({$0.toDict}) as Any,
       "fee": fee as Any,
       "lessonsAmount": lessonsAmount as Any,
-      "lessons": lessons as Any
+      "lessons": lessons as Any,
+      "image": image as Any
     ]
   }
 }

@@ -32,14 +32,12 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
       self?.setDropDown()
     }
     
-    
     viewModel.studentAttendancesViewModel.bind { [weak self] _ in
       if self?.viewModel.selectedCourseIndex != nil {
         self?.viewModel.setAttendanceSheetContent()
         //        self?.addgridView()
       }
     }
-    
     
     viewModel.contentSet = {
       DispatchQueue.main.async {
@@ -102,7 +100,6 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
     
     modDropdow(dropDown: dropDownCourse)
   }
-  
   
   func modDropdow(dropDown: SwiftyMenu) {
     // Custom Behavior
@@ -181,7 +178,6 @@ extension AttendanceSheetViewController: SwiftyMenuDelegate {
 //
 //    },completion: nil)
     
-
     print("SwiftyMenu willExpand.")
   }
   
@@ -194,7 +190,6 @@ extension AttendanceSheetViewController: SwiftyMenuDelegate {
 //       UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, animations: {
 //      self.dropDownCourseWidth.constant = 38
 //    },completion: nil)
-
 
   }
   

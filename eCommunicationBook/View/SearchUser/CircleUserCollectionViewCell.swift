@@ -13,6 +13,7 @@ class CircleUserCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var userName: UILabel!
   @IBOutlet weak var userImage: UIImageView!
   @IBOutlet weak var button: UIButton!
+  @IBOutlet weak var buttonChecked: UIButton!
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,6 +29,28 @@ class CircleUserCollectionViewCell: UICollectionViewCell {
   func layoutCell() {
     userName.isUserInteractionEnabled = false
     button.isUserInteractionEnabled = false
+    userName.text = viewModel?.name
+    userImage.layer.cornerRadius = userImage.frame.height / 2
+    layoutIfNeeded()
+  }
+  
+  func setUpStudent(viewModel: SearchUserPageMaterial, checked: Bool) {
+      self.viewModel = viewModel
+    layoutStudentCell(checked: checked)
+  }
+  
+  func layoutStudentCell(checked: Bool) {
+    userName.isUserInteractionEnabled = false
+    buttonChecked.isUserInteractionEnabled = false
+    
+    button.isHidden = true
+
+    if checked == true {
+      buttonChecked.isHidden = false
+    } else {
+      buttonChecked.isHidden = true
+    }
+    
     userName.text = viewModel?.name
     userImage.layer.cornerRadius = userImage.frame.height / 2
     layoutIfNeeded()

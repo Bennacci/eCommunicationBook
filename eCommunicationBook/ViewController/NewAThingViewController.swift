@@ -31,7 +31,7 @@ import UIKit
 //  //      return NewACourseViewModel()
 //  //    }
 //  //  }
-//}
+// }
 
 class NewAThingViewController: UIViewController {
   
@@ -411,7 +411,6 @@ extension NewAThingViewController: PickerDelegate {
     }
   }
 }
-
 
 extension NewAThingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
   

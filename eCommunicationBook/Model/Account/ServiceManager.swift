@@ -90,6 +90,8 @@ class ServiceManager {
            
            ParentSeviceItem.makeUpReservation,
            
+           ParentSeviceItem.payTimeAnnounce,
+           
            ParentSeviceItem.newAStudent,
            
            ParentSeviceItem.contactUs]

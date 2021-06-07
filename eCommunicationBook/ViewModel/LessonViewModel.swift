@@ -51,6 +51,4 @@ class LessonViewModel {
       return lesson.assignments
     }
   }
-  
-  
 }

@@ -60,9 +60,9 @@ class ServiceManager {
            
            TeacherSeviceItem.newEvent,
            
-           TeacherSeviceItem.setASign],
-          
-          [TeacherSeviceItem.newAStudent,
+           TeacherSeviceItem.setASign,
+           
+           TeacherSeviceItem.newAStudent,
            
            TeacherSeviceItem.newAUser]
         ]
@@ -82,17 +82,15 @@ class ServiceManager {
           
           [ParentSeviceItem.signCommunicationBook,
            
-           ParentSeviceItem.checkStudentTimeInAndOut,
-           
-           ParentSeviceItem.checkLearingStat],
+           ParentSeviceItem.checkStudentTimeInAndOut],
           
           [ParentSeviceItem.courseReservation,
            
            ParentSeviceItem.leaveReservation,
            
-           ParentSeviceItem.makeUpReservation],
-          
-          [ParentSeviceItem.newAStudent,
+           ParentSeviceItem.makeUpReservation,
+           
+           ParentSeviceItem.newAStudent,
            
            ParentSeviceItem.contactUs]
         ]

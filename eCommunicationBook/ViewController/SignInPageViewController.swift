@@ -29,6 +29,9 @@ class SignInPageViewController: UIViewController {
   
   @IBOutlet weak var middleConViewChooseRole: NSLayoutConstraint!
   
+  @IBOutlet weak var blackViewPolicyBackground: UIView!
+  
+  @IBOutlet weak var textViewCenterY: NSLayoutConstraint!
   
   override func viewDidLoad() {
     
@@ -60,6 +63,27 @@ class SignInPageViewController: UIViewController {
       LKProgressHUD.showFailure(text: "An error occurred")
     }
   }
+  @IBAction func showPolicy(_ sender: Any) {
+    self.blackViewPolicyBackground.isHidden = false
+    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
+      self.blackViewPolicyBackground.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+      self.textViewCenterY.constant = 0
+    }, completion: nil)
+
+  }
+  
+  @IBAction func closePolicy(_ sender: Any) {
+    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
+      self.blackViewPolicyBackground.backgroundColor = UIColor.gray.withAlphaComponent(0.0)
+      self.textViewCenterY.constant = 950
+    }, completion: { (_) -> Void in
+      self.blackViewPolicyBackground.isHidden = true
+    })
+
+  }
+  
+  
+  
   
   @IBAction func tempSkip(_ sender: Any) {
     
@@ -101,7 +125,7 @@ class SignInPageViewController: UIViewController {
     appleButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     appleButton.widthAnchor.constraint(equalToConstant: 235).isActive = true
     appleButton.centerXAnchor.constraint(equalTo: viewAppleSignIn.centerXAnchor).isActive = true
-    appleButton.bottomAnchor.constraint(equalTo: viewAppleSignIn.bottomAnchor, constant: -70).isActive = true
+    appleButton.bottomAnchor.constraint(equalTo: viewAppleSignIn.bottomAnchor, constant: -120).isActive = true
     appleButton.layoutIfNeeded()
   }
   

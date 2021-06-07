@@ -10,9 +10,13 @@ import Foundation
 
 class ConversationViewModel {
   
+  var otherUserID = ""
+  
+  var user: User?
+  
   let messageViewModel = Box([MessageViewModel]())
   
-  var refreshView: (()->())?
+  var refreshView: (()->Void)?
   
   //  var scrollToTop: (()->())?
   
@@ -43,6 +47,24 @@ class ConversationViewModel {
         print("fetchData.failure: \(error)")
       }
     }
+    
+  }
+  
+  func fetchUserData() {
+    if otherUserID != "" {
+      XXXManager.shared.identifyUser(uid: otherUserID) { [weak self] result in
+        
+        switch result {
+          
+        case .success(let user):
+          self?.user = user
+          self?.onRefresh()
+        case .failure(let error):
+          
+          print("fetchData.failure: \(error)")
+        }
+      }
+    }
   }
   
   func onContentChanged(text content: String) {
@@ -50,10 +72,10 @@ class ConversationViewModel {
   }
   
   var onPublished: (()->())?
-
+  
   
   func onTapSend() {
-
+    
     if hasIDInMessage() {
       print("has sender in message...")
       if hasContent() {
@@ -110,7 +132,7 @@ class ConversationViewModel {
   }
   func hasIDInMessage() -> Bool {
     return true
-//    return message.senderID != nil
+    //    return message.senderID != nil
   }
   
   

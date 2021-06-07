@@ -62,7 +62,6 @@
 		7456DC6B2650A1D800535297 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7456DC6A2650A1D800535297 /* MessageViewModel.swift */; };
 		7460807E2667E49C005FC35C /* StudentTimeInAndOut.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7460807D2667E49C005FC35C /* StudentTimeInAndOut.storyboard */; };
 		746080802667EFE1005FC35C /* StudentTimeInAndOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7460807F2667EFE1005FC35C /* StudentTimeInAndOutViewController.swift */; };
-		746080822667F136005FC35C /* studentExistanceViewModelFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746080812667F136005FC35C /* studentExistanceViewModelFile.swift */; };
 		746080842667F304005FC35C /* StudentTimeInAndOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746080832667F304005FC35C /* StudentTimeInAndOutViewModel.swift */; };
 		74622E142664C9E70012D60D /* StudentExistancesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74622E122664C9E70012D60D /* StudentExistancesTableViewCell.swift */; };
 		74622E152664C9E70012D60D /* StudentExistancesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74622E132664C9E70012D60D /* StudentExistancesTableViewCell.xib */; };
@@ -249,7 +248,6 @@
 		7456DC6A2650A1D800535297 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		7460807D2667E49C005FC35C /* StudentTimeInAndOut.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudentTimeInAndOut.storyboard; sourceTree = "<group>"; };
 		7460807F2667EFE1005FC35C /* StudentTimeInAndOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTimeInAndOutViewController.swift; sourceTree = "<group>"; };
-		746080812667F136005FC35C /* studentExistanceViewModelFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = studentExistanceViewModelFile.swift; sourceTree = "<group>"; };
 		746080832667F304005FC35C /* StudentTimeInAndOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTimeInAndOutViewModel.swift; sourceTree = "<group>"; };
 		74622E122664C9E70012D60D /* StudentExistancesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentExistancesTableViewCell.swift; sourceTree = "<group>"; };
 		74622E132664C9E70012D60D /* StudentExistancesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentExistancesTableViewCell.xib; sourceTree = "<group>"; };
@@ -479,7 +477,6 @@
 				74CADD9A26568BAF004DA6D0 /* NewAThingViewModel.swift */,
 				74D4BB702659E55400999556 /* TimeSelectionViewModel.swift */,
 				74715CC6265B698600570A23 /* CalendarPageViewModel.swift */,
-				746080812667F136005FC35C /* studentExistanceViewModelFile.swift */,
 				74715CC8265B6C5F00570A23 /* EventViewModel.swift */,
 				74715CCA265B6D6100570A23 /* StudentPerformanceViewModel.swift */,
 				7435E87B265E4A7500941729 /* LessonPlanViewModel.swift */,
@@ -1121,7 +1118,6 @@
 				74CADD9B26568BAF004DA6D0 /* NewAThingViewModel.swift in Sources */,
 				74E94735264BE09500AFB046 /* UserManager.swift in Sources */,
 				746080842667F304005FC35C /* StudentTimeInAndOutViewModel.swift in Sources */,
-				746080822667F136005FC35C /* studentExistanceViewModelFile.swift in Sources */,
 				74F2DE72265FD87A00F6F0AB /* UIAlertAction+Extension.swift in Sources */,
 				740E1C69266C9AC500491281 /* AccountEditContentViewModel.swift in Sources */,
 				74E9475D264C087D00AFB046 /* UITableView+Extension.swift in Sources */,

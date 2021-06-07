@@ -42,9 +42,12 @@ class ChatRoomPageViewController: UIViewController {
       self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
-    viewModel.fetchData()
     
     setupRefresher()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchData()
   }
   
   func setupRefresher() {
@@ -55,28 +58,23 @@ class ChatRoomPageViewController: UIViewController {
       self?.tableView.refresh.header.endRefreshing()
     }
   }
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   if segue.identifier == "navigateToPublish",
-   let publishViewController = segue.destination as? PublishViewController {
-   
-   publishViewController.delegate = self
-   
-   }
-   }
-   */
-  @IBAction func searchUser(_ sender: Any) {
-    if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
-//             nextVC.modalPresentationStyle = .fullScreen
-//       //      show(nextVC, sender: nil)
-//             present(nextVC, animated: false, completion: nil)
-             self.navigationController?.show(nextVC, sender: nil)
-    } else { return }
+
+  @IBAction func addButton(_ sender: Any) {
+      if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
+               self.navigationController?.show(nextVC, sender: nil)
+      } else { return }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "ConversationPage",
+      let conversationViewController = segue.destination as? ConversationViewController {
+      if let indexPath = sender as? IndexPath {
+        let otherUser =  viewModel.chatRoomViewModel.value[indexPath.row].members.filter({$0 != UserManager.shared.user.id})
+        if otherUser.count > 0 {
+          conversationViewController.viewModel.otherUserID = otherUser[0]
+        }
+      }
+    }
   }
 }
 
@@ -108,7 +106,7 @@ extension ChatRoomPageViewController: UITableViewDataSource {
 extension ChatRoomPageViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    performSegue(withIdentifier: "ConversationPage", sender: nil)
+    performSegue(withIdentifier: "ConversationPage", sender: indexPath)
     viewModel.onTap(withIndex: indexPath.row)
   }
 }

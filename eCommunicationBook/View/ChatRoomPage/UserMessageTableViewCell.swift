@@ -11,6 +11,7 @@ import UIKit
 class UserMessageTableViewCell: UITableViewCell {
 
   @IBOutlet weak var messageContent: UILabel!
+  @IBOutlet weak var labelMessageTime: UILabel!
   
   override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,7 +24,6 @@ class UserMessageTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-  
   var viewModel: MessageViewModel?
   
   func setup(viewModel: MessageViewModel) {
@@ -33,5 +33,8 @@ class UserMessageTableViewCell: UITableViewCell {
   
   func layoutCell() {
     messageContent.text = viewModel?.content
+    if let time = viewModel?.createdTime {
+      labelMessageTime.text = Date(milliseconds: time).convertToString(dateformat: .dateWithTimeWithOutYear)
+    }
   }
 }

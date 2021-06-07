@@ -41,20 +41,5 @@ class ChatRoomViewModel {
   func onTap() {
     
     XXXManager.shared.conversationID = chatRoom.id
-//    conversationViewModel.setConversations(chatRoom.messages!)
-//      XXXManager.shared.deleteArticle(article: chatRoom) { [weak self] result in
-//
-//          switch result {
-//
-//          case .success(let articleId):
-//
-//              print(articleId)
-//              self?.onDead?()
-//
-//          case .failure(let error):
-//
-//              print("publishArticle.failure: \(error)")
-//          }
-//      }
   }
 }

@@ -36,9 +36,9 @@ class MessageViewModel {
       }
   }
   
-  var createdTime: String {
+  var createdTime: Double {
       get {
-        return Date.dateFormatter.string(from: Date.init(milliseconds: Double(message.createdTime)))
+        return message.createdTime
       }
   }
   

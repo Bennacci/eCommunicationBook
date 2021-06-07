@@ -71,7 +71,7 @@ extension HomePageViewController: UITableViewDataSource {
                  
                  numberOfRowsInSection section: Int) -> Int {
     
-    let sectionThreeRowCount = viewModel.servicesData().items[1].count + viewModel.servicesData().items[2].count
+    let sectionThreeRowCount = viewModel.servicesData().items[1].count
     
     return [1, 1, sectionThreeRowCount, 5][section]
   }
@@ -103,9 +103,12 @@ extension HomePageViewController: UITableViewDataSource {
 //      if indexPath == [1, 0] {
         
         hotCell = cell
-        
+      if UserManager.shared.user.userType == "teacher" {
         cell.height.constant = hotCellHeight
-        
+      } else {
+        cell.height.constant = hotCellHeight / 2
+
+      }
 //      }
 //      else {
 //
@@ -201,7 +204,9 @@ extension HomePageViewController: UICollectionViewDataSource {
                                                         for: indexPath) as? ServiceCollectionViewCell
       else { fatalError("Unexpected Table View Cell") }
     if collectionView == hotCell.collectionView {
+      
       cell.height.constant = hotCell.bounds.size.height
+      
       cell.setUp(viewModel: viewModel.servicesData(), indexPath: indexPath, hot: true)
 
     } else {
@@ -278,10 +283,17 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
     let size: CGSize
     if collectionView == hotCell.collectionView {
-      size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
+      if UserManager.shared.user.userType == "teacher" {
+        size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
                                               sectionInsets: collectionViewSectionInsets,
                                               itemsPerRow: 2,
                                               itemsPerColumn: 2)
+      } else {
+        size = collectionView.calculateCellsize(viewHeight: hotCellHeight / 2,
+                                                sectionInsets: collectionViewSectionInsets,
+                                                itemsPerRow: 2,
+                                                itemsPerColumn: 1)
+      }
     } else {
       size = collectionView.calculateCellsize(viewHeight: recommendedCellHeight,
                                               sectionInsets: collectionViewSectionInsets,

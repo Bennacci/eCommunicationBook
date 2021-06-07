@@ -20,6 +20,8 @@ class ConversationViewController: UIViewController {
   
   @IBOutlet weak var messageContentTextView: UITextView!
   
+  @IBOutlet weak var navigationTitle: UILabel!
+  
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -39,9 +41,11 @@ class ConversationViewController: UIViewController {
     viewModel.refreshView = { [weak self] () in
       DispatchQueue.main.async {
         self?.conversationTableView.reloadData()
+        
+        self?.navigationTitle.text = self?.viewModel.user?.name
       }
     }
-    viewModel.messageViewModel.bind { [weak self] messages in
+    viewModel.messageViewModel.bind { [weak self] _ in
       //            self?.tableView.reloadData()
       self?.viewModel.onRefresh()
     }
@@ -51,6 +55,11 @@ class ConversationViewController: UIViewController {
     viewModel.onTapSend()
     messageContentTextView.text = nil
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    viewModel.fetchUserData()
+  }
+  
 }
 
 
@@ -94,8 +103,11 @@ extension ConversationViewController: UITableViewDataSource {
       
       let cellViewModel = self.viewModel.messageViewModel.value[indexPath.row]
       
-      partnerMessageCell.setup(viewModel: cellViewModel)
       partnerMessageCell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+      
+      if let user = viewModel.user {
+        partnerMessageCell.setup(viewModel: cellViewModel, user: user)
+      }
       return partnerMessageCell
     }
   }

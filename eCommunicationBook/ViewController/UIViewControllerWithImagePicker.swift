@@ -26,11 +26,11 @@ class UIViewControllerWithImagePicker: UIViewController {
     let libraryAction = UIAlertAction(title: "Pick from Album", style: .default) { _ in
       self.openAlbum()
     }
-    let cancleAction = UIAlertAction(title: "Cancle", style: .cancel)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
     
     controller.addAction(cameraAction)
     controller.addAction(libraryAction)
-    controller.addAction(cancleAction)
+    controller.addAction(cancelAction)
     
     present(controller, animated: true)
   }

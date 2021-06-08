@@ -13,19 +13,7 @@ enum ImageAsset: String {
     // Profile tab - Tab
     
     // swiftlint:disable identifier_name
-    case Bear
-    case Children
-    case CommunicationBook
-    case ContactUs
-    case CreateCourse
-    case Event
-    case LessonPlan
-    case Location
-    case Performances
-    case ScanQRCode
-    case Sign
-    case Users
-    case Pay
+
   
     case Icons_36px_Home_Normal
     case Icons_36px_Home_Selected
@@ -54,20 +42,20 @@ enum ImageAsset: String {
     case Icons_24px_RegisterCellphone
     case Icons_24px_Settings
 
-    //Product page
+    // Product page
     case Icons_24px_CollectionView
     case Icons_24px_ListView
 
-    //Product size and color picker
+    // Product size and color picker
     case Image_StrikeThrough
 
-    //PlaceHolder
+    // PlaceHolder
     case Image_Placeholder
 
-    //Back button
+    // Back button
     case Icons_24px_Back02
     
-    //Drop down
+    // Drop down
     case Icons_24px_DropDown
 }
 

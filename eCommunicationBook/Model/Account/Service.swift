@@ -78,7 +78,7 @@ enum ParentSeviceItem: AccountItem {
       
     case .checkStudentTimeInAndOut: return UIImage(systemName: "person.crop.square")
       
-    case .checkLearingStat: return UIImage.asset(.Performances)
+    case .checkLearingStat: return UIImage(systemName: "doc.append")
       
     case .payTimeAnnounce: return UIImage(systemName: "alarm")
       

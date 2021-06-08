@@ -58,13 +58,16 @@ class AttendanceSheetViewModel {
           guard let studentRowIndex = nameIndexDic[name] else {return}
           
           guard let time = courseViewModel.value[selectedCourseIndex].lessons?[lessonIndex - 1].time else { return }
-          
+          guard let timeInterval = courseViewModel.value[selectedCourseIndex].lessons?[lessonIndex - 1].timeInterval else { return }
+
             rows[studentRowIndex].append("❌")
           
           if studentAttendancesViewModel.value[lessonIndex][studentIndex].time < time {
           
             rows[studentRowIndex][lessonIndex] = "✅"
-          } else {
+            
+          } else if studentAttendancesViewModel.value[lessonIndex][studentIndex].time > time {
+            
             rows[studentRowIndex][lessonIndex] = "☑️"
           }
         }

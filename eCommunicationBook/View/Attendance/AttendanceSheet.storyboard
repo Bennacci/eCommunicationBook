@@ -27,14 +27,14 @@
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJO-dL-6Fa">
                                 <rect key="frame" x="0.0" y="115" width="414" height="781"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HzJ-0s-ZG9" customClass="SwiftyMenu" customModule="SwiftyMenu">
-                                <rect key="frame" x="248" y="60" width="150" height="38"/>
+                                <rect key="frame" x="278" y="60" width="120" height="38"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="3XR-0Y-2Ef"/>
+                                    <constraint firstAttribute="width" constant="120" id="3XR-0Y-2Ef"/>
                                     <constraint firstAttribute="height" constant="38" id="NVC-7D-RXZ"/>
                                 </constraints>
                                 <connections>

@@ -40,14 +40,14 @@ class LessonCollectionViewCell: UICollectionViewCell {
     }
     
     if let time = viewModel?.time,
-      time + CalendarHelper.shared.secondsPerDay / 2 >= Date().millisecondsSince1970 &&
-      time - CalendarHelper.shared.secondsPerDay / 2 <= Date().millisecondsSince1970 {
+      time + CalendarHelper.shared.secondsPerDay / 2 * 1000 >= Date().millisecondsSince1970 &&
+      time - CalendarHelper.shared.secondsPerDay / 2 * 1000 <= Date().millisecondsSince1970 {
       buttonScan.isHidden = false
     } else {
       buttonScan.isHidden = true
     }
     
-    if let time = viewModel?.time, time + CalendarHelper.shared.secondsPerDay * 3 <= Date().millisecondsSince1970 {
+    if let time = viewModel?.time, time + CalendarHelper.shared.secondsPerDay * 3 * 1000 <= Date().millisecondsSince1970 {
       buttonEdit.isHidden = true
       buttonInspect.isHidden = false
     } else {

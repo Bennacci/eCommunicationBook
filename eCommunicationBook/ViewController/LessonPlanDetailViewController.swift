@@ -106,10 +106,10 @@ class LessonPlanDetailViewController: UIViewController {
     let saveAction = UIAlertAction(title: "Save Draft",
                                    style: .default) {_ in self.viewModel.onSave(); self.popViewController()}
     controller.addAction(saveAction)
-    let cancleAction = UIAlertAction(title: "Cancle",
+    let cancelAction = UIAlertAction(title: "Cancel",
                                      style: .destructive,
                                      handler: nil)
-    controller.addAction(cancleAction)
+    controller.addAction(cancelAction)
     present(controller, animated: true, completion: nil)
   }
   

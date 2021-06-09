@@ -2,22 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>We need to access your camera for uploading images</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need to access your photo library for uploading images</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need to access your photo library for uploading images</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need to access your location for publishing student&apos;s attendance</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need to access your location for publishing student&apos;s attendance</string>
-	<key>NSLocationUsageDescription</key>
-	<string>We need to access your location for publishing student&apos;s attendance</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need to access your location for publishing student&apos;s attendance</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>.light</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -36,6 +20,20 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>We need to access your camera for uploading images</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need to access your location for publishing student's attendance</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need to access your location for publishing student's attendance</string>
+	<key>NSLocationUsageDescription</key>
+	<string>We need to access your location for publishing student's attendance</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to access your location for publishing student's attendance</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need to access your photo library for uploading images</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need to access your photo library for uploading images</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -66,8 +64,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -76,5 +72,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>.light</string>
 </dict>
 </plist>

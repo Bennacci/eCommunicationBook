@@ -85,6 +85,10 @@ class SearchUserViewController: UIViewController {
     viewModel.fetchData()
     
   }
+  override func viewWillDisappear(_ animated: Bool) {
+    self.viewModel.userListViewModel.value.removeAll()
+  }
+  
   @IBAction func popViewController(_ sender: Any) {
     dismiss(animated: true, completion: nil)
   }

@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="197" height="154"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="tortoise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cUt-mA-LIK">
-                                <rect key="frame" x="39" y="11" width="119" height="114.5"/>
+                                <rect key="frame" x="46.5" y="19" width="104" height="99.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -36,22 +36,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="cUt-mA-LIK" secondAttribute="bottom" constant="28" id="Kx7-vZ-TiX"/>
+                            <constraint firstAttribute="bottom" secondItem="cUt-mA-LIK" secondAttribute="bottom" constant="35" id="Kx7-vZ-TiX"/>
                             <constraint firstItem="qUf-HJ-BLT" firstAttribute="centerX" secondItem="ibc-tr-d6L" secondAttribute="centerX" id="N0D-us-0az"/>
                             <constraint firstItem="cUt-mA-LIK" firstAttribute="centerX" secondItem="ibc-tr-d6L" secondAttribute="centerX" id="Rfi-zS-agl"/>
                             <constraint firstAttribute="bottom" secondItem="qUf-HJ-BLT" secondAttribute="bottom" constant="6" id="Yfm-VZ-kcG"/>
-                            <constraint firstItem="cUt-mA-LIK" firstAttribute="top" secondItem="ibc-tr-d6L" secondAttribute="top" constant="8" id="d0z-4p-dGX"/>
+                            <constraint firstItem="cUt-mA-LIK" firstAttribute="top" secondItem="ibc-tr-d6L" secondAttribute="top" constant="16" id="d0z-4p-dGX"/>
                             <constraint firstAttribute="height" priority="999" constant="36" id="qdc-Xc-mt4"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="bTCornerRadius">
-                                <real key="value" value="15"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="bTBorderWidth">
-                                <real key="value" value="0.5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="bTShadowColor">
-                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>

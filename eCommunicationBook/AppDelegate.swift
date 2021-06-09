@@ -12,7 +12,7 @@ import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  
   // swiftlint:disable force_cast 
   static let shared = UIApplication.shared.delegate as! AppDelegate
   // swiftlint:enable force_cast
@@ -23,15 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool {
       
-    IQKeyboardManager.shared.enable = true
-
-    FirebaseApp.configure()
-    return true
+      IQKeyboardManager.shared.enable = true
+      
+      FirebaseApp.configure()
+      
+      return true
       
   }
-
+  
   // MARK: UISceneSession Lifecycle
-
+  
   func application(_ application: UIApplication,
                    configurationForConnecting connectingSceneSession: UISceneSession,
                    options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -39,9 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     
   }
-
+  
   func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-
+    
   }
-
+  
 }

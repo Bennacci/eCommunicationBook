@@ -72,6 +72,7 @@ class LessonPerformancesReviewViewModel {
         }
       }
     }
+    
   }
   
   func convertStudenLessonRecordsToViewModels(from records: [StudentLessonRecord]) -> [StudentLessonRecordViewModel] {

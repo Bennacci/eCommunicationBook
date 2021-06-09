@@ -846,7 +846,8 @@
 				74C2375F264BB5FE001BF47A /* Frameworks */,
 				74C23760264BB5FE001BF47A /* Resources */,
 				D4B88B04816EF0C6DEE25209 /* [CP] Embed Pods Frameworks */,
-				741FF1EE264BC17700551011 /* ShellScript */,
+				741FF1EE264BC17700551011 /* Swift Lint */,
+				741C04B826704B9200168253 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -953,7 +954,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		741FF1EE264BC17700551011 /* ShellScript */ = {
+		741C04B826704B9200168253 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)\n",
+			);
+			name = Fabric;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+		741FF1EE264BC17700551011 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -962,6 +983,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Swift Lint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1245,7 +1267,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1333,6 +1355,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = eCommunicationBook/eCommunicationBook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZQVC6PZWTL;
 				INFOPLIST_FILE = eCommunicationBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -10,6 +10,8 @@ target 'eCommunicationBook' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
   pod 'FirebaseStorage'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
   pod 'FSCalendar'
   pod 'lottie-ios'
   pod 'Charts'

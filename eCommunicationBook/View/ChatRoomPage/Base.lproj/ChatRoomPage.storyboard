@@ -132,6 +132,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buttonCreateChatRoom" destination="9lB-dB-VIg" id="jak-o4-KUv"/>
                         <outlet property="tableView" destination="7qZ-lw-3uh" id="uix-BW-5D8"/>
                         <segue destination="BBc-tn-fSp" kind="show" identifier="ConversationPage" id="srR-pG-dPt"/>
                     </connections>

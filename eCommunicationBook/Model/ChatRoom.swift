@@ -25,9 +25,9 @@ struct ChatRoom: Codable {
     var toDict: [String: Any] {
         return [
             "id": id as Any,
-            "member": members as Any,
-            "time": createdTime as Any,
-            "messages": messages as Any
+            "members": members as Any,
+            "createdTime": createdTime as Any
+//            "messages": messages as Any
         ]
     }
 }

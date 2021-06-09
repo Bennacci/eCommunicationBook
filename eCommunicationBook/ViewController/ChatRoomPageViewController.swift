@@ -14,6 +14,8 @@ class ChatRoomPageViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
+  @IBOutlet weak var buttonCreateChatRoom: UIButton!
+  
   let viewModel = ChatRoomPageViewModel()
   
   //  let conversationViewModel = ConversationViewModel()
@@ -29,6 +31,9 @@ class ChatRoomPageViewController: UIViewController {
     viewModel.refreshView = { [weak self] () in
       DispatchQueue.main.async {
         self?.tableView.reloadData()
+      }
+      if UserManager.shared.user.userType == "parents" {
+        self?.buttonCreateChatRoom.isHidden = true
       }
     }
     
@@ -46,7 +51,7 @@ class ChatRoomPageViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-        viewModel.fetchData()
+    viewModel.fetchData()
   }
   
   func setupRefresher() {
@@ -57,11 +62,24 @@ class ChatRoomPageViewController: UIViewController {
       self?.tableView.refresh.header.endRefreshing()
     }
   }
-
+  
   @IBAction func addButton(_ sender: Any) {
-      if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
-               self.navigationController?.show(nextVC, sender: nil)
-      } else { return }
+    if let nextVC = UIStoryboard.searchUser.instantiateInitialViewController() {
+      guard let targetController = nextVC.children[0] as? SearchUserViewController
+      else { fatalError("Unexpected Table View Cell") }
+      targetController.viewModel.forCreateChatRoom = true
+
+      var friendList: [String] = []
+      for index in 0 ..< viewModel.chatRoomViewModel.value.count {
+      let otherUser =
+      viewModel.chatRoomViewModel.value[index].members.filter({$0 != UserManager.shared.user.id})
+        if otherUser.count > 0 {
+          friendList.append(otherUser[0])
+        }
+      }
+      targetController.viewModel.friendList = friendList
+      self.navigationController?.show(nextVC, sender: nil)
+    } else { return }
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,10 +111,10 @@ extension ChatRoomPageViewController: UITableViewDataSource {
     }
     
     let cellViewModel = self.viewModel.chatRoomViewModel.value[indexPath.row]
-//    cellViewModel.onDead = { [weak self] () in
-//      print("onDead")
-//      self?.viewModel.fetchData()
-//    }
+    //    cellViewModel.onDead = { [weak self] () in
+    //      print("onDead")
+    //      self?.viewModel.fetchData()
+    //    }
     chatRoomTableViewCell.setup(viewModel: cellViewModel, index: indexPath.row)
     
     return chatRoomTableViewCell

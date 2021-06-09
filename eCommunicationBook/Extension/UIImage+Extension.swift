@@ -15,6 +15,8 @@ enum ImageAsset: String {
     // swiftlint:disable identifier_name
 
   
+    case CommunicationBook
+    
     case Icons_36px_Home_Normal
     case Icons_36px_Home_Selected
     case Icons_36px_Profile_Normal

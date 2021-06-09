@@ -15,17 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eCommunicationBook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bh-pJ-Nrs">
-                                <rect key="frame" x="47" y="429.5" width="320.5" height="37"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5Dp-yw-NFy">
+                                <rect key="frame" x="157" y="328" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="7MZ-eG-iaT"/>
+                                    <constraint firstAttribute="width" constant="100" id="Ctb-uN-0b9"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.1223633215" green="0.42177230119999998" blue="0.89165085550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="5Bh-pJ-Nrs" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="SNe-eY-ZeE"/>
-                            <constraint firstItem="5Bh-pJ-Nrs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ZkE-Xe-JHU"/>
+                            <constraint firstItem="5Dp-yw-NFy" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-70" id="5T8-ss-Ucn"/>
+                            <constraint firstItem="5Dp-yw-NFy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gM0-Br-z1i"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -35,4 +36,7 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppLogo" width="4267" height="4267"/>
+    </resources>
 </document>

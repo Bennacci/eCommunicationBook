@@ -74,7 +74,7 @@ enum ParentSeviceItem: AccountItem {
   var image: UIImage? {
     switch self {
     
-    case .signCommunicationBook: return UIImage(systemName: "doc.append")
+    case .signCommunicationBook: return UIImage(systemName: "book")
       
     case .checkStudentTimeInAndOut: return UIImage(systemName: "person.crop.square")
       
@@ -200,6 +200,7 @@ enum TeacherSeviceItem: AccountItem {
     case .writeLessonPlan:  return UIImage(systemName: "square.and.pencil")
     
     case .writeStudentLessonRecord: return UIImage(systemName: "book")
+//      UIImage.asset(.CommunicationBook)
       
     case .newEvent: return UIImage(systemName: "calendar.badge.plus")
       
@@ -263,9 +264,9 @@ enum TeacherSeviceItem: AccountItem {
   var form: [[String]]? {
     switch self {
       
-    case .newEvent: return [["Title"], ["Date", "Time"], ["Description"]]
+    case .newEvent: return [["Title"], ["Date"], ["Time"], ["Description"]]
       
-    case .setASign: return [["Title"], ["Date", "Time"], ["Description"]]
+    case .setASign: return [["Title"], ["Date"], ["Time"], ["Description"]]
       
     case .newACourse: return [["Class Name"],
                               ["Teachers", "Students"],

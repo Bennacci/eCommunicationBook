@@ -70,7 +70,12 @@ class WideUserTableViewCell: UITableViewCell {
       checkIcon.isHidden = false
       circleIcon.isHidden = true
     }
+    
     userName.text = material?.name
+    
+    if let imageURL = material?.image {
+      userImageW.loadImage(imageURL, placeHolder: UIImage(systemName: "person.crop.circle.fill"))
+    }
     userImageW.layer.cornerRadius = userImageW.frame.height / 2
     layoutIfNeeded()
   }

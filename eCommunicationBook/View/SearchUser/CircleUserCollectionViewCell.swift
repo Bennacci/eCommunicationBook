@@ -30,6 +30,7 @@ class CircleUserCollectionViewCell: UICollectionViewCell {
     userName.isUserInteractionEnabled = false
     button.isUserInteractionEnabled = false
     userName.text = viewModel?.name
+    userImage.loadImage(viewModel?.image, placeHolder: UIImage.asset(.CommunicationBook))
     userImage.layer.cornerRadius = userImage.frame.height / 2
     layoutIfNeeded()
   }
@@ -50,7 +51,7 @@ class CircleUserCollectionViewCell: UICollectionViewCell {
     } else {
       buttonChecked.isHidden = true
     }
-    
+    userImage.loadImage(viewModel?.image, placeHolder: UIImage.asset(.CommunicationBook))
     userName.text = viewModel?.name
     userImage.layer.cornerRadius = userImage.frame.height / 2
     layoutIfNeeded()

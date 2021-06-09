@@ -33,7 +33,9 @@ class HomePageViewController: UIViewController {
     right: 10.0)
   
   override func viewDidLoad() {
-    
+
+    super.viewDidLoad()
+
 //    self.navigationController?.setNavigationBarHidden(true, animated: true)
     
     tableView.registerCellWithNib(identifier: ServicesTableViewCell.identifier, bundle: nil)
@@ -44,7 +46,12 @@ class HomePageViewController: UIViewController {
     
     tableView.registerCellWithNib(identifier: NewsTableViewCell.identifier, bundle: nil)
     
-    super.viewDidLoad()
+    viewModel.fetchSign()
+    
+    viewModel.signViewModel.bind { [weak self] _ in
+      
+      self?.tableView.reloadData()
+    }
   }
 }
 
@@ -72,8 +79,8 @@ extension HomePageViewController: UITableViewDataSource {
                  numberOfRowsInSection section: Int) -> Int {
     
     let sectionThreeRowCount = viewModel.servicesData().items[1].count
-    
-    return [1, 1, sectionThreeRowCount, 5][section]
+    let signCount = viewModel.signViewModel.value.count
+    return [1, 1, sectionThreeRowCount, signCount][section]
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -130,6 +137,7 @@ extension HomePageViewController: UITableViewDataSource {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
                                                      for: indexPath) as? NewsTableViewCell
         else { fatalError("Unexpected Table View Cell") }
+      cell.setUp(viewModel: viewModel.signViewModel.value[indexPath.row])
       return cell
     }
   }
@@ -142,7 +150,7 @@ extension HomePageViewController: UITableViewDelegate {
 
       headerView.backgroundColor = UIColor.clear
       let myLabel = UILabel()
-      myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 3, width: tableView.bounds.size.width, height: 30)
+      myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 2, width: tableView.bounds.size.width, height: 30)
       myLabel.font = UIFont.boldSystemFont(ofSize: 18)
       myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
     headerView.addSubview(myLabel)
@@ -156,7 +164,7 @@ extension HomePageViewController: UITableViewDelegate {
       
     } else {
       
-      return 35
+      return 45
     }
   }
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

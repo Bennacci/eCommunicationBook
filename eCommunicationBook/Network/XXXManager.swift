@@ -154,10 +154,8 @@ class XXXManager {
   }
   
   func addUser(user: inout User, completion: @escaping (Result<String, Error>) -> Void) {
-    
     let document = db.collection("Users")
       .document(user.id)
-    
     if user.createdTime == -1 {
       user.createdTime = Double(Date().millisecondsSince1970)
     }
@@ -244,7 +242,7 @@ class XXXManager {
   
   func addSign(sign: inout Event, completion: @escaping (Result<String, Error>) -> Void) {
     
-    let document = db.collection("Sign")
+    let document = db.collection("Signs")
       .document()
     sign.id = document.documentID
     //    course.createdTime = Double(Date().millisecondsSince1970)
@@ -259,6 +257,33 @@ class XXXManager {
       }
     }
   }
+  
+  func fetchSign(completion: @escaping (Result<[Event], Error>) -> Void) {
+    
+    db.collection("Signs").getDocuments { (querySnapshot, error) in
+      
+      if let error = error {
+        
+        completion(.failure(error))
+      } else {
+        
+        var signs = [Event]()
+        
+        for document in querySnapshot!.documents {
+          
+          do {
+            if let sign = try document.data(as: Event.self, decoder: Firestore.Decoder()) {
+              signs.append(sign)
+            }
+          } catch {
+            completion(.failure(error))
+          }
+        }
+        completion(.success(signs))
+      }
+    }
+  }
+  
   
   func addStudent(student: inout Student, completion: @escaping (Result<String, Error>) -> Void) {
     
@@ -479,11 +504,17 @@ class XXXManager {
   
   
   func fetchCourses(completion: @escaping (Result<[Course], Error>) -> Void) {
-    
-    db.collection("Courses")
-      //      .order(by: "name ")
+    var collection = db.collection("Courses")
       .whereField("teachers", arrayContains: UserManager.shared.user.id)
-      .getDocuments { (querySnapshot, error) in
+    
+    if UserManager.shared.user.userType == "parents" {
+      guard let student = UserManager.shared.user.student else {return}
+      let studentInfo = student[0].name + ":" + student[0].id
+      collection = db.collection("Courses")
+        .whereField("students", arrayContains: studentInfo)
+    }
+    
+      collection.getDocuments { (querySnapshot, error) in
         
         if let error = error {
           completion(.failure(error))
@@ -760,8 +791,9 @@ class XXXManager {
   
   
   func fetchStudentLessonRecord(completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
-    
+    guard let student = UserManager.shared.user.student else { return }
     db.collection("StudentLessonRecords")
+      .whereField("studentID", isEqualTo: student[0].id)
       .getDocuments { (querySnapshot, error) in
         
         if let error = error {
@@ -786,11 +818,19 @@ class XXXManager {
     }
   }
   func fetchStudentLessonRecord(courseName: String, courseLesson: Int, completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
-    
-    db.collection("StudentLessonRecords")
+    var collection = db.collection("StudentLessonRecords")
     .whereField("courseName", isEqualTo: courseName)
     .whereField("courseLesson", isEqualTo: courseLesson)
-    .getDocuments { (querySnapshot, error) in
+    
+    
+    if UserManager.shared.user.userType == "parents" {
+       guard let student = UserManager.shared.user.student else {return}
+      collection = db.collection("StudentLessonRecords")
+      .whereField("courseName", isEqualTo: courseName)
+      .whereField("courseLesson", isEqualTo: courseLesson)
+        .whereField("studentID", isEqualTo: student[0].id)
+    }
+      collection.getDocuments { (querySnapshot, error) in
         
         if let error = error {
           
@@ -818,7 +858,8 @@ class XXXManager {
     
     let document = db.collection("ChatRooms").document()
     chatRoom.id = document.documentID
-    //      chatRoom.createdTime = Date().millisecondsSince1970
+    chatRoom.createdTime = Date().millisecondsSince1970
+    
     document.setData(chatRoom.toDict) { error in
       
       if let error = error {
@@ -830,6 +871,7 @@ class XXXManager {
       }
     }
   }
+  
   
   func publishArticle(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
     

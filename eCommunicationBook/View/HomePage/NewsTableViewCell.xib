@@ -19,9 +19,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sI8-RH-zKb">
                         <rect key="frame" x="0.0" y="0.0" width="189" height="76"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="SK9-9B-iQJ">
-                                <rect key="frame" x="16" y="8.5" width="60" height="59"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="SK9-9B-iQJ">
+                                <rect key="frame" x="16" y="8" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SK9-9B-iQJ" secondAttribute="height" multiplier="1:1" id="JJj-ce-ngi"/>
@@ -63,6 +63,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imageViewSign" destination="SK9-9B-iQJ" id="vjI-1s-ih1"/>
+                <outlet property="labelContent" destination="G7z-ea-h2p" id="GIn-nY-vj2"/>
+                <outlet property="labelTitle" destination="acl-DZ-IN9" id="UAG-Cs-OgB"/>
+            </connections>
             <point key="canvasLocation" x="36.956521739130437" y="120.53571428571428"/>
         </tableViewCell>
     </objects>

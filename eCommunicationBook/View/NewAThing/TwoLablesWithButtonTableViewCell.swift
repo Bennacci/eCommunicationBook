@@ -89,7 +89,15 @@ class TwoLablesWithButtonTableViewCell: UITableViewCell {
         addHr = hrs + addHr
         addMin = min + addMin
       }
-      secondLabel.text = "\(hrs) : \(min) - \(addHr) : \(addMin)"
+      var showMin = "\(min)"
+      if min == 0 {
+        showMin = "00"
+      }
+      var showAddMin = "\(addMin)"
+      if min == 0 {
+        showAddMin = "00"
+      }
+      secondLabel.text = "\(hrs) : " + showMin + " - " + "\(addHr) : " + showAddMin
     } else if text == "Teachers" {
       secondLabel.text = "\(UserManager.shared.selectedUsers?.count ?? 0) 人"
     } else {

@@ -17,13 +17,17 @@ class SearchUserPageViewModel {
   let studentViewModel =  Box([StudentViewModel]())
   
   let studentListViewModel =  Box([StudentViewModel]())
-    
+      
   var refreshView: (() -> Void)?
   
   var scrollToTop: (() -> Void)?
   
   var tapUser: (() -> Void)?
   
+  var forCreateChatRoom = false
+  
+  var friendList: [String]?
+
   var forStudent = false
   
   func fetchData() {
@@ -63,10 +67,41 @@ class SearchUserPageViewModel {
   }
   
   func onSendAndQuit() {
+    
     if forStudent == false {
       UserManager.shared.selectedUsers = userListViewModel.value
     } else {
       UserManager.shared.selectedStudents = studentListViewModel.value
+    }
+    
+    if forCreateChatRoom == true {
+      guard let users = UserManager.shared.selectedUsers else {return}
+      for user in users {
+      
+        var chatRoom = ChatRoom(id: "",
+                                members: [UserManager.shared.user.id, user.id],
+                                createdTime: -1,
+                                messages: nil
+        )
+        
+      XXXManager.shared.publishChatroom(chatRoom: &chatRoom)  { [weak self] result in
+           
+           switch result {
+             
+           case .success( _):
+            
+              UserManager.shared.selectedUsers?.removeAll()
+            
+              self?.onRefresh()
+              
+              print("Chatroom created")
+
+           case .failure(let error):
+              
+              print("fetchData.failure: \(error)")
+           }
+         }
+      }
     }
   }
   
@@ -152,7 +187,18 @@ class SearchUserPageViewModel {
   
   func setSearchResult(_ users: [User]) {
     
-    userViewModel.value = convertUserToViewModels(from: users)
+    var userList = users
+    
+    if forCreateChatRoom {
+      userList = users.filter({$0.id != UserManager.shared.user.id})
+
+      guard let friendList = friendList else {return}
+      for friend in friendList {
+        userList = userList.filter({$0.id != friend})
+      }
+    }
+    
+    userViewModel.value = convertUserToViewModels(from: userList)
     
     userListViewModel.value = UserManager.shared.selectedUsers ?? []
 

@@ -15,7 +15,7 @@ class LessonPlanViewModel {
   var lessonViewModel = Box([LessonViewModel]())
   
   var refreshView: (() -> Void)?
-
+  
   func fetchData() {
     
     XXXManager.shared.fetchCourses { [weak self] result in

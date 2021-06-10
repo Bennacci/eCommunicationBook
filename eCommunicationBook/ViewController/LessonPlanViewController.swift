@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Lottie
 
 class LessonPlanViewController: UIViewController, SavedLessonDelegate {
   
+  @IBOutlet weak var viewCourseNotFound: UIView!
+  @IBOutlet weak var viewCourseNotFoundLottie: UIView!
   
   @IBOutlet weak var tableView: UITableView!
+  private var animationView: AnimationView?
   
   var viewModel = LessonPlanViewModel()
   
@@ -35,8 +39,13 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
     
     viewModel.fetchData()
     
-    viewModel.courseViewModel.bind { [weak self] users in
+    viewModel.courseViewModel.bind { [weak self] _ in
       self?.pickedCourseIndexPath = nil
+      if self?.viewModel.courseViewModel.value.count == 0 {
+        self?.addCourseNotFoundView()
+      } else {
+        self?.viewCourseNotFound.isHidden = true
+      }
       DispatchQueue.main.async {
         self?.tableView.reloadData()
       }
@@ -54,12 +63,32 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
   @IBAction func popViewController(_ sender: Any) {
     dismiss(animated: true, completion: nil)
     
-    
   }
   
   @IBAction func sendAndQuitViewController(_ sender: Any) {
     dismiss(animated: true, completion: nil)
     
+  }
+  @IBAction func redeem(_ sender: Any) {
+    let controller = UIAlertController(title: "Redeem Code",
+                                       message: "Enter your invitation code to continue.",
+                                       preferredStyle: .alert)
+        controller.addTextField { (textField) in
+        textField.placeholder = "code"
+        textField.keyboardType = .numberPad
+    }
+    let okAction = UIAlertAction(title: "ok", style: .default) { (_) in
+      guard let code = controller.textFields?[0].text else {return}
+       if code == "eComInvitationCode123" {
+        // maybe do smth
+       } else {
+        LKProgressHUD.showFailure(text: "Invalid invitation code")
+      }
+    }
+    controller.addAction(okAction)
+    let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+    controller.addAction(cancelAction)
+    present(controller, animated: true, completion: nil)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,6 +121,26 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
           self.viewModel.lessonViewModel.value[button.tag].lesson.number
       }
     }
+  }
+  func addCourseNotFoundView() {
+    viewCourseNotFound.isHidden = false
+    animationView = .init(name: "Error404")
+    
+    animationView!.frame = viewCourseNotFoundLottie.bounds
+    
+    animationView!.contentMode = .scaleAspectFit
+    
+    animationView!.loopMode = .loop
+    
+    animationView!.animationSpeed = 0.5
+    
+    viewCourseNotFoundLottie.addSubview(animationView!)
+    viewCourseNotFoundLottie.layoutIfNeeded()
+    viewCourseNotFound.layoutIfNeeded()
+    // 6. Play animation
+    
+    animationView!.play()
+    
   }
 }
 

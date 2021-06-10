@@ -91,9 +91,7 @@ class SearchUserPageViewModel {
            case .success( _):
             
               UserManager.shared.selectedUsers?.removeAll()
-            
-              self?.onRefresh()
-              
+                          
               print("Chatroom created")
 
            case .failure(let error):

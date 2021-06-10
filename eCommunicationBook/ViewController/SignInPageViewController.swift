@@ -268,7 +268,7 @@ extension SignInPageViewController: UICollectionViewDataSource {
     
     
     if sender.tag == 1 {
-        let controller = UIAlertController(title: "Invitation Code", message: "Please enter your invitation code to continue.", preferredStyle: .alert)
+        let controller = UIAlertController(title: "Redeem Code", message: "Enter your invitation code to continue.", preferredStyle: .alert)
             controller.addTextField { (textField) in
             textField.placeholder = "code"
             textField.keyboardType = .numberPad

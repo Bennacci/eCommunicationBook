@@ -99,10 +99,6 @@ class NewAThingViewController: UIViewController {
          
          animationView!.contentMode = .scaleAspectFit
           
-    //     animationView!.center.y = cardBackgroundView.center.y
-        
-    //     animationView!.center.x = cardBackgroundView.center.x
-
          // 4. Set animation loop mode
          
          animationView!.loopMode = .loop

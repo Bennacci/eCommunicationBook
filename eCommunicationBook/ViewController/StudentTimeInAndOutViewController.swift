@@ -184,7 +184,7 @@ extension StudentTimeInAndOutViewController: UITableViewDelegate {
 
 extension StudentTimeInAndOutViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if let count = UserManager.shared.students?.count {
+    if let count = UserManager.shared.user.student?.count {
       return count
     } else {
       return 0

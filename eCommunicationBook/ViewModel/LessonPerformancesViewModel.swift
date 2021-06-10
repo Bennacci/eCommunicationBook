@@ -247,6 +247,10 @@ class LessonPerformancesViewModel {
       
       studentLessonRecord.studentName = name
 
+      let courseInfo = course.name.components(separatedBy: ":")
+      
+      studentLessonRecord.courseName = courseInfo[0]
+      
       let viewModel = StudentLessonRecordViewModel(model: studentLessonRecord)
       
       viewModels.append(viewModel)

@@ -14,28 +14,18 @@ enum LoginError: Error {
 class UserManager {
   
   static let shared = UserManager()
-  
-  var user = User(id: "ZTBCw5SJ1cgvO9DswRx11ZUE3At1",
+  var user = User(id: "",
                   createdTime: -1,
-                  userID: "Ben",
-                  name: "Ben Tee",
-                  image:
-    "https://firebasestorage.googleapis.com/v0/b/ecommunicationbook.appspot.com/o/e-communication-icon.jpg?alt=media&token=e23859b9-fc8f-4c1c-a9d8-a99af5495c5a",
-                  cellPhoneNo: 09161235456,
-                  homePhoneNo: 28123456,
+                  userID: "",
+                  name: "",
+                  image: "",
+                  cellPhoneNo: -1,
+                  homePhoneNo: -1,
                   birthDay: -1,
-                  email: "Ben@mail.com",
+                  email: "",
                   userType: nil,
                   workingHours: nil,
-                  student: [Student(id: "osEhOENEZqwQIKKwF0k1",
-                                    parents: [""],
-                                    name: "Student A",
-                                    image: nil,
-                                    nationalID: "",
-                                    grade: 1,
-                                    birthDay: -1,
-                                    emergencyContactPerson: "",
-                                    emergencyContactNo: -1)],
+                  student: nil,
                   difficulty: nil,
                   note: nil) {
                     didSet {
@@ -44,6 +34,35 @@ class UserManager {
     
   }
   
+//  var user = User(id: "ZTBCw5SJ1cgvO9DswRx11ZUE3At1",
+//                  createdTime: -1,
+//                  userID: "Ben",
+//                  name: "Ben Tee",
+//                  image:
+//    "https://firebasestorage.googleapis.com/v0/b/ecommunicationbook.appspot.com/o/e-communication-icon.jpg?alt=media&token=e23859b9-fc8f-4c1c-a9d8-a99af5495c5a",
+//                  cellPhoneNo: 09161235456,
+//                  homePhoneNo: 28123456,
+//                  birthDay: -1,
+//                  email: "Ben@mail.com",
+//                  userType: nil,
+//                  workingHours: nil,
+//                  student: [Student(id: "osEhOENEZqwQIKKwF0k1",
+//                                    parents: [""],
+//                                    name: "Student A",
+//                                    image: nil,
+//                                    nationalID: "",
+//                                    grade: 1,
+//                                    birthDay: -1,
+//                                    emergencyContactPerson: "",
+//                                    emergencyContactNo: -1)],
+//                  difficulty: nil,
+//                  note: nil) {
+//                    didSet {
+//                      updateStudents()
+//                    }
+//
+//  }
+//
   lazy var students: [Student]? = nil
   
   lazy var selectedUsers: [UserViewModel]? = nil

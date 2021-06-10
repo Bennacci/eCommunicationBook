@@ -98,7 +98,7 @@ extension AccountPageViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView()
-    headerView.backgroundColor = .systemGray6
+    headerView.backgroundColor = UIColor.flatWhite()
     return headerView
   }
   

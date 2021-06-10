@@ -99,9 +99,9 @@ class TwoLablesWithButtonTableViewCell: UITableViewCell {
       }
       secondLabel.text = "\(hrs) : " + showMin + " - " + "\(addHr) : " + showAddMin
     } else if text == "Teachers" {
-      secondLabel.text = "\(UserManager.shared.selectedUsers?.count ?? 0) 人"
+      secondLabel.text = "\(UserManager.shared.selectedUsers?.count ?? 0)"
     } else {
-      secondLabel.text = "\(UserManager.shared.selectedStudents?.count ?? 0) 人"
+      secondLabel.text = "\(UserManager.shared.selectedStudents?.count ?? 0)"
     }
   }
 }

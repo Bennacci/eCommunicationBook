@@ -25,7 +25,7 @@ class LessonPlanDetailTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
   
-  func setUp(lesson: Lesson, indexPath: IndexPath){
+  func setUp(lesson: Lesson, indexPath: IndexPath) {
       self.lesson = lesson
       layOutCell(indexPath: indexPath)
     }

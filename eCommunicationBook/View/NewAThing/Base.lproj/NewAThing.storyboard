@@ -23,13 +23,44 @@
                                     <outlet property="delegate" destination="xqT-bc-fJy" id="qlG-oT-WPv"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rlw-gO-bin">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This page is currently Under construction" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpb-Y8-RmC">
+                                        <rect key="frame" x="101.5" y="100" width="211" height="55"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wil-YN-DuL">
+                                        <rect key="frame" x="20" y="222" width="374" height="374"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="wil-YN-DuL" secondAttribute="height" multiplier="1:1" id="cYe-W8-uvY"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Kpb-Y8-RmC" firstAttribute="centerX" secondItem="Rlw-gO-bin" secondAttribute="centerX" id="1AC-5C-SPQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="wil-YN-DuL" secondAttribute="trailing" constant="20" id="Aps-OV-LTm"/>
+                                    <constraint firstItem="wil-YN-DuL" firstAttribute="centerX" secondItem="Rlw-gO-bin" secondAttribute="centerX" id="HKz-j1-3SX"/>
+                                    <constraint firstItem="wil-YN-DuL" firstAttribute="leading" secondItem="Rlw-gO-bin" secondAttribute="leading" constant="20" id="IYx-tC-b2x"/>
+                                    <constraint firstItem="Kpb-Y8-RmC" firstAttribute="top" secondItem="Rlw-gO-bin" secondAttribute="top" constant="100" id="iVF-LF-DRO"/>
+                                    <constraint firstItem="wil-YN-DuL" firstAttribute="centerY" secondItem="Rlw-gO-bin" secondAttribute="centerY" id="pRD-ZI-DED"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7J0-kk-NaS" firstAttribute="leading" secondItem="raP-8c-OT7" secondAttribute="leading" id="Cnn-UU-qiY"/>
+                            <constraint firstItem="raP-8c-OT7" firstAttribute="bottom" secondItem="Rlw-gO-bin" secondAttribute="bottom" id="OFC-NK-pyv"/>
                             <constraint firstItem="7J0-kk-NaS" firstAttribute="top" secondItem="raP-8c-OT7" secondAttribute="top" id="Yim-Ss-fvl"/>
+                            <constraint firstItem="raP-8c-OT7" firstAttribute="trailing" secondItem="Rlw-gO-bin" secondAttribute="trailing" id="jTv-IG-HXV"/>
+                            <constraint firstItem="Rlw-gO-bin" firstAttribute="top" secondItem="raP-8c-OT7" secondAttribute="top" id="l5L-Ts-Pcb"/>
                             <constraint firstItem="raP-8c-OT7" firstAttribute="bottom" secondItem="7J0-kk-NaS" secondAttribute="bottom" id="lmL-JS-sWN"/>
                             <constraint firstItem="raP-8c-OT7" firstAttribute="trailing" secondItem="7J0-kk-NaS" secondAttribute="trailing" id="qBl-mO-UKU"/>
+                            <constraint firstItem="Rlw-gO-bin" firstAttribute="leading" secondItem="raP-8c-OT7" secondAttribute="leading" id="rRE-L0-pEC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="raP-8c-OT7"/>
                     </view>
@@ -58,7 +89,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonAdd" destination="WqS-cR-X6K" id="fyJ-Om-JOm"/>
+                        <outlet property="buttonBack" destination="Rq5-Qd-y4R" id="KOu-mK-2eY"/>
                         <outlet property="tableView" destination="7J0-kk-NaS" id="f8n-3N-1uE"/>
+                        <outlet property="viewConstruction" destination="Rlw-gO-bin" id="kW8-KW-4C0"/>
+                        <outlet property="viewConstructionLottie" destination="wil-YN-DuL" id="3cJ-T2-Xhf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fxq-vw-ISs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -70,7 +105,7 @@
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="623" y="135"/>
+            <point key="canvasLocation" x="621.73913043478262" y="134.59821428571428"/>
         </scene>
     </scenes>
 </document>

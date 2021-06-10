@@ -79,6 +79,7 @@
 		74715CD7265B774200570A23 /* AssignmentStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74715CD5265B774200570A23 /* AssignmentStatusTableViewCell.xib */; };
 		7472B29C26594B8B00511468 /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472B29A26594B8B00511468 /* TimeSelectionViewController.swift */; };
 		7472B29F26594BBB00511468 /* TimeSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7472B29E26594BBB00511468 /* TimeSelection.storyboard */; };
+		7483291D2671090600C7CC43 /* construction.json in Resources */ = {isa = PBXBuildFile; fileRef = 7483291C2671090500C7CC43 /* construction.json */; };
 		74857F972654B95800AEF14D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F962654B95800AEF14D /* NavigationController.swift */; };
 		74857F9A2654BBF200AEF14D /* NewAThing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74857F982654BBF200AEF14D /* NewAThing.storyboard */; };
 		74857F9C2654C7C800AEF14D /* NewAThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */; };
@@ -265,6 +266,7 @@
 		74715CD5265B774200570A23 /* AssignmentStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssignmentStatusTableViewCell.xib; sourceTree = "<group>"; };
 		7472B29A26594B8B00511468 /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewController.swift; sourceTree = "<group>"; };
 		7472B29E26594BBB00511468 /* TimeSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeSelection.storyboard; sourceTree = "<group>"; };
+		7483291C2671090500C7CC43 /* construction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = construction.json; sourceTree = "<group>"; };
 		74857F962654B95800AEF14D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		74857F992654BBF200AEF14D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NewAThing.storyboard; sourceTree = "<group>"; };
 		74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAThingViewController.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 				74CADD9726564950004DA6D0 /* PickerViewTableViewCell.xib */,
 				74D3A67926579BD900955CDA /* TwoLablesWithButtonTableViewCell.swift */,
 				74D3A67A26579BD900955CDA /* TwoLablesWithButtonTableViewCell.xib */,
+				7483291C2671090500C7CC43 /* construction.json */,
 			);
 			path = NewAThing;
 			sourceTree = "<group>";
@@ -919,6 +922,7 @@
 				74F0742F2665194100CC0009 /* StudentImagesTableViewCell.xib in Resources */,
 				74996312265DF0B100F081EC /* LessonsTableViewCell.xib in Resources */,
 				74C2B3992664ACB5007855B5 /* TodaysLesoonTableViewCell.xib in Resources */,
+				7483291D2671090600C7CC43 /* construction.json in Resources */,
 				74C23772264BB5FF001BF47A /* LaunchScreen.storyboard in Resources */,
 				74622E152664C9E70012D60D /* StudentExistancesTableViewCell.xib in Resources */,
 				748CC924265DEC1800919F1E /* CourseTableViewCell.xib in Resources */,
@@ -1365,7 +1369,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ben.eCommunicationBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1385,7 +1389,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ben.eCommunicationBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

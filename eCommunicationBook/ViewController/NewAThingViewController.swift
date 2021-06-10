@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 //
 //class NewAThingManager {
 //  static let shared = NewAThingManager()
@@ -35,6 +36,12 @@ import UIKit
 
 class NewAThingViewController: UIViewController {
   
+  @IBOutlet weak var viewConstruction: UIView!
+  @IBOutlet weak var viewConstructionLottie: UIView!
+  private var animationView: AnimationView?
+
+  @IBOutlet weak var buttonBack: UIButton!
+  @IBOutlet weak var buttonAdd: UIButton!
   let viewModel = NewAThingViewModel()
   
   var pickerMotherIndexPath: IndexPath?
@@ -73,6 +80,44 @@ class NewAThingViewController: UIViewController {
       self?.navigationController?.popViewController(animated: true)
       //        self?.dismiss(animated: true, completion: nil)
     }
+    
+    if viewModel.inputTexts[0].count == 0 {
+      addConstructionView()
+      buttonBack.setTitle("Back", for: .normal)
+      buttonAdd.isHidden = true
+      }
+  }
+  
+  func addConstructionView() {
+      viewConstruction.isHidden = false
+        // 2. Start AnimationView with animation name (without extension)
+         animationView = .init(name: "construction")
+
+         animationView!.frame = viewConstructionLottie.bounds
+         
+         // 3. Set animation content mode
+         
+         animationView!.contentMode = .scaleAspectFit
+          
+    //     animationView!.center.y = cardBackgroundView.center.y
+        
+    //     animationView!.center.x = cardBackgroundView.center.x
+
+         // 4. Set animation loop mode
+         
+         animationView!.loopMode = .loop
+         
+         // 5. Adjust animation speed
+         
+         animationView!.animationSpeed = 0.5
+         
+         viewConstructionLottie.addSubview(animationView!)
+          viewConstructionLottie.layoutIfNeeded()
+          viewConstruction.layoutIfNeeded()
+         // 6. Play animation
+         
+         animationView!.play()
+      
   }
   
   @IBAction func cancel(_ sender: Any) {

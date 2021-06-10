@@ -42,16 +42,7 @@ class SignInPageViewController: UIViewController {
     setupAppleButton()
     
     viewModel.onGotUserData = {
-      
-      if let nextVC = UIStoryboard.main.instantiateInitialViewController() {
-        
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        
-        appDelegate?.window?.rootViewController = nextVC
-        
-        LKProgressHUD.showSuccess(text: "Sign In Success")
-        
-      } else { return }
+      self.toHomePage()
     }
     
     viewModel.onUserCreated = {
@@ -62,13 +53,14 @@ class SignInPageViewController: UIViewController {
       LKProgressHUD.showFailure(text: "An error occurred")
     }
   }
+  
   @IBAction func showPolicy(_ sender: Any) {
     self.blackViewPolicyBackground.isHidden = false
     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, animations: {
       self.blackViewPolicyBackground.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
       self.textViewCenterY.constant = 0
     }, completion: nil)
-
+    
   }
   
   @IBAction func closePolicy(_ sender: Any) {
@@ -78,12 +70,24 @@ class SignInPageViewController: UIViewController {
     }, completion: { (_) -> Void in
       self.blackViewPolicyBackground.isHidden = true
     })
-
+    
   }
   
   @IBAction func tempSkip(_ sender: Any) {
     
     shiftToViewChoseRole()
+  }
+  
+  private func toHomePage() {
+    if let nextVC = UIStoryboard.main.instantiateInitialViewController() {
+      
+      let appDelegate = UIApplication.shared.delegate as? AppDelegate
+      
+      appDelegate?.window?.rootViewController = nextVC
+      
+      LKProgressHUD.showSuccess(text: "Sign In Success")
+      
+    } else { return }
   }
   
   private func configureViews() {
@@ -261,11 +265,42 @@ extension SignInPageViewController: UICollectionViewDataSource {
   }
   
   @objc func connected(sender: UIButton) {
-    UserManager.shared.user.userType = UserType.allCases[sender.tag].rawValue
-    if UserManager.shared.user.id != ""{
-      viewModel.updateUserType()
+    
+    
+    if sender.tag == 1 {
+        let controller = UIAlertController(title: "Invitation Code", message: "Please enter your invitation code to continue.", preferredStyle: .alert)
+            controller.addTextField { (textField) in
+            textField.placeholder = "code"
+            textField.keyboardType = .numberPad
+        }
+        let okAction = UIAlertAction(title: "ok", style: .default) { (_) in
+          guard let code = controller.textFields?[0].text else {return}
+           if code == "eComInvitationCode123" {
+            UserManager.shared.user.userType = UserType.allCases[sender.tag].rawValue
+            if UserManager.shared.user.id != "" {
+              self.viewModel.updateUserType()
+            } else {
+              self.viewModel.onGotUserData!()
+            }
+           } else {
+            LKProgressHUD.showFailure(text: "Invalid invitation code")
+          }
+        }
+        controller.addAction(okAction)
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        controller.addAction(cancelAction)
+        present(controller, animated: true, completion: nil)
+      
     } else {
-      viewModel.onGotUserData!()
+      
+      UserManager.shared.user.userType = UserType.allCases[sender.tag].rawValue
+      if UserManager.shared.user.id != "" {
+        viewModel.updateUserType()
+      } else {
+        viewModel.onGotUserData!()
+      }
     }
   }
+  
+  
 }

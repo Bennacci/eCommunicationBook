@@ -753,7 +753,7 @@ class XXXManager {
       collectionName = "StudentTimeOuts"
     }
     
-    guard let student = UserManager.shared.students else {
+    guard let student = UserManager.shared.students, student.count > 0 else {
       return completion(.failure(MasterError.noMatchData("No Student")))
     }
     

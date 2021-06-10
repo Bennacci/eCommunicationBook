@@ -80,6 +80,7 @@
 		7472B29C26594B8B00511468 /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7472B29A26594B8B00511468 /* TimeSelectionViewController.swift */; };
 		7472B29F26594BBB00511468 /* TimeSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7472B29E26594BBB00511468 /* TimeSelection.storyboard */; };
 		7483291D2671090600C7CC43 /* construction.json in Resources */ = {isa = PBXBuildFile; fileRef = 7483291C2671090500C7CC43 /* construction.json */; };
+		7483291F2671D75200C7CC43 /* Error404.json in Resources */ = {isa = PBXBuildFile; fileRef = 7483291E2671D75200C7CC43 /* Error404.json */; };
 		74857F972654B95800AEF14D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F962654B95800AEF14D /* NavigationController.swift */; };
 		74857F9A2654BBF200AEF14D /* NewAThing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74857F982654BBF200AEF14D /* NewAThing.storyboard */; };
 		74857F9C2654C7C800AEF14D /* NewAThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */; };
@@ -267,6 +268,7 @@
 		7472B29A26594B8B00511468 /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewController.swift; sourceTree = "<group>"; };
 		7472B29E26594BBB00511468 /* TimeSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeSelection.storyboard; sourceTree = "<group>"; };
 		7483291C2671090500C7CC43 /* construction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = construction.json; sourceTree = "<group>"; };
+		7483291E2671D75200C7CC43 /* Error404.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error404.json; sourceTree = "<group>"; };
 		74857F962654B95800AEF14D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		74857F992654BBF200AEF14D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NewAThing.storyboard; sourceTree = "<group>"; };
 		74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAThingViewController.swift; sourceTree = "<group>"; };
@@ -793,6 +795,7 @@
 				74996310265DF0B100F081EC /* LessonsTableViewCell.xib */,
 				7499630B265DEEC700F081EC /* LessonCollectionViewCell.swift */,
 				7499630C265DEEC700F081EC /* LessonCollectionViewCell.xib */,
+				7483291E2671D75200C7CC43 /* Error404.json */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -932,6 +935,7 @@
 				74A331CB2669CE2F0034EDAD /* AttendanceSheet.storyboard in Resources */,
 				74F2DE83265FEAF400F6F0AB /* LPCommunicationCornerTableViewCell.xib in Resources */,
 				74857FA42654E9DB00AEF14D /* WideUserTableViewCell.xib in Resources */,
+				7483291F2671D75200C7CC43 /* Error404.json in Resources */,
 				74C2376F264BB5FF001BF47A /* Assets.xcassets in Resources */,
 				74CADD94265614EF004DA6D0 /* DatePickerTableViewCell.xib in Resources */,
 				742877A72666619100CF95E3 /* SignInPage.storyboard in Resources */,

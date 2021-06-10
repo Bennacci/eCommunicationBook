@@ -63,7 +63,7 @@ class UserManager {
 //
 //  }
 //
-  lazy var students: [Student]? = nil
+//  lazy var students: [Student]? = nil
   
   lazy var selectedUsers: [UserViewModel]? = nil
   
@@ -133,7 +133,8 @@ class UserManager {
   }
   
   func setSearchStudentResult(with students: [Student]) {
-    
-    self.students = students
+    if students.count > 0 {
+      self.user.student = students
+    }
   }
 }

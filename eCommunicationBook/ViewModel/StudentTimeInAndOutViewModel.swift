@@ -166,7 +166,7 @@ class StudentTimeInAndOutViewModel {
     return viewModels
   }
   func setStudentViewModel() {
-    guard let students = UserManager.shared.students else { return }
+    guard let students = UserManager.shared.user.student else { return }
       studentViewModel.value = convertStudentToViewModels(from: students)
   }
 }

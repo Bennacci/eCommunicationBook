@@ -683,7 +683,7 @@ class XXXManager {
     
     db.collection("Students")
       .order(by: "grade", descending: true)
-      .addSnapshotListener { (documentSnapshot, error) in
+      .getDocuments { (querySnapshot, error) in
         
         if let error = error {
           
@@ -692,7 +692,7 @@ class XXXManager {
           
           var students = [Student]()
           
-          for document in documentSnapshot!.documents {
+          for document in querySnapshot!.documents {
             
             do {
               if let student = try document.data(as: Student.self, decoder: Firestore.Decoder()) {
@@ -753,7 +753,7 @@ class XXXManager {
       collectionName = "StudentTimeOuts"
     }
     
-    guard let student = UserManager.shared.students, student.count > 0 else {
+    guard let student = UserManager.shared.user.student, student.count > 0 else {
       return completion(.failure(MasterError.noMatchData("No Student")))
     }
     

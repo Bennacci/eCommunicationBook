@@ -39,11 +39,50 @@
                                     <outlet property="delegate" destination="mJF-lP-hDv" id="A4O-KE-e0k"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZq-MB-oUi">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No student found. Please enter your invitation code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PB-Fy-s3L">
+                                        <rect key="frame" x="80" y="142" width="254" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfc-WO-nhc">
+                                        <rect key="frame" x="67" y="223" width="280" height="279"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="xfc-WO-nhc" secondAttribute="height" multiplier="1:1" constant="1" id="h1o-tF-7cv"/>
+                                            <constraint firstAttribute="width" constant="280" id="pC1-us-mzD"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g05-1J-fEJ">
+                                        <rect key="frame" x="178.5" y="542" width="57" height="30"/>
+                                        <state key="normal" title="Redeem"/>
+                                        <connections>
+                                            <action selector="redeem:" destination="mJF-lP-hDv" eventType="touchUpInside" id="xEd-hP-MtL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="xfc-WO-nhc" firstAttribute="centerY" secondItem="oZq-MB-oUi" secondAttribute="centerY" id="6Lu-kI-UyI"/>
+                                    <constraint firstItem="g05-1J-fEJ" firstAttribute="centerX" secondItem="oZq-MB-oUi" secondAttribute="centerX" id="8gt-2R-CX2"/>
+                                    <constraint firstItem="xfc-WO-nhc" firstAttribute="centerX" secondItem="oZq-MB-oUi" secondAttribute="centerX" id="TH2-fx-Xti"/>
+                                    <constraint firstItem="0PB-Fy-s3L" firstAttribute="centerX" secondItem="oZq-MB-oUi" secondAttribute="centerX" id="TWf-3W-Dul"/>
+                                    <constraint firstItem="0PB-Fy-s3L" firstAttribute="bottom" secondItem="xfc-WO-nhc" secondAttribute="top" constant="-40" id="eV6-LC-Cb3"/>
+                                    <constraint firstItem="g05-1J-fEJ" firstAttribute="top" secondItem="xfc-WO-nhc" secondAttribute="bottom" constant="40" id="nin-uw-s4H"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="XuG-zx-v1g" firstAttribute="leading" secondItem="5rv-QP-kGX" secondAttribute="leading" id="6qS-B4-wc4"/>
+                            <constraint firstItem="5rv-QP-kGX" firstAttribute="trailing" secondItem="oZq-MB-oUi" secondAttribute="trailing" id="CLh-h6-7Nk"/>
+                            <constraint firstItem="5rv-QP-kGX" firstAttribute="bottom" secondItem="oZq-MB-oUi" secondAttribute="bottom" id="HTX-RL-KVg"/>
+                            <constraint firstItem="oZq-MB-oUi" firstAttribute="leading" secondItem="5rv-QP-kGX" secondAttribute="leading" id="VlA-8N-5gr"/>
                             <constraint firstItem="5rv-QP-kGX" firstAttribute="bottom" secondItem="XuG-zx-v1g" secondAttribute="bottom" id="bMp-fv-Egw"/>
+                            <constraint firstItem="oZq-MB-oUi" firstAttribute="top" secondItem="5rv-QP-kGX" secondAttribute="top" id="kq8-oU-Bcv"/>
                             <constraint firstItem="5rv-QP-kGX" firstAttribute="trailing" secondItem="XuG-zx-v1g" secondAttribute="trailing" id="pG9-XK-WFD"/>
                             <constraint firstItem="XuG-zx-v1g" firstAttribute="top" secondItem="5rv-QP-kGX" secondAttribute="top" id="qhC-ZI-QG6"/>
                         </constraints>
@@ -90,6 +129,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="XuG-zx-v1g" id="Gh9-ji-iCl"/>
+                        <outlet property="viewCourseNotFound" destination="oZq-MB-oUi" id="DlC-Zr-FUM"/>
+                        <outlet property="viewCourseNotFoundLottie" destination="xfc-WO-nhc" id="EgE-Oa-197"/>
                         <segue destination="aE3-Ia-m01" kind="show" identifier="lessonPlanDetail" id="oqM-Z6-TQm"/>
                         <segue destination="SsQ-LT-LsB" kind="show" identifier="lessonPerformancesReview" id="Aps-1D-F9d"/>
                     </connections>

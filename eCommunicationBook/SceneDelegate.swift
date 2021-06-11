@@ -58,14 +58,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Use this method to undo the changes made on entering the background.
     let firebaseAuth = Auth.auth()
     
-    do {
-      
-      try firebaseAuth.signOut()
-      
-    } catch let signOutError as NSError {
-      
-      print("Error signing out: %@", signOutError)
-    }
+//    do {
+//
+//      try firebaseAuth.signOut()
+//      
+//    } catch let signOutError as NSError {
+//
+//      print("Error signing out: %@", signOutError)
+//    }
     
     var storyBoard: UIStoryboard?
     

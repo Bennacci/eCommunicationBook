@@ -23,13 +23,13 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We need to access your camera for uploading images</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need to access your location for publishing student's attendance</string>
+	<string>We need to access your location for publishing student&apos;s attendance</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need to access your location for publishing student's attendance</string>
+	<string>We need to access your location for publishing student&apos;s attendance</string>
 	<key>NSLocationUsageDescription</key>
-	<string>We need to access your location for publishing student's attendance</string>
+	<string>We need to access your location for publishing student&apos;s attendance</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need to access your location for publishing student's attendance</string>
+	<string>We need to access your location for publishing student&apos;s attendance</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>We need to access your photo library for uploading images</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -73,6 +73,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
-	<string>.light</string>
+	<string>Light</string>
 </dict>
 </plist>

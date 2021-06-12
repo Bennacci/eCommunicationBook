@@ -57,46 +57,52 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Called as the scene transitions from the background to the foreground.
     // Use this method to undo the changes made on entering the background.
     let firebaseAuth = Auth.auth()
-    
-//    do {
-//
-//      try firebaseAuth.signOut()
-//
-//    } catch let signOutError as NSError {
-//
-//      print("Error signing out: %@", signOutError)
-//    }
+//    
+//        do {
+//    
+//          try firebaseAuth.signOut()
+//    
+//        } catch let signOutError as NSError {
+//    
+//          print("Error signing out: %@", signOutError)
+//        }
     
     var storyBoard: UIStoryboard?
     
-//    if firebaseAuth.currentUser != nil {
-//
-//      storyBoard = .main
-//
-//    } else {
-//
-//      storyBoard = .signInPage
-//
-//    }
-//
+    //    if firebaseAuth.currentUser != nil {
+    //
+    //      storyBoard = .main
+    //
+    //    } else {
+    //
+    //      storyBoard = .signInPage
+    //
+    //    }
+    //
     firebaseAuth.addStateDidChangeListener { [self] auth, user in
       if let user = user {
         UserManager.shared.user.id = user.uid
+      }
+      
+      if UserManager.shared.user.userType != nil {
         storyBoard = .main
-//        guard let homePageVC = storyBoard?.instantiateInitialViewController()?.children[0].children[0] as? HomePageViewController else {return}
-//        homePageVC.viewModel.checkUser()
       } else {
         storyBoard = .signInPage
-      }
-        self.window?.rootViewController = storyBoard?.instantiateInitialViewController()
         
-        self.window?.makeKeyAndVisible()  
+        guard let nextVC = storyBoard?.instantiateInitialViewController() as? SignInPageViewController else {return}
+        if UserManager.shared.user.userType != nil {
+          nextVC.shiftToViewChoseRole()
+        }
+      }
+      self.window?.rootViewController = storyBoard?.instantiateInitialViewController()
+      
+      self.window?.makeKeyAndVisible()
     }
     
     
-//    window?.rootViewController = storyBoard?.instantiateInitialViewController()
-//
-//    window?.makeKeyAndVisible()
+    //    window?.rootViewController = storyBoard?.instantiateInitialViewController()
+    //
+    //    window?.makeKeyAndVisible()
     
   }
   

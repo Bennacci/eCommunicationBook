@@ -24,17 +24,20 @@ class HomePageViewModel {
     func checkUser() {
         
         if UserManager.shared.user.id != "" {
-            
+          BTProgressHUD.show()
+
         XXXManager.shared.identifyUser(uid: UserManager.shared.user.id) { [weak self] result in
           
           switch result {
             
           case .success(let user):
+            BTProgressHUD.dismiss()
+            BTProgressHUD.showSuccess(text: "Sign in Success")
             
             UserManager.shared.user = user
-            
-            self?.servicesData = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
-                        
+            if let userType = UserManager.shared.user.userType {
+              self?.servicesData = ServiceManager.init(userType: UserType(rawValue: userType)!).services
+            }
           case .failure(let error):
 
               print("fetchData.failure: \(error)")

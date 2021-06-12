@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qXg-FC-TFT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qXg-FC-TFT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,6 +44,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Jce-jz-pfd"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qaS-gL-Qha" firstAttribute="top" secondItem="18i-7Y-sI2" secondAttribute="top" id="A8H-vw-gF8"/>
@@ -49,7 +52,6 @@
                             <constraint firstItem="qaS-gL-Qha" firstAttribute="leading" secondItem="Jce-jz-pfd" secondAttribute="leading" id="Ltf-gL-caT"/>
                             <constraint firstItem="Jce-jz-pfd" firstAttribute="bottom" secondItem="qaS-gL-Qha" secondAttribute="bottom" id="Vj1-FQ-N7m"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Jce-jz-pfd"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="1Gc-nj-1xi"/>
                     <navigationItem key="navigationItem" id="wyH-wJ-jee">
@@ -65,7 +67,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="I2v-jf-1BF" firstAttribute="centerY" secondItem="pHZ-GW-CAG" secondAttribute="centerY" id="IsF-b4-NrI"/>
                                 <constraint firstItem="I2v-jf-1BF" firstAttribute="centerX" secondItem="pHZ-GW-CAG" secondAttribute="centerX" id="Kbt-oh-cnj"/>
@@ -91,7 +93,10 @@
     </scenes>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
-        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

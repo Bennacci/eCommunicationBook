@@ -48,11 +48,11 @@ class ScanStudentQRCodeViewController: UIViewController {
     self.navigationController?.setNavigationBarHidden(true, animated: true)
 
   viewModel.wroteInSuccess = {
-      LKProgressHUD.showSuccess(text: "Time In Success")
+      BTProgressHUD.showSuccess(text: "Time In Success")
       
     }
     viewModel.wroteOutSuccess = {
-      LKProgressHUD.showSuccess(text: "Time Out Success")
+      BTProgressHUD.showSuccess(text: "Time Out Success")
     }
     
     viewModel.courseViewModel.bind { [weak self] _ in

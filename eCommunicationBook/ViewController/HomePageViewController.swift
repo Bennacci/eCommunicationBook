@@ -53,11 +53,6 @@ class HomePageViewController: UIViewController {
       self?.tableView.reloadData()
     }
     
-    
-    
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
     viewModel.checkUser()
     
     viewModel.onGotUserData = { [weak self] in
@@ -65,6 +60,11 @@ class HomePageViewController: UIViewController {
         self?.tableView.reloadData()
       }
     }
+    
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+
   }
 }
 
@@ -286,6 +286,8 @@ extension HomePageViewController: UICollectionViewDelegate {
           self.navigationController?.show(nextVC, sender: nil)
           
         } else { return }
+      case "Lesson Plan":
+        BTProgressHUD.showFailure(text: "Coming soon")
       default:
         return
       }

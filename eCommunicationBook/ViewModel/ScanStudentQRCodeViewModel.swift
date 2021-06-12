@@ -36,7 +36,7 @@ class ScanStudentQRCodeViewModel {
   func onScanedAQRCode(info: String) {
     
     if studentExistance.courseName == "" || studentExistance.courseLesson == 0 {
-      LKProgressHUD.showFailure(text: "Please select course name and lesson")
+      BTProgressHUD.showFailure(text: "Please select course name and lesson")
       return
     }
 
@@ -98,11 +98,11 @@ class ScanStudentQRCodeViewModel {
 
   func writeAttendance(with studentExistance: inout StudentExistance) {
   
-    LKProgressHUD.show()
+    BTProgressHUD.show()
 
     XXXManager.shared.writeAttendance(studentExistance: &studentExistance) { result in
      
-      LKProgressHUD.dismiss()
+      BTProgressHUD.dismiss()
 
       switch result {
         
@@ -121,11 +121,11 @@ class ScanStudentQRCodeViewModel {
   
   func writeTimeIn(with studentExistance: inout StudentExistance) {
   
-    LKProgressHUD.show()
+    BTProgressHUD.show()
 
     XXXManager.shared.writeTimeIn(studentExistance: &studentExistance) { result in
      
-      LKProgressHUD.dismiss()
+      BTProgressHUD.dismiss()
 
       switch result {
         
@@ -145,11 +145,11 @@ class ScanStudentQRCodeViewModel {
   }
   func writeTimeOut(with studentExistance: inout StudentExistance) {
     
-    LKProgressHUD.show()
+    BTProgressHUD.show()
 
     XXXManager.shared.writeTimeOut(studentExistance: &studentExistance) { result in
       
-      LKProgressHUD.dismiss()
+      BTProgressHUD.dismiss()
 
       switch result {
         

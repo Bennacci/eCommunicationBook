@@ -50,7 +50,13 @@ class SignInPageViewController: UIViewController {
     }
     
     viewModel.onFailure = {
-      LKProgressHUD.showFailure(text: "An error occurred")
+      BTProgressHUD.showFailure(text: "An error occurred")
+    }
+  }
+  override func viewWillAppear(_ animated: Bool) {
+    if UserManager.shared.user.id != "" && UserManager.shared.user.userType == nil {
+      viewModel.signInUser()
+//      self.shiftToViewChoseRole()
     }
   }
   
@@ -85,7 +91,7 @@ class SignInPageViewController: UIViewController {
       
       appDelegate?.window?.rootViewController = nextVC
       
-      LKProgressHUD.showSuccess(text: "Sign In Success")
+      BTProgressHUD.showSuccess(text: "Sign In Success")
       
     } else { return }
   }
@@ -113,7 +119,7 @@ class SignInPageViewController: UIViewController {
       self.middleConViewAppleSign.constant = -450
       self.middleConViewChooseRole.constant = 0
     },
-                                                   completion: nil)
+    completion: nil)
   }
   
   func setupAppleButton() {
@@ -256,7 +262,7 @@ extension SignInPageViewController: UICollectionViewDataSource {
     //        let itemViewModel = viewModel.itemViewModels[indexPath.row]
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserTypeCollectionViewCell.identifier,
                                                         for: indexPath) as? UserTypeCollectionViewCell
-      else { fatalError("Unexpected Table View Cell") }
+    else { fatalError("Unexpected Table View Cell") }
     cell.continueButton.addTarget(self, action: #selector(connected(sender:)), for: .touchUpInside)
     cell.continueButton.tag = indexPath.item
     cell.setUpCell(index: indexPath.item)
@@ -266,39 +272,33 @@ extension SignInPageViewController: UICollectionViewDataSource {
   
   @objc func connected(sender: UIButton) {
     
-    
     if sender.tag == 1 {
-        let controller = UIAlertController(title: "Redeem Code", message: "Enter your invitation code to continue.", preferredStyle: .alert)
-            controller.addTextField { (textField) in
-            textField.placeholder = "code"
-            textField.keyboardType = .numberPad
+      let controller = UIAlertController(title: "Redeem Code", message: "Enter your invitation code to continue.", preferredStyle: .alert)
+      controller.addTextField { (textField) in
+        textField.placeholder = "code"
+        textField.keyboardType = .numberPad
+      }
+      let okAction = UIAlertAction(title: "ok", style: .default) { (_) in
+        guard let code = controller.textFields?[0].text else {return}
+        if code == "12369" {
+          
+          self.viewModel.onUserTypeChange(type: sender.tag)
+          self.viewModel.updateUserType()
+          
+        } else {
+          BTProgressHUD.showFailure(text: "Invalid invitation code")
         }
-        let okAction = UIAlertAction(title: "ok", style: .default) { (_) in
-          guard let code = controller.textFields?[0].text else {return}
-           if code == "eComInvitationCode123" {
-            UserManager.shared.user.userType = UserType.allCases[sender.tag].rawValue
-            if UserManager.shared.user.id != "" {
-              self.viewModel.updateUserType()
-            } else {
-              self.viewModel.onGotUserData!()
-            }
-           } else {
-            LKProgressHUD.showFailure(text: "Invalid invitation code")
-          }
-        }
-        controller.addAction(okAction)
-        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
-        controller.addAction(cancelAction)
-        present(controller, animated: true, completion: nil)
+      }
+      controller.addAction(okAction)
+      let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+      controller.addAction(cancelAction)
+      present(controller, animated: true, completion: nil)
       
     } else {
       
-      UserManager.shared.user.userType = UserType.allCases[sender.tag].rawValue
-      if UserManager.shared.user.id != "" {
-        viewModel.updateUserType()
-      } else {
-        viewModel.onGotUserData!()
-      }
+      self.viewModel.onUserTypeChange(type: sender.tag)
+      self.viewModel.updateUserType()
+      
     }
   }
 }

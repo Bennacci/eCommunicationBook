@@ -82,7 +82,7 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
        if code == "eComInvitationCode123" {
         // maybe do smth
        } else {
-        LKProgressHUD.showFailure(text: "Invalid invitation code")
+        BTProgressHUD.showFailure(text: "Invalid invitation code")
       }
     }
     controller.addAction(okAction)

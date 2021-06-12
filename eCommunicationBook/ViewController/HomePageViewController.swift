@@ -33,10 +33,10 @@ class HomePageViewController: UIViewController {
     right: 10.0)
   
   override func viewDidLoad() {
-
+    
     super.viewDidLoad()
-
-//    self.navigationController?.setNavigationBarHidden(true, animated: true)
+    
+    //    self.navigationController?.setNavigationBarHidden(true, animated: true)
     
     tableView.registerCellWithNib(identifier: ServicesTableViewCell.identifier, bundle: nil)
     
@@ -51,6 +51,19 @@ class HomePageViewController: UIViewController {
     viewModel.signViewModel.bind { [weak self] _ in
       
       self?.tableView.reloadData()
+    }
+    
+    
+    
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    viewModel.checkUser()
+    
+    viewModel.onGotUserData = { [weak self] in
+      DispatchQueue.main.async {
+        self?.tableView.reloadData()
+      }
     }
   }
 }
@@ -74,11 +87,11 @@ extension HomePageViewController: UITableViewDataSource {
     }
   }
   
-  func tableView(_ tableView: UITableView,
-                 
-                 numberOfRowsInSection section: Int) -> Int {
-    
-    let sectionThreeRowCount = viewModel.servicesData().items[1].count
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    var sectionThreeRowCount  = 0
+    if  let servicesData =  viewModel.servicesData {
+      sectionThreeRowCount = servicesData.items[1].count
+    }
     let signCount = viewModel.signViewModel.value.count
     return [1, 1, sectionThreeRowCount, signCount][section]
   }
@@ -87,7 +100,7 @@ extension HomePageViewController: UITableViewDataSource {
     if indexPath == [0, 0] {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier,
                                                      for: indexPath) as? BannerTableViewCell
-        else { fatalError("Unexpected Table View Cell") }
+      else { fatalError("Unexpected Table View Cell") }
       
       bannerCell = cell
       
@@ -101,42 +114,44 @@ extension HomePageViewController: UITableViewDataSource {
       
       guard let cell = tableView.dequeueReusableCell(withIdentifier: ServicesTableViewCell.identifier,
                                                      for: indexPath) as? ServicesTableViewCell
-        else { fatalError("Unexpected Table View Cell") }
+      else { fatalError("Unexpected Table View Cell") }
       
       cell.collectionView.delegate = self
       
       cell.collectionView.dataSource = self
-            
-//      if indexPath == [1, 0] {
-        
-        hotCell = cell
+      
+      cell.collectionView.reloadData()
+      //      if indexPath == [1, 0] {
+      
+      hotCell = cell
       if UserManager.shared.user.userType == "teacher" {
         cell.height.constant = hotCellHeight
       } else {
         cell.height.constant = hotCellHeight / 2
-
+        
       }
-//      }
-//      else {
-//
-//        cell.height.constant = recommendedCellHeight
-//
-//      }
+      //      }
+      //      else {
+      //
+      //        cell.height.constant = recommendedCellHeight
+      //
+      //      }
       
       return cell
     } else if indexPath.section == 2 {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier,
                                                      for: indexPath) as? ServiceTableViewCell
-        else { fatalError("Unexpected Table View Cell") }
-      cell.setUp(viewModel: viewModel.servicesData(), indexPath: indexPath)
-      
-//      cell.height.constant = recommendedCellHeight
+      else { fatalError("Unexpected Table View Cell") }
+      if  let servicesData =  viewModel.servicesData {
+        cell.setUp(viewModel: servicesData, indexPath: indexPath)
+      }
+      //      cell.height.constant = recommendedCellHeight
       return cell
-    
+      
     } else {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
                                                      for: indexPath) as? NewsTableViewCell
-        else { fatalError("Unexpected Table View Cell") }
+      else { fatalError("Unexpected Table View Cell") }
       cell.setUp(viewModel: viewModel.signViewModel.value[indexPath.row])
       return cell
     }
@@ -147,12 +162,12 @@ extension HomePageViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-
-      headerView.backgroundColor = UIColor.clear
-      let myLabel = UILabel()
-      myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 2, width: tableView.bounds.size.width, height: 30)
-      myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-      myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+    
+    headerView.backgroundColor = UIColor.clear
+    let myLabel = UILabel()
+    myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 2, width: tableView.bounds.size.width, height: 30)
+    myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+    myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
     headerView.addSubview(myLabel)
     return headerView
   }
@@ -172,8 +187,8 @@ extension HomePageViewController: UITableViewDelegate {
     return CGFloat.leastNormalMagnitude
   }
   
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if indexPath.section == 2 {
       if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
         nextVC.modalPresentationStyle = .fullScreen
         guard let viewController = nextVC as? NewAThingViewController else {return}
@@ -181,14 +196,14 @@ extension HomePageViewController: UITableViewDelegate {
         let servicesItem = services.items[indexPath.section - 1][indexPath.row]
         viewController.viewModel.servicesItem = servicesItem
         viewController.navigationItem.title = servicesItem.formTitle
-  //      show(nextVC, sender: nil)
-  //      present(nextVC, animated: false, completion: nil)
+        //      show(nextVC, sender: nil)
+        //      present(nextVC, animated: false, completion: nil)
         self.navigationController?.show(nextVC, sender: nil)
-
       }
-      tableView.deselectRow(at: indexPath, animated: true)
-
     }
+    tableView.deselectRow(at: indexPath, animated: true)
+    
+  }
   
 }
 
@@ -196,27 +211,34 @@ extension HomePageViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
     if collectionView == hotCell.collectionView {
-      
-      return viewModel.servicesData().items[0].count
-      
+      if  let servicesData =  viewModel.servicesData {
+        return servicesData.items[0].count
+      } else {
+        return 0
+      }
     } else {
-      
-      return viewModel.servicesData().items[1].count + viewModel.servicesData().items[2].count
+      if  let servicesData =  viewModel.servicesData {
+        return servicesData.items[1].count + servicesData.items[2].count
+      } else {
+        return 0
+      }
     }
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ServiceCollectionViewCell.identifier,
                                                         for: indexPath) as? ServiceCollectionViewCell
-      else { fatalError("Unexpected Table View Cell") }
+    else { fatalError("Unexpected Table View Cell") }
     if collectionView == hotCell.collectionView {
       
       cell.height.constant = hotCell.bounds.size.height
-      
-      cell.setUp(viewModel: viewModel.servicesData(), indexPath: indexPath, hot: true)
-
+      if  let servicesData =  viewModel.servicesData {
+        cell.setUp(viewModel: servicesData, indexPath: indexPath, hot: true)
+      }
     } else {
-    cell.setUp(viewModel: viewModel.servicesData(), indexPath: indexPath, hot: false)
+      if  let servicesData =  viewModel.servicesData {
+        cell.setUp(viewModel: servicesData, indexPath: indexPath, hot: false)
+      }
     }
     return cell
   }
@@ -226,7 +248,8 @@ extension HomePageViewController: UICollectionViewDataSource {
 extension HomePageViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if collectionView == hotCell.collectionView {
-      let title = viewModel.servicesData().items[0][indexPath.item].title
+      
+      let title = viewModel.servicesData?.items[0][indexPath.item].title
       
       switch title {
       case "Communication Book":
@@ -288,9 +311,9 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
     if collectionView == hotCell.collectionView {
       if UserManager.shared.user.userType == "teacher" {
         size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
-                                              sectionInsets: collectionViewSectionInsets,
-                                              itemsPerRow: 2,
-                                              itemsPerColumn: 2)
+                                                sectionInsets: collectionViewSectionInsets,
+                                                itemsPerRow: 2,
+                                                itemsPerColumn: 2)
       } else {
         size = collectionView.calculateCellsize(viewHeight: hotCellHeight / 2,
                                                 sectionInsets: collectionViewSectionInsets,
@@ -321,11 +344,11 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
   
   /// 滑動方向為「垂直」的話即「左右」的間距(預設為重直)
   
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//    return 8
-//  }
+  //  func collectionView(_ collectionView: UICollectionView,
+  //                      layout collectionViewLayout: UICollectionViewLayout,
+  //                      minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+  //    return 8
+  //  }
 }
 
 extension HomePageViewController: UIScrollViewDelegate {

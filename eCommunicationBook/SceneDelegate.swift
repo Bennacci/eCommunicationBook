@@ -61,7 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //    do {
 //
 //      try firebaseAuth.signOut()
-//      
+//
 //    } catch let signOutError as NSError {
 //
 //      print("Error signing out: %@", signOutError)
@@ -69,19 +69,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var storyBoard: UIStoryboard?
     
-    if firebaseAuth.currentUser != nil {
-          
-      storyBoard = .main
-      
-    } else {
-      
-      storyBoard = .signInPage
-    
+//    if firebaseAuth.currentUser != nil {
+//
+//      storyBoard = .main
+//
+//    } else {
+//
+//      storyBoard = .signInPage
+//
+//    }
+//
+    firebaseAuth.addStateDidChangeListener { [self] auth, user in
+      if let user = user {
+        UserManager.shared.user.id = user.uid
+        storyBoard = .main
+//        guard let homePageVC = storyBoard?.instantiateInitialViewController()?.children[0].children[0] as? HomePageViewController else {return}
+//        homePageVC.viewModel.checkUser()
+      } else {
+        storyBoard = .signInPage
+      }
+        self.window?.rootViewController = storyBoard?.instantiateInitialViewController()
+        
+        self.window?.makeKeyAndVisible()  
     }
     
-    window?.rootViewController = storyBoard?.instantiateInitialViewController()
     
-    window?.makeKeyAndVisible()
+//    window?.rootViewController = storyBoard?.instantiateInitialViewController()
+//
+//    window?.makeKeyAndVisible()
     
   }
   

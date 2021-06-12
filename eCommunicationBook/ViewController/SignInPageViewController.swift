@@ -301,6 +301,4 @@ extension SignInPageViewController: UICollectionViewDataSource {
       }
     }
   }
-  
-  
 }

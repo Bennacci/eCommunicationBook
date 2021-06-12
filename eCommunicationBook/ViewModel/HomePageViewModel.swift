@@ -8,14 +8,42 @@
 
 import Foundation
 
+
+
 class HomePageViewModel {
   var signViewModel = Box([EventViewModel]())
   
-  func servicesData() -> ServiceGroup {
-    let services = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
-    return services
-  }
-  
+    var servicesData: ServiceGroup? {
+        didSet {
+            self.onGotUserData?()
+        }
+    }
+    
+    var onGotUserData: (() -> Void)?
+      
+    func checkUser() {
+        
+        if UserManager.shared.user.id != "" {
+            
+        XXXManager.shared.identifyUser(uid: UserManager.shared.user.id) { [weak self] result in
+          
+          switch result {
+            
+          case .success(let user):
+            
+            UserManager.shared.user = user
+            
+            self?.servicesData = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
+                        
+          case .failure(let error):
+
+              print("fetchData.failure: \(error)")
+
+          }
+        }
+      }
+    }
+    
   func fetchSign() {
     XXXManager.shared.fetchSign { [weak self] result in
       switch result {

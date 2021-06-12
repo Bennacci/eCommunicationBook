@@ -208,7 +208,7 @@ extension NewAThingViewController: UITableViewDataSource {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.identifier,
                                                      for: indexPath) as? TextFieldTableViewCell
         else { fatalError("Unexpected Table View Cell") }
-      cell.textField.placeholder = "點擊輸入"
+      cell.textField.placeholder = "tap to edit"
       
       cell.title.text = inputText
       cell.textField.delegate = self

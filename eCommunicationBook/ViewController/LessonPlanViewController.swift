@@ -13,12 +13,14 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
   
   @IBOutlet weak var viewCourseNotFound: UIView!
   @IBOutlet weak var viewCourseNotFoundLottie: UIView!
+  @IBOutlet weak var labelNotFound: UILabel!
+  @IBOutlet weak var buttonRedeem: UIButton!
   
   @IBOutlet weak var tableView: UITableView!
   private var animationView: AnimationView?
   
   var viewModel = LessonPlanViewModel()
-  
+    
   var hotCellHeight: CGFloat = UIScreen.height / 5
   //
   //  var recommendedCellHeight: CGFloat = UIScreen.height / 5
@@ -43,6 +45,10 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
       self?.pickedCourseIndexPath = nil
       if self?.viewModel.courseViewModel.value.count == 0 {
         self?.addCourseNotFoundView()
+        if UserManager.shared.user.userType == "teacher" {
+          self?.buttonRedeem.isHidden = true
+          self?.labelNotFound.text = "You haven't own any class"
+        }
       } else {
         self?.viewCourseNotFound.isHidden = true
       }
@@ -51,6 +57,13 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
       }
       //      self?.viewModel.onRefresh()
     }
+    viewModel.onStudentAdded = { [weak self] () in
+      self?.viewModel.fetchData()
+      DispatchQueue.main.async {
+        self?.tableView.reloadData()
+      }
+    }
+    
   }
   func onSaved() {
     viewModel.fetchData()
@@ -73,16 +86,18 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
     let controller = UIAlertController(title: "Redeem Code",
                                        message: "Enter your invitation code to continue.",
                                        preferredStyle: .alert)
-        controller.addTextField { (textField) in
-        textField.placeholder = "code"
-        textField.keyboardType = .numberPad
+    controller.addTextField { (textField) in
+      textField.placeholder = "code"
+      textField.keyboardType = .default
     }
     let okAction = UIAlertAction(title: "ok", style: .default) { (_) in
+      BTProgressHUD.show()
+      
       guard let code = controller.textFields?[0].text else {return}
-       if code == "eComInvitationCode123" {
-        // maybe do smth
-       } else {
-        BTProgressHUD.showFailure(text: "Invalid invitation code")
+      if code != "" {
+        
+        self.viewModel.onVerifyInvitationCode(code: code)
+        
       }
     }
     controller.addAction(okAction)
@@ -95,10 +110,10 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
     // Get the new view controller using segue.destination.
     // Pass the selected object to the new view controller.
     if segue.identifier == "lessonPlanDetail",
-      let lessonPlanDetailViewController = segue.destination as? LessonPlanDetailViewController {
+       let lessonPlanDetailViewController = segue.destination as? LessonPlanDetailViewController {
       if let button = sender as? UIButton {
         lessonPlanDetailViewController.navigationItem.title =
-        "Lesson \( self.viewModel.lessonViewModel.value[button.tag].number)"
+          "Lesson \( self.viewModel.lessonViewModel.value[button.tag].number)"
         lessonPlanDetailViewController.delegate = self
         lessonPlanDetailViewController.viewModel.course =
           self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course
@@ -113,7 +128,7 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
           self.viewModel.lessonViewModel.value[button.tag].lesson
       }
     } else if segue.identifier == "lessonPerformancesReview",
-      let lessonPerformancesReviewViewController = segue.destination as? LessonPerformancesReviewViewController {
+              let lessonPerformancesReviewViewController = segue.destination as? LessonPerformancesReviewViewController {
       lessonPerformancesReviewViewController.viewModel.courseName =
         self.viewModel.courseViewModel.value[pickedCourseIndexPath!.row - 1].course.name
       if let button = sender as? UIButton {
@@ -176,7 +191,7 @@ extension LessonPlanViewController: UITableViewDataSource {
     if indexPath == pickedCourseIndexPath {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: LessonsTableViewCell.identifier,
                                                      for: indexPath) as? LessonsTableViewCell
-        else { fatalError("Unexpected Table View Cell") }
+      else { fatalError("Unexpected Table View Cell") }
       
       cell.collectionView.dataSource = self
       
@@ -192,12 +207,12 @@ extension LessonPlanViewController: UITableViewDataSource {
       
       guard let cell = tableView.dequeueReusableCell(withIdentifier: CourseTableViewCell.identifier,
                                                      for: indexPath) as? CourseTableViewCell
-        else { fatalError("Unexpected Table View Cell") }
+      else { fatalError("Unexpected Table View Cell") }
       
       var index: Int
       
       if let pickedCourseIndexPath = pickedCourseIndexPath,
-        pickedCourseIndexPath.row <= indexPath.row {
+         pickedCourseIndexPath.row <= indexPath.row {
         
         index = indexPath.row - 1
         
@@ -291,7 +306,7 @@ extension LessonPlanViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LessonCollectionViewCell.identifier,
                                                         for: indexPath) as? LessonCollectionViewCell
-      else { fatalError("Unexpected Table View Cell") }
+    else { fatalError("Unexpected Table View Cell") }
     //    if collectionView == hotCell.collectionView {
     //      cell.height.constant = hotCell.bounds.size.height
     //    }

@@ -64,26 +64,41 @@ class HomePageViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-
+    
   }
 }
 
 extension HomePageViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 4
+    if UserManager.shared.user.userType == "teacher" {
+      return 4
+    } else {
+      return 3
+    }
   }
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    switch section {
-    case 0:
-      return ""
-    case 1:
-      return "Popular features"
-    case 2:
-      return "Recommanded for you"
-    default:
-      return "New events"
+    if UserManager.shared.user.userType == "teacher" {
+      switch section {
+      case 0:
+        return ""
+      case 1:
+        return "Popular features"
+      case 2:
+        return "Recommanded for you"
+      default:
+        return "New events"
+      }
+    } else {
+      switch section {
+      case 0:
+        return ""
+      case 1:
+        return "Popular Features"
+      default:
+        return "New events"
+      }
     }
   }
   
@@ -93,7 +108,11 @@ extension HomePageViewController: UITableViewDataSource {
       sectionThreeRowCount = servicesData.items[1].count
     }
     let signCount = viewModel.signViewModel.value.count
-    return [1, 1, sectionThreeRowCount, signCount][section]
+    if UserManager.shared.user.userType == "teacher" {
+      return [1, 1, sectionThreeRowCount, signCount][section]
+    } else {
+      return [1, 1, signCount][section]
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -138,7 +157,7 @@ extension HomePageViewController: UITableViewDataSource {
       //      }
       
       return cell
-    } else if indexPath.section == 2 {
+    } else if indexPath.section == 2 && UserManager.shared.user.userType == "teacher" {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier,
                                                      for: indexPath) as? ServiceTableViewCell
       else { fatalError("Unexpected Table View Cell") }
@@ -188,7 +207,7 @@ extension HomePageViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.section == 2 {
+    if indexPath.section == 2 && UserManager.shared.user.userType == "teacher" {
       if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
         nextVC.modalPresentationStyle = .fullScreen
         guard let viewController = nextVC as? NewAThingViewController else {return}

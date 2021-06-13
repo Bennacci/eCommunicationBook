@@ -708,6 +708,30 @@ class XXXManager {
     }
   }
   
+  func identifyStudent(id: String, completion: @escaping (Result<Student, Error>) -> Void) {
+    
+    db.collection("Students").document(id)
+      .getDocument { (querySnapshot, error) in
+        
+
+        if let error = error {
+          
+          completion(.failure(error))
+        } else if querySnapshot?.data() == nil {
+          completion(.failure(MasterError.noMatchData("User not found")))
+        } else {
+          
+            do {
+              if let student = try querySnapshot?.data(as: Student.self, decoder: Firestore.Decoder()) {
+                completion(.success(student))
+              }
+            } catch {
+              completion(.failure(error))
+            }
+        }
+    }
+  }
+  
   func fetchEvents(completion: @escaping (Result<[Event], Error>) -> Void) {
     
     db.collection("Events").getDocuments { (querySnapshot, error) in

@@ -16,6 +16,8 @@ class LessonPlanViewModel {
   
   var refreshView: (() -> Void)?
   
+  var onStudentAdded: (()->Void)?
+
   func fetchData() {
     
     XXXManager.shared.fetchCourses { [weak self] result in
@@ -37,6 +39,60 @@ class LessonPlanViewModel {
 //    // maybe do something
 //    self.refreshView?()
 //  }
+  
+  func onVerifyInvitationCode(code: String) {
+    XXXManager.shared.identifyStudent(id: code) { [weak self] result in
+      
+      switch result {
+      
+      case .success(let student):
+
+        BTProgressHUD.dismiss()
+
+        if UserManager.shared.user.student == nil {
+
+          UserManager.shared.user.student = [student]
+
+        } else if UserManager.shared.user.student!.filter({$0.id == student.id}).count == 0 {
+
+          UserManager.shared.user.student?.append(student)
+          
+        } else {
+          
+          BTProgressHUD.dismiss()
+          
+          BTProgressHUD.showFailure(text: "Invalid invitation code")
+        }
+
+        XXXManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
+          
+          switch result {
+            
+          case .success( _):
+            
+            BTProgressHUD.dismiss()
+
+            BTProgressHUD.showSuccess(text: "Successffuly Added")
+
+            self?.onStudentAdded?()
+
+          case .failure(let error):
+            
+            BTProgressHUD.dismiss()
+            
+            BTProgressHUD.showFailure(text: "Invalid invitation code")
+            
+            print("fetchData.failure: \(error)")
+          }
+        }
+
+      case .failure(let error):
+        BTProgressHUD.dismiss()
+        BTProgressHUD.showFailure(text: "Invalid invitation code")
+        print("fetchData.failure: \(error)")
+      }
+    }
+  }
   
   func convertCoursesToViewModels(from courses: [Course]) -> [CourseViewModel] {
     var viewModels = [CourseViewModel]()
@@ -76,6 +132,7 @@ class LessonPlanViewModel {
     }
     XXXManager.shared.courseID = courseViewModel.value[index].id
   }
+  
 }
 
 

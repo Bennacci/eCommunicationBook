@@ -57,13 +57,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Called as the scene transitions from the background to the foreground.
     // Use this method to undo the changes made on entering the background.
     let firebaseAuth = Auth.auth()
-//    
+//
 //        do {
-//    
+//
 //          try firebaseAuth.signOut()
-//    
+//
 //        } catch let signOutError as NSError {
-//    
+//
 //          print("Error signing out: %@", signOutError)
 //        }
     

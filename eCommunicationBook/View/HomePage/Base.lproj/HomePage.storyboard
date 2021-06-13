@@ -74,7 +74,7 @@
                             </constraints>
                         </view>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Z1Y-RK-rkI">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SOb-jC-u8I">
+                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SOb-jC-u8I">
                                 <rect key="frame" x="374" y="11" width="20" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="bell" catalog="system"/>

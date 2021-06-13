@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>We need to access your camera for uploading images</string>
+	<string>We need to access your camera to take photo of your user icon and student lesson records. And also scan student QR code.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We need to access your location for publishing student's attendance</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -31,9 +31,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need to access your location for publishing student's attendance</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need to access your photo library for uploading images</string>
+	<string>We need to access your photo library for uploading images of your user icon and student lesson records</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need to access your photo library for uploading images</string>
+	<string>We need to access your photo library for uploading images of your user icon and student lesson records</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

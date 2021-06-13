@@ -64,7 +64,8 @@ class ServiceManager {
            
            TeacherSeviceItem.newAStudent,
            
-           TeacherSeviceItem.newAUser]
+//           TeacherSeviceItem.newAUser
+          ]
         ]
       )
       return teacherService
@@ -83,18 +84,18 @@ class ServiceManager {
           [ParentSeviceItem.signCommunicationBook,
            
            ParentSeviceItem.checkStudentTimeInAndOut],
-          
-          [ParentSeviceItem.courseReservation,
+          []
+//          [ParentSeviceItem.courseReservation,
            
-           ParentSeviceItem.leaveReservation,
+//           ParentSeviceItem.leaveReservation,
            
-           ParentSeviceItem.makeUpReservation,
+//           ParentSeviceItem.makeUpReservation,
            
-           ParentSeviceItem.payTimeAnnounce,
+//           ParentSeviceItem.payTimeAnnounce,
            
-           ParentSeviceItem.newAStudent,
+//           ParentSeviceItem.newAStudent,
            
-           ParentSeviceItem.contactUs]
+//           ParentSeviceItem.contactUs]
         ]
       )
       return parentService

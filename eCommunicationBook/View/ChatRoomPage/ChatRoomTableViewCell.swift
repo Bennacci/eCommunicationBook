@@ -49,7 +49,7 @@ class ChatRoomTableViewCell: UITableViewCell {
             
           case .success(let user):
             if roomName == "chat" {
-              roomName = ""
+              roomName = String.empty
             } else {
               roomName += ", "
             }
@@ -58,7 +58,7 @@ class ChatRoomTableViewCell: UITableViewCell {
             
             self?.userID.text = roomName
 
-            if user.image != "" {
+            if user.image != String.empty {
               self?.userImage.loadImage(user.image)
             } else {
               self?.userImage.image = UIImage(systemName: "person.circle")

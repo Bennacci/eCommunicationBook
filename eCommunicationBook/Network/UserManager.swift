@@ -21,15 +21,15 @@ class UserManager {
     
     lazy var fireStoreDataBase = Firestore.firestore()
     
-    var user = User(id: "",
+    var user = User(id: String.empty,
                     createdTime: -1,
-                    userID: "",
-                    name: "",
-                    image: "",
+                    userID: String.empty,
+                    name: String.empty,
+                    image: String.empty,
                     cellPhoneNo: -1,
                     homePhoneNo: -1,
                     birthDay: -1,
-                    email: "",
+                    email: String.empty,
                     userType: nil,
                     workingHours: nil,
                     student: nil,

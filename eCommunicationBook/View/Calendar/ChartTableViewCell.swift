@@ -19,7 +19,6 @@ class ChartTableViewCell: UITableViewCell {
       
             super.awakeFromNib()
       
-
             // Initialization code
         }
 

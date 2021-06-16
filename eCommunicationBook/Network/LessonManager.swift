@@ -17,7 +17,7 @@ class LessonManager {
     
     lazy var fireStoreDataBase = Firestore.firestore()
     
-    lazy var courseID: String = ""
+    lazy var courseID: String = String.empty
     
     func addCourse(course: inout Course, completion: @escaping (Result<String, Error>) -> Void) {
         

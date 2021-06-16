@@ -12,11 +12,11 @@ class AccountEditContentViewModel {
   
   var textFieldTag = -1
 
-  var editContentPageTitle = ""
+  var editContentPageTitle = String.empty
   
-  var content = ""
+  var content = String.empty
   
-  var contentLength = ""
+  var contentLength = String.empty
   
   var onContentSaved: (() -> Void)?
   

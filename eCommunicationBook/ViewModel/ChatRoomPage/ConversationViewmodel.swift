@@ -21,8 +21,8 @@ class ConversationViewModel {
   //  var scrollToTop: (()->())?
   
   var message: Message = Message(
-    id: "",
-    content: "",
+    id: String.empty,
+    content: String.empty,
     senderID: UserManager.shared.user.id,
     createdTime: -1
   )
@@ -51,7 +51,7 @@ class ConversationViewModel {
   }
   
   func fetchUserData() {
-    if otherUserID != "" {
+    if otherUserID != String.empty {
         UserManager.shared.identifyUser(uid: otherUserID) { [weak self] result in
         
         switch result {
@@ -127,7 +127,7 @@ class ConversationViewModel {
     publish(with: &message) // MARK: check which function this call is
   }
   func hasContent() -> Bool {
-    return message.content != ""
+    return message.content != String.empty
   }
   func hasIDInMessage() -> Bool {
     return true

@@ -41,9 +41,9 @@ class TodaysLesoonTableViewCell: UITableViewCell {
   
   func layOutCell(title: String) {
     
-    var stringRepresentation = ""
+    var stringRepresentation = String.empty
     
-    var stringRepresentationMarks = ""
+    var stringRepresentationMarks = String.empty
     
     switch title {
       

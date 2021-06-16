@@ -60,8 +60,5 @@ class ServiceTableViewCell: UITableViewCell {
             
           }
         }
-      
-      
-      
     }
 }

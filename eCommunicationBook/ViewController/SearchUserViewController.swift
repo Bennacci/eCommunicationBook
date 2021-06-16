@@ -155,7 +155,7 @@ extension SearchUserViewController: UISearchBarDelegate {
   //  }
   func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {
     //    viewModel.fetchData()
-    if searchBar.text != ""{
+    if searchBar.text != String.empty{
       searchTableView.isHidden = false
     } else {
       searchTableView.isHidden = true
@@ -185,7 +185,7 @@ extension SearchUserViewController: UITableViewDataSource {
       if listCount != 0 {
         switch section {
         case 0:
-          return ""
+          return String.empty
         default:
           return "推薦"
         }

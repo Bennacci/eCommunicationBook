@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BTBaseViewController+Extension.swift
 //  eCommunicationBook
 //
 //  Created by Ben Tee on 2021/5/12.
@@ -40,11 +40,11 @@ class BTBaseViewController: UIViewController {
 
         navigationController?.navigationBar.barTintColor = UIColor.white.withAlphaComponent(0.9)
 
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: String.empty, style: .plain, target: nil, action: nil)
 
-        navigationController?.navigationBar.backIndicatorImage = UIImage.asset(.Icons_24px_Back02)
-
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage.asset(.Icons_24px_Back02)
+//        navigationController?.navigationBar.backIndicatorImage = UIImage.asset(.Icons_24px_Back02)
+//
+//        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage.asset(.Icons_24px_Back02)
     }
 
     override func viewWillAppear(_ animated: Bool) {

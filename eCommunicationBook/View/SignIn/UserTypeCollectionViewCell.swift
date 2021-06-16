@@ -15,7 +15,7 @@ class UserTypeCollectionViewCell: UICollectionViewCell {
   private var animationView: AnimationView?
 
   var titles = ["Parent", "Teacher"]
-  var titlesDescription = ["", ""]
+  var titlesDescription = [String.empty, String.empty]
   var backGroundColor = [UIColor.CyanProcess, UIColor.Pumpkin]
   var lotties = ["parentLottie", "teacherLottie"]
   @IBOutlet weak var continueButton: UIButton!

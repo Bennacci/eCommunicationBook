@@ -47,7 +47,7 @@ class LessonPerformancesViewModel {
       studentLessonRecord.imageTitles = []
     }
     studentLessonRecord.images?.append(url)
-    studentLessonRecord.imageTitles?.append("")
+    studentLessonRecord.imageTitles?.append(String.empty)
     onRefresh()
   }
   
@@ -87,8 +87,8 @@ class LessonPerformancesViewModel {
   var studentIndex = 0
   
   var course: Course = Course(
-    id: "",
-    name: "",
+    id: String.empty,
+    name: String.empty,
     teachers: [],
     students: [],
     firstLessonDate: -1,
@@ -98,9 +98,9 @@ class LessonPerformancesViewModel {
     lessons: nil)
   
   var previousLesson: Lesson = Lesson(
-    id: "",
+    id: String.empty,
     number: -1,
-    teacher: "",
+    teacher: String.empty,
     time: -1,
     timeInterval: -1,
     todaysLesson: nil,
@@ -108,9 +108,9 @@ class LessonPerformancesViewModel {
     assignments: nil)
   
   var currentLesson: Lesson = Lesson(
-    id: "",
+    id: String.empty,
     number: -1,
-    teacher: "",
+    teacher: String.empty,
     time: -1,
     timeInterval: -1,
     todaysLesson: nil,
@@ -118,10 +118,10 @@ class LessonPerformancesViewModel {
     assignments: nil)
   
   var studentLessonRecord: StudentLessonRecord = StudentLessonRecord (
-    id: "",
-    studentID: "",
-    studentName: "",
-    courseName: "",
+    id: String.empty,
+    studentID: String.empty,
+    studentName: String.empty,
+    courseName: String.empty,
     courseLesson: 0,
     time: -1,
     timeInterval: -1,
@@ -223,7 +223,7 @@ class LessonPerformancesViewModel {
      }
     if let tests = previousLesson.tests {
       studentLessonRecord.previousTests = tests
-      studentLessonRecord.testGrade = tests.map({ _ in "" })
+      studentLessonRecord.testGrade = tests.map({ _ in String.empty })
      }
     
 //    studentLessonRecord.note = ""

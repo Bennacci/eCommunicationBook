@@ -181,7 +181,7 @@ class AttendanceManager {
         
         let month = date.convertToString(dateformat: .month)
         
-        var collectionName = ""
+        var collectionName = String.empty
         
         if timeIn == true {
             

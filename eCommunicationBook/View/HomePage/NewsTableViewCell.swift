@@ -35,6 +35,6 @@ class NewsTableViewCell: UITableViewCell {
   func layOutCell() {
     labelTitle.text = viewModel?.eventName
     labelContent.text = viewModel?.description
-    imageViewSign.loadImage(viewModel?.image, placeHolder: UIImage.asset(.CommunicationBook))
+    imageViewSign.loadImage(viewModel?.image, placeHolder: UIImage.asset(.communicationBook))
   }
 }

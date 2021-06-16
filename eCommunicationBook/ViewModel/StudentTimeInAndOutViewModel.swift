@@ -16,7 +16,7 @@ class StudentTimeInAndOutViewModel {
   
   let studentTimeOutViemModel = Box([StudentExistanceViewModel]())
   
-  var cellDateDic = ["" : 0]
+  var cellDateDic = [String.empty: 0]
   
   var selectedDate = Date()
   
@@ -29,7 +29,6 @@ class StudentTimeInAndOutViewModel {
   let group: DispatchGroup = DispatchGroup()
   
 
-  
   func refreshCellDateDic() {
     
     cellDateDic.removeAll()
@@ -76,8 +75,7 @@ class StudentTimeInAndOutViewModel {
       
         AttendanceManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent,
                                                date: self.selectedDate,
-                                               timeIn: true)
-      { [weak self] result in
+                                               timeIn: true) { [weak self] result in
         switch result {
           
         case .success(let studentExistances):
@@ -100,8 +98,7 @@ class StudentTimeInAndOutViewModel {
       
         AttendanceManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent,
                                                date: self.selectedDate,
-                                               timeIn: false)
-      { [weak self] result in
+                                               timeIn: false) { [weak self] result in
         
         switch result {
           

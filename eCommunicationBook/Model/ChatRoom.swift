@@ -7,7 +7,6 @@
 //
 
 import Foundation
-// import FirebaseFirestoreSwift
 
 struct ChatRoom: Codable {
     var id: String

@@ -339,7 +339,7 @@ By email: b258061@gmail.com</string>
         </scene>
     </scenes>
     <resources>
-        <image name="AppLogo" width="4267" height="4267"/>
+        <image name="AppLogo" width="2400" height="2400"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

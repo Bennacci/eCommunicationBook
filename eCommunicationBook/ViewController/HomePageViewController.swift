@@ -88,7 +88,7 @@ extension HomePageViewController: UITableViewDataSource {
       case 2:
         return "Recommanded for you"
       default:
-        return "New events"
+        return "News"
       }
     } else {
       switch section {
@@ -97,7 +97,7 @@ extension HomePageViewController: UITableViewDataSource {
       case 1:
         return "Popular Features"
       default:
-        return "New events"
+        return "News"
       }
     }
   }

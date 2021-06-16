@@ -31,7 +31,7 @@ class UserManager {
                     didSet {
                       updateStudents()
                     }
-    
+
   }
   
 //  var user = User(id: "ZTBCw5SJ1cgvO9DswRx11ZUE3At1",
@@ -40,21 +40,13 @@ class UserManager {
 //                  name: "Ben Tee",
 //                  image:
 //    "https://firebasestorage.googleapis.com/v0/b/ecommunicationbook.appspot.com/o/e-communication-icon.jpg?alt=media&token=e23859b9-fc8f-4c1c-a9d8-a99af5495c5a",
-//                  cellPhoneNo: 09161235456,
-//                  homePhoneNo: 28123456,
+//                  cellPhoneNo: -1,
+//                  homePhoneNo: -1,
 //                  birthDay: -1,
 //                  email: "Ben@mail.com",
 //                  userType: nil,
 //                  workingHours: nil,
-//                  student: [Student(id: "osEhOENEZqwQIKKwF0k1",
-//                                    parents: [""],
-//                                    name: "Student A",
-//                                    image: nil,
-//                                    nationalID: "",
-//                                    grade: 1,
-//                                    birthDay: -1,
-//                                    emergencyContactPerson: "",
-//                                    emergencyContactNo: -1)],
+//                  student: nil,
 //                  difficulty: nil,
 //                  note: nil) {
 //                    didSet {
@@ -62,7 +54,7 @@ class UserManager {
 //                    }
 //
 //  }
-//
+////
 //  lazy var students: [Student]? = nil
   
   lazy var selectedUsers: [UserViewModel]? = nil

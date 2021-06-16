@@ -34,7 +34,7 @@ class ConversationViewModel {
   
   func fetchData() {
     
-    XXXManager.shared.fetchConversation { [weak self] result in
+    ChatroomManager.shared.fetchConversation { [weak self] result in
       
       switch result {
         
@@ -52,7 +52,7 @@ class ConversationViewModel {
   
   func fetchUserData() {
     if otherUserID != "" {
-      XXXManager.shared.identifyUser(uid: otherUserID) { [weak self] result in
+        UserManager.shared.identifyUser(uid: otherUserID) { [weak self] result in
         
         switch result {
           
@@ -71,8 +71,7 @@ class ConversationViewModel {
     self.message.content = content
   }
   
-  var onPublished: (()->())?
-  
+  var onPublished: (()->Void)?
   
   func onTapSend() {
     
@@ -85,7 +84,7 @@ class ConversationViewModel {
       }
     } else {
       print("login...")
-      UserManager.shared.login() { [weak self] result in
+      UserManager.shared.login { [weak self] result in
         // MARK: - put your id into login function
         switch result {
           
@@ -103,7 +102,7 @@ class ConversationViewModel {
   }
   
   func publish(with message: inout Message) {
-    XXXManager.shared.sendMessage(message: &message) { result in
+    ChatroomManager.shared.sendMessage(message: &message) { result in
       
       switch result {
         

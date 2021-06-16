@@ -113,7 +113,7 @@ class NewAThingViewModel: SearchUserDelegate {
   }
   
   func addUser (with user: inout User) {
-    XXXManager.shared.addUser(user: &user) { result in
+    UserManager.shared.addUser(user: &user) { result in
       
       switch result {
         
@@ -176,7 +176,7 @@ class NewAThingViewModel: SearchUserDelegate {
   
   func addCourse (with course: inout Course) {
     
-    XXXManager.shared.addCourse(course: &course) { result in
+    LessonManager.shared.addCourse(course: &course) { result in
       
       switch result {
         
@@ -240,7 +240,7 @@ class NewAThingViewModel: SearchUserDelegate {
     }
     course.lessons = lessons
     
-    XXXManager.shared.addLesson(course: &course) { result in
+    LessonManager.shared.addLesson(course: &course) { result in
       
       switch result {
         

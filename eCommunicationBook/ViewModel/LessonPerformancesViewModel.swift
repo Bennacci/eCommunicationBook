@@ -68,7 +68,7 @@ class LessonPerformancesViewModel {
   }
   
   func save(with studentLessonRecord: inout StudentLessonRecord) {
-    XXXManager.shared.saveStudentLessonRecord(studentLessonRecord: &studentLessonRecord) { result in
+    LessonManager.shared.saveStudentLessonRecord(studentLessonRecord: &studentLessonRecord) { result in
       
       switch result {
         

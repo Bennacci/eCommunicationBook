@@ -26,7 +26,7 @@ class HomePageViewModel {
         if UserManager.shared.user.id != "" {
           BTProgressHUD.show()
 
-        XXXManager.shared.identifyUser(uid: UserManager.shared.user.id) { [weak self] result in
+        UserManager.shared.identifyUser(uid: UserManager.shared.user.id) { [weak self] result in
           
           switch result {
             

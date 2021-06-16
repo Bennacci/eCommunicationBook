@@ -48,7 +48,7 @@ class AccountEditContentViewModel {
       UserManager.shared.user.email = content
     }
     
-    XXXManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
+    UserManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
       
       switch result {
         

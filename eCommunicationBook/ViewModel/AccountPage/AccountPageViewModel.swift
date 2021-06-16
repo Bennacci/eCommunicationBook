@@ -52,7 +52,7 @@ class AccountPageViewModel {
     
     UserManager.shared.user.image = url
     
-    XXXManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
+    UserManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
       
       switch result {
         

@@ -43,7 +43,7 @@ class ChatRoomTableViewCell: UITableViewCell {
       
       for member in membersExceptUser {
         
-        XXXManager.shared.identifyUser(uid: member) { [weak self] result in
+        UserManager.shared.identifyUser(uid: member) { [weak self] result in
           
           switch result {
             

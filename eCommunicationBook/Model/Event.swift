@@ -16,9 +16,7 @@ struct Event: Codable {
   var date: Double
   var time: Int
   var timeInterval: Int
-
-
- 
+    
   enum CodingKeys: String, CodingKey {
     case id
     case eventName

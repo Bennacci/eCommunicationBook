@@ -94,7 +94,7 @@ class LessonPlanViewController: UIViewController, SavedLessonDelegate {
       BTProgressHUD.show()
       
       guard let code = controller.textFields?[0].text else {return}
-      if code != "" {
+      if code != String.empty {
         
         self.viewModel.onVerifyInvitationCode(code: code)
         

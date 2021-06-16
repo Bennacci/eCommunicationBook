@@ -98,7 +98,7 @@ extension TimeSelectionViewController: UITableViewDataSource {
       }
     }
     
-    var inputText = ""
+    var inputText = String.empty
     
     if viewModel.forEvent == true {
       inputText = viewModel.inputTextsForEvent[indexPath.row]
@@ -284,7 +284,7 @@ extension TimeSelectionViewController: UITextFieldDelegate {
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
     //    tableView.beginUpdates()
-    textField.text = ""
+    textField.text = String.empty
     
     if pickerIndexPath !=  nil {
       

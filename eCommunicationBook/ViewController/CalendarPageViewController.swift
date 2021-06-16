@@ -255,11 +255,11 @@ extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, 
     
     tableView.reloadInputViews()
     
-    print("did select date \(Date.dateFormatterYMD.string(from: date))")
+    print("did select date " + date.convertToString(dateformat: .dateYMD) )
     
     viewModel.onCalendarTapped(day: date)
     
-    let selectedDates = calendar.selectedDates.map({Date.dateFormatterYMD.string(from: $0)})
+    let selectedDates = calendar.selectedDates.map({$0.convertToString(dateformat: .dateYMD)})
     
     print("selected dates is \(selectedDates)")
     
@@ -270,8 +270,8 @@ extension CalendarPageViewController: FSCalendarDataSource, FSCalendarDelegate, 
   }
   
   func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-    print("\(Date.dateFormatterYMD.string(from: calendar.currentPage))")
-  } 
+    print(calendar.currentPage.convertToString(dateformat: .dateYMD))
+  }
 }
 
 extension CalendarPageViewController: RefreshDelegate {

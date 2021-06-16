@@ -75,7 +75,7 @@ class TwoLablesWithButtonTableViewCell: UITableViewCell {
       secondLabel.text = "\(UserManager.shared.selectedDays?.count ?? 0)"
     } else if text == "Time" {
       guard let selectedDay = UserManager.shared.selectedDays else {
-        secondLabel.text = ""
+        secondLabel.text = String.empty
         return
       }
       let hrs = selectedDay[0].startingTime / 100

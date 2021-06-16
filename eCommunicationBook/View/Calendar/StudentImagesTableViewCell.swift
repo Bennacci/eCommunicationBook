@@ -40,7 +40,7 @@ class StudentImagesTableViewCell: UITableViewCell {
       
       let imageUrl = viewModel?.images?[index] {
       
-      if imageTitle == ""{
+      if imageTitle == String.empty{
         
         labelImageTitle.text = "Today's Image"
         

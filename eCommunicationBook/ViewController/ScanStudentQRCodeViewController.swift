@@ -198,7 +198,7 @@ class ScanStudentQRCodeViewController: UIViewController {
     dropDownLesson.items = self.viewModel.lessonList
 
     //        dropDown2.items = dropDownOptionsDataSource
-    if viewModel.studentExistance.courseName == "" {
+    if viewModel.studentExistance.courseName == String.empty {
       dropDownCourse.placeHolderText = "Please Select Course"
     } else {
       dropDownCourse.placeHolderText = self.viewModel.studentExistance.courseName

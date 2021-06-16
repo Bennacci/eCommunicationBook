@@ -40,7 +40,7 @@ class LessonCollectionViewCell: UICollectionViewCell {
     } else {
       labelTecherName.text = viewModel?.teacher
     }
-    var imageTitle = ""
+    var imageTitle = String.empty
     
     if viewModel!.number < 10 {
       imageTitle = "0\(viewModel!.number).square.fill"

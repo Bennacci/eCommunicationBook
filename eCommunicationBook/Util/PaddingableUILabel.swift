@@ -1,8 +1,9 @@
 //
 //  PaddingableUILabel.swift
-//  Publisher
+//  eCommunicationBook
 //
-//  Created by Wayne Chen on 2020/11/20.
+//  Created by Ben Tee on 2021/5/12.
+//  Copyright © 2021 TKY co. All rights reserved.
 //
 
 import UIKit

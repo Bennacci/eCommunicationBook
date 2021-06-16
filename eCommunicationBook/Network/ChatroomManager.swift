@@ -15,7 +15,7 @@ class ChatroomManager {
     
     static let shared = ChatroomManager()
     
-    lazy var conversationID: String = ""
+    lazy var conversationID: String = String.empty
     
     //    lazy var courseID: String = ""
     

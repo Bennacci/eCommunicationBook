@@ -38,7 +38,7 @@ class AccountPageViewController: UIViewControllerWithImagePicker {
   func loadViewContent() {
     var name = "User"
     
-    if UserManager.shared.user.name != "" {
+    if UserManager.shared.user.name != String.empty {
       name = UserManager.shared.user.name
     }
     labelUserName.text = name

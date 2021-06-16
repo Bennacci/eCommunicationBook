@@ -23,7 +23,7 @@ class HomePageViewModel {
       
     func checkUser() {
         
-        if UserManager.shared.user.id != "" {
+        if UserManager.shared.user.id != String.empty {
           BTProgressHUD.show()
 
         UserManager.shared.identifyUser(uid: UserManager.shared.user.id) { [weak self] result in

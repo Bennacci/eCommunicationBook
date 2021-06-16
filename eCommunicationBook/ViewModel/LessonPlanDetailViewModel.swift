@@ -13,8 +13,8 @@ import Foundation
 class LessonPlanDetailViewModel {
 
   var course: Course = Course(
-    id: "",
-    name: "",
+    id: String.empty,
+    name: String.empty,
     teachers: [],
     students: [],
     firstLessonDate: -1,
@@ -24,18 +24,18 @@ class LessonPlanDetailViewModel {
     lessons: nil)
   
   var previousLesson: Lesson = Lesson(
-    id: "",
+    id: String.empty,
     number: -1,
-    teacher: "",
+    teacher: String.empty,
     time: -1, timeInterval: -1,
     todaysLesson: nil,
     tests: nil,
     assignments: nil)
   
   var lesson: Lesson = Lesson(
-    id: "",
+    id: String.empty,
     number: -1,
-    teacher: "",
+    teacher: String.empty,
     time: -1, timeInterval: -1,
     todaysLesson: nil,
     tests: nil,
@@ -81,7 +81,6 @@ class LessonPlanDetailViewModel {
     }
   }
   
-  
   func onLessonChanged() {
     self.lessonChanged?()
   }
@@ -117,34 +116,34 @@ class LessonPlanDetailViewModel {
       
       if let todaysLessons = lesson.todaysLesson {
         if todaysLessons.count == indexPath.row {
-          self.lesson.todaysLesson?.append("")
+          self.lesson.todaysLesson?.append(String.empty)
         } else {
           return
         }
       } else {
-        self.lesson.todaysLesson = [""]
+        self.lesson.todaysLesson = [String.empty]
       }
       
     case 1:
       if let assignments = lesson.assignments {
         if assignments.count == indexPath.row {
-          self.lesson.assignments?.append("")
+          self.lesson.assignments?.append(String.empty)
         } else {
           return
         }
       } else {
-        self.lesson.assignments = [""]
+        self.lesson.assignments = [String.empty]
       }
       
     default:
       if let tests = lesson.tests {
         if tests.count == indexPath.row {
-          self.lesson.tests?.append("")
+          self.lesson.tests?.append(String.empty)
         } else {
           return
         }
       } else {
-        self.lesson.tests = [""]
+        self.lesson.tests = [String.empty]
       }
     }
     self.onLessonChanged()

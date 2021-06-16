@@ -78,7 +78,7 @@ class SearchUserPageViewModel {
       guard let users = UserManager.shared.selectedUsers else {return}
       for user in users {
       
-        var chatRoom = ChatRoom(id: "",
+        var chatRoom = ChatRoom(id: String.empty,
                                 members: [UserManager.shared.user.id, user.id],
                                 createdTime: -1,
                                 messages: nil

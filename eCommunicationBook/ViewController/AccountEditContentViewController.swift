@@ -91,7 +91,7 @@ class AccountEditContentViewController: UIViewController {
     
     textFieldContent.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     
-    if viewModel.content == "" || viewModel.content == "-1" {
+    if viewModel.content == String.empty || viewModel.content == "-1" {
       textFieldContent.text = "Not set"
       textFieldContent.textColor = .darkGray
     } else {
@@ -114,7 +114,7 @@ class AccountEditContentViewController: UIViewController {
 extension AccountEditContentViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     if textField.text == "Not set" {
-      textField.text = ""
+      textField.text = String.empty
       textField.textColor = .black
     }
   }
@@ -133,7 +133,7 @@ extension AccountEditContentViewController: UITextFieldDelegate {
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
-    if viewModel.content == "" || viewModel.content == "-1" {
+    if viewModel.content == String.empty || viewModel.content == "-1" {
       textFieldContent.text = "Not set"
       textFieldContent.textColor = .darkGray
     } else {

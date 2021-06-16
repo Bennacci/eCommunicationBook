@@ -16,7 +16,7 @@ class AttendanceSheetViewModel {
   
   var selectedCourseIndex: Int?
   
-  var nameIndexDic = ["": 0]
+  var nameIndexDic = [String.empty: 0]
   
   var columns = ["编号", "客户", "消费金额", "消费次数", "满意度"]
   //  var row = ["No.01","✅",  "☑️  ","🅻⃝", "❌", "60%"]
@@ -85,7 +85,7 @@ class AttendanceSheetViewModel {
         let rateString = "\((rate / Double(rows[index].count - 1) * 100).rounded())%"
         
         for _ in 0 ..< columns.count - rows[index].count - 1 {
-          rows[index].append("")
+          rows[index].append(String.empty)
         }
         
         rows[index].append(rateString)

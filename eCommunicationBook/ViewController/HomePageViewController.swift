@@ -82,7 +82,7 @@ extension HomePageViewController: UITableViewDataSource {
     if UserManager.shared.user.userType == "teacher" {
       switch section {
       case 0:
-        return ""
+        return String.empty
       case 1:
         return "Popular features"
       case 2:
@@ -93,7 +93,7 @@ extension HomePageViewController: UITableViewDataSource {
     } else {
       switch section {
       case 0:
-        return ""
+        return String.empty
       case 1:
         return "Popular Features"
       default:

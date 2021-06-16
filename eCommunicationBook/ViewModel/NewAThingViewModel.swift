@@ -71,16 +71,16 @@ class NewAThingViewModel: SearchUserDelegate {
   
   // MARK: - new a user
   var user: User = User(
-    id: "",
+    id: String.empty,
     createdTime: -1,
-    userID: "",
-    name: "",
+    userID: String.empty,
+    name: String.empty,
     image: nil,
     cellPhoneNo: -1,
     homePhoneNo: -1,
     birthDay: -1,
-    email: "",
-    userType: "",
+    email: String.empty,
+    userType: String.empty,
     workingHours: nil,
     student: nil,
     difficulty: nil,
@@ -132,8 +132,8 @@ class NewAThingViewModel: SearchUserDelegate {
   // MARK: - new a class
   
   var course: Course = Course(
-    id: "",
-    name: "",
+    id: String.empty,
+    name: String.empty,
     teachers: [],
     students: [],
     firstLessonDate: -1,
@@ -141,7 +141,7 @@ class NewAThingViewModel: SearchUserDelegate {
     fee: -1,
     lessonsAmount: -1,
     lessons: [],
-    image: "")
+    image: String.empty)
   
   func onCourseNameChanged(text name: String) {
     self.course.name = name
@@ -205,9 +205,9 @@ class NewAThingViewModel: SearchUserDelegate {
     
     for index in  0 ..< course.lessonsAmount {
       
-      var lesson = Lesson(id: "",
+      var lesson = Lesson(id: String.empty,
                           number: -1,
-                          teacher: "",
+                          teacher: String.empty,
                           time: 0,
                           timeInterval: -1,
                           todaysLesson: nil,
@@ -257,9 +257,9 @@ class NewAThingViewModel: SearchUserDelegate {
   }
   
   // MARK: - new a Event and sign
-  var event: Event = Event(id: "",
-                           eventName: "",
-                           description: "",
+  var event: Event = Event(id: String.empty,
+                           eventName: String.empty,
+                           description: String.empty,
                            image: nil,
                            date: Double(Date().millisecondsSince1970),
                            time: 0,
@@ -321,14 +321,14 @@ class NewAThingViewModel: SearchUserDelegate {
   }
   
   // MARK: - new a Student
-  var student: Student = Student(id: "",
+  var student: Student = Student(id: String.empty,
                                  parents: [],
-                                 name: "",
+                                 name: String.empty,
                                  image: nil,
-                                 nationalID: "",
+                                 nationalID: String.empty,
                                  grade: 0,
                                  birthDay: -1,
-                                 emergencyContactPerson: "",
+                                 emergencyContactPerson: String.empty,
                                  emergencyContactNo: -1)
   
   func onStudentNameChanged(text name: String) {

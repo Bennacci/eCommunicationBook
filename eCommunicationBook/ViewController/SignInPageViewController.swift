@@ -54,7 +54,7 @@ class SignInPageViewController: UIViewController {
     }
   }
   override func viewWillAppear(_ animated: Bool) {
-    if UserManager.shared.user.id != "" && UserManager.shared.user.userType == nil {
+    if UserManager.shared.user.id != String.empty && UserManager.shared.user.userType == nil {
       viewModel.signInUser()
 //      self.shiftToViewChoseRole()
     }
@@ -169,7 +169,7 @@ class SignInPageViewController: UIViewController {
     precondition(length > 0)
     let charset: Array<Character> =
       Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-    var result = ""
+    var result = String.empty
     var remainingLength = length
     
     while remainingLength > 0 {
@@ -223,7 +223,7 @@ extension SignInPageViewController: ASAuthorizationControllerDelegate {
           // Error. If error.code == .MissingOrInvalidNonce, make sure
           // you're sending the SHA256-hashed nonce as a hex string with
           // your request to Apple.
-          print(error?.localizedDescription ?? "")
+          print(error?.localizedDescription ?? String.empty)
           return
         }
         guard let user = authResult?.user else { return }
@@ -231,8 +231,8 @@ extension SignInPageViewController: ASAuthorizationControllerDelegate {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         UserManager.shared.user.id = uid
-        UserManager.shared.user.email = user.email ?? ""
-        UserManager.shared.user.userID = user.displayName ?? ""
+        UserManager.shared.user.email = user.email ?? String.empty
+        UserManager.shared.user.userID = user.displayName ?? String.empty
         
         self.viewModel.signInUser()
         

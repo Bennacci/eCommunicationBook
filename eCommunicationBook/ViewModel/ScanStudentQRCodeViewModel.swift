@@ -18,24 +18,24 @@ class ScanStudentQRCodeViewModel {
   
   var timeIn: Bool = true {
     didSet {
-      studentExistance.studentName = ""
+      studentExistance.studentName = String.empty
     }
   }
   
   var studentExistance = StudentExistance(
-    id: "",
-    studentID: "",
-    studentName: "",
+    id: String.empty,
+    studentID: String.empty,
+    studentName: String.empty,
     time: -1,
     latitude: -1,
     longitude: -1,
-    courseName: "",
+    courseName: String.empty,
     courseLesson: 0,
-    scanTeacherName: "")
+    scanTeacherName: String.empty)
   
   func onScanedAQRCode(info: String) {
     
-    if studentExistance.courseName == "" || studentExistance.courseLesson == 0 {
+    if studentExistance.courseName == String.empty || studentExistance.courseLesson == 0 {
       BTProgressHUD.showFailure(text: "Please select course name and lesson")
       return
     }

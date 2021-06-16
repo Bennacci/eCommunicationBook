@@ -227,9 +227,9 @@ enum TeacherSeviceItem: AccountItem {
       
     case .writeStudentLessonRecord: return localizedString("Communication Book")
       
-    case .newEvent: return localizedString("New Event")
+    case .newEvent: return localizedString("Event")
       
-    case .setASign: return localizedString("New Sign")
+    case .setASign: return localizedString("Sign")
       
     case .newACourse: return localizedString("New Course")
       

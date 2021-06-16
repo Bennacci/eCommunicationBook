@@ -307,7 +307,7 @@ extension NewAThingViewController: UITableViewDelegate {
         
       } else { return }
       
-    } else if inputText == "Lesson Schedule" || inputText == "Time"{
+    } else if inputText == "Lesson Schedule" || inputText == "Time" {
       
       if let nextVC = UIStoryboard.timeSelection.instantiateInitialViewController() {
         

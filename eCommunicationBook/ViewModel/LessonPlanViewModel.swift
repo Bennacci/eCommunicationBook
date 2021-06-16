@@ -16,7 +16,7 @@ class LessonPlanViewModel {
   
   var refreshView: (() -> Void)?
   
-  var onStudentAdded: (()->Void)?
+  var onStudentAdded: (() -> Void)?
 
   func fetchData() {
     
@@ -30,17 +30,13 @@ class LessonPlanViewModel {
         
       case .failure(let error):
         
-        print("fetchData.failure: \(error)")
+        print("fetchCourses.failure: \(error)")
       }
     }
   }
   
-//  func onRefresh() {
-//    // maybe do something
-//    self.refreshView?()
-//  }
-  
   func onVerifyInvitationCode(code: String) {
+    
     XXXManager.shared.identifyStudent(id: code) { [weak self] result in
       
       switch result {
@@ -82,57 +78,63 @@ class LessonPlanViewModel {
             
             BTProgressHUD.showFailure(text: "Invalid invitation code")
             
-            print("fetchData.failure: \(error)")
+            print("addUser.failure: \(error)")
           }
         }
 
       case .failure(let error):
+        
         BTProgressHUD.dismiss()
+        
         BTProgressHUD.showFailure(text: "Invalid invitation code")
-        print("fetchData.failure: \(error)")
+        
+        print("identifyStudent.failure: \(error)")
       }
     }
   }
   
   func convertCoursesToViewModels(from courses: [Course]) -> [CourseViewModel] {
+    
     var viewModels = [CourseViewModel]()
+    
     for course in courses {
-      let viewModel = CourseViewModel(model: course)
-      viewModels.append(viewModel)
+    
+        let viewModel = CourseViewModel(model: course)
+      
+        viewModels.append(viewModel)
     }
+    
     return viewModels
   }
   
-  
   func setSearchResult(_ courses: [Course]) {
-    print(courses)
-//    if let uID = UserManager.shared.userID {
-////    courseViewModel.value = convertCoursesToViewModels(from: courses).filter { $0.teacher.contains(uID) }
-//
-//    }
+    
     courseViewModel.value = convertCoursesToViewModels(from: courses)
-
   }
   
   func convertLessonsToViewModels(from lessons: [Lesson]) -> [LessonViewModel] {
+    
     var viewModels = [LessonViewModel]()
+    
     for lesson in lessons {
-      let viewModel = LessonViewModel(model: lesson)
-      viewModels.append(viewModel)
+    
+        let viewModel = LessonViewModel(model: lesson)
+      
+        viewModels.append(viewModel)
     }
+    
     return viewModels
   }
   
   func setLessonViewModel(index: Int) {
+    
     print("index:\(index)")
+    
     if let lessons = courseViewModel.value[index].lessons {
-    lessonViewModel.value = convertLessonsToViewModels(from: lessons)
-      print(lessons)
-
+    
+        lessonViewModel.value = convertLessonsToViewModels(from: lessons)
     }
+    
     LessonManager.shared.courseID = courseViewModel.value[index].id
   }
-  
 }
-
-

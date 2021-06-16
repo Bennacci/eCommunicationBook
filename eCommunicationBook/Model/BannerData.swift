@@ -9,19 +9,19 @@
 import Foundation
 
 struct BannerData: Codable {
-  
+    
     let id: Int
-  
-//    let productId: Int
-  
+    
+    //    let productId: Int
+    
     let picture: String
-  
+    
     let story: String
-
-      enum CodingKeys: String, CodingKey {
-          case id
-//          case productId = "product_id"
-          case picture
-          case story
-  }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        //          case productId = "product_id"
+        case picture
+        case story
+    }
 }

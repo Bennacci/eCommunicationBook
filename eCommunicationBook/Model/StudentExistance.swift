@@ -9,40 +9,40 @@
 import Foundation
 
 struct StudentExistance: Codable {
-  
-  var id: String
-  var studentID: String
-  var studentName: String
-  var time: Double
-  var latitude: Double
-  var longitude: Double
-  var courseName: String
-  var courseLesson: Int
-  var scanTeacherName: String
-  
-  enum CodingKeys: String, CodingKey {
-    case id
-    case studentID
-    case studentName
-    case time
-    case latitude
-    case longitude
-    case courseName
-    case courseLesson
-    case scanTeacherName
-  }
-  
-  var toDict: [String: Any] {
-    return [
-      "id": id as Any,
-      "studentID": studentID as Any,
-      "studentName": studentName as Any,
-      "time": time as Any,
-      "latitude": latitude as Any,
-      "longitude": longitude as Any,
-      "courseName": courseName as Any,
-      "courseLesson": courseLesson as Any,
-      "scanTeacherName": scanTeacherName as Any
-    ]
-  }
+    
+    var id: String
+    var studentID: String
+    var studentName: String
+    var time: Double
+    var latitude: Double
+    var longitude: Double
+    var courseName: String
+    var courseLesson: Int
+    var scanTeacherName: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case studentID
+        case studentName
+        case time
+        case latitude
+        case longitude
+        case courseName
+        case courseLesson
+        case scanTeacherName
+    }
+    
+    var toDict: [String: Any] {
+        return [
+            "id": id as Any,
+            "studentID": studentID as Any,
+            "studentName": studentName as Any,
+            "time": time as Any,
+            "latitude": latitude as Any,
+            "longitude": longitude as Any,
+            "courseName": courseName as Any,
+            "courseLesson": courseLesson as Any,
+            "scanTeacherName": scanTeacherName as Any
+        ]
+    }
 }

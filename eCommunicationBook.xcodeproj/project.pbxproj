@@ -153,8 +153,6 @@
 		74E8E4BA266CEC9200D6E444 /* LessonPerformancesReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8E4B9266CEC9200D6E444 /* LessonPerformancesReviewViewModel.swift */; };
 		74E94735264BE09500AFB046 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94729264BE09500AFB046 /* UserManager.swift */; };
 		74E94736264BE09500AFB046 /* XXXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472A264BE09500AFB046 /* XXXManager.swift */; };
-		74E94737264BE09500AFB046 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472C264BE09500AFB046 /* Author.swift */; };
-		74E94738264BE09500AFB046 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9472D264BE09500AFB046 /* Article.swift */; };
 		74E9473B264BE09500AFB046 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94731264BE09500AFB046 /* Date+Extension.swift */; };
 		74E9473C264BE09500AFB046 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94733264BE09500AFB046 /* Box.swift */; };
 		74E9473D264BE09500AFB046 /* PaddingableUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E94734264BE09500AFB046 /* PaddingableUILabel.swift */; };
@@ -345,8 +343,6 @@
 		74E8E4B9266CEC9200D6E444 /* LessonPerformancesReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPerformancesReviewViewModel.swift; sourceTree = "<group>"; };
 		74E94729264BE09500AFB046 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		74E9472A264BE09500AFB046 /* XXXManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XXXManager.swift; sourceTree = "<group>"; };
-		74E9472C264BE09500AFB046 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
-		74E9472D264BE09500AFB046 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		74E94731264BE09500AFB046 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Extension.swift"; path = "../Helper/Date+Extension.swift"; sourceTree = "<group>"; };
 		74E94733264BE09500AFB046 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		74E94734264BE09500AFB046 /* PaddingableUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingableUILabel.swift; sourceTree = "<group>"; };
@@ -690,13 +686,10 @@
 		74E9472B264BE09500AFB046 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				74E9472C264BE09500AFB046 /* Author.swift */,
-				74E9472D264BE09500AFB046 /* Article.swift */,
 				74A7D1142655141D00B445EB /* User.swift */,
 				74A7D11E2655383400B445EB /* Student.swift */,
 				741D7C4B2653F9D400A7FD0A /* Account */,
 				745147DF264D386700172419 /* ChatRoom.swift */,
-				74D869D6265745F8004D33ED /* CalendarHelper.swift */,
 				745147E1264D389D00172419 /* Message.swift */,
 				74A7D116265518FA00B445EB /* DayOfWeek.swift */,
 				74A7D11826552A6E00B445EB /* RoutineHour.swift */,
@@ -738,6 +731,7 @@
 				74E9474B264C087D00AFB046 /* UITableView+Extension.swift */,
 				74E94745264C087D00AFB046 /* Bundle+Extension.swift */,
 				74F2DE71265FD87A00F6F0AB /* UIAlertAction+Extension.swift */,
+				74D869D6265745F8004D33ED /* CalendarHelper.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1076,9 +1070,7 @@
 				745147E8264D431000172419 /* ChatRoomTableViewCell.swift in Sources */,
 				74F2DE8926607B6B00F6F0AB /* LessonPerformancesViewModel.swift in Sources */,
 				7435E86D265E363100941729 /* AddRowTableViewCell.swift in Sources */,
-				74E94738264BE09500AFB046 /* Article.swift in Sources */,
 				74E9DEA0266752C700E2FD52 /* SignInPageViewModel.swift in Sources */,
-				74E94737264BE09500AFB046 /* Author.swift in Sources */,
 				7499630D265DEEC700F081EC /* LessonCollectionViewCell.swift in Sources */,
 				7472B29C26594B8B00511468 /* TimeSelectionViewController.swift in Sources */,
 				74F2DE85265FEBE900F6F0AB /* LessonPerformancesViewController.swift in Sources */,

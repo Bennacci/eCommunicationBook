@@ -29,7 +29,9 @@ Icon
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
-.entitlements
+
+eCommunicationBook.entitlements
+eCommunicationBookRelease.entitlements
 GoogleService-Info.plist
 
 # Directories potentially created on remote AFP share

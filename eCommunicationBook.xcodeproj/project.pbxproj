@@ -192,6 +192,9 @@
 		74F2DE8926607B6B00F6F0AB /* LessonPerformancesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE8826607B6B00F6F0AB /* LessonPerformancesViewModel.swift */; };
 		74F2DE8C26609F1C00F6F0AB /* LPTestScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DE8A26609F1C00F6F0AB /* LPTestScoreTableViewCell.swift */; };
 		74F2DE8D26609F1C00F6F0AB /* LPTestScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74F2DE8B26609F1C00F6F0AB /* LPTestScoreTableViewCell.xib */; };
+		E645195C2679E11F00E33049 /* ChatroomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E645195B2679E11F00E33049 /* ChatroomManager.swift */; };
+		E645195E2679E58B00E33049 /* AttendanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E645195D2679E58B00E33049 /* AttendanceManager.swift */; };
+		E64519602679E94900E33049 /* LessonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E645195F2679E94900E33049 /* LessonManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -384,6 +387,9 @@
 		74F2DE8A26609F1C00F6F0AB /* LPTestScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPTestScoreTableViewCell.swift; sourceTree = "<group>"; };
 		74F2DE8B26609F1C00F6F0AB /* LPTestScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LPTestScoreTableViewCell.xib; sourceTree = "<group>"; };
 		CD9B88A5E13D6C0F367FA6EE /* Pods_eCommunicationBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eCommunicationBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E645195B2679E11F00E33049 /* ChatroomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomManager.swift; sourceTree = "<group>"; };
+		E645195D2679E58B00E33049 /* AttendanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceManager.swift; sourceTree = "<group>"; };
+		E645195F2679E94900E33049 /* LessonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonManager.swift; sourceTree = "<group>"; };
 		F82B795049493B3535CF42C7 /* Pods-eCommunicationBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eCommunicationBook.debug.xcconfig"; path = "Target Support Files/Pods-eCommunicationBook/Pods-eCommunicationBook.debug.xcconfig"; sourceTree = "<group>"; };
 		FA467E1109215E23DACF5C32 /* Pods-eCommunicationBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eCommunicationBook.release.xcconfig"; path = "Target Support Files/Pods-eCommunicationBook/Pods-eCommunicationBook.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -674,6 +680,9 @@
 			children = (
 				74E9472A264BE09500AFB046 /* XXXManager.swift */,
 				74E94729264BE09500AFB046 /* UserManager.swift */,
+				E645195B2679E11F00E33049 /* ChatroomManager.swift */,
+				E645195D2679E58B00E33049 /* AttendanceManager.swift */,
+				E645195F2679E94900E33049 /* LessonManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1091,6 +1100,7 @@
 				7412B7B82662260200C91CA2 /* ScanStudentQRCodeViewController.swift in Sources */,
 				7493DC5E26677272004DEA9C /* UserTypeCollectionViewCell.swift in Sources */,
 				74A33204266A2B790034EDAD /* AttendanceSheetViewController.swift in Sources */,
+				E645195E2679E58B00E33049 /* AttendanceManager.swift in Sources */,
 				74A331FF266A2B6F0034EDAD /* UICollectionGridViewCell.swift in Sources */,
 				74E541F62663243D004276F9 /* StudentExistance.swift in Sources */,
 				74E9473D264BE09500AFB046 /* PaddingableUILabel.swift in Sources */,
@@ -1140,12 +1150,14 @@
 				74A331FE266A2B6F0034EDAD /* UICollectionGridViewLayout.swift in Sources */,
 				742877A9266661CB00CF95E3 /* SignInPageViewController.swift in Sources */,
 				741D7C482653D9A200A7FD0A /* Service.swift in Sources */,
+				E645195C2679E11F00E33049 /* ChatroomManager.swift in Sources */,
 				74025806265264B100BA6BDA /* ServiceCollectionViewCell.swift in Sources */,
 				74E9475F264C087D00AFB046 /* JGProgressHUDWrapper.swift in Sources */,
 				74CADD9B26568BAF004DA6D0 /* NewAThingViewModel.swift in Sources */,
 				74E94735264BE09500AFB046 /* UserManager.swift in Sources */,
 				746080842667F304005FC35C /* StudentTimeInAndOutViewModel.swift in Sources */,
 				74F2DE72265FD87A00F6F0AB /* UIAlertAction+Extension.swift in Sources */,
+				E64519602679E94900E33049 /* LessonManager.swift in Sources */,
 				740E1C69266C9AC500491281 /* AccountEditContentViewModel.swift in Sources */,
 				74E9475D264C087D00AFB046 /* UITableView+Extension.swift in Sources */,
 				74378799266927A900586751 /* StudentTimeInTimeOutTableViewCell.swift in Sources */,

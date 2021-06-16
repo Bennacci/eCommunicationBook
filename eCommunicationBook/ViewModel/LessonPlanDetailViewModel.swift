@@ -65,7 +65,7 @@ class LessonPlanDetailViewModel {
   }
   
   func save(with lesson: inout Lesson) {
-    XXXManager.shared.saveLesson(lesson: &lesson) { result in
+    LessonManager.shared.saveLesson(lesson: &lesson) { result in
       
       switch result {
         

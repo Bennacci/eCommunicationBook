@@ -20,7 +20,7 @@ class LessonPlanViewModel {
 
   func fetchData() {
     
-    XXXManager.shared.fetchCourses { [weak self] result in
+    LessonManager.shared.fetchCourses { [weak self] result in
       
       switch result {
         
@@ -64,7 +64,7 @@ class LessonPlanViewModel {
           BTProgressHUD.showFailure(text: "Invalid invitation code")
         }
 
-        XXXManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
+        UserManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
           
           switch result {
             
@@ -130,7 +130,7 @@ class LessonPlanViewModel {
       print(lessons)
 
     }
-    XXXManager.shared.courseID = courseViewModel.value[index].id
+    LessonManager.shared.courseID = courseViewModel.value[index].id
   }
   
 }

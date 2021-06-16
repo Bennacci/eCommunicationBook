@@ -28,7 +28,7 @@ class SignInPageViewModel {
   
   func signInUser() {
     
-    XXXManager.shared.identifyUser(uid: UserManager.shared.user.id) { [weak self] result in
+    UserManager.shared.identifyUser(uid: UserManager.shared.user.id) { [weak self] result in
       
       switch result {
         
@@ -41,7 +41,7 @@ class SignInPageViewModel {
       case .failure(let error):
 
         switch error {
-        case MasterError.noMatchData("User not found"):
+        case FirebaseError.noMatchData("User not found"):
           self?.createUser()
         default:
           self?.onFailure?()
@@ -52,7 +52,7 @@ class SignInPageViewModel {
   }
   
   func createUser() {
-    XXXManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
+    UserManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
       
       switch result {
         
@@ -70,7 +70,7 @@ class SignInPageViewModel {
   }
   
   func updateUserType() {
-    XXXManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
+    UserManager.shared.addUser(user: &UserManager.shared.user) { [weak self] result in
       
       switch result {
         

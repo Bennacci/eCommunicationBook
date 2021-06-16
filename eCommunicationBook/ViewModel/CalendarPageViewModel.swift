@@ -9,263 +9,261 @@
 import Foundation
 
 class CalendarPageViewModel {
-  
-  var titles: [String] = []
-  
-  var comunicationSectionTitles: [String] = []
-  
-  var lessonImageIndex = 0
-  
-  let eventViewModel = Box([EventViewModel]())
-  
-  let lessonRecordViewModel = Box([StudentLessonRecordViewModel]())
-  
-  let studentTimeInViemModel = Box([StudentExistanceViewModel]())
-  
-  let studentTimeOutViemModel = Box([StudentExistanceViewModel]())
-  
-  var refreshView: (() -> Void)?
-  
-  var scrollToTop: (() -> Void)?
-  
-  var tap: (() -> Void)?
-  
-  var yearMonth = Calendar.current.dateComponents([.year, .month], from: Date())
-  
-  var dayEventViewModel = Box([EventViewModel]())
-  
-  var dayLessonRecordViewModel = Box([StudentLessonRecordViewModel]())
-  
-  let dayStudentTimeInViemModel = Box([StudentExistanceViewModel]())
-  
-  let dayStudentTimeOutViemModel = Box([StudentExistanceViewModel]())
-  
-  func onRefresh() {
-    // maybe do something
-    self.refreshView?()
-  }
-  
-  func onScrollToTop() {
     
-    self.scrollToTop?()
-  }
-  
-  // GCD and tapped in future
-  
-  func onCalendarTapped(day: Date) {
+    var titles: [String] = []
     
-    let tappedYearMonth = Calendar.current.dateComponents([.year, .month], from: day)
+    var comunicationSectionTitles: [String] = []
     
-    if tappedYearMonth != yearMonth {
-      yearMonth = tappedYearMonth
-      fetchExistances(date: day)
+    var lessonImageIndex = 0
+    
+    let eventViewModel = Box([EventViewModel]())
+    
+    let lessonRecordViewModel = Box([StudentLessonRecordViewModel]())
+    
+    let studentTimeInViemModel = Box([StudentExistanceViewModel]())
+    
+    let studentTimeOutViemModel = Box([StudentExistanceViewModel]())
+    
+    var refreshView: (() -> Void)?
+    
+    var scrollToTop: (() -> Void)?
+    
+    var tap: (() -> Void)?
+    
+    var yearMonth = Calendar.current.dateComponents([.year, .month], from: Date())
+    
+    var dayEventViewModel = Box([EventViewModel]())
+    
+    var dayLessonRecordViewModel = Box([StudentLessonRecordViewModel]())
+    
+    let dayStudentTimeInViemModel = Box([StudentExistanceViewModel]())
+    
+    let dayStudentTimeOutViemModel = Box([StudentExistanceViewModel]())
+    
+    func onRefresh() {
+        // maybe do something
+        self.refreshView?()
     }
     
-    let time = Double(day.millisecondsSince1970)
-    
-    let secondsPerDay = Double(CalendarHelper.shared.secondsPerDay)
-    
-    dayEventViewModel.value = eventViewModel.value.filter({
-      
-      $0.date >= time &&
+    func onScrollToTop() {
         
-        $0.date <= time + secondsPerDay * 1000 - 1
-      
-    })
-    
-    dayLessonRecordViewModel.value = lessonRecordViewModel.value.filter({
-      
-      $0.time >= time &&
-        
-        $0.time <= time + secondsPerDay * 1000 - 1
-    })
-    
-    dayStudentTimeInViemModel.value = studentTimeInViemModel.value.filter({
-      
-      $0.time >= time &&
-        
-        $0.time <= time + secondsPerDay * 1000 - 1
-    })
-    
-    dayStudentTimeOutViemModel.value = studentTimeOutViemModel.value.filter({
-      
-      $0.time >= time &&
-        
-        $0.time <= time + secondsPerDay * 1000 - 1
-    })
-    setTitle()
-    setComunicationSectionTitle()
-    onRefresh()
-  }
-  
-  func setComunicationSectionTitle() {
-    
-    lessonImageIndex = 0
-    
-    comunicationSectionTitles = [ "Today's Lesson", "Lesson Performances"]
-    if dayLessonRecordViewModel.value.count != 0 {
-      if dayLessonRecordViewModel.value[0].assignments != nil {
-        comunicationSectionTitles.append("Homework")
-      }
-      
-      if dayLessonRecordViewModel.value[0].tests != nil {
-        comunicationSectionTitles.append("Tests")
-      }
-      
-      if dayLessonRecordViewModel.value[0].assignmentCompleted != nil {
-        comunicationSectionTitles.append("Homework Score")
-      }
-      
-      if dayLessonRecordViewModel.value[0].testGrade != nil {
-        comunicationSectionTitles.append("Tests Score")
-      }
-      if dayLessonRecordViewModel.value[0].imageTitles != nil {
-        comunicationSectionTitles.append("Student Images")
-      }
-      if dayLessonRecordViewModel.value[0].note != nil {
-        comunicationSectionTitles.append("Communication Corner")
-      }
-      
+        self.scrollToTop?()
     }
     
-//    comunicationSectionTitles.append("Communication Corner") why???? check so
-  }
-  
-  
-  
-  func setTitle() {
+    // GCD and tapped in future
     
-    titles = []
-    
-    if dayEventViewModel.value.count != 0 {
-      titles.append("Events")
-    }
-    
-    if dayLessonRecordViewModel.value.count != 0 {
-      titles.append("Communication Book")
-    }
-    
-    if dayStudentTimeInViemModel.value.count != 0 {
-      titles.append("Student Attendance and Leave")
-    }
-  }
-  
-  func fetchData() {
-    //
-    fetchExistances(date: nil)
-    
-    XXXManager.shared.fetchEvents { [weak self] result in
-      
-      switch result {
+    func onCalendarTapped(day: Date) {
         
-      case .success(let events):
+        let tappedYearMonth = Calendar.current.dateComponents([.year, .month], from: day)
         
-        self?.setEvents(events)
+        if tappedYearMonth != yearMonth {
+            yearMonth = tappedYearMonth
+            fetchExistances(date: day)
+        }
         
-      case .failure(let error):
+        let time = Double(day.millisecondsSince1970)
         
-        print("fetchData.failure: \(error)")
-      }
-    }
-    
-    XXXManager.shared.fetchStudentLessonRecord { [weak self] result in
-      
-      switch result {
+        let secondsPerDay = Double(CalendarHelper.shared.secondsPerDay)
         
-      case .success(let studentLessonRecords):
+        dayEventViewModel.value = eventViewModel.value.filter({
+            
+            $0.date >= time &&
+                
+                $0.date <= time + secondsPerDay * 1000 - 1
+            
+        })
         
-        self?.setStudentLessonRecords(studentLessonRecords)
+        dayLessonRecordViewModel.value = lessonRecordViewModel.value.filter({
+            
+            $0.time >= time &&
+                
+                $0.time <= time + secondsPerDay * 1000 - 1
+        })
         
-        //        self?.onCallendarTap()
+        dayStudentTimeInViemModel.value = studentTimeInViemModel.value.filter({
+            
+            $0.time >= time &&
+                
+                $0.time <= time + secondsPerDay * 1000 - 1
+        })
         
-      case .failure(let error):
-        
-        print("fetchData.failure: \(error)")
-      }
-    }
-  }
-  
-  func fetchExistances(date: Date?) {
-    
-    var selectedDate = Date()
-    
-    if let date = date {
-      selectedDate = date
+        dayStudentTimeOutViemModel.value = studentTimeOutViemModel.value.filter({
+            
+            $0.time >= time &&
+                
+                $0.time <= time + secondsPerDay * 1000 - 1
+        })
+        setTitle()
+        setComunicationSectionTitle()
+        onRefresh()
     }
     
-    XXXManager.shared.fetchStudentExistances(studentIndex: 0, date: selectedDate, timeIn: true) { [weak self] result in
-      
-      switch result {
+    func setComunicationSectionTitle() {
         
-      case .success(let studentExistances):
+        lessonImageIndex = 0
         
-        self?.setStudentExistances(studentExistances, timeIn: true)
-        
-        //            self?.onCallendarTap()
-        
-      case .failure(let error):
-        
-        print("fetchData.failure: \(error)")
-      }
+        comunicationSectionTitles = [ "Today's Lesson", "Lesson Performances"]
+        if dayLessonRecordViewModel.value.isEmpty != true {
+            if dayLessonRecordViewModel.value[0].assignments != nil {
+                comunicationSectionTitles.append("Homework")
+            }
+            
+            if dayLessonRecordViewModel.value[0].tests != nil {
+                comunicationSectionTitles.append("Tests")
+            }
+            
+            if dayLessonRecordViewModel.value[0].assignmentCompleted != nil {
+                comunicationSectionTitles.append("Homework Score")
+            }
+            
+            if dayLessonRecordViewModel.value[0].testGrade != nil {
+                comunicationSectionTitles.append("Tests Score")
+            }
+            if dayLessonRecordViewModel.value[0].imageTitles != nil {
+                comunicationSectionTitles.append("Student Images")
+            }
+            if dayLessonRecordViewModel.value[0].note != nil {
+                comunicationSectionTitles.append("Communication Corner")
+            }
+            
+        }
     }
     
-    XXXManager.shared.fetchStudentExistances(studentIndex: 0, date: selectedDate, timeIn: false) { [weak self] result in
-      
-      switch result {
+    
+    
+    func setTitle() {
         
-      case .success(let studentExistances):
+        titles = []
         
-        self?.setStudentExistances(studentExistances, timeIn: false)
+        if dayEventViewModel.value.isEmpty != true {
+            titles.append("Events")
+        }
         
-        //            self?.onCallendarTap()
+        if dayLessonRecordViewModel.value.isEmpty != true {
+            titles.append("Communication Book")
+        }
         
-      case .failure(let error):
+        if dayStudentTimeInViemModel.value.isEmpty != true {
+            titles.append("Student Attendance and Leave")
+        }
+    }
+    
+    func fetchData() {
+        //
+        fetchExistances(date: nil)
         
-        print("fetchData.failure: \(error)")
-      }
+        XXXManager.shared.fetchEvents { [weak self] result in
+            
+            switch result {
+            
+            case .success(let events):
+                
+                self?.setEvents(events)
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+        
+        LessonManager.shared.fetchStudentLessonRecord { [weak self] result in
+            
+            switch result {
+            
+            case .success(let studentLessonRecords):
+                
+                self?.setStudentLessonRecords(studentLessonRecords)
+                
+            //        self?.onCallendarTap()
+            
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
     }
-  }
-  
-  func convertEventsToViewModels(from events: [Event]) -> [EventViewModel] {
-    var viewModels = [EventViewModel]()
-    for event in events {
-      let viewModel = EventViewModel(model: event)
-      viewModels.append(viewModel)
+    
+    func fetchExistances(date: Date?) {
+        
+        var selectedDate = Date()
+        
+        if let date = date {
+            selectedDate = date
+        }
+        
+        AttendanceManager.shared.fetchStudentExistances(studentIndex: 0, date: selectedDate, timeIn: true) { [weak self] result in
+            
+            switch result {
+            
+            case .success(let studentExistances):
+                
+                self?.setStudentExistances(studentExistances, timeIn: true)
+                
+            //            self?.onCallendarTap()
+            
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+        
+        AttendanceManager.shared.fetchStudentExistances(studentIndex: 0, date: selectedDate, timeIn: false) { [weak self] result in
+            
+            switch result {
+            
+            case .success(let studentExistances):
+                
+                self?.setStudentExistances(studentExistances, timeIn: false)
+                
+            //            self?.onCallendarTap()
+            
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
     }
-    return viewModels
-  }
-  
-  func setEvents(_ events: [Event]) {
-    eventViewModel.value = convertEventsToViewModels(from: events)
-  }
-  
-  func convertStudenLessonRecordsToViewModels(from records: [StudentLessonRecord]) -> [StudentLessonRecordViewModel] {
-    var viewModels = [StudentLessonRecordViewModel]()
-    for record in records {
-      let viewModel = StudentLessonRecordViewModel(model: record)
-      viewModels.append(viewModel)
+    
+    func convertEventsToViewModels(from events: [Event]) -> [EventViewModel] {
+        var viewModels = [EventViewModel]()
+        for event in events {
+            let viewModel = EventViewModel(model: event)
+            viewModels.append(viewModel)
+        }
+        return viewModels
     }
-    return viewModels
-  }
-  
-  func setStudentLessonRecords(_ records: [StudentLessonRecord]) {
-    lessonRecordViewModel.value = convertStudenLessonRecordsToViewModels(from: records)
-  }
-  
-  func convertStudentExistancesToViewModels(from records: [StudentExistance]) -> [StudentExistanceViewModel] {
-    var viewModels = [StudentExistanceViewModel]()
-    for record in records {
-      let viewModel = StudentExistanceViewModel(model: record)
-      viewModels.append(viewModel)
+    
+    func setEvents(_ events: [Event]) {
+        eventViewModel.value = convertEventsToViewModels(from: events)
     }
-    return viewModels
-  }
-  
-  func setStudentExistances(_ records: [StudentExistance], timeIn: Bool) {
-    if timeIn == true {
-      studentTimeInViemModel.value = convertStudentExistancesToViewModels(from: records)
-    } else {
-      studentTimeOutViemModel.value = convertStudentExistancesToViewModels(from: records)
+    
+    func convertStudenLessonRecordsToViewModels(from records: [StudentLessonRecord]) -> [StudentLessonRecordViewModel] {
+        var viewModels = [StudentLessonRecordViewModel]()
+        for record in records {
+            let viewModel = StudentLessonRecordViewModel(model: record)
+            viewModels.append(viewModel)
+        }
+        return viewModels
     }
-  }
+    
+    func setStudentLessonRecords(_ records: [StudentLessonRecord]) {
+        lessonRecordViewModel.value = convertStudenLessonRecordsToViewModels(from: records)
+    }
+    
+    func convertStudentExistancesToViewModels(from records: [StudentExistance]) -> [StudentExistanceViewModel] {
+        var viewModels = [StudentExistanceViewModel]()
+        for record in records {
+            let viewModel = StudentExistanceViewModel(model: record)
+            viewModels.append(viewModel)
+        }
+        return viewModels
+    }
+    
+    func setStudentExistances(_ records: [StudentExistance], timeIn: Bool) {
+        if timeIn == true {
+            studentTimeInViemModel.value = convertStudentExistancesToViewModels(from: records)
+        } else {
+            studentTimeOutViemModel.value = convertStudentExistancesToViewModels(from: records)
+        }
+    }
 }

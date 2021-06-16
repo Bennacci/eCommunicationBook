@@ -103,7 +103,7 @@ class AttendanceSheetViewModel {
   }
   
   func fetchCourse() {
-    XXXManager.shared.fetchCourses { [weak self] result in
+    LessonManager.shared.fetchCourses { [weak self] result in
       
       switch result {
         
@@ -139,7 +139,7 @@ class AttendanceSheetViewModel {
   
   func fetchAttendace(courseName: String) {
     
-    XXXManager.shared.fetchAttendance(courseName: courseName) { [weak self] result in
+    AttendanceManager.shared.fetchAttendance(courseName: courseName) { [weak self] result in
       
       switch result {
         

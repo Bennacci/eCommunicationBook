@@ -74,7 +74,7 @@ class StudentTimeInAndOutViewModel {
     group.enter()
     queue1.async(group: group) {
       
-      XXXManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent,
+        AttendanceManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent,
                                                date: self.selectedDate,
                                                timeIn: true)
       { [weak self] result in
@@ -98,7 +98,7 @@ class StudentTimeInAndOutViewModel {
     
     queue2.async(group: group) {
       
-      XXXManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent,
+        AttendanceManager.shared.fetchStudentExistances(studentIndex: self.selectedStudent,
                                                date: self.selectedDate,
                                                timeIn: false)
       { [weak self] result in

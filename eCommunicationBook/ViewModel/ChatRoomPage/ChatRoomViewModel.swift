@@ -40,6 +40,6 @@ class ChatRoomViewModel {
 
   func onTap() {
     
-    XXXManager.shared.conversationID = chatRoom.id
+    ChatroomManager.shared.conversationID = chatRoom.id
   }
 }

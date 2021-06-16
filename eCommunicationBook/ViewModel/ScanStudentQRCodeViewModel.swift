@@ -100,7 +100,7 @@ class ScanStudentQRCodeViewModel {
   
     BTProgressHUD.show()
 
-    XXXManager.shared.writeAttendance(studentExistance: &studentExistance) { result in
+    AttendanceManager.shared.writeAttendance(studentExistance: &studentExistance) { result in
      
       BTProgressHUD.dismiss()
 
@@ -123,7 +123,7 @@ class ScanStudentQRCodeViewModel {
   
     BTProgressHUD.show()
 
-    XXXManager.shared.writeTimeIn(studentExistance: &studentExistance) { result in
+    AttendanceManager.shared.writeTimeIn(studentExistance: &studentExistance) { result in
      
       BTProgressHUD.dismiss()
 
@@ -147,7 +147,7 @@ class ScanStudentQRCodeViewModel {
     
     BTProgressHUD.show()
 
-    XXXManager.shared.writeTimeOut(studentExistance: &studentExistance) { result in
+    AttendanceManager.shared.writeTimeOut(studentExistance: &studentExistance) { result in
       
       BTProgressHUD.dismiss()
 
@@ -170,7 +170,7 @@ class ScanStudentQRCodeViewModel {
   }
   
   func fetchCourse() {
-    XXXManager.shared.fetchCourses { [weak self] result in
+    LessonManager.shared.fetchCourses { [weak self] result in
       
       switch result {
         

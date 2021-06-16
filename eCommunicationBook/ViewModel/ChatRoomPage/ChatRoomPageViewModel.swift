@@ -18,7 +18,7 @@ class ChatRoomPageViewModel {
     
     func fetchData() {
         
-        XXXManager.shared.fetchChatrooms { [weak self] result in
+        ChatroomManager.shared.fetchChatrooms { [weak self] result in
             
             switch result {
             

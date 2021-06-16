@@ -9,62 +9,58 @@
 import Foundation
 
 class CourseViewModel {
-  var course: Course
-  init(model course: Course) {
-    self.course = course
-  }
-  
-  var id: String {
-    get {
-      return course.id
+    var course: Course
+    init(model course: Course) {
+        self.course = course
     }
-  }
-  
-  var name: String {
-    get {
-      return course.name
+    
+    var id: String {
+        
+        return course.id
     }
-  }
-  var teachers: [String] {
-    get {
-      return course.teachers
+    
+    var name: String {
+    
+        return course.name
     }
-  }
-  var students: [String] {
-    get {
-      return course.students
+    
+    var teachers: [String] {
+    
+        return course.teachers
     }
-  }
-  var firstLessonDate: Double {
-    get {
-      return course.firstLessonDate
+    
+    var students: [String] {
+    
+        return course.students
     }
-  }
-  var courseTime: [RoutineHour] {
-    get {
-      return course.courseTime
+    
+    var firstLessonDate: Double {
+    
+        return course.firstLessonDate
     }
-  }
-  var fee: Int {
-    get {
-      return course.fee
+    
+    var courseTime: [RoutineHour] {
+    
+        return course.courseTime
     }
-  }
-  var lessonsAmount: Int {
-    get {
-      return course.lessonsAmount
+    
+    var fee: Int {
+    
+        return course.fee
     }
-  }
-  var lessons: [Lesson]? {
-    get {
-      return course.lessons
+    
+    var lessonsAmount: Int {
+    
+        return course.lessonsAmount
     }
-  }
-  
-  var image: String? {
-    get {
-      return course.image
+    
+    var lessons: [Lesson]? {
+        
+        return course.lessons
     }
-  }
-  
+    
+    var image: String? {
+        
+        return course.image
+    }
 }

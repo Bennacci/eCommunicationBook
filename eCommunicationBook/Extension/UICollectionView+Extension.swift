@@ -9,60 +9,60 @@
 import UIKit
 
 extension UICollectionView {
-  
-  func registerCellWithNib(identifier: String, bundle: Bundle?) {
     
-    let nib = UINib(nibName: identifier, bundle: bundle)
+    func registerCellWithNib(identifier: String, bundle: Bundle?) {
+        
+        let nib = UINib(nibName: identifier, bundle: bundle)
+        
+        register(nib, forCellWithReuseIdentifier: identifier)
+    }
     
-    register(nib, forCellWithReuseIdentifier: identifier)
-  }
-  
-  func calculateCellsize(viewHeight: CGFloat,
-                         sectionInsets: UIEdgeInsets,
-                         itemsPerRow: CGFloat,
-                         itemsPerColumn: CGFloat) -> CGSize {
+    func calculateCellsize(viewHeight: CGFloat,
+                           sectionInsets: UIEdgeInsets,
+                           itemsPerRow: CGFloat,
+                           itemsPerColumn: CGFloat) -> CGSize {
+        
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        
+        let availableWidth = UIScreen.width - paddingSpace
+        
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        let columnPaddingSpace = sectionInsets.top * (itemsPerColumn + 1)
+        
+        let availableHeight = viewHeight - columnPaddingSpace
+        
+        let heightPerItem = availableHeight / itemsPerColumn
+        
+        return CGSize(width: widthPerItem, height: heightPerItem)
+    }
     
-    let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-    
-    let availableWidth = UIScreen.width - paddingSpace
-    
-    let widthPerItem = availableWidth / itemsPerRow
-    
-    let columnPaddingSpace = sectionInsets.top * (itemsPerColumn + 1)
-    
-    let availableHeight = viewHeight - columnPaddingSpace
-    
-    let heightPerItem = availableHeight / itemsPerColumn
-    
-    return CGSize(width: widthPerItem, height: heightPerItem)
-  }
-  
-  func calculateCellsize(viewHeight: CGFloat,
-                         viewWidth: CGFloat,
-                         sectionInsets: UIEdgeInsets,
-                         itemsPerRow: CGFloat,
-                         itemsPerColumn: CGFloat) -> CGSize {
-    
-    let paddingSpace = sectionInsets.left
-    
-    let availableWidth = viewWidth - paddingSpace
-    
-    let widthPerItem = availableWidth / itemsPerRow
-    
-    let columnPaddingSpace = sectionInsets.top * (itemsPerColumn + 1)
-    
-    let availableHeight = viewHeight - columnPaddingSpace
-    
-    let heightPerItem = availableHeight / itemsPerColumn
-    
-    return CGSize(width: widthPerItem, height: heightPerItem)
-  }
+    func calculateCellsize(viewHeight: CGFloat,
+                           viewWidth: CGFloat,
+                           sectionInsets: UIEdgeInsets,
+                           itemsPerRow: CGFloat,
+                           itemsPerColumn: CGFloat) -> CGSize {
+        
+        let paddingSpace = sectionInsets.left
+        
+        let availableWidth = viewWidth - paddingSpace
+        
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        let columnPaddingSpace = sectionInsets.top * (itemsPerColumn + 1)
+        
+        let availableHeight = viewHeight - columnPaddingSpace
+        
+        let heightPerItem = availableHeight / itemsPerColumn
+        
+        return CGSize(width: widthPerItem, height: heightPerItem)
+    }
 }
 
 extension UICollectionViewCell {
     
     static var identifier: String {
-      
-      return String(describing: self)
+        
+        return String(describing: self)
     }
 }

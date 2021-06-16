@@ -9,58 +9,53 @@
 import Foundation
 
 class StudentExistanceViewModel {
-
-var studentExistance: StudentExistance
-
-// var onDead: (() -> Void)?
-
-init(model studentExistance: StudentExistance) {
-  self.studentExistance = studentExistance
-}
-
-var id: String {
-  get {
-    return studentExistance.id
-  }
-}
-  
-  var studentID: String {
-    get {
-      return studentExistance.studentID
-    }
-  }
     
-  var studentName: String {
-    get {
-      return studentExistance.studentName
-    }
-  }
+    var studentExistance: StudentExistance
     
-  var time: Double {
-    get {
-      return studentExistance.time
-    }
-  }
+    // var onDead: (() -> Void)?
     
-  var latitude: Double {
-    get {
-      return studentExistance.latitude
+    init(model studentExistance: StudentExistance) {
+        
+        self.studentExistance = studentExistance
     }
-  }
     
-  var longitude: Double {
-    get {
-      return studentExistance.longitude
+    var id: String {
+        
+        return studentExistance.id
     }
-  }
-  var courseName: String {
-    get {
-      return studentExistance.courseName
+    
+    var studentID: String {
+        
+        return studentExistance.studentID
     }
-  }
-  var scanTeacherName: String {
-    get {
-      return studentExistance.scanTeacherName
+    
+    var studentName: String {
+        
+        return studentExistance.studentName
     }
-  }
+    
+    var time: Double {
+        
+        return studentExistance.time
+    }
+    
+    var latitude: Double {
+        
+        return studentExistance.latitude
+    }
+    
+    var longitude: Double {
+        
+        return studentExistance.longitude
+    }
+    
+    var courseName: String {
+        
+        return studentExistance.courseName
+    }
+    
+    var scanTeacherName: String {
+        
+        return studentExistance.scanTeacherName
+    }
 }

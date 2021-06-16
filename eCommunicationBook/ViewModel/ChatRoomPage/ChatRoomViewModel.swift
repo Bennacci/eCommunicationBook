@@ -13,33 +13,31 @@ class ChatRoomViewModel {
     var chatRoom: ChatRoom
     
     var conversationViewModel = ConversationViewModel()
-  
+    
     var onDead: (() -> Void)?
     
     init(model chatRoom: ChatRoom) {
+        
         self.chatRoom = chatRoom
     }
-
+    
     var id: String {
-        get {
-          return chatRoom.id
-        }
+        
+        return chatRoom.id
     }
     
-  var members: [String] {
-      get {
-          return chatRoom.members
-      }
-  }
-  
-  var messages: [Message]? {
-      get {
-        return chatRoom.messages
-      }
-  }
-
-  func onTap() {
+    var members: [String] {
+        
+        return chatRoom.members
+    }
     
-    ChatroomManager.shared.conversationID = chatRoom.id
-  }
+    var messages: [Message]? {
+        
+        return chatRoom.messages
+    }
+    
+    func onTap() {
+        
+        ChatroomManager.shared.conversationID = chatRoom.id
+    }
 }

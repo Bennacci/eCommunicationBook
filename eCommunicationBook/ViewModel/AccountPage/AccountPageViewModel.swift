@@ -39,11 +39,12 @@ class AccountPageViewModel {
       case .success(let imageUrl):
         
         self.onImageUploaded(url: imageUrl)
+        
         print("Publish Image Succeeded")
 
       case .failure(let error):
         
-        print("publishArticle.failure: \(error)")
+        print("uploadImage.failure: \(error)")
       }
     }
   }
@@ -62,10 +63,8 @@ class AccountPageViewModel {
         
       case .failure(let error):
         
-        
-        print("fetchData.failure: \(error)")
+        print("addUser.failure: \(error)")
       }
     }
   }
-  
 }

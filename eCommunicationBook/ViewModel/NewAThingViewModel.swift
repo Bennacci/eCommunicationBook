@@ -10,7 +10,7 @@ import Foundation
 
 // 用protocol 拆成 newthing 系列 VM?
 
-//protocol NewAThingViewModel {
+// protocol NewAThingViewModel {
 //  var inputTexts: [[String]] { get set }
 //
 //  var inputDates: [[Date]] { get set }
@@ -37,10 +37,13 @@ class NewAThingViewModel: SearchUserDelegate {
     inputTexts = form
     
     for index in 0..<inputTexts.count {
+        
       let input = Array(repeating: Date(), count: inputTexts[index].count)
-      inputDates.append(input)
+      
+        inputDates.append(input)
       //      inputValuse.append(input)
     }
+    
     self.onFirstLessonDateChanged(day: Date())
   }
   

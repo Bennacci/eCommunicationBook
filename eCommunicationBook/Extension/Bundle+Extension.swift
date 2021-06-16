@@ -15,9 +15,9 @@ extension Bundle {
         
         return Bundle.main.infoDictionary![key] as! String
     }
-
+    
     static func STValueForInt32(key: String) -> Int32 {
-
+        
         return Bundle.main.infoDictionary![key] as! Int32
     }
     // swiftlint:enable force_cast

@@ -93,8 +93,11 @@ class CalendarPageViewModel {
                 
                 $0.time <= time + secondsPerDay * 1000 - 1
         })
+        
         setTitle()
+        
         setComunicationSectionTitle()
+        
         onRefresh()
     }
     
@@ -125,11 +128,8 @@ class CalendarPageViewModel {
             if dayLessonRecordViewModel.value[0].note != nil {
                 comunicationSectionTitles.append("Communication Corner")
             }
-            
         }
     }
-    
-    
     
     func setTitle() {
         
@@ -162,7 +162,7 @@ class CalendarPageViewModel {
                 
             case .failure(let error):
                 
-                print("fetchData.failure: \(error)")
+                print("fetchEvents.failure: \(error)")
             }
         }
         
@@ -178,7 +178,7 @@ class CalendarPageViewModel {
             
             case .failure(let error):
                 
-                print("fetchData.failure: \(error)")
+                print("fetchStudentLessonRecord.failure: \(error)")
             }
         }
     }
@@ -188,10 +188,13 @@ class CalendarPageViewModel {
         var selectedDate = Date()
         
         if let date = date {
+            
             selectedDate = date
         }
         
-        AttendanceManager.shared.fetchStudentExistances(studentIndex: 0, date: selectedDate, timeIn: true) { [weak self] result in
+        AttendanceManager.shared.fetchStudentExistances(studentIndex: 0,
+                                                        date: selectedDate,
+                                                        timeIn: true) { [weak self] result in
             
             switch result {
             
@@ -203,7 +206,7 @@ class CalendarPageViewModel {
             
             case .failure(let error):
                 
-                print("fetchData.failure: \(error)")
+                print("fetchStudentExistances.failure: \(error)")
             }
         }
         
@@ -219,50 +222,70 @@ class CalendarPageViewModel {
             
             case .failure(let error):
                 
-                print("fetchData.failure: \(error)")
+                print("fetchStudentExistances.failure: \(error)")
             }
         }
     }
     
     func convertEventsToViewModels(from events: [Event]) -> [EventViewModel] {
+       
         var viewModels = [EventViewModel]()
+        
         for event in events {
+        
             let viewModel = EventViewModel(model: event)
+            
             viewModels.append(viewModel)
         }
+        
         return viewModels
     }
     
     func setEvents(_ events: [Event]) {
+        
         eventViewModel.value = convertEventsToViewModels(from: events)
     }
     
     func convertStudenLessonRecordsToViewModels(from records: [StudentLessonRecord]) -> [StudentLessonRecordViewModel] {
+        
         var viewModels = [StudentLessonRecordViewModel]()
+        
         for record in records {
+        
             let viewModel = StudentLessonRecordViewModel(model: record)
+            
             viewModels.append(viewModel)
         }
+        
         return viewModels
     }
     
     func setStudentLessonRecords(_ records: [StudentLessonRecord]) {
+        
         lessonRecordViewModel.value = convertStudenLessonRecordsToViewModels(from: records)
     }
     
     func convertStudentExistancesToViewModels(from records: [StudentExistance]) -> [StudentExistanceViewModel] {
+        
         var viewModels = [StudentExistanceViewModel]()
+        
         for record in records {
+        
             let viewModel = StudentExistanceViewModel(model: record)
+            
             viewModels.append(viewModel)
         }
+        
         return viewModels
     }
     
     func setStudentExistances(_ records: [StudentExistance], timeIn: Bool) {
         if timeIn == true {
+            
             studentTimeInViemModel.value = convertStudentExistancesToViewModels(from: records)
+        
         } else {
+        
             studentTimeOutViemModel.value = convertStudentExistancesToViewModels(from: records)
         }
     }

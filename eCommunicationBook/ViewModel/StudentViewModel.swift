@@ -9,63 +9,45 @@
 import Foundation
 
 class StudentViewModel: SearchUserPageMaterial {
-  var student: Student
-  
-  init(model student: Student) {
-    self.student = student
-  }
-  
+    var student: Student
+    
+    init(model student: Student) {
+        self.student = student
+    }
+    
     var id: String {
-    get {
-      return student.id
+        return student.id
     }
-  }
-  
+    
     var parents: [String] {
-    get {
-      return student.parents
+        return student.parents
     }
-  }
-  
+    
     var name: String {
-    get {
-      return student.name
+        return student.name
     }
-  }
-  
+    
     var image: String? {
-    get {
-      return student.image
+        return student.image
     }
-  }
-  
+    
     var nationalID: String {
-    get {
-      return student.nationalID
+        return student.nationalID
     }
-  }
-  
+    
     var grade: Int {
-    get {
-      return student.grade
+        return student.grade
     }
-  }
-  
+    
     var birthDay: Double {
-    get {
-      return student.birthDay
+        return student.birthDay
     }
-  }
-  
+    
     var emergencyContactPerson: String {
-    get {
-      return student.emergencyContactPerson
+        return student.emergencyContactPerson
     }
-  }
-  
+    
     var emergencyContactNo: Int {
-    get {
-      return student.emergencyContactNo
+        return student.emergencyContactNo
     }
-  }
 }

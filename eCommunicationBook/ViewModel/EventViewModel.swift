@@ -9,52 +9,46 @@
 import Foundation
 
 class EventViewModel {
-  
-  var event: Event
-  
-  init(model event: Event) {
-  
-    self.event = event
-
-  }
-  
-  var id: String {
-    get {
-      return event.id
+    
+    var event: Event
+    
+    init(model event: Event) {
+        
+        self.event = event
     }
-  }
-  
-  var eventName: String {
-    get {
-      return event.eventName
+    
+    var id: String {
+        
+        return event.id
     }
-  }
-  var description: String {
-    get {
-      return event.description
+    
+    var eventName: String {
+        
+        return event.eventName
     }
-  }
-  
-  var image: String? {
-    get {
-      return event.image
+    
+    var description: String {
+        
+        return event.description
     }
-  }
-  var date: Double {
-    get {
-      return event.date
+    
+    var image: String? {
+        
+        return event.image
     }
-  }
-  var time: Int {
-    get {
-      return event.time
+    
+    var date: Double {
+    
+        return event.date
     }
-  }
-  
-  var timeInterval: Int {
-    get {
-      return event.timeInterval
+    
+    var time: Int {
+    
+        return event.time
     }
-  }
+    
+    var timeInterval: Int {
+        
+        return event.timeInterval
+    }
 }
-

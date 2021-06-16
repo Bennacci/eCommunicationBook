@@ -117,7 +117,7 @@ class LessonPerformancesViewModel {
     tests: nil,
     assignments: nil)
   
-  var studentLessonRecord: StudentLessonRecord = StudentLessonRecord (
+  var studentLessonRecord: StudentLessonRecord = StudentLessonRecord(
     id: String.empty,
     studentID: String.empty,
     studentName: String.empty,
@@ -201,7 +201,6 @@ class LessonPerformancesViewModel {
     sectionTitles.append("Comunication Corner")
     
     sectionTitles.append("Upload Image")
-    
     
     studentLessonRecord.courseLesson = currentLesson.number
     studentLessonRecord.courseName = course.name + ":" + "\(course.lessonsAmount)"

@@ -9,46 +9,45 @@
 import Foundation
 
 class LessonViewModel {
-  var lesson: Lesson
-   
-  init(model lesson: Lesson) {
-    self.lesson = lesson
-  }
-  var number: Int {
-    get {
-      return lesson.number
+    var lesson: Lesson
+    
+    init(model lesson: Lesson) {
+        
+        self.lesson = lesson
     }
-  }
-  
-  var teacher: String {
-    get {
-      return lesson.teacher
+    
+    var number: Int {
+        
+        return lesson.number
     }
-  }
-  var time: Double {
-    get {
-      return lesson.time
+    
+    var teacher: String {
+        
+        return lesson.teacher
     }
-  }
-  
-  var timeInterval: Int {
-    get {
-      return lesson.timeInterval
+    
+    var time: Double {
+        
+        return lesson.time
     }
-  }
-  var todaysLesson: [String]? {
-    get {
-      return lesson.todaysLesson
+    
+    var timeInterval: Int {
+        
+        return lesson.timeInterval
     }
-  }
-  var tests: [String]? {
-    get {
-      return lesson.tests
+    
+    var todaysLesson: [String]? {
+        
+        return lesson.todaysLesson
     }
-  }
-  var assignments: [String]? {
-    get {
-      return lesson.assignments
+    
+    var tests: [String]? {
+    
+        return lesson.tests
     }
-  }
+    
+    var assignments: [String]? {
+    
+        return lesson.assignments
+    }
 }

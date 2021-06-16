@@ -9,128 +9,107 @@
 import Foundation
 
 class StudentLessonRecordViewModel {
-  
-  var studentLessonRecord: StudentLessonRecord
-  
-  init(model studentLessonRecord: StudentLessonRecord) {
-  
-    self.studentLessonRecord = studentLessonRecord
-  }
-  var performancesItem = ["Concentration", "Attidtude", "Participant"]
-  
-  var id: String {
-    get {
-      return studentLessonRecord.id
+    
+    var studentLessonRecord: StudentLessonRecord
+    
+    init(model studentLessonRecord: StudentLessonRecord) {
+        
+        self.studentLessonRecord = studentLessonRecord
     }
-  }
-  
-  var studentID: String {
-    get {
-      return studentLessonRecord.studentID
+    var performancesItem = ["Concentration", "Attidtude", "Participant"]
+    
+    var id: String {
+        
+        return studentLessonRecord.id
     }
-  }
-  
-  var studentName: String {
-    get {
-      return studentLessonRecord.studentName
+    
+    var studentID: String {
+        
+        return studentLessonRecord.studentID
     }
-  }
-  
-  var courseName: String {
-    get {
-      return studentLessonRecord.courseName
+    
+    var studentName: String {
+        
+        return studentLessonRecord.studentName
     }
-  }
-  
-  var courseLesson: Int {
-    get {
-      return studentLessonRecord.courseLesson
+    
+    var courseName: String {
+        
+        return studentLessonRecord.courseName
     }
-  }
-  
-  var time: Double {
-    get {
-      return studentLessonRecord.time
+    
+    var courseLesson: Int {
+        
+        return studentLessonRecord.courseLesson
     }
-  }
-  
-  var timeInterval: Int {
-    get {
-      return studentLessonRecord.timeInterval
+    
+    var time: Double {
+        
+        return studentLessonRecord.time
     }
-  }
-  
-  var todaysLesson: [String]? {
-    get {
-      return studentLessonRecord.todaysLesson
+    
+    var timeInterval: Int {
+        
+        return studentLessonRecord.timeInterval
     }
-  }
-  
-  var tests: [String]? {
-    get {
-      return studentLessonRecord.tests
+    
+    var todaysLesson: [String]? {
+        
+        return studentLessonRecord.todaysLesson
     }
-  }
-  
-  var assignments: [String]? {
-    get {
-      return studentLessonRecord.assignments
+    
+    var tests: [String]? {
+        
+        return studentLessonRecord.tests
     }
-  }
-  
-  
-  
-  var performances: [ClassPerformance.RawValue] {
-    get {
-      return studentLessonRecord.performances
+    
+    var assignments: [String]? {
+        
+        return studentLessonRecord.assignments
     }
-  }
-  
-  var previousTests: [String]? {
-    get {
-      return studentLessonRecord.previousTests
+    
+    var performances: [ClassPerformance.RawValue] {
+        
+        return studentLessonRecord.performances
     }
-  }
-  
-  var previousAssignments: [String]? {
-    get {
-      return studentLessonRecord.previousAssignments
+    
+    var previousTests: [String]? {
+        
+        return studentLessonRecord.previousTests
     }
-  }
-  
-  var testGrade: [String]? {
-    get {
-      return studentLessonRecord.testGrade
+    
+    var previousAssignments: [String]? {
+        
+        return studentLessonRecord.previousAssignments
     }
-  }
-  
-  var assignmentCompleted: [Bool]? {
-    get {
-      return studentLessonRecord.assignmentCompleted
+    
+    var testGrade: [String]? {
+        
+        return studentLessonRecord.testGrade
     }
-  }
-  
-
-  var assignmentScore: [Int]? {
-    get {
-      return studentLessonRecord.assignmentScore
+    
+    var assignmentCompleted: [Bool]? {
+        
+        return studentLessonRecord.assignmentCompleted
     }
-  }
-  
-  var note: String? {
-    get {
-      return studentLessonRecord.note
+    
+    var assignmentScore: [Int]? {
+        
+        return studentLessonRecord.assignmentScore
     }
-  }
-  
-  var images: [String]? {
-    get {
-      return studentLessonRecord.images
+    
+    var note: String? {
+        
+        return studentLessonRecord.note
     }
-  }
-  var imageTitles: [String]? {
-    get {
-      return studentLessonRecord.imageTitles
+    
+    var images: [String]? {
+        
+        return studentLessonRecord.images
     }
-  }
+    
+    var imageTitles: [String]? {
+        
+        return studentLessonRecord.imageTitles
+    }
 }

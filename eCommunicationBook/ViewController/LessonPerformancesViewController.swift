@@ -34,21 +34,25 @@ class LessonPerformancesViewController: UIViewControllerWithImagePicker {
     viewModel.setViewModel()
     
     viewModel.studentLessonRecordsViewModel.bind { [weak self] _ in
-      self?.collectionView.reloadData()
+    
+        self?.collectionView.reloadData()
     }
     
     viewModel.refreshView = {[weak self] () in
-      self?.collectionView.reloadData()
+      
+        self?.collectionView.reloadData()
     }
     
     viewModel.onSaved = { [weak self] () in
-      self?.dismiss(animated: true, completion: nil)
+      
+        self?.dismiss(animated: true, completion: nil)
     }
     
     setCollectionViewStack()
   }
   
   @IBAction func saveButtonPressed(_ sender: Any) {
+    
     viewModel.onSave()
   }
   
@@ -73,13 +77,10 @@ class LessonPerformancesViewController: UIViewControllerWithImagePicker {
   }
   
   @objc func buttonStatusChanged(sender: UIButton) {
-    if !(sender.isSelected) {
-      sender.isSelected = true
-      viewModel.onAssignmentsStatusToggle(index: sender.tag)
-    } else {
-      sender.isSelected = false
-      viewModel.onAssignmentsStatusToggle(index: sender.tag)
-    }
+    
+    sender.isSelected = !sender.isSelected
+    
+    viewModel.onAssignmentsStatusToggle(index: sender.tag)
   }
   
   func setCollectionViewStack() {
@@ -170,8 +171,8 @@ extension LessonPerformancesViewController: UITableViewDataSource {
     switch viewModel.sectionTitles[indexPath.section] {
       
     case "Lesson Performances":
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: LPSlideTableViewCell.identifier,
-                                                     for: indexPath) as? LPSlideTableViewCell
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: LPSliderTableViewCell.identifier,
+                                                     for: indexPath) as? LPSliderTableViewCell
         else { fatalError("Unexpected Table View Cell") }
       cell.setUp(viewModel: studenLessonRecordViewModel, indexPath: indexPath)
       cell.slider.addTarget(self, action: #selector(sliderValueChanged(sender:)), for: .touchUpInside)
@@ -183,8 +184,8 @@ extension LessonPerformancesViewController: UITableViewDataSource {
         else { fatalError("Unexpected Table View Cell") }
       cell.setUp(viewModel: studenLessonRecordViewModel, indexPath: indexPath)
       
-      cell.checkButton.addTarget(self, action: #selector(buttonStatusChanged(sender:)), for: .touchUpInside)
-      cell.checkButton.tag = indexPath.row
+      cell.buttonCheckHomework.addTarget(self, action: #selector(buttonStatusChanged(sender:)), for: .touchUpInside)
+      cell.buttonCheckHomework.tag = indexPath.row
       return cell
       
     case "Tests Grade":

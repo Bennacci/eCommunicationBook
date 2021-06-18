@@ -21,7 +21,7 @@ class LPMainCollectionViewCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
 //    if forLessonPlanReview == nil {
-      tableView.registerCellWithNib(identifier: LPSlideTableViewCell.identifier, bundle: nil)
+      tableView.registerCellWithNib(identifier: LPSliderTableViewCell.identifier, bundle: nil)
       tableView.registerCellWithNib(identifier: LPHomeWorkTableViewCell.identifier, bundle: nil)
       tableView.registerCellWithNib(identifier: LPCommunicationCornerTableViewCell.identifier, bundle: nil)
       tableView.registerCellWithNib(identifier: LPTestScoreTableViewCell.identifier, bundle: nil)
@@ -33,17 +33,18 @@ class LPMainCollectionViewCell: UICollectionViewCell {
       tableView.registerCellWithNib(identifier: ChartTableViewCell.identifier, bundle: nil)
 //    }
   }
+    
   func setUp(viewModel: StudentLessonRecordViewModel) {
+    
     self.viewModel = viewModel
+    
     layOutCell()
   }
-  
   
   func layOutCell() {
     
     //    let splits = viewModel?.studentID.components(separatedBy: ":")
     //    guard let name = splits?[0] else {return}
     labelStudentName.text = viewModel?.studentName
-    
   }
 }

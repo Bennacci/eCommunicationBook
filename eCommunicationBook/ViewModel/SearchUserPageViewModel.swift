@@ -89,7 +89,7 @@ class SearchUserPageViewModel {
                                         messages: nil
                 )
                 
-                ChatroomManager.shared.publishChatroom(chatRoom: &chatRoom)  { [weak self] result in
+                ChatroomManager.shared.publishChatroom(chatRoom: &chatRoom) { result in
                     
                     switch result {
                     

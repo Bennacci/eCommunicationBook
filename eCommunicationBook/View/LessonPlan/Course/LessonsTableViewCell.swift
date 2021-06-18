@@ -9,23 +9,23 @@
 import UIKit
 
 class LessonsTableViewCell: UITableViewCell {
-
-  @IBOutlet weak var collectionView: UICollectionView!
-  
-  class func cellHeight() -> CGFloat {
-    return 120.0
-  }
-  
-  override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    collectionView.registerCellWithNib(identifier: LessonCollectionViewCell.identifier, bundle: nil)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    class func cellHeight() -> CGFloat {
+        
+        return 120.0
     }
     
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
+        collectionView.registerCellWithNib(identifier: LessonCollectionViewCell.identifier, bundle: nil)
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        
+        super.setSelected(selected, animated: animated)
+    }
 }

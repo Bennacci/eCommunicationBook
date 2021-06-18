@@ -9,19 +9,21 @@
 import UIKit
 
 class AddRowTableViewCell: UITableViewCell {
-
-  @IBOutlet weak var label: UILabel!
-  override func awakeFromNib() {
+    
+    @IBOutlet weak var labelDescription: UILabel!
+    
+    override func awakeFromNib() {
+        
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-  func prepareForUploadImage() {
-    label.text = "Tap to Upload"
-  }
+    
+    func prepareForUploadImage() {
+        
+        labelDescription.text = "Tap to Upload"
+    }
 }

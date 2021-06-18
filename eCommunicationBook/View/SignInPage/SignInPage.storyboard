@@ -50,7 +50,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdF-Ir-0j0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdF-Ir-0j0">
                                         <rect key="frame" x="192" y="686" width="30" height="30"/>
                                         <state key="normal" title="skip"/>
                                         <connections>
@@ -324,13 +324,13 @@ By email: b258061@gmail.com</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="blackViewPolicyBackground" destination="yJ4-Cb-Vf7" id="qlY-FI-i2D"/>
+                        <outlet property="centerYTextView" destination="IlM-WB-e2e" id="Oqu-Be-OV2"/>
                         <outlet property="collectionView" destination="6us-UG-Cbq" id="I9W-fP-sgq"/>
                         <outlet property="middleConViewAppleSign" destination="ugn-2A-peC" id="xzE-V9-fKp"/>
                         <outlet property="middleConViewChooseRole" destination="8L4-gJ-lgt" id="YGv-KF-m1J"/>
-                        <outlet property="textViewCenterY" destination="IlM-WB-e2e" id="Oqu-Be-OV2"/>
                         <outlet property="viewAppleSignIn" destination="aeM-wP-5RP" id="TSG-oL-fuq"/>
                         <outlet property="viewChoseRole" destination="Nmd-hD-PO7" id="PKy-Vt-rVj"/>
+                        <outlet property="viewPolicyBlackView" destination="yJ4-Cb-Vf7" id="qlY-FI-i2D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySZ-RL-3VU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -38,7 +38,6 @@ class UserManager {
         didSet {
             updateStudents()
         }
-        
     }
     
     //      var user = User(id: "ZTBCw5SJ1cgvO9DswRx11ZUE3At1",

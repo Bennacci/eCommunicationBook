@@ -28,7 +28,6 @@ class StudentTimeInAndOutViewModel {
   
   let group: DispatchGroup = DispatchGroup()
   
-
   func refreshCellDateDic() {
     
     cellDateDic.removeAll()

@@ -22,14 +22,54 @@ class ChatRoomPageViewModel {
             
             switch result {
             
-            case .success(let chatrooms):
+            case .success(let chatRooms):
                 
-                self?.setChatRooms(chatrooms)
+                self?.searchAndAddConversationToChatRoom(chatRooms: chatRooms)
                 
             case .failure(let error):
                 
                 print("fetchData.failure: \(error)")
             }
+        }
+    }
+    
+    func searchAndAddConversationToChatRoom(chatRooms: [ChatRoom]) {
+        
+        var chatRooms = chatRooms
+        
+        let group: DispatchGroup = DispatchGroup()
+        
+        for index in 0 ..< chatRooms.count {
+            
+            let queue = DispatchQueue(label: "queue", attributes: .concurrent)
+            
+            group.enter()
+            
+            queue.async(group: group) {
+                
+                ChatroomManager.shared.fetchMessages(chatRoomId: chatRooms[index].id) { result in
+                    
+                    switch result {
+                    
+                    case .success(let messages):
+                        
+                        chatRooms[index].messages = messages
+                        
+                        group.leave()
+                        
+                    case .failure(let error):
+                        
+                        print("fetchData.failure: \(error)")
+                        
+                        group.leave()
+                    }
+                }
+            }
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            
+            self.setChatRooms(chatRooms)
         }
     }
     

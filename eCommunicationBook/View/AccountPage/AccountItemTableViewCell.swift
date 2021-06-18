@@ -11,28 +11,30 @@ import UIKit
 class AccountItemTableViewCell: UITableViewCell {
     
     @IBOutlet weak var labelTitle: UILabel!
+    
     @IBOutlet weak var labelContent: UILabel!
     
     var viewModel: [[String]]?
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
+        super.setSelected(selected, animated: animated)
     }
     
     func setUp(viewModel: [[String]], indexPath: IndexPath) {
+        
         self.viewModel = viewModel
+        
         layOutCell(indexPath: indexPath)
     }
     
-    
     func layOutCell(indexPath: IndexPath) {
+        
         guard let title = viewModel?[indexPath.section][indexPath.row] else {return}
         labelTitle.text = title
         var content = String.empty
@@ -51,13 +53,18 @@ class AccountItemTableViewCell: UITableViewCell {
             if UserManager.shared.user.birthDay != -1 {
                 birthDay = Date(milliseconds: UserManager.shared.user.birthDay).convertToString(dateformat: .dateYMD)
             }
+            
             content = birthDay
         }
         
         if content == String.empty || content == "-1" {
+            
             labelContent.text = "Not set"
+            
             labelContent.textColor = .darkGray
+            
         } else {
+            
             labelContent.text = content
         }
     }

@@ -1,9 +1,9 @@
 //
 //  StackCollectionViewLayout.swift
-//  stack
+//  eCommunicationBook
 //
-//  Created by Astemir Eleev on 21.06.2020.
-//  Copyright © 2020 Astemir Eleev. All rights reserved.
+//  Created by Ben Tee on 2021/5/24.
+//  Copyright © 2021 TKY co. All rights reserved.
 //
 
 import UIKit

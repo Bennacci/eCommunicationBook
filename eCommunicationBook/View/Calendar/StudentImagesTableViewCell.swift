@@ -33,14 +33,13 @@ class StudentImagesTableViewCell: UITableViewCell {
     layOutCell(index: index)
   }
   
-  
   func layOutCell(index: Int) {
     
     if let imageTitle = viewModel?.imageTitles?[index],
       
       let imageUrl = viewModel?.images?[index] {
       
-      if imageTitle == String.empty{
+      if imageTitle == String.empty {
         
         labelImageTitle.text = "Today's Image"
         

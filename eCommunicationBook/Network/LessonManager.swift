@@ -188,7 +188,6 @@ class LessonManager {
         }
     }
     
-    
     func fetchStudentLessonRecord(completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
         
         guard let student = UserManager.shared.user.student else { return }

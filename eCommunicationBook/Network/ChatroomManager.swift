@@ -66,81 +66,78 @@ class ChatroomManager {
         }
     }
     
+    
     func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
         
-        fireStoreDataBase.collection("ChatRooms")
-            //      .order(by: "createdTime")
+        let collection = fireStoreDataBase.collection("ChatRooms")
+            //            .order(by: "createdTime")
             .whereField("members", arrayContains: UserManager.shared.user.id)
-            .getDocuments { (querySnapshot, error) in
+        
+        collection.getDocuments { (querySnapshot, error) in
+            
+            if let error = error {
                 
-                if let error = error {
+                completion(.failure(error))
+                
+            } else {
+                
+                var chatRooms = [ChatRoom]()
+                
+                for document in querySnapshot!.documents {
                     
-                    completion(.failure(error))
-                    
-                } else {
-                    
-                    var chatRooms = [ChatRoom]()
-                    
-                    chatRooms.removeAll()
-                    
-                    for document in querySnapshot!.documents {
+                    do {
                         
-                        do {
+                        if let chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
                             
-                            if var chatRoom = try document.data(as: ChatRoom.self, decoder: Firestore.Decoder()) {
-                                
-                                self.fireStoreDataBase.collection("ChatRooms")
-                                    .document("\(chatRoom.id)")
-                                    .collection("Messages")
-                                    .order(by: "createdTime", descending: true)
-                                    .getDocuments { (querySnapshot, error) in
-                                        
-                                        if let error = error {
-                                            
-                                            completion(.failure(error))
-                                            
-                                        } else if querySnapshot?.isEmpty == true {
-                                            
-                                            chatRooms.append(chatRoom)
-                                            
-                                            completion(.success(chatRooms))
-                                            
-                                        } else {
-                                            
-                                            var messages = [Message]()
-                                            
-                                            for document in querySnapshot!.documents {
-                                                
-                                                do {
-                                                    
-                                                    if let message = try document.data(as: Message.self,
-                                                                                       decoder: Firestore.Decoder()) {
-                                                        
-                                                        messages.append(message)
-                                                    }
-                                                    
-                                                } catch {
-                                                    
-                                                    completion(.failure(error))
-                                                }
-                                            }
-                                            
-                                            chatRoom.messages = messages
-                                            
-                                            chatRooms.append(chatRoom)
-                                            
-                                            completion(.success(chatRooms))
-                                        }
-                                    }
-                            }
-                            
-                        } catch {
-                            
-                            completion(.failure(error))
+                            chatRooms.append(chatRoom)
                         }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
                     }
                 }
+                
+                completion(.success(chatRooms))
             }
+        }
+    }
+    
+    func fetchMessages(chatRoomId: String, completion: @escaping (Result<[Message], Error>) -> Void) {
+        
+        let collection = fireStoreDataBase.collection("ChatRooms")
+            .document(chatRoomId)
+            .collection("Messages")
+            .order(by: "createdTime", descending: true)
+        
+        collection.getDocuments { (querySnapshot, error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+                
+            } else {
+                
+                var messages = [Message]()
+                
+                for document in querySnapshot!.documents {
+                    
+                    do {
+                        
+                        if let message = try document.data(as: Message.self, decoder: Firestore.Decoder()) {
+                            
+                            messages.append(message)
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                }
+                
+                completion(.success(messages))
+            }
+        }
     }
     
     func fetchConversation(completion: @escaping (Result<[Message], Error>) -> Void) {

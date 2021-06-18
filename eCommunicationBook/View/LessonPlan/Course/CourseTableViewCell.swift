@@ -9,32 +9,37 @@
 import UIKit
 
 class CourseTableViewCell: UITableViewCell {
+    
+    var viewModel: CourseViewModel?
+    
+    @IBOutlet weak var labelCourseName: UILabel!
+    
+    @IBOutlet weak var imageViewCourse: UIImageView!
+    
+    override func awakeFromNib() {
 
-  var viewModel: CourseViewModel?
-  
-  @IBOutlet weak var labelCourseName: UILabel!
-  
-  @IBOutlet weak var imageViewCourse: UIImageView!
-  
-  override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-  func setup(viewModel: CourseViewModel) {
-      self.viewModel = viewModel
-      layoutCell()
-  }
-  func layoutCell() {
-    labelCourseName.text = viewModel?.name
-    if let imageURL = viewModel?.image {
-    imageViewCourse.loadImage(imageURL)
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        
+        super.setSelected(selected, animated: animated)
     }
-  }
+    
+    func setup(viewModel: CourseViewModel) {
+        
+        self.viewModel = viewModel
+        
+        layoutCell()
+    }
+    
+    func layoutCell() {
+        
+        labelCourseName.text = viewModel?.name
+        
+        if let imageURL = viewModel?.image {
+            
+            imageViewCourse.loadImage(imageURL)
+        }
+    }
 }

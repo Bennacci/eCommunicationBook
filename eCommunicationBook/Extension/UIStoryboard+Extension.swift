@@ -29,30 +29,29 @@ private struct StoryboardCategory {
     
     static let attendanceSheet = "AttendanceSheet"
     
-    
-    static let newEvent = "NewEvent"
-    
-    static let setASign = "SetASign"
-    
-    static let writeAttendAndLeave = "WriteAttendAndLeave"
-    
-    static let writeLessonState = "WriteLessonState"
-    
-    static let checkLearingStat = "CheckLearingStat"
-    
-    static let payTimeAnnounce = "PayTimeAnnounce"
-    
-    static let contactUs = "ContactUs"
-    
-    static let leaveReservation = "LeaveReservation"
-    
-    static let courseReservation = "CourseReservation"
-    
-    static let makeUpReservation = "MakeUpReservation"
+//
+//    static let newEvent = "NewEvent"
+//
+//    static let setASign = "SetASign"
+//
+//    static let writeAttendAndLeave = "WriteAttendAndLeave"
+//
+//    static let writeLessonState = "WriteLessonState"
+//
+//    static let checkLearingStat = "CheckLearingStat"
+//
+//    static let payTimeAnnounce = "PayTimeAnnounce"
+//
+//    static let contactUs = "ContactUs"
+//
+//    static let leaveReservation = "LeaveReservation"
+//
+//    static let courseReservation = "CourseReservation"
+//
+//    static let makeUpReservation = "MakeUpReservation"
 }
 
 extension UIStoryboard {
-    
     
     static var main: UIStoryboard { return storyboard(name: StoryboardCategory.main) }
     
@@ -70,29 +69,27 @@ extension UIStoryboard {
     
     static var studentTimeInAndOut: UIStoryboard { return storyboard(name: StoryboardCategory.studentTimeInAndOut) }
     
-    static var attendanceSheet:  UIStoryboard { return storyboard(name: StoryboardCategory.attendanceSheet) }
-    
-    
-    
-    static var newEvent: UIStoryboard { return storyboard(name: StoryboardCategory.newEvent) }
-    
-    static var setASign: UIStoryboard { return storyboard(name: StoryboardCategory.setASign) }
-    
-    static var writeAttendAndLeave: UIStoryboard { return storyboard(name: StoryboardCategory.writeAttendAndLeave) }
-    
-    static var writeLessonState: UIStoryboard { return storyboard(name: StoryboardCategory.writeLessonState) }
-    
-    static var checkLearingStat: UIStoryboard { return storyboard(name: StoryboardCategory.checkLearingStat) }
-    
-    static var payTimeAnnounce: UIStoryboard { return storyboard(name: StoryboardCategory.payTimeAnnounce) }
-    
-    static var contactUs: UIStoryboard { return storyboard(name: StoryboardCategory.contactUs) }
-    
-    static var leaveReservation: UIStoryboard { return storyboard(name: StoryboardCategory.leaveReservation) }
-    
-    static var courseReservation: UIStoryboard { return storyboard(name: StoryboardCategory.courseReservation) }
-    
-    static var makeUpReservation: UIStoryboard { return storyboard(name: StoryboardCategory.makeUpReservation) }
+    static var attendanceSheet: UIStoryboard { return storyboard(name: StoryboardCategory.attendanceSheet) }
+//    
+//    static var newEvent: UIStoryboard { return storyboard(name: StoryboardCategory.newEvent) }
+//    
+//    static var setASign: UIStoryboard { return storyboard(name: StoryboardCategory.setASign) }
+//    
+//    static var writeAttendAndLeave: UIStoryboard { return storyboard(name: StoryboardCategory.writeAttendAndLeave) }
+//    
+//    static var writeLessonState: UIStoryboard { return storyboard(name: StoryboardCategory.writeLessonState) }
+//    
+//    static var checkLearingStat: UIStoryboard { return storyboard(name: StoryboardCategory.checkLearingStat) }
+//    
+//    static var payTimeAnnounce: UIStoryboard { return storyboard(name: StoryboardCategory.payTimeAnnounce) }
+//    
+//    static var contactUs: UIStoryboard { return storyboard(name: StoryboardCategory.contactUs) }
+//    
+//    static var leaveReservation: UIStoryboard { return storyboard(name: StoryboardCategory.leaveReservation) }
+//    
+//    static var courseReservation: UIStoryboard { return storyboard(name: StoryboardCategory.courseReservation) }
+//    
+//    static var makeUpReservation: UIStoryboard { return storyboard(name: StoryboardCategory.makeUpReservation) }
     
     private static func storyboard(name: String) -> UIStoryboard {
         

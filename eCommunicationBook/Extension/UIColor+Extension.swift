@@ -6,7 +6,6 @@
 //  Copyright © 2021 TKY co. All rights reserved.
 //
 
-
 import UIKit
 
 private enum BTColor: String {
@@ -20,7 +19,6 @@ private enum BTColor: String {
     case orangeSoda
     
     case pumpkin
-    
 }
 
 extension UIColor {

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aZN-79-NUn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aZN-79-NUn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,7 +28,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mg-xh-Ogp" userLabel="Qr Code Mask View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -80,7 +82,7 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRD-31-bmO">
                                 <rect key="frame" x="53.5" y="810.5" width="100" height="2.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="0gF-I7-USZ"/>
                                     <constraint firstAttribute="height" constant="2.5" id="fEu-Nc-eRH"/>
@@ -88,13 +90,13 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kY7-MW-3J5">
                                 <rect key="frame" x="0.0" y="811" width="414" height="1"/>
-                                <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="oiQ-xU-iwg"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdX-a4-MDW">
-                                <rect key="frame" x="186" y="601.5" width="42" height="20.5"/>
+                                <rect key="frame" x="186.5" y="601.5" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -102,7 +104,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6j-ni-d2H">
                                 <rect key="frame" x="0.0" y="826" width="414" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALl-sK-qXO">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALl-sK-qXO">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Time In">
@@ -112,7 +114,7 @@
                                             <action selector="timeInButtonPress:" destination="aZN-79-NUn" eventType="touchUpInside" id="odN-lL-ynw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aI-Th-QvM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aI-Th-QvM">
                                         <rect key="frame" x="207" y="0.0" width="207" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Time Out">
@@ -130,7 +132,7 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qO-fw-ZGI" customClass="SwiftyMenu" customModule="SwiftyMenu">
                                 <rect key="frame" x="112" y="56" width="180" height="38"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="A2P-Yo-VwW"/>
                                     <constraint firstAttribute="width" constant="180" id="qk2-dA-DA7"/>
@@ -139,9 +141,9 @@
                                     <outlet property="heightConstraint" destination="A2P-Yo-VwW" id="LvP-45-PUY"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmr-Jj-yMN" customClass="SwiftyMenu" customModule="SwiftyMenu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmr-Jj-yMN" customClass="SwiftyMenu" customModule="eCommunicationBook">
                                 <rect key="frame" x="308" y="56" width="90" height="38"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="6Fn-kX-7FP"/>
                                     <constraint firstAttribute="height" constant="38" id="CrU-a3-Sfx"/>
@@ -151,7 +153,8 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vQZ-z8-Vrm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="1qO-fw-ZGI" firstAttribute="top" secondItem="vQZ-z8-Vrm" secondAttribute="top" constant="12" id="11Z-dd-OgC"/>
                             <constraint firstAttribute="bottom" secondItem="p55-do-Ia2" secondAttribute="bottom" id="1ye-10-CTK"/>
@@ -185,7 +188,6 @@
                             <constraint firstAttribute="bottom" secondItem="a6j-ni-d2H" secondAttribute="bottom" constant="40" id="wNk-Fq-qVy"/>
                             <constraint firstItem="C1Y-xd-xmg" firstAttribute="leading" secondItem="vQZ-z8-Vrm" secondAttribute="leading" constant="20" id="x9g-TG-VFc"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="vQZ-z8-Vrm"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="tP7-ei-26w"/>
@@ -214,5 +216,11 @@
     </scenes>
     <resources>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

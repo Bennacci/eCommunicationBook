@@ -9,79 +9,101 @@
 import UIKit
 
 class ChatRoomTableViewCell: UITableViewCell {
-  
-  @IBOutlet weak var userImage: UIImageView!
-  
-  @IBOutlet weak var userID: UILabel!
-  
-  @IBOutlet weak var message: UILabel!
-  
-  //  let identifier = "ChatRoomTableViewCell"
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
-  
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
     
-    // Configure the view for the selected state
-  }
-  
-  var viewModel: ChatRoomViewModel?
-  
-  func setup(viewModel: ChatRoomViewModel, index: Int) {
-    self.viewModel = viewModel
-    layoutCell(index: index)
-  }
-  
-  func layoutCell(index: Int) {
-    var roomName = "chat"
-    if let members = viewModel?.members {
-      let membersExceptUser = members.filter({$0 != UserManager.shared.user.id})
-      
-      
-      for member in membersExceptUser {
+    @IBOutlet weak var imageViewUserIcon: UIImageView!
+    
+    @IBOutlet weak var labelChatRoomName: UILabel!
+    
+    @IBOutlet weak var labelMessage: UILabel!
+    
+    override func awakeFromNib() {
         
-        UserManager.shared.identifyUser(uid: member) { [weak self] result in
-          
-          switch result {
+        super.awakeFromNib()
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        
+        super.setSelected(selected, animated: animated)
+    }
+    
+    var viewModel: ChatRoomViewModel?
+    
+    func setup(viewModel: ChatRoomViewModel, index: Int) {
+        
+        self.viewModel = viewModel
+        
+        layoutCell(index: index)
+    }
+    
+    func layoutCell(index: Int) {
+        
+        var roomName = "chat"
+        
+        if let members = viewModel?.members {
             
-          case .success(let user):
-            if roomName == "chat" {
-              roomName = String.empty
-            } else {
-              roomName += ", "
+            let membersExceptUser = members.filter({$0 != UserManager.shared.user.id})
+            
+            for member in membersExceptUser {
+                
+                UserManager.shared.identifyUser(uid: member) { [weak self] result in
+                    
+                    switch result {
+                    
+                    case .success(let user):
+                        
+                        if roomName == "chat" {
+                            
+                            roomName = String.empty
+                            
+                        } else {
+                            
+                            roomName += ", "
+                        }
+                        
+                        roomName += user.name
+                        
+                        self?.labelChatRoomName.text = roomName
+                        
+                        if user.image != String.empty {
+                            
+                            self?.imageViewUserIcon.loadImage(user.image)
+                            
+                        } else {
+                            
+                            self?.imageViewUserIcon.image = UIImage(systemName: "person.circle")
+                        }
+                        
+                    case .failure(let error):
+                        
+                        print("fetchData.failure: \(error)")
+                    }
+                }
             }
-            
-            roomName += user.name
-            
-            self?.userID.text = roomName
-
-            if user.image != String.empty {
-              self?.userImage.loadImage(user.image)
-            } else {
-              self?.userImage.image = UIImage(systemName: "person.circle")
-            }
-          case .failure(let error):
-            
-            print("fetchData.failure: \(error)")
-          }
         }
-      }
+        
+        labelChatRoomName.text = roomName
+        
+        imageViewUserIcon.contentMode = .scaleAspectFill
+        
+        imageViewUserIcon.layoutIfNeeded()
+        
+        guard let messageToShow = viewModel?.messages else {
+            
+            self.labelMessage.text = "start a conversation"
+            
+            return
+        }
+        
+        if messageToShow.isEmpty {
+            
+            self.labelMessage.text = "start a conversation"
+            
+        } else {
+            
+            let time = Date(milliseconds: messageToShow[0].createdTime)
+                .convertToString(dateformat: .dateWithTimeWithOutYear)
+            
+            labelMessage.text = messageToShow[0].content + " . " + time
+        }
     }
-    
-    
-    userID.text = roomName
-
-    userImage.contentMode = .scaleAspectFill
-    userImage.layoutIfNeeded()
-    
-    guard let messageToShow = viewModel?.messages else {
-      self.message.text = "start a conversation"
-      return
-    }
-    message.text = messageToShow[0].content + " . " + Date(milliseconds: messageToShow[0].createdTime).convertToString(dateformat: .dateWithTimeWithOutYear)
-  }
-  
 }

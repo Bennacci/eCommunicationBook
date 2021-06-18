@@ -18,8 +18,8 @@ class AttendanceSheetViewModel {
     
     var nameIndexDic = [String.empty: 0]
     
-    var columns = ["编号", "客户", "消费金额", "消费次数", "满意度"]
-    //  var row = ["No.01","✅",  "☑️  ","🅻⃝", "❌", "60%"]
+    var columns = [String.empty]
+
     var contentSet: (() -> Void)?
     
     var rows = [[String]]()
@@ -126,6 +126,7 @@ class AttendanceSheetViewModel {
     }
     
     func fetchCourse() {
+        
         LessonManager.shared.fetchCourses { [weak self] result in
             
             switch result {
@@ -142,11 +143,16 @@ class AttendanceSheetViewModel {
     }
     
     func convertCoursesToViewModels(from courses: [Course]) -> [CourseViewModel] {
+        
         var viewModels = [CourseViewModel]()
+        
         for course in courses {
+        
             let viewModel = CourseViewModel(model: course)
+            
             viewModels.append(viewModel)
         }
+        
         return viewModels
     }
     
@@ -185,10 +191,11 @@ class AttendanceSheetViewModel {
                 let viewModel = StudentExistanceViewModel(model: record)
                 
                 viewModels.append(viewModel)
-                
             }
+            
             viewModelss.append(viewModels)
         }
+        
         return viewModelss
     }
     

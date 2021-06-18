@@ -74,20 +74,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dDh-We-vuK">
-                                        <rect key="frame" x="30" y="74" width="72.5" height="24"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="veganIcon" translatesAutoresizingMaskIntoConstraints="NO" id="T8K-09-HSg">
-                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vegan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZB-A9-OWU">
-                                                <rect key="frame" x="29" y="0.0" width="43.5" height="24"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                <color key="textColor" red="0.52941176470588236" green="0.76470588235294112" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAw-32-Rd0">
                                         <rect key="frame" x="85" y="8" width="140" height="75"/>
                                         <subviews>
@@ -119,7 +105,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="dDh-We-vuK" firstAttribute="top" secondItem="Kpv-0J-JcU" secondAttribute="bottom" constant="8" id="6cs-8t-Icu"/>
                                     <constraint firstItem="Kpv-0J-JcU" firstAttribute="top" secondItem="dnr-9v-G3N" secondAttribute="bottom" constant="7" id="9pA-H9-tuF"/>
                                     <constraint firstItem="Kpv-0J-JcU" firstAttribute="leading" secondItem="3vG-4b-oVR" secondAttribute="leading" constant="30" id="INo-92-JPs"/>
                                     <constraint firstItem="dnr-9v-G3N" firstAttribute="leading" secondItem="3vG-4b-oVR" secondAttribute="leading" constant="30" id="KLh-lV-aTy"/>
@@ -127,7 +112,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Kpv-0J-JcU" secondAttribute="trailing" id="UF2-gI-Fh1"/>
                                     <constraint firstAttribute="trailing" secondItem="dnr-9v-G3N" secondAttribute="trailing" id="USf-zb-zah"/>
                                     <constraint firstItem="EAw-32-Rd0" firstAttribute="top" secondItem="3vG-4b-oVR" secondAttribute="top" constant="8" id="dDS-Cv-fxX"/>
-                                    <constraint firstItem="dDh-We-vuK" firstAttribute="leading" secondItem="3vG-4b-oVR" secondAttribute="leading" constant="30" id="lCI-Ci-do8"/>
                                     <constraint firstItem="dnr-9v-G3N" firstAttribute="top" secondItem="3vG-4b-oVR" secondAttribute="top" constant="18" id="s4i-Dd-MP9"/>
                                 </constraints>
                             </view>
@@ -156,21 +140,18 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <size key="customSize" width="321" height="683"/>
             <connections>
-                <outlet property="cardBackgroundView" destination="rrs-ED-gON" id="Unu-E5-J6c"/>
-                <outlet property="cardViewContainer" destination="Uci-1x-cwN" id="JHM-Uw-tBU"/>
                 <outlet property="continueButton" destination="cqN-TP-TDw" id="1hW-MU-ZPV"/>
-                <outlet property="continueButtonBackGroundView" destination="EAw-32-Rd0" id="JuM-vo-pVp"/>
-                <outlet property="descriptionLabel" destination="Kpv-0J-JcU" id="XNv-pO-ZgZ"/>
-                <outlet property="imageView" destination="a1Y-qw-Q4S" id="fqT-DF-dGY"/>
-                <outlet property="priceTagViewContainer" destination="EAw-32-Rd0" id="sK7-YF-Kou"/>
-                <outlet property="titleLabel" destination="dnr-9v-G3N" id="jEE-k8-IcL"/>
-                <outlet property="veganContainerView" destination="dDh-We-vuK" id="loV-sD-muV"/>
+                <outlet property="imageViewUserType" destination="a1Y-qw-Q4S" id="fqT-DF-dGY"/>
+                <outlet property="labelDescription" destination="Kpv-0J-JcU" id="XNv-pO-ZgZ"/>
+                <outlet property="labelTitel" destination="dnr-9v-G3N" id="jEE-k8-IcL"/>
+                <outlet property="viewContinueButtonBackground" destination="EAw-32-Rd0" id="JuM-vo-pVp"/>
+                <outlet property="viewUserTypeLottieBackground" destination="rrs-ED-gON" id="Unu-E5-J6c"/>
+                <outlet property="viewUserTypeLottieContainer" destination="Uci-1x-cwN" id="JHM-Uw-tBU"/>
             </connections>
             <point key="canvasLocation" x="12.318840579710146" y="-75.334821428571431"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="veganIcon" width="24" height="24"/>
         <namedColor name="AndroidGreen">
             <color red="0.60784313725490191" green="0.77647058823529413" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

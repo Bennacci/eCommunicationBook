@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 class HomePageViewModel {
   var signViewModel = Box([EventViewModel]())
   

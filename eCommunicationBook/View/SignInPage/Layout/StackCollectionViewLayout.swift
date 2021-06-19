@@ -132,7 +132,7 @@ open class StackCollectionViewLayout: UICollectionViewLayout {
                                                     contentCenterX: CGFloat,
                                                     deltaOffset: CGFloat,
                                                     percentageDeltaOffset: CGFloat) -> UICollectionViewLayoutAttributes {
-        let attributes = UICollectionViewLayoutAttributes(forCellWith:indexPath)
+        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         let visibleIndex = indexPath.row - minVisibleIndex
 
         let bounds = UIScreen.main.bounds
@@ -150,21 +150,27 @@ open class StackCollectionViewLayout: UICollectionViewLayout {
         attributes.transform = transform(atCurrentVisibleIndex: visibleIndex,
                                          percentageOffset: percentageDeltaOffset)
         switch visibleIndex {
+        
         case 0:
+            
             attributes.center.x -= deltaOffset
-            break
-        case 1..<maximumVisibleItems:
+            
+        case 1 ..< maximumVisibleItems:
+            
             attributes.center.x -= spacing * percentageDeltaOffset
+            
             attributes.center.y -= spacing * percentageDeltaOffset
             
             if visibleIndex == maximumVisibleItems - 1 {
+            
                 attributes.alpha = percentageDeltaOffset
             }
-            break
+            
         default:
+        
             attributes.alpha = 0
-            break
         }
+        
         return attributes
     }
 }

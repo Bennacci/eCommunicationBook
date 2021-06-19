@@ -103,7 +103,10 @@ class UICollectionGridViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? UICollectionGridViewCell
+        guard let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: "cell",
+                                     for: indexPath) as? UICollectionGridViewCell
+        
         else { print("UICollectionGridViewCell not found"); return UICollectionViewCell() }
          
         if indexPath.section == 0 {
@@ -132,17 +135,13 @@ class UICollectionGridViewController: UICollectionViewController {
                 
                 cell.imageView.image = nil
             }
-        }
-
-        else {
+        } else {
 
             if indexPath.row == selectedColIdx {
 
                 cell.backgroundColor = UIColor(red: 0xCC/255, green: 0xF8/255,
                                                blue: 0xFF/255, alpha: 1)
-            }
-
-            else if indexPath.section % 2 == 0 {
+            } else if indexPath.section % 2 == 0 {
 
                 cell.backgroundColor = UIColor(white: 242/255.0, alpha: 1)
 

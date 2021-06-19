@@ -12,14 +12,14 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 
 enum FirebaseError: Error {
-//    case youKnowNothingError(String)
+    //    case youKnowNothingError(String)
     case noMatchData(String)
 }
 
 class XXXManager {
     
     static let shared = XXXManager()
-        
+    
     lazy var fireStoreDataBase = Firestore.firestore()
     
     func uploadPickerImage(pickerImage: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
@@ -39,7 +39,10 @@ class XXXManager {
                 completion(.failure(error))
             }
             
-            guard let _ = metadata else {return}
+            if metadata == nil {
+
+                return
+            }
             
             imageRef.downloadURL { url, error in
                 
@@ -57,10 +60,12 @@ class XXXManager {
     
     func addEvent(event: inout Event, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = fireStoreDataBase.collection("Events")
+        let document = fireStoreDataBase
+            .collection("Events")
             .document()
+        
         event.id = document.documentID
-        //    course.createdTime = Double(Date().millisecondsSince1970)
+        
         document.setData(event.toDict) { error in
             
             if let error = error {
@@ -75,7 +80,10 @@ class XXXManager {
     
     func fetchEvents(completion: @escaping (Result<[Event], Error>) -> Void) {
         
-        fireStoreDataBase.collection("Events").getDocuments { (querySnapshot, error) in
+        let collection = fireStoreDataBase
+            .collection("Events")
+        
+        collection.getDocuments { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -90,7 +98,7 @@ class XXXManager {
                     do {
                         
                         if let event = try document.data(as: Event.self, decoder: Firestore.Decoder()) {
-                        
+                            
                             events.append(event)
                         }
                         
@@ -107,15 +115,18 @@ class XXXManager {
     
     func addSign(sign: inout Event, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = fireStoreDataBase.collection("Signs")
+        let document = fireStoreDataBase
+            .collection("Signs")
             .document()
+        
         sign.id = document.documentID
-        //    course.createdTime = Double(Date().millisecondsSince1970)
+        
         document.setData(sign.toDict) { error in
             
             if let error = error {
                 
                 completion(.failure(error))
+                
             } else {
                 
                 completion(.success("Success"))
@@ -140,7 +151,7 @@ class XXXManager {
                     do {
                         
                         if let sign = try document.data(as: Event.self, decoder: Firestore.Decoder()) {
-                        
+                            
                             signs.append(sign)
                         }
                         
@@ -157,11 +168,14 @@ class XXXManager {
     
     func addStudent(student: inout Student, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = fireStoreDataBase.collection("Students")
+        let document = fireStoreDataBase
+            .collection("Students")
             .document()
+        
         student.id = document.documentID
+        
         student.parents.append(UserManager.shared.user.id)
-        //    course.createdTime = Double(Date().millisecondsSince1970)
+        
         document.setData(student.toDict) { error in
             
             if let error = error {
@@ -190,9 +204,9 @@ class XXXManager {
                 for document in querySnapshot!.documents {
                     
                     do {
-                       
-                        if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                         
+                        if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                            
                             users.append(user)
                         }
                         
@@ -209,93 +223,28 @@ class XXXManager {
     
     func fetchTeachers(completion: @escaping (Result<[User], Error>) -> Void) {
         
-        fireStoreDataBase.collection("User")
+        let collection = fireStoreDataBase
+            .collection("User")
             .whereField("userType", isEqualTo: "teacher")
             .order(by: "name", descending: true)
-            .addSnapshotListener { (documentSnapshot, error) in
-                
-                if let error = error {
-                    
-                    completion(.failure(error))
-                    
-                } else {
-                    
-                    var teachers = [User]()
-                    
-                    for document in documentSnapshot!.documents {
-                        
-                        do {
-                         
-                            if let teacher = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                            
-                                teachers.append(teacher)
-                            }
-                            
-                        } catch {
-                            
-                            completion(.failure(error))
-                        }
-                    }
-
-                    completion(.success(teachers))
-                }
-            }
-    }
-    
-    func fetchStudents(completion: @escaping (Result<[Student], Error>) -> Void) {
         
-        fireStoreDataBase.collection("Students")
-            .order(by: "grade", descending: true)
-            .getDocuments { (querySnapshot, error) in
+        collection.addSnapshotListener { (documentSnapshot, error) in
+            
+            if let error = error {
                 
-                if let error = error {
-                    
-                    completion(.failure(error))
+                completion(.failure(error))
                 
-                } else {
-                    
-                    var students = [Student]()
-                    
-                    for document in querySnapshot!.documents {
-                        
-                        do {
-                            
-                            if let student = try document.data(as: Student.self, decoder: Firestore.Decoder()) {
+            } else {
                 
-                                students.append(student)
-                            }
-                            
-                        } catch {
-                            
-                            completion(.failure(error))
-                        }
-                    }
-                    
-                    completion(.success(students))
-                }
-            }
-    }
-    
-    func identifyStudent(id: String, completion: @escaping (Result<Student, Error>) -> Void) {
-        
-        fireStoreDataBase.collection("Students").document(id)
-            .getDocument { (querySnapshot, error) in
+                var teachers = [User]()
                 
-                if let error = error {
-                    
-                    completion(.failure(error))
-                    
-                } else if querySnapshot?.data() == nil {
-                    
-                    completion(.failure(FirebaseError.noMatchData("User not found")))
-                
-                } else {
+                for document in documentSnapshot!.documents {
                     
                     do {
-                
-                        if let student = try querySnapshot?.data(as: Student.self, decoder: Firestore.Decoder()) {
                         
-                            completion(.success(student))
+                        if let teacher = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                            
+                            teachers.append(teacher)
                         }
                         
                     } catch {
@@ -303,6 +252,78 @@ class XXXManager {
                         completion(.failure(error))
                     }
                 }
+                
+                completion(.success(teachers))
             }
+        }
+    }
+    
+    func fetchStudents(completion: @escaping (Result<[Student], Error>) -> Void) {
+        
+        let collection = fireStoreDataBase
+            .collection("Students")
+            .order(by: "grade", descending: true)
+        
+        collection.getDocuments { (querySnapshot, error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+                
+            } else {
+                
+                var students = [Student]()
+                
+                for document in querySnapshot!.documents {
+                    
+                    do {
+                        
+                        if let student = try document.data(as: Student.self, decoder: Firestore.Decoder()) {
+                            
+                            students.append(student)
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                }
+                
+                completion(.success(students))
+            }
+        }
+    }
+    
+    func identifyStudent(id: String, completion: @escaping (Result<Student, Error>) -> Void) {
+        
+        let document = fireStoreDataBase
+            .collection("Students")
+            .document(id)
+        
+        document.getDocument { (querySnapshot, error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+                
+            } else if querySnapshot?.data() == nil {
+                
+                completion(.failure(FirebaseError.noMatchData("User not found")))
+                
+            } else {
+                
+                do {
+                    
+                    if let student = try querySnapshot?.data(as: Student.self, decoder: Firestore.Decoder()) {
+                        
+                        completion(.success(student))
+                    }
+                    
+                } catch {
+                    
+                    completion(.failure(error))
+                }
+            }
+        }
     }
 }

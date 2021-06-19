@@ -10,15 +10,15 @@ import UIKit
 
 class WideUserTableViewCell: UITableViewCell {
 
-  
   @IBOutlet weak var circleIcon: UIImageView!
   @IBOutlet weak var checkIcon: UIImageView!
   @IBOutlet weak var userImageW: UIImageView!
   @IBOutlet weak var userName: UILabel!
   @IBOutlet weak var height: NSLayoutConstraint!
+    
   override func awakeFromNib() {
-        super.awakeFromNib()
-      
+    
+    super.awakeFromNib()      
         // Initialization code
     }
 

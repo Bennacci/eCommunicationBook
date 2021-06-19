@@ -37,8 +37,7 @@ class LessonPerformancesReviewViewController: UIViewControllerWithImagePicker {
     
     setCollectionViewStack()
   }
-  
-  
+
   @IBAction func backButtonPressed(_ sender: Any) {
     popViewController()
   }

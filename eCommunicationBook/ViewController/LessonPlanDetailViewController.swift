@@ -8,7 +8,8 @@
 
 import UIKit
 
-protocol SavedLessonDelegate {
+protocol SavedLessonDelegate: AnyObject {
+    
     func onSaved()
 }
 
@@ -24,7 +25,7 @@ class LessonPlanDetailViewController: UIViewController {
     
     var viewModel = LessonPlanDetailViewModel()
     
-    var delegate: SavedLessonDelegate?
+    weak var delegate: SavedLessonDelegate?
     
 //    let publishBV: SaveButtonView = {
 //
@@ -96,12 +97,17 @@ class LessonPlanDetailViewController: UIViewController {
                                            preferredStyle: .alert)
         
         let discardAction = UIAlertAction(title: "Discard",
-                                          style: .default) { _ in self.popViewController()}
+                                          style: .default) { _ in
+            self.popViewController()
+        }
         
         controller.addAction(discardAction)
         
         let saveAction = UIAlertAction(title: "Save Draft",
-                                       style: .default) {_ in self.viewModel.onSave(); self.popViewController()}
+                                       style: .default) {_ in
+            self.viewModel.onSave();
+            self.popViewController()
+        }
         
         controller.addAction(saveAction)
         
@@ -124,7 +130,6 @@ class LessonPlanDetailViewController: UIViewController {
         nav.popViewController(animated: true)
     }
     
-
     @objc func saveLessonPlanDetail(_ sender: UIButton) {
 
         viewModel.onSave()
@@ -235,15 +240,19 @@ extension LessonPlanDetailViewController: UITableViewDataSource {
         
         if count == 1 || indexPath.row == count - 1 {
         
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AddRowTableViewCell.identifier,
-                                                           for: indexPath) as? AddRowTableViewCell
+            guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: AddRowTableViewCell.identifier,
+                                         for: indexPath) as? AddRowTableViewCell
             else { print("AddRowTableViewCell not found"); return UITableViewCell()}
             
             return cell
             
         } else {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: LessonPlanDetailTableViewCell.identifier, for: indexPath) as? LessonPlanDetailTableViewCell
+            guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: LessonPlanDetailTableViewCell.identifier,
+                                         for: indexPath) as? LessonPlanDetailTableViewCell
+            
             else { print("LessonPlanDetailTableViewCell not found"); return UITableViewCell()}
             //      cell.isUserInteractionEnabled = false
             

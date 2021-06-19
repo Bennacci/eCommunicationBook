@@ -24,7 +24,8 @@ class LPSliderTableViewCell: UITableViewCell {
         
         slider.isContinuous = true
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                          action: #selector(sliderTapped(gestureRecognizer:)))
         
         self.slider.addGestureRecognizer(tapGestureRecognizer)
     }

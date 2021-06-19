@@ -12,13 +12,9 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    //  private let itemsPerRow: CGFloat = 3
-    //
-    //  private let itemsPerColumn: CGFloat = 2
-    
     var bannerCell = BannerTableViewCell()
     
-    var hotCell = ServicesTableViewCell()
+//    var hotCell = ServicesTableViewCell()
     
     var viewModel = HomePageViewModel()
     
@@ -56,69 +52,100 @@ class HomePageViewController: UIViewController {
         viewModel.checkUser()
         
         viewModel.onGotUserData = { [weak self] in
+            
             DispatchQueue.main.async {
+                
                 self?.tableView.reloadData()
             }
         }
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
     }
 }
 
 extension HomePageViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if UserManager.shared.user.userType == "teacher" {
+        
+        if UserManager.shared.user.userType == UserType.teacher.rawValue {
+            
             return 4
+            
         } else {
+            
             return 3
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if UserManager.shared.user.userType == "teacher" {
+        
+        if UserManager.shared.user.userType == UserType.teacher.rawValue {
+            
             switch section {
+            
             case 0:
+                
                 return String.empty
+                
             case 1:
+                
                 return "Popular features"
+                
             case 2:
+                
                 return "Recommanded for you"
+                
             default:
+                
                 return "News"
             }
+            
         } else {
+            
             switch section {
+            
             case 0:
+                
                 return String.empty
+                
             case 1:
+                
                 return "Popular Features"
+                
             default:
+                
                 return "News"
             }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         var sectionThreeRowCount  = 0
+        
         if  let servicesData =  viewModel.servicesData {
+            
             sectionThreeRowCount = servicesData.items[1].count
         }
+        
         let signCount = viewModel.signViewModel.value.count
-        if UserManager.shared.user.userType == "teacher" {
+        
+        if UserManager.shared.user.userType == UserType.teacher.rawValue {
+            
             return [1, 1, sectionThreeRowCount, signCount][section]
+            
         } else {
+            
             return [1, 1, signCount][section]
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath == [0, 0] {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier, for: indexPath) as? BannerTableViewCell
-            else { print("BannerTableViewCell not found"); return UITableViewCell()}
+            guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier,
+                                         for: indexPath) as? BannerTableViewCell
+            
+            else { print("BannerTableViewCell not found"); return UITableViewCell() }
             
             bannerCell = cell
             
@@ -130,53 +157,54 @@ extension HomePageViewController: UITableViewDataSource {
             
         } else if indexPath.section == 1 {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ServicesTableViewCell.identifier, for: indexPath) as? ServicesTableViewCell
-            else { print("ServicesTableViewCell not found"); return UITableViewCell()}
+            guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: ServicesTableViewCell.identifier,
+                                         for: indexPath) as? ServicesTableViewCell
+            
+            else { print("ServicesTableViewCell not found"); return UITableViewCell() }
             
             cell.collectionView.delegate = self
             
             cell.collectionView.dataSource = self
             
             cell.collectionView.reloadData()
-            //      if indexPath == [1, 0] {
             
-            hotCell = cell
+//            hotCell = cell
+            
             if UserManager.shared.user.userType == "teacher" {
                 
                 cell.height.constant = hotCellHeight
-            
+                
             } else {
-            
+                
                 cell.height.constant = hotCellHeight / 2
             }
-            //      }
-            //      else {
-            //
-            //        cell.height.constant = recommendedCellHeight
-            //
-            //      }
             
             return cell
+            
         } else if indexPath.section == 2 && UserManager.shared.user.userType == "teacher" {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier, for: indexPath) as? ServiceTableViewCell
+            guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier,
+                                         for: indexPath) as? ServiceTableViewCell
             
-            else { print("ServicesTableViewCell not found"); return UITableViewCell()}
+            else { print("ServicesTableViewCell not found"); return UITableViewCell() }
             
             if  let servicesData =  viewModel.servicesData {
-            
+                
                 cell.setUp(viewModel: servicesData, indexPath: indexPath)
-            
+                
             }
-            //      cell.height.constant = recommendedCellHeight
+            
             return cell
             
         } else {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
-                                                           for: indexPath) as? NewsTableViewCell
+            guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
+                                         for: indexPath) as? NewsTableViewCell
             
-            else { print("NewsTableViewCell not found"); return UITableViewCell()}
+            else { print("NewsTableViewCell not found"); return UITableViewCell() }
             
             cell.setUp(viewModel: viewModel.signViewModel.value[indexPath.row])
             
@@ -188,18 +216,26 @@ extension HomePageViewController: UITableViewDataSource {
 extension HomePageViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
         
         headerView.backgroundColor = UIColor.clear
+        
         let myLabel = UILabel()
+        
         myLabel.frame = CGRect(x: 16, y: headerView.frame.height / 2, width: tableView.bounds.size.width, height: 30)
+        
         myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        
         myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        
         headerView.addSubview(myLabel)
+        
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
         if section == 0 {
             
             return CGFloat.leastNormalMagnitude
@@ -216,16 +252,24 @@ extension HomePageViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.section == 2 && UserManager.shared.user.userType == "teacher" {
+            
             if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
+                
                 nextVC.modalPresentationStyle = .fullScreen
+                
                 guard let viewController = nextVC as? NewAThingViewController else {return}
-                let services = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
+                
+                let services = ServiceManager
+                    .init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
+                
                 let servicesItem = services.items[indexPath.section - 1][indexPath.row]
+                
                 viewController.viewModel.servicesItem = servicesItem
+                
                 viewController.navigationItem.title = servicesItem.formTitle
-                //      show(nextVC, sender: nil)
-                //      present(nextVC, animated: false, completion: nil)
+                
                 self.navigationController?.show(nextVC, sender: nil)
             }
         }
@@ -238,127 +282,124 @@ extension HomePageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == hotCell.collectionView {
             
             if  let servicesData =  viewModel.servicesData {
-            
+                
                 return servicesData.items[0].count
-            
-            } else {
-            
-                return 0
-            }
-            
-        } else {
-            
-            if  let servicesData =  viewModel.servicesData {
-                
-                return servicesData.items[1].count + servicesData.items[2].count
                 
             } else {
                 
                 return 0
             }
-        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ServiceCollectionViewCell.identifier,
-                                                            for: indexPath) as? ServiceCollectionViewCell
-        else { print("ServiceCollectionViewCell not found"); return UICollectionViewCell()}
-        if collectionView == hotCell.collectionView {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: ServiceCollectionViewCell.identifier,
+                                     for: indexPath) as? ServiceCollectionViewCell
+        
+        else { print("ServiceCollectionViewCell not found"); return UICollectionViewCell() }
+        
+//        if collectionView == hotCell.collectionView {
             
-            cell.height.constant = hotCell.bounds.size.height
+            cell.height.constant = cell.bounds.size.height
+            
             if  let servicesData =  viewModel.servicesData {
+                
                 cell.setUp(viewModel: servicesData, indexPath: indexPath, hot: true)
             }
-        } else {
-            if  let servicesData =  viewModel.servicesData {
-                cell.setUp(viewModel: servicesData, indexPath: indexPath, hot: false)
-            }
-        }
+            
+//        } else {
+//
+//            if  let servicesData =  viewModel.servicesData {
+//
+//                cell.setUp(viewModel: servicesData, indexPath: indexPath, hot: false)
+//            }
+//        }
+        
         return cell
     }
-    
 }
 
 extension HomePageViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if collectionView == hotCell.collectionView {
+//        if collectionView == hotCell.collectionView {
             
             let title = viewModel.servicesData?.items[0][indexPath.item].title
             
             switch title {
             
-            case "Communication Book":
+            case TeacherSeviceItem.writeStudentLessonRecord.title:
                 
-                let lessonPlanViewController = UIStoryboard.lessonPlan.instantiateInitialViewController()
+                navigationControllerShow(UIStoryboard.lessonPlan)
                 
-                if let nextVC = lessonPlanViewController {
-                    
-                    nextVC.modalPresentationStyle = .fullScreen
-                    
-                    self.navigationController?.show(nextVC, sender: nil)
-                    
-                } else { return }
+            case TeacherSeviceItem.writeStudentTimeInAndOut.title:
                 
-            case "Student Time In / Out":
+                navigationControllerShow(UIStoryboard.scanStudentQR)
+
+            case ParentSeviceItem.checkStudentTimeInAndOut.title:
                 
-                let scanStudentQRCodeViewController = UIStoryboard.scanStudentQR.instantiateInitialViewController()
+                navigationControllerShow(UIStoryboard.studentTimeInAndOut)
+
+            case TeacherSeviceItem.attendanceSheet.title:
                 
-                if let nextVC = scanStudentQRCodeViewController as? ScanStudentQRCodeViewController {
-                    
-                    nextVC.modalPresentationStyle = .fullScreen
-                    
-                    nextVC.hideDropDown = false
-                    
-                    self.navigationController?.show(nextVC, sender: nil)
-                    
-                } else { return }
-            case "Time In / Out":
-                if let nextVC = UIStoryboard.studentTimeInAndOut.instantiateInitialViewController() {
-                    
-                    nextVC.modalPresentationStyle = .fullScreen
-                    
-                    self.navigationController?.show(nextVC, sender: nil)
-                    
-                } else { return }
+                navigationControllerShow(UIStoryboard.attendanceSheet)
+
+            case TeacherSeviceItem.writeLessonPlan.title:
                 
-            case "Attendance Sheet":
-                if let nextVC = UIStoryboard.attendanceSheet.instantiateInitialViewController() {
-                    
-                    nextVC.modalPresentationStyle = .fullScreen
-                    
-                    self.navigationController?.show(nextVC, sender: nil)
-                    
-                } else { return }
-            case "Lesson Plan":
                 BTProgressHUD.showFailure(text: "Coming soon")
+                
             default:
+                
                 return
             }
-        }
+//        }
+    }
+    
+    func navigationControllerShow(_ storyBoard: UIStoryboard) {
+        
+        let storyBoardViewController = storyBoard.instantiateInitialViewController()
+
+        if var nextVC = storyBoardViewController {
+            
+            if let scanStudentVC = nextVC as? ScanStudentQRCodeViewController {
+            
+                scanStudentVC.hideDropDown = false
+                
+                nextVC = scanStudentVC
+            }
+            
+            nextVC.modalPresentationStyle = .fullScreen
+            
+            self.navigationController?.show(nextVC, sender: nil)
+            
+        } else { return }
     }
 }
-// MARK: - 設定 CollectionView Cell 與 Cell 之間的間距、距確 Super View 的距離等等
+
 extension HomePageViewController: UICollectionViewDelegateFlowLayout {
-    
-    ///  Collection View distance to Super View
-    
+        
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
+        
         return collectionViewSectionInsets
     }
     
-    /// CollectionViewCell  height / width
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let size: CGSize
-        if collectionView == hotCell.collectionView {
-            if UserManager.shared.user.userType == "teacher" {
+        
+//        if collectionView == hotCell.collectionView {
+
+            if UserManager.shared.user.userType == UserType.teacher.rawValue {
+
                 size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
                                                         sectionInsets: collectionViewSectionInsets,
                                                         itemsPerRow: 2,
@@ -369,13 +410,15 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
                                                         itemsPerRow: 2,
                                                         itemsPerColumn: 1)
             }
-        } else {
-            size = collectionView.calculateCellsize(viewHeight: recommendedCellHeight,
-                                                    sectionInsets: collectionViewSectionInsets,
-                                                    itemsPerRow: 1,
-                                                    itemsPerColumn: 5)
-        }
-        
+            
+//        } else {
+//
+//            size = collectionView.calculateCellsize(viewHeight: recommendedCellHeight,
+//                                                    sectionInsets: collectionViewSectionInsets,
+//                                                    itemsPerRow: 1,
+//                                                    itemsPerColumn: 5)
+//        }
+//
         return size
     }
     
@@ -383,21 +426,21 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        if collectionView == hotCell.collectionView {
+//        if collectionView == hotCell.collectionView {
             
             return 15
-        
-        } else {
             
-            return 12
-        }
+//        } else {
+//            
+//            return 12
+//        }
     }
 }
 
 extension HomePageViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-
+        
         bannerCell.bannerView.timer.invalidate()
     }
     
@@ -406,12 +449,12 @@ extension HomePageViewController: UIScrollViewDelegate {
         let imageCount = bannerCell.bannerView.imageArray.count
         
         if imageCount > 0 {
-
+            
             if bannerCell.bannerView.scrollView.contentOffset.x > bannerCell.bannerView.width {
                 
                 bannerCell.bannerView.currentIndex = (bannerCell.bannerView.currentIndex + 1) % imageCount
             }
-
+            
             if bannerCell.bannerView.scrollView.contentOffset.x < bannerCell.bannerView.width {
                 
                 bannerCell.bannerView.currentIndex = (bannerCell.bannerView.currentIndex - 1 + imageCount) % imageCount

@@ -81,7 +81,7 @@
 		7472B29F26594BBB00511468 /* TimeSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7472B29E26594BBB00511468 /* TimeSelection.storyboard */; };
 		7483291D2671090600C7CC43 /* construction.json in Resources */ = {isa = PBXBuildFile; fileRef = 7483291C2671090500C7CC43 /* construction.json */; };
 		7483291F2671D75200C7CC43 /* Error404.json in Resources */ = {isa = PBXBuildFile; fileRef = 7483291E2671D75200C7CC43 /* Error404.json */; };
-		74857F972654B95800AEF14D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F962654B95800AEF14D /* NavigationController.swift */; };
+		74857F972654B95800AEF14D /* NoUnderlineNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F962654B95800AEF14D /* NoUnderlineNavigationController.swift */; };
 		74857F9A2654BBF200AEF14D /* NewAThing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74857F982654BBF200AEF14D /* NewAThing.storyboard */; };
 		74857F9C2654C7C800AEF14D /* NewAThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */; };
 		74857F9E2654E81A00AEF14D /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74857F9D2654E81A00AEF14D /* SearchUserViewController.swift */; };
@@ -269,7 +269,7 @@
 		7472B29E26594BBB00511468 /* TimeSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeSelection.storyboard; sourceTree = "<group>"; };
 		7483291C2671090500C7CC43 /* construction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = construction.json; sourceTree = "<group>"; };
 		7483291E2671D75200C7CC43 /* Error404.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error404.json; sourceTree = "<group>"; };
-		74857F962654B95800AEF14D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		74857F962654B95800AEF14D /* NoUnderlineNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoUnderlineNavigationController.swift; sourceTree = "<group>"; };
 		74857F992654BBF200AEF14D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NewAThing.storyboard; sourceTree = "<group>"; };
 		74857F9B2654C7C800AEF14D /* NewAThingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAThingViewController.swift; sourceTree = "<group>"; };
 		74857F9D2654E81A00AEF14D /* SearchUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchUserViewController.swift; path = eCommunicationBook/ViewController/SearchUserViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -503,8 +503,8 @@
 			isa = PBXGroup;
 			children = (
 				74F074262664E74000CC0009 /* UIViewControllerWithImagePicker.swift */,
+				74857F962654B95800AEF14D /* NoUnderlineNavigationController.swift */,
 				742877A8266661CB00CF95E3 /* SignInPageViewController.swift */,
-				74857F962654B95800AEF14D /* NavigationController.swift */,
 				746BDE73265250EF001B1E71 /* HomePageViewController.swift */,
 				74857F9D2654E81A00AEF14D /* SearchUserViewController.swift */,
 				745147E5264D3F5E00172419 /* ChatRoomPageViewController.swift */,
@@ -687,9 +687,9 @@
 		74E9472B264BE09500AFB046 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				741D7C4B2653F9D400A7FD0A /* Account */,
 				74A7D1142655141D00B445EB /* User.swift */,
 				74A7D11E2655383400B445EB /* Student.swift */,
-				741D7C4B2653F9D400A7FD0A /* Account */,
 				745147DF264D386700172419 /* ChatRoom.swift */,
 				745147E1264D389D00172419 /* Message.swift */,
 				74A7D116265518FA00B445EB /* DayOfWeek.swift */,
@@ -1089,7 +1089,7 @@
 				74A5A76D2654EC690039BC22 /* CircleUserCollectionViewCell.swift in Sources */,
 				74715CC9265B6C5F00570A23 /* EventViewModel.swift in Sources */,
 				746080802667EFE1005FC35C /* StudentTimeInAndOutViewController.swift in Sources */,
-				74857F972654B95800AEF14D /* NavigationController.swift in Sources */,
+				74857F972654B95800AEF14D /* NoUnderlineNavigationController.swift in Sources */,
 				74CADD9826564950004DA6D0 /* PickerViewTableViewCell.swift in Sources */,
 				7402580A265267FA00BA6BDA /* ServicesTableViewCell.swift in Sources */,
 				746BDE7026523D0B001B1E71 /* Course.swift in Sources */,

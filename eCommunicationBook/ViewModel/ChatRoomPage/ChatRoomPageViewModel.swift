@@ -47,7 +47,7 @@ class ChatRoomPageViewModel {
             
             queue.async(group: group) {
                 
-                ChatroomManager.shared.fetchMessages(chatRoomId: chatRooms[index].id) { result in
+                ChatroomManager.shared.fetchMessages(chatRoomID: chatRooms[index].id) { result in
                     
                     switch result {
                     

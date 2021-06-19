@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 class LessonPlanDetailViewModel {
     
     var course: Course = Course(

@@ -6,7 +6,6 @@
 //  Copyright © 2021 TKY co. All rights reserved.
 //
 
-
 import UIKit
 
 private enum STFontName: String {
@@ -21,6 +20,7 @@ extension UIFont {
         var descriptor = UIFontDescriptor(name: STFontName.regular.rawValue, size: size)
         
         descriptor = descriptor.addingAttributes(
+            
             [UIFontDescriptor.AttributeName.traits: [UIFontDescriptor.TraitKey.weight: UIFont.Weight.medium]]
         )
         

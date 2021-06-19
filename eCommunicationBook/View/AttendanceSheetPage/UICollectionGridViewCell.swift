@@ -10,11 +10,11 @@ import UIKit
 
 class UICollectionGridViewCell: UICollectionViewCell {
     
-    var label:UILabel!
+    var label: UILabel!
     
-    var imageView:UIImageView!
+    var imageView: UIImageView!
     
-    var paddingLeft:CGFloat = 5
+    var paddingLeft: CGFloat = 5
     
     override init(frame: CGRect) {
         
@@ -52,8 +52,8 @@ class UICollectionGridViewCell: UICollectionViewCell {
         
         let imageHeight: CGFloat = 14
         
-        imageView.frame = CGRect(x:frame.width - imageWidth,
-                                 y:frame.height/2 - imageHeight/2,
-                                 width:imageWidth, height:imageHeight)
+        imageView.frame = CGRect(x: frame.width - imageWidth,
+                                 y: frame.height/2 - imageHeight/2,
+                                 width: imageWidth, height: imageHeight)
     }
 }

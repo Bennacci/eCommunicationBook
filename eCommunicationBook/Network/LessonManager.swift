@@ -139,44 +139,9 @@ class LessonManager {
                     
                     do {
                         
-                        if var course = try document.data(as: Course.self, decoder: Firestore.Decoder()) {
+                        if let course = try document.data(as: Course.self, decoder: Firestore.Decoder()) {
                             
-                            self.fireStoreDataBase.collection("Courses")
-                                .document("\(course.id)")
-                                .collection("Lessons")
-                                .order(by: "number", descending: false)
-                                .getDocuments { (querySnapshot, error) in
-                                    
-                                    if let error = error {
-                                        
-                                        completion(.failure(error))
-                                        
-                                    } else {
-                                        
-                                        var lessons = [Lesson]()
-                                        
-                                        for document in querySnapshot!.documents {
-                                            
-                                            do {
-                                                
-                                                if let lesson = try document.data(as: Lesson.self, decoder: Firestore.Decoder()) {
-                                                    
-                                                    lessons.append(lesson)
-                                                }
-                                                
-                                            } catch {
-                                                
-                                                completion(.failure(error))
-                                            }
-                                        }
-                                        
-                                        course.lessons = lessons
-                                        
-                                        courses.append(course)
-                                        
-                                        completion(.success(courses))
-                                    }
-                                }
+                            courses.append(course)
                         }
                         
                     } catch {
@@ -184,6 +149,45 @@ class LessonManager {
                         completion(.failure(error))
                     }
                 }
+                
+                completion(.success(courses))
+            }
+        }
+    }
+    
+    func fetchLessons(courseID: String, completion: @escaping (Result<[Lesson], Error>) -> Void) {
+        
+        let collection = fireStoreDataBase.collection("Courses")
+            .document(courseID)
+            .collection("Lessons")
+            .order(by: "number", descending: false)
+        
+        collection.getDocuments { (querySnapshot, error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+                
+            } else {
+                
+                var lessons = [Lesson]()
+                
+                for document in querySnapshot!.documents {
+                    
+                    do {
+                        
+                        if let lesson = try document.data(as: Lesson.self, decoder: Firestore.Decoder()) {
+                            
+                            lessons.append(lesson)
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                }
+                
+                completion(.success(lessons))
             }
         }
     }
@@ -192,9 +196,11 @@ class LessonManager {
         
         guard let student = UserManager.shared.user.student else { return }
         
-        fireStoreDataBase.collection("StudentLessonRecords")
+        let collection = fireStoreDataBase
+            .collection("StudentLessonRecords")
             .whereField("studentID", isEqualTo: student[0].id)
-            .getDocuments { (querySnapshot, error) in
+        
+        collection.getDocuments { (querySnapshot, error) in
                 
                 if let error = error {
                     
@@ -208,8 +214,8 @@ class LessonManager {
                         
                         do {
                             
-                            if let studentLessonRecord = try document.data(as: StudentLessonRecord.self, decoder:
-                                                                            Firestore.Decoder()) {
+                            if let studentLessonRecord = try document
+                                .data(as: StudentLessonRecord.self, decoder: Firestore.Decoder()) {
                                 
                                 studentLessonRecords.append(studentLessonRecord)
                             }
@@ -225,9 +231,12 @@ class LessonManager {
             }
     }
     
-    func fetchStudentLessonRecord(courseName: String, courseLesson: Int, completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
+    func fetchStudentLessonRecord(courseName: String,
+                                  courseLesson: Int,
+                                  completion: @escaping (Result<[StudentLessonRecord], Error>) -> Void) {
         
-        var collection = fireStoreDataBase.collection("StudentLessonRecords")
+        var collection = fireStoreDataBase
+            .collection("StudentLessonRecords")
             .whereField("courseName", isEqualTo: courseName)
             .whereField("courseLesson", isEqualTo: courseLesson)
         
@@ -235,7 +244,8 @@ class LessonManager {
             
             guard let student = UserManager.shared.user.student else {return}
             
-            collection = fireStoreDataBase.collection("StudentLessonRecords")
+            collection = fireStoreDataBase
+                .collection("StudentLessonRecords")
                 .whereField("courseName", isEqualTo: courseName)
                 .whereField("courseLesson", isEqualTo: courseLesson)
                 .whereField("studentID", isEqualTo: student[0].id)
@@ -255,7 +265,8 @@ class LessonManager {
                     
                     do {
                         
-                        if let studentLessonRecord = try document.data(as: StudentLessonRecord.self, decoder: Firestore.Decoder()) {
+                        if let studentLessonRecord = try document
+                            .data(as: StudentLessonRecord.self, decoder: Firestore.Decoder()) {
                             
                             studentLessonRecords.append(studentLessonRecord)
                         }

@@ -11,7 +11,8 @@ import UIKit
 
 class SaveButtonView: UIView {
   
-  lazy var saveButton : UIButton = {
+  lazy var saveButton: UIButton = {
+    
     let btn = UIButton()
     btn.isUserInteractionEnabled = true
     btn.frame = CGRect(x: 0,
@@ -35,7 +36,7 @@ class SaveButtonView: UIView {
     super.awakeFromNib()
   }
 
-  func initSubView(){
+  func initSubView() {
     self.addSubview(saveButton)
   }
 }

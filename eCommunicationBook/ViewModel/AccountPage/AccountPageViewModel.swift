@@ -12,7 +12,9 @@ class AccountPageViewModel {
   var onImageUploaded: (() -> Void)?
   
   func servicesData() -> ServiceGroup {
+    
     let services = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services
+    
     return services
   }
   

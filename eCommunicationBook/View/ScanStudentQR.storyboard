@@ -33,6 +33,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mg-xh-Ogp" userLabel="Qr Code Mask View">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="896" id="CFK-Lu-av0"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p55-do-Ia2" userLabel="TimeInView">
                                 <rect key="frame" x="0.0" y="696" width="414" height="200"/>
@@ -141,7 +144,7 @@
                                     <outlet property="heightConstraint" destination="A2P-Yo-VwW" id="LvP-45-PUY"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmr-Jj-yMN" customClass="SwiftyMenu" customModule="eCommunicationBook">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmr-Jj-yMN" customClass="SwiftyMenu" customModule="SwiftyMenu">
                                 <rect key="frame" x="308" y="56" width="90" height="38"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>

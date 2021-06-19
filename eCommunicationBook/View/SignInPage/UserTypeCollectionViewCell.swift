@@ -37,7 +37,6 @@ class UserTypeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var labelDescription: UILabel!
         
-    
     override func awakeFromNib() {
         
         super.awakeFromNib()

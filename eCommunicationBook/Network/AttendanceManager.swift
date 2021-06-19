@@ -143,7 +143,9 @@ class AttendanceManager {
                                 
                                 do {
                                     
-                                    if let studentAttendance = try document.data(as: StudentExistance.self, decoder: Firestore.Decoder()) {
+                                    if let studentAttendance = try document
+                                        .data(as: StudentExistance.self,
+                                              decoder: Firestore.Decoder()) {
                                         
                                         studentAttendances.append(studentAttendance)
                                     }

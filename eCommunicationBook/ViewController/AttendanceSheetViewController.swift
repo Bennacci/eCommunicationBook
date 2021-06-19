@@ -94,7 +94,7 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
         
         dropDownCourse.items = self.viewModel.courseViewModel.value.map({$0.name})
         
-        dropDownCourse.placeHolderText = "Please Select Course"
+        dropDownCourse.placeHolderText = "Select Course"
         
         dropDownCourse.separatorCharacters = " & "
         

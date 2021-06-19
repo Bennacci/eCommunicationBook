@@ -20,24 +20,8 @@ struct ServiceGroup {
     
     let title: [String]
     
-    //    let action: ServiceSegue?
-    
     let items: [[AccountItem]]
 }
-
-// enum ServiceSegue: String {
-//
-//    case segueAllOrder = "AllOrder"
-//
-//    var title: String {
-//
-//        switch self {
-//
-//        case .segueAllOrder: return localizedString("查看全部")
-//
-//        }
-//    }
-// }
 
 protocol AccountItem {
     
@@ -48,7 +32,6 @@ protocol AccountItem {
     var formTitle: String? { get }
     
     var form: [[String]]? { get }
-    
 }
 
 enum ParentSeviceItem: AccountItem {
@@ -72,6 +55,7 @@ enum ParentSeviceItem: AccountItem {
     case contactUs
     
     var image: UIImage? {
+        
         switch self {
         
         case .signCommunicationBook: return UIImage(systemName: "book")
@@ -95,6 +79,7 @@ enum ParentSeviceItem: AccountItem {
     }
     
     var title: String {
+        
         switch self {
         
         case .signCommunicationBook: return localizedString("Communication Book")
@@ -119,7 +104,9 @@ enum ParentSeviceItem: AccountItem {
     }
     
     var formTitle: String? {
+        
         switch self {
+        
         case .newAStudent: return "Children Informations"
             
         case .signCommunicationBook,
@@ -141,7 +128,9 @@ enum ParentSeviceItem: AccountItem {
     }
     
     var form: [[String]]? {
+        
         switch self {
+        
         case .newAStudent: return [["Name", "National ID"],
                                    ["Birth Date"],
                                    ["Grade"],
@@ -187,8 +176,6 @@ enum TeacherSeviceItem: AccountItem {
     
     case newAUser
     
-    
-    //
     var image: UIImage? {
         
         switch self {
@@ -200,7 +187,6 @@ enum TeacherSeviceItem: AccountItem {
         case .writeLessonPlan:  return UIImage(systemName: "square.and.pencil")
             
         case .writeStudentLessonRecord: return UIImage(systemName: "book")
-        //      UIImage.asset(.CommunicationBook)
         
         case .newEvent: return UIImage(systemName: "calendar.badge.plus")
             
@@ -211,7 +197,6 @@ enum TeacherSeviceItem: AccountItem {
         case .newAStudent : return UIImage(systemName: "person.crop.circle.badge.plus")
             
         case .newAUser: return UIImage(systemName: "person.crop.circle.badge.plus")
-            
         }
     }
     
@@ -236,15 +221,12 @@ enum TeacherSeviceItem: AccountItem {
         case .newAStudent : return localizedString("New Student")
             
         case .newAUser: return localizedString("Create User")
-            
-            
-            
         }
     }
+    
     var formTitle: String? {
+        
         switch self {
-        
-        
         
         case .newEvent: return "Create Event"
             
@@ -257,11 +239,13 @@ enum TeacherSeviceItem: AccountItem {
         case .newAUser: return "Create User"
             
         default:
+            
             return nil
         }
     }
     
     var form: [[String]]? {
+        
         switch self {
         
         case .newEvent: return [["Title"], ["Date"], ["Time"], ["Description"]]
@@ -285,15 +269,8 @@ enum TeacherSeviceItem: AccountItem {
                                 ["image"]]
             
         default:
+            
             return nil
         }
-        //    var viewModel: NewAThingViewModel{
-        //      switch self {
-        //      case .newAUser: return NewAUserModel
-        //
-        //      default:
-        //
-        //      }
-        //    }
     }
 }

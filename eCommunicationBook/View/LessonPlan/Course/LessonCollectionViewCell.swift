@@ -102,7 +102,8 @@ class LessonCollectionViewCell: UICollectionViewCell {
             
             buttonEdit.isHidden = true
             
-            if let time = viewModel?.time, time + CalendarHelper.shared.secondsPerDay * 1 * 1000 <= Date().millisecondsSince1970 {
+            if let time = viewModel?.time,
+               time + CalendarHelper.shared.secondsPerDay * 1 * 1000 <= Date().millisecondsSince1970 {
                 
                 buttonInspect.isHidden = false
                 

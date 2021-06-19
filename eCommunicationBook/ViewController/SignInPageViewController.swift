@@ -19,17 +19,17 @@ class SignInPageViewController: UIViewController {
 
     let buttonAppleSignIn = ASAuthorizationAppleIDButton(type: .continue, style: .black)
 
+    @IBOutlet weak var collectionView: UICollectionView!
+
     @IBOutlet weak var viewAppleSignIn: UIView!
     
     @IBOutlet weak var viewChoseRole: UIView!
-    
-    @IBOutlet weak var collectionView: UICollectionView!
-    
+        
+    @IBOutlet weak var viewPolicyBlackView: UIView!
+
     @IBOutlet weak var middleConViewAppleSign: NSLayoutConstraint!
     
     @IBOutlet weak var middleConViewChooseRole: NSLayoutConstraint!
-    
-    @IBOutlet weak var viewPolicyBlackView: UIView!
     
     @IBOutlet weak var centerYTextView: NSLayoutConstraint!
 
@@ -331,10 +331,12 @@ extension SignInPageViewController: UICollectionViewDataSource {
         return viewModel.userType.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //        let itemViewModel = viewModel.itemViewModels[indexPath.row]
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserTypeCollectionViewCell.identifier,
-                                                            for: indexPath) as? UserTypeCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: UserTypeCollectionViewCell.identifier,
+                                     for: indexPath) as? UserTypeCollectionViewCell
         
         else { print("UserTypeCollectionViewCell not found"); return UICollectionGridViewCell()}
         
@@ -351,7 +353,9 @@ extension SignInPageViewController: UICollectionViewDataSource {
         
         if sender.tag == 1 {
             
-            let controller = UIAlertController(title: "Redeem Code", message: "Enter your invitation code to continue.", preferredStyle: .alert)
+            let controller = UIAlertController(title: "Redeem Code",
+                                               message: "Enter your invitation code to continue.",
+                                               preferredStyle: .alert)
             
             controller.addTextField { (textField) in
             

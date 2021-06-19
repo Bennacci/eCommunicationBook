@@ -129,7 +129,6 @@ extension StudentTimeInAndOutViewController: UITableViewDataSource {
     return viewModel.selectedDate.convertToString(dateformat: .month)
   }
   
-  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     var timeOutViewModel: StudentExistanceViewModel?

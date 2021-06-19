@@ -8,7 +8,8 @@
 
 import Foundation
 
-protocol TimeSelectionDelegate {
+protocol TimeSelectionDelegate: AnyObject {
+    
     func didSelectTime(for thing: String)
 }
 
@@ -21,7 +22,7 @@ class TimeSelectionViewModel {
     
     var inputTextsForEvent = ["Starting Time", "Time Interval"]
     
-    var delegate: TimeSelectionDelegate?
+    weak var delegate: TimeSelectionDelegate?
     
     //  func loadInitialValues() {
     //
@@ -157,8 +158,4 @@ class TimeSelectionViewModel {
     }
     
     var onAdded: (() -> Void)?
-    
-    //  func onTapAdd() {
-    ////    self.addUser(with: &user)
-    //  }
 }

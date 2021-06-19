@@ -8,7 +8,8 @@
 
 import UIKit
 
-protocol UpdateViewDelegate {
+protocol UpdateViewDelegate: AnyObject {
+    
   func onUpdateView()
 }
 
@@ -22,7 +23,7 @@ class AccountEditContentViewController: UIViewController {
   
   @IBOutlet weak var labelContentLength: UILabel!
   
-  var delegate: UpdateViewDelegate?
+  weak var delegate: UpdateViewDelegate?
   
   @IBOutlet weak var heightConButtonSave: NSLayoutConstraint!
   

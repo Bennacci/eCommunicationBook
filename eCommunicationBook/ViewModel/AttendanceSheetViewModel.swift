@@ -66,9 +66,15 @@ class AttendanceSheetViewModel {
                 
                 guard let studentRowIndex = nameIndexDic[name] else {return}
                 
-                guard let time = courseViewModel.value[selectedCourseIndex].lessons?[lessonIndex - 1].time else { return }
+                guard let time = courseViewModel
+                        .value[selectedCourseIndex]
+                        .lessons?[lessonIndex - 1]
+                        .time else { return }
                 
-                guard let timeInterval = courseViewModel.value[selectedCourseIndex].lessons?[lessonIndex - 1].timeInterval else { return }
+                guard let timeInterval = courseViewModel
+                        .value[selectedCourseIndex]
+                        .lessons?[lessonIndex - 1]
+                        .timeInterval else { return }
                 
                 rows[studentRowIndex].append("❌")
                 
@@ -133,12 +139,52 @@ class AttendanceSheetViewModel {
             
             case .success(let courses):
                 
-                self?.setSearchResult(courses)
+                self?.searchAndAddLessonsToCourse(courses: courses)
                 
             case .failure(let error):
                 
-                print("fetchData.failure: \(error)")
+                print("fetchCourses.failure: \(error)")
             }
+        }
+    }
+    
+    func searchAndAddLessonsToCourse(courses: [Course]) {
+        
+        var courses = courses
+        
+        let group: DispatchGroup = DispatchGroup()
+        
+        for index in 0 ..< courses.count {
+            
+            let queue = DispatchQueue(label: "queue", attributes: .concurrent)
+            
+            group.enter()
+            
+            queue.async(group: group) {
+                
+                LessonManager.shared.fetchLessons(courseID: courses[index].id) { result in
+                    
+                    switch result {
+                    
+                    case .success(let lessons):
+                        
+                        courses[index].lessons = lessons
+                        
+                        group.leave()
+                        
+                    case .failure(let error):
+                        
+                        print("fetchData.failure: \(error)")
+                        
+                        group.leave()
+                    }
+                }
+            }
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            
+            self.setSearchResult(courses)
         }
     }
     

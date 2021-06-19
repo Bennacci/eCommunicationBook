@@ -48,13 +48,16 @@ class BTBaseViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
         if isHideNavigationBar {
+            
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
         
         if !isEnableIQKeyboard {
+            
             IQKeyboardManager.shared.enable = false
         } else {
             IQKeyboardManager.shared.enable = true
@@ -98,7 +101,6 @@ class BTBaseViewController: UIViewController {
         
         backToRoot(completion: nil)
     }
-    
 }
 
 extension UIViewController {

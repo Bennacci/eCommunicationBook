@@ -20,5 +20,4 @@ class NoUnderlineNavigationController: UINavigationController {
 
         navigationBar.shadowImage = UIImage()
     }
-
 }

@@ -11,7 +11,6 @@ import ChameleonFramework
 
 class ServiceCollectionViewCell: UICollectionViewCell {
   
-  
   var viewModel: ServiceGroup?
   
   @IBOutlet weak var viewServiceBackground: UIView!

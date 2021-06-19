@@ -28,7 +28,10 @@ class NewAThingViewModel: SearchUserDelegate {
   
   var inputDates: [[Date]] = []
   
-  var servicesItem = ServiceManager.init(userType: UserType(rawValue: UserManager.shared.user.userType!)!).services.items[0][0]
+  var servicesItem = ServiceManager
+    .init(userType: UserType(rawValue: UserManager.shared.user.userType!)!)
+    .services
+    .items[0][0]
   
   func loadInitialValues() {
     
@@ -147,33 +150,49 @@ class NewAThingViewModel: SearchUserDelegate {
     image: String.empty)
   
   func onCourseNameChanged(text name: String) {
+    
     self.course.name = name
   }
   
   func onFirstLessonDateChanged(day: Date) {
-    guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: day)) else { return }
+    
+    guard let date = Calendar
+            .current
+            .date(from: Calendar.current.dateComponents([.year, .month, .day], from: day)) else { return }
+    
     self.course.firstLessonDate = Double(date.millisecondsSince1970)
   }
   
   func onFeeChanged(text fee: String) {
+    
     self.course.fee = Int(fee) ?? -99
   }
+    
   func onCourseTimeChanged(time: [RoutineHour]) {
+    
     self.course.courseTime = time
   }
   
   func onLessonsAmountChanged(text lessonsAmount: String) {
+    
     self.course.lessonsAmount = Int(lessonsAmount) ?? -1
   }
   
   func onSearchAndSelected(forStudent: Bool) {
+    
     if forStudent == false {
-      guard let selectedUsers = UserManager.shared.selectedUsers else {return}
-      self.course.teachers = selectedUsers.map({$0.id})
+    
+        guard let selectedUsers = UserManager.shared.selectedUsers else {return}
+      
+        self.course.teachers = selectedUsers.map({$0.id})
+    
     } else {
-      guard let selectedUsersTwo = UserManager.shared.selectedStudents else {return}
-      self.course.students = selectedUsersTwo.map({$0.name + ":" + $0.id})
+    
+        guard let selectedUsersTwo = UserManager.shared.selectedStudents else {return}
+      
+        self.course.students = selectedUsersTwo.map({$0.name + ":" + $0.id})
     }
+    
     onDataUpdated!()
   }
   
@@ -186,6 +205,7 @@ class NewAThingViewModel: SearchUserDelegate {
       case .success:
         
         print("onTapAdd, success")
+        
       case .failure(let error):
         
         print("publishArticle.failure: \(error)")

@@ -70,7 +70,9 @@ class LessonPerformancesReviewViewModel {
         
         if let name = courseName, let lesson = courseLesson {
             
-            LessonManager.shared.fetchStudentLessonRecord(courseName: name, courseLesson: lesson) { [weak self] result in
+            LessonManager
+                .shared
+                .fetchStudentLessonRecord(courseName: name, courseLesson: lesson) { [weak self] result in
                 
                 switch result {
                 
@@ -84,7 +86,6 @@ class LessonPerformancesReviewViewModel {
                 }
             }
         }
-        
     }
     
     func convertStudenLessonRecordsToViewModels(from records: [StudentLessonRecord]) -> [StudentLessonRecordViewModel] {

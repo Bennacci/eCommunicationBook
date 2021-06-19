@@ -23,7 +23,8 @@ class ChatroomManager {
     
     func sendMessage(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = fireStoreDataBase.collection("ChatRooms")
+        let document = fireStoreDataBase
+            .collection("ChatRooms")
             .document(conversationID)
             .collection("Messages")
             .document()
@@ -47,7 +48,9 @@ class ChatroomManager {
     
     func publishChatroom(chatRoom: inout ChatRoom, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = fireStoreDataBase.collection("ChatRooms").document()
+        let document = fireStoreDataBase
+            .collection("ChatRooms")
+            .document()
         
         chatRoom.id = document.documentID
         
@@ -66,10 +69,10 @@ class ChatroomManager {
         }
     }
     
-    
     func fetchChatrooms(completion: @escaping (Result<[ChatRoom], Error>) -> Void) {
         
-        let collection = fireStoreDataBase.collection("ChatRooms")
+        let collection = fireStoreDataBase
+            .collection("ChatRooms")
             //            .order(by: "createdTime")
             .whereField("members", arrayContains: UserManager.shared.user.id)
         
@@ -103,10 +106,11 @@ class ChatroomManager {
         }
     }
     
-    func fetchMessages(chatRoomId: String, completion: @escaping (Result<[Message], Error>) -> Void) {
+    func fetchMessages(chatRoomID: String, completion: @escaping (Result<[Message], Error>) -> Void) {
         
-        let collection = fireStoreDataBase.collection("ChatRooms")
-            .document(chatRoomId)
+        let collection = fireStoreDataBase
+            .collection("ChatRooms")
+            .document(chatRoomID)
             .collection("Messages")
             .order(by: "createdTime", descending: true)
         
@@ -142,37 +146,38 @@ class ChatroomManager {
     
     func fetchConversation(completion: @escaping (Result<[Message], Error>) -> Void) {
         
-        fireStoreDataBase.collection("ChatRooms")
+        let document = fireStoreDataBase
+            .collection("ChatRooms")
             .document(conversationID)
             .collection("Messages")
             .order(by: "createdTime", descending: true)
-            .addSnapshotListener { (documentSnapshot, error) in
+        
+        document.addSnapshotListener { (documentSnapshot, error) in
+            
+            if let error = error {
                 
-                if let error = error {
+                completion(.failure(error))
+                
+            } else {
+                
+                var messages = [Message]()
+                
+                for document in documentSnapshot!.documents {
                     
-                    completion(.failure(error))
-                    
-                } else {
-                    
-                    var messages = [Message]()
-                    
-                    for document in documentSnapshot!.documents {
-                        
-                        do {
-                            if let message = try document.data(as: Message.self, decoder: Firestore.Decoder()) {
-                                
-                                messages.append(message)
-                            }
+                    do {
+                        if let message = try document.data(as: Message.self, decoder: Firestore.Decoder()) {
                             
-                        } catch {
-                            
-                            completion(.failure(error))
+                            messages.append(message)
                         }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
                     }
-                    
-                    completion(.success(messages))
                 }
+                
+                completion(.success(messages))
             }
+        }
     }
-    
 }

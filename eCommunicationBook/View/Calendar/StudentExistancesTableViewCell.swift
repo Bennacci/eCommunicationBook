@@ -59,7 +59,9 @@ class StudentExistancesTableViewCell: UITableViewCell {
             
             let location = CLLocation(latitude: latitude, longitude: longitude)
             
-            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
+            let region = MKCoordinateRegion(center: location.coordinate,
+                                            latitudinalMeters: 300,
+                                            longitudinalMeters: 300)
             
             mapView.setRegion(region, animated: true)
             

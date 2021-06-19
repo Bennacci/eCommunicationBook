@@ -79,6 +79,7 @@ class CalendarPageViewController: UIViewController {
     }
     
     func setupRefresher() {
+        
         self.tableView.refresh.header = RefreshHeader(delegate: self)
         
         tableView.refresh.header.addRefreshClosure { [weak self] in
@@ -119,7 +120,7 @@ extension CalendarPageViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
        
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
         
@@ -149,11 +150,17 @@ extension CalendarPageViewController: UITableViewDataSource {
         let title = viewModel.titles[indexPath.section]
         
         switch title {
+        
         case "Events":
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
-                                                           for: indexPath) as? LableWithVerticalLineTableViewCell
+            
+            guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
+                                         for: indexPath) as? LableWithVerticalLineTableViewCell
+            
             else { fatalError("Unexpected Table View Cell") }
+            
             cell.setUp(viewModel: viewModel.dayEventViewModel.value[indexPath.row])
+            
             return cell
             
         case "Communication Book":
@@ -210,7 +217,10 @@ extension CalendarPageViewController: UITableViewDataSource {
             
         default:
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier, for: indexPath) as? LableWithVerticalLineTableViewCell
+            guard let cell = tableView
+                    .dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
+                                         for: indexPath) as? LableWithVerticalLineTableViewCell
+            
             else { print("LableWithVerticalLineTableViewCell not found"); return UITableViewCell() }
             
             return cell

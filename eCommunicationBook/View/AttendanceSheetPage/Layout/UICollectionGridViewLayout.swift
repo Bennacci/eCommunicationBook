@@ -62,8 +62,8 @@ class UICollectionGridViewLayout: UICollectionViewLayout {
                 
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 
-                attributes.frame = CGRect(x:xOffset, y:yOffset, width:itemSize.width,
-                                          height:itemSize.height).integral
+                attributes.frame = CGRect(x: xOffset, y: yOffset, width:itemSize.width,
+                                          height: itemSize.height).integral
                 
                 if section == 0 && index == 0 {
                     
@@ -137,10 +137,7 @@ class UICollectionGridViewLayout: UICollectionViewLayout {
     
     override var collectionViewContentSize: CGSize {
         
-        get {
-            
             return contentSize
-        }
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath)
@@ -156,12 +153,9 @@ class UICollectionGridViewLayout: UICollectionViewLayout {
         
         for section in itemAttributes {
             
-            attributes.append(contentsOf: section.filter(
-                                
-                                { (includeElement: UICollectionViewLayoutAttributes) -> Bool in
-                                    
-                                    return rect.intersects(includeElement.frame)
-                                }))
+            attributes.append(contentsOf: section
+                                .filter({(includeElement: UICollectionViewLayoutAttributes) -> Bool in
+                                    return rect.intersects(includeElement.frame)}))
         }
         return attributes
     }

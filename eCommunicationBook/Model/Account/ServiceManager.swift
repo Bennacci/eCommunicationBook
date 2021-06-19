@@ -7,23 +7,7 @@
 //
 
 import Foundation
-//
-//class ServiceProvider {
-//
-//  enum ClientType {
-//
-//    case teacher
-//
-//    case parents
-//  }
-//
-//  private let clientType: ClientType
-//
-//  init(clientType: ClientType) {
-//
-//    self.clientType = clientType
-//  }
-// }
+
 class ServiceManager {
     
     private let userType: UserType
@@ -55,19 +39,19 @@ class ServiceManager {
                      
                      TeacherSeviceItem.attendanceSheet],
                     
-                    
                     [TeacherSeviceItem.newACourse,
                      
                      TeacherSeviceItem.newEvent,
                      
                      TeacherSeviceItem.setASign,
                      
-                     TeacherSeviceItem.newAStudent,
+                     TeacherSeviceItem.newAStudent
                      
-                     //           TeacherSeviceItem.newAUser
+                     // TeacherSeviceItem.newAUser
                     ]
                 ]
             )
+            
             return teacherService
             
         default:
@@ -79,6 +63,7 @@ class ServiceManager {
                         localizedString("Lessons"),
                         
                         localizedString("extras")],
+                
                 items: [
                     
                     [ParentSeviceItem.signCommunicationBook,

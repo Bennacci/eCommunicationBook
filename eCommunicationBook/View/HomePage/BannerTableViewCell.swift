@@ -10,8 +10,6 @@ import UIKit
 
 class BannerTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
-  
-  
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     print("Called")
   }
@@ -64,7 +62,6 @@ extension BannerTableViewCell {
     setupTimer()
   }
 }
-
 
 class BannerView: UIView, UIScrollViewDelegate {
   

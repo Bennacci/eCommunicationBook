@@ -593,7 +593,6 @@
 				E6F7E81F267C8F120082939C /* Layout */,
 				74A331CA2669CE2F0034EDAD /* AttendanceSheet.storyboard */,
 				74A331FC266A2B6F0034EDAD /* UICollectionGridViewCell.swift */,
-				74A331FD266A2B6F0034EDAD /* UICollectionGridViewController.swift */,
 			);
 			path = AttendanceSheetPage;
 			sourceTree = "<group>";
@@ -844,6 +843,7 @@
 			isa = PBXGroup;
 			children = (
 				74A331FB266A2B6E0034EDAD /* UICollectionGridViewLayout.swift */,
+				74A331FD266A2B6F0034EDAD /* UICollectionGridViewController.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";

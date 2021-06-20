@@ -71,7 +71,8 @@ class LessonManager {
     
     func saveLesson(lesson: inout Lesson, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = fireStoreDataBase.collection("Courses")
+        let document = fireStoreDataBase
+            .collection("Courses")
             .document(courseID)
             .collection("Lessons")
             .document(lesson.id)
@@ -115,7 +116,7 @@ class LessonManager {
         var collection = fireStoreDataBase.collection("Courses")
             .whereField("teachers", arrayContains: UserManager.shared.user.id)
         
-        if UserManager.shared.user.userType == "parents" {
+        if UserManager.shared.user.userType == UserType.parents.rawValue {
             
             guard let student = UserManager.shared.user.student else {return}
             
@@ -240,7 +241,7 @@ class LessonManager {
             .whereField("courseName", isEqualTo: courseName)
             .whereField("courseLesson", isEqualTo: courseLesson)
         
-        if UserManager.shared.user.userType == "parents" {
+        if UserManager.shared.user.userType == UserType.parents.rawValue {
             
             guard let student = UserManager.shared.user.student else {return}
             

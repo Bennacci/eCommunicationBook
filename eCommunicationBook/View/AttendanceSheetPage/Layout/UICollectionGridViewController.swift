@@ -88,7 +88,6 @@ class UICollectionGridViewController: UICollectionViewController {
         if cols.isEmpty {
         
             return 0
-            
         }
 
         return rows.count + 1
@@ -135,6 +134,7 @@ class UICollectionGridViewController: UICollectionViewController {
                 
                 cell.imageView.image = nil
             }
+            
         } else {
 
             if indexPath.row == selectedColIdx {
@@ -157,7 +157,7 @@ class UICollectionGridViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
 
-        print("点击单元格的[行,列]坐标: [\(indexPath.section),\(indexPath.row)]")
+        print("tapped indexPath: [\(indexPath.section),\(indexPath.row)]")
         
         if indexPath.section == 0 && sortDelegate != nil {
 

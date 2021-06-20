@@ -35,7 +35,6 @@ enum DateFormatType: String {
     case month = "MMM"
     
     case day = "dd"
-    
 }
 
 extension Date {

@@ -20,16 +20,32 @@ class AttendanceSheetViewModel {
     
     var columns = [String.empty]
 
-    var contentSet: (() -> Void)?
+//    var contentSet: (() -> Void)?
+    
+    var refreshView: (() -> Void)?
     
     var rows = [[String]]()
     
+    func contentSet() {
+        
+        self.refreshView?()
+    }
+    
     func setAttendanceSheetContent() {
+                
+        guard let selectedCourseIndex = selectedCourseIndex else { return }
+
+        configColumns(with: selectedCourseIndex)
+        
+        configRows(with: selectedCourseIndex)
+                
+        self.contentSet()
+    }
+    
+    func configColumns(with selectedCourseIndex: Int) {
         
         columns = ["name"]
-        
-        guard let selectedCourseIndex = selectedCourseIndex else { return }
-        
+
         let lessonAmount = courseViewModel.value[selectedCourseIndex].lessonsAmount
         
         for index in 0 ..< lessonAmount {
@@ -44,6 +60,9 @@ class AttendanceSheetViewModel {
         }
         
         columns.append("rate")
+    }
+    
+    func configRows(with selectedCourseIndex: Int) {
         
         rows.removeAll()
         
@@ -58,36 +77,58 @@ class AttendanceSheetViewModel {
             nameIndexDic[name] = studentIndex
         }
         
+        calculateAttendanceStatus(with: selectedCourseIndex)
+        
+        calculateAttendanceRate()
+    }
+    
+    func calculateAttendanceStatus(with selectedCourseIndex: Int) {
+        
+        let onTimeTolerance: Double = 5 * 60 * 1000
+        
         for lessonIndex in 1 ..< studentAttendancesViewModel.value.count {
             
-            for studentIndex in 0 ..< studentAttendancesViewModel.value[lessonIndex].count {
+            guard let time = courseViewModel
+                    .value[selectedCourseIndex]
+                    .lessons?[lessonIndex - 1]
+                    .time else { return }
+            
+            guard let timeInterval = courseViewModel
+                    .value[selectedCourseIndex]
+                    .lessons?[lessonIndex - 1]
+                    .timeInterval else { return }
+            
+            // Set attendance to absence if lesson has started
+            if Date().millisecondsSince1970 >= time {
                 
+                for studentIndex in 0 ..< studentAttendancesViewModel.value[0].count {
+                
+                    rows[studentIndex].append("❌")
+                }
+            }
+            
+            for studentIndex in 0 ..< studentAttendancesViewModel.value[lessonIndex].count {
+                                
                 let name = studentAttendancesViewModel.value[lessonIndex][studentIndex].studentName
                 
                 guard let studentRowIndex = nameIndexDic[name] else {return}
                 
-                guard let time = courseViewModel
-                        .value[selectedCourseIndex]
-                        .lessons?[lessonIndex - 1]
-                        .time else { return }
+                let lessonEndTime = time + Double(timeInterval) * 60 * 1000
                 
-                guard let timeInterval = courseViewModel
-                        .value[selectedCourseIndex]
-                        .lessons?[lessonIndex - 1]
-                        .timeInterval else { return }
-                
-                rows[studentRowIndex].append("❌")
-                
-                if studentAttendancesViewModel.value[lessonIndex][studentIndex].time < time {
+                // Change attendance status to ✅ or ☑️, if the student has any attendance record before the lesson ends.
+                if studentAttendancesViewModel.value[lessonIndex][studentIndex].time <= time + onTimeTolerance {
                     
                     rows[studentRowIndex][lessonIndex] = "✅"
                     
-                } else if studentAttendancesViewModel.value[lessonIndex][studentIndex].time > time {
+                } else if studentAttendancesViewModel.value[lessonIndex][studentIndex].time < lessonEndTime {
                     
                     rows[studentRowIndex][lessonIndex] = "☑️"
                 }
             }
         }
+    }
+    
+    func calculateAttendanceRate() {
         
         for index in 0 ..< rows.count {
             
@@ -114,8 +155,6 @@ class AttendanceSheetViewModel {
             
             rows[index].append(rateString)
         }
-        
-        self.contentSet?()
     }
     
     func onCourseNameChanged(index: Int) {

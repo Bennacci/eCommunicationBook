@@ -43,11 +43,13 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
             }
         }
         
-        viewModel.contentSet = {
+        viewModel.refreshView = { [weak self] () in
             
             DispatchQueue.main.async {
-            
-                self.addgridView()
+                
+                BTProgressHUD.dismiss()
+                
+                self?.addgridView()
             }
         }
     }
@@ -80,6 +82,7 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
         gridViewController.setColumns(columns: viewModel.columns)
         
         for index in 0 ..< viewModel.rows.count {
+            
             gridViewController.addRow(row: viewModel.rows[index])
         }
         
@@ -98,20 +101,19 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
         
         dropDownCourse.separatorCharacters = " & "
         
-        dropDownCourse.didExpand = {
-
-            print("SwiftyMenu Expanded!")
-        }
-        
-        dropDownCourse.didCollapse = {
-
-            print("SwiftyMenu Collapsed!")
-        }
-        
         dropDownCourse.didSelectItem = { _, item, index in
 
+            self.dropDownCourse.hideOptionsWhenSelect = false
+            // There is some bug with the pod SwiftyMenu.
+            // If toggle to true, dropdown does hideoptions after selecting a course.
+            // But SwiftyMenuState in the pod isn't toggled which causes dropdown expand/ collapse not working as expected.
+            // To solve the issue "handleMenuState()" should be called as well!
+            // PR to the pod has been made from KitsuneNoctus and expecting an updates very soon.
+            // See https://github.com/KarimEbrahemAbdelaziz/SwiftyMenu/pull/24 for further informations.
+            
             print("\(item) at index: \(index)")
         }
+        
         modDropdow(dropDown: dropDownCourse)
     }
     
@@ -143,7 +145,6 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
         dropDown.collapsingDuration = 0.5
     }
     
-    // 表格排序函数
     func sort(colIndex: Int, asc: Bool, rows: [[Any]]) -> [[Any]] {
         
         let sortedRows = rows.sorted { (firstRow: [Any], secondRow: [Any]) -> Bool in
@@ -160,12 +161,11 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
 
                 return firstRowValue > secondRowValue
             }
+            
+            let firstRowValuePercent = Double(firstRowValue[..<firstRowValue.endIndex])!
 
-            let firstRowValuePercent = Double(firstRowValue.substring(to:
-                                                                        firstRowValue.index(before: firstRowValue.endIndex)))!
-
-            let secondRowValuePercent = Double(secondRowValue.substring(to:
-                                                                            secondRowValue.index(before: secondRowValue.endIndex)))!
+            let secondRowValuePercent = Double(secondRowValue[..<secondRowValue.endIndex])!
+            
             if asc {
                 
                 return firstRowValuePercent < secondRowValuePercent
@@ -185,7 +185,7 @@ extension AttendanceSheetViewController: SwiftyMenuDelegate {
     func swiftyMenu(_ swiftyMenu: SwiftyMenu, didSelectItem item: SwiftyMenuDisplayable, atIndex index: Int) {
         
         viewModel.onCourseNameChanged(index: index)
-
+        BTProgressHUD.show()
         print("Selected item: \(item), at index: \(index)")
     }
     

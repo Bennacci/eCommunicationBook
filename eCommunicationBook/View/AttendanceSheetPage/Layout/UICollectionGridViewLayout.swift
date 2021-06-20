@@ -11,13 +11,19 @@ import UIKit
 
 class UICollectionGridViewLayout: UICollectionViewLayout {
     
+    var viewController: UICollectionGridViewController!
+
     private var itemAttributes: [[UICollectionViewLayoutAttributes]] = []
     
     private var itemsSize: [NSValue] = []
     
     private var contentSize: CGSize = CGSize.zero
+        
+    private var column = 0
     
-    var viewController: UICollectionGridViewController!
+    private var contentWidth: CGFloat = 0
+    
+    private var contentHeight: CGFloat = 0
     
     override func prepare() {
         
@@ -25,16 +31,6 @@ class UICollectionGridViewLayout: UICollectionViewLayout {
             
             return
         }
-        
-        var column = 0
-        
-        var xOffset: CGFloat = 0
-        
-        var yOffset: CGFloat = 0
-        
-        var contentWidth: CGFloat = 0
-        
-        var contentHeight: CGFloat = 0
         
         if itemAttributes.count > 0 {
             
@@ -50,6 +46,58 @@ class UICollectionGridViewLayout: UICollectionViewLayout {
             calculateItemsSize()
         }
         
+        appendSectionAttributesToItemAttributes()
+        
+        calculateContentHeightAndSize()
+    }
+    
+    override func invalidateLayout() {
+        
+        itemAttributes = []
+        
+        itemsSize = []
+        
+        contentSize = CGSize.zero
+        
+        super.invalidateLayout()
+    }
+    
+    override var collectionViewContentSize: CGSize {
+        
+        return contentSize
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath)
+    -> UICollectionViewLayoutAttributes? {
+        
+        return itemAttributes[indexPath.section][indexPath.row]
+    }
+    
+    override func layoutAttributesForElements(in rect: CGRect)
+    -> [UICollectionViewLayoutAttributes]? {
+        
+        var attributes: [UICollectionViewLayoutAttributes] = []
+        
+        for section in itemAttributes {
+            
+            attributes.append(contentsOf: section
+                                .filter({(includeElement: UICollectionViewLayoutAttributes) -> Bool in
+                                            return rect.intersects(includeElement.frame)}))
+        }
+        return attributes
+    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        
+        return true
+    }
+    
+    func appendSectionAttributesToItemAttributes() {
+        
+        var xOffset: CGFloat = 0
+        
+        var yOffset: CGFloat = 0
+        
         for section in 0 ..< (collectionView?.numberOfSections)! {
             
             var sectionAttributes: [UICollectionViewLayoutAttributes] = []
@@ -62,7 +110,7 @@ class UICollectionGridViewLayout: UICollectionViewLayout {
                 
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 
-                attributes.frame = CGRect(x: xOffset, y: yOffset, width:itemSize.width,
+                attributes.frame = CGRect(x: xOffset, y: yOffset, width: itemSize.width,
                                           height: itemSize.height).integral
                 
                 if section == 0 && index == 0 {
@@ -116,53 +164,15 @@ class UICollectionGridViewLayout: UICollectionViewLayout {
             
             itemAttributes.append(sectionAttributes)
         }
+    }
+    
+    func calculateContentHeightAndSize() {
         
         let attributes = itemAttributes.last!.last! as UICollectionViewLayoutAttributes
         
         contentHeight = attributes.frame.origin.y + attributes.frame.size.height
         
         contentSize = CGSize(width: contentWidth, height: contentHeight)
-    }
-    
-    override func invalidateLayout() {
-        
-        itemAttributes = []
-        
-        itemsSize = []
-        
-        contentSize = CGSize.zero
-        
-        super.invalidateLayout()
-    }
-    
-    override var collectionViewContentSize: CGSize {
-        
-            return contentSize
-    }
-    
-    override func layoutAttributesForItem(at indexPath: IndexPath)
-    -> UICollectionViewLayoutAttributes? {
-        
-        return itemAttributes[indexPath.section][indexPath.row]
-    }
-    
-    override func layoutAttributesForElements(in rect: CGRect)
-    -> [UICollectionViewLayoutAttributes]? {
-        
-        var attributes: [UICollectionViewLayoutAttributes] = []
-        
-        for section in itemAttributes {
-            
-            attributes.append(contentsOf: section
-                                .filter({(includeElement: UICollectionViewLayoutAttributes) -> Bool in
-                                    return rect.intersects(includeElement.frame)}))
-        }
-        return attributes
-    }
-    
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        
-        return true
     }
     
     func calculateItemsSize() {

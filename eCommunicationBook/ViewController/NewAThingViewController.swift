@@ -9,7 +9,7 @@
 import UIKit
 import Lottie
 //
-//class NewAThingManager {
+// class NewAThingManager {
 //  static let shared = NewAThingManager()
 //
 //  var service = "Create User"

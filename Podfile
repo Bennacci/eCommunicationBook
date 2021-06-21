@@ -35,6 +35,10 @@ target 'eCommunicationBook' do
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftLint'
   
+    target 'eCommunicationBookTests' do
+        inherit! :search_paths
+        pod 'Firebase'
+    end
 
 end
 

@@ -77,7 +77,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
                 storyBoard = .signInPage
                 
-                guard let nextVC = storyBoard?.instantiateInitialViewController() as? SignInPageViewController else {return}
+                guard let nextVC = storyBoard?.instantiateInitialViewController()
+                        as? SignInPageViewController else {return}
                 
                 if UserManager.shared.user.userType != nil {
                 

@@ -8,12 +8,11 @@
 
 import Foundation
 
-
 class CalendarHelper {
     
     static let shared = CalendarHelper()
     
-    let secondsPerDay: Double = (24 * 60 * 60)
+    let milliSecondsPerDay: Double = (24 * 60 * 60 * 1000)
     
     let selectedDays: [DayOfWeek] = []
     //    ex: [ .monday, .wendnesday, .sunday, .saturday ]

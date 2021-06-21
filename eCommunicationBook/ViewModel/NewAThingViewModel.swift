@@ -201,6 +201,7 @@ class NewAThingViewModel: SearchUserDelegate {
         }
         
         self.initialLessons(with: &course)
+        
         self.initialAttendanceSheet(with: &course)
     }
     
@@ -211,7 +212,9 @@ class NewAThingViewModel: SearchUserDelegate {
         var lessonTime = course.firstLessonDate
         
         var lessonTimes: [RoutineHour] = []
+        
         for index in 0 ..< course.lessonsAmount {
+        
             lessonTimes.append(course.courseTime[index % course.courseTime.count])
         }
         
@@ -227,27 +230,39 @@ class NewAThingViewModel: SearchUserDelegate {
                                 assignments: nil)
             
             lesson.number = index + 1
+            
             lesson.teacher = course.teachers[index % course.teachers.count]
             
             if index != 0 {
+                
                 let today = lessonTimes[index].day
+                
                 let previousDay = lessonTimes[index - 1].day
+                
+                let milliSecondsPerDay = CalendarHelper.shared.milliSecondsPerDay
+                
                 if today - previousDay > 0 {
-                    lesson.time = lessonTime + Double(today - previousDay) * CalendarHelper.shared.secondsPerDay * 1000
+                    
+                    lesson.time = lessonTime + Double(today - previousDay) * milliSecondsPerDay
+                
                 } else {
                     
-                    lesson.time = lessonTime + Double(today - previousDay + 7) * CalendarHelper.shared.secondsPerDay * 1000
+                    lesson.time = lessonTime + Double(today - previousDay + 7) * milliSecondsPerDay
                 }
+                
                 lessonTime = lesson.time
+                
             } else {
+                
                 lesson.time = lessonTime
             }
             
             lesson.time += Double(lessonTimes[index].startingTime / 100 * 60 * 60 * 1000)
+            
             lesson.time += Double(lessonTimes[index].startingTime % 100 * 60 * 1000)
             
             lesson.timeInterval = lessonTimes[index].timeInterval
-            print(lesson)
+            
             lessons.append(lesson)
         }
         

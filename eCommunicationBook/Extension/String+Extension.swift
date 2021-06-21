@@ -14,7 +14,7 @@ extension String {
     static let empty = ""
 }
 //
-//extension User {
+// extension User {
 //
 //    func getUserInfo() -> String {
 //        if email == "wayne.swchen@gmail.com" {
@@ -23,4 +23,4 @@ extension String {
 //            return "Do you wanna build a snowman?"
 //        }
 //    }
-//}
+// }

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,18 +50,18 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="ibc-tr-d6L" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Qlp-YB-wul"/>
                 <constraint firstAttribute="trailing" secondItem="ibc-tr-d6L" secondAttribute="trailing" id="l3L-l1-Fx2"/>
                 <constraint firstItem="ibc-tr-d6L" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tFr-U8-PdM"/>
                 <constraint firstAttribute="bottom" secondItem="ibc-tr-d6L" secondAttribute="bottom" id="z2L-al-HJe"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="197" height="154"/>
             <connections>
                 <outlet property="height" destination="qdc-Xc-mt4" id="obO-cN-UfP"/>
-                <outlet property="serviceIcon" destination="cUt-mA-LIK" id="SKw-sv-Mnb"/>
-                <outlet property="servicename" destination="qUf-HJ-BLT" id="uEI-PZ-xys"/>
+                <outlet property="imageViewServiceIcon" destination="cUt-mA-LIK" id="SKw-sv-Mnb"/>
+                <outlet property="labelServiceName" destination="qUf-HJ-BLT" id="uEI-PZ-xys"/>
                 <outlet property="viewServiceBackground" destination="ibc-tr-d6L" id="e18-jB-xRK"/>
             </connections>
             <point key="canvasLocation" x="238.40579710144928" y="142.63392857142856"/>

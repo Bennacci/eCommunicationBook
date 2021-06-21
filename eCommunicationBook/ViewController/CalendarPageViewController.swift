@@ -72,7 +72,9 @@ class CalendarPageViewController: UIViewController {
         
         viewModel.eventViewModel.bind { [weak self] _ in
             
-            guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: Date())) else {return}
+            let date = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+            
+            guard let date = Calendar.current.date(from: date) else {return}
             
             self?.viewModel.onCalendarTapped(day: date)
         }
@@ -102,16 +104,16 @@ extension CalendarPageViewController: UITableViewDataSource {
         
         switch title {
         
-        case "Events":
+        case CalendarPageTitles.events.rawValue:
         
             return viewModel.dayEventViewModel.value.count
         
-        case "Communication Book":
-        
+        case CalendarPageTitles.communicationBook.rawValue:
+
             return viewModel.comunicationSectionTitles.count
         
-        case "Student Attendance and Leave":
-        
+        case CalendarPageTitles.studentAttendanceAndLeave.rawValue:
+
             return 1
         
         default:
@@ -145,41 +147,35 @@ extension CalendarPageViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //      cell.layoutCell(title: viewModel.services[indexPath.section][indexPath.row])
-        
+                
         let title = viewModel.titles[indexPath.section]
         
         switch title {
         
-        case "Events":
-            
-            guard let cell = tableView
-                    .dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
-                                         for: indexPath) as? LableWithVerticalLineTableViewCell
-            
-            else { fatalError("Unexpected Table View Cell") }
-            
+        case CalendarPageTitles.events.rawValue:
+
+            let cell: LableWithVerticalLineTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+
             cell.setUp(viewModel: viewModel.dayEventViewModel.value[indexPath.row])
             
             return cell
             
-        case "Communication Book":
-            
+        case CalendarPageTitles.communicationBook.rawValue:
+
             let title = viewModel.comunicationSectionTitles[indexPath.row]
             
-            if title == "Lesson Performances"{
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier,
-                                                               for: indexPath) as? ChartTableViewCell
-                else { fatalError("Unexpected Table View Cell") }
+            if title == ComunicationSectionTitles.lessonPerformances.rawValue {
+                
+                let cell: ChartTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+
                 cell.setUp(viewModel: viewModel.dayLessonRecordViewModel.value[0])
+                
                 return cell
                 
-            } else if title == "Student Images" {
+            } else if title == ComunicationSectionTitles.studentImages.rawValue {
                 
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentImagesTableViewCell.identifier,
-                                                               for: indexPath) as? StudentImagesTableViewCell
-                else { fatalError("Unexpected Table View Cell") }
-                
+                let cell: StudentImagesTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+
                 cell.setUp(viewModel: viewModel.dayLessonRecordViewModel.value[0],
                            index: indexPath.row - viewModel.comunicationSectionTitles.count + 2)
                 
@@ -187,20 +183,16 @@ extension CalendarPageViewController: UITableViewDataSource {
                 
             } else {
                 
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysLesoonTableViewCell.identifier,
-                                                               for: indexPath) as? TodaysLesoonTableViewCell
-                else { print("TodaysLesoonTableViewCell not found"); return UITableViewCell() }
-                
+                let cell: TodaysLesoonTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+
                 cell.setUp(viewModel: viewModel.dayLessonRecordViewModel.value[0], title: title)
                 
                 return cell
             }
             
-        case "Student Attendance and Leave":
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentExistancesTableViewCell.identifier,
-                                                           for: indexPath) as? StudentExistancesTableViewCell
-            else { print("StudentExistancesTableViewCell not found"); return UITableViewCell() }
+        default:
+
+            let cell: StudentExistancesTableViewCell = tableView.dequeueReusableCell(for: indexPath)
             
             var timeOutViewModel: StudentExistanceViewModel?
             
@@ -212,16 +204,6 @@ extension CalendarPageViewController: UITableViewDataSource {
             cell.setUp(forCalendar: true,
                        timeInViewModel: viewModel.dayStudentTimeInViemModel.value[indexPath.row],
                        timeOutViewModel: timeOutViewModel)
-            
-            return cell
-            
-        default:
-            
-            guard let cell = tableView
-                    .dequeueReusableCell(withIdentifier: LableWithVerticalLineTableViewCell.identifier,
-                                         for: indexPath) as? LableWithVerticalLineTableViewCell
-            
-            else { print("LableWithVerticalLineTableViewCell not found"); return UITableViewCell() }
             
             return cell
         }
@@ -241,15 +223,6 @@ extension CalendarPageViewController: UITableViewDelegate {
             self.calendar.setScope(scope, animated: true)
         }
     }
-    
-    //
-    //  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //    //    if indexPath == pickerIndexPath && willExpand == true {
-    //    return LableWithVerticalLineTableViewCell.cellHeight()
-    //    //    } else {
-    //    //      return TwoLablesTableViewCell.cellHeight()
-    //    //    }
-    //  }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         

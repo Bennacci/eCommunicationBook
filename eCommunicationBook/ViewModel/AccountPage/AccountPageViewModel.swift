@@ -7,6 +7,15 @@
 
 import UIKit
 
+enum AccountPageService: String {
+    case displayName = "Display name"
+    case setProfileIcon = "Set profile icon"
+    case localNumber = "Local number"
+    case cellPhoneNumber = "Cell phone number"
+    case email = "Email"
+    case birthday = "Birthday"
+}
+
 class AccountPageViewModel {
   
   var onImageUploaded: (() -> Void)?
@@ -19,16 +28,16 @@ class AccountPageViewModel {
   }
   
   func accountPageItem() -> [[String]] {
+    
     var services = [[String]]()
-//    if UserManager.shared.user.userType == UserType.parents.rawValue {
-//      services = [["Display name", "Set profile icon"],
-//                  ["Local number", "Cell phone number", "Email"],
-//                  ["Birthday"]]
-//    } else {
-      services = [["Display name", "Set profile icon"],
-                  ["Local number", "Cell phone number", "Email"],
-                  ["Birthday"]]
-//    }
+
+    services = [[AccountPageService.displayName.rawValue,
+                 AccountPageService.setProfileIcon.rawValue],
+                [AccountPageService.localNumber.rawValue,
+                 AccountPageService.cellPhoneNumber.rawValue,
+                 AccountPageService.email.rawValue],
+                [AccountPageService.birthday.rawValue]]
+    
     return services
   }
   

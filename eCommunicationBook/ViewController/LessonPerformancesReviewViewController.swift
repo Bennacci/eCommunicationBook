@@ -109,29 +109,37 @@ extension LessonPerformancesReviewViewController: UICollectionViewDelegate {
 extension LessonPerformancesReviewViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    
     return nil
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
+    
     return 1
   }
+    
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    
       return CGFloat.leastNormalMagnitude
     }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
     return viewModel.comunicationSectionTitles[tableView.tag].count
-
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let title = viewModel.comunicationSectionTitles[tableView.tag][indexPath.row]
       
       if title == "Lesson Performances"{
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier,
                                                        for: indexPath) as? ChartTableViewCell
           else { fatalError("Unexpected Table View Cell") }
+        
         cell.setUp(viewModel: viewModel.lessonRecordViewModel.value[tableView.tag])
+        
         return cell
         
       } else if title == "Student Images" {
@@ -149,16 +157,20 @@ extension LessonPerformancesReviewViewController: UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysLesoonTableViewCell.identifier,
                                                        for: indexPath) as? TodaysLesoonTableViewCell
+        
           else { fatalError("Unexpected Table View Cell") }
+        
         cell.setUp(viewModel: viewModel.lessonRecordViewModel.value[tableView.tag], title: title)
+        
         return cell
       }
-    
   }
 }
 
 extension LessonPerformancesReviewViewController: UITableViewDelegate {
+    
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
     if let _ = tableView.cellForRow(at: indexPath) as? AddRowTableViewCell {
 //      showUploadMenu()
     }

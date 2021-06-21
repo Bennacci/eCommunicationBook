@@ -76,7 +76,7 @@ class TwoLablesWithButtonTableViewCell: UITableViewCell {
         label.text = text
         //      if numbers == 0... -> ""
         
-        if text == "Lesson Schedule"{
+        if text == "Lesson Schedule" {
         
             secondLabel.text = "\(UserManager.shared.selectedDays?.count ?? 0)"
         

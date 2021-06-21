@@ -22,19 +22,19 @@ class AccountEditContentViewModel {
     
     func setUpContent() {
         
-        if editContentPageTitle == "Display name" {
+        if editContentPageTitle == AccountPageService.displayName.rawValue {
             
             content = UserManager.shared.user.name
             
-        } else if editContentPageTitle == "Local number" {
+        } else if editContentPageTitle == AccountPageService.localNumber.rawValue {
             
             content = "\(UserManager.shared.user.homePhoneNo)"
             
-        } else if editContentPageTitle == "Cell phone number" {
+        } else if editContentPageTitle == AccountPageService.cellPhoneNumber.rawValue {
             
             content = "\(UserManager.shared.user.cellPhoneNo)"
             
-        } else if editContentPageTitle == "Email" {
+        } else if editContentPageTitle == AccountPageService.email.rawValue {
             
             content = UserManager.shared.user.email
         }
@@ -49,19 +49,19 @@ class AccountEditContentViewModel {
     
     func ontapSave() {
         
-        if editContentPageTitle == "Display name" {
+        if editContentPageTitle == AccountPageService.displayName.rawValue {
             
             UserManager.shared.user.name = content
             
-        } else if editContentPageTitle == "Local number" {
+        } else if editContentPageTitle == AccountPageService.localNumber.rawValue {
             
             UserManager.shared.user.homePhoneNo = Int(content)!
             
-        } else if editContentPageTitle == "Cell phone number" {
+        } else if editContentPageTitle == AccountPageService.cellPhoneNumber.rawValue {
             
             UserManager.shared.user.cellPhoneNo = Int(content)!
             
-        } else if editContentPageTitle == "Email" {
+        } else if editContentPageTitle == AccountPageService.email.rawValue {
             
             UserManager.shared.user.email = content
         }

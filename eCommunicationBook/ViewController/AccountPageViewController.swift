@@ -94,7 +94,12 @@ extension AccountPageViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountItemTableViewCell.identifier,
                                                        for: indexPath) as? AccountItemTableViewCell
         
-        else { print("AccountItemTableViewCell not found"); return UITableViewCell() }
+        else {
+            
+            assertionFailure("AccountItemTableViewCell not found")
+            
+            return UITableViewCell()
+        }
         
         cell.setUp(viewModel: viewModel.accountPageItem(), indexPath: indexPath)
         

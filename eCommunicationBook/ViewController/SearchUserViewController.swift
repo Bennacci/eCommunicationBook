@@ -263,10 +263,14 @@ extension SearchUserViewController: UITableViewDataSource {
         
         if indexPath == [0, 0] && listCount != 0 && tableView == self.tableView {
         
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SelecetedUserTableViewCell.identifier,
-                                                           for: indexPath) as? SelecetedUserTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SelecetedUserTableViewCell.identifier, for: indexPath) as? SelecetedUserTableViewCell
             
-            else { print("SelecetedUserTableViewCell not found"); return UITableViewCell() }
+            else {
+                
+                assertionFailure("SelecetedUserTableViewCell not found")
+                
+                return UITableViewCell()
+            }
             
             cell.collectionView.delegate = self
             
@@ -280,10 +284,14 @@ extension SearchUserViewController: UITableViewDataSource {
             
         } else {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: WideUserTableViewCell.identifier,
-                                                           for: indexPath) as? WideUserTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: WideUserTableViewCell.identifier, for: indexPath) as? WideUserTableViewCell
 
-            else { print("WideUserTableViewCell not found"); return UITableViewCell() }
+            else {
+                
+                assertionFailure("WideUserTableViewCell not found")
+                
+                return UITableViewCell()
+            }
 
             if viewModel.forStudent == false {
                 
@@ -311,7 +319,7 @@ extension SearchUserViewController: UITableViewDelegate {
         
         guard let cell = tableView.cellForRow(at: indexPath) as? WideUserTableViewCell else {return}
         
-        if cell.circleIcon.isHidden == true {
+        if cell.imageViewCircleIcon.isHidden == true {
             
             viewModel.removeSelectedFromList(index: indexPath.row)
 
@@ -341,7 +349,6 @@ extension SearchUserViewController: UITableViewDelegate {
         return headerView
     }
     
-
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         return CGFloat.leastNormalMagnitude
@@ -362,7 +369,12 @@ extension SearchUserViewController: UICollectionViewDataSource {
                 .dequeueReusableCell(withReuseIdentifier: CircleUserCollectionViewCell.identifier,
                                      for: indexPath) as? CircleUserCollectionViewCell
         
-        else { print("CircleUserCollectionViewCell not found"); return UICollectionViewCell() }
+        else {
+            
+            assertionFailure("CircleUserCollectionViewCell not found")
+            
+            return UICollectionViewCell()
+        }
 
         var cellViewModel: SearchUserPageMaterial
         

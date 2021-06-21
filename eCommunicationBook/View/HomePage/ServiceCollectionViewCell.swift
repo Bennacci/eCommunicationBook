@@ -10,69 +10,81 @@ import UIKit
 import ChameleonFramework
 
 class ServiceCollectionViewCell: UICollectionViewCell {
-  
-  var viewModel: ServiceGroup?
-  
-  @IBOutlet weak var viewServiceBackground: UIView!
-  @IBOutlet weak var height: NSLayoutConstraint!
-  @IBOutlet weak var serviceIcon: UIImageView!
-  @IBOutlet weak var servicename: UILabel!
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
-  func setUp(viewModel: ServiceGroup, indexPath: IndexPath, hot: Bool) {
-    self.viewModel = viewModel
-    layOutCell(indexPath: indexPath, hot: hot)
-  }
-  
-  func layOutCell(indexPath: IndexPath, hot: Bool) {
-    //    let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
-    //    let cloudImage = UIImage(systemName: "icloud.and.arrow.up.fill", withConfiguration: boldConfig)
-    //    guard let imageUrl = viewModel?.images?[indexPath.row] else {return}
-    //    imageViewUploadedImage.loadImage(imageUrl, placeHolder: cloudImage)
-    //  }
-    if hot == true {
-      
-      servicename.text = self.viewModel?.items[0][indexPath.item].title
-      serviceIcon.image = self.viewModel?.items[0][indexPath.item].image
-
-      switch self.viewModel?.items[0][indexPath.item].title {
-      case "Communication Book":
-        viewServiceBackground.backgroundColor = UIColor.AndroidGreen
-      case "Lesson Plan":
-        viewServiceBackground.backgroundColor = UIColor.MinionYellow
-      case "Student Time In / Out":
-        viewServiceBackground.backgroundColor = UIColor.Pumpkin
-      case "Attendance Sheet":
-        viewServiceBackground.backgroundColor = UIColor.CyanProcess
-      case "Time In / Out":
-        viewServiceBackground.backgroundColor = UIColor.CyanProcess
-      default:
-        viewServiceBackground.backgroundColor = .gray
-
-      }
-      
-    } else {
-//      viewServiceBackground.backgroundColor = UIColor.flatMint()
-      if let count = self.viewModel?.items[1].count {
+    
+    var viewModel: ServiceGroup?
+    
+    @IBOutlet weak var viewServiceBackground: UIView!
+    
+    @IBOutlet weak var height: NSLayoutConstraint!
+    
+    @IBOutlet weak var imageViewServiceIcon: UIImageView!
+    
+    @IBOutlet weak var labelServiceName: UILabel!
+    
+    override func awakeFromNib() {
         
-        if count > indexPath.item {
-          servicename.text = self.viewModel?.items[1][indexPath.item].title
-          serviceIcon.image = self.viewModel?.items[1][indexPath.item].image
-
-        } else {
-          
-          servicename.text = self.viewModel?.items[2][indexPath.item - count].title
-          serviceIcon.image = self.viewModel?.items[2][indexPath.item - count].image
-
-//          if self.viewModel?.items[2][indexPath.item - count].title == ""{
-//            servicename.text = "New Student"
-//
-//          }
-          
-        }
-      }
+        super.awakeFromNib()
     }
-  }
+
+    func setUp(viewModel: ServiceGroup, indexPath: IndexPath, hot: Bool) {
+
+        self.viewModel = viewModel
+
+        layOutCell(indexPath: indexPath, hot: hot)
+    }
+    
+    func layOutCell(indexPath: IndexPath, hot: Bool) {
+
+        if hot == true {
+            
+            labelServiceName.text = self.viewModel?.items[0][indexPath.item].title
+
+            imageViewServiceIcon.image = self.viewModel?.items[0][indexPath.item].image
+            
+            switch self.viewModel?.items[0][indexPath.item].title {
+
+            case TeacherSeviceItem.writeStudentLessonRecord.title:
+
+                viewServiceBackground.backgroundColor = UIColor.AndroidGreen
+
+            case TeacherSeviceItem.writeLessonPlan.title:
+
+                viewServiceBackground.backgroundColor = UIColor.MinionYellow
+
+            case TeacherSeviceItem.writeStudentTimeInAndOut.title:
+
+                viewServiceBackground.backgroundColor = UIColor.Pumpkin
+
+            case TeacherSeviceItem.attendanceSheet.title:
+
+                viewServiceBackground.backgroundColor = UIColor.CyanProcess
+
+            case ParentSeviceItem.checkStudentTimeInAndOut.title:
+
+                viewServiceBackground.backgroundColor = UIColor.CyanProcess
+
+            default:
+
+                viewServiceBackground.backgroundColor = .gray
+            }
+            
+        } else {
+
+            if let count = self.viewModel?.items[1].count {
+                
+                if count > indexPath.item {
+
+                    labelServiceName.text = self.viewModel?.items[1][indexPath.item].title
+
+                    imageViewServiceIcon.image = self.viewModel?.items[1][indexPath.item].image
+                    
+                } else {
+                    
+                    labelServiceName.text = self.viewModel?.items[2][indexPath.item - count].title
+
+                    imageViewServiceIcon.image = self.viewModel?.items[2][indexPath.item - count].image
+                }
+            }
+        }
+    }
 }

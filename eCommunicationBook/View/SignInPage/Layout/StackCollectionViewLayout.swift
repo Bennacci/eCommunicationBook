@@ -12,15 +12,6 @@ open class StackCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: - Properties
     
-//    public var itemDescription: (landscape: StackItemSize, portrait: StackItemSize) =
-//        (landscape: StackItemSize.fixed(.init(width: 150, height: 224.999999999999888)),
-//         portrait: StackItemSize.fixed(.init(width: 200, height: 300))) { // 0,666666666666667 aspect ratio
-////        .init(width: 300, height: 449.999999999999775)
-//        didSet {
-//            invalidateLayout()
-//        }
-//    }
-    
     public var itemDescription: (landscape: ItemSize, portrait: ItemSize) =
       (landscape: .verticalAspectFit(spacing: 12, aspect: 0.4),
          portrait: .horizontalAspectFit(spacing: 12, aspect: 0.5)) { // 0,666666666666667 aspect ratio
@@ -131,7 +122,9 @@ open class StackCollectionViewLayout: UICollectionViewLayout {
                                                     minVisibleIndex: Int,
                                                     contentCenterX: CGFloat,
                                                     deltaOffset: CGFloat,
-                                                    percentageDeltaOffset: CGFloat) -> UICollectionViewLayoutAttributes {
+                                                    percentageDeltaOffset: CGFloat)
+    -> UICollectionViewLayoutAttributes {
+        
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         let visibleIndex = indexPath.row - minVisibleIndex
 

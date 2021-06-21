@@ -38,17 +38,17 @@ class AccountItemTableViewCell: UITableViewCell {
         guard let title = viewModel?[indexPath.section][indexPath.row] else {return}
         labelTitle.text = title
         var content = String.empty
-        if title == "Display name" {
+        if title == AccountPageService.displayName.rawValue {
             content = UserManager.shared.user.name
-        } else if title == "Set profile icon" {
+        } else if title == AccountPageService.setProfileIcon.rawValue {
             content = "Selct photo for your profile."
-        } else if title == "Local number" {
+        } else if title == AccountPageService.localNumber.rawValue {
             content = "\(UserManager.shared.user.homePhoneNo)"
-        } else if title == "Cell phone number" {
+        } else if title == AccountPageService.cellPhoneNumber.rawValue {
             content = "\(UserManager.shared.user.cellPhoneNo)"
-        } else if title == "Email" {
+        } else if title == AccountPageService.email.rawValue {
             content = UserManager.shared.user.email
-        } else if title == "Birthday" {
+        } else if title == AccountPageService.birthday.rawValue {
             var birthDay = String.empty
             if UserManager.shared.user.birthDay != -1 {
                 birthDay = Date(milliseconds: UserManager.shared.user.birthDay).convertToString(dateformat: .dateYMD)

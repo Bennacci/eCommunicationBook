@@ -69,12 +69,14 @@ class LessonCollectionViewCell: UICollectionViewCell {
             labelCourseTime.text = Date(milliseconds: time).convertToString(dateformat: .dateYMD)
         }
         
+        let milliSecondsPerDay = CalendarHelper.shared.milliSecondsPerDay
+        
         if UserManager.shared.user.userType == "teacher" {
             
             if let time = viewModel?.time,
                
-               time + CalendarHelper.shared.secondsPerDay / 2 * 1000 >= Date().millisecondsSince1970 &&
-                time - CalendarHelper.shared.secondsPerDay / 2 * 1000 <= Date().millisecondsSince1970 {
+               time + milliSecondsPerDay / 2 >= Date().millisecondsSince1970 &&
+                time - milliSecondsPerDay / 2 <= Date().millisecondsSince1970 {
                 
                 buttonScan.isHidden = false
                 
@@ -83,7 +85,7 @@ class LessonCollectionViewCell: UICollectionViewCell {
                 buttonScan.isHidden = true
             }
             
-            if let time = viewModel?.time, time + CalendarHelper.shared.secondsPerDay * 1 * 1000 <= Date().millisecondsSince1970 {
+            if let time = viewModel?.time, time + milliSecondsPerDay * 1 <= Date().millisecondsSince1970 {
                 
                 buttonEdit.isHidden = true
                 
@@ -103,7 +105,7 @@ class LessonCollectionViewCell: UICollectionViewCell {
             buttonEdit.isHidden = true
             
             if let time = viewModel?.time,
-               time + CalendarHelper.shared.secondsPerDay * 1 * 1000 <= Date().millisecondsSince1970 {
+               time + milliSecondsPerDay * 1 <= Date().millisecondsSince1970 {
                 
                 buttonInspect.isHidden = false
                 

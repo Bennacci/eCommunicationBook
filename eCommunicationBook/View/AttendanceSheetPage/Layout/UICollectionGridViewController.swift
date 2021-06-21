@@ -106,7 +106,12 @@ class UICollectionGridViewController: UICollectionViewController {
                 .dequeueReusableCell(withReuseIdentifier: "cell",
                                      for: indexPath) as? UICollectionGridViewCell
         
-        else { print("UICollectionGridViewCell not found"); return UICollectionViewCell() }
+        else {
+            
+            assertionFailure("UICollectionGridViewCell not found")
+            
+            return UICollectionViewCell()
+        }
          
         if indexPath.section == 0 {
 

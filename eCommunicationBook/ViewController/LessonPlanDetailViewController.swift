@@ -13,8 +13,8 @@ protocol SavedLessonDelegate: AnyObject {
     func onSaved()
 }
 
-class LessonPlanDetailViewController: UIViewController {
-    
+class LessonPlanDetailViewController: UIViewController, SavedLessonDelegate {
+ 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var labelDate: UILabel!
@@ -26,24 +26,6 @@ class LessonPlanDetailViewController: UIViewController {
     var viewModel = LessonPlanDetailViewModel()
     
     weak var delegate: SavedLessonDelegate?
-    
-//    let publishBV: SaveButtonView = {
-//
-//        let view = SaveButtonView()
-//
-//        view.frame = CGRect(x: UIScreen.main.bounds.width - 66,
-//                            y: UIScreen.main.bounds.height - 126,
-//                            width: 50,
-//                            height: 50)
-//
-//        view.backgroundColor = .clear
-//
-//        view.initSubView()
-//
-//        view.saveButton.addTarget(self, action: #selector(saveLessonPlanDetail), for: .touchUpInside)
-//
-//        return view
-//    }()
     
     override func viewDidLoad() {
         
@@ -87,7 +69,6 @@ class LessonPlanDetailViewController: UIViewController {
         labelTime.text = startTime + " - " + endTime
         
         labelTeacher.text = viewModel.lesson.teacher
-        //    addSaveButton()
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -98,6 +79,7 @@ class LessonPlanDetailViewController: UIViewController {
         
         let discardAction = UIAlertAction(title: "Discard",
                                           style: .default) { _ in
+            
             self.popViewController()
         }
         
@@ -105,7 +87,8 @@ class LessonPlanDetailViewController: UIViewController {
         
         let saveAction = UIAlertAction(title: "Save Draft",
                                        style: .default) {_ in
-            self.viewModel.onSave();
+            self.viewModel.onSave()
+            
             self.popViewController()
         }
         
@@ -130,6 +113,11 @@ class LessonPlanDetailViewController: UIViewController {
         nav.popViewController(animated: true)
     }
     
+    func onSaved() {
+        
+        viewModel.onSave()
+    }
+    
     @objc func saveLessonPlanDetail(_ sender: UIButton) {
 
         viewModel.onSave()
@@ -145,7 +133,7 @@ class LessonPlanDetailViewController: UIViewController {
 
                 lPViewController.navigationItem.title = "Students Performances"
                 
-                //        lessonPlanDetailViewController.delegate = self
+                lPViewController.delegate = self
                 
                 lPViewController.viewModel.course = self.viewModel.course
                 
@@ -177,7 +165,7 @@ extension LessonPlanDetailViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
         
@@ -243,7 +231,13 @@ extension LessonPlanDetailViewController: UITableViewDataSource {
             guard let cell = tableView
                     .dequeueReusableCell(withIdentifier: AddRowTableViewCell.identifier,
                                          for: indexPath) as? AddRowTableViewCell
-            else { print("AddRowTableViewCell not found"); return UITableViewCell()}
+            
+            else {
+                
+                assertionFailure("AddRowTableViewCell not found")
+                
+                return UITableViewCell()
+            }
             
             return cell
             
@@ -253,8 +247,12 @@ extension LessonPlanDetailViewController: UITableViewDataSource {
                     .dequeueReusableCell(withIdentifier: LessonPlanDetailTableViewCell.identifier,
                                          for: indexPath) as? LessonPlanDetailTableViewCell
             
-            else { print("LessonPlanDetailTableViewCell not found"); return UITableViewCell()}
-            //      cell.isUserInteractionEnabled = false
+            else {
+                
+                assertionFailure("LessonPlanDetailTableViewCell not found")
+                
+                return UITableViewCell()
+            }
             
             cell.textFieldLessonPlanDetail.delegate = self
             

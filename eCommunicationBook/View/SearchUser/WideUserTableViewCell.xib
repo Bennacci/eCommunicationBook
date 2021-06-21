@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -51,7 +52,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ywu-k4-9zx" firstAttribute="leading" secondItem="iCb-FZ-Zq0" secondAttribute="trailing" constant="16" id="01R-Kr-GBw"/>
                             <constraint firstItem="wla-Ub-LEC" firstAttribute="centerY" secondItem="cjH-ng-Zen" secondAttribute="centerY" id="Byj-dK-fN3"/>
@@ -74,11 +75,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="checkIcon" destination="wla-Ub-LEC" id="Cmn-NX-CTO"/>
-                <outlet property="circleIcon" destination="x0A-9c-2px" id="7WD-mh-whl"/>
                 <outlet property="height" destination="Tgo-p9-iKk" id="LFN-vN-aGn"/>
-                <outlet property="userImageW" destination="iCb-FZ-Zq0" id="L0R-p2-SLQ"/>
-                <outlet property="userName" destination="ywu-k4-9zx" id="vc6-og-Weo"/>
+                <outlet property="imageViewCheckIcon" destination="wla-Ub-LEC" id="Cmn-NX-CTO"/>
+                <outlet property="imageViewCircleIcon" destination="x0A-9c-2px" id="7WD-mh-whl"/>
+                <outlet property="imageViewUserImage" destination="iCb-FZ-Zq0" id="L0R-p2-SLQ"/>
+                <outlet property="labelUserName" destination="ywu-k4-9zx" id="vc6-og-Weo"/>
             </connections>
             <point key="canvasLocation" x="210.86956521739131" y="106.47321428571428"/>
         </tableViewCell>
@@ -87,5 +88,8 @@
         <image name="Bear" width="716" height="1072"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

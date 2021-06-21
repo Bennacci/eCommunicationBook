@@ -8,6 +8,23 @@
 
 import Foundation
 
+enum CalendarPageTitles: String {
+    case events = "Events"
+    case communicationBook = "Communication Book"
+    case studentAttendanceAndLeave = "Student Attendance and Leave"
+}
+
+enum ComunicationSectionTitles: String {
+    case todaysLesson = "Today's Lesson"
+    case lessonPerformances = "Lesson Performances"
+    case homework = "Homework"
+    case test = "Test"
+    case homeworkScore = "Homework Score"
+    case testsScore = "Tests Score"
+    case studentImages = "Student Images"
+    case communicationCorner = "Communication Corner"
+}
+
 class CalendarPageViewModel {
     
     var titles: [String] = []
@@ -41,7 +58,7 @@ class CalendarPageViewModel {
     let dayStudentTimeOutViemModel = Box([StudentExistanceViewModel]())
     
     func onRefresh() {
-        // maybe do something
+
         self.refreshView?()
     }
     
@@ -57,19 +74,21 @@ class CalendarPageViewModel {
         let tappedYearMonth = Calendar.current.dateComponents([.year, .month], from: day)
         
         if tappedYearMonth != yearMonth {
+            
             yearMonth = tappedYearMonth
+            
             fetchExistances(date: day)
         }
         
         let time = Double(day.millisecondsSince1970)
         
-        let secondsPerDay = Double(CalendarHelper.shared.secondsPerDay)
+        let milliSecondsPerDay = Double(CalendarHelper.shared.milliSecondsPerDay)
         
         dayEventViewModel.value = eventViewModel.value.filter({
             
             $0.date >= time &&
                 
-                $0.date <= time + secondsPerDay * 1000 - 1
+                $0.date <= time + milliSecondsPerDay - 1
             
         })
         
@@ -77,21 +96,21 @@ class CalendarPageViewModel {
             
             $0.time >= time &&
                 
-                $0.time <= time + secondsPerDay * 1000 - 1
+                $0.time <= time + milliSecondsPerDay - 1
         })
         
         dayStudentTimeInViemModel.value = studentTimeInViemModel.value.filter({
             
             $0.time >= time &&
                 
-                $0.time <= time + secondsPerDay * 1000 - 1
+                $0.time <= time + milliSecondsPerDay - 1
         })
         
         dayStudentTimeOutViemModel.value = studentTimeOutViemModel.value.filter({
             
             $0.time >= time &&
                 
-                $0.time <= time + secondsPerDay * 1000 - 1
+                $0.time <= time + milliSecondsPerDay - 1
         })
         
         setTitle()
@@ -105,28 +124,39 @@ class CalendarPageViewModel {
         
         lessonImageIndex = 0
         
-        comunicationSectionTitles = [ "Today's Lesson", "Lesson Performances"]
+        comunicationSectionTitles = [ComunicationSectionTitles.todaysLesson.rawValue,
+                                     ComunicationSectionTitles.lessonPerformances.rawValue]
+        
         if dayLessonRecordViewModel.value.isEmpty != true {
+            
             if dayLessonRecordViewModel.value[0].assignments != nil {
-                comunicationSectionTitles.append("Homework")
+                
+                comunicationSectionTitles.append(ComunicationSectionTitles.homework.rawValue)
             }
             
             if dayLessonRecordViewModel.value[0].tests != nil {
-                comunicationSectionTitles.append("Tests")
+                
+                comunicationSectionTitles.append(ComunicationSectionTitles.test.rawValue)
             }
             
             if dayLessonRecordViewModel.value[0].assignmentCompleted != nil {
-                comunicationSectionTitles.append("Homework Score")
+                
+                comunicationSectionTitles.append(ComunicationSectionTitles.homeworkScore.rawValue)
             }
             
             if dayLessonRecordViewModel.value[0].testGrade != nil {
-                comunicationSectionTitles.append("Tests Score")
+            
+                comunicationSectionTitles.append(ComunicationSectionTitles.testsScore.rawValue)
             }
+            
             if dayLessonRecordViewModel.value[0].imageTitles != nil {
-                comunicationSectionTitles.append("Student Images")
+            
+                comunicationSectionTitles.append(ComunicationSectionTitles.studentImages.rawValue)
             }
+            
             if dayLessonRecordViewModel.value[0].note != nil {
-                comunicationSectionTitles.append("Communication Corner")
+                
+                comunicationSectionTitles.append(ComunicationSectionTitles.communicationCorner.rawValue)
             }
         }
     }
@@ -136,20 +166,23 @@ class CalendarPageViewModel {
         titles = []
         
         if dayEventViewModel.value.isEmpty != true {
-            titles.append("Events")
+            
+            titles.append(CalendarPageTitles.events.rawValue)
         }
         
         if dayLessonRecordViewModel.value.isEmpty != true {
-            titles.append("Communication Book")
+            
+            titles.append(CalendarPageTitles.communicationBook.rawValue)
         }
         
         if dayStudentTimeInViemModel.value.isEmpty != true {
-            titles.append("Student Attendance and Leave")
+            
+            titles.append(CalendarPageTitles.studentAttendanceAndLeave.rawValue)
         }
     }
     
     func fetchData() {
-        //
+        
         fetchExistances(date: nil)
         
         XXXManager.shared.fetchEvents { [weak self] result in
@@ -210,7 +243,9 @@ class CalendarPageViewModel {
             }
         }
         
-        AttendanceManager.shared.fetchStudentExistances(studentIndex: 0, date: selectedDate, timeIn: false) { [weak self] result in
+        AttendanceManager.shared.fetchStudentExistances(studentIndex: 0,
+                                                        date: selectedDate,
+                                                        timeIn: false) { [weak self] result in
             
             switch result {
             

@@ -145,7 +145,11 @@ extension HomePageViewController: UITableViewDataSource {
                     .dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier,
                                          for: indexPath) as? BannerTableViewCell
             
-            else { print("BannerTableViewCell not found"); return UITableViewCell() }
+            else {
+                assertionFailure("BannerTableViewCell not found")
+                
+                return UITableViewCell()
+            }
             
             bannerCell = cell
             
@@ -161,7 +165,11 @@ extension HomePageViewController: UITableViewDataSource {
                     .dequeueReusableCell(withIdentifier: ServicesTableViewCell.identifier,
                                          for: indexPath) as? ServicesTableViewCell
             
-            else { print("ServicesTableViewCell not found"); return UITableViewCell() }
+            else {
+                assertionFailure("ServicesTableViewCell not found")
+               
+                return UITableViewCell()
+            }
             
             cell.collectionView.delegate = self
             
@@ -188,7 +196,12 @@ extension HomePageViewController: UITableViewDataSource {
                     .dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier,
                                          for: indexPath) as? ServiceTableViewCell
             
-            else { print("ServicesTableViewCell not found"); return UITableViewCell() }
+            else {
+                
+                assertionFailure("ServicesTableViewCell not found")
+                
+                return UITableViewCell()
+            }
             
             if  let servicesData =  viewModel.servicesData {
                 
@@ -204,7 +217,12 @@ extension HomePageViewController: UITableViewDataSource {
                     .dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
                                          for: indexPath) as? NewsTableViewCell
             
-            else { print("NewsTableViewCell not found"); return UITableViewCell() }
+            else {
+                
+                assertionFailure("NewsTableViewCell not found")
+                
+                return UITableViewCell()
+            }
             
             cell.setUp(viewModel: viewModel.signViewModel.value[indexPath.row])
             
@@ -282,7 +300,6 @@ extension HomePageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-            
             if  let servicesData =  viewModel.servicesData {
                 
                 return servicesData.items[0].count
@@ -300,7 +317,12 @@ extension HomePageViewController: UICollectionViewDataSource {
                 .dequeueReusableCell(withReuseIdentifier: ServiceCollectionViewCell.identifier,
                                      for: indexPath) as? ServiceCollectionViewCell
         
-        else { print("ServiceCollectionViewCell not found"); return UICollectionViewCell() }
+        else {
+            
+            assertionFailure("ServiceCollectionViewCell not found")
+            
+            return UICollectionViewCell()
+        }
         
 //        if collectionView == hotCell.collectionView {
             
@@ -460,7 +482,9 @@ extension HomePageViewController: UIScrollViewDelegate {
                 bannerCell.bannerView.currentIndex = (bannerCell.bannerView.currentIndex - 1 + imageCount) % imageCount
             }
             
-            bannerCell.bannerView.pageControl.currentPage = (bannerCell.bannerView.currentIndex - 1 + imageCount) % imageCount
+            let currentPage = (bannerCell.bannerView.currentIndex - 1 + imageCount) % imageCount
+            
+            bannerCell.bannerView.pageControl.currentPage = currentPage
             
             bannerCell.bannerView.reloadImage()
         }

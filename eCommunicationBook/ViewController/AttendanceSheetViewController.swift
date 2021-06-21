@@ -106,7 +106,8 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
             self.dropDownCourse.hideOptionsWhenSelect = false
             // There is some bug with the pod SwiftyMenu.
             // If toggle to true, dropdown does hideoptions after selecting a course.
-            // But SwiftyMenuState in the pod isn't toggled which causes dropdown expand/ collapse not working as expected.
+            // But SwiftyMenuState in the pod isn't toggled
+            // which causes dropdown expand/ collapse not working as expected.
             // To solve the issue "handleMenuState()" should be called as well!
             // PR to the pod has been made from KitsuneNoctus and expecting an updates very soon.
             // See https://github.com/KarimEbrahemAbdelaziz/SwiftyMenu/pull/24 for further informations.

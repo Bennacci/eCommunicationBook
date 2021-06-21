@@ -225,7 +225,7 @@ class SignInPageViewController: UIViewController {
                 
                 if errorCode != errSecSuccess {
                 
-                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+                    assertionFailure("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
                 }
                 
                 return random
@@ -262,8 +262,9 @@ extension SignInPageViewController: ASAuthorizationControllerDelegate {
         
             guard let nonce = currentNonce else {
             
-                fatalError("Invalid state: A login callback was received, but no login request was sent.")
-            
+                assertionFailure("Invalid state: A login callback was received, but no login request was sent.")
+                
+                return
             }
             
             guard let appleIDToken = appleIDCredential.identityToken else {
@@ -338,7 +339,13 @@ extension SignInPageViewController: UICollectionViewDataSource {
                 .dequeueReusableCell(withReuseIdentifier: UserTypeCollectionViewCell.identifier,
                                      for: indexPath) as? UserTypeCollectionViewCell
         
-        else { print("UserTypeCollectionViewCell not found"); return UICollectionGridViewCell()}
+        else {
+            
+            assertionFailure("UserTypeCollectionViewCell not found")
+            
+            return UICollectionGridViewCell()
+            
+        }
         
         cell.continueButton.addTarget(self, action: #selector(connected(sender:)), for: .touchUpInside)
         

@@ -9,6 +9,7 @@
 import Foundation
 
 struct Student: Codable {
+    
     var id: String
     var parents: [String]
     var name: String
@@ -29,7 +30,6 @@ struct Student: Codable {
         case birthDay
         case emergencyContactPerson
         case emergencyContactNo
-        
     }
     
     var toDict: [String: Any] {

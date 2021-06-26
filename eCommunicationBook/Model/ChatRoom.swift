@@ -9,6 +9,7 @@
 import Foundation
 
 struct ChatRoom: Codable {
+    
     var id: String
     var members: [String]
     var createdTime: Double
@@ -26,7 +27,6 @@ struct ChatRoom: Codable {
             "id": id as Any,
             "members": members as Any,
             "createdTime": createdTime as Any
-            //            "messages": messages as Any
         ]
     }
 }

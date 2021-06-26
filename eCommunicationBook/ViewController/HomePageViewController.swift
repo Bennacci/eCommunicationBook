@@ -14,9 +14,9 @@ class HomePageViewController: UIViewController {
     
     var bannerCell = BannerTableViewCell()
     
-//    var hotCell = ServicesTableViewCell()
-    
     var viewModel = HomePageViewModel()
+    
+    var bannerViewCurrentIndex: NSInteger = 0
     
     var hotCellHeight: CGFloat = UIScreen.height / 2.8
     
@@ -32,8 +32,6 @@ class HomePageViewController: UIViewController {
         
         super.viewDidLoad()
         
-        //    self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
         tableView.registerCellWithNib(identifier: ServicesTableViewCell.identifier, bundle: nil)
         
         tableView.registerCellWithNib(identifier: ServiceTableViewCell.identifier, bundle: nil)
@@ -46,17 +44,22 @@ class HomePageViewController: UIViewController {
         
         viewModel.signViewModel.bind { [weak self] _ in
             
-            self?.tableView.reloadData()
+            self?.refreshView()
         }
         
         viewModel.checkUser()
         
         viewModel.onGotUserData = { [weak self] in
             
-            DispatchQueue.main.async {
-                
-                self?.tableView.reloadData()
-            }
+            self?.refreshView()
+        }
+    }
+    
+    func refreshView() {
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
         }
     }
 }
@@ -138,14 +141,17 @@ extension HomePageViewController: UITableViewDataSource {
         }
     }
     
+    // swiftlint:disable function_body_length
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath == [0, 0] {
+            
             guard let cell = tableView
                     .dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier,
                                          for: indexPath) as? BannerTableViewCell
             
             else {
+                
                 assertionFailure("BannerTableViewCell not found")
                 
                 return UITableViewCell()
@@ -157,6 +163,11 @@ extension HomePageViewController: UITableViewDataSource {
             
             cell.bannerView.scrollView.delegate = self
             
+            bannerCell.onTimeChanged = { [weak self] in
+                
+                self?.shifBanner()
+            }
+                        
             return cell
             
         } else if indexPath.section == 1 {
@@ -166,8 +177,9 @@ extension HomePageViewController: UITableViewDataSource {
                                          for: indexPath) as? ServicesTableViewCell
             
             else {
+                
                 assertionFailure("ServicesTableViewCell not found")
-               
+                
                 return UITableViewCell()
             }
             
@@ -177,9 +189,7 @@ extension HomePageViewController: UITableViewDataSource {
             
             cell.collectionView.reloadData()
             
-//            hotCell = cell
-            
-            if UserManager.shared.user.userType == "teacher" {
+            if UserManager.shared.user.userType == UserType.teacher.rawValue {
                 
                 cell.height.constant = hotCellHeight
                 
@@ -190,7 +200,7 @@ extension HomePageViewController: UITableViewDataSource {
             
             return cell
             
-        } else if indexPath.section == 2 && UserManager.shared.user.userType == "teacher" {
+        } else if indexPath.section == 2 && UserManager.shared.user.userType == UserType.teacher.rawValue {
             
             guard let cell = tableView
                     .dequeueReusableCell(withIdentifier: ServiceTableViewCell.identifier,
@@ -228,6 +238,16 @@ extension HomePageViewController: UITableViewDataSource {
             
             return cell
         }
+    }
+    // swiftlint:enable function_body_length
+    
+    func shifBanner() {
+        
+        bannerViewCurrentIndex += 1
+        
+        bannerCell.bannerView.currentIndex = bannerViewCurrentIndex
+        
+        bannerCell.bannerView.reloadImage()
     }
 }
 
@@ -271,7 +291,7 @@ extension HomePageViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 2 && UserManager.shared.user.userType == "teacher" {
+        if indexPath.section == 2 && UserManager.shared.user.userType == UserType.teacher.rawValue {
             
             if let nextVC = UIStoryboard.newAThing.instantiateInitialViewController() {
                 
@@ -300,14 +320,14 @@ extension HomePageViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-            if  let servicesData =  viewModel.servicesData {
-                
-                return servicesData.items[0].count
-                
-            } else {
-                
-                return 0
-            }
+        if  let servicesData =  viewModel.servicesData {
+            
+            return servicesData.items[0].count
+            
+        } else {
+            
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -324,22 +344,12 @@ extension HomePageViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-//        if collectionView == hotCell.collectionView {
+        cell.height.constant = cell.bounds.size.height
+        
+        if  let servicesData =  viewModel.servicesData {
             
-            cell.height.constant = cell.bounds.size.height
-            
-            if  let servicesData =  viewModel.servicesData {
-                
-                cell.setUp(viewModel: servicesData, indexPath: indexPath, hot: true)
-            }
-            
-//        } else {
-//
-//            if  let servicesData =  viewModel.servicesData {
-//
-//                cell.setUp(viewModel: servicesData, indexPath: indexPath, hot: false)
-//            }
-//        }
+            cell.setUp(viewModel: servicesData, indexPath: indexPath, hot: true)
+        }
         
         return cell
     }
@@ -349,47 +359,44 @@ extension HomePageViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        if collectionView == hotCell.collectionView {
+        let title = viewModel.servicesData?.items[0][indexPath.item].title
+        
+        switch title {
+        
+        case TeacherSeviceItem.writeStudentLessonRecord.title:
             
-            let title = viewModel.servicesData?.items[0][indexPath.item].title
+            navigationControllerShow(UIStoryboard.lessonPlan)
             
-            switch title {
+        case TeacherSeviceItem.writeStudentTimeInAndOut.title:
             
-            case TeacherSeviceItem.writeStudentLessonRecord.title:
-                
-                navigationControllerShow(UIStoryboard.lessonPlan)
-                
-            case TeacherSeviceItem.writeStudentTimeInAndOut.title:
-                
-                navigationControllerShow(UIStoryboard.scanStudentQR)
-
-            case ParentSeviceItem.checkStudentTimeInAndOut.title:
-                
-                navigationControllerShow(UIStoryboard.studentTimeInAndOut)
-
-            case TeacherSeviceItem.attendanceSheet.title:
-                
-                navigationControllerShow(UIStoryboard.attendanceSheet)
-
-            case TeacherSeviceItem.writeLessonPlan.title:
-                
-                BTProgressHUD.showFailure(text: "Coming soon")
-                
-            default:
-                
-                return
-            }
-//        }
+            navigationControllerShow(UIStoryboard.scanStudentQR)
+            
+        case ParentSeviceItem.checkStudentTimeInAndOut.title:
+            
+            navigationControllerShow(UIStoryboard.studentTimeInAndOut)
+            
+        case TeacherSeviceItem.attendanceSheet.title:
+            
+            navigationControllerShow(UIStoryboard.attendanceSheet)
+            
+        case TeacherSeviceItem.writeLessonPlan.title:
+            
+            BTProgressHUD.showFailure(text: "Coming soon")
+            
+        default:
+            
+            return
+        }
     }
     
     func navigationControllerShow(_ storyBoard: UIStoryboard) {
         
         let storyBoardViewController = storyBoard.instantiateInitialViewController()
-
+        
         if var nextVC = storyBoardViewController {
             
             if let scanStudentVC = nextVC as? ScanStudentQRCodeViewController {
-            
+                
                 scanStudentVC.hideDropDown = false
                 
                 nextVC = scanStudentVC
@@ -404,7 +411,7 @@ extension HomePageViewController: UICollectionViewDelegate {
 }
 
 extension HomePageViewController: UICollectionViewDelegateFlowLayout {
-        
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -418,29 +425,20 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
         
         let size: CGSize
         
-//        if collectionView == hotCell.collectionView {
-
-            if UserManager.shared.user.userType == UserType.teacher.rawValue {
-
-                size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
-                                                        sectionInsets: collectionViewSectionInsets,
-                                                        itemsPerRow: 2,
-                                                        itemsPerColumn: 2)
-            } else {
-                size = collectionView.calculateCellsize(viewHeight: hotCellHeight / 2,
-                                                        sectionInsets: collectionViewSectionInsets,
-                                                        itemsPerRow: 2,
-                                                        itemsPerColumn: 1)
-            }
+        if UserManager.shared.user.userType == UserType.teacher.rawValue {
             
-//        } else {
-//
-//            size = collectionView.calculateCellsize(viewHeight: recommendedCellHeight,
-//                                                    sectionInsets: collectionViewSectionInsets,
-//                                                    itemsPerRow: 1,
-//                                                    itemsPerColumn: 5)
-//        }
-//
+            size = collectionView.calculateCellsize(viewHeight: hotCellHeight,
+                                                    sectionInsets: collectionViewSectionInsets,
+                                                    itemsPerRow: 2,
+                                                    itemsPerColumn: 2)
+        } else {
+            
+            size = collectionView.calculateCellsize(viewHeight: hotCellHeight / 2,
+                                                    sectionInsets: collectionViewSectionInsets,
+                                                    itemsPerRow: 2,
+                                                    itemsPerColumn: 1)
+        }
+        
         return size
     }
     
@@ -448,14 +446,7 @@ extension HomePageViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-//        if collectionView == hotCell.collectionView {
-            
-            return 15
-            
-//        } else {
-//            
-//            return 12
-//        }
+        return 15
     }
 }
 
@@ -464,30 +455,33 @@ extension HomePageViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         bannerCell.bannerView.timer.invalidate()
+
+        let width = UIScreen.main.bounds.size.width
+        
+        bannerCell.bannerView.scrollView.contentOffset.x = width
+        
+        bannerCell.bannerView.scrollView.decelerationRate = UIScrollView.DecelerationRate.fast
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
+        let width = UIScreen.main.bounds.size.width
+        
         let imageCount = bannerCell.bannerView.imageArray.count
         
-        if imageCount > 0 {
+        if bannerCell.bannerView.scrollView.contentOffset.x > width {
             
-            if bannerCell.bannerView.scrollView.contentOffset.x > bannerCell.bannerView.width {
-                
-                bannerCell.bannerView.currentIndex = (bannerCell.bannerView.currentIndex + 1) % imageCount
-            }
-            
-            if bannerCell.bannerView.scrollView.contentOffset.x < bannerCell.bannerView.width {
-                
-                bannerCell.bannerView.currentIndex = (bannerCell.bannerView.currentIndex - 1 + imageCount) % imageCount
-            }
-            
-            let currentPage = (bannerCell.bannerView.currentIndex - 1 + imageCount) % imageCount
-            
-            bannerCell.bannerView.pageControl.currentPage = currentPage
-            
-            bannerCell.bannerView.reloadImage()
+            bannerViewCurrentIndex = (bannerViewCurrentIndex + 1) % imageCount
         }
+        
+        if bannerCell.bannerView.scrollView.contentOffset.x < width {
+            
+            bannerViewCurrentIndex = (bannerViewCurrentIndex - 1 + imageCount) % imageCount
+        }
+        
+        bannerCell.bannerView.currentIndex = bannerViewCurrentIndex
+        
+        bannerCell.bannerView.reloadImage()
         
         bannerCell.setupTimer()
     }

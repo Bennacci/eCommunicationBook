@@ -14,8 +14,9 @@ protocol TimeSelectionDelegate: AnyObject {
 }
 
 class TimeSelectionViewModel {
-    
-    //  var dayCount: Int = 1
+
+    var onAdded: (() -> Void)?
+
     var inputText: [String] = ["Day", "Starting Time", "Time Interval", "Delete"]
     
     var inputTexts: [[String]] = [["Day", "Starting Time", "Time Interval", "Delete"]]
@@ -24,10 +25,6 @@ class TimeSelectionViewModel {
     
     weak var delegate: TimeSelectionDelegate?
     
-    //  func loadInitialValues() {
-    //
-    //  }
-    //  var dayCount: Int =
     var forEvent = false
     
     var overed = false
@@ -35,12 +32,15 @@ class TimeSelectionViewModel {
     var onDataUpdated: (() -> Void)?
     
     func loadInitialValues() {
+    
         for _ in 0 ..< routineHours.count {
+        
             inputTexts.append(inputText)
         }
     }
     
     func onSendAndQuit() {
+        
         UserManager.shared.selectedDays = routineHours
     }
     
@@ -63,7 +63,6 @@ class TimeSelectionViewModel {
         }
         
         self.onDataUpdated?()
-        //    if dayCountMinusOne == day
     }
     
     var routineHours: [RoutineHour] = [RoutineHour(
@@ -96,7 +95,6 @@ class TimeSelectionViewModel {
             
             overed = true
         }
-        //    self.onDataUpdated?()
     }
     
     func onStartingTimeChanged(index: Int, minuteInput: String) {
@@ -156,6 +154,4 @@ class TimeSelectionViewModel {
         
         self.onDataUpdated?()
     }
-    
-    var onAdded: (() -> Void)?
 }

@@ -47,6 +47,7 @@ class ServiceManager {
                      
                      TeacherSeviceItem.newAStudent
                      
+                     // hidden for release
                      // TeacherSeviceItem.newAUser
                     ]
                 ]
@@ -70,6 +71,7 @@ class ServiceManager {
                      
                      ParentSeviceItem.checkStudentTimeInAndOut],
                     []
+                    // unfinished services
                     //          [ParentSeviceItem.courseReservation,
                     
                     //           ParentSeviceItem.leaveReservation,

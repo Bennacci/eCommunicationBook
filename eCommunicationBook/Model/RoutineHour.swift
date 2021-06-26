@@ -9,6 +9,7 @@
 import Foundation
 
 struct RoutineHour: Codable {
+    
     var day: Int
     var startingTime: Int
     var timeInterval: Int

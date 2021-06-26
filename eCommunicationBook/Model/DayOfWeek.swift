@@ -9,6 +9,7 @@
 import Foundation
 
 enum DayOfWeek: Int, CaseIterable {
+    
     case sunday = 1
     case monday = 2
     case tuesday = 3
@@ -19,19 +20,12 @@ enum DayOfWeek: Int, CaseIterable {
     
     var title: String {
         switch self {
-        
         case .sunday: return localizedString("星期日")
-            
         case .monday: return localizedString("星期一")
-            
         case .tuesday: return localizedString("星期二")
-            
         case .wendnesday: return localizedString("星期三")
-            
         case .thrusday: return localizedString("星期四")
-            
         case .friday: return localizedString("星期五")
-            
         case .saturday: return localizedString("星期六")
         }
     }

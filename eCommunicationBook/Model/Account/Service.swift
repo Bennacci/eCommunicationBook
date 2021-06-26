@@ -99,7 +99,6 @@ enum ParentSeviceItem: AccountItem {
         case .newAStudent: return localizedString("Create Student Information")
             
         case .contactUs: return localizedString("Contact Us")
-            
         }
     }
     
@@ -107,7 +106,7 @@ enum ParentSeviceItem: AccountItem {
         
         switch self {
         
-        case .newAStudent: return "Children Informations"
+        case .newAStudent: return "Student Info"
             
         case .signCommunicationBook,
              
@@ -214,7 +213,7 @@ enum TeacherSeviceItem: AccountItem {
             
         case .newEvent: return localizedString("Event")
             
-        case .setASign: return localizedString("Sign")
+        case .setASign: return localizedString("News")
             
         case .newACourse: return localizedString("New Course")
             
@@ -230,11 +229,11 @@ enum TeacherSeviceItem: AccountItem {
         
         case .newEvent: return "Create Event"
             
-        case .setASign: return "Create Sign"
+        case .setASign: return "Create News"
             
         case .newACourse: return "Create Class"
             
-        case .newAStudent: return "Children Informations"
+        case .newAStudent: return "Student Info"
             
         case .newAUser: return "Create User"
             

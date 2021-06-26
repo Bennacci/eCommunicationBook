@@ -9,10 +9,10 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
-import FirebaseStorage
 
-enum LoginError: Error {
-    case idNotExistError(String)
+enum FirebaseError: Error {
+    
+    case noMatchData(String)
 }
 
 class UserManager {
@@ -35,61 +35,46 @@ class UserManager {
                     student: nil,
                     difficulty: nil,
                     note: nil) {
+
         didSet {
+
             updateStudents()
         }
     }
     
-    //      var user = User(id: "ZTBCw5SJ1cgvO9DswRx11ZUE3At1",
-    //                      createdTime: -1,
-    //                      userID: "Ben",
-    //                      name: "Ben Tee",
-    //                      image:
-    //        "https://firebasestorage.googleapis.com/v0/b/ecommunicationbook.appspot.com/o/e-communication-icon.jpg?alt=media&token=e23859b9-fc8f-4c1c-a9d8-a99af5495c5a",
-    //                      cellPhoneNo: -1,
-    //                      homePhoneNo: -1,
-    //                      birthDay: -1,
-    //                      email: "Ben@mail.com",
-    //                      userType: nil,
-    //                      workingHours: nil,
-    //                      student: nil,
-    //                      difficulty: nil,
-    //                      note: nil) {
-    //                        didSet {
-    //                          updateStudents()
-    //                        }
-    //
-    //      }
+//          var user = User(id: "ZTBCw5SJ1cgvO9DswRx11ZUE3At1",
+//                          createdTime: -1,
+//                          userID: "Ben",
+//                          name: "Ben Tee",
+//                          image: "",
+//                          cellPhoneNo: -1,
+//                          homePhoneNo: -1,
+//                          birthDay: -1,
+//                          email: "Ben@mail.com",
+//                          userType: nil,
+//                          workingHours: nil,
+//                          student: nil,
+//                          difficulty: nil,
+//                          note: nil) {
+//                            didSet {
+//                              updateStudents()
+//                            }
+//          }
     
     lazy var selectedUsers: [UserViewModel]? = nil
     
     lazy var selectedStudents: [StudentViewModel]? = nil
     
     lazy var selectedDays: [RoutineHour]? = nil
-//
-//    func login(id: String = "", completion: @escaping (Result<String, Error>) -> Void) {
-//
-//        switch id {
-//        case "waynechen323":
-//            //      userID = "John"
-//            completion(.success(user.id))
-//        // MARK: add your profile here
-//        default:
-//            completion(.failure(LoginError.idNotExistError("You have to add \(id) info in local data source")))
-//        }
-//    }
-    
-//    func isLogin() -> Bool {
-//        return user.id != ""
-//    }
     
     func addUser(user: inout User, completion: @escaping (Result<String, Error>) -> Void) {
+        
         let document = fireStoreDataBase
             .collection("Users")
             .document(user.id)
         
         if user.createdTime == -1 {
-        
+            
             user.createdTime = Double(Date().millisecondsSince1970)
         }
         
@@ -98,6 +83,7 @@ class UserManager {
             if let error = error {
                 
                 completion(.failure(error))
+                
             } else {
                 
                 completion(.success("Success"))
@@ -111,23 +97,65 @@ class UserManager {
             .collection("Users")
             .document(uid)
             .getDocument { (querySnapshot, error) in
-            
-            if let error = error {
                 
-                completion(.failure(error))
-                print(error)
-            } else if querySnapshot?.data() == nil {
-                completion(.failure(FirebaseError.noMatchData("User not found")))
-            } else {
-                do {
-                    if let user = try querySnapshot?.data(as: User.self, decoder: Firestore.Decoder()) {
-                        completion(.success(user))
-                    }
-                } catch {
+                if let error = error {
+                    
                     completion(.failure(error))
+                    print(error)
+                    
+                } else if querySnapshot?.data() == nil {
+                    
+                    completion(.failure(FirebaseError.noMatchData("User not found")))
+                    
+                } else {
+                    
+                    do {
+                        
+                        if let user = try querySnapshot?.data(as: User.self, decoder: Firestore.Decoder()) {
+                            
+                            completion(.success(user))
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
                 }
             }
-        }
+    }
+    
+    func fetchUsers(completion: @escaping (Result<[User], Error>) -> Void) {
+        
+        fireStoreDataBase
+            .collection("Users")
+            .getDocuments { (querySnapshot, error) in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                    
+                } else {
+                    
+                    var users = [User]()
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            
+                            if let user = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                
+                                users.append(user)
+                            }
+                            
+                        } catch {
+                            
+                            completion(.failure(error))
+                        }
+                    }
+                    
+                    completion(.success(users))
+                }
+            }
     }
     
     func updateStudents() {
@@ -149,7 +177,8 @@ class UserManager {
     
     func fetchUserStudents(completion: @escaping (Result<[Student], Error>) -> Void) {
         
-        let collection = fireStoreDataBase.collection("Students")
+        let collection = fireStoreDataBase
+            .collection("Students")
             //      .order(by: "grade", descending: true)
             .whereField("parents", arrayContains: UserManager.shared.user.id)
         
@@ -183,7 +212,9 @@ class UserManager {
     }
     
     func setSearchStudentResult(with students: [Student]) {
+        
         if students.isEmpty != true {
+            
             self.user.student = students
         }
     }

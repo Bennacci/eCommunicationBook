@@ -147,9 +147,9 @@ extension TimeSelectionViewController: UITableViewDataSource {
             
             cell.textFieldMinute.delegate = self
             
-            cell.textFieldHour.tag = indexPath.section * 10 + indexPath.row + 1
+            cell.textFieldHour.tag = indexPath.section * 10 + spacedIndexPath.row + 1
             
-            cell.textFieldMinute.tag = -(indexPath.section * 10 + indexPath.row + 1)
+            cell.textFieldMinute.tag = -(indexPath.section * 10 + spacedIndexPath.row + 1)
             
             cell.textFieldHour.smartInsertDeleteType = UITextSmartInsertDeleteType.no
             

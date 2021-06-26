@@ -6,21 +6,9 @@
 //  Copyright © 2021 TKY co. All rights reserved.
 //
 
-
 import Foundation
 
 extension String {
     
     static let empty = ""
 }
-//
-// extension User {
-//
-//    func getUserInfo() -> String {
-//        if email == "wayne.swchen@gmail.com" {
-//            return "AKA 小安老師"
-//        } else {
-//            return "Do you wanna build a snowman?"
-//        }
-//    }
-// }

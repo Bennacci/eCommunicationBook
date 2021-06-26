@@ -10,14 +10,10 @@ import UIKit
 
 class BannerTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-        print("Called")
-    }
+    var onTimeChanged: (() -> Void)?
     
     @IBOutlet weak var bannerView: BannerView!
     
-    let btnImage = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
     // swiftlint:disable line_length
     var bannerDatas: [BannerData] = [BannerData(id: 0000,
                                                 picture: "https://firebasestorage.googleapis.com/v0/b/ecommunicationbook.appspot.com/o/BannerImage%2FmessageImage_1623065314066.jpg?alt=media&token=23179fbe-791c-42ce-a220-453a588a1e3f",
@@ -44,22 +40,28 @@ class BannerTableViewCell: UITableViewCell, UIScrollViewDelegate {
 extension BannerTableViewCell {
     
     func setupTimer() {
-        bannerView.timer = Timer.scheduledTimer(timeInterval: 10,
+        
+        bannerView.timer.invalidate()
+
+        bannerView.timer = Timer.scheduledTimer(timeInterval: 5,
                                                 target: self,
                                                 selector: #selector(timeChanged),
                                                 userInfo: nil,
                                                 repeats: true)
+        
         RunLoop.current.add(bannerView.timer, forMode: RunLoop.Mode.common)
     }
 
     @objc func timeChanged() {
         
-        bannerView.currentIndex += 1
-
-        bannerView.reloadImage()
+        self.onTimeChanged?()
     }
     
     func setBannerView() {
+        
+        bannerView.imageArray = []
+        
+        bannerView.sloganArray = []
         
         for index in 0 ..< bannerDatas.count {
         
@@ -71,7 +73,7 @@ extension BannerTableViewCell {
         self.addSubview(self.bannerView.scrollView)
         
         self.addSubview(self.bannerView.pageControl)
-        
+                
         setupTimer()
     }
 }
@@ -133,6 +135,7 @@ class BannerView: UIView, UIScrollViewDelegate {
         scrollView.addSubview(leftLabel)
         
         scrollView.contentMode = .scaleAspectFill
+        
         scrollView.clipsToBounds = true
                 
         return scrollView
@@ -154,7 +157,7 @@ class BannerView: UIView, UIScrollViewDelegate {
         
         pageControl.numberOfPages = imageArray.count
         
-        pageControl.currentPage = 0
+        pageControl.currentPage = (currentIndex - 1 + imageArray.count) % imageArray.count
         
         return pageControl
     }()
@@ -163,7 +166,7 @@ class BannerView: UIView, UIScrollViewDelegate {
         
         var leftIndex = 0
         
-        var rightIndex = 2
+        var rightIndex = 0
         
         let imagecount = imageArray.count
         
@@ -171,17 +174,17 @@ class BannerView: UIView, UIScrollViewDelegate {
             
             currentIndex = currentIndex % imagecount
             
-            scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: false)
+            scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: true)
+                        
+            pageControl.currentPage = (currentIndex - 1 + imagecount) % imagecount
             
-            pageControl.currentPage = (currentIndex - 1 + imagecount) % imagecount // 防止越界
+            leftIndex = (currentIndex - 1 + imagecount) % imagecount
             
-            leftIndex = (currentIndex - 1 + imagecount) % imagecount // 防止越界
+            rightIndex = (currentIndex + 1) % imagecount
             
-            rightIndex = (currentIndex + 1) % imageArray.count
-            
-            rightImageView.loadImage(imageArray[leftIndex])
+            rightImageView.loadImage(imageArray[rightIndex])
             rightImageView.contentMode = .scaleAspectFill
-            rightLabel.text = sloganArray[leftIndex]
+            rightLabel.text = sloganArray[rightIndex]
             
             currentImageView.loadImage(imageArray[currentIndex])
             currentImageView.contentMode = .scaleAspectFill

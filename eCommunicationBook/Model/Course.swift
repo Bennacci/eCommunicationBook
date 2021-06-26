@@ -9,6 +9,7 @@
 import Foundation
 
 struct Course: Codable {
+    
     var id: String
     var name: String
     var teachers: [String]

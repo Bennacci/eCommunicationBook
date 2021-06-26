@@ -9,16 +9,13 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
-import FirebaseStorage
 
 class ChatroomManager {
     
     static let shared = ChatroomManager()
     
     lazy var conversationID: String = String.empty
-    
-    //    lazy var courseID: String = ""
-    
+        
     lazy var fireStoreDataBase = Firestore.firestore()
     
     func sendMessage(message: inout Message, completion: @escaping (Result<String, Error>) -> Void) {

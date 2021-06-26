@@ -50,15 +50,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
 
         let firebaseAuth = Auth.auth()
-        //
-        //        do {
-        //
-        //          try firebaseAuth.signOut()
-        //
-        //        } catch let signOutError as NSError {
-        //
-        //          print("Error signing out: %@", signOutError)
-        //        }
+        
+//                do {
+//
+//                  try firebaseAuth.signOut()
+//
+//                } catch let signOutError as NSError {
+//
+//                  print("Error signing out: %@", signOutError)
+//                }
         
         var storyBoard: UIStoryboard?
         

@@ -9,7 +9,6 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
-import FirebaseStorage
 
 class AttendanceManager {
     
@@ -114,6 +113,7 @@ class AttendanceManager {
         let dispatchQ = DispatchQueue(label: "myQueue", qos: .userInitiated)
         
         let courseInfo = courseName.components(separatedBy: ":")
+        
         //        let name = courseInfo[0]
         
         let lessonCount = courseInfo[1]

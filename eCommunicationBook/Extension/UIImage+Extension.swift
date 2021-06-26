@@ -6,15 +6,12 @@
 //  Copyright © 2021 TKY co. All rights reserved.
 //
 
-
 import UIKit
 
 enum ImageAsset: String {
     
     case communicationBook
 }
-
-// swiftlint:enable identifier_name
 
 extension UIImage {
     

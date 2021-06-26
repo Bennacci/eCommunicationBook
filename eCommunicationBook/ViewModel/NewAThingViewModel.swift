@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable type_body_length
 class NewAThingViewModel: SearchUserDelegate {
     
     let eventViewModel = Box([EventViewModel]())
@@ -32,34 +33,42 @@ class NewAThingViewModel: SearchUserDelegate {
             let input = Array(repeating: Date(), count: inputTexts[index].count)
             
             inputDates.append(input)
-            //      inputValuse.append(input)
         }
         
         self.onFirstLessonDateChanged(day: Date())
     }
     
-    //  var searchUserDelegate: SearchUserDelegate?
-    
     var onDataUpdated: (() -> Void)?
-    
-    //  var searchUserVIewModel = SearchUserPageViewModel()
     
     var onAdded: (() -> Void)?
     
     func onTapAdd(thing: String) {
-        if thing == "Children Informations"{
+        
+        if thing == "Student Info"{
+            
             self.addStudent(with: &student)
+            
         } else if thing == "Create User" {
+            
             self.addUser(with: &user)
+            
         } else if thing == "Create Class"{
+            
             self.addCourse(with: &course)
+            
         } else if thing == "Create Event"{
+            
             self.addEvent(with: &event)
-        } else if thing == "Create Sign"{
+            
+        } else if thing == "Create News"{
+            
             self.addSign(with: &event)
         }
+        
         UserManager.shared.selectedUsers = []
+        
         UserManager.shared.selectedStudents = []
+        
         UserManager.shared.selectedDays = nil
     }
     
@@ -81,32 +90,44 @@ class NewAThingViewModel: SearchUserDelegate {
         note: nil)
     
     func onUserIDChanged(text userID: String) {
+        
         self.user.userID = userID
     }
     
     func onNameChanged(text name: String) {
+        
         self.user.name = name
     }
     
     func onCellPhoneNoChanged(text cellPhoneNo: String) {
+        
         self.user.cellPhoneNo = Int(cellPhoneNo) ?? -1
     }
     
     func onHomePhoneNoChanged(text homePhoneNo: String) {
+        
         self.user.homePhoneNo = Int(homePhoneNo) ?? -1
     }
+    
     func onBirthDayChanged(day: Date) {
+        
         self.user.birthDay = Double(day.millisecondsSince1970)
     }
+    
     func onEmailChanged(text email: String) {
+        
         self.user.email = email
     }
+    
     func onUserTypeChanged(text userType: String) {
+        
         self.user.userType = userType
+        
         self.onDataUpdated?()
     }
     
     func addUser (with user: inout User) {
+        
         UserManager.shared.addUser(user: &user) { result in
             
             switch result {
@@ -114,6 +135,7 @@ class NewAThingViewModel: SearchUserDelegate {
             case .success:
                 
                 print("onTapAdd, success")
+                
                 self.onAdded?()
                 
             case .failure(let error):
@@ -124,7 +146,6 @@ class NewAThingViewModel: SearchUserDelegate {
     }
     
     // MARK: - new a class
-    
     var course: Course = Course(
         id: String.empty,
         name: String.empty,
@@ -170,13 +191,23 @@ class NewAThingViewModel: SearchUserDelegate {
         
         if forStudent == false {
             
-            guard let selectedUsers = UserManager.shared.selectedUsers else {return}
+            guard let selectedUsers = UserManager.shared.selectedUsers
             
-            self.course.teachers = selectedUsers.map({$0.id})
+            else {
+                
+                return
+            }
+            
+            self.course.teachers = selectedUsers.map({$0.name + ":" + $0.id})
             
         } else {
             
-            guard let selectedUsersTwo = UserManager.shared.selectedStudents else {return}
+            guard let selectedUsersTwo = UserManager.shared.selectedStudents
+            
+            else {
+                
+                return
+            }
             
             self.course.students = selectedUsersTwo.map({$0.name + ":" + $0.id})
         }
@@ -185,6 +216,27 @@ class NewAThingViewModel: SearchUserDelegate {
     }
     
     func addCourse (with course: inout Course) {
+                
+        var teachersID: [String] = []
+
+        var teachersName: [String] = []
+        
+        for index in 0 ..< course.teachers.count {
+
+            let teacherInfo = course.teachers[index].components(separatedBy: ":")
+
+            let teacherName = teacherInfo[0]
+
+            let teacherID = teacherInfo[1]
+
+            teachersID.append(teacherID)
+            
+            teachersName.append(teacherName)
+        }
+        
+        course.teachers = teachersID
+        
+        course.image = "https://source.unsplash.com/featured/?classrooms"
         
         LessonManager.shared.addCourse(course: &course) { result in
             
@@ -200,6 +252,8 @@ class NewAThingViewModel: SearchUserDelegate {
             }
         }
         
+        course.teachers = teachersName
+        
         self.initialLessons(with: &course)
         
         self.initialAttendanceSheet(with: &course)
@@ -214,7 +268,7 @@ class NewAThingViewModel: SearchUserDelegate {
         var lessonTimes: [RoutineHour] = []
         
         for index in 0 ..< course.lessonsAmount {
-        
+            
             lessonTimes.append(course.courseTime[index % course.courseTime.count])
         }
         
@@ -244,7 +298,7 @@ class NewAThingViewModel: SearchUserDelegate {
                 if today - previousDay > 0 {
                     
                     lesson.time = lessonTime + Double(today - previousDay) * milliSecondsPerDay
-                
+                    
                 } else {
                     
                     lesson.time = lessonTime + Double(today - previousDay + 7) * milliSecondsPerDay
@@ -331,6 +385,7 @@ class NewAThingViewModel: SearchUserDelegate {
                              timeInterval: 0)
     
     func onEventNameChanged(text eventName: String) {
+        
         self.event.eventName = eventName
     }
     
@@ -352,7 +407,8 @@ class NewAThingViewModel: SearchUserDelegate {
     }
     
     func addEvent (with event: inout Event) {
-        XXXManager.shared.addEvent(event: &event) { result in
+        
+        EventManager.shared.addEvent(event: &event) { result in
             
             switch result {
             
@@ -368,7 +424,8 @@ class NewAThingViewModel: SearchUserDelegate {
     }
     
     func addSign (with sign: inout Event) {
-        XXXManager.shared.addSign(sign: &sign) { result in
+        
+        EventManager.shared.addSign(sign: &sign) { result in
             
             switch result {
             
@@ -395,28 +452,38 @@ class NewAThingViewModel: SearchUserDelegate {
                                    emergencyContactNo: -1)
     
     func onStudentNameChanged(text name: String) {
+        
         self.student.name = name
     }
     
     func onStudentNationalIDChanged(text nationalID: String) {
+        
         self.student.nationalID = nationalID
     }
     
     func onStudentGradeChanged(text grade: String) {
+        
         self.student.grade = Int(grade) ?? -1
     }
+    
     func onStudentBirthDayChanged(day: Date) {
+        
         self.student.birthDay = Double(day.millisecondsSince1970)
     }
+    
     func onStudentContactPersonChanged(text person: String) {
+        
         self.student.emergencyContactPerson = person
     }
+    
     func onStudentContactNoChanged(text contactNo: String) {
+        
         self.student.emergencyContactNo = Int(contactNo) ?? -1
     }
     
     func addStudent (with student: inout Student) {
-        XXXManager.shared.addStudent(student: &student) { result in
+        
+        StudentManager.shared.addStudent(student: &student) { result in
             
             switch result {
             
@@ -431,3 +498,4 @@ class NewAThingViewModel: SearchUserDelegate {
         }
     }
 }
+// swiftlint:enable type_body_length

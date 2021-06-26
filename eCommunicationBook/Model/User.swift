@@ -9,6 +9,7 @@
 import Foundation
 
 struct User: Codable {
+    
     var id: String
     var createdTime: Double
     var userID: String
@@ -59,7 +60,9 @@ struct User: Codable {
                 "difficulty": difficulty as Any,
                 "note": note as Any
             ]
+            
         } else {
+            
             return [
                 "id": id as Any,
                 "createdTime": createdTime as Any,

@@ -9,6 +9,7 @@
 import Foundation
 
 enum ClassPerformance: Int {
+    
     case terrible = 1
     case poor = 2
     case okay = 3
@@ -17,6 +18,7 @@ enum ClassPerformance: Int {
 }
 
 struct StudentLessonRecord: Codable {
+    
     var id: String
     var studentID: String
     var studentName: String

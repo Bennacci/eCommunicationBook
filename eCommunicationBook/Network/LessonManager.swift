@@ -9,7 +9,6 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
-import FirebaseStorage
 
 class LessonManager {
     
@@ -21,13 +20,11 @@ class LessonManager {
     
     func addCourse(course: inout Course, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = fireStoreDataBase.collection("Courses")
+        let document = fireStoreDataBase
+            .collection("Courses")
             .document()
+        
         course.id = document.documentID
-        //    course.createdTime = Double(Date().millisecondsSince1970)
-        //    print(course.toDict)
-        //    print(course)
-        //    course.lessons = nil
         
         document.setData(course.toDict) { error in
             
@@ -36,7 +33,7 @@ class LessonManager {
                 completion(.failure(error))
                 
             } else {
-                //        self.courseID = document.documentID
+
                 completion(.success("Success"))
             }
         }
@@ -76,7 +73,9 @@ class LessonManager {
             .document(courseID)
             .collection("Lessons")
             .document(lesson.id)
+        
         lesson.id = document.documentID
+        
         document.setData(lesson.toDict) { error in
             
             if let error = error {
@@ -93,7 +92,8 @@ class LessonManager {
     func saveStudentLessonRecord(studentLessonRecord: inout StudentLessonRecord,
                                  completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = fireStoreDataBase.collection("StudentLessonRecords")
+        let document = fireStoreDataBase
+            .collection("StudentLessonRecords")
             .document()
         
         studentLessonRecord.id = document.documentID
@@ -113,7 +113,8 @@ class LessonManager {
     
     func fetchCourses(completion: @escaping (Result<[Course], Error>) -> Void) {
         
-        var collection = fireStoreDataBase.collection("Courses")
+        var collection = fireStoreDataBase
+            .collection("Courses")
             .whereField("teachers", arrayContains: UserManager.shared.user.id)
         
         if UserManager.shared.user.userType == UserType.parents.rawValue {
@@ -158,7 +159,8 @@ class LessonManager {
     
     func fetchLessons(courseID: String, completion: @escaping (Result<[Lesson], Error>) -> Void) {
         
-        let collection = fireStoreDataBase.collection("Courses")
+        let collection = fireStoreDataBase
+            .collection("Courses")
             .document(courseID)
             .collection("Lessons")
             .order(by: "number", descending: false)

@@ -66,9 +66,7 @@ class CalendarPageViewModel {
         
         self.scrollToTop?()
     }
-    
-    // GCD and tapped in future
-    
+        
     func onCalendarTapped(day: Date) {
         
         let tappedYearMonth = Calendar.current.dateComponents([.year, .month], from: day)
@@ -185,7 +183,7 @@ class CalendarPageViewModel {
         
         fetchExistances(date: nil)
         
-        XXXManager.shared.fetchEvents { [weak self] result in
+        EventManager.shared.fetchEvents { [weak self] result in
             
             switch result {
             
@@ -206,9 +204,7 @@ class CalendarPageViewModel {
             case .success(let studentLessonRecords):
                 
                 self?.setStudentLessonRecords(studentLessonRecords)
-                
-            //        self?.onCallendarTap()
-            
+                            
             case .failure(let error):
                 
                 print("fetchStudentLessonRecord.failure: \(error)")
@@ -234,9 +230,7 @@ class CalendarPageViewModel {
             case .success(let studentExistances):
                 
                 self?.setStudentExistances(studentExistances, timeIn: true)
-                
-            //            self?.onCallendarTap()
-            
+                            
             case .failure(let error):
                 
                 print("fetchStudentExistances.failure: \(error)")
@@ -252,9 +246,7 @@ class CalendarPageViewModel {
             case .success(let studentExistances):
                 
                 self?.setStudentExistances(studentExistances, timeIn: false)
-                
-            //            self?.onCallendarTap()
-            
+                            
             case .failure(let error):
                 
                 print("fetchStudentExistances.failure: \(error)")

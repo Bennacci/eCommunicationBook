@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
 
 struct Message: Codable {
+    
     var id: String
     var content: String
     var senderID: String

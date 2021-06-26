@@ -9,21 +9,22 @@
 import Foundation
 
 struct RoutineHour: Codable {
-  var day: Int
-  var startingTime: Int
-  var timeInterval: Int
-  
-  enum CodingKeys: String, CodingKey {
-    case day
-    case startingTime
-    case timeInterval
-  }
-  
-  var toDict: [String: Any] {
-    return [
-      "day": day as Any,
-      "startingTime": startingTime as Any,
-      "timeInterval": timeInterval as Any
-    ]
-  }
+    
+    var day: Int
+    var startingTime: Int
+    var timeInterval: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case day
+        case startingTime
+        case timeInterval
+    }
+    
+    var toDict: [String: Any] {
+        return [
+            "day": day as Any,
+            "startingTime": startingTime as Any,
+            "timeInterval": timeInterval as Any
+        ]
+    }
 }

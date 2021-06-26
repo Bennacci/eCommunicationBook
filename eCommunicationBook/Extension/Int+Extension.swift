@@ -1,17 +1,17 @@
 //
 //  File.swift
-//  STYLiSH
+//  eCommunicationBook
 //
-//  Created by WU CHIH WEI on 2019/3/6.
-//  Copyright © 2019 WU CHIH WEI. All rights reserved.
+//  Created by Ben Tee on 2021/5/12.
+//  Copyright © 2021 TKY co. All rights reserved.
 //
 
 import Foundation
 
 extension Int {
-
+    
     func int64() -> Int64 {
-
+        
         return Int64(self)
     }
 }

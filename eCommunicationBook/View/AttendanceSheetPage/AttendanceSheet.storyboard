@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Wo-2N-cJf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Attendance Sheet View Controller-->
+        <scene sceneID="crS-RL-gxM">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="5Wo-2N-cJf" customClass="AttendanceSheetViewController" customModule="eCommunicationBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VWT-hB-di2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jf9-po-diy">
+                                <rect key="frame" x="20" y="64" width="30.5" height="29"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="xmark" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapLeaveButton:" destination="5Wo-2N-cJf" eventType="touchUpInside" id="ziL-x2-d8A"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJO-dL-6Fa">
+                                <rect key="frame" x="0.0" y="115" width="414" height="781"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HzJ-0s-ZG9" customClass="SwiftyMenu" customModule="SwiftyMenu">
+                                <rect key="frame" x="278" y="60" width="120" height="38"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="3XR-0Y-2Ef"/>
+                                    <constraint firstAttribute="height" constant="38" id="NVC-7D-RXZ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="heightConstraint" destination="NVC-7D-RXZ" id="csl-J2-K4A"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attendance Sheet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42y-0s-LhZ">
+                                <rect key="frame" x="66.5" y="66.5" width="161" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0ab-VU-mf5"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <constraints>
+                            <constraint firstItem="jf9-po-diy" firstAttribute="leading" secondItem="0ab-VU-mf5" secondAttribute="leading" constant="20" id="3XN-0a-hrt"/>
+                            <constraint firstItem="0ab-VU-mf5" firstAttribute="trailing" secondItem="HzJ-0s-ZG9" secondAttribute="trailing" constant="16" id="9oh-mC-cRn"/>
+                            <constraint firstItem="42y-0s-LhZ" firstAttribute="centerY" secondItem="jf9-po-diy" secondAttribute="centerY" id="IpU-9U-h8Z"/>
+                            <constraint firstItem="42y-0s-LhZ" firstAttribute="leading" secondItem="jf9-po-diy" secondAttribute="trailing" constant="16" id="Itu-59-aTK"/>
+                            <constraint firstItem="jf9-po-diy" firstAttribute="top" secondItem="0ab-VU-mf5" secondAttribute="top" constant="20" id="QK7-UJ-eiH"/>
+                            <constraint firstItem="HzJ-0s-ZG9" firstAttribute="top" secondItem="0ab-VU-mf5" secondAttribute="top" constant="16" id="U5b-bO-M2L"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dropDownCourse" destination="HzJ-0s-ZG9" id="gkF-Tv-1VB"/>
+                        <outlet property="dropDownCourseWidth" destination="3XR-0Y-2Ef" id="PcS-P8-Mqf"/>
+                        <outlet property="gridView" destination="GJO-dL-6Fa" id="DTO-pf-QE0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oOK-TX-cWm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="882.60869565217399" y="32.8125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -9,19 +9,29 @@
 import UIKit
 
 extension UITableView {
-
+    
     func registerCellWithNib(identifier: String, bundle: Bundle?) {
-
+        
         let nib = UINib(nibName: identifier, bundle: bundle)
-
+        
         register(nib, forCellReuseIdentifier: identifier)
     }
-
+    
     func registerHeaderWithNib(identifier: String, bundle: Bundle?) {
-
+        
         let nib = UINib(nibName: identifier, bundle: bundle)
-
+        
         register(nib, forHeaderFooterViewReuseIdentifier: identifier)
+    }
+    
+    func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T {
+        
+        guard let cell = dequeueReusableCell(withIdentifier: "\(T.self)", for: indexPath) as? T else {
+        
+            fatalError("Unable to Dequeue Reusable Table View Cell")
+        }
+        
+        return cell
     }
 }
 

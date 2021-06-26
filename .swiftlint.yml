@@ -1,5 +1,8 @@
+included:
+  - eCommunicationBook
 excluded:
   - Pods
+  - Carthage
 disabled_rules:
   - trailing_whitespace
 identifier_name:
@@ -10,7 +13,7 @@ identifier_name:
     - app
 file_length:
   warning: 500
-  error: 1400
+  error: 1200
 type_body_length:
-  - 500 # warning
-  - 700 # error
+ - 200 # warning
+ - 300 # error

@@ -29,7 +29,7 @@ Google Firebase and download GoogleService-Info.plist from it.
 
 Based on the user's role: **Teacher** or **Parent**, eCommunicationBook provides corresponding features.
 
-  <img src="https://media.giphy.com/media/A1ou3b5Cin7I6XBTzx/giphy.gif" width="" height="384" align=center> <img width="200" alt="homepage_teacher2" src="https://user-images.githubusercontent.com/77099990/123513809-dbd2f580-d6c1-11eb-8990-40d95079e5aa.png" align=center> <img width="200" alt="homepage_parents" src="https://user-images.githubusercontent.com/77099990/123510556-da4c0200-d6ae-11eb-9179-57d1e597c8c6.png" align=center>
+  <img src="https://media.giphy.com/media/A1ou3b5Cin7I6XBTzx/giphy.gif" width="200" height="384" align=center> <img width="200" alt="homepage_teacher2" src="https://user-images.githubusercontent.com/77099990/123513809-dbd2f580-d6c1-11eb-8990-40d95079e5aa.png" align=center> <img width="200" alt="homepage_parents" src="https://user-images.githubusercontent.com/77099990/123510556-da4c0200-d6ae-11eb-9179-57d1e597c8c6.png" align=center>
 
 * **Sign in :**
    * Sign in with Apple ID.

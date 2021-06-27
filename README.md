@@ -18,7 +18,7 @@ Google Firebase and download GoogleService-Info.plist from it.
   - [Chat rooms](#chat-rooms)
   - [Calendar](#calendar)
   - [Profile page](#profile-page)
-- [Library](#library)
+- [Libraries](#libraries)
 - [Requirements](#requirements)
 - [Version](#version)
 - [Contacts](#contacts)
@@ -112,7 +112,7 @@ Users can customize  their personal information.
   
   <img height="384" alt="accountPage" src="https://media.giphy.com/media/h2tR6uxK7hyv5AJS29/giphy.gif">
 
-## Library
+## Libraries
 
 - [Charts](https://github.com/danielgindi/Charts)
 - [ChamelonFramework](https://github.com/sanfreefeng/ChameleonFramework)

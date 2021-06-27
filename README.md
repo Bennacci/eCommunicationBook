@@ -33,52 +33,54 @@ Google Firebase and download GoogleService-Info.plist from it.
 
 * **Teacher :**
    * **Attendace system :**
-      *  record students’ time in and out by scanning a QR code with their ID cards
+      *  record students’ time in and out by scanning a QR code on their ID cards
    * **Communication book :**
        * fill in students’ class performance and test results
        * keep records of today’s lesson and homework
        * share lesson contents with co-teachers
    * **Chat rooms :** 
-       * create caht rooms
+       * create chat rooms
        * leave messages to the parents
    * **Additional features:** 
-       * crate **course**, **event**, **news**, and **add student info**
+       * create **course**, **event**, **news**, and **add student info**
 *  **Parent :**
    * **Attendace system :**
-       *  see their kids’ attendance
+       * see their kids’ attendance
    * **Communication book :** 
        * know the lesson content and homework
-       * get information about school’s events
+       * get information about school events
    * **Chat rooms :**
-       *  leave messages to the teachers
+       * leave messages to the teachers
 
 ### Attendance system
 
-* Track attendance by scanning QR code and sharing  location.
+* Track attendance by scanning QR code and sharing location.
 
-* Calculate the student's attendance rate with GCD framework,  searching all the selected class's **Time in datas**, and comparing it with the **class schedule** to see if the student is **on time**, **late** or **abscent**.
+* Calculate the student's attendance rate with GCD framework,  searching all the selected class's **Time in datas** and comparing it with the **class schedule** to see if the student is **on time**, **late** or **abscent**.
 
   <img width="200" align=center alt="scanQR" src="https://user-images.githubusercontent.com/77099990/123510849-58f56f00-d6b0-11eb-9a73-2f2fd64031a9.png"><img width="200" align=center alt="attendance_teacher" src="https://user-images.githubusercontent.com/77099990/123510544-d0c29a00-d6ae-11eb-8b60-c33644ce32dc.png"><img width="200" align=center alt="attendance_parent" src="https://user-images.githubusercontent.com/77099990/123510510-a07afb80-d6ae-11eb-9207-c0974bed41ae.png"><img width="200" align=center alt="attendance_parent2" src="https://user-images.githubusercontent.com/77099990/123516498-ea73d980-d6ce-11eb-8f55-6dbc0a9ba13f.png">
  
 * **Teacher :**
-  * Scan a student's ID card to **Time in** or **Time out** a student, and choose a class to see attendace sheet.
+  * Scan students' ID cards to record their **Time in** or **Time out**.
+  * Choose a class to see the whole class attendace sheet.
   * The first column of the attendance sheet is fixed, and will always show on the screen.
   * The attendace sheet will sort in ascending or  descending order alternately every time **name**, **date** or  **attendance rate** is tapped.
 
 * **Parent :**  
-  * See their kids’ **Time in** and **Time out** time, and also the location if the student hasn't time out.
+  * See their kids’ **Time in** and **Time out**.
+  * Know the location of their kids before they leave the school.
    
 ### Communication book
    
-* Display all the classes that the user is involved in
-* The status of the button will change according to the comparsion of **class hour** and **curret time**
+* Display all the classes that the user is involved in.
+* The status of the button will change according to the comparsion of **class hour** and **curret time**.
 
   <img width="200" align=center alt="communicationbook_teacher" src="https://user-images.githubusercontent.com/77099990/123510551-d8823e80-d6ae-11eb-8e17-4a6b6a85fdc3.png"><img width="200" align=center alt="communicationbook_paret" src="https://user-images.githubusercontent.com/77099990/123510550-d6b87b00-d6ae-11eb-88a6-c4b2cc3e2bb7.png">
 
 * **Teacher :**
   * The **Edit** button will switch to **Done**, and the **QR code** button will disapear once the class is finished 
   * The **Edit** button directs to the page of editing lesson plan and filling student class perfomances.
-  * The **QR code** button directs to attendace system's scanning QR code page.
+  * The **QR code** button directs to attendace system's scanning page.
 
 * **Parent :**
   * The **Read** button directing to class performance page will appear once the class is finished.
@@ -91,19 +93,19 @@ Google Firebase and download GoogleService-Info.plist from it.
 
 ### Chat rooms
 
-* Users can chat with a real-time chatroom created with UiKit and Firebase Firestore listeners
+* Users can chat in a real-time chatroom created with UiKit and Firebase Firestore listeners
 
   <img width="200" alt="chatroom" src="https://user-images.githubusercontent.com/77099990/123510549-d4eeb780-d6ae-11eb-8464-7dec1dfa5967.png">
 
 ### Calendar
   
-* Users can get information about school’s event and student lesson performances
+* Users can get information about school events and student lesson performance.
 
   <img width="200" alt="calendar" src="https://user-images.githubusercontent.com/77099990/123510547-d324f400-d6ae-11eb-8e40-b7b01dd6dfc4.png">
 
 ### Profile page
 
-* Users can customize  their personal informations 
+* Users can customize  their personal information.
   
   <img height="384" alt="accountPage" src="https://media.giphy.com/media/h2tR6uxK7hyv5AJS29/giphy.gif">
 

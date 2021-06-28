@@ -81,7 +81,7 @@ The status of the button will change according to the comparsion of **class hour
   <img width="200" align=center alt="communicationbook_teacher" src="https://user-images.githubusercontent.com/77099990/123510551-d8823e80-d6ae-11eb-8e17-4a6b6a85fdc3.png"> <img width="200" align=center alt="communicationbook_paret" src="https://user-images.githubusercontent.com/77099990/123510550-d6b87b00-d6ae-11eb-88a6-c4b2cc3e2bb7.png">
 
 * **Teacher :**
-  * The **Edit** button will switch to **Done**, and the **QR code** button will disapear once the class is finished 
+  * The **Edit** button will switch to **Done**, and the **QR code** button will disapear once the class is finished.
   * The **Edit** button directs to the page of editing lesson plan and filling student class perfomances.
   * The **QR code** button directs to attendace system's scanning page.
 
@@ -96,7 +96,7 @@ Teachers can create **course**, **event**, **news**, and add **student info**
 
 ### Chat rooms
 
-Users can chat in a real-time chatroom created with UiKit and Firebase Firestore listeners
+Users can chat in a real-time chatroom created with UiKit and Firebase Firestore listeners.
 
   <img width="200" alt="chatroom" src="https://user-images.githubusercontent.com/77099990/123510549-d4eeb780-d6ae-11eb-8464-7dec1dfa5967.png">
 

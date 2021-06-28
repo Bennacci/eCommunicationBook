@@ -1,9 +1,9 @@
 //
 //  String+Extension.swift
-//  STYLiSH
+//  eCommunicationBook
 //
-//  Created by WU CHIH WEI on 2019/7/29.
-//  Copyright © 2019 WU CHIH WEI. All rights reserved.
+//  Created by Ben Tee on 2021/5/12.
+//  Copyright © 2021 TKY co. All rights reserved.
 //
 
 import Foundation
@@ -12,14 +12,3 @@ extension String {
     
     static let empty = ""
 }
-//
-//extension User {
-//
-//    func getUserInfo() -> String {
-//        if email == "wayne.swchen@gmail.com" {
-//            return "AKA 小安老師"
-//        } else {
-//            return "Do you wanna build a snowman?"
-//        }
-//    }
-//}

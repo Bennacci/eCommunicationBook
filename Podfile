@@ -1,5 +1,14 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform :ios, '10.0'
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['LD_NO_PIE'] = 'NO'
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
+        end
+    end
+end
 
 target 'eCommunicationBook' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -20,12 +29,16 @@ target 'eCommunicationBook' do
   pod 'FirebaseAuth'
   pod 'CollectionViewPagingLayout'
   pod 'EasyRefresher'
-  pod 'Kingfisher', '5.9.0'
+  pod 'Kingfisher'
   pod 'JGProgressHUD'
   pod 'MJRefresh'
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftLint'
   
+    target 'eCommunicationBookTests' do
+        inherit! :search_paths
+        pod 'Firebase'
+    end
 
 end
 

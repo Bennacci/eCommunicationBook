@@ -9,74 +9,66 @@
 import UIKit
 
 class WideUserTableViewCell: UITableViewCell {
-
-  
-  @IBOutlet weak var circleIcon: UIImageView!
-  @IBOutlet weak var checkIcon: UIImageView!
-  @IBOutlet weak var userImageW: UIImageView!
-  @IBOutlet weak var userName: UILabel!
-  @IBOutlet weak var height: NSLayoutConstraint!
-  override func awakeFromNib() {
+    
+    @IBOutlet weak var imageViewCircleIcon: UIImageView!
+    
+    @IBOutlet weak var imageViewCheckIcon: UIImageView!
+    
+    @IBOutlet weak var imageViewUserImage: UIImageView!
+    
+    @IBOutlet weak var labelUserName: UILabel!
+    
+    @IBOutlet weak var height: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        
         super.awakeFromNib()
-      
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-  
-//  var viewModel: UserViewModel?
-//
-//  func setup(list: Box<[UserViewModel]>, viewModel: UserViewModel) {
-//      self.viewModel = viewModel
-//
-//    layoutCell(list: list)
-//  }
-//
-//  func layoutCell(list: Box<[UserViewModel]>) {
-//    let arrayCount = list.value.count
-//    var evenArray = [UserViewModel]()
-//    evenArray = list.value.filter{$0.id != viewModel?.id}
-//    if evenArray.count == arrayCount {
-//      checkIcon.isHidden = true
-//      circleIcon.isHidden = false
-//    } else {
-//      checkIcon.isHidden = false
-//      circleIcon.isHidden = true
-//    }
-//    userName.text = viewModel?.name
-//    userImageW.layer.cornerRadius = userImageW.frame.height / 2
-//    layoutIfNeeded()
-//  }
-//
-  var material: SearchUserPageMaterial?
-  func setup(list: [SearchUserPageMaterial], viewModel: SearchUserPageMaterial) {
-      self.material = viewModel
 
-    layoutCell(list: list)
-  }
-  
-  func layoutCell(list: [SearchUserPageMaterial]) {
-    let arrayCount = list.count
-    var evenArray = [SearchUserPageMaterial]()
-    evenArray = list.filter { $0.id != material?.id }
-    if evenArray.count == arrayCount {
-      checkIcon.isHidden = true
-      circleIcon.isHidden = false
-    } else {
-      checkIcon.isHidden = false
-      circleIcon.isHidden = true
+    var material: SearchUserPageMaterial?
+    
+    func setup(list: [SearchUserPageMaterial], viewModel: SearchUserPageMaterial) {
+    
+        self.material = viewModel
+        
+        layoutCell(list: list)
     }
     
-    userName.text = material?.name
+    func layoutCell(list: [SearchUserPageMaterial]) {
     
-    if let imageURL = material?.image {
-      userImageW.loadImage(imageURL, placeHolder: UIImage(systemName: "person.crop.circle.fill"))
+        let arrayCount = list.count
+        
+        var evenArray = [SearchUserPageMaterial]()
+        
+        evenArray = list.filter { $0.id != material?.id }
+        
+        if evenArray.count == arrayCount {
+        
+            imageViewCheckIcon.isHidden = true
+            
+            imageViewCircleIcon.isHidden = false
+        
+        } else {
+        
+            imageViewCheckIcon.isHidden = false
+            
+            imageViewCircleIcon.isHidden = true
+        }
+        
+        labelUserName.text = material?.name
+        
+        if let imageURL = material?.image {
+            
+            imageViewUserImage.loadImage(imageURL, placeHolder: UIImage(systemName: "person.crop.circle.fill"))
+        }
+        
+        imageViewUserImage.layer.cornerRadius = imageViewUserImage.frame.height / 2
+        
+        layoutIfNeeded()
     }
-    userImageW.layer.cornerRadius = userImageW.frame.height / 2
-    layoutIfNeeded()
-  }
 }

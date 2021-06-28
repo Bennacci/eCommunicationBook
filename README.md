@@ -1,6 +1,6 @@
 # eCommunicationBook
 
-[<img src="https://user-images.githubusercontent.com/77099990/123499177-59b5e300-d667-11eb-970f-1eab40490396.jpeg" align="right" width = "120px"/>](https://apps.apple.com/gb/app/ecommunicationbook/id1571593401?ign-mpt=uo%3D2) [![GitHub release](https://img.shields.io/badge/release-v1.0-blue.svg)](https://github.com/Bennacci/eCommunicationBook/releases/)   [![swift-version](https://img.shields.io/badge/Swift-5-blue.svg)](https://github.com/apple/swift)   [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Bennacci/eCommunicationBook/blob/master/LICENSE)
+[<img src="https://user-images.githubusercontent.com/77099990/123499177-59b5e300-d667-11eb-970f-1eab40490396.jpeg" align="right" width = "120px"/>](https://apps.apple.com/gb/app/ecommunicationbook/id1571593401?ign-mpt=uo%3D2) [![GitHub release](https://img.shields.io/badge/release-v1.1-blue.svg)](https://github.com/Bennacci/eCommunicationBook/releases/)   [![swift-version](https://img.shields.io/badge/Swift-5-blue.svg)](https://github.com/apple/swift)   [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Bennacci/eCommunicationBook/blob/master/LICENSE)
 
 >An app created for “parents” and “teachers” to interact in real-time, where the former can get their children's attendance record, class performance, learning progress, homework status, school calendar, and event information, and the latter can provide all the corresponding information with only a few taps.
 

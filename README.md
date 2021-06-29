@@ -5,8 +5,15 @@
 >An app created for “parents” and “teachers” to interact in real-time, where the former can get their children's attendance record, class performance, learning progress, homework status, school calendar, and event information, and the latter can provide all the corresponding information with only a few taps.
 
 ```
-If you need to build the project, please create new project on 
+If you want to build this project, please create a new project on 
 Google Firebase and download GoogleService-Info.plist from it.
+
+If you download this App from App Store, you can either enter "12369" 
+to become a "teacher", or just click continue to become a parent.
+If you have chosen to be a "parent", you can click on the 
+comunication book button on the main page and redeem an invitation code,
+"osEhOENEZqwQIKKwF0k1", to register a child to your account.
+Please notice that once a role is set, it can't be changed.
 ```
   
 ## Table of Contents
@@ -20,7 +27,7 @@ Google Firebase and download GoogleService-Info.plist from it.
   - [Profile page](#profile-page)
 - [Libraries](#libraries)
 - [Requirements](#requirements)
-- [Version](#version)
+- [App Store Version](#app-store-version)
 - [Contacts](#contacts)
 
 ## Features and Screen Shots
@@ -133,7 +140,7 @@ Users can customize  their personal information.
 * iOS 13.7+
 * Xcode 12.0+
 
-## Version
+## App Store Version
 
 * 1.0 - 2021/06/14
 * First release

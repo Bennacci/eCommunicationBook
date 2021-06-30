@@ -62,6 +62,11 @@ class HomePageViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        
+        bannerCell.bannerView.reloadImage()
+    }
 }
 
 extension HomePageViewController: UITableViewDataSource {

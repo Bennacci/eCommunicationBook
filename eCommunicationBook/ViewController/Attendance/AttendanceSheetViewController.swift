@@ -163,9 +163,9 @@ class AttendanceSheetViewController: UIViewController, UICollectionGridViewSortD
                 return firstRowValue > secondRowValue
             }
             
-            let firstRowValuePercent = Double(firstRowValue[..<firstRowValue.endIndex])!
+            let firstRowValuePercent = Double(firstRowValue.dropLast())!
 
-            let secondRowValuePercent = Double(secondRowValue[..<secondRowValue.endIndex])!
+            let secondRowValuePercent = Double(secondRowValue.dropLast())!
             
             if asc {
                 

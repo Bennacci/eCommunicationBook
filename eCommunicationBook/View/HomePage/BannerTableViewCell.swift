@@ -145,8 +145,6 @@ class BannerView: UIView, UIScrollViewDelegate {
         
         let pageControl = UIPageControl()
         
-        pageControl.frame = CGRect(x: 0, y: scrollView.frame.maxY-20, width: width, height: 20)
-        
         pageControl.backgroundColor = UIColor.clear
         
         // color when selected
@@ -158,7 +156,7 @@ class BannerView: UIView, UIScrollViewDelegate {
         pageControl.numberOfPages = imageArray.count
         
         pageControl.currentPage = (currentIndex - 1 + imageArray.count) % imageArray.count
-        
+
         return pageControl
     }()
     
@@ -176,6 +174,8 @@ class BannerView: UIView, UIScrollViewDelegate {
             
             scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: true)
                         
+            pageControl.frame = CGRect(x: 0, y: scrollView.frame.maxY-20, width: width, height: 20)
+
             pageControl.currentPage = (currentIndex - 1 + imagecount) % imagecount
             
             leftIndex = (currentIndex - 1 + imagecount) % imagecount
